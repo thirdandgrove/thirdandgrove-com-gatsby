@@ -51,12 +51,12 @@ const underline = css`
   text-decoration: underline;
 `;
 
-const User = props => (
+const User = ({ avatar, username, excerpt }) => (
   <UserWrapper>
-    <Avatar src={props.avatar} alt='' />
+    <Avatar src={avatar} alt='' />
     <Description>
-      <Username>{props.username}</Username>
-      <Excerpt>{props.excerpt}</Excerpt>
+      <Username>{username}</Username>
+      <Excerpt>{excerpt}</Excerpt>
     </Description>
   </UserWrapper>
 );
