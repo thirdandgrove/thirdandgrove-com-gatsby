@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/core';
 
-const SiteNav = props => {
+const SiteNav = () => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
   return (
@@ -10,14 +10,21 @@ const SiteNav = props => {
         css={css`
           position: absolute;
           top: 0;
-          padding: 5px 30px;
+          padding: 5px 100px;
           width: 100%;
           display: flex;
           background-color: transparent;
           justify-content: space-between;
+          align-items: baseline;
         `}
       >
-        <p>Third and Grove</p>
+        <h3
+          css={css`
+            color: #29292a;
+          `}
+        >
+          Third and Grove
+        </h3>
         <button
           css={css`
             background-color: transparent;
