@@ -1,0 +1,66 @@
+{
+  "name": "third-and-grove",
+  "private": true,
+  "description": "Third and Grove",
+  "version": "0.1.0",
+  "author": "Third and Grove <https://www.thirdandgrove.com>",
+  "contributors": [
+    "Grant Glidewell <grant@thirdandgrove.com>"
+  ],
+  "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.10",
+    "gatsby": "^2.3.16",
+    "gatsby-image": "^2.0.37",
+    "gatsby-plugin-emotion": "^4.0.6",
+    "gatsby-plugin-manifest": "^2.0.28",
+    "gatsby-plugin-offline": "^2.0.25",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-plugin-sharp": "^2.0.32",
+    "gatsby-source-filesystem": "^2.0.29",
+    "gatsby-transformer-sharp": "^2.1.17",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "~10.0.1",
+    "eslint": "~5.15.1",
+    "eslint-config-airbnb": "~17.1.0",
+    "eslint-config-prettier": "~4.1.0",
+    "eslint-plugin-import": "~2.16.0",
+    "eslint-plugin-jsx-a11y": "~6.2.1",
+    "eslint-plugin-prettier": "~3.0.1",
+    "eslint-plugin-react": "~7.12.4",
+    "husky": "~1.3.1",
+    "prettier": "~1.16.4",
+    "pretty-quick": "~1.10.0"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "lint": "node ./node_modules/eslint/bin/eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "npm run lint",
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
