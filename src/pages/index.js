@@ -4,7 +4,7 @@ import Header from '../components/header';
 
 export default () => (
   <>
-    <Header />
+    <Header tagline='We are an obsessive digital innovation company.' />
     <div>content here</div>
   </>
 );

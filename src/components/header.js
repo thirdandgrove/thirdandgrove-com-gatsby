@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 
 import SiteNav from './SiteNav';
 
-const Header = ({ defaultBackground }) => (
+const Header = ({ defaultBackground, tagline }) => (
   <header
     css={css`
       width: 100%;
@@ -17,6 +17,17 @@ const Header = ({ defaultBackground }) => (
     `}
   >
     <SiteNav />
+    <h1
+      css={css`
+        font-size: 48px;
+        font-weight: 400;
+        width: 60%;
+        text-align: center;
+        color: ${defaultBackground ? '#29292a' : '#efefef'};
+      `}
+    >
+      {tagline}
+    </h1>
   </header>
 );
 

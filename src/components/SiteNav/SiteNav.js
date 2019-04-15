@@ -16,11 +16,12 @@ const SiteNav = () => {
           background-color: transparent;
           justify-content: space-between;
           align-items: baseline;
+          z-index: 1;
         `}
       >
         <h3
           css={css`
-            color: #29292a;
+            color: '#29292a';
           `}
         >
           Third and Grove
@@ -41,7 +42,23 @@ const SiteNav = () => {
           &#9776;
         </button>
       </span>
-      {isOpen && <span>all the menu content</span>}
+      {/* // some ptransition in? */}
+      {isOpen && (
+        <div
+          css={css`
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            height: 30vh;
+            background-color: '#9CE3EA';
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+          `}
+        >
+          MENU CONTENT
+        </div>
+      )}
     </>
   );
 };
