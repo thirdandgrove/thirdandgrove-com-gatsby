@@ -21,7 +21,7 @@ const SiteNav = () => {
       >
         <h3
           css={css`
-            color: '#29292a';
+            color: #29292a;
           `}
         >
           Third and Grove
@@ -42,25 +42,25 @@ const SiteNav = () => {
           &#9776;
         </button>
       </span>
-      {/* // some ptransition in? */}
-      {isOpen && (
-        <div
-          css={css`
-            position: fixed;
-            top: 0;
-            width: 100vw;
-            height: 30vh;
-            background-color: '#9CE3EA';
-            display: flex;
-            justify-content: center;
-            padding: 50px;
-          `}
-        >
-          MENU CONTENT
-        </div>
-      )}
+      {/* // some transition in/out? */}
+      {isOpen && <Menu toggleOpen={toggleOpen} />}
     </>
   );
 };
+
+const Menu = ({ toggleOpen }) => (
+  <nav
+    css={css`
+      position: fixed;
+      width: 100vw;
+      height: 30vh;
+      display: flex;
+      justify-content: center;
+      background-color: #a5e6ec;
+    `}
+  >
+    grid of menu items
+  </nav>
+);
 
 export default SiteNav;
