@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { css } from '@emotion/core';
 
-import SiteNav from './SiteNav';
+import SiteNav from '../SiteNav';
 
 const Header = ({ defaultBackground, tagline }) => (
   <header
