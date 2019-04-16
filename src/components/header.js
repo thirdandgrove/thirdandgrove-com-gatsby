@@ -26,7 +26,7 @@ const Header = ({ defaultBackground, tagline }) => (
         color: ${defaultBackground ? '#29292a' : '#efefef'};
       `}
     >
-      {tagline[1]}
+      {tagline}
     </h1>
   </header>
 );
