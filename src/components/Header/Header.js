@@ -20,7 +20,7 @@ const Header = ({ defaultBackground, tagline }) => (
     <h1
       css={css`
         font-size: 48px;
-        font-weight: 400;
+        font-weight: 300;
         width: 60%;
         text-align: center;
         color: ${defaultBackground ? '#29292a' : '#efefef'};

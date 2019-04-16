@@ -6,8 +6,8 @@ const Footer = () => {
   const linkStyle = css`
     color: white;
     text-decoration: none;
-    font-weight: 600;
-    padding: 0 20px;
+    font-weight: 400;
+    padding-left: 20px;
     &:hover {
       transition: all ease-in-out 0.5s;
       text-decoration: underline;
@@ -23,7 +23,7 @@ const Footer = () => {
         width: 100%;
         color: white;
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
         align-items: center;
       `}
     >
