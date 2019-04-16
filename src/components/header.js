@@ -1,42 +1,42 @@
-import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { css } from '@emotion/core';
 
-const Header = ({ siteTitle }) => (
+import SiteNav from './SiteNav';
+
+const Header = ({ defaultBackground, tagline }) => (
   <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
+    css={css`
+      width: 100%;
+      height: 30vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: ${defaultBackground ? '#EBC900' : '#99E2E9'};
+    `}
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
+    <SiteNav />
+    <h1
+      css={css`
+        font-size: 48px;
+        font-weight: 400;
+        width: 60%;
+        text-align: center;
+        color: ${defaultBackground ? '#29292a' : '#efefef'};
+      `}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to='/'
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
+      {tagline}
+    </h1>
   </header>
 );
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  defaultBackground: PropTypes.bool,
 };
 
 Header.defaultProps = {
-  siteTitle: ``,
+  defaultBackground: true,
 };
 
 export default Header;
