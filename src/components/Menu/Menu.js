@@ -16,6 +16,7 @@ const Menu = () => {
     h5 {
       font-weight: 300;
       margin-bottom: 2rem;
+      font-family: canela-thin;
     }
     h1 {
       font-weight: 800;

@@ -17,7 +17,6 @@ const Header = ({ defaultBackground, tagline }) => (
       background-color: ${defaultBackground ? '#EBC900' : '#99E2E9'};
     `}
   >
-    <SiteNav />
     <h1
       css={css`
         font-size: 48px;
@@ -29,6 +28,7 @@ const Header = ({ defaultBackground, tagline }) => (
     >
       {tagline}
     </h1>
+    <SiteNav />
   </header>
 );
 
