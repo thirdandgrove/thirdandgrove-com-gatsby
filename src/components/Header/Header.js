@@ -23,7 +23,7 @@ const Header = ({ defaultBackground, tagline }) => (
         font-weight: 300;
         width: 60%;
         text-align: center;
-        color: ${defaultBackground ? '#29292a' : '#efefef'};
+        color: ${defaultBackground ? '#282829' : '#efefef'};
       `}
     >
       {tagline}
