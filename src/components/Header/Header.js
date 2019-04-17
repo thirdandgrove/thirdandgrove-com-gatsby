@@ -10,6 +10,7 @@ const Header = ({ defaultBackground, tagline }) => (
       width: 100%;
       height: 30vh;
       display: flex;
+      font-family: Canela-Medium;
       flex-direction: column;
       align-items: center;
       justify-content: center;

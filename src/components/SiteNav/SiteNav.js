@@ -13,6 +13,7 @@ const SiteNav = () => {
         css={css`
           position: absolute;
           top: 0;
+          font-family: Canela-Medium;
           padding: 10px 100px;
           width: 100%;
           display: flex;
