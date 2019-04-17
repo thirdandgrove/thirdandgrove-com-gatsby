@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
 import { css } from '@emotion/core';
+
+import Menu from '../Menu';
 
 const SiteNav = () => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
+
   return (
     <>
       <span
         css={css`
           position: absolute;
           top: 0;
-          padding: 5px 100px;
+          padding: 10px 100px;
           width: 100%;
           display: flex;
           background-color: transparent;
@@ -22,10 +24,12 @@ const SiteNav = () => {
       >
         <h3
           css={css`
-            color: #29292a;
+            color: #282829;
+            font-variant: small-caps;
           `}
         >
-          Third and Grove
+          {/* logo svg */}
+          thirdandgrove
         </h3>
         <button
           css={css`
@@ -40,7 +44,85 @@ const SiteNav = () => {
           type='button'
           onClick={() => toggleOpen()}
         >
-          &#9776;
+          {isOpen ? (
+            <svg
+              width='21px'
+              height='21px'
+              viewBox='0 0 21 21'
+              version='1.1'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <g
+                id='Concept-01'
+                stroke='none'
+                strokeWidth='1'
+                fill='none'
+                fillRule='evenodd'
+              >
+                <g
+                  id='Desktop---Menu'
+                  transform='translate(-1287.000000, -33.000000)'
+                >
+                  <rect x='0' y='0' width='1440' height='700' />
+                  <g
+                    id='X-Icon'
+                    transform='translate(1287.000000, 33.000000)'
+                    fill='#282829'
+                  >
+                    <rect
+                      id='Rectangle'
+                      transform='translate(10.500000, 10.500000) rotate(45.000000) translate(-10.500000, -10.500000) '
+                      x='-2'
+                      y='9'
+                      width='25'
+                      height='3'
+                    />
+                    <rect
+                      id='Rectangle'
+                      transform='translate(10.500000, 10.500000) rotate(-45.000000) translate(-10.500000, -10.500000) '
+                      x='-2'
+                      y='9'
+                      width='25'
+                      height='3'
+                    />
+                  </g>
+                </g>
+              </g>
+            </svg>
+          ) : (
+            <svg
+              width='25px'
+              height='23px'
+              viewBox='0 0 25 23'
+              version='1.1'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <g
+                id='Concept-01'
+                stroke='none'
+                strokeWidth='1'
+                fill='none'
+                fillRule='evenodd'
+              >
+                <g
+                  id='Desktop---Work'
+                  transform='translate(-1285.000000, -32.000000)'
+                >
+                  <rect x='0' y='0' width='1440' height='5040' />
+                  <g id='Hero' fill='#282829'>
+                    <g
+                      id='Hamburger'
+                      transform='translate(1285.000000, 32.000000)'
+                    >
+                      <rect id='Rectangle' x='0' y='0' width='25' height='3' />
+                      <rect id='Rectangle' x='0' y='20' width='25' height='3' />
+                      <rect id='Rectangle' x='8' y='10' width='17' height='3' />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          )}
         </button>
       </span>
       {/* // some transition in/out? */}
@@ -48,56 +130,5 @@ const SiteNav = () => {
     </>
   );
 };
-
-const Menu = ({ toggleOpen }) => (
-  <nav
-    css={css`
-      position: fixed;
-      width: 100vw;
-      height: 30vh;
-      display: flex;
-      justify-content: center;
-      background-color: #a5e6ec;
-    `}
-  >
-    <section>
-      <h5>Contents</h5>
-      <Link to='/Work'>
-        <h3>Work</h3>
-      </Link>
-      <Link to='/Capabilities'>
-        <h3>Capabilities</h3>
-      </Link>
-      <Link to='/Insights'>
-        <h3>Insights</h3>
-      </Link>
-    </section>
-
-    <section>
-      <h5>Company</h5>
-      <Link to='/About'>
-        <h3>About</h3>
-      </Link>
-      <Link to='/Careers'>
-        <h3>Careers</h3>
-      </Link>
-      <Link to='/Contact'>
-        <h3>Contact</h3>
-      </Link>
-    </section>
-    <section>
-      <h5>Partners</h5>
-      <Link to='/Drupal'>
-        <h3>Drupal</h3>
-      </Link>
-      <Link to='/Acquia'>
-        <h3>Acquia</h3>
-      </Link>
-      <Link to='/Shopify'>
-        <h3>Shopify</h3>
-      </Link>
-    </section>
-  </nav>
-);
 
 export default SiteNav;
