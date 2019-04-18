@@ -10,24 +10,25 @@ const Header = ({ defaultBackground, tagline }) => (
       width: 100%;
       height: 30vh;
       display: flex;
+      font-family: Canela-Medium;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       background-color: ${defaultBackground ? '#EBC900' : '#99E2E9'};
     `}
   >
-    <SiteNav />
     <h1
       css={css`
         font-size: 48px;
         font-weight: 300;
         width: 60%;
         text-align: center;
-        color: ${defaultBackground ? '#29292a' : '#efefef'};
+        color: ${defaultBackground ? '#282829' : '#efefef'};
       `}
     >
       {tagline}
     </h1>
+    <SiteNav />
   </header>
 );
 
