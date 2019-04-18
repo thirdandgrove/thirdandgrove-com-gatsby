@@ -28,18 +28,22 @@ const Header = ({ defaultBackground, tagline, subline }) => (
     >
       {tagline}
     </h1>
-    <h3
-      css={css`
-        font-size: 72px;
-        font-family: 'Canela-Thin';
-        font-weight: 200;
-        width: 60%;
-        text-align: center;
-        color: ${defaultBackground ? '#282829' : '#efefef'};
-      `}
-    >
-      {subline && subline}
-    </h3>
+
+    {subline && (
+      <h3
+        css={css`
+          font-size: 72px;
+          font-family: 'Canela-Thin';
+          font-weight: 200;
+          width: 60%;
+          text-align: center;
+          color: ${defaultBackground ? '#282829' : '#efefef'};
+        `}
+      >
+        {subline}
+      </h3>
+    )}
+
     <TopNav />
   </header>
 );
