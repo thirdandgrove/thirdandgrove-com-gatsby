@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
 
-const Header = ({ defaultBackground, tagline }) => (
+const Header = ({ defaultBackground, tagline, subline }) => (
   <header
     css={css`
       width: 100%;
@@ -19,7 +19,7 @@ const Header = ({ defaultBackground, tagline }) => (
   >
     <h1
       css={css`
-        font-size: 48px;
+        font-size: 72px;
         font-weight: 300;
         width: 60%;
         text-align: center;
@@ -28,6 +28,22 @@ const Header = ({ defaultBackground, tagline }) => (
     >
       {tagline}
     </h1>
+
+    {subline && (
+      <h3
+        css={css`
+          font-size: 72px;
+          font-family: 'Canela-Thin';
+          font-weight: 200;
+          width: 60%;
+          text-align: center;
+          color: ${defaultBackground ? '#282829' : '#efefef'};
+        `}
+      >
+        {subline}
+      </h3>
+    )}
+
     <TopNav />
   </header>
 );

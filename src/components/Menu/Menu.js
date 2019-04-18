@@ -45,38 +45,38 @@ const Menu = () => {
     >
       <section css={sectionStyle}>
         <h5>Contents</h5>
-        <Link css={linkStyle} to='/Work'>
+        <Link css={linkStyle} to='/work'>
           <h1>Work</h1>
         </Link>
-        <Link css={linkStyle} to='/Capabilities'>
+        <Link css={linkStyle} to='/capabilities'>
           <h1>Capabilities</h1>
         </Link>
-        <Link css={linkStyle} to='/Insights'>
+        <Link css={linkStyle} to='/insights'>
           <h1>Insights</h1>
         </Link>
       </section>
 
       <section css={sectionStyle}>
         <h5>Company</h5>
-        <Link css={linkStyle} to='/About'>
+        <Link css={linkStyle} to='/about'>
           <h1>About</h1>
         </Link>
-        <Link css={linkStyle} to='/Careers'>
+        <Link css={linkStyle} to='/careers'>
           <h1>Careers</h1>
         </Link>
-        <Link css={linkStyle} to='/Contact'>
+        <Link css={linkStyle} to='/contact'>
           <h1>Contact</h1>
         </Link>
       </section>
       <section css={sectionStyle}>
         <h5>Partners</h5>
-        <Link css={linkStyle} to='/Drupal'>
+        <Link css={linkStyle} to='/drupal'>
           <h1>Drupal</h1>
         </Link>
-        <Link css={linkStyle} to='/Acquia'>
+        <Link css={linkStyle} to='/acquia'>
           <h1>Acquia</h1>
         </Link>
-        <Link css={linkStyle} to='/Shopify'>
+        <Link css={linkStyle} to='/shopify'>
           <h1>Shopify</h1>
         </Link>
       </section>

@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <div
       css={css`
-        position: fixed;
+        position: relative;
         bottom: 0;
         height: 200px;
         background-color: #29292a;
@@ -27,25 +27,25 @@ const Footer = () => {
         align-items: center;
       `}
     >
-      <Link css={linkStyle} to='/Work'>
+      <Link css={linkStyle} to='/work'>
         Work
       </Link>
-      <Link css={linkStyle} to='/Capabilities'>
+      <Link css={linkStyle} to='/capabilities'>
         Capabilities
       </Link>
-      <Link css={linkStyle} to='/Insights'>
+      <Link css={linkStyle} to='/insights'>
         Insights
       </Link>
-      <Link css={linkStyle} to='/About'>
+      <Link css={linkStyle} to='/about'>
         About
       </Link>
-      <Link css={linkStyle} to='/Careers'>
+      <Link css={linkStyle} to='/careers'>
         Careers
       </Link>
-      <Link css={linkStyle} to='/Contact'>
+      <Link css={linkStyle} to='/contact'>
         Contact
       </Link>
-      <Link css={linkStyle} to='/Legal'>
+      <Link css={linkStyle} to='/legal'>
         Legal
       </Link>
     </div>
