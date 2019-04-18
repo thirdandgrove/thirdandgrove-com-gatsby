@@ -137,6 +137,7 @@ const TopNav = () => {
             padding: 0;
             margin: 0;
             border: none;
+            min-height: 25px;
             :focus {
               outline: none;
             }
@@ -147,8 +148,8 @@ const TopNav = () => {
           {/* Hamburger / 'X' */}
           {isOpen ? (
             <svg
-              width='21px'
-              height='21px'
+              width='25px'
+              height='25px'
               viewBox='0 0 21 21'
               version='1.1'
               xmlns='http://www.w3.org/2000/svg'
@@ -193,7 +194,7 @@ const TopNav = () => {
           ) : (
             <svg
               width='25px'
-              height='23px'
+              height='25px'
               viewBox='0 0 25 23'
               version='1.1'
               xmlns='http://www.w3.org/2000/svg'
