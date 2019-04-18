@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Canela-Medium';
+  src: url('/Fonts/Canela-Medium.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   font-family: Canela-Medium;
   -ms-text-size-adjust: 100%;
