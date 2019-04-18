@@ -14,12 +14,21 @@ const Menu = () => {
     justify-content: center;
     align-items: center;
     h5 {
+      font-family: 'Canela-Thin';
       font-weight: 300;
-      margin-bottom: 2rem;
-      font-family: canela-thin;
+      font-size: 21px;
+      color: #282829;
+      letter-spacing: -0.1px;
+      text-align: center;
+      line-height: 81px;
     }
     h1 {
-      font-weight: 800;
+      font-family: 'Canela-Medium';
+      font-size: 48px;
+      color: #282829;
+      letter-spacing: -0.2px;
+      text-align: center;
+      line-height: 81px;
     }
   `;
   return (
@@ -27,7 +36,7 @@ const Menu = () => {
       css={css`
         position: fixed;
         width: 100vw;
-        height: 30vh;
+        height: 700px;
         display: flex;
         padding: 3rem;
         justify-content: center;

@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { css } from '@emotion/core';
 
-import SiteNav from '../SiteNav';
+import TopNav from '../TopNav';
 
 const Header = ({ defaultBackground, tagline }) => (
   <header
     css={css`
       width: 100%;
-      height: 30vh;
+      height: 700px;
       display: flex;
-      font-family: Canela-Medium;
+      font-family: 'Canela-Medium';
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -28,7 +28,7 @@ const Header = ({ defaultBackground, tagline }) => (
     >
       {tagline}
     </h1>
-    <SiteNav />
+    <TopNav />
   </header>
 );
 
