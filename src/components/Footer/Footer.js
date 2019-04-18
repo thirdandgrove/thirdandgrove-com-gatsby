@@ -6,7 +6,7 @@ const Footer = () => {
   const linkStyle = css`
     color: white;
     text-decoration: none;
-    font-weight: 400;
+    font-family: 'NB International Pro';
     padding-left: 20px;
     &:hover {
       transition: all ease-in-out 0.5s;
@@ -18,7 +18,7 @@ const Footer = () => {
       css={css`
         position: fixed;
         bottom: 0;
-        height: 20vh;
+        height: 200px;
         background-color: #29292a;
         width: 100%;
         color: white;

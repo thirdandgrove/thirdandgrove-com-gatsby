@@ -1,8 +1,101 @@
 @font-face {
   font-family: 'Canela-Medium';
-  src: url('/Fonts/Canela-Medium.otf') format('otf');
-  font-weight: normal;
-  font-style: normal;
+  src: url('/Fonts/Canela/Canela-Medium.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-MediumItalic';
+  src: url('/Fonts/Canela/Canela-MediumItalic.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-Thin';
+  src: url('/Fonts/Canela/Canela-Thin.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-ThinItalic';
+  src: url('/Fonts/Canela/Canela-ThinItalic.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-Black';
+  src: url('/Fonts/Canela/Canela-Black.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-BlackItalic';
+  src: url('/Fonts/Canela/Canela-BlackItalic.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-Bold';
+  src: url('/Fonts/Canela/Canela-Bold.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-BoldItalic';
+  src: url('/Fonts/Canela/Canela-BoldItalic.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-Light';
+  src: url('/Fonts/Canela/Canela-Light.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-LightItalic';
+  src: url('/Fonts/Canela/Canela-LightItalic.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-Regular';
+  src: url('/Fonts/Canela/Canela-Regular.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'Canela-RegularItalic';
+  src: url('/Fonts/Canela/Canela-RegularItalic.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'NB International Pro Bold Italic';
+  src: url('/Fonts/NBInternationalPro/NBInternationalProBoldItalic.otf')
+    format('otf');
+}
+
+@font-face {
+  font-family: 'NB International Pro Bold';
+  src: url('/Fonts/NBInternationalPro/NBInternationalProBold.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'NB International Pro Italic';
+  src: url('/Fonts/NBInternationalPro/NBInternationalProItalic.otf')
+    format('otf');
+}
+
+@font-face {
+  font-family: 'NB International Pro Light';
+  src: url('/Fonts/NBInternationalPro/NBInternationalProLight.otf')
+    format('otf');
+}
+
+@font-face {
+  font-family: 'NB International Pro Light Italic';
+  src: url('/Fonts/NBInternationalPro/NBInternationalProLightItalic.otf')
+    format('otf');
+}
+
+@font-face {
+  font-family: 'NB International Pro Mono';
+  src: url('/Fonts/NBInternationalPro/NBInternationalProMono.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'NB International Pro Regular';
+  src: url('/Fonts/NBInternationalPro/NBInternationalProRegular.otf')
+    format('otf');
 }
 
 html {
