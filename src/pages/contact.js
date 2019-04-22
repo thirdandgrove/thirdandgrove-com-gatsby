@@ -7,7 +7,19 @@ import Footer from '../components/Footer';
 export default () => {
   return (
     <>
-      <Header tagline='Contact us:' subline='hello@thirdandgrove.com' />
+      <Header tagline='Contact us:'>
+        <h3
+          css={css`
+            font-size: 72px;
+            font-family: 'Canela-Thin';
+            font-weight: 200;
+            width: 60%;
+            text-align: center;
+          `}
+        >
+          hello@thirdandgrove.com
+        </h3>
+      </Header>
       <main
         css={css`
           display: flex;

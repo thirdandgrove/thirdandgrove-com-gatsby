@@ -4,11 +4,11 @@ import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
 
-const Header = ({ defaultBackground, tagline, subline }) => (
+const Header = ({ defaultBackground, tagline, height, children }) => (
   <header
     css={css`
       width: 100%;
-      height: 700px;
+      height: ${height || '700px'};
       display: flex;
       font-family: 'Canela-Medium';
       flex-direction: column;
@@ -23,26 +23,12 @@ const Header = ({ defaultBackground, tagline, subline }) => (
         font-weight: 300;
         width: 60%;
         text-align: center;
-        color: ${defaultBackground ? '#282829' : '#efefef'};
       `}
     >
       {tagline}
     </h1>
 
-    {subline && (
-      <h3
-        css={css`
-          font-size: 72px;
-          font-family: 'Canela-Thin';
-          font-weight: 200;
-          width: 60%;
-          text-align: center;
-          color: ${defaultBackground ? '#282829' : '#efefef'};
-        `}
-      >
-        {subline}
-      </h3>
-    )}
+    {children && children}
 
     <TopNav />
   </header>
