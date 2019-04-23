@@ -11,13 +11,14 @@ export default () => {
     'Some other amazing quote about TAG.',
   ];
   const [currentTagline, setTagline] = useState(0);
+  // cycle through taglines
   useInterval(() => {
     let next = currentTagline + 1;
     if (next >= taglines.length) {
       next = 0;
     }
     setTagline(next);
-  }, [duration]);
+  }, duration);
   return (
     <Layout headerData={{ title: taglines[currentTagline], fade: duration }}>
       <div>content here</div>

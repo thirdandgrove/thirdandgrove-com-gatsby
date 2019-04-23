@@ -10,7 +10,7 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
       0% {
         opacity: 0;
       }
-      5% {
+      3% {
         opacity: 0;
       }
       10% {
@@ -19,7 +19,7 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
       90% {
         opacity: 1;
       }
-      95% {
+      98% {
         opacity: 0;
       }
       100% {
