@@ -6,16 +6,27 @@ import TopNav from '../TopNav';
 
 const Header = ({ defaultBackground, title, fade, height, children }) => {
   const headerTitle = css`
-    @keyframes fadein {
-      from {
+    @keyframes fadeInOut {
+      0% {
         opacity: 0;
       }
-      to {
+      5% {
+        opacity: 0;
+      }
+      10% {
         opacity: 1;
       }
+      90% {
+        opacity: 1;
+      }
+      95% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
     }
-
-    animation: ${fade ? `fadein 2s` : `none`};
+    animation: ${fade ? `fadeInOut ${fade}ms infinite` : `none`};
     font-size: 72px;
     font-weight: 300;
     width: 60%;
@@ -46,6 +57,10 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
 
 Header.propTypes = {
   defaultBackground: PropTypes.bool,
+  title: PropTypes.string,
+  fade: PropTypes.number,
+  height: PropTypes.string,
+  children: PropTypes.node,
 };
 
 Header.defaultProps = {
