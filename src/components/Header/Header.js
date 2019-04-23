@@ -4,52 +4,63 @@ import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
 
-const Header = ({ defaultBackground, tagline, subline }) => (
-  <header
-    css={css`
-      width: 100%;
-      height: 700px;
-      display: flex;
-      font-family: 'Canela-Medium';
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: ${defaultBackground ? '#EBC900' : '#99E2E9'};
-    `}
-  >
-    <h1
-      css={css`
-        font-size: 72px;
-        font-weight: 300;
-        width: 60%;
-        text-align: center;
-        color: ${defaultBackground ? '#282829' : '#efefef'};
-      `}
-    >
-      {tagline}
-    </h1>
-
-    {subline && (
-      <h3
+const Header = ({ defaultBackground, title, fade, height, children }) => {
+  const headerTitle = css`
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+      3% {
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      98% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    animation: ${fade ? `fadeInOut ${fade}ms infinite` : `none`};
+    font-size: 72px;
+    font-weight: 300;
+    width: 60%;
+    text-align: center;
+    color: ${defaultBackground ? '#282829' : '#efefef'};
+  `;
+  return (
+    <>
+      <TopNav />
+      <header
         css={css`
-          font-size: 72px;
-          font-family: 'Canela-Thin';
-          font-weight: 200;
-          width: 60%;
-          text-align: center;
-          color: ${defaultBackground ? '#282829' : '#efefef'};
+          width: 100%;
+          height: ${height || '700px'};
+          display: flex;
+          font-family: 'Canela-Medium';
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: ${defaultBackground ? '#EBC900' : '#99E2E9'};
         `}
       >
-        {subline}
-      </h3>
-    )}
-
-    <TopNav />
-  </header>
-);
+        <h1 css={headerTitle}>{title}</h1>
+        {children && children}
+      </header>
+    </>
+  );
+};
 
 Header.propTypes = {
   defaultBackground: PropTypes.bool,
+  title: PropTypes.string,
+  fade: PropTypes.number,
+  height: PropTypes.string,
+  children: PropTypes.node,
 };
 
 Header.defaultProps = {
