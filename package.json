@@ -50,7 +50,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "lint": "node ./node_modules/eslint/bin/eslint ."
+    "lint": "node ./node_modules/eslint/bin/eslint . --ignore-path .gitignore"
   },
   "repository": {
     "type": "git",
