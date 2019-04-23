@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 export default () => {
   return (
     <>
-      <Header tagline='Privacy Statement' height='300px' />
+      <Header title='Privacy Statement' height='300px' />
       <main
         css={css`
           display: flex;

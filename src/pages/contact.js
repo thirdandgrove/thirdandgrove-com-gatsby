@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 export default () => {
   return (
     <>
-      <Header tagline='Contact us:'>
+      <Header title='Contact us:'>
         <h3
           css={css`
             font-size: 72px;

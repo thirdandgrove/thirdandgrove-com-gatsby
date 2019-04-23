@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default () => {
-  const tagline = () => {
+  const taglines = () => {
     const options = [
       'We are an obsessive digital innovation company.',
       'Design-first technologists who help innovative brands make their next move.',
@@ -14,7 +14,7 @@ export default () => {
   };
   return (
     <>
-      <Header tagline={tagline()} />
+      <Header title={taglines()} fade />
       <div>content here</div>
       <Footer />
     </>
