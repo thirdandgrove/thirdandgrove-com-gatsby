@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import useInterval from '../hooks/useInterval';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/layout';
 
 export default () => {
-  const tagline = () => {
-    const options = [
-      'We are an obsessive digital innovation company.',
-      'Design-first technologists who help innovative brands make their next move.',
-      'Some other amazing quote about TAG.',
-    ];
-    return options[Math.floor(Math.random() * options.length)];
-  };
+  const duration = 10000;
+  const taglines = [
+    'We are an obsessive digital innovation company.',
+    'Design-first technologists who help innovative brands make their next move.',
+    'Some other amazing quote about TAG.',
+  ];
+  const [currentTagline, setTagline] = useState(0);
+  // cycle through taglines
+  useInterval(() => {
+    let next = currentTagline + 1;
+    if (next >= taglines.length) {
+      next = 0;
+    }
+    setTagline(next);
+  }, duration);
   return (
-    <>
-      <Header tagline={tagline()} />
+    <Layout headerData={{ title: taglines[currentTagline], fade: duration }}>
       <div>content here</div>
-      <Footer />
-    </>
+    </Layout>
   );
 };
