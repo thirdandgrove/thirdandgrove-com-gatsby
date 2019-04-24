@@ -21,7 +21,7 @@ const TopNav = () => {
           background-color: transparent;
           justify-content: space-between;
           align-items: baseline;
-          z-index: 1;
+          z-index: 2;
         `}
       >
         <Link to='/'>
