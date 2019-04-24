@@ -12,7 +12,7 @@ const TopNav = () => {
     <>
       <span
         css={css`
-          position: fixed;
+          position: absolute;
           top: 0;
           font-family: 'Canela-Medium';
           padding: 10px 100px;
