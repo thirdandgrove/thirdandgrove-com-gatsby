@@ -41,6 +41,7 @@ const Menu = () => {
         padding: 3rem;
         justify-content: center;
         background-color: #a5e6ec;
+        z-index: 1;
       `}
     >
       <section css={sectionStyle}>
