@@ -33,7 +33,16 @@ const Projects = () => {
       render={data => (
         <section>
           {data.allNodeProject.nodes.map(node => {
-            return <h3>{node.title}</h3>;
+            console.log(node);
+            return (
+              <div key={node.title}>
+                <h3>{node.title}</h3>
+                <img
+                  alt='project logo'
+                  src={node.relationships.field_logo.localFile.publicURL}
+                />
+              </div>
+            );
           })}
         </section>
       )}

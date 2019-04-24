@@ -36,7 +36,6 @@ const Insights = () => {
       render={data => (
         <section>
           {data.allNodeArticle.nodes.map(node => {
-            console.log(node);
             return <h3>{node.title}</h3>;
           })}
         </section>
