@@ -33,7 +33,6 @@ const Projects = () => {
       render={data => (
         <section>
           {data.allNodeProject.nodes.map(node => {
-            console.log(node);
             return (
               <div key={node.title}>
                 <h3>{node.title}</h3>
