@@ -56,7 +56,7 @@ const ArticleTemplate = ({ data, pageContext }) => {
         ),
       }}
     >
-      <div>{articleBodyElements}</div>
+      {articleBodyElements}
     </Layout>
   );
 };
@@ -71,7 +71,7 @@ export const query = graphql`
           drupal_id
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1024) {
+              fluid {
                 ...GatsbyImageSharpFluid
               }
             }

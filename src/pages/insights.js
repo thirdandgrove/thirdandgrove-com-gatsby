@@ -1,11 +1,19 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
+import ArticlePreview from '../components/ArticlePreview';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default () => {
+  const List = styled.div`
+    display: flex;
+    width: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+  `;
   return (
     <StaticQuery
       query={graphql`
@@ -33,7 +41,9 @@ export default () => {
         }
       `}
       render={data => {
-        const article = data.allNodeArticle.nodes[0];
+        const articles = data.allNodeArticle.nodes;
+        // newest article is in the header
+        const headerArticle = articles[0];
         return (
           <>
             <Header>
@@ -44,9 +54,9 @@ export default () => {
                   padding: 2rem;
                 `}
               >
-                {`${article.created} -
-              ${article.relationships.uid.field_first_name} ${
-                  article.relationships.uid.field_last_name
+                {`${headerArticle.created} -
+              ${headerArticle.relationships.uid.field_first_name} ${
+                  headerArticle.relationships.uid.field_last_name
                 }`}
               </span>
               <h3
@@ -58,12 +68,34 @@ export default () => {
                   text-align: center;
                 `}
               >
-                {article.title}
+                {headerArticle.title}
               </h3>
-              <Link to={`/articles${article.path.alias}`}>read mode</Link>
+              <Link
+                css={css`
+                  text-decoration: none;
+                  color: white;
+                `}
+                to={`/articles${headerArticle.path.alias}`}
+              >
+                read more
+              </Link>
             </Header>
-            <nav>article categories navigation</nav>
-            <p>list articles by category</p>
+            <nav>
+              <ul>
+                <li>All</li>
+                <li>Design</li>
+                <li>Strategy</li>
+                <li>Engineering</li>
+                <li>Shopify</li>
+                <li>Acquia</li>
+                <li>Drupal</li>
+              </ul>
+            </nav>
+            <List>
+              {articles.map(article => (
+                <ArticlePreview key={article.title} article={article} />
+              ))}
+            </List>
             <Footer />
           </>
         );

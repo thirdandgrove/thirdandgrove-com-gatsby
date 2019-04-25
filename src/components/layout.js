@@ -20,7 +20,7 @@ const Layout = ({ children, headerData }) => (
     render={data => (
       <>
         <Header {...headerData} />
-        <div
+        <main
           style={{
             margin: `0 auto`,
             maxWidth: 960,
@@ -28,8 +28,8 @@ const Layout = ({ children, headerData }) => (
             paddingTop: 0,
           }}
         >
-          <main>{children}</main>
-        </div>
+          {children}
+        </main>
         <Footer />
       </>
     )}
