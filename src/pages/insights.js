@@ -9,10 +9,37 @@ import Footer from '../components/Footer';
 
 export default () => {
   const List = styled.div`
-    display: flex;
+    display: grid;
+    margin: 0 auto;
+    width: 80%;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 250px;
+  `;
+  const Categories = styled.nav`
     width: 100%;
-    align-content: center;
-    flex-wrap: wrap;
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 50%;
+      margin: 5rem auto;
+    }
+    li {
+      text-decoration: none;
+      font-variant: small-caps;
+      list-style: none;
+      font-family: NBInternationalPro-Bol;
+      font-size: 15px;
+      color: #757575;
+      letter-spacing: 2px;
+      text-align: right;
+      line-height: 36px;
+      padding-right: 15px;
+      cursor: pointer;
+      &.active {
+        color: #282829;
+      }
+    }
   `;
   return (
     <StaticQuery
@@ -44,6 +71,8 @@ export default () => {
         const articles = data.allNodeArticle.nodes;
         // newest article is in the header
         const headerArticle = articles[0];
+        // remove the header article so it isnt repeated
+        articles.shift();
         return (
           <>
             <Header>
@@ -80,17 +109,17 @@ export default () => {
                 read more
               </Link>
             </Header>
-            <nav>
+            <Categories>
               <ul>
-                <li>All</li>
-                <li>Design</li>
-                <li>Strategy</li>
-                <li>Engineering</li>
-                <li>Shopify</li>
-                <li>Acquia</li>
-                <li>Drupal</li>
+                <li className='active'>all</li>
+                <li>design</li>
+                <li>strategy</li>
+                <li>engineering</li>
+                <li>shopify</li>
+                <li>acquia</li>
+                <li>drupal</li>
               </ul>
-            </nav>
+            </Categories>
             <List>
               {articles.map(article => (
                 <ArticlePreview key={article.title} article={article} />
