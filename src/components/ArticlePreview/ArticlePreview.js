@@ -5,9 +5,7 @@ import { css } from '@emotion/core';
 
 const ArticlePreview = ({ article }) => {
   const Card = styled.div`
-    a {
-      display: none;
-    }
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,11 +30,11 @@ const ArticlePreview = ({ article }) => {
         font-family: 'NB International Pro';
         font-size: 15px;
       }
-      &:hover {
-        div {
-          transition: all 0.2s ease;
-          background-color: #fff;
-        }
+    }
+    &:hover {
+      div {
+        transition: all 0.2s ease;
+        background-color: #fff;
       }
     }
   `;
