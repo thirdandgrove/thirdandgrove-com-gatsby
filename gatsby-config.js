@@ -1,5 +1,4 @@
 require('dotenv').config();
-const sass = require('node-sass');
 
 module.exports = {
   siteMetadata: {
@@ -19,12 +18,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        implementation: sass,
-      },
-    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

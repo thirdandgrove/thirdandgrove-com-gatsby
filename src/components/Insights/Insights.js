@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import ArticlePreview from '../ArticlePreview';
 
 const Insights = () => {
   return (
@@ -7,26 +8,21 @@ const Insights = () => {
       query={graphql`
         {
           allNodeArticle(sort: { fields: created, order: DESC }, limit: 10) {
-            totalCount
             nodes {
               title
-              status
-              created
               body {
                 processed
+                summary
               }
+              path {
+                alias
+              }
+              created(formatString: "MMMM DD YYYY")
               relationships {
-                field_category {
+                uid {
                   name
-                }
-                field_case_study {
-                  field_homepage_display_title
-                  field_teaser_background_color
-                }
-                field_banner_image {
-                  localFile {
-                    publicURL
-                  }
+                  field_last_name
+                  field_first_name
                 }
               }
             }
@@ -36,7 +32,7 @@ const Insights = () => {
       render={data => (
         <section>
           {data.allNodeArticle.nodes.map(node => {
-            return <h3>{node.title}</h3>;
+            return <ArticlePreview article={node} />;
           })}
         </section>
       )}
