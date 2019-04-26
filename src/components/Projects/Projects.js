@@ -16,7 +16,11 @@ const Projects = () => {
               relationships {
                 field_logo {
                   localFile {
-                    relativePath
+                    childImageSharp {
+                      fluid {
+                        src
+                      }
+                    }
                   }
                 }
                 field_case_study {
@@ -38,7 +42,10 @@ const Projects = () => {
                 <h3>{node.title}</h3>
                 <img
                   alt='project logo'
-                  src={node.relationships.field_logo.localFile.publicURL}
+                  src={
+                    node.relationships.field_logo.localFile.childImageSharp
+                      .fluid.src
+                  }
                 />
               </div>
             );
