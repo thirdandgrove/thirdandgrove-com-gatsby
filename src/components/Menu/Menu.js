@@ -34,7 +34,7 @@ const Menu = () => {
   return (
     <nav
       css={css`
-        position: fixed;
+        position: absolute;
         width: 100vw;
         height: 700px;
         display: flex;

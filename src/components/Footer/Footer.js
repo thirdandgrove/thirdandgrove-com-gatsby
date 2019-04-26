@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
+import { colors } from '../../styles';
 
 const Footer = () => {
   const linkStyle = css`
-    color: white;
+    color: ${colors.white};
     text-decoration: none;
     font-family: 'NB International Pro';
     padding-left: 20px;
@@ -13,20 +14,18 @@ const Footer = () => {
       text-decoration: underline;
     }
   `;
+  const wrapperStyle = css`
+    position: relative;
+    bottom: 0;
+    height: 200px;
+    background-color: ${colors.darkgray};
+    width: 100%;
+    color: ${colors.white};
+    display: flex;
+    align-items: center;
+  `;
   return (
-    <div
-      css={css`
-        position: relative;
-        bottom: 0;
-        height: 200px;
-        background-color: #29292a;
-        width: 100%;
-        color: white;
-        display: flex;
-        /* justify-content: center; */
-        align-items: center;
-      `}
-    >
+    <div css={wrapperStyle}>
       <Link css={linkStyle} to='/work'>
         Work
       </Link>
