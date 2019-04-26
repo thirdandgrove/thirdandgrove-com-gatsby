@@ -16,8 +16,13 @@ const ArticleTemplate = ({ data, pageContext }) => {
         const foundFile = data.allFileFile.edges.find(
           file => file.node.drupal_id === uuid && file.node.localFile
         );
-        const src = foundFile && foundFile.node.localFile.childImageSharp.fluid;
-        return <Img alt='alt' fluid={src} />;
+        // guard against bad data, so much bad data.
+        const src =
+          foundFile &&
+          foundFile.node.localFile &&
+          foundFile.node.localFile.childImageSharp &&
+          foundFile.node.localFile.childImageSharp.fluid;
+        return src ? <Img alt='alt' fluid={src} /> : undefined;
       }
 
       return undefined;
@@ -71,7 +76,7 @@ export const query = graphql`
           drupal_id
           localFile {
             childImageSharp {
-              fluid {
+              fluid(maxWidth: 2000) {
                 ...GatsbyImageSharpFluid
               }
             }
