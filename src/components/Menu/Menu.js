@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
+import { colors } from '../../styles';
+
 const Menu = () => {
   const linkStyle = css`
     color: #282829;
@@ -40,7 +42,7 @@ const Menu = () => {
         display: flex;
         padding: 3rem;
         justify-content: center;
-        background-color: #a5e6ec;
+        background-color: ${colors.lightblue};
         z-index: 1;
       `}
     >

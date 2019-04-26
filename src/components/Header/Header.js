@@ -3,6 +3,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
+import { colors } from '../../styles';
 
 const Header = ({ defaultBackground, title, fade, height, children }) => {
   const headerTitle = css`
@@ -39,7 +40,9 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          background-color: ${defaultBackground ? '#EBC900' : '#99E2E9'};
+          background-color: ${defaultBackground
+            ? colors.yellow
+            : colors.lightblue};
         `}
       >
         <h1 css={headerTitle}>{title}</h1>
