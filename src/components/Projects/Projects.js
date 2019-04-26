@@ -16,7 +16,7 @@ const Projects = () => {
               relationships {
                 field_logo {
                   localFile {
-                    publicURL
+                    relativePath
                   }
                 }
                 field_case_study {
