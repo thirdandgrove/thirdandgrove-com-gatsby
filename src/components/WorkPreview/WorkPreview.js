@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { colors } from '../../styles';
 
 const WorkPreview = ({ article }) => {
   const Card = styled.div`
@@ -13,7 +14,7 @@ const WorkPreview = ({ article }) => {
     div {
       height: 500px;
       width: 500px;
-      background-color: #e0e0e0;
+      background-color: ${colors.gray};
     }
     span {
       display: flex;
@@ -22,7 +23,7 @@ const WorkPreview = ({ article }) => {
       p {
         font-family: Canela-Bold;
         font-size: 33px;
-        color: #282829;
+        color: ${colors.darkgray};
         letter-spacing: 0;
         line-height: 52px;
       }
@@ -34,7 +35,7 @@ const WorkPreview = ({ article }) => {
     &:hover {
       div {
         transition: all 0.2s ease;
-        background-color: #fff;
+        background-color: ${colors.white};
       }
     }
   `;

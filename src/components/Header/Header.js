@@ -3,30 +3,25 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
+import { colors } from '../../styles';
 
 const Header = ({ defaultBackground, title, fade, height, children }) => {
   const headerTitle = css`
     @keyframes fadeInOut {
-      0% {
-        opacity: 0;
-      }
+      0%,
       3% {
         opacity: 0;
       }
-      10% {
-        opacity: 1;
-      }
+      10%,
       90% {
         opacity: 1;
       }
-      98% {
-        opacity: 0;
-      }
+      98%,
       100% {
         opacity: 0;
       }
     }
-    animation: ${fade ? `fadeInOut ${fade}ms infinite` : `none`};
+    animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     font-size: 72px;
     font-weight: 300;
     width: 60%;
@@ -45,7 +40,9 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          background-color: ${defaultBackground ? '#EBC900' : '#99E2E9'};
+          background-color: ${defaultBackground
+            ? colors.yellow
+            : colors.lightblue};
         `}
       >
         <h1 css={headerTitle}>{title}</h1>
