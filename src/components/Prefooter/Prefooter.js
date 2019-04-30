@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 import styled from '@emotion/styled';
 
 import Button from '../Button';
@@ -39,14 +40,14 @@ const Rectangle = styled.span`
 const BeUs = () => (
   <Rectangle backgroundColor={colors.lightblue}>
     <h3>Be Us</h3>
-    <Button>Work at Tag</Button>
+    <Button onClick={() => navigate(`/careers`)}>Work at Tag</Button>
   </Rectangle>
 );
 
 const ContactUs = () => (
   <Rectangle backgroundColor={colors.yellow}>
     <h3>Get To Know</h3>
-    <Button>Contact Us</Button>
+    <Button onClick={() => navigate(`/contact`)}>Contact Us</Button>
   </Rectangle>
 );
 
