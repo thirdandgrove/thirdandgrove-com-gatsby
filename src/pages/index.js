@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import Insights from '../components/Insights';
 import Projects from '../components/Projects';
 import WhatWeDo from '../components/WhatWeDo';
+import Prefooter from '../components/Prefooter';
 
 export default () => {
   const duration = 10000;
@@ -27,6 +28,7 @@ export default () => {
       <Projects />
       <WhatWeDo />
       <Insights />
+      <Prefooter />
     </Layout>
   );
 };
