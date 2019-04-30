@@ -3,22 +3,13 @@ import { css } from '@emotion/core';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ContactForm from '../components/ContactForm';
 
 export default () => {
   return (
     <>
-      <Header title='Contact us:'>
-        <h3
-          css={css`
-            font-size: 72px;
-            font-family: 'Canela-Thin';
-            font-weight: 200;
-            width: 60%;
-            text-align: center;
-          `}
-        >
-          hello@thirdandgrove.com
-        </h3>
+      <Header title='Contact Us'>
+        <ContactForm />
       </Header>
       <main
         css={css`
