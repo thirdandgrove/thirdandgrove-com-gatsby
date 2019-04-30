@@ -1,43 +1,42 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-import { colors } from '../../styles';
 import Input from '../Input';
 import Button from '../Button';
+import TextArea from '../TextArea';
 
 const ContactFrom = () => {
   return (
-    <span>
-      <Input type='text' placeholder='name' name='name' />
-      <Input type='text' placeholder='email' name='email' />
-      <Input type='text' placeholder='website' name='website' />
-      <Input type='text' placeholder='phone' name='phone' />
-      <textarea
+    <main
+      css={css`
+        margin: 0 auto;
+        margin-top: 4rem;
+        width: 980px;
+      `}
+    >
+      <span
         css={css`
-          background: transparent;
-          outline: 1px solid ${colors.darkgray};
-          border: none;
-          width: 100%;
-          color: ${colors.darkgray};
-          font-family: 'NB International Pro';
-          font-weight: 600;
-          font-size: 15px;
-          letter-spacing: 2px;
-          line-height: 36px;
-          text-transform: uppercase;
-          padding: 20px;
-          &:placeholder {
-            font-family: 'NB International Pro';
-            font-weight: 600;
-            color: ${colors.darkgray};
-            text-transform: uppercase;
-          }
+          display: grid;
+          grid-template-columns: 480px 480px;
+          grid-column-gap: 1rem;
         `}
-        name='comments'
-        placeholder='Leave a message'
-      />
-      <Button>send</Button>
-    </span>
+      >
+        <Input type='text' placeholder='name' name='name' />
+        <Input type='email' placeholder='email' name='email' />
+        <Input type='url' placeholder='website' name='website' />
+        <Input type='tel' placeholder='phone' name='phone' />
+      </span>
+      <TextArea name='comments' placeholder='Leave a message' />
+      <span
+        css={css`
+          display: flex;
+          justify-content: center;
+          margin-top: 4rem;
+        `}
+      >
+        <Button>send</Button>
+      </span>
+    </main>
   );
 };
 
