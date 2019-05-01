@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { colors } from '../../styles';
+import { colors, mediaQueries } from '../../styles';
 
 const Menu = () => {
   const linkStyle = css`
@@ -15,6 +15,9 @@ const Menu = () => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    ${mediaQueries.phoneLarge} {
+      padding: 0;
+    }
     h5 {
       font-family: 'Canela-Thin';
       font-weight: 300;
@@ -23,6 +26,10 @@ const Menu = () => {
       letter-spacing: -0.1px;
       text-align: center;
       line-height: 81px;
+      ${mediaQueries.phoneLarge} {
+        line-height: 15px;
+        font-size: 15px;
+      }
     }
     h1 {
       font-family: 'Canela-Medium';
@@ -31,6 +38,10 @@ const Menu = () => {
       letter-spacing: -0.2px;
       text-align: center;
       line-height: 81px;
+      ${mediaQueries.phoneLarge} {
+        line-height: 39px;
+        font-size: 24px;
+      }
     }
   `;
   return (
@@ -44,6 +55,13 @@ const Menu = () => {
         justify-content: center;
         background-color: ${colors.lightblue};
         z-index: 1;
+        ${mediaQueries.phoneLarge} {
+          flex-direction: column;
+          justify-content: flex-start;
+          height: 100%;
+          padding: 0;
+          padding-top: 3rem;
+        }
         &::after {
           content: '';
           background: url('images/menuBackdrop.webp');
