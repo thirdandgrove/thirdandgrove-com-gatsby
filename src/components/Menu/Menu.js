@@ -60,7 +60,7 @@ const Menu = () => {
           justify-content: flex-start;
           height: 100%;
           padding: 0;
-          padding-top: 5rem;
+          padding-top: 3rem;
         }
         &::after {
           content: '';

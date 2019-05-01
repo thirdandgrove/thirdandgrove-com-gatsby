@@ -8,7 +8,7 @@ import { ReactComponent as TAG } from './svg/tagLogo.svg';
 import { ReactComponent as ThirdANDGrove } from './svg/thirdAndGroveLogo.svg';
 import { ReactComponent as Close } from './svg/close.svg';
 import { ReactComponent as Hamburger } from './svg/hamburger.svg';
-import { colors } from '../../styles';
+import { colors, mediaQueries } from '../../styles';
 
 const TopNav = () => {
   const [isOpen, setOpen] = useState(false);
@@ -29,6 +29,9 @@ const TopNav = () => {
           justify-content: space-between;
           align-items: center;
           z-index: 2;
+          ${mediaQueries.phoneLarge} {
+            padding: 10px 25px;
+          }
         `}
       >
         <Link to='/'>
