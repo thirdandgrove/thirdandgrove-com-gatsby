@@ -3,7 +3,6 @@ import useInterval from '../hooks/useInterval';
 
 import Layout from '../components/layout';
 import Insights from '../components/Insights';
-import Projects from '../components/Projects';
 import WhatWeDo from '../components/WhatWeDo';
 import Prefooter from '../components/Prefooter';
 
@@ -25,7 +24,6 @@ export default () => {
   }, duration);
   return (
     <Layout headerData={{ title: taglines[currentTagline], fade: duration }}>
-      <Projects />
       <WhatWeDo />
       <Insights />
       <Prefooter />
