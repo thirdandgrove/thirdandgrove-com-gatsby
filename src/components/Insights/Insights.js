@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import ArticlePreview from '../ArticlePreview';
+import FullWidthSection from '../FullWidthSection';
 
 const Insights = () => {
   return (
@@ -30,11 +31,11 @@ const Insights = () => {
         }
       `}
       render={data => (
-        <section>
+        <FullWidthSection>
           {data.allNodeArticle.nodes.map(node => {
             return <ArticlePreview article={node} />;
           })}
-        </section>
+        </FullWidthSection>
       )}
     />
   );

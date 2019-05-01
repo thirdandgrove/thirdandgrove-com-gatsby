@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
 import { colors } from '../../styles';
+import FullWidthSection from '../FullWidthSection';
 
 const Header = ({ defaultBackground, title, fade, height, children }) => {
   const headerTitle = css`
@@ -31,23 +32,10 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
   return (
     <>
       <TopNav />
-      <header
-        css={css`
-          width: 100%;
-          height: ${height || '700px'};
-          display: flex;
-          font-family: 'Canela-Medium';
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background-color: ${defaultBackground
-            ? colors.yellow
-            : colors.lightblue};
-        `}
-      >
+      <FullWidthSection height='700px' backgroundColor={colors.yellow}>
         <h1 css={headerTitle}>{title}</h1>
         {children && children}
-      </header>
+      </FullWidthSection>
     </>
   );
 };
