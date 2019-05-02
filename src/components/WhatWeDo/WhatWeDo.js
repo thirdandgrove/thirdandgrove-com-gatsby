@@ -14,9 +14,11 @@ const WhatWeDo = () => {
     font-weight: 500;
     letter-spacing: -1.5px;
     line-height: 150px;
-  `;
-  const faded = css`
     opacity: 0.5;
+    &:hover {
+      transition: opacity 0.2s ease;
+      opacity: 1;
+    }
   `;
   return (
     <FullWidthSection backgroundColor={colors.lightblue} height='850px'>
@@ -35,8 +37,8 @@ const WhatWeDo = () => {
         What We Do
       </h3>
       <h1 css={headingCss}>Technology</h1>
-      <h1 css={[headingCss, faded]}>Strategy</h1>
-      <h1 css={[headingCss, faded]}>Creative</h1>
+      <h1 css={headingCss}>Strategy</h1>
+      <h1 css={headingCss}>Creative</h1>
       <Button>Our Capabilities</Button>
     </FullWidthSection>
   );
