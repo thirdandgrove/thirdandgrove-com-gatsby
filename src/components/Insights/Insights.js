@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Slider from 'react-slick';
+import css from '@emotion/core';
 
 import ArticlePreview from '../ArticlePreview';
 import FullWidthSection from '../FullWidthSection';
@@ -40,8 +41,14 @@ const Insights = () => {
         }
       `}
       render={data => (
-        <FullWidthSection>
-          <Slider {...settings}>
+        <FullWidthSection height='900px'>
+          <Slider
+            {...settings}
+            css={css`
+              max-width: 100%;
+              max-height: 100%;
+            `}
+          >
             {data.allNodeArticle.nodes.map(node => {
               return <ArticlePreview article={node} />;
             })}

@@ -10,4 +10,5 @@ export default styled.section`
   align-items: center;
   justify-content: center;
   background-color: ${props => props.backgroundColor};
+  overflow: hidden;
 `;
