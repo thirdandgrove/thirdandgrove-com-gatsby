@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 export default () => {
   const [windowSize, setWindowSize] = useState(() => {
-    return typeof window !== 'undefined'
-      ? {
-          width: window.innerWidth,
-          height: window.innerHeight,
-        }
-      : { width: 0, height: 0 };
+    return (
+      typeof window !== 'undefined' && {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      }
+    );
   });
 
   useEffect(() => {

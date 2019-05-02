@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+// the nested ternary is required because Gatsby renders things it shouldnt
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
@@ -5,7 +7,7 @@ import { css } from '@emotion/core';
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { ReactComponent as TAG } from './svg/tagLogo.svg';
-import { ReactComponent as ThirdANDGrove } from './svg/thirdAndGroveLogo.svg';
+import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
 import { ReactComponent as Close } from './svg/close.svg';
 import { ReactComponent as Hamburger } from './svg/hamburger.svg';
 import { colors, mediaQueries } from '../../styles';
@@ -35,21 +37,23 @@ const TopNav = () => {
         `}
       >
         <Link to='/'>
-          {size.width >= 900 ? (
-            <ThirdANDGrove
-              css={css`
-                height: 150px;
-                fill: ${colors.darkgray};
-              `}
-            />
-          ) : (
-            <TAG
-              css={css`
-                fill: ${colors.darkgray};
-                height: 50px;
-              `}
-            />
-          )}
+          {typeof window !== 'undefined' ? (
+            size.width >= 900 ? (
+              <ThirdAndGrove
+                css={css`
+                  height: 150px;
+                  fill: ${colors.darkgray};
+                `}
+              />
+            ) : (
+              <TAG
+                css={css`
+                  fill: ${colors.darkgray};
+                  height: 50px;
+                `}
+              />
+            )
+          ) : null}
         </Link>
         <button
           css={css`
