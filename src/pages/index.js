@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import Insights from '../components/Insights';
 import WhatWeDo from '../components/WhatWeDo';
 import Prefooter from '../components/Prefooter';
+import Projects from '../components/Projects/Projects';
 
 export default () => {
   const duration = 10000;
@@ -24,6 +25,7 @@ export default () => {
   }, duration);
   return (
     <Layout headerData={{ title: taglines[currentTagline], fade: duration }}>
+      <Projects />
       <WhatWeDo />
       <Insights />
       <Prefooter />

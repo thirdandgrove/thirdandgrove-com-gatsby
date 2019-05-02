@@ -1,3 +1,6 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
 @font-face {
   font-family: 'Canela-Medium';
   src: url('/Fonts/Canela/Canela-Medium.otf') format('otf');
