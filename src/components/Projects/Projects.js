@@ -1,7 +1,18 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import { css } from '@emotion/core';
+import Slider from 'react-slick';
+
+import FullWidthSection from '../FullWidthSection';
 
 const Projects = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <StaticQuery
       query={graphql`
@@ -35,22 +46,30 @@ const Projects = () => {
         }
       `}
       render={data => (
-        <section>
-          {data.allNodeProject.nodes.map(node => {
-            return (
-              <div key={node.title}>
-                <h3>{node.title}</h3>
-                <img
-                  alt='project logo'
-                  src={
-                    node.relationships.field_logo.localFile.childImageSharp
-                      .fluid.src
-                  }
-                />
-              </div>
-            );
-          })}
-        </section>
+        <FullWidthSection>
+          <Slider
+            {...settings}
+            css={css`
+              max-width: 100%;
+              max-height: 100%;
+            `}
+          >
+            {data.allNodeProject.nodes.map(node => {
+              return (
+                <div key={node.title}>
+                  <h3>{node.title}</h3>
+                  <img
+                    alt='project logo'
+                    src={
+                      node.relationships.field_logo.localFile.childImageSharp
+                        .fluid.src
+                    }
+                  />
+                </div>
+              );
+            })}
+          </Slider>
+        </FullWidthSection>
       )}
     />
   );

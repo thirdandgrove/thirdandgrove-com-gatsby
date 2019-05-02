@@ -1,48 +1,46 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
 import Button from '../Button';
 import { colors } from '../../styles';
+import FullWidthSection from '../FullWidthSection';
 
 const WhatWeDo = () => {
-  const Container = styled.section`
-    width: 100%;
-    height: 850px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: ${colors.lightblue};
-    h3 {
-      height: 50px;
-      color: ${colors.darkgray};
-      font-family: Canela-Thin;
-      font-size: 36px;
-      font-weight: 100;
-      letter-spacing: 0.4px;
-      line-height: 76px;
-    }
-    h1 {
-      height: 150px;
-      color: ${colors.darkgray};
-      font-family: Canela;
-      font-size: 120px;
-      font-weight: 500;
-      letter-spacing: -1.5px;
-      line-height: 150px;
-    }
-    .faded {
-      opacity: 0.5;
+  const headingCss = css`
+    height: 150px;
+    color: ${colors.darkgray};
+    font-family: Canela;
+    font-size: 120px;
+    font-weight: 500;
+    letter-spacing: -1.5px;
+    line-height: 150px;
+    opacity: 0.5;
+    &:hover {
+      transition: opacity 0.2s ease;
+      opacity: 1;
     }
   `;
   return (
-    <Container>
-      <h3>What We Do</h3>
-      <h1>Technology</h1>
-      <h1 className='faded'>Strategy</h1>
-      <h1 className='faded'>Creative</h1>
+    <FullWidthSection backgroundColor={colors.lightblue} height='850px'>
+      <h3
+        css={css`
+          height: 50px;
+          color: ${colors.darkgray};
+          font-family: Canela-Thin;
+          font-size: 36px;
+          font-weight: 100;
+          letter-spacing: 0.4px;
+          line-height: 76px;
+          padding-bottom: 4rem;
+        `}
+      >
+        What We Do
+      </h3>
+      <h1 css={headingCss}>Technology</h1>
+      <h1 css={headingCss}>Strategy</h1>
+      <h1 css={headingCss}>Creative</h1>
       <Button>Our Capabilities</Button>
-    </Container>
+    </FullWidthSection>
   );
 };
 

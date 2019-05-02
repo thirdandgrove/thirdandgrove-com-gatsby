@@ -3,7 +3,8 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
-import { colors } from '../../styles';
+import { colors, mediaQueries } from '../../styles';
+import FullWidthSection from '../FullWidthSection';
 
 const Header = ({ defaultBackground, title, fade, height, children }) => {
   const headerTitle = css`
@@ -27,27 +28,20 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
     width: 60%;
     text-align: center;
     color: ${defaultBackground ? '#282829' : '#efefef'};
+    ${mediaQueries.phoneLarge} {
+      font-size: 39px;
+      font-weight: 500;
+      letter-spacing: -0.45px;
+      line-height: 48px;
+    }
   `;
   return (
     <>
       <TopNav />
-      <header
-        css={css`
-          width: 100%;
-          height: ${height || '700px'};
-          display: flex;
-          font-family: 'Canela-Medium';
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background-color: ${defaultBackground
-            ? colors.yellow
-            : colors.lightblue};
-        `}
-      >
+      <FullWidthSection height='700px' backgroundColor={colors.yellow}>
         <h1 css={headerTitle}>{title}</h1>
         {children && children}
-      </header>
+      </FullWidthSection>
     </>
   );
 };

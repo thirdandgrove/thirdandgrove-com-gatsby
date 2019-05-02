@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
-import { colors } from '../../styles';
+import { colors, mediaQueries } from '../../styles';
 
 const Footer = () => {
   const linkStyle = css`
@@ -13,6 +13,12 @@ const Footer = () => {
       transition: all ease-in-out 0.5s;
       text-decoration: underline;
     }
+    ${mediaQueries.phoneLarge} {
+      padding: 0.3rem;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 45px;
+    }
   `;
   const wrapperStyle = css`
     position: relative;
@@ -23,6 +29,10 @@ const Footer = () => {
     color: ${colors.white};
     display: flex;
     align-items: center;
+    ${mediaQueries.phoneLarge} {
+      flex-direction: column;
+      height: 100%;
+    }
   `;
   return (
     <div css={wrapperStyle}>
