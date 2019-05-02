@@ -36,7 +36,7 @@ const TopNav = () => {
       >
         <Link to='/'>
           {typeof window !== 'undefined' &&
-            (size.width >= 900 ? (
+            (size.width > 900 ? (
               <ThirdAndGrove
                 css={css`
                   height: 150px;
