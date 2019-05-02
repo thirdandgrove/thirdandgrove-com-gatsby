@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-// the nested ternary is required because Gatsby renders things it shouldnt
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
@@ -37,8 +35,8 @@ const TopNav = () => {
         `}
       >
         <Link to='/'>
-          {typeof window !== 'undefined' ? (
-            size.width >= 900 ? (
+          {typeof window !== 'undefined' &&
+            (size.width >= 900 ? (
               <ThirdAndGrove
                 css={css`
                   height: 150px;
@@ -52,8 +50,7 @@ const TopNav = () => {
                   height: 50px;
                 `}
               />
-            )
-          ) : null}
+            ))}
         </Link>
         <button
           css={css`
