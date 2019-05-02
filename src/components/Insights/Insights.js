@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Slider from 'react-slick';
-import css from '@emotion/core';
+import { css } from '@emotion/core';
 
 import ArticlePreview from '../ArticlePreview';
 import FullWidthSection from '../FullWidthSection';
