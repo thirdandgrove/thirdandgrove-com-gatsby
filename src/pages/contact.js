@@ -8,7 +8,7 @@ import ContactForm from '../components/ContactForm';
 export default () => {
   return (
     <>
-      <Header title='Contact Us'>
+      <Header title='Contact Us' height='850px'>
         <ContactForm />
       </Header>
       <main
