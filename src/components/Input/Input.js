@@ -17,6 +17,7 @@ export default styled.input`
   text-transform: uppercase;
   padding: 20px;
   margin-bottom: 1rem;
+  width: 100%;
   &::placeholder {
     font-family: 'NB International Pro';
     font-weight: 600;
