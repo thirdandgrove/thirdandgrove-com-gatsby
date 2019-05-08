@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContactForm from '../components/ContactForm';
+import { mediaQueries } from '../styles';
 
 export default () => {
   return (
@@ -36,6 +37,9 @@ export default () => {
                 font-weight: 300;
               }
             }
+          }
+          ${mediaQueries.phoneLarge} {
+            flex-direction: column;
           }
         `}
       >
