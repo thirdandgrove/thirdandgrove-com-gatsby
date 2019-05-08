@@ -3,6 +3,7 @@ import { navigate } from 'gatsby';
 import styled from '@emotion/styled';
 
 import Button from '../Button';
+import Rectangle from './Rectangle';
 import { colors, mediaQueries } from '../../styles';
 
 const Wrapper = styled.div`
@@ -14,26 +15,6 @@ const Wrapper = styled.div`
   ${mediaQueries.phoneLarge} {
     display: flex;
     flex-direction: column;
-  }
-`;
-
-const Rectangle = styled.span`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 500px;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  flex-shrink: 0;
-  background-color: ${props => props.backgroundColor};
-  h3 {
-    font-family: Canela;
-    font-size: 72px;
-    font-weight: 500;
-    letter-spacing: -1px;
-    line-height: 84px;
   }
 `;
 
@@ -51,9 +32,13 @@ const ContactUs = () => (
   </Rectangle>
 );
 
-export default () => (
+export default ({ children }) => (
   <Wrapper>
-    <ContactUs />
-    <BeUs />
+    {children || (
+      <>
+        <ContactUs />
+        <BeUs />
+      </>
+    )}
   </Wrapper>
 );
