@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const Rectangle = styled.span`
+const TextWrapper = styled.span`
   margin: 0;
   padding: 0;
   display: flex;
@@ -21,4 +21,4 @@ const Rectangle = styled.span`
   }
 `;
 
-export default Rectangle;
+export default TextWrapper;

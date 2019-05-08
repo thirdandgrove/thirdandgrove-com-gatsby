@@ -4,7 +4,8 @@ import useInterval from '../hooks/useInterval';
 import Layout from '../components/layout';
 import Insights from '../components/Insights';
 import WhatWeDo from '../components/WhatWeDo';
-import Prefooter from '../components/Prefooter';
+import SplitSection from '../components/SplitSection';
+import { ContactUs, BeUs } from '../components/Prefooter';
 import Projects from '../components/Projects/Projects';
 
 export default () => {
@@ -28,7 +29,10 @@ export default () => {
       <Projects />
       <WhatWeDo />
       <Insights />
-      <Prefooter />
+      <SplitSection>
+        <ContactUs />
+        <BeUs />
+      </SplitSection>
     </Layout>
   );
 };

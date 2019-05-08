@@ -1,3 +1,5 @@
-import Prefooter from './Prefooter';
+import TextWrapper from './TextWrapper';
+import BeUs from './BeUs';
+import ContactUs from './ContactUs';
 
-export default Prefooter;
+export { TextWrapper, ContactUs, BeUs };
