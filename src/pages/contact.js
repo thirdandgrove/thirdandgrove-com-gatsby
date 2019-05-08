@@ -4,11 +4,12 @@ import { css } from '@emotion/core';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContactForm from '../components/ContactForm';
+import { mediaQueries } from '../styles';
 
 export default () => {
   return (
     <>
-      <Header title='Contact Us'>
+      <Header title='Contact Us' height='850px'>
         <ContactForm />
       </Header>
       <main
@@ -36,6 +37,9 @@ export default () => {
                 font-weight: 300;
               }
             }
+          }
+          ${mediaQueries.phoneLarge} {
+            flex-direction: column;
           }
         `}
       >
