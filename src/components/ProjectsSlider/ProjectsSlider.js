@@ -56,8 +56,10 @@ const ProjectsSlider = () => {
               max-height: 100%;
             `}
           >
-            {data.allNodeProject.nodes.map(node => {
-              return <ProjectPreview key={node.title} project={node} />;
+            {data.allNodeProject.nodes.map((node, i) => {
+              return (
+                <ProjectPreview key={node.title} index={i} project={node} />
+              );
             })}
           </Slider>
         </FullWidthSection>
