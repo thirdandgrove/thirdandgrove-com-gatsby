@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
@@ -10,7 +11,7 @@ import { ReactComponent as Close } from './svg/close.svg';
 import { ReactComponent as Hamburger } from './svg/hamburger.svg';
 import { colors, mediaQueries } from '../../styles';
 
-const TopNav = () => {
+const TopNav = ({ height }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
@@ -70,9 +71,17 @@ const TopNav = () => {
         </button>
       </span>
       {/* // some transition in/out? */}
-      {isOpen && <Menu toggleOpen={toggleOpen} />}
+      {isOpen && <Menu toggleOpen={toggleOpen} height={height} />}
     </>
   );
+};
+
+TopNav.propTypes = {
+  height: PropTypes.string,
+};
+
+TopNav.defaultProps = {
+  height: '700px',
 };
 
 export default TopNav;

@@ -4,8 +4,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import ArticlePreview from '../components/ArticlePreview';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/layout';
 
 export default () => {
   const List = styled.div`
@@ -74,41 +73,46 @@ export default () => {
         // remove the header article so it isnt repeated
         articles.shift();
         return (
-          <>
-            <Header>
-              <span
-                css={css`
-                  font-family: 'NB International Pro';
-                  font-size: 15px;
-                  padding: 2rem;
-                `}
-              >
-                {`${headerArticle.created} -
-              ${headerArticle.relationships.uid.field_first_name} ${
-                  headerArticle.relationships.uid.field_last_name
-                }`}
-              </span>
-              <h3
-                css={css`
-                  font-size: 72px;
-                  font-family: 'Canela-Medium';
-                  font-weight: 200;
-                  width: 70%;
-                  text-align: center;
-                `}
-              >
-                {headerArticle.title}
-              </h3>
-              <Link
-                css={css`
-                  text-decoration: none;
-                  color: white;
-                `}
-                to={`/articles${headerArticle.path.alias}`}
-              >
-                read more
-              </Link>
-            </Header>
+          <Layout
+            headerData={{
+              children: (
+                <>
+                  <span
+                    css={css`
+                      font-family: 'NB International Pro';
+                      font-size: 15px;
+                      padding: 2rem;
+                    `}
+                  >
+                    {`${headerArticle.created} -
+          ${headerArticle.relationships.uid.field_first_name} ${
+                      headerArticle.relationships.uid.field_last_name
+                    }`}
+                  </span>
+                  <h3
+                    css={css`
+                      font-size: 72px;
+                      font-family: 'Canela-Medium';
+                      font-weight: 200;
+                      width: 70%;
+                      text-align: center;
+                    `}
+                  >
+                    {headerArticle.title}
+                  </h3>
+                  <Link
+                    css={css`
+                      text-decoration: none;
+                      color: white;
+                    `}
+                    to={`/articles${headerArticle.path.alias}`}
+                  >
+                    read more
+                  </Link>
+                </>
+              ),
+            }}
+          >
             <Categories>
               <ul>
                 <li className='active'>all</li>
@@ -125,8 +129,7 @@ export default () => {
                 <ArticlePreview key={article.title} article={article} />
               ))}
             </List>
-            <Footer />
-          </>
+          </Layout>
         );
       }}
     />

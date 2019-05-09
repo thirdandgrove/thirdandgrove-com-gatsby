@@ -18,7 +18,7 @@
     "no-unused-vars": 1,
     "no-use-before-define": 1,
     "prettier/prettier": "warn",
-    "react/forbid-prop-types": 1,
+    "react/forbid-prop-types": 0,
     "react/prop-types": 1,
     "react/require-default-props": 1,
     "react/jsx-one-expression-per-line": 1,

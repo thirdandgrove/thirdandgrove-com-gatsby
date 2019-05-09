@@ -17,7 +17,7 @@ const Layout = ({ children, headerData }) => (
         }
       }
     `}
-    render={data => (
+    render={() => (
       <>
         <Header {...headerData} />
         <main>{children}</main>
@@ -29,6 +29,11 @@ const Layout = ({ children, headerData }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  headerData: PropTypes.object,
+};
+
+Layout.defaultProps = {
+  headerData: {},
 };
 
 export default Layout;

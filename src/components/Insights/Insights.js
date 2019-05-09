@@ -50,7 +50,7 @@ const Insights = () => {
             `}
           >
             {data.allNodeArticle.nodes.map(node => {
-              return <ArticlePreview article={node} />;
+              return <ArticlePreview key={node.title} article={node} />;
             })}
           </Slider>
         </FullWidthSection>

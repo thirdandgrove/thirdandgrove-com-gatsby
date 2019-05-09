@@ -15,6 +15,7 @@ const WhatWeDo = () => {
     letter-spacing: -1.5px;
     line-height: 150px;
     opacity: 0.5;
+    cursor: pointer;
     &:hover {
       transition: opacity 0.2s ease;
       opacity: 1;
