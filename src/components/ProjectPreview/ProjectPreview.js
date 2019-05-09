@@ -14,16 +14,16 @@ const ProjectPreview = ({ project, index }) => (
       justify-content: center;
       align-items: center;
       section {
-        /* position: absolute; */
         h3 {
           width: 150px;
           height: 40px;
           color: #282829;
-          font-family: Canela;
+          font-family: Canela-Thin;
           font-size: 36px;
           font-weight: 100;
           letter-spacing: 0.45px;
           line-height: 76px;
+          margin-bottom: 30px;
         }
         h1 {
           width: 1120px;
@@ -34,6 +34,7 @@ const ProjectPreview = ({ project, index }) => (
           font-weight: 900;
           letter-spacing: 1.39px;
           line-height: 98px;
+          margin: 5rem 0 3rem 0;
         }
       }
     `}

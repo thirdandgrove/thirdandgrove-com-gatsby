@@ -13,7 +13,6 @@ const ProjectsSlider = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    centerMode: true,
   };
   return (
     <StaticQuery
