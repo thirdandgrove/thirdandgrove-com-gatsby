@@ -10,9 +10,10 @@ export default () => {
   const List = styled.div`
     display: grid;
     margin: 0 auto;
-    width: 80%;
-    grid-template-columns: 1fr 1fr;
+    width: 80vw;
+    grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 250px;
+    place-items: center center;
   `;
   const Categories = styled.nav`
     width: 100%;

@@ -6,7 +6,7 @@ import { css } from '@emotion/core';
 import ArticlePreview from '../ArticlePreview';
 import FullWidthSection from '../FullWidthSection';
 
-const Insights = () => {
+const InsightsSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -59,4 +59,4 @@ const Insights = () => {
   );
 };
 
-export default Insights;
+export default InsightsSlider;

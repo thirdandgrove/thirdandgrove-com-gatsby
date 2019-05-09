@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import useInterval from '../hooks/useInterval';
 
 import Layout from '../components/layout';
-import Insights from '../components/Insights';
+import InsightsSlider from '../components/InsightsSlider';
 import WhatWeDo from '../components/WhatWeDo';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
-import Projects from '../components/Projects/Projects';
+import ProjectsSlider from '../components/ProjectsSlider';
 
 export default () => {
   const duration = 10000;
@@ -26,9 +26,9 @@ export default () => {
   }, duration);
   return (
     <Layout headerData={{ title: taglines[currentTagline], fade: duration }}>
-      <Projects />
+      <ProjectsSlider />
       <WhatWeDo />
-      <Insights />
+      <InsightsSlider />
       <SplitSection>
         <ContactUs />
         <BeUs />

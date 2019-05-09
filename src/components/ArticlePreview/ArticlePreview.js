@@ -8,12 +8,15 @@ import { colors } from '../../styles';
 
 const ArticlePreview = ({ article }) => {
   const Card = styled.div`
-    max-width: 500px;
+    width: 500px;
+    height: 750px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 3rem;
     div {
+      display: block;
+      box-sizing: border-box;
       height: 500px;
       width: 500px;
       background-color: ${colors.gray};

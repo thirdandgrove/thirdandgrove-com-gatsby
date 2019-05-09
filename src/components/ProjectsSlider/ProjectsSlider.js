@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
-const Projects = () => {
+const ProjectsSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -65,4 +65,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsSlider;
