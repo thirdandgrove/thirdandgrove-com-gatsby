@@ -1,17 +1,19 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/layout';
 import ContactForm from '../components/ContactForm';
 import { mediaQueries } from '../styles';
 
 export default () => {
   return (
-    <>
-      <Header title='Contact Us' height='850px'>
-        <ContactForm />
-      </Header>
+    <Layout
+      headerData={{
+        title: 'Contact Us',
+        height: '850px',
+        children: <ContactForm />,
+      }}
+    >
       <main
         css={css`
           display: flex;
@@ -78,7 +80,6 @@ export default () => {
           </article>
         </section>
       </main>
-      <Footer />
-    </>
+    </Layout>
   );
 };

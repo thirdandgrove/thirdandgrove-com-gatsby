@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 
 import { colors, mediaQueries } from '../../styles';
 
-const Menu = () => {
+const Menu = ({ height }) => {
   const linkStyle = css`
     color: #282829;
     text-decoration: none;
@@ -49,7 +49,7 @@ const Menu = () => {
       css={css`
         position: absolute;
         width: 100vw;
-        height: 700px;
+        height: ${height || '700px'};
         display: flex;
         padding: 3rem;
         justify-content: center;

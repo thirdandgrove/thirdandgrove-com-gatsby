@@ -10,7 +10,7 @@ import { ReactComponent as Close } from './svg/close.svg';
 import { ReactComponent as Hamburger } from './svg/hamburger.svg';
 import { colors, mediaQueries } from '../../styles';
 
-const TopNav = () => {
+const TopNav = ({ height }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
@@ -70,7 +70,7 @@ const TopNav = () => {
         </button>
       </span>
       {/* // some transition in/out? */}
-      {isOpen && <Menu toggleOpen={toggleOpen} />}
+      {isOpen && <Menu toggleOpen={toggleOpen} height={height} />}
     </>
   );
 };
