@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
+import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
 const Projects = () => {
@@ -55,18 +56,7 @@ const Projects = () => {
             `}
           >
             {data.allNodeProject.nodes.map(node => {
-              return (
-                <div key={node.title}>
-                  <h3>{node.title}</h3>
-                  <img
-                    alt='project logo'
-                    src={
-                      node.relationships.field_logo.localFile.childImageSharp
-                        .fluid.src
-                    }
-                  />
-                </div>
-              );
+              return <ProjectPreview key={node.title} project={node} />;
             })}
           </Slider>
         </FullWidthSection>
