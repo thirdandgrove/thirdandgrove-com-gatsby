@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
@@ -49,7 +50,7 @@ const Menu = ({ height }) => {
       css={css`
         position: absolute;
         width: 100vw;
-        height: ${height || '700px'};
+        height: ${height};
         display: flex;
         padding: 3rem;
         justify-content: center;
@@ -114,6 +115,10 @@ const Menu = ({ height }) => {
       </section>
     </nav>
   );
+};
+
+Menu.propTypes = {
+  height: PropTypes.string.isRequired,
 };
 
 export default Menu;

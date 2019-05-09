@@ -38,10 +38,7 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
   return (
     <>
       <TopNav height={height} />
-      <FullWidthSection
-        height={height || '700px'}
-        backgroundColor={colors.yellow}
-      >
+      <FullWidthSection height={height} backgroundColor={colors.yellow}>
         <h1 css={headerTitle}>{title}</h1>
         {children && children}
       </FullWidthSection>
@@ -59,6 +56,10 @@ Header.propTypes = {
 
 Header.defaultProps = {
   defaultBackground: true,
+  title: null,
+  fade: false,
+  height: '700px',
+  children: null,
 };
 
 export default Header;

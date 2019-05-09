@@ -1,6 +1,7 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
-import React from 'react';
 import Img from 'gatsby-image';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -64,6 +65,11 @@ const ArticleTemplate = ({ data, pageContext }) => {
       {articleBodyElements}
     </Layout>
   );
+};
+
+ArticleTemplate.propTypes = {
+  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export default ArticleTemplate;

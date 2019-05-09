@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import PropTypes from 'prop-types';
+
 import { colors } from '../../styles';
 
 const ArticlePreview = ({ article }) => {
@@ -67,6 +69,10 @@ const ArticlePreview = ({ article }) => {
       </Card>
     </Link>
   );
+};
+
+ArticlePreview.propTypes = {
+  article: PropTypes.object.isRequired,
 };
 
 export default ArticlePreview;

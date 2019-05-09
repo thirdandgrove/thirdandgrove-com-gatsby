@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
@@ -73,6 +74,14 @@ const TopNav = ({ height }) => {
       {isOpen && <Menu toggleOpen={toggleOpen} height={height} />}
     </>
   );
+};
+
+TopNav.propTypes = {
+  height: PropTypes.string,
+};
+
+TopNav.defaultProps = {
+  height: '700px',
 };
 
 export default TopNav;
