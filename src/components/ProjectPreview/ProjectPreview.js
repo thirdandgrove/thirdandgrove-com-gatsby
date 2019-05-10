@@ -13,6 +13,7 @@ const ProjectPreview = ({ project, index }) => (
       max-width: 100%;
       justify-content: center;
       align-items: center;
+      padding: 3rem;
       section {
         z-index: 2;
         h3 {
