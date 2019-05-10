@@ -18,7 +18,7 @@ const ProjectsSlider = () => {
     <StaticQuery
       query={graphql`
         {
-          allNodeProject(sort: { fields: created, order: DESC }, limit: 10) {
+          allNodeProject(limit: 5) {
             nodes {
               title
               field_external_link {
@@ -28,17 +28,7 @@ const ProjectsSlider = () => {
               relationships {
                 field_logo {
                   localFile {
-                    childImageSharp {
-                      fluid {
-                        src
-                      }
-                    }
-                  }
-                }
-                field_case_study {
-                  title
-                  body {
-                    processed
+                    publicURL
                   }
                 }
               }

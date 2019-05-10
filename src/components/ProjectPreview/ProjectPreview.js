@@ -14,6 +14,7 @@ const ProjectPreview = ({ project, index }) => (
       justify-content: center;
       align-items: center;
       section {
+        z-index: 2;
         h3 {
           width: 150px;
           height: 40px;
@@ -45,7 +46,10 @@ const ProjectPreview = ({ project, index }) => (
       <h1>{project.title}</h1>
       <Button>view case study</Button>
     </section>
-    <ImageCollage images={{}} index={index} />
+    <ImageCollage
+      images={{ primary: project.relationships.field_logo.localFile.publicURL }}
+      index={index}
+    />
   </div>
 );
 
