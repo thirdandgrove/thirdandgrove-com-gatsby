@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/layout';
 
-const StudyTemplate = ({ data, pageContext }) => {
+const StudyTemplate = ({ pageContext }) => {
   const { study } = pageContext;
 
   return (
@@ -22,7 +22,6 @@ const StudyTemplate = ({ data, pageContext }) => {
 };
 
 StudyTemplate.propTypes = {
-  data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 };
 
