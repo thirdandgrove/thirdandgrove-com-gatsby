@@ -18,15 +18,33 @@ const ProjectsSlider = () => {
     <StaticQuery
       query={graphql`
         {
-          allNodeProject(limit: 5) {
+          allCaseStudy {
             nodes {
+              id
               title
-              field_external_link {
-                uri
-                title
-              }
+              field_subtitle
+              field_inverse_header
+              field_primary_image_scale
+              field_tertiary_image_scale
+              field_secondary_image_scale
               relationships {
-                field_logo {
+                field_tags {
+                  name
+                }
+                field_image {
+                  id
+                  localFile {
+                    publicURL
+                  }
+                }
+                field_tertiary_image {
+                  id
+                  localFile {
+                    publicURL
+                  }
+                }
+                field_secondary_image {
+                  id
                   localFile {
                     publicURL
                   }
@@ -45,7 +63,7 @@ const ProjectsSlider = () => {
               max-height: 100%;
             `}
           >
-            {data.allNodeProject.nodes.map((node, i) => {
+            {data.allCaseStudy.nodes.map((node, i) => {
               return (
                 <ProjectPreview key={node.title} index={i} project={node} />
               );

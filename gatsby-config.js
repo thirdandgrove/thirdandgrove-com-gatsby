@@ -30,16 +30,16 @@ module.exports = {
         display: `minimal-ui`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-drupal`,
-    //   options: {
-    //     baseUrl: process.env.DRUPAL_URL,
-    //     basicAuth: {
-    //       username: process.env.BASIC_AUTH_USERNAME,
-    //       password: process.env.BASIC_AUTH_PASSWORD,
-    //     },
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: process.env.DRUPAL_URL,
+        basicAuth: {
+          username: process.env.BASIC_AUTH_USERNAME,
+          password: process.env.BASIC_AUTH_PASSWORD,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-drupal`,
       options: {

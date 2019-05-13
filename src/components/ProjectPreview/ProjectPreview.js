@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
@@ -45,10 +46,22 @@ const ProjectPreview = ({ project, index }) => (
     <section>
       <h3>Our Work</h3>
       <h1>{project.title}</h1>
-      <Button>view case study</Button>
+      <Button
+        onClick={() =>
+          navigate(`/studies/${project.title.toLowerCase().replace(' ', '-')}`)
+        }
+      >
+        view case study
+      </Button>
     </section>
     <ImageCollage
-      images={{ primary: project.relationships.field_logo.localFile.publicURL }}
+      images={{
+        primary: project.relationships.field_image.localFile.publicURL,
+        secondary:
+          project.relationships.field_secondary_image.localFile.publicURL,
+        tertiary:
+          project.relationships.field_tertiary_image.localFile.publicURL,
+      }}
       index={index}
     />
   </div>
