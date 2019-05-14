@@ -7,7 +7,7 @@ import { mediaQueries } from '../../styles';
 const Wrapper = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   margin: ${props => props.margin || 0};
   padding: ${props => props.padding || 0};
   ${mediaQueries.phoneLarge} {

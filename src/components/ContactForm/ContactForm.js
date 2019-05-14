@@ -23,7 +23,7 @@ const ContactFrom = () => {
       <span
         css={css`
           display: grid;
-          grid-template-columns: 480px 480px;
+          grid-template-columns: repeat(2, 480px);
           grid-column-gap: 1rem;
           ${mediaQueries.phoneLarge} {
             display: flex;

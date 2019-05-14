@@ -6,13 +6,14 @@ import { css } from '@emotion/core';
 import ArticlePreview from '../ArticlePreview';
 import FullWidthSection from '../FullWidthSection';
 
-const Insights = () => {
+const InsightsSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    centerMode: true,
   };
   return (
     <StaticQuery
@@ -59,4 +60,4 @@ const Insights = () => {
   );
 };
 
-export default Insights;
+export default InsightsSlider;

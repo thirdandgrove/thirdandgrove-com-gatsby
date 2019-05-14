@@ -3,9 +3,10 @@ import { StaticQuery, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
+import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
-const Projects = () => {
+const ProjectsSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -17,27 +18,35 @@ const Projects = () => {
     <StaticQuery
       query={graphql`
         {
-          allNodeProject(sort: { fields: created, order: DESC }, limit: 10) {
+          allCaseStudy {
             nodes {
+              id
               title
-              field_external_link {
-                uri
-                title
-              }
+              field_subtitle
+              field_inverse_header
+              field_primary_image_scale
+              field_tertiary_image_scale
+              field_secondary_image_scale
               relationships {
-                field_logo {
+                field_tags {
+                  name
+                }
+                field_image {
+                  id
                   localFile {
-                    childImageSharp {
-                      fluid {
-                        src
-                      }
-                    }
+                    publicURL
                   }
                 }
-                field_case_study {
-                  title
-                  body {
-                    processed
+                field_tertiary_image {
+                  id
+                  localFile {
+                    publicURL
+                  }
+                }
+                field_secondary_image {
+                  id
+                  localFile {
+                    publicURL
                   }
                 }
               }
@@ -54,18 +63,9 @@ const Projects = () => {
               max-height: 100%;
             `}
           >
-            {data.allNodeProject.nodes.map(node => {
+            {data.allCaseStudy.nodes.map((node, i) => {
               return (
-                <div key={node.title}>
-                  <h3>{node.title}</h3>
-                  <img
-                    alt='project logo'
-                    src={
-                      node.relationships.field_logo.localFile.childImageSharp
-                        .fluid.src
-                    }
-                  />
-                </div>
+                <ProjectPreview key={node.title} index={i} project={node} />
               );
             })}
           </Slider>
@@ -75,4 +75,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsSlider;

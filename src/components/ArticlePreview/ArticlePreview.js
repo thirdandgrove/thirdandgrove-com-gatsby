@@ -8,14 +8,14 @@ import { colors } from '../../styles';
 
 const ArticlePreview = ({ article }) => {
   const Card = styled.div`
-    max-width: 500px;
+    width: 100%;
+    height: 750px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding-bottom: 3rem;
     div {
-      height: 500px;
-      width: 500px;
+      height: 400px;
+      width: 400px;
       background-color: ${colors.gray};
     }
     span {
@@ -28,6 +28,7 @@ const ArticlePreview = ({ article }) => {
         color: ${colors.darkgray};
         letter-spacing: 0;
         line-height: 52px;
+        padding: 0;
       }
       footer {
         font-family: 'NB International Pro';
@@ -42,16 +43,16 @@ const ArticlePreview = ({ article }) => {
     }
   `;
   return (
-    <Link
-      css={css`
-        text-decoration: none;
-        color: ${colors.black};
-      `}
-      to={`/articles${article.path.alias}`}
-    >
-      <Card>
-        <div />
-        <span>
+    <Card>
+      <div />
+      <span>
+        <Link
+          css={css`
+            text-decoration: none;
+            color: ${colors.black};
+          `}
+          to={`/articles${article.path.alias}`}
+        >
           <p
             css={css`
               padding: 0.3rem;
@@ -65,9 +66,9 @@ const ArticlePreview = ({ article }) => {
               article.relationships.uid.field_last_name
             }`}
           </footer>
-        </span>
-      </Card>
-    </Link>
+        </Link>
+      </span>
+    </Card>
   );
 };
 

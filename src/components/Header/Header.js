@@ -22,6 +22,7 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
         opacity: 0;
       }
     }
+    position: relative;
     animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     font-size: 72px;
     font-weight: 300;

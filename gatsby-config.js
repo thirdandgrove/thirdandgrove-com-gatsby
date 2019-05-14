@@ -40,6 +40,16 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: process.env.DRUPAL_URL2,
+        basicAuth: {
+          username: process.env.BASIC_AUTH_USERNAME2,
+          password: process.env.BASIC_AUTH_PASSWORD2,
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
