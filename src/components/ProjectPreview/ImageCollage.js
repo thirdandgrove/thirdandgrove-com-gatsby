@@ -10,9 +10,6 @@ const ImageCollage = ({ index, images }) => {
     left: -30vw;
     background-color: red;
     z-index: 1;
-    /* display: grid;
-    grid-template-columns: repeat(auto-fill, 30px);
-    grid-auto-rows: 30px; */
   `;
   const collage1 = css`
     div {
