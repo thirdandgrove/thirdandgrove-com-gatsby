@@ -101,10 +101,6 @@
     format('otf');
 }
 
-* {
-  box-sizing: border-box;
-}
-
 html {
   font-family: Canela-Medium;
   -ms-text-size-adjust: 100%;

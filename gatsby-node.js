@@ -59,8 +59,6 @@ exports.createPages = async ({ actions, graphql }) => {
                   }
                 }
                 field_body {
-                  value
-                  format
                   processed
                 }
               }
@@ -87,13 +85,9 @@ exports.createPages = async ({ actions, graphql }) => {
               }
               ... on component__prefooter {
                 field_body {
-                  value
-                  format
                   processed
                 }
                 field_secondary_body {
-                  value
-                  format
                   processed
                 }
                 relationships {
@@ -109,8 +103,6 @@ exports.createPages = async ({ actions, graphql }) => {
               }
               ... on component__text_image_split {
                 field_body {
-                  value
-                  format
                   processed
                 }
                 field_reversed

@@ -9,5 +9,7 @@ export default styled.section`
   align-items: center;
   justify-content: center;
   background-color: ${props => props.backgroundColor};
+  background-image: url(${props => props.backgroundImage});
+  background-size: cover;
   overflow: hidden;
 `;
