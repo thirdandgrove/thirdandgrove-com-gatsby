@@ -1,11 +1,25 @@
 import React from 'react';
+import { css } from '@emotion/core';
 
 import SplitSection from '../SplitSection';
+import { colors } from '../../styles';
 
 export default ({ data }) => {
+  const textCss = css`
+    p {
+      font-family: NBInternationalPro;
+      font-size: 21px;
+      color: ${colors.darkgray};
+      letter-spacing: 0;
+      line-height: 36px;
+    }
+  `;
   return (
-    <SplitSection padding='1rem'>
-      <span dangerouslySetInnerHTML={{ __html: data.field_body.value }} />
+    <SplitSection padding=' 0 3rem'>
+      <section
+        css={textCss}
+        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+      />
       <img
         src={data.relationships.field_image.localFile.publicURL}
         alt='article text split'
