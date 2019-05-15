@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ fill }) => (
+const Hamburger = ({ fill }) => (
   <svg
     width='25px'
     height='25px'
@@ -43,3 +44,9 @@ export default ({ fill }) => (
     </g>
   </svg>
 );
+
+Hamburger.propTypes = {
+  fill: PropTypes.string.isRequired,
+};
+
+export default Hamburger;

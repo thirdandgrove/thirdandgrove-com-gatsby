@@ -51,7 +51,7 @@ const Header = ({
       <FullWidthSection
         height={height}
         backgroundImage={backgroundImage}
-        backgroundColor={color || colors.yellow}
+        backgroundColor={color}
       >
         {title && <h1 css={headerTitle}>{title}</h1>}
         {children && children}
@@ -68,6 +68,7 @@ Header.propTypes = {
   children: PropTypes.node,
   backgroundImage: PropTypes.string,
   invert: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 Header.defaultProps = {
@@ -78,6 +79,7 @@ Header.defaultProps = {
   children: null,
   backgroundImage: '',
   invert: false,
+  color: colors.yellow,
 };
 
 export default Header;

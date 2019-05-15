@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ fill }) => (
+const Close = ({ fill }) => (
   <svg
     width='25px'
     height='25px'
@@ -28,3 +29,9 @@ export default ({ fill }) => (
     </g>
   </svg>
 );
+
+Close.propTypes = {
+  fill: PropTypes.string.isRequired,
+};
+
+export default Close;

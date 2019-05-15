@@ -81,10 +81,12 @@ const TopNav = ({ height, invert }) => {
 };
 
 TopNav.propTypes = {
+  invert: PropTypes.bool,
   height: PropTypes.string,
 };
 
 TopNav.defaultProps = {
+  invert: false,
   height: '700px',
 };
 
