@@ -8,7 +8,6 @@ import ContentBody from '../../components/ContentBody';
 
 const StudyTemplate = ({ pageContext }) => {
   const { study } = pageContext;
-  console.log(study);
   return (
     <Layout
       headerData={{
