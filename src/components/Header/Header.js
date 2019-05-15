@@ -6,7 +6,15 @@ import TopNav from '../TopNav';
 import { colors, mediaQueries } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
-const Header = ({ defaultBackground, title, fade, height, children }) => {
+const Header = ({
+  defaultBackground,
+  backgroundImage,
+  title,
+  fade,
+  height,
+  children,
+  color,
+}) => {
   const headerTitle = css`
     @keyframes fadeInOut {
       0%,
@@ -39,8 +47,12 @@ const Header = ({ defaultBackground, title, fade, height, children }) => {
   return (
     <>
       <TopNav height={height} />
-      <FullWidthSection height={height} backgroundColor={colors.yellow}>
-        <h1 css={headerTitle}>{title}</h1>
+      <FullWidthSection
+        height={height}
+        backgroundImage={backgroundImage}
+        backgroundColor={color || colors.yellow}
+      >
+        {title && <h1 css={headerTitle}>{title}</h1>}
         {children && children}
       </FullWidthSection>
     </>
@@ -53,14 +65,16 @@ Header.propTypes = {
   fade: PropTypes.number,
   height: PropTypes.string,
   children: PropTypes.node,
+  backgroundImage: PropTypes.string,
 };
 
 Header.defaultProps = {
   defaultBackground: true,
   title: null,
-  fade: false,
+  fade: 0,
   height: '700px',
   children: null,
+  backgroundImage: '',
 };
 
 export default Header;

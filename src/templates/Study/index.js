@@ -11,7 +11,9 @@ const StudyTemplate = ({ pageContext }) => {
   console.log(study);
   return (
     <Layout
-    // TODO: full header image
+      headerData={{
+        backgroundImage: study.relationships.field_image.localFile.publicURL,
+      }}
     >
       <header
         css={css`
