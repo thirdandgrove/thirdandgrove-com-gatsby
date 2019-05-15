@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import FullWidthSection from '../FullWidthSection';
 import { colors } from '../../styles';
 
-export default ({ data }) => {
+const Quote = ({ data }) => {
   const quoteCss = css`
     font-family: Canela-Medium;
     font-size: 61px;
@@ -50,3 +51,9 @@ export default ({ data }) => {
     </FullWidthSection>
   );
 };
+
+Quote.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default Quote;

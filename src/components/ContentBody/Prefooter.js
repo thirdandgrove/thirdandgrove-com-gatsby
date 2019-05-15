@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import { TextWrapper } from '../Prefooter';
@@ -6,7 +7,7 @@ import SplitSection from '../SplitSection';
 import Button from '../Button';
 import { colors } from '../../styles';
 
-export default ({ data }) => (
+const Prefooter = ({ data }) => (
   <SplitSection>
     {/* TODO: change data model to provide a color */}
     <TextWrapper backgroundColor={colors.yellow}>
@@ -28,3 +29,9 @@ export default ({ data }) => (
     />
   </SplitSection>
 );
+
+Prefooter.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default Prefooter;

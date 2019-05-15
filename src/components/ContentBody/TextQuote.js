@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import SplitSection from '../SplitSection';
 import { colors } from '../../styles';
 
-export default ({ data }) => {
+const TextQuote = ({ data }) => {
   const textCss = css`
     p {
       font-family: NBInternationalPro;
@@ -64,3 +65,9 @@ export default ({ data }) => {
     </SplitSection>
   );
 };
+
+TextQuote.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default TextQuote;

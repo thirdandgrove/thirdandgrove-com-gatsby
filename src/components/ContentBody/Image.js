@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
 
-export default ({ data }) => (
+const Image = ({ data }) => (
   <FullWidthSection padding=' 0 3rem'>
     <img
       css={css`
@@ -17,3 +18,9 @@ export default ({ data }) => (
     />
   </FullWidthSection>
 );
+
+Image.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default Image;

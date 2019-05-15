@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import { colors } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
-export default ({ data }) => {
+const Text = ({ data }) => {
   const textCss = css`
     p {
       font-family: NBInternationalPro;
@@ -28,3 +29,9 @@ export default ({ data }) => {
     </FullWidthSection>
   );
 };
+
+Text.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default Text;

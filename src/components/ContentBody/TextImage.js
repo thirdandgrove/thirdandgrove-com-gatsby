@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import SplitSection from '../SplitSection';
 import { colors } from '../../styles';
 
-export default ({ data }) => {
+const TextImage = ({ data }) => {
   const textCss = css`
     p {
       font-family: NBInternationalPro;
@@ -42,3 +43,9 @@ export default ({ data }) => {
     </SplitSection>
   );
 };
+
+TextImage.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default TextImage;
