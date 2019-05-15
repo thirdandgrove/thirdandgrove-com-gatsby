@@ -7,11 +7,11 @@ import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { ReactComponent as TAG } from './svg/tagLogo.svg';
 import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
-import { ReactComponent as Close } from './svg/close.svg';
-import { ReactComponent as Hamburger } from './svg/hamburger.svg';
+import Close from './svg/close';
+import Hamburger from './svg/hamburger';
 import { colors, mediaQueries } from '../../styles';
 
-const TopNav = ({ height }) => {
+const TopNav = ({ height, invert }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
@@ -41,13 +41,13 @@ const TopNav = ({ height }) => {
               <ThirdAndGrove
                 css={css`
                   height: 150px;
-                  fill: ${colors.darkgray};
+                  fill: ${invert ? colors.white : colors.darkgray};
                 `}
               />
             ) : (
               <TAG
                 css={css`
-                  fill: ${colors.darkgray};
+                  fill: ${invert ? colors.white : colors.darkgray};
                   height: 50px;
                 `}
               />
@@ -67,7 +67,11 @@ const TopNav = ({ height }) => {
           type='button'
           onClick={() => toggleOpen()}
         >
-          {isOpen ? <Hamburger /> : <Close />}
+          {isOpen ? (
+            <Hamburger fill={invert ? colors.white : colors.darkgray} />
+          ) : (
+            <Close fill={invert ? colors.white : colors.darkgray} />
+          )}
         </button>
       </span>
       {/* // some transition in/out? */}

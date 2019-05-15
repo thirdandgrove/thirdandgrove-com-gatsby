@@ -14,6 +14,7 @@ const Header = ({
   height,
   children,
   color,
+  invert,
 }) => {
   const headerTitle = css`
     @keyframes fadeInOut {
@@ -46,7 +47,7 @@ const Header = ({
   `;
   return (
     <>
-      <TopNav height={height} />
+      <TopNav height={height} invert={invert} />
       <FullWidthSection
         height={height}
         backgroundImage={backgroundImage}
@@ -66,6 +67,7 @@ Header.propTypes = {
   height: PropTypes.string,
   children: PropTypes.node,
   backgroundImage: PropTypes.string,
+  invert: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -75,6 +77,7 @@ Header.defaultProps = {
   height: '700px',
   children: null,
   backgroundImage: '',
+  invert: false,
 };
 
 export default Header;

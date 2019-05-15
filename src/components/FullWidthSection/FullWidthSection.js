@@ -12,4 +12,5 @@ export default styled.section`
   background-image: url(${props => props.backgroundImage});
   background-size: cover;
   overflow: hidden;
+  background-position: center;
 `;
