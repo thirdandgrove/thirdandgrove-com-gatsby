@@ -16,14 +16,29 @@ export default ({ data }) => {
   `;
   return (
     <SplitSection padding=' 0 3rem'>
-      <section
-        css={textCss}
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
-      <img
-        src={data.relationships.field_image.localFile.publicURL}
-        alt='article text split'
-      />
+      {data.field_reversed ? (
+        <>
+          <img
+            src={data.relationships.field_image.localFile.publicURL}
+            alt='article text split'
+          />
+          <section
+            css={textCss}
+            dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+          />
+        </>
+      ) : (
+        <>
+          <section
+            css={textCss}
+            dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+          />
+          <img
+            src={data.relationships.field_image.localFile.publicURL}
+            alt='article text split'
+          />
+        </>
+      )}
     </SplitSection>
   );
 };
