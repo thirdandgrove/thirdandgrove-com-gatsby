@@ -16,41 +16,32 @@ const ImageCollage = ({ index, images }) => {
     left: -30vw;
 
     .primary1 {
-      background-color: yellow;
       grid-area: 1 / 1;
     }
     .primary2 {
-      background-color: yellow;
       grid-area: 1 / 1;
     }
     .primary3 {
-      background-color: yellow;
       grid-area: 1 / 1;
     }
 
     .secondary1 {
-      background-color: blue;
       grid-area: 2 / 3;
     }
     .secondary2 {
-      background-color: blue;
       grid-area: 2 / 3;
     }
     .secondary3 {
-      background-color: blue;
       grid-area: 2 / 3;
     }
 
     .tertiary1 {
-      background-color: orange;
       grid-area: 3 / 1;
     }
     .tertiary2 {
-      background-color: orange;
       grid-area: 3 / 1;
     }
     .tertiary3 {
-      background-color: orange;
       grid-area: 3 / 1;
     }
   `;
