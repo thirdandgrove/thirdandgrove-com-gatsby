@@ -12,6 +12,7 @@ const StudyTemplate = ({ pageContext }) => {
     <Layout
       headerData={{
         backgroundImage: study.relationships.field_image.localFile.publicURL,
+        invert: study.field_inverse_header,
       }}
     >
       <header

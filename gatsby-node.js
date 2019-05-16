@@ -50,6 +50,7 @@ exports.createPages = async ({ actions, graphql }) => {
           field_primary_image_scale
           field_tertiary_image_scale
           field_secondary_image_scale
+          field_inverse_header
           relationships {
             field_components {
               ... on component__text {
