@@ -4,45 +4,33 @@ import { css } from '@emotion/core';
 
 const ImageCollage = ({ index, images }) => {
   const gridWrap = css`
-    height: 100%;
-    width: 50vw;
     position: relative;
     left: -30vw;
-    background-color: red;
     z-index: 1;
+    display: grid;
+    grid-template-rows: repeat(3, 1rem);
+    grid-template-columns: repeat(3, 1rem);
   `;
   const collage1 = css`
-    div {
-      height: 50px;
-      width: 80px;
+    .primary {
+      background-color: yellow;
+      grid-area: 1 / 1;
     }
-  `;
-  const collage2 = css`
-    div {
+    .secondary {
       background-color: blue;
-      height: 50px;
-      width: 80px;
+      grid-area: 2 / 3;
+    }
+    .tertiary {
+      background-color: orange;
+      grid-area: 3 / 1;
     }
   `;
-  const collage3 = css`
-    div {
-      background-color: green;
-      height: 50px;
-      width: 80px;
-    }
-  `;
-  const cssSelected = () =>
-    // eslint-disable-next-line no-nested-ternary
-    index % 3 === 0 ? collage3 : index % 2 === 0 ? collage2 : collage1;
   return (
-    <span css={[gridWrap, cssSelected]}>
-      <div />
-      <div />
-      <div />
-      {/* <img src={images.primary} alt='primary study' />
-      <p>image2</p>
-      <p>image3</p> */}
-    </span>
+    <article css={[gridWrap, collage1]}>
+      <img src={images.primary} alt='primary' className='primary' />
+      <img src={images.secondary} alt='secondary' className='secondary' />
+      <img src={images.tertiary} alt='tertiary' className='tertiary' />
+    </article>
   );
 };
 

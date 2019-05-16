@@ -18,8 +18,8 @@ const Text = ({ data }) => {
   return (
     <FullWidthSection
       css={css`
-        display: block;
         padding: 3rem;
+        height: 100%;
       `}
     >
       <section
