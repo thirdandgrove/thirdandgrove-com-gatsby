@@ -4,62 +4,38 @@ import { css } from '@emotion/core';
 
 const ImageCollage = ({ index, images }) => {
   const slideNumber = index + 1;
-  const gridWrap = css`
-    z-index: 1;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-
+  const flexWrap = css`
+    display: flex;
     position: relative;
     height: 500px;
-    width: 50vw;
+    width: 30vw;
     left: -30vw;
-
-    .primary1 {
-      grid-area: 1 / 1;
-    }
-    .primary2 {
-      grid-area: 1 / 1;
-    }
-    .primary3 {
-      grid-area: 1 / 1;
-    }
-
-    .secondary1 {
-      grid-area: 2 / 3;
-    }
-    .secondary2 {
-      grid-area: 2 / 3;
-    }
-    .secondary3 {
-      grid-area: 2 / 3;
-    }
-
-    .tertiary1 {
-      grid-area: 3 / 1;
-    }
-    .tertiary2 {
-      grid-area: 3 / 1;
-    }
-    .tertiary3 {
-      grid-area: 3 / 1;
+    z-index: 1;
+    .twoStack {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
     }
   `;
-  const selectedClass = () =>
-    // eslint-disable-next-line no-nested-ternary
-    slideNumber % 3 === 0 ? 3 : slideNumber % 2 === 0 ? 2 : 1;
+  // // Alternate between the classes based on slide number
+  // const selectedClass = () =>
+  //   // eslint-disable-next-line no-nested-ternary
+  //   slideNumber % 3 === 0 ? 3 : slideNumber % 2 === 0 ? 2 : 1;
+  const selectedClass = () => 1;
   return (
-    <article css={gridWrap}>
-      <img
-        src={images.primary}
-        alt='primary'
-        className={`primary${selectedClass()}`}
-      />
-      <img
-        src={images.secondary}
-        alt='secondary'
-        className={`secondary${selectedClass()}`}
-      />
+    <article css={flexWrap}>
+      <div className='twoStack'>
+        <img
+          src={images.secondary}
+          alt='secondary'
+          className={`secondary${selectedClass()}`}
+        />
+        <img
+          src={images.primary}
+          alt='primary'
+          className={`primary${selectedClass()}`}
+        />
+      </div>
       <img
         src={images.tertiary}
         alt='tertiary'
