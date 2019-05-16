@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
+import { colors } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -23,14 +24,14 @@ export default () => {
       list-style: none;
       font-family: NBInternationalPro-Bol;
       font-size: 15px;
-      color: #757575;
+      color: ${colors.mediumgray};
       letter-spacing: 2px;
       text-align: right;
       line-height: 36px;
       padding-right: 15px;
       cursor: pointer;
       &.active {
-        color: #282829;
+        color: ${colors.darkgray};
         text-decoration: underline;
       }
     }
@@ -71,3 +72,5 @@ export default () => {
 };
 
 // TODO: fetch data from Jazz API
+// TODO: Build out individual job page
+// TODO: implement filtering
