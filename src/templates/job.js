@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Layout from '../../components/layout';
-import FullWidthSection from '../../components/FullWidthSection';
+import Layout from '../components/layout';
+import FullWidthSection from '../components/FullWidthSection';
 
 export default ({ pageContext }) => {
   const { job } = pageContext;

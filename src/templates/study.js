@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-import { colors } from '../../styles';
-import Layout from '../../components/layout';
-import ContentBody from '../../components/ContentBody';
+import { colors } from '../styles';
+import Layout from '../components/layout';
+import ContentBody from '../components/ContentBody';
 
 const StudyTemplate = ({ pageContext }) => {
   const { study } = pageContext;
