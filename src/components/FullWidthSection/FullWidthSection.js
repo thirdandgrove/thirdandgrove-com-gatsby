@@ -13,4 +13,5 @@ export default styled.section`
   background-size: cover;
   overflow: hidden;
   background-position: center;
+  padding: ${props => props.padding};
 `;

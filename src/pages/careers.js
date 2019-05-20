@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
@@ -52,13 +52,16 @@ export default () => {
     margin: 0 auto;
     li {
       list-style: none;
-      font-family: Canela-Bold;
-      font-size: 57px;
-      color: #282829;
-      letter-spacing: 0;
-      text-align: center;
-      line-height: 72px;
       padding: 2rem;
+      a {
+        font-family: Canela-Bold;
+        font-size: 57px;
+        color: #282829;
+        letter-spacing: 0;
+        text-align: center;
+        line-height: 72px;
+        text-decoration: none;
+      }
     }
   `;
 
@@ -93,7 +96,15 @@ export default () => {
       <FullWidthSection height='100%'>
         <JobList>
           {data.allResumatorJob.nodes.map(job => (
-            <li>{job.title}</li>
+            <li>
+              <Link
+                to={`/careers/${job.title
+                  .toLowerCase()
+                  .replace(new RegExp(' '), '-')}`}
+              >
+                {job.title}
+              </Link>
+            </li>
           ))}
         </JobList>
       </FullWidthSection>
