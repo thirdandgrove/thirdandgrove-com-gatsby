@@ -14,7 +14,7 @@ exports.sourceNodes = async (
   const processDatum = node => {
     return {
       ...node,
-      id: createNodeId(node.id), // TODO: what do their IDs look like?
+      id: createNodeId(node.id),
       parent: null,
       children: [],
       internal: {

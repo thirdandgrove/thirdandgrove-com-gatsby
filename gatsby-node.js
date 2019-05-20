@@ -169,4 +169,27 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   );
+
+  const jobs = await graphql(`
+    query {
+      allResumatorJob {
+        nodes {
+          title
+          description
+          department
+        }
+      }
+    }
+  `);
+
+  const JobTemplate = path.resolve(`src/templates/Job/index.js`);
+  jobs.data.allResumatorJob.nodes.map(job =>
+    createPage({
+      path: `/careers/${job.title.toLowerCase().replace(' ', '-')}`,
+      component: JobTemplate,
+      context: {
+        job,
+      },
+    })
+  );
 };
