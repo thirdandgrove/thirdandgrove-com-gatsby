@@ -25,16 +25,16 @@ exports.sourceNodes = async (
     };
   };
 
-  console.log('Fetching data from resumator API');
+  console.log('Fetching data from Resumator/JazzHR API');
 
   const data = await fetch(
-    `https://api.resumatorapi.com/v1/jobs?apikey=${configOptions.apiKey}"`,
+    `https://api.resumatorapi.com/v1/jobs?apikey=${configOptions.apiKey}`,
     {
       type: 'get',
+      headers: null,
       dataType: 'json',
     }
   ).then(res => res.json());
-  console.log(data);
 
   if (!data.error) {
     data.map(datum => createNode(processDatum(datum)));
