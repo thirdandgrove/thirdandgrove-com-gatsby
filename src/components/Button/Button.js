@@ -17,4 +17,5 @@ export default styled.button`
   line-height: 36px;
   padding-bottom: 40px;
   text-transform: uppercase;
+  cursor: pointer;
 `;
