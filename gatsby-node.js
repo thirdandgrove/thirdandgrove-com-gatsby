@@ -178,22 +178,25 @@ exports.createPages = async ({ actions, graphql }) => {
         nodes {
           title
           description
-          department
+          board_code
+          status
         }
       }
     }
   `);
 
   const JobTemplate = path.resolve(`src/templates/job.js`);
-  jobs.data.allResumatorJob.nodes.map(job =>
-    createPage({
-      path: `/careers/${job.title
-        .toLowerCase()
-        .replace(new RegExp(' ', 'g'), '-')}`,
-      component: JobTemplate,
-      context: {
-        job,
-      },
-    })
-  );
+  jobs.data.allResumatorJob.nodes
+    .filter(j => j.status === 'Open')
+    .map(job =>
+      createPage({
+        path: `/careers/${job.title
+          .toLowerCase()
+          .replace(new RegExp(' ', 'g'), '-')}`,
+        component: JobTemplate,
+        context: {
+          job,
+        },
+      })
+    );
 };

@@ -13,8 +13,7 @@ export default () => {
       allResumatorJob {
         nodes {
           title
-          description
-          department
+          status
         }
       }
     }
@@ -49,10 +48,11 @@ export default () => {
   `;
 
   const JobList = styled.ul`
-    margin: 0 auto;
+    margin: 3rem auto;
     li {
       list-style: none;
       padding: 2rem;
+      text-align: center;
       a {
         font-family: Canela-Bold;
         font-size: 57px;
@@ -95,17 +95,19 @@ export default () => {
       </Filter> */}
       <FullWidthSection height='100%'>
         <JobList>
-          {data.allResumatorJob.nodes.map(job => (
-            <li>
-              <Link
-                to={`/careers/${job.title
-                  .toLowerCase()
-                  .replace(new RegExp(' '), '-')}`}
-              >
-                {job.title}
-              </Link>
-            </li>
-          ))}
+          {data.allResumatorJob.nodes
+            .filter(j => j.status === 'Open')
+            .map(job => (
+              <li>
+                <Link
+                  to={`/careers/${job.title
+                    .toLowerCase()
+                    .replace(new RegExp(' '), '-')}`}
+                >
+                  {job.title}
+                </Link>
+              </li>
+            ))}
         </JobList>
       </FullWidthSection>
     </Layout>
