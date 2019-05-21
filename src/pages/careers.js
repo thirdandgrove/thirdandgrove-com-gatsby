@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 import { colors } from '../styles';
@@ -39,7 +38,6 @@ export default () => {
       text-align: right;
       line-height: 36px;
       padding-right: 15px;
-      /* cursor: pointer; */
       &.active {
         color: ${colors.darkgray};
         text-decoration: underline;
@@ -56,7 +54,7 @@ export default () => {
       a {
         font-family: Canela-Bold;
         font-size: 57px;
-        color: #282829;
+        color: ${colors.darkgray};
         letter-spacing: 0;
         text-align: center;
         line-height: 72px;
@@ -111,6 +109,3 @@ export default () => {
     </Layout>
   );
 };
-
-// TODO: Build out individual job page
-// TODO: implement filtering
