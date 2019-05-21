@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 import ReactHtmlParser from 'react-html-parser';
 
 import Layout from '../components/layout';
+import FullWidthSection from '../components/FullWidthSection';
 
 const ArticleTemplate = ({ data, pageContext }) => {
   const { article } = pageContext;
@@ -62,7 +63,15 @@ const ArticleTemplate = ({ data, pageContext }) => {
         ),
       }}
     >
-      {articleBodyElements}
+      <FullWidthSection
+        height='100%'
+        padding='5rem 8rem'
+        css={css`
+          align-items: flex-start;
+        `}
+      >
+        {articleBodyElements}
+      </FullWidthSection>
     </Layout>
   );
 };
