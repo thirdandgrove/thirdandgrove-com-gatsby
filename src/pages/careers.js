@@ -100,9 +100,7 @@ export default () => {
             .map(job => (
               <li>
                 <Link
-                  to={`/careers/${job.title
-                    .toLowerCase()
-                    .replace(new RegExp(' '), '-')}`}
+                  to={`/careers/${job.title.toLowerCase().replace(/ /g, '-')}`}
                 >
                   {job.title}
                 </Link>

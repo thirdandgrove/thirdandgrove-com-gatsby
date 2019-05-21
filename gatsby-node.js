@@ -162,9 +162,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   studies.data.allCaseStudy.nodes.map(studyData =>
     createPage({
-      path: `/studies/${studyData.title
-        .toLowerCase()
-        .replace(new RegExp(' ', 'g'), '-')}`,
+      path: `/studies/${studyData.title.toLowerCase().replace(/ /g, '-')}`,
       component: Study,
       context: {
         study: { ...studyData },
@@ -190,9 +188,7 @@ exports.createPages = async ({ actions, graphql }) => {
     .filter(j => j.status === 'Open')
     .map(job =>
       createPage({
-        path: `/careers/${job.title
-          .toLowerCase()
-          .replace(new RegExp(' ', 'g'), '-')}`,
+        path: `/careers/${job.title.toLowerCase().replace(/ /g, '-')}`,
         component: JobTemplate,
         context: {
           job,

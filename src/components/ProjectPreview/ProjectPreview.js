@@ -48,11 +48,7 @@ const ProjectPreview = ({ project, index }) => (
       <h1>{project.title}</h1>
       <Button
         onClick={() =>
-          navigate(
-            `/studies/${project.title
-              .toLowerCase()
-              .replace(new RegExp(' '), '-')}`
-          )
+          navigate(`/studies/${project.title.toLowerCase().replace(/ /g, '-')}`)
         }
       >
         view case study
