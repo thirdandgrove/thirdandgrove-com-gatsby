@@ -27,7 +27,7 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  const Article = path.resolve(`src/templates/Article/index.js`);
+  const Article = path.resolve(`src/templates/article.js`);
 
   articles.data.allNodeArticle.nodes.map(articleData =>
     createPage({
@@ -158,15 +158,41 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  const Study = path.resolve(`src/templates/Study/index.js`);
+  const Study = path.resolve(`src/templates/study.js`);
 
   studies.data.allCaseStudy.nodes.map(studyData =>
     createPage({
-      path: `/studies/${studyData.title.toLowerCase().replace(' ', '-')}`,
+      path: `/studies/${studyData.title.toLowerCase().replace(/ /g, '-')}`,
       component: Study,
       context: {
         study: { ...studyData },
       },
     })
   );
+
+  const jobs = await graphql(`
+    query {
+      allResumatorJob {
+        nodes {
+          title
+          description
+          board_code
+          status
+        }
+      }
+    }
+  `);
+
+  const JobTemplate = path.resolve(`src/templates/job.js`);
+  jobs.data.allResumatorJob.nodes
+    .filter(j => j.status === 'Open')
+    .map(job =>
+      createPage({
+        path: `/careers/${job.title.toLowerCase().replace(/ /g, '-')}`,
+        component: JobTemplate,
+        context: {
+          job,
+        },
+      })
+    );
 };

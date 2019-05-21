@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import Img from 'gatsby-image';
 import ReactHtmlParser from 'react-html-parser';
 
-import Layout from '../../components/layout';
+import Layout from '../components/layout';
 
 const ArticleTemplate = ({ data, pageContext }) => {
   const { article } = pageContext;
