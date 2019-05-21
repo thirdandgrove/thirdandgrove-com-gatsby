@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { css } from '@emotion/core';
 
 import Input from '../Input';
@@ -7,6 +7,23 @@ import TextArea from '../TextArea';
 import { mediaQueries } from '../../styles';
 
 const ContactFrom = () => {
+  const [formState, updateForm] = useState({
+    comments: '',
+    email: '',
+    name: '',
+    phone: '',
+    website: '',
+  });
+  const updateInput = event => {
+    updateForm({ ...formState, [event.target.name]: event.target.value });
+  };
+  const submitContact = () => {
+    const { name, email, comments, phone, website } = formState;
+    // validate inpute
+    if ((!name, !email)) {
+      // notify user of required fields
+    }
+  };
   return (
     <main
       css={css`
@@ -33,10 +50,36 @@ const ContactFrom = () => {
           }
         `}
       >
-        <Input type='text' placeholder='name' name='name' />
-        <Input type='email' placeholder='email' name='email' />
-        <Input type='url' placeholder='website' name='website' />
-        <Input type='tel' placeholder='phone' name='phone' />
+        <Input
+          required
+          value={formState.name}
+          onChange={updateInput}
+          type='text'
+          placeholder='name'
+          name='name'
+        />
+        <Input
+          required
+          value={formState.email}
+          onChange={updateInput}
+          type='email'
+          placeholder='email'
+          name='email'
+        />
+        <Input
+          value={formState.website}
+          onChange={updateInput}
+          type='url'
+          placeholder='website'
+          name='website'
+        />
+        <Input
+          value={formState.phone}
+          onChange={updateInput}
+          type='tel'
+          placeholder='phone'
+          name='phone'
+        />
       </span>
       <span
         css={css`
@@ -48,7 +91,12 @@ const ContactFrom = () => {
           }
         `}
       >
-        <TextArea name='comments' placeholder='Leave a message' />
+        <TextArea
+          value={formState.comments}
+          onChange={updateInput}
+          name='comments'
+          placeholder='Leave a message'
+        />
       </span>
       <span
         css={css`
@@ -57,7 +105,7 @@ const ContactFrom = () => {
           margin-top: 4rem;
         `}
       >
-        <Button>send</Button>
+        <Button onClick={submitContact}>send</Button>
       </span>
     </main>
   );
