@@ -19,21 +19,22 @@ const ContactFrom = () => {
   const updateInput = event => {
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
-  // const submitContact = () => {
-  //   const { name, email } = formState;
-  //   // validate inputs
-  //   if (!name || !email) {
-  //     // notify user of required fields
-  //     console.error('missing required fields');
-  //   }
-  //   fetch(`http://localhost:8080/pipedrive`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(formState),
-  //   }).then(() => console.log('success'));
-  // };
+  const submitContact = event => {
+    event.preventDefault();
+    const { name, email } = formState;
+    // validate inputs
+    if (!name || !email) {
+      // notify user of required fields
+      console.error('missing required fields');
+    }
+    fetch(event.target.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formState),
+    }).then(() => console.log('success'));
+  };
   return (
     <main
       css={css`
@@ -48,31 +49,11 @@ const ContactFrom = () => {
       `}
     >
       <form
-        css={css`
-          display: none;
-        `}
-        netlify-honeypot='bot-field'
+        name='contact-us'
+        method='POST'
+        data-netlify='true'
+        onSubmit={submitContact}
       >
-        <p>
-          <label>
-            Don’t fill this out if you are human: <input name='bot-field' />
-          </label>
-        </p>
-        <p>
-          <label>
-            Email: <input type='text' name='email' />
-          </label>
-        </p>
-        <p>
-          <label>
-            Message: <textarea name='message' />
-          </label>
-        </p>
-        <p>
-          <button type='submit'>Send</button>
-        </p>
-      </form>
-      <form name='contact-us' method='POST' data-netlify='true'>
         <span
           css={css`
             display: grid;
