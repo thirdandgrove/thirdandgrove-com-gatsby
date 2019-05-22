@@ -72,7 +72,7 @@ const ContactFrom = () => {
           <button type='submit'>Send</button>
         </p>
       </form>
-      <form name='contact-us' method='post' netlify>
+      <form name='contact-us' method='post' data-netlify='true'>
         <span
           css={css`
             display: grid;
