@@ -54,6 +54,7 @@ const ContactFrom = () => {
         data-netlify='true'
         onSubmit={submitContact}
       >
+        <input type='hidden' name='contact-us' value='contact-us' />
         <span
           css={css`
             display: grid;
