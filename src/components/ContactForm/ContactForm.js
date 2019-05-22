@@ -47,31 +47,32 @@ const ContactFrom = () => {
         }
       `}
     >
-      <form name='contactUs' method='post' netlify netlify-honeypot='bot-field'>
-        <span
-          css={css`
-            display: none;
-          `}
-        >
-          <p>
-            <label>
-              Don’t fill this out if you are human: <input name='bot-field' />
-            </label>
-          </p>
-          <p>
-            <label>
-              Email: <input type='text' name='email' />
-            </label>
-          </p>
-          <p>
-            <label>
-              Message: <textarea name='message' />
-            </label>
-          </p>
-          <p>
-            <button type='submit'>Send</button>
-          </p>
-        </span>
+      <form
+        css={css`
+          display: none;
+        `}
+        netlify-honeypot='bot-field'
+      >
+        <p>
+          <label>
+            Don’t fill this out if you are human: <input name='bot-field' />
+          </label>
+        </p>
+        <p>
+          <label>
+            Email: <input type='text' name='email' />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message: <textarea name='message' />
+          </label>
+        </p>
+        <p>
+          <button type='submit'>Send</button>
+        </p>
+      </form>
+      <form name='contactUs' method='post' netlify>
         <span
           css={css`
             display: grid;
