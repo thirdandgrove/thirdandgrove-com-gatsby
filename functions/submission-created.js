@@ -83,48 +83,34 @@
           const r = JSON.parse(e.body),
             { name: n, email: s, phone: i, website: u, comments: a } = r;
           if (!n || !s) return { statusCode: 400 };
-          console.log(`creating pipedrive entry for ${n}`);
           const c = n.split(' ');
           let [l, f] = c;
-          return (
-            c.length > 2 && (f = c[c.length - 1]),
-            o(`https://api.pipedrive.com/v1/persons?api_token=${t}`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                name: n,
-                first_name: l,
-                last_name: f,
-                email: s,
-                phone: i,
-                '7ec70f1ef58548a7555a66c6677cfd8028529568': u,
-              }),
-            })
-              .then(e => e.json())
-              .then(e => {
-                const r = e.id;
-                return (
-                  console.log(`Successfully created pipedrive entry for ${n}`),
-                  o(`https://api.pipedrive.com/v1/deals?api_token=${t}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                      title: `[Webform] Deal for ${n}`,
-                      person_id: r,
-                      cd2d5edd665b516895a90328d2b9d225c23be2b6: u,
-                      bf37b2226ef4c418719adcbd9ada3d4b731ba8b4: a,
-                    }),
-                  })
-                );
-              })
-              .then(
-                () => (
-                  console.log('Created pipedrive deal successfully'),
-                  { statusCode: 201 }
-                )
-              )
-              .catch(e => (console.log(e), { statusCode: 500 }))
-          );
+          c.length > 2 && (f = c[c.length - 1]),
+            console.log(`creating pipedrive entry for ${n}`);
+          await o(`https://api.pipedrive.com/v1/persons?api_token=${t}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: n,
+              first_name: l,
+              last_name: f,
+              email: s,
+              phone: i,
+              '7ec70f1ef58548a7555a66c6677cfd8028529568': u,
+            }),
+          }).then(e => e.json());
+          console.log('successfully created Person');
+          await o(`https://api.pipedrive.com/v1/deals?api_token=${t}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: `[Webform] Deal for ${n}`,
+              person_id: person_id,
+              cd2d5edd665b516895a90328d2b9d225c23be2b6: u,
+              bf37b2226ef4c418719adcbd9ada3d4b731ba8b4: a,
+            }),
+          });
+          return console.log('successfully created Deal'), { statusCode: 201 };
         } catch (e) {
           return (
             console.log(e),
