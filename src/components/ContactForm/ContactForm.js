@@ -19,6 +19,12 @@ const ContactFrom = () => {
   const updateInput = event => {
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+      .join('&');
+  };
+
   const submitContact = event => {
     event.preventDefault();
     const { name, email } = formState;
@@ -29,10 +35,8 @@ const ContactFrom = () => {
     }
     fetch('/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formState),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...formState }),
     }).then(() =>
       updateForm({
         comments: 'Thank you for your inquiry.',
