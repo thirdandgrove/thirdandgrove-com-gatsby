@@ -1,5 +1,4 @@
-/* eslint-disable */
-!(function(e, t) {
+/* eslint-disable */ !(function(e, t) {
   for (var r in t) e[r] = t[r];
 })(
   exports,
@@ -77,6 +76,7 @@
     function(e, t, r) {
       const o = r(6);
       t.handler = async function(e, t) {
+        console.log(e);
         try {
           const t = process.env.PIPEDRIVE_KEY;
           if ('POST' !== e.httpMethod) return { statusCode: 403 };
@@ -84,16 +84,16 @@
             { name: n, email: s, phone: i, website: u, comments: a } = r;
           if (!n || !s) return { statusCode: 400 };
           console.log(`creating pipedrive entry for ${n}`);
-          const l = n.split(' ');
-          let [c, f] = l;
+          const c = n.split(' ');
+          let [l, f] = c;
           return (
-            l.length > 2 && (f = l[l.length - 1]),
+            c.length > 2 && (f = c[c.length - 1]),
             o(`https://api.pipedrive.com/v1/persons?api_token=${t}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 name: n,
-                first_name: c,
+                first_name: l,
                 last_name: f,
                 email: s,
                 phone: i,
@@ -137,58 +137,75 @@
       'use strict';
       r.r(t),
         r.d(t, 'Headers', function() {
-          return x;
+          return $;
         }),
         r.d(t, 'Request', function() {
-          return I;
+          return D;
         }),
         r.d(t, 'Response', function() {
-          return _;
+          return U;
         }),
         r.d(t, 'FetchError', function() {
-          return f;
+          return d;
         });
       var o = r(0),
         n = r(3),
         s = r(2),
         i = r(4),
         u = r(1);
-      const a = Symbol('buffer'),
+      const a = o.Readable,
+        c = Symbol('buffer'),
         l = Symbol('type');
-      class c {
+      class f {
         constructor() {
           this[l] = '';
           const e = arguments[0],
             t = arguments[1],
             r = [];
+          let o = 0;
           if (e) {
             const t = e,
-              o = Number(t.length);
-            for (let e = 0; e < o; e++) {
-              const o = t[e];
-              let n;
-              (n =
-                o instanceof Buffer
-                  ? o
-                  : ArrayBuffer.isView(o)
-                  ? Buffer.from(o.buffer, o.byteOffset, o.byteLength)
-                  : o instanceof ArrayBuffer
-                  ? Buffer.from(o)
-                  : o instanceof c
-                  ? o[a]
-                  : Buffer.from('string' == typeof o ? o : String(o))),
-                r.push(n);
+              n = Number(t.length);
+            for (let e = 0; e < n; e++) {
+              const n = t[e];
+              let s;
+              (o += (s =
+                n instanceof Buffer
+                  ? n
+                  : ArrayBuffer.isView(n)
+                  ? Buffer.from(n.buffer, n.byteOffset, n.byteLength)
+                  : n instanceof ArrayBuffer
+                  ? Buffer.from(n)
+                  : n instanceof f
+                  ? n[c]
+                  : Buffer.from('string' == typeof n ? n : String(n))).length),
+                r.push(s);
             }
           }
-          this[a] = Buffer.concat(r);
-          let o = t && void 0 !== t.type && String(t.type).toLowerCase();
-          o && !/[^\u0020-\u007E]/.test(o) && (this[l] = o);
+          this[c] = Buffer.concat(r);
+          let n = t && void 0 !== t.type && String(t.type).toLowerCase();
+          n && !/[^\u0020-\u007E]/.test(n) && (this[l] = n);
         }
         get size() {
-          return this[a].length;
+          return this[c].length;
         }
         get type() {
           return this[l];
+        }
+        text() {
+          return Promise.resolve(this[c].toString());
+        }
+        arrayBuffer() {
+          const e = this[c],
+            t = e.buffer.slice(e.byteOffset, e.byteOffset + e.byteLength);
+          return Promise.resolve(t);
+        }
+        stream() {
+          const e = new a();
+          return (e._read = function() {}), e.push(this[c]), e.push(null), e;
+        }
+        toString() {
+          return '[object Blob]';
         }
         slice() {
           const e = this.size,
@@ -199,39 +216,39 @@
             (n =
               void 0 === r ? e : r < 0 ? Math.max(e + r, 0) : Math.min(r, e));
           const s = Math.max(n - o, 0),
-            i = this[a].slice(o, o + s),
-            u = new c([], { type: arguments[2] });
-          return (u[a] = i), u;
+            i = this[c].slice(o, o + s),
+            u = new f([], { type: arguments[2] });
+          return (u[c] = i), u;
         }
       }
-      function f(e, t, r) {
+      function d(e, t, r) {
         Error.call(this, e),
           (this.message = e),
           (this.type = t),
           r && (this.code = this.errno = r.code),
           Error.captureStackTrace(this, this.constructor);
       }
-      let d;
-      Object.defineProperties(c.prototype, {
+      let p;
+      Object.defineProperties(f.prototype, {
         size: { enumerable: !0 },
         type: { enumerable: !0 },
         slice: { enumerable: !0 },
       }),
-        Object.defineProperty(c.prototype, Symbol.toStringTag, {
+        Object.defineProperty(f.prototype, Symbol.toStringTag, {
           value: 'Blob',
           writable: !1,
           enumerable: !1,
           configurable: !0,
         }),
-        (f.prototype = Object.create(Error.prototype)),
-        (f.prototype.constructor = f),
-        (f.prototype.name = 'FetchError');
+        (d.prototype = Object.create(Error.prototype)),
+        (d.prototype.constructor = d),
+        (d.prototype.name = 'FetchError');
       try {
-        d = require('encoding').convert;
+        p = require('encoding').convert;
       } catch (e) {}
       const h = Symbol('Body internals'),
-        p = o.PassThrough;
-      function b(e) {
+        b = o.PassThrough;
+      function y(e) {
         var t = this,
           r =
             arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
@@ -241,14 +258,15 @@
         let u = void 0 === i ? 0 : i;
         null == e
           ? (e = null)
-          : 'string' == typeof e ||
-            m(e) ||
-            e instanceof c ||
+          : g(e)
+          ? (e = Buffer.from(e.toString()))
+          : w(e) ||
             Buffer.isBuffer(e) ||
-            '[object ArrayBuffer]' === Object.prototype.toString.call(e) ||
-            ArrayBuffer.isView(e) ||
-            e instanceof o ||
-            (e = String(e)),
+            ('[object ArrayBuffer]' === Object.prototype.toString.call(e)
+              ? (e = Buffer.from(e))
+              : ArrayBuffer.isView(e)
+              ? (e = Buffer.from(e.buffer, e.byteOffset, e.byteLength))
+              : e instanceof o || (e = Buffer.from(String(e)))),
           (this[h] = { body: e, disturbed: !1, error: null }),
           (this.size = s),
           (this.timeout = u),
@@ -257,7 +275,7 @@
               const r =
                 'AbortError' === e.name
                   ? e
-                  : new f(
+                  : new d(
                       `Invalid response body while trying to fetch ${t.url}: ${
                         e.message
                       }`,
@@ -267,43 +285,29 @@
               t[h].error = r;
             });
       }
-      function y() {
+      function m() {
         var e = this;
         if (this[h].disturbed)
-          return b.Promise.reject(
+          return y.Promise.reject(
             new TypeError(`body used already for: ${this.url}`)
           );
         if (((this[h].disturbed = !0), this[h].error))
-          return b.Promise.reject(this[h].error);
-        if (null === this.body) return b.Promise.resolve(Buffer.alloc(0));
-        if ('string' == typeof this.body)
-          return b.Promise.resolve(Buffer.from(this.body));
-        if (this.body instanceof c) return b.Promise.resolve(this.body[a]);
-        if (Buffer.isBuffer(this.body)) return b.Promise.resolve(this.body);
-        if (
-          '[object ArrayBuffer]' === Object.prototype.toString.call(this.body)
-        )
-          return b.Promise.resolve(Buffer.from(this.body));
-        if (ArrayBuffer.isView(this.body))
-          return b.Promise.resolve(
-            Buffer.from(
-              this.body.buffer,
-              this.body.byteOffset,
-              this.body.byteLength
-            )
-          );
-        if (!(this.body instanceof o))
-          return b.Promise.resolve(Buffer.alloc(0));
-        let t = [],
-          r = 0,
-          n = !1;
-        return new b.Promise(function(o, s) {
-          let i;
+          return y.Promise.reject(this[h].error);
+        let t = this.body;
+        if (null === t) return y.Promise.resolve(Buffer.alloc(0));
+        if ((w(t) && (t = t.stream()), Buffer.isBuffer(t)))
+          return y.Promise.resolve(t);
+        if (!(t instanceof o)) return y.Promise.resolve(Buffer.alloc(0));
+        let r = [],
+          n = 0,
+          s = !1;
+        return new y.Promise(function(o, i) {
+          let u;
           e.timeout &&
-            (i = setTimeout(function() {
-              (n = !0),
-                s(
-                  new f(
+            (u = setTimeout(function() {
+              (s = !0),
+                i(
+                  new d(
                     `Response timeout while trying to fetch ${e.url} (over ${
                       e.timeout
                     }ms)`,
@@ -311,11 +315,11 @@
                   )
                 );
             }, e.timeout)),
-            e.body.on('error', function(t) {
+            t.on('error', function(t) {
               'AbortError' === t.name
-                ? ((n = !0), s(t))
-                : s(
-                    new f(
+                ? ((s = !0), i(t))
+                : i(
+                    new d(
                       `Invalid response body while trying to fetch ${e.url}: ${
                         t.message
                       }`,
@@ -324,29 +328,29 @@
                     )
                   );
             }),
-            e.body.on('data', function(o) {
-              if (!n && null !== o) {
-                if (e.size && r + o.length > e.size)
+            t.on('data', function(t) {
+              if (!s && null !== t) {
+                if (e.size && n + t.length > e.size)
                   return (
-                    (n = !0),
-                    void s(
-                      new f(
+                    (s = !0),
+                    void i(
+                      new d(
                         `content size at ${e.url} over limit: ${e.size}`,
                         'max-size'
                       )
                     )
                   );
-                (r += o.length), t.push(o);
+                (n += t.length), r.push(t);
               }
             }),
-            e.body.on('end', function() {
-              if (!n) {
-                clearTimeout(i);
+            t.on('end', function() {
+              if (!s) {
+                clearTimeout(u);
                 try {
-                  o(Buffer.concat(t));
+                  o(Buffer.concat(r, n));
                 } catch (t) {
-                  s(
-                    new f(
+                  i(
+                    new d(
                       `Could not create Buffer from response body for ${
                         e.url
                       }: ${t.message}`,
@@ -359,7 +363,7 @@
             });
         });
       }
-      function m(e) {
+      function g(e) {
         return (
           'object' == typeof e &&
           'function' == typeof e.append &&
@@ -373,7 +377,19 @@
             'function' == typeof e.sort)
         );
       }
-      function g(e) {
+      function w(e) {
+        return (
+          'object' == typeof e &&
+          'function' == typeof e.arrayBuffer &&
+          'string' == typeof e.type &&
+          'function' == typeof e.stream &&
+          'function' == typeof e.constructor &&
+          'string' == typeof e.constructor.name &&
+          /^(Blob|File)$/.test(e.constructor.name) &&
+          /^(Blob|File)$/.test(e[Symbol.toStringTag])
+        );
+      }
+      function v(e) {
         let t,
           r,
           n = e.body;
@@ -381,8 +397,8 @@
         return (
           n instanceof o &&
             'function' != typeof n.getBoundary &&
-            ((t = new p()),
-            (r = new p()),
+            ((t = new b()),
+            (r = new b()),
             n.pipe(t),
             n.pipe(r),
             (e[h].body = t),
@@ -390,22 +406,35 @@
           n
         );
       }
-      function w(e) {
+      function S(e) {
+        return null === e
+          ? null
+          : 'string' == typeof e
+          ? 'text/plain;charset=UTF-8'
+          : g(e)
+          ? 'application/x-www-form-urlencoded;charset=UTF-8'
+          : w(e)
+          ? e.type || null
+          : Buffer.isBuffer(e)
+          ? null
+          : '[object ArrayBuffer]' === Object.prototype.toString.call(e)
+          ? null
+          : ArrayBuffer.isView(e)
+          ? null
+          : 'function' == typeof e.getBoundary
+          ? `multipart/form-data;boundary=${e.getBoundary()}`
+          : e instanceof o
+          ? null
+          : 'text/plain;charset=UTF-8';
+      }
+      function T(e) {
         const t = e.body;
         return null === t
           ? 0
-          : 'string' == typeof t
-          ? Buffer.byteLength(t)
-          : m(t)
-          ? Buffer.byteLength(String(t))
-          : t instanceof c
+          : w(t)
           ? t.size
           : Buffer.isBuffer(t)
           ? t.length
-          : '[object ArrayBuffer]' === Object.prototype.toString.call(t)
-          ? t.byteLength
-          : ArrayBuffer.isView(t)
-          ? t.byteLength
           : t &&
             'function' == typeof t.getLengthSync &&
             ((t._lengthRetrievers && 0 == t._lengthRetrievers.length) ||
@@ -413,7 +442,7 @@
           ? t.getLengthSync()
           : null;
       }
-      (b.prototype = {
+      (y.prototype = {
         get body() {
           return this[h].body;
         },
@@ -421,26 +450,26 @@
           return this[h].disturbed;
         },
         arrayBuffer() {
-          return y.call(this).then(function(e) {
+          return m.call(this).then(function(e) {
             return e.buffer.slice(e.byteOffset, e.byteOffset + e.byteLength);
           });
         },
         blob() {
           let e = (this.headers && this.headers.get('content-type')) || '';
-          return y.call(this).then(function(t) {
-            return Object.assign(new c([], { type: e.toLowerCase() }), {
-              [a]: t,
+          return m.call(this).then(function(t) {
+            return Object.assign(new f([], { type: e.toLowerCase() }), {
+              [c]: t,
             });
           });
         },
         json() {
           var e = this;
-          return y.call(this).then(function(t) {
+          return m.call(this).then(function(t) {
             try {
               return JSON.parse(t.toString());
             } catch (t) {
-              return b.Promise.reject(
-                new f(
+              return y.Promise.reject(
+                new d(
                   `invalid json response body at ${e.url} reason: ${t.message}`,
                   'invalid-json'
                 )
@@ -449,18 +478,18 @@
           });
         },
         text() {
-          return y.call(this).then(function(e) {
+          return m.call(this).then(function(e) {
             return e.toString();
           });
         },
         buffer() {
-          return y.call(this);
+          return m.call(this);
         },
         textConverted() {
           var e = this;
-          return y.call(this).then(function(t) {
+          return m.call(this).then(function(t) {
             return (function(e, t) {
-              if ('function' != typeof d)
+              if ('function' != typeof p)
                 throw new Error(
                   'The package `encoding` must be installed to use the textConverted() function'
                 );
@@ -481,12 +510,12 @@
               o &&
                 (('gb2312' !== (s = o.pop()) && 'gbk' !== s) ||
                   (s = 'gb18030'));
-              return d(e, 'UTF-8', s).toString();
+              return p(e, 'UTF-8', s).toString();
             })(t, e.headers);
           });
         },
       }),
-        Object.defineProperties(b.prototype, {
+        Object.defineProperties(y.prototype, {
           body: { enumerable: !0 },
           bodyUsed: { enumerable: !0 },
           arrayBuffer: { enumerable: !0 },
@@ -494,36 +523,36 @@
           json: { enumerable: !0 },
           text: { enumerable: !0 },
         }),
-        (b.mixIn = function(e) {
-          for (const t of Object.getOwnPropertyNames(b.prototype))
+        (y.mixIn = function(e) {
+          for (const t of Object.getOwnPropertyNames(y.prototype))
             if (!(t in e)) {
-              const r = Object.getOwnPropertyDescriptor(b.prototype, t);
+              const r = Object.getOwnPropertyDescriptor(y.prototype, t);
               Object.defineProperty(e, t, r);
             }
         }),
-        (b.Promise = global.Promise);
-      const v = /[^\^_`a-zA-Z\-0-9!#$%&'*+.|~]/,
-        S = /[^\t\x20-\x7e\x80-\xff]/;
-      function j(e) {
-        if (((e = `${e}`), v.test(e)))
+        (y.Promise = global.Promise);
+      const O = /[^\^_`a-zA-Z\-0-9!#$%&'*+.|~]/,
+        j = /[^\t\x20-\x7e\x80-\xff]/;
+      function P(e) {
+        if (((e = `${e}`), O.test(e) || '' === e))
           throw new TypeError(`${e} is not a legal HTTP header name`);
       }
-      function O(e) {
-        if (((e = `${e}`), S.test(e)))
+      function x(e) {
+        if (((e = `${e}`), j.test(e)))
           throw new TypeError(`${e} is not a legal HTTP header value`);
       }
-      function T(e, t) {
+      function E(e, t) {
         t = t.toLowerCase();
         for (const r in e) if (r.toLowerCase() === t) return r;
       }
-      const P = Symbol('map');
-      class x {
+      const B = Symbol('map');
+      class $ {
         constructor() {
           let e =
             arguments.length > 0 && void 0 !== arguments[0]
               ? arguments[0]
               : void 0;
-          if (((this[P] = Object.create(null)), e instanceof x)) {
+          if (((this[B] = Object.create(null)), e instanceof $)) {
             const t = e.raw(),
               r = Object.keys(t);
             for (const e of r) for (const r of t[e]) this.append(e, r);
@@ -561,61 +590,61 @@
           }
         }
         get(e) {
-          j((e = `${e}`));
-          const t = T(this[P], e);
-          return void 0 === t ? null : this[P][t].join(', ');
+          P((e = `${e}`));
+          const t = E(this[B], e);
+          return void 0 === t ? null : this[B][t].join(', ');
         }
         forEach(e) {
           let t =
               arguments.length > 1 && void 0 !== arguments[1]
                 ? arguments[1]
                 : void 0,
-            r = E(this),
+            r = C(this),
             o = 0;
           for (; o < r.length; ) {
             var n = r[o];
             const s = n[0],
               i = n[1];
-            e.call(t, i, s, this), (r = E(this)), o++;
+            e.call(t, i, s, this), (r = C(this)), o++;
           }
         }
         set(e, t) {
-          (t = `${t}`), j((e = `${e}`)), O(t);
-          const r = T(this[P], e);
-          this[P][void 0 !== r ? r : e] = [t];
+          (t = `${t}`), P((e = `${e}`)), x(t);
+          const r = E(this[B], e);
+          this[B][void 0 !== r ? r : e] = [t];
         }
         append(e, t) {
-          (t = `${t}`), j((e = `${e}`)), O(t);
-          const r = T(this[P], e);
-          void 0 !== r ? this[P][r].push(t) : (this[P][e] = [t]);
+          (t = `${t}`), P((e = `${e}`)), x(t);
+          const r = E(this[B], e);
+          void 0 !== r ? this[B][r].push(t) : (this[B][e] = [t]);
         }
         has(e) {
-          return j((e = `${e}`)), void 0 !== T(this[P], e);
+          return P((e = `${e}`)), void 0 !== E(this[B], e);
         }
         delete(e) {
-          j((e = `${e}`));
-          const t = T(this[P], e);
-          void 0 !== t && delete this[P][t];
+          P((e = `${e}`));
+          const t = E(this[B], e);
+          void 0 !== t && delete this[B][t];
         }
         raw() {
-          return this[P];
+          return this[B];
         }
         keys() {
-          return $(this, 'key');
+          return A(this, 'key');
         }
         values() {
-          return $(this, 'value');
+          return A(this, 'value');
         }
         [Symbol.iterator]() {
-          return $(this, 'key+value');
+          return A(this, 'key+value');
         }
       }
-      function E(e) {
+      function C(e) {
         let t =
           arguments.length > 1 && void 0 !== arguments[1]
             ? arguments[1]
             : 'key+value';
-        return Object.keys(e[P])
+        return Object.keys(e[B])
           .sort()
           .map(
             'key' === t
@@ -624,21 +653,21 @@
                 }
               : 'value' === t
               ? function(t) {
-                  return e[P][t].join(', ');
+                  return e[B][t].join(', ');
                 }
               : function(t) {
-                  return [t.toLowerCase(), e[P][t].join(', ')];
+                  return [t.toLowerCase(), e[B][t].join(', ')];
                 }
           );
       }
-      (x.prototype.entries = x.prototype[Symbol.iterator]),
-        Object.defineProperty(x.prototype, Symbol.toStringTag, {
+      ($.prototype.entries = $.prototype[Symbol.iterator]),
+        Object.defineProperty($.prototype, Symbol.toStringTag, {
           value: 'Headers',
           writable: !1,
           enumerable: !1,
           configurable: !0,
         }),
-        Object.defineProperties(x.prototype, {
+        Object.defineProperties($.prototype, {
           get: { enumerable: !0 },
           forEach: { enumerable: !0 },
           set: { enumerable: !0 },
@@ -649,42 +678,42 @@
           values: { enumerable: !0 },
           entries: { enumerable: !0 },
         });
-      const B = Symbol('internal');
-      function $(e, t) {
-        const r = Object.create(C);
-        return (r[B] = { target: e, kind: t, index: 0 }), r;
+      const L = Symbol('internal');
+      function A(e, t) {
+        const r = Object.create(k);
+        return (r[L] = { target: e, kind: t, index: 0 }), r;
       }
-      const C = Object.setPrototypeOf(
+      const k = Object.setPrototypeOf(
         {
           next() {
-            if (!this || Object.getPrototypeOf(this) !== C)
+            if (!this || Object.getPrototypeOf(this) !== k)
               throw new TypeError('Value of `this` is not a HeadersIterator');
-            var e = this[B];
+            var e = this[L];
             const t = e.target,
               r = e.kind,
               o = e.index,
-              n = E(t, r);
+              n = C(t, r);
             return o >= n.length
               ? { value: void 0, done: !0 }
-              : ((this[B].index = o + 1), { value: n[o], done: !1 });
+              : ((this[L].index = o + 1), { value: n[o], done: !1 });
           },
         },
         Object.getPrototypeOf(Object.getPrototypeOf([][Symbol.iterator]()))
       );
-      function A(e) {
-        const t = Object.assign({ __proto__: null }, e[P]),
-          r = T(e[P], 'Host');
+      function _(e) {
+        const t = Object.assign({ __proto__: null }, e[B]),
+          r = E(e[B], 'Host');
         return void 0 !== r && (t[r] = t[r][0]), t;
       }
-      Object.defineProperty(C, Symbol.toStringTag, {
+      Object.defineProperty(k, Symbol.toStringTag, {
         value: 'HeadersIterator',
         writable: !1,
         enumerable: !1,
         configurable: !0,
       });
-      const L = Symbol('Response internals'),
-        k = n.STATUS_CODES;
-      class _ {
+      const R = Symbol('Response internals'),
+        z = n.STATUS_CODES;
+      class U {
         constructor() {
           let e =
               arguments.length > 0 && void 0 !== arguments[0]
@@ -694,112 +723,104 @@
               arguments.length > 1 && void 0 !== arguments[1]
                 ? arguments[1]
                 : {};
-          b.call(this, e, t);
-          const r = t.status || 200;
-          this[L] = {
+          y.call(this, e, t);
+          const r = t.status || 200,
+            o = new $(t.headers);
+          if (null != e && !o.has('Content-Type')) {
+            const t = S(e);
+            t && o.append('Content-Type', t);
+          }
+          this[R] = {
             url: t.url,
             status: r,
-            statusText: t.statusText || k[r],
-            headers: new x(t.headers),
+            statusText: t.statusText || z[r],
+            headers: o,
+            counter: t.counter,
           };
         }
         get url() {
-          return this[L].url;
+          return this[R].url || '';
         }
         get status() {
-          return this[L].status;
+          return this[R].status;
         }
         get ok() {
-          return this[L].status >= 200 && this[L].status < 300;
+          return this[R].status >= 200 && this[R].status < 300;
+        }
+        get redirected() {
+          return this[R].counter > 0;
         }
         get statusText() {
-          return this[L].statusText;
+          return this[R].statusText;
         }
         get headers() {
-          return this[L].headers;
+          return this[R].headers;
         }
         clone() {
-          return new _(g(this), {
+          return new U(v(this), {
             url: this.url,
             status: this.status,
             statusText: this.statusText,
             headers: this.headers,
             ok: this.ok,
+            redirected: this.redirected,
           });
         }
       }
-      b.mixIn(_.prototype),
-        Object.defineProperties(_.prototype, {
+      y.mixIn(U.prototype),
+        Object.defineProperties(U.prototype, {
           url: { enumerable: !0 },
           status: { enumerable: !0 },
           ok: { enumerable: !0 },
+          redirected: { enumerable: !0 },
           statusText: { enumerable: !0 },
           headers: { enumerable: !0 },
           clone: { enumerable: !0 },
         }),
-        Object.defineProperty(_.prototype, Symbol.toStringTag, {
+        Object.defineProperty(U.prototype, Symbol.toStringTag, {
           value: 'Response',
           writable: !1,
           enumerable: !1,
           configurable: !0,
         });
-      const z = Symbol('Request internals'),
-        R = s.parse,
-        U = s.format,
-        q = 'destroy' in o.Readable.prototype;
-      function H(e) {
-        return 'object' == typeof e && 'object' == typeof e[z];
+      const q = Symbol('Request internals'),
+        H = s.parse,
+        F = s.format,
+        I = 'destroy' in o.Readable.prototype;
+      function M(e) {
+        return 'object' == typeof e && 'object' == typeof e[q];
       }
-      class I {
+      class D {
         constructor(e) {
           let t,
             r =
               arguments.length > 1 && void 0 !== arguments[1]
                 ? arguments[1]
                 : {};
-          H(e)
-            ? (t = R(e.url))
-            : ((t = e && e.href ? R(e.href) : R(`${e}`)), (e = {}));
+          M(e)
+            ? (t = H(e.url))
+            : ((t = e && e.href ? H(e.href) : H(`${e}`)), (e = {}));
           let o = r.method || e.method || 'GET';
           if (
             ((o = o.toUpperCase()),
-            (null != r.body || (H(e) && null !== e.body)) &&
+            (null != r.body || (M(e) && null !== e.body)) &&
               ('GET' === o || 'HEAD' === o))
           )
             throw new TypeError(
               'Request with GET/HEAD method cannot have body'
             );
           let n =
-            null != r.body ? r.body : H(e) && null !== e.body ? g(e) : null;
-          b.call(this, n, {
+            null != r.body ? r.body : M(e) && null !== e.body ? v(e) : null;
+          y.call(this, n, {
             timeout: r.timeout || e.timeout || 0,
             size: r.size || e.size || 0,
           });
-          const s = new x(r.headers || e.headers || {});
-          if (null != r.body) {
-            const e = (function(e) {
-              const t = e.body;
-              return null === t
-                ? null
-                : 'string' == typeof t
-                ? 'text/plain;charset=UTF-8'
-                : m(t)
-                ? 'application/x-www-form-urlencoded;charset=UTF-8'
-                : t instanceof c
-                ? t.type || null
-                : Buffer.isBuffer(t)
-                ? null
-                : '[object ArrayBuffer]' === Object.prototype.toString.call(t)
-                ? null
-                : ArrayBuffer.isView(t)
-                ? null
-                : 'function' == typeof t.getBoundary
-                ? `multipart/form-data;boundary=${t.getBoundary()}`
-                : null;
-            })(this);
-            null === e || s.has('Content-Type') || s.append('Content-Type', e);
+          const s = new $(r.headers || e.headers || {});
+          if (null != n && !s.has('Content-Type')) {
+            const e = S(n);
+            e && s.append('Content-Type', e);
           }
-          let i = H(e) ? e.signal : null;
+          let i = M(e) ? e.signal : null;
           if (
             ('signal' in r && (i = r.signal),
             null != i &&
@@ -811,7 +832,7 @@
             throw new TypeError(
               'Expected signal to be an instanceof AbortSignal'
             );
-          (this[z] = {
+          (this[q] = {
             method: o,
             redirect: r.redirect || e.redirect || 'follow',
             headers: s,
@@ -832,38 +853,38 @@
             (this.agent = r.agent || e.agent);
         }
         get method() {
-          return this[z].method;
+          return this[q].method;
         }
         get url() {
-          return U(this[z].parsedURL);
+          return F(this[q].parsedURL);
         }
         get headers() {
-          return this[z].headers;
+          return this[q].headers;
         }
         get redirect() {
-          return this[z].redirect;
+          return this[q].redirect;
         }
         get signal() {
-          return this[z].signal;
+          return this[q].signal;
         }
         clone() {
-          return new I(this);
+          return new D(this);
         }
       }
-      function M(e) {
+      function N(e) {
         Error.call(this, e),
           (this.type = 'aborted'),
           (this.message = e),
           Error.captureStackTrace(this, this.constructor);
       }
-      b.mixIn(I.prototype),
-        Object.defineProperty(I.prototype, Symbol.toStringTag, {
+      y.mixIn(D.prototype),
+        Object.defineProperty(D.prototype, Symbol.toStringTag, {
           value: 'Request',
           writable: !1,
           enumerable: !1,
           configurable: !0,
         }),
-        Object.defineProperties(I.prototype, {
+        Object.defineProperties(D.prototype, {
           method: { enumerable: !0 },
           url: { enumerable: !0 },
           headers: { enumerable: !0 },
@@ -871,23 +892,23 @@
           clone: { enumerable: !0 },
           signal: { enumerable: !0 },
         }),
-        (M.prototype = Object.create(Error.prototype)),
-        (M.prototype.constructor = M),
-        (M.prototype.name = 'AbortError');
-      const N = o.PassThrough,
-        F = s.resolve;
+        (N.prototype = Object.create(Error.prototype)),
+        (N.prototype.constructor = N),
+        (N.prototype.name = 'AbortError');
+      const G = o.PassThrough,
+        J = s.resolve;
       function V(e, t) {
         if (!V.Promise)
           throw new Error(
             'native promise missing, set fetch.Promise to your favorite alternative'
           );
         return (
-          (b.Promise = V.Promise),
+          (y.Promise = V.Promise),
           new V.Promise(function(r, s) {
-            const l = new I(e, t),
-              d = (function(e) {
-                const t = e[z].parsedURL,
-                  r = new x(e[z].headers);
+            const a = new D(e, t),
+              c = (function(e) {
+                const t = e[q].parsedURL,
+                  r = new $(e[q].headers);
                 if (
                   (r.has('Accept') || r.set('Accept', '*/*'),
                   !t.protocol || !t.hostname)
@@ -895,7 +916,7 @@
                   throw new TypeError('Only absolute URLs are supported');
                 if (!/^https?:$/.test(t.protocol))
                   throw new TypeError('Only HTTP(S) protocols are supported');
-                if (e.signal && e.body instanceof o.Readable && !q)
+                if (e.signal && e.body instanceof o.Readable && !I)
                   throw new Error(
                     'Cancellation of streamed requests with AbortSignal is not supported in node < 8'
                   );
@@ -906,11 +927,10 @@
                     (n = '0'),
                   null != e.body)
                 ) {
-                  const t = w(e);
+                  const t = T(e);
                   'number' == typeof t && (n = String(t));
                 }
-                return (
-                  n && r.set('Content-Length', n),
+                n && r.set('Content-Length', n),
                   r.has('User-Agent') ||
                     r.set(
                       'User-Agent',
@@ -918,83 +938,84 @@
                     ),
                   e.compress &&
                     !r.has('Accept-Encoding') &&
-                    r.set('Accept-Encoding', 'gzip,deflate'),
-                  r.has('Connection') ||
-                    e.agent ||
-                    r.set('Connection', 'close'),
+                    r.set('Accept-Encoding', 'gzip,deflate');
+                let s = e.agent;
+                return (
+                  'function' == typeof s && (s = s(t)),
+                  r.has('Connection') || s || r.set('Connection', 'close'),
                   Object.assign({}, t, {
                     method: e.method,
-                    headers: A(r),
-                    agent: e.agent,
+                    headers: _(r),
+                    agent: s,
                   })
                 );
-              })(l),
-              h = ('https:' === d.protocol ? i : n).request,
-              p = l.signal;
-            let b = null;
-            const y = function() {
-              let e = new M('The user aborted a request.');
+              })(a),
+              l = ('https:' === c.protocol ? i : n).request,
+              f = a.signal;
+            let p = null;
+            const h = function() {
+              let e = new N('The user aborted a request.');
               s(e),
-                l.body && l.body instanceof o.Readable && l.body.destroy(e),
-                b && b.body && b.body.emit('error', e);
+                a.body && a.body instanceof o.Readable && a.body.destroy(e),
+                p && p.body && p.body.emit('error', e);
             };
-            if (p && p.aborted) return void y();
-            const g = function() {
-                y(), T();
+            if (f && f.aborted) return void h();
+            const b = function() {
+                h(), g();
               },
-              j = h(d);
-            let O;
-            function T() {
-              j.abort(),
-                p && p.removeEventListener('abort', g),
-                clearTimeout(O);
+              y = l(c);
+            let m;
+            function g() {
+              y.abort(),
+                f && f.removeEventListener('abort', b),
+                clearTimeout(m);
             }
-            p && p.addEventListener('abort', g),
-              l.timeout &&
-                j.once('socket', function(e) {
-                  O = setTimeout(function() {
-                    s(new f(`network timeout at: ${l.url}`, 'request-timeout')),
-                      T();
-                  }, l.timeout);
+            f && f.addEventListener('abort', b),
+              a.timeout &&
+                y.once('socket', function(e) {
+                  m = setTimeout(function() {
+                    s(new d(`network timeout at: ${a.url}`, 'request-timeout')),
+                      g();
+                  }, a.timeout);
                 }),
-              j.on('error', function(e) {
+              y.on('error', function(e) {
                 s(
-                  new f(
-                    `request to ${l.url} failed, reason: ${e.message}`,
+                  new d(
+                    `request to ${a.url} failed, reason: ${e.message}`,
                     'system',
                     e
                   )
                 ),
-                  T();
+                  g();
               }),
-              j.on('response', function(e) {
-                clearTimeout(O);
+              y.on('response', function(e) {
+                clearTimeout(m);
                 const t = (function(e) {
-                  const t = new x();
+                  const t = new $();
                   for (const r of Object.keys(e))
-                    if (!v.test(r))
+                    if (!O.test(r))
                       if (Array.isArray(e[r]))
                         for (const o of e[r])
-                          S.test(o) ||
-                            (void 0 === t[P][r]
-                              ? (t[P][r] = [o])
-                              : t[P][r].push(o));
-                      else S.test(e[r]) || (t[P][r] = [e[r]]);
+                          j.test(o) ||
+                            (void 0 === t[B][r]
+                              ? (t[B][r] = [o])
+                              : t[B][r].push(o));
+                      else j.test(e[r]) || (t[B][r] = [e[r]]);
                   return t;
                 })(e.headers);
                 if (V.isRedirect(e.statusCode)) {
                   const o = t.get('Location'),
-                    n = null === o ? null : F(l.url, o);
-                  switch (l.redirect) {
+                    n = null === o ? null : J(a.url, o);
+                  switch (a.redirect) {
                     case 'error':
                       return (
                         s(
-                          new f(
-                            `redirect mode is set to error: ${l.url}`,
+                          new d(
+                            `redirect mode is set to error: ${a.url}`,
                             'no-redirect'
                           )
                         ),
-                        void T()
+                        void g()
                       );
                     case 'manual':
                       if (null !== n)
@@ -1006,84 +1027,96 @@
                       break;
                     case 'follow':
                       if (null === n) break;
-                      if (l.counter >= l.follow)
+                      if (a.counter >= a.follow)
                         return (
                           s(
-                            new f(
-                              `maximum redirect reached at: ${l.url}`,
+                            new d(
+                              `maximum redirect reached at: ${a.url}`,
                               'max-redirect'
                             )
                           ),
-                          void T()
+                          void g()
                         );
                       const o = {
-                        headers: new x(l.headers),
-                        follow: l.follow,
-                        counter: l.counter + 1,
-                        agent: l.agent,
-                        compress: l.compress,
-                        method: l.method,
-                        body: l.body,
-                        signal: l.signal,
+                        headers: new $(a.headers),
+                        follow: a.follow,
+                        counter: a.counter + 1,
+                        agent: a.agent,
+                        compress: a.compress,
+                        method: a.method,
+                        body: a.body,
+                        signal: a.signal,
+                        timeout: a.timeout,
                       };
-                      return 303 !== e.statusCode && l.body && null === w(l)
+                      return 303 !== e.statusCode && a.body && null === T(a)
                         ? (s(
-                            new f(
+                            new d(
                               'Cannot follow redirect with body being a readable stream',
                               'unsupported-redirect'
                             )
                           ),
-                          void T())
+                          void g())
                         : ((303 !== e.statusCode &&
                             ((301 !== e.statusCode && 302 !== e.statusCode) ||
-                              'POST' !== l.method)) ||
+                              'POST' !== a.method)) ||
                             ((o.method = 'GET'),
                             (o.body = void 0),
                             o.headers.delete('content-length')),
-                          r(V(new I(n, o))),
-                          void T());
+                          r(V(new D(n, o))),
+                          void g());
                   }
                 }
                 e.once('end', function() {
-                  p && p.removeEventListener('abort', g);
+                  f && f.removeEventListener('abort', b);
                 });
-                let o = e.pipe(new N());
+                let o = e.pipe(new G());
                 const n = {
-                    url: l.url,
+                    url: a.url,
                     status: e.statusCode,
                     statusText: e.statusMessage,
                     headers: t,
-                    size: l.size,
-                    timeout: l.timeout,
+                    size: a.size,
+                    timeout: a.timeout,
+                    counter: a.counter,
                   },
                   i = t.get('Content-Encoding');
                 if (
-                  !l.compress ||
-                  'HEAD' === l.method ||
+                  !a.compress ||
+                  'HEAD' === a.method ||
                   null === i ||
                   204 === e.statusCode ||
                   304 === e.statusCode
                 )
-                  return (b = new _(o, n)), void r(b);
-                const a = {
+                  return (p = new U(o, n)), void r(p);
+                const c = {
                   flush: u.Z_SYNC_FLUSH,
                   finishFlush: u.Z_SYNC_FLUSH,
                 };
                 if ('gzip' == i || 'x-gzip' == i)
                   return (
-                    (o = o.pipe(u.createGunzip(a))),
-                    (b = new _(o, n)),
-                    void r(b)
+                    (o = o.pipe(u.createGunzip(c))),
+                    (p = new U(o, n)),
+                    void r(p)
                   );
-                if ('deflate' != i && 'x-deflate' != i) (b = new _(o, n)), r(b);
-                else {
-                  e.pipe(new N()).once('data', function(e) {
+                if ('deflate' != i && 'x-deflate' != i) {
+                  if (
+                    'br' == i &&
+                    'function' == typeof u.createBrotliDecompress
+                  )
+                    return (
+                      (o = o.pipe(u.createBrotliDecompress())),
+                      (p = new U(o, n)),
+                      void r(p)
+                    );
+                  (p = new U(o, n)), r(p);
+                } else {
+                  e.pipe(new G()).once('data', function(e) {
                     (o =
                       8 == (15 & e[0])
                         ? o.pipe(u.createInflate())
                         : o.pipe(u.createInflateRaw())),
-                      (b = new _(o, n)),
-                      r(b);
+                      (p = new U(o, n)),
+                      r(p);
                   });
                 }
               }),
@@ -1091,21 +1124,12 @@
                 const r = t.body;
                 null === r
                   ? e.end()
-                  : 'string' == typeof r
-                  ? (e.write(r), e.end())
-                  : m(r)
-                  ? (e.write(Buffer.from(String(r))), e.end())
-                  : r instanceof c
-                  ? (e.write(r[a]), e.end())
+                  : w(r)
+                  ? r.stream().pipe(e)
                   : Buffer.isBuffer(r)
                   ? (e.write(r), e.end())
-                  : '[object ArrayBuffer]' === Object.prototype.toString.call(r)
-                  ? (e.write(Buffer.from(r)), e.end())
-                  : ArrayBuffer.isView(r)
-                  ? (e.write(Buffer.from(r.buffer, r.byteOffset, r.byteLength)),
-                    e.end())
                   : r.pipe(e);
-              })(j, l);
+              })(y, a);
           })
         );
       }

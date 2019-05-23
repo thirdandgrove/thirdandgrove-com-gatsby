@@ -1,6 +1,7 @@
 /* eslint-disable */
 const fetch = require('node-fetch');
 exports.handler = async function(event, context) {
+  console.log(event);
   try {
     const key = process.env.PIPEDRIVE_KEY;
 
