@@ -27,13 +27,21 @@ const ContactFrom = () => {
       // notify user of required fields
       console.error('missing required fields');
     }
-    fetch(event.target.action, {
+    fetch('/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formState),
-    }).then(() => console.log('success'));
+    }).then(() =>
+      updateForm({
+        comments: 'Thank you for your inquiry.',
+        email: '',
+        name: '',
+        phone: '',
+        website: '',
+      })
+    );
   };
   return (
     <main
