@@ -1,8 +1,8 @@
 {
-  "name": "node-fetch",
+  "name": "submission-created",
   "version": "1.0.0",
-  "description": "netlify functions:create - default template for node fetch function",
-  "main": "node-fetch.js",
+  "description": "handle netlify form submissions",
+  "main": "submission-created.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
