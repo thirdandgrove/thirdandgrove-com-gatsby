@@ -2,7 +2,7 @@
   "name": "submission-created",
   "version": "1.0.0",
   "description": "handle netlify form submissions",
-  "main": "submission-created.js",
+  "main": "./submission-created.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
