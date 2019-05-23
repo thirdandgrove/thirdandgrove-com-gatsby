@@ -49,12 +49,12 @@ const ContactFrom = () => {
       `}
     >
       <form
-        name='contact-us'
+        name='contact'
         method='POST'
         data-netlify='true'
         onSubmit={submitContact}
       >
-        <input type='hidden' name='contact-us' value='contact-us' />
+        <input type='hidden' name='contact' value='contact' />
         <span
           css={css`
             display: grid;
