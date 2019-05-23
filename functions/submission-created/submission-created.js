@@ -15,15 +15,15 @@ exports.handler = async function(event, context) {
     if (!name || !email) {
       return { statusCode: 400 };
     }
+    console.log(`creating pipedrive entry for ${name}`);
 
     const names = name.split(' ');
-    // eslint-disable-next-line prefer-const
     let [first_name, last_name] = names;
     if (names.length > 2) {
       last_name = names[names.length - 1];
     }
     // add person to pipedrive
-    fetch(`https://api.pipedrive.com/v1/persons?api_token=${key}`, {
+    return fetch(`https://api.pipedrive.com/v1/persons?api_token=${key}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -38,7 +38,9 @@ exports.handler = async function(event, context) {
       .then(data => data.json())
       .then(person => {
         const person_id = person.id;
-        fetch(`https://api.pipedrive.com/v1/deals?api_token=${key}`, {
+        console.log(`Successfully created pipedrive entry for ${name}`);
+
+        return fetch(`https://api.pipedrive.com/v1/deals?api_token=${key}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -49,13 +51,16 @@ exports.handler = async function(event, context) {
           }),
         });
       })
+      .then(() => {
+        console.log(`Created pipedrive deal successfully`);
+        return { statusCode: 201 };
+      })
       .catch(err => {
         console.log(err);
         return {
           statusCode: 500,
         };
       });
-    return { statusCode: 201 };
   } catch (err) {
     console.log(err); // output to netlify function log
     return {
