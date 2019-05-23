@@ -76,7 +76,7 @@
     function(e, t, r) {
       const o = r(6);
       t.handler = async function(e, t) {
-        console.log(e);
+        console.log('Event body: ', e.body);
         try {
           const t = process.env.PIPEDRIVE_KEY;
           if ('POST' !== e.httpMethod) return { statusCode: 403 };
