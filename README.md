@@ -8,6 +8,8 @@ Gatsby rebuild of the TAG website
 yarn
 ```
 
+copy the `sample.env` to `.env` and add the appropriate credentials.
+
 ## Development
 
 ```
