@@ -19,22 +19,40 @@ const InsightsSlider = () => {
     <StaticQuery
       query={graphql`
         {
-          allNodeArticle(sort: { fields: created, order: DESC }, limit: 10) {
+          allInsight {
             nodes {
+              id
               title
-              body {
-                processed
-                summary
-              }
-              path {
-                alias
-              }
-              created(formatString: "MMMM DD YYYY")
+              field_inverse_header
               relationships {
                 uid {
-                  name
+                  field_job_title
                   field_last_name
                   field_first_name
+                }
+                field_components {
+                  ... on component__text {
+                    relationships {
+                      component_type {
+                        name
+                      }
+                    }
+                    field_body {
+                      processed
+                    }
+                  }
+                  ... on component__image {
+                    relationships {
+                      component_type {
+                        name
+                      }
+                      field_image {
+                        localFile {
+                          publicURL
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -50,7 +68,7 @@ const InsightsSlider = () => {
               max-height: 100%;
             `}
           >
-            {data.allNodeArticle.nodes.map(node => {
+            {data.allInsight.nodes.map(node => {
               return <ArticlePreview key={node.title} article={node} />;
             })}
           </Slider>

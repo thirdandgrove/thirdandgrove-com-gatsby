@@ -51,7 +51,7 @@ const ArticlePreview = ({ article }) => {
             text-decoration: none;
             color: ${colors.black};
           `}
-          to={`/articles${article.path.alias}`}
+          to={`/insights/${article.title.toLowerCase().replace(/ /g, '-')}`}
         >
           <p
             css={css`

@@ -6,13 +6,16 @@ import { colors } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
-const StudyTemplate = ({ pageContext }) => {
-  const { study } = pageContext;
+const PostTemplate = ({ pageContext }) => {
+  const { post } = pageContext;
   return (
     <Layout
       headerData={{
-        backgroundImage: study.relationships.field_image.localFile.publicURL,
-        invert: study.field_inverse_header,
+        backgroundImage: post.relationships.field_image
+          ? post.relationships.field_image.localFile.publicURL
+          : null,
+        title: post.relationships.field_image ? null : post.relationships.title,
+        invert: post.field_inverse_header,
       }}
     >
       <header
@@ -31,7 +34,7 @@ const StudyTemplate = ({ pageContext }) => {
             padding-top: 3rem;
           `}
         >
-          {study.title}
+          {post.title}
         </h1>
         <h4
           css={css`
@@ -42,7 +45,9 @@ const StudyTemplate = ({ pageContext }) => {
             line-height: 16px;
           `}
         >
-          {study.relationships.field_tags.map(tag => tag.name).join(', ')}
+          {post.relationships.field_tags
+            ? post.relationships.field_tags.map(tag => tag.name).join(', ')
+            : null}
         </h4>
       </header>
       <p
@@ -56,9 +61,9 @@ const StudyTemplate = ({ pageContext }) => {
           padding-left: 3rem;
         `}
       >
-        {study.field_subtitle}
+        {post.field_subtitle}
       </p>
-      {study.relationships.field_components.map(comp => {
+      {post.relationships.field_components.map(comp => {
         // Dynamically select a component based on field name
         const componentName = comp.relationships.component_type.name
           .split(' ')
@@ -70,8 +75,8 @@ const StudyTemplate = ({ pageContext }) => {
   );
 };
 
-StudyTemplate.propTypes = {
+PostTemplate.propTypes = {
   pageContext: PropTypes.object.isRequired,
 };
 
-export default StudyTemplate;
+export default PostTemplate;

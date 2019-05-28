@@ -2,6 +2,7 @@ const path = require('path');
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
+
   const articles = await graphql(`
     query {
       allNodeArticle(sort: { fields: created, order: DESC }, limit: 25) {
@@ -40,13 +41,12 @@ exports.createPages = async ({ actions, graphql }) => {
   );
 
   const studies = await graphql(`
-    query {
+    {
       allCaseStudy {
         nodes {
           id
           title
           field_subtitle
-          field_inverse_header
           field_primary_image_scale
           field_tertiary_image_scale
           field_secondary_image_scale
@@ -158,14 +158,62 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  const Study = path.resolve(`src/templates/study.js`);
+  const Post = path.resolve(`src/templates/post.js`);
 
   studies.data.allCaseStudy.nodes.map(studyData =>
     createPage({
       path: `/studies/${studyData.title.toLowerCase().replace(/ /g, '-')}`,
-      component: Study,
+      component: Post,
       context: {
-        study: { ...studyData },
+        post: { ...studyData },
+      },
+    })
+  );
+
+  const insights = await graphql(`
+    {
+      allInsight {
+        nodes {
+          id
+          title
+          field_inverse_header
+          relationships {
+            field_components {
+              ... on component__text {
+                relationships {
+                  component_type {
+                    name
+                  }
+                }
+                field_body {
+                  processed
+                }
+              }
+              ... on component__image {
+                relationships {
+                  component_type {
+                    name
+                  }
+                  field_image {
+                    localFile {
+                      publicURL
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  insights.data.allInsight.nodes.map(insightgData =>
+    createPage({
+      path: `/insights/${insightgData.title.toLowerCase().replace(/ /g, '-')}`,
+      component: Post,
+      context: {
+        post: { ...insightgData },
       },
     })
   );
