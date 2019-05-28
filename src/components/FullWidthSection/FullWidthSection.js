@@ -14,4 +14,5 @@ export default styled.section`
   overflow: hidden;
   background-position: center;
   padding: ${props => props.padding};
+  text-align: ${props => props.textAlign};
 `;
