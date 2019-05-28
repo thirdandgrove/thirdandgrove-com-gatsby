@@ -25,6 +25,9 @@ const InsightsSlider = () => {
               title
               field_inverse_header
               relationships {
+                node_type {
+                  name
+                }
                 uid {
                   field_job_title
                   field_last_name

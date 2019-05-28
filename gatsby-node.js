@@ -52,6 +52,9 @@ exports.createPages = async ({ actions, graphql }) => {
           field_secondary_image_scale
           field_inverse_header
           relationships {
+            node_type {
+              name
+            }
             field_components {
               # ... on component__text {
               #   relationships {
@@ -178,6 +181,9 @@ exports.createPages = async ({ actions, graphql }) => {
           title
           field_inverse_header
           relationships {
+            node_type {
+              name
+            }
             field_components {
               ... on component__text {
                 relationships {
@@ -208,12 +214,12 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  insights.data.allInsight.nodes.map(insightgData =>
+  insights.data.allInsight.nodes.map(insightData =>
     createPage({
-      path: `/insights/${insightgData.title.toLowerCase().replace(/ /g, '-')}`,
+      path: `/insights/${insightData.title.toLowerCase().replace(/ /g, '-')}`,
       component: Post,
       context: {
-        post: { ...insightgData },
+        post: { ...insightData },
       },
     })
   );
