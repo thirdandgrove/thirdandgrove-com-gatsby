@@ -75,15 +75,15 @@ exports.createPages = async ({ actions, graphql }) => {
               #     }
               #   }
               # }
-              # ... on component__quote {
-              #   relationships {
-              #     component_type {
-              #       name
-              #     }
-              #   }
-              #   field_quote
-              #   field_footer_text
-              # }
+              ... on component__quote {
+                relationships {
+                  component_type {
+                    name
+                  }
+                }
+                field_quote
+                field_footer_text
+              }
               ... on component__prefooter {
                 field_body {
                   processed
