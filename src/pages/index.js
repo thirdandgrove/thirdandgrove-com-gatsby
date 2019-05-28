@@ -9,6 +9,7 @@ import { ContactUs, BeUs } from '../components/Prefooter';
 import ProjectsSlider from '../components/ProjectsSlider';
 
 export default () => {
+  // this will be implemented in a future iteration
   //
   // const duration = 10000;
   // const taglines = [
