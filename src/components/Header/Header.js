@@ -37,7 +37,7 @@ const Header = ({
     font-weight: 300;
     width: 60%;
     text-align: center;
-    color: ${defaultBackground ? '#282829' : '#efefef'};
+    color: ${defaultBackground ? colors.darkgray : '#efefef'};
     ${mediaQueries.phoneLarge} {
       font-size: 39px;
       font-weight: 500;

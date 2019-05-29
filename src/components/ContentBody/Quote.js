@@ -41,7 +41,7 @@ const Quote = ({ data }) => {
         css={css`
           font-family: NBInternationalPro-Reg;
           font-size: 21px;
-          color: #282829;
+          color: ${colors.darkgray};
           letter-spacing: 0;
           line-height: 36px;
         `}

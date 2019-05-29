@@ -74,7 +74,7 @@ export default () => {
               h1 {
                 font-family: 'Canela-Medium';
                 font-size: 120px;
-                color: #282829;
+                color: ${colors.darkgray};
                 letter-spacing: -1.38px;
                 text-align: center;
                 line-height: 84px;
@@ -82,7 +82,7 @@ export default () => {
               h3 {
                 font-family: 'NBInternationalPro-Bol';
                 font-size: 14px;
-                color: #282829;
+                color: ${colors.darkgray};
                 letter-spacing: 2.5px;
                 text-align: center;
                 line-height: 24px;

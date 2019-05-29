@@ -5,6 +5,7 @@ import { css } from '@emotion/core';
 
 import Button from '../Button';
 import ImageCollage from './ImageCollage';
+import { colors } from '../../styles';
 
 const ProjectPreview = ({ project, index }) => (
   <div
@@ -20,7 +21,7 @@ const ProjectPreview = ({ project, index }) => (
         h3 {
           width: 150px;
           height: 40px;
-          color: #282829;
+          color: ${colors.darkgray};
           font-family: Canela-Thin;
           font-size: 36px;
           font-weight: 100;
@@ -31,7 +32,7 @@ const ProjectPreview = ({ project, index }) => (
         h1 {
           width: 1120px;
           height: 222px;
-          color: #282829;
+          color: ${colors.darkgray};
           font-family: Canela;
           font-size: 104px;
           font-weight: 900;

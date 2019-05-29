@@ -3,6 +3,7 @@ import { css } from '@emotion/core';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { colors } from '../styles';
 
 export default () => {
   return (
@@ -20,7 +21,7 @@ export default () => {
             width: 60%;
             font-family: 'NB International Pro';
             font-size: 21px;
-            color: #282829;
+            color: ${colors.darkgray};
             letter-spacing: 0;
             line-height: 36px;
             &:first-of-type {
