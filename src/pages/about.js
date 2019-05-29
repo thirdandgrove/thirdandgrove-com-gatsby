@@ -10,7 +10,8 @@ export default () => {
   const h4style = css`
     font-family: 'NBInternationalPro-Reg';
     font-size: 27px;
-    color: ${colors.darkgray};
+    color: ${colors.darkgrayFaded};
+    font-weight: 100;
     letter-spacing: 0.15px;
     text-align: center;
     line-height: 42px;
@@ -49,8 +50,9 @@ export default () => {
       </FullWidthSection>
       <FullWidthSection
         backgroundColor={colors.yellow}
-        padding='20vw'
+        padding='10vw'
         textAlign='center'
+        height='100%'
       >
         <h3 css={h3style}>On Working Remotely</h3>
         <h1 css={h1style}>Empowering our people.</h1>
@@ -60,8 +62,53 @@ export default () => {
           to do their best work. Here’s a few reasons we are champions for the
           remote work movement.
         </h4>
+        <section
+          css={css`
+            display: flex;
+            justify-content: space-between;
+            padding-top: 5rem;
+            div {
+              display: flex;
+              flex-direction: column;
+              padding: 1rem 3rem;
+              h1 {
+                font-family: 'Canela-Medium';
+                font-size: 120px;
+                color: #282829;
+                letter-spacing: -1.38px;
+                text-align: center;
+                line-height: 84px;
+              }
+              h3 {
+                font-family: 'NBInternationalPro-Bol';
+                font-size: 14px;
+                color: #282829;
+                letter-spacing: 2.5px;
+                text-align: center;
+                line-height: 24px;
+              }
+            }
+          `}
+        >
+          <div>
+            <h1>01</h1>
+            <h3>drive efficiency</h3>
+          </div>
+          <div>
+            <h1>02</h1>
+            <h3>boost morale</h3>
+          </div>
+          <div>
+            <h1>03</h1>
+            <h3>greater diversity</h3>
+          </div>
+          <div>
+            <h1>04</h1>
+            <h3>good for the planet</h3>
+          </div>
+        </section>
       </FullWidthSection>
-      <WhereWeAre />
+      <WhereWeAre h1style={h1style} h3style={h3style} h4style={h4style} />
     </Layout>
   );
 };

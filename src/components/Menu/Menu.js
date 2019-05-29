@@ -50,6 +50,7 @@ const Menu = ({ height }) => {
       css={css`
         position: absolute;
         width: 100vw;
+        height: '100%';
         min-height: ${height};
         display: flex;
         padding: 3rem;
