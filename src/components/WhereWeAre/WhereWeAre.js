@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
 import { css } from '@emotion/core';
+import Slider from 'react-slick';
 
 import FullWidthSection from '../FullWidthSection';
 import { colors } from '../../styles';
@@ -25,6 +28,7 @@ export default ({ h3style, h4style, h1style }) => {
           `}
         >
           <h1
+            onClick={() => updateSelection('boston')}
             css={[
               h1style,
               css`
@@ -32,6 +36,7 @@ export default ({ h3style, h4style, h1style }) => {
                 color: ${selected === 'boston'
                   ? colors.yellow
                   : colors.darkgray};
+                cursor: pointer;
                 ::before {
                   content: '1';
                   font-size: 18px;
@@ -46,6 +51,7 @@ export default ({ h3style, h4style, h1style }) => {
             Boston
           </h1>
           <h1
+            onClick={() => updateSelection('oakland')}
             css={[
               h1style,
               css`
@@ -53,6 +59,7 @@ export default ({ h3style, h4style, h1style }) => {
                 color: ${selected === 'oakland'
                   ? colors.yellow
                   : colors.darkgray};
+                cursor: pointer;
                 ::before {
                   content: '2';
                   font-family: Canela-Medium;
@@ -68,8 +75,26 @@ export default ({ h3style, h4style, h1style }) => {
             Oakland
           </h1>
         </article>
-        <article>copy changes based on selection</article>
+        <article
+          css={css`
+            width: 50vw;
+            h4 {
+              ${h4style}
+            }
+          `}
+        >
+          {selected === 'boston' && (
+            <h4>
+              While we are fully remote, the rest of the workforce hasn’t caught
+              up with us. To accomodate client needs and serve pockets of
+              workers, we have West and East Coast offices. You don’t have to
+              visit them, but feel free to stop by anytime.
+            </h4>
+          )}
+          {selected === 'oakland' && <h4>...copy for oakland</h4>}
+        </article>
       </section>
+      <Slider>{/* content pending */}</Slider>
     </FullWidthSection>
   );
 };
