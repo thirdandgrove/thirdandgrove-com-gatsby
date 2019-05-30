@@ -7,7 +7,7 @@ import { colors, jsBreakpoints } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
 const Text = ({ data }) => {
-  const size = useWindow();
+  const { width } = useWindow();
 
   const textCss = css`
     p {
@@ -21,7 +21,7 @@ const Text = ({ data }) => {
   return (
     <FullWidthSection
       height='100%'
-      padding={size.width > jsBreakpoints.phoneLarge ? '3rem 16rem' : '3rem'}
+      padding={width > jsBreakpoints.phoneLarge ? '3rem 16rem' : '3rem'}
     >
       <section
         css={textCss}

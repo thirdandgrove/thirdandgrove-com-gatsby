@@ -15,7 +15,7 @@ const TopNav = ({ height, invert }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
-  const size = useWindow();
+  const { width } = useWindow();
   return (
     <>
       <span
@@ -38,7 +38,7 @@ const TopNav = ({ height, invert }) => {
         <Link to='/'>
           {/* this guard keeps the Gatsby build from breaking */}
           {typeof window !== 'undefined' &&
-            (size.width > jsBreakpoints.phoneLarge ? (
+            (width > jsBreakpoints.phoneLarge ? (
               <ThirdAndGrove
                 css={css`
                   height: 150px;
