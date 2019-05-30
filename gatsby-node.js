@@ -180,6 +180,7 @@ exports.createPages = async ({ actions, graphql }) => {
           id
           title
           field_inverse_header
+          created(formatString: "MMMM DD YYYY")
           relationships {
             node_type {
               name

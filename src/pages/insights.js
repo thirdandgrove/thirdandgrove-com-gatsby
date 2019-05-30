@@ -46,22 +46,47 @@ export default () => {
     <StaticQuery
       query={graphql`
         {
-          allNodeArticle(sort: { fields: created, order: DESC }, limit: 10) {
+          allInsight {
             nodes {
+              id
               title
-              body {
-                processed
-                summary
-              }
-              path {
-                alias
-              }
+              field_inverse_header
               created(formatString: "MMMM DD YYYY")
               relationships {
-                uid {
+                node_type {
                   name
+                }
+                field_tags {
+                  id
+                }
+                uid {
+                  field_job_title
                   field_last_name
                   field_first_name
+                }
+                field_components {
+                  ... on component__text {
+                    relationships {
+                      component_type {
+                        name
+                      }
+                    }
+                    field_body {
+                      processed
+                    }
+                  }
+                  ... on component__image {
+                    relationships {
+                      component_type {
+                        name
+                      }
+                      field_image {
+                        localFile {
+                          publicURL
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -69,7 +94,7 @@ export default () => {
         }
       `}
       render={data => {
-        const articles = data.allNodeArticle.nodes;
+        const articles = data.allInsight.nodes;
         // newest article is in the header
         const headerArticle = articles[0];
         // remove the header article so it isnt repeated
@@ -107,7 +132,9 @@ export default () => {
                       text-decoration: none;
                       color: white;
                     `}
-                    to={`/articles${headerArticle.path.alias}`}
+                    to={`/insights/${headerArticle.title
+                      .toLowerCase()
+                      .replace(/ /g, '-')}`}
                   >
                     read more
                   </Link>
