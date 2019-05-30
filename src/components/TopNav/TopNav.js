@@ -36,6 +36,7 @@ const TopNav = ({ height, invert }) => {
         `}
       >
         <Link to='/'>
+          {/* this guard keeps the Gatsby build from breaking */}
           {typeof window !== 'undefined' &&
             (size.width > jsBreakpoints.phoneLarge ? (
               <ThirdAndGrove
