@@ -64,6 +64,7 @@ const ContactFrom = () => {
         name='contact'
         method='POST'
         data-netlify='true'
+        netlify-honeypot='bot-field'
         onSubmit={submitContact}
       >
         <input type='hidden' name='contact' value='contact' />
