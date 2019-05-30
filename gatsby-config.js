@@ -30,16 +30,6 @@ module.exports = {
         display: `minimal-ui`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-drupal`,
-    //   options: {
-    //     baseUrl: process.env.DRUPAL_URL,
-    //     basicAuth: {
-    //       username: process.env.BASIC_AUTH_USERNAME,
-    //       password: process.env.BASIC_AUTH_PASSWORD,
-    //     },
-    //   },
-    // },
     {
       resolve: `gatsby-source-drupal`,
       options: {
@@ -56,6 +46,6 @@ module.exports = {
         apiKey: process.env.RESUMATOR_API_KEY,
       },
     },
-    `gatsby-plugin-offline`, // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
+    `gatsby-plugin-offline`,
   ],
 };
