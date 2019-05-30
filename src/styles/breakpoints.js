@@ -6,3 +6,8 @@ export const mediaQueries = breakpoints.reduce((acc, bp, i) => {
   acc[names[i]] = `@media (max-width: ${bp}px)`;
   return acc;
 }, {});
+
+export const jsBreakpoints = breakpoints.reduce((acc, bp, i) => {
+  acc[names[i]] = bp;
+  return acc;
+}, {});

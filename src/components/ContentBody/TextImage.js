@@ -15,11 +15,16 @@ const TextImage = ({ data }) => {
       line-height: 36px;
     }
   `;
+  const imageCss = css`
+    justify-self: center;
+    align-self: center;
+  `;
   return (
-    <SplitSection padding=' 0 3rem'>
+    <SplitSection padding='3rem'>
       {data.field_reversed ? (
         <>
           <img
+            css={imageCss}
             src={data.relationships.field_image.localFile.publicURL}
             alt='article text split'
           />
@@ -35,6 +40,7 @@ const TextImage = ({ data }) => {
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
           />
           <img
+            css={imageCss}
             src={data.relationships.field_image.localFile.publicURL}
             alt='article text split'
           />
