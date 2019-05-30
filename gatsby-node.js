@@ -3,43 +3,6 @@ const path = require('path');
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const articles = await graphql(`
-    query {
-      allNodeArticle(sort: { fields: created, order: DESC }, limit: 25) {
-        nodes {
-          title
-          body {
-            processed
-            summary
-          }
-          path {
-            alias
-          }
-          created(formatString: "MMMM DD YYYY")
-          relationships {
-            uid {
-              name
-              field_last_name
-              field_first_name
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  const Article = path.resolve(`src/templates/article.js`);
-
-  articles.data.allNodeArticle.nodes.map(articleData =>
-    createPage({
-      path: `/articles${articleData.path.alias}`,
-      component: Article,
-      context: {
-        article: { ...articleData },
-      },
-    })
-  );
-
   const studies = await graphql(`
     {
       allCaseStudy {
@@ -53,6 +16,9 @@ exports.createPages = async ({ actions, graphql }) => {
           field_inverse_header
           relationships {
             node_type {
+              name
+            }
+            uid {
               name
             }
             field_components {
@@ -180,8 +146,12 @@ exports.createPages = async ({ actions, graphql }) => {
           id
           title
           field_inverse_header
+          created(formatString: "MMMM DD YYYY")
           relationships {
             node_type {
+              name
+            }
+            uid {
               name
             }
             field_components {

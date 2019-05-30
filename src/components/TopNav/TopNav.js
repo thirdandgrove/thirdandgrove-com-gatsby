@@ -9,13 +9,13 @@ import { ReactComponent as TAG } from './svg/tagLogo.svg';
 import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
 import Close from './svg/close';
 import Hamburger from './svg/hamburger';
-import { colors, mediaQueries } from '../../styles';
+import { colors, mediaQueries, jsBreakpoints } from '../../styles';
 
 const TopNav = ({ height, invert }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
-  const size = useWindow();
+  const { width } = useWindow();
   return (
     <>
       <span
@@ -36,8 +36,9 @@ const TopNav = ({ height, invert }) => {
         `}
       >
         <Link to='/'>
+          {/* this guard keeps the Gatsby build from breaking */}
           {typeof window !== 'undefined' &&
-            (size.width > 900 ? (
+            (width > jsBreakpoints.phoneLarge ? (
               <ThirdAndGrove
                 css={css`
                   height: 150px;

@@ -24,14 +24,13 @@ const InsightsSlider = () => {
               id
               title
               field_inverse_header
+              created(formatString: "MMMM DD YYYY")
               relationships {
                 node_type {
                   name
                 }
                 uid {
-                  field_job_title
-                  field_last_name
-                  field_first_name
+                  name
                 }
                 field_components {
                   ... on component__text {

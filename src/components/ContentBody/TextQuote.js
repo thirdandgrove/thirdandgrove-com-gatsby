@@ -22,6 +22,7 @@ const TextQuote = ({ data }) => {
     color: ${colors.darkgray};
     letter-spacing: 0;
     line-height: 76px;
+    padding: 1rem;
   `;
   const BigYellow = styled.span`
     transform: scaleX(-1);
@@ -30,11 +31,13 @@ const TextQuote = ({ data }) => {
     color: ${colors.yellow};
     letter-spacing: 0;
     line-height: 76px;
-    padding: 0 1rem;
+    padding: 0;
   `;
   const BigQuote = () => <BigYellow>&quot;</BigYellow>;
+
+  // TODO: Quote attribution
   return (
-    <SplitSection padding=' 0 3rem'>
+    <SplitSection padding='3rem'>
       {data.field_reversed ? (
         <>
           <section
@@ -45,11 +48,7 @@ const TextQuote = ({ data }) => {
         </>
       ) : (
         <>
-          <section
-            css={css`
-              display: flex;
-            `}
-          >
+          <section css={quoteCss}>
             <BigQuote />
             <span css={quoteCss}>
               {data.field_quote}

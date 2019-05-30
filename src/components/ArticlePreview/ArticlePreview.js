@@ -61,10 +61,7 @@ const ArticlePreview = ({ article }) => {
             {article.title}
           </p>
           <footer>
-            {`${article.created} -
-        ${article.relationships.uid.field_first_name} ${
-              article.relationships.uid.field_last_name
-            }`}
+            {`${article.created} - ${article.relationships.uid.name}`}
           </footer>
         </Link>
       </span>
