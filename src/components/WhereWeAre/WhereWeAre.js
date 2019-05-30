@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
-import { navigate } from 'gatsby';
 import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
 import FullWidthSection from '../FullWidthSection';
 import { colors } from '../../styles';
-import Button from '../Button';
 
 export default ({ h3style, h4style, h1style }) => {
   const [selected, updateSelection] = useState('boston');
@@ -124,44 +122,10 @@ export default ({ h3style, h4style, h1style }) => {
             <li>Other</li>
             <li>Places</li>
             <li>Oaktown</li>
-            <li>IS Known For</li>
+            <li>Is Known For</li>
           </ul>
         </>
       )}
-      <FullWidthSection
-        height='550px'
-        css={css`
-          background-color: ${colors.lightblue};
-          z-index: 1;
-          height: 550px;
-          &::after {
-            content: '';
-            background: url('images/menuBackdrop.webp');
-            opacity: 0.15;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            position: absolute;
-            z-index: -1;
-          }
-        `}
-      >
-        <h3 css={h3style}>Making Moves?</h3>
-        <h1
-          css={[
-            h1style,
-            css`
-              padding: 2rem 0;
-            `,
-          ]}
-        >
-          Show us what you&apos;re made of.
-        </h1>
-        <Button onClick={() => navigate(`/careers`)}>
-          view open positions
-        </Button>
-      </FullWidthSection>
     </FullWidthSection>
   );
 };

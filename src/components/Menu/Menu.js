@@ -7,7 +7,7 @@ import { colors, mediaQueries } from '../../styles';
 
 const Menu = ({ height }) => {
   const linkStyle = css`
-    color: #282829;
+    color: ${colors.darkgray};
     text-decoration: none;
   `;
   const sectionStyle = css`
@@ -23,7 +23,7 @@ const Menu = ({ height }) => {
       font-family: 'Canela-Thin';
       font-weight: 300;
       font-size: 21px;
-      color: #282829;
+      color: ${colors.darkgray};
       letter-spacing: -0.1px;
       text-align: center;
       line-height: 81px;
@@ -35,7 +35,7 @@ const Menu = ({ height }) => {
     h1 {
       font-family: 'Canela-Medium';
       font-size: 48px;
-      color: #282829;
+      color: ${colors.darkgray};
       letter-spacing: -0.2px;
       text-align: center;
       line-height: 81px;

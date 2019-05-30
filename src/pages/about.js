@@ -1,10 +1,12 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import WhereWeAre from '../components/WhereWeAre';
 import { colors } from '../styles';
+import Button from '../components/Button';
 
 export default () => {
   const h4style = css`
@@ -74,7 +76,7 @@ export default () => {
               h1 {
                 font-family: 'Canela-Medium';
                 font-size: 120px;
-                color: #282829;
+                color: ${colors.darkgray};
                 letter-spacing: -1.38px;
                 text-align: center;
                 line-height: 84px;
@@ -82,7 +84,7 @@ export default () => {
               h3 {
                 font-family: 'NBInternationalPro-Bol';
                 font-size: 14px;
-                color: #282829;
+                color: ${colors.darkgray};
                 letter-spacing: 2.5px;
                 text-align: center;
                 line-height: 24px;
@@ -109,6 +111,40 @@ export default () => {
         </section>
       </FullWidthSection>
       <WhereWeAre h1style={h1style} h3style={h3style} h4style={h4style} />
+      <FullWidthSection
+        height='550px'
+        css={css`
+          background-color: ${colors.lightblue};
+          z-index: 1;
+          height: 550px;
+          &::after {
+            content: '';
+            background: url('images/menuBackdrop.webp');
+            opacity: 0.15;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+          }
+        `}
+      >
+        <h3 css={h3style}>Making Moves?</h3>
+        <h1
+          css={[
+            h1style,
+            css`
+              padding: 2rem 0;
+            `,
+          ]}
+        >
+          Show us what you&apos;re made of.
+        </h1>
+        <Button onClick={() => navigate(`/careers`)}>
+          view open positions
+        </Button>
+      </FullWidthSection>
     </Layout>
   );
 };

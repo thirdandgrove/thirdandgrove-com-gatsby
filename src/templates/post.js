@@ -59,7 +59,7 @@ const PostTemplate = ({ pageContext }) => {
         css={css`
           font-family: Canela-Thin;
           font-size: 39px;
-          color: #282829;
+          color: ${colors.darkgray};
           letter-spacing: -0.45px;
           line-height: 84px;
           padding-top: 3rem;

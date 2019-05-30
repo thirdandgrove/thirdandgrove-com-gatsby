@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 import ArticlePreview from '../components/ArticlePreview';
 import Layout from '../components/layout';
+import { colors } from '../styles';
 
 export default () => {
   const List = styled.div`
@@ -37,7 +38,7 @@ export default () => {
       padding-right: 15px;
       cursor: pointer;
       &.active {
-        color: #282829;
+        color: ${colors.darkgray};
       }
     }
   `;
