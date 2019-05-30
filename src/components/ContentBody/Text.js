@@ -16,12 +16,7 @@ const Text = ({ data }) => {
     }
   `;
   return (
-    <FullWidthSection
-      css={css`
-        padding: 3rem;
-        height: 100%;
-      `}
-    >
+    <FullWidthSection height='100%' padding='3rem 16rem'>
       <section
         css={textCss}
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
