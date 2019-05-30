@@ -43,10 +43,11 @@ const ArticleTemplate = ({ data, pageContext }) => {
                 padding: 2rem;
               `}
             >
-              {`${article.created} -
+              {article.created}
+              {/* {`${article.created} - // users are not currently configured in Drupal
         ${article.relationships.uid.field_first_name} ${
                 article.relationships.uid.field_last_name
-              }`}
+              }`} */}
             </span>
             <h3
               css={css`

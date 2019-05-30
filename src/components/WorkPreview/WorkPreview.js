@@ -59,10 +59,11 @@ const WorkPreview = ({ article }) => {
             {article.title}
           </p>
           <footer>
-            {`${article.created} -
+            {article.created}
+            {/* {`${article.created} - // users are currently not configured in the Drupal instance
         ${article.relationships.uid.field_first_name} ${
               article.relationships.uid.field_last_name
-            }`}
+            }`} */}
           </footer>
         </span>
       </Card>

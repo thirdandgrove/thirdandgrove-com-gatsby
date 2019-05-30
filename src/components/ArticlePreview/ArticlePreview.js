@@ -61,10 +61,11 @@ const ArticlePreview = ({ article }) => {
             {article.title}
           </p>
           <footer>
-            {`${article.created} -
+            {article.created}
+            {/* {`${article.created} - // this is currently disabled because suers are not configured in the new drupal instance
         ${article.relationships.uid.field_first_name} ${
               article.relationships.uid.field_last_name
-            }`}
+            }`} */}
           </footer>
         </Link>
       </span>

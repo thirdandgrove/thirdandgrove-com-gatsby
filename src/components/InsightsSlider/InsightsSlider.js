@@ -29,11 +29,10 @@ const InsightsSlider = () => {
                 node_type {
                   name
                 }
-                uid {
-                  field_job_title
-                  field_last_name
-                  field_first_name
-                }
+                # uid { this fails currently because users are not configured in the new drupal instance
+                #   field_last_name
+                #   field_first_name
+                # }
                 field_components {
                   ... on component__text {
                     relationships {

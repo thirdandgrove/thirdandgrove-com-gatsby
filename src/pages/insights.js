@@ -59,11 +59,10 @@ export default () => {
                 field_tags {
                   id
                 }
-                uid {
-                  field_job_title
-                  field_last_name
-                  field_first_name
-                }
+                # uid { // users are not currently configured in drupal
+                #   field_last_name
+                #   field_first_name
+                # }
                 field_components {
                   ... on component__text {
                     relationships {
@@ -111,10 +110,11 @@ export default () => {
                       padding: 2rem;
                     `}
                   >
-                    {`${headerArticle.created} -
+                    {headerArticle.created}
+                    {/* {`${headerArticle.created} - // users are not currently configured in Drupal
           ${headerArticle.relationships.uid.field_first_name} ${
                       headerArticle.relationships.uid.field_last_name
-                    }`}
+                    }`} */}
                   </span>
                   <h3
                     css={css`
