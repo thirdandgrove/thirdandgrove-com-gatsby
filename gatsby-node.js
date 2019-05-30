@@ -18,6 +18,9 @@ exports.createPages = async ({ actions, graphql }) => {
             node_type {
               name
             }
+            uid {
+              name
+            }
             field_components {
               # ... on component__text {
               #   relationships {
@@ -146,6 +149,9 @@ exports.createPages = async ({ actions, graphql }) => {
           created(formatString: "MMMM DD YYYY")
           relationships {
             node_type {
+              name
+            }
+            uid {
               name
             }
             field_components {
