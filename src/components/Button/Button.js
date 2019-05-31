@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-
 import { colors } from '../../styles';
 
 export default ({ children }) => {
   const Button = styled.button`
     position: relative;
     min-width: 220px;
-    padding: 11px 15px;
+    padding: 12px 15px 10px;
     border: none;
     outline: none;
     font-family: 'NB International Pro';
@@ -43,7 +42,7 @@ export default ({ children }) => {
     <Button>
       <span
         css={css`
-          height: 3rem;
+          position: relative;
         `}
       >
         {children}
