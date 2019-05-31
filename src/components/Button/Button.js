@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors } from '../../styles';
 
-export default ({ children }) => {
+export default ({ children, ...props }) => {
   const Button = styled.button`
     position: relative;
     min-width: 220px;
@@ -39,7 +39,7 @@ export default ({ children }) => {
     }
   `;
   return (
-    <Button>
+    <Button {...props}>
       <span
         css={css`
           position: relative;
