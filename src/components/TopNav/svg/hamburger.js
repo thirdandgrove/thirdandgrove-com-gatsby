@@ -1,46 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 
-const Hamburger = ({ fill }) => (
+const Hamburger = ({ fill, isOpen }) => (
   <svg
     width='25px'
-    height='25px'
-    viewBox='0 0 21 21'
+    height='23px'
+    viewBox='0 0 25 23'
     version='1.1'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <g
-      id='Concept-01'
-      stroke='none'
-      strokeWidth='1'
-      fill='none'
-      fillRule='evenodd'
-    >
-      <g id='Desktop---Menu' transform='translate(-1287.000000, -33.000000)'>
-        <rect x='0' y='0' width='1440' height='700' />
-        <g
-          id='X-Icon'
-          transform='translate(1287.000000, 33.000000)'
-          fill={fill}
-        >
-          <rect
-            id='Rectangle'
-            transform='translate(10.500000, 10.500000) rotate(45.000000) translate(-10.500000, -10.500000) '
-            x='-2'
-            y='9'
-            width='25'
-            height='3'
-          />
-          <rect
-            id='Rectangle'
-            transform='translate(10.500000, 10.500000) rotate(-45.000000) translate(-10.500000, -10.500000) '
-            x='-2'
-            y='9'
-            width='25'
-            height='3'
-          />
-        </g>
-      </g>
+    <g id='Hamburger'>
+      <rect
+        fill={fill}
+        id='Rectangle'
+        x='0'
+        y='0'
+        width='25'
+        height='3'
+        css={css`
+          display: block;
+          transform-box: fill-box;
+          transition: 0.3s ease transform;
+          transform: ${isOpen
+            ? 'rotate(0deg) translateY(0)'
+            : 'rotate(-45deg) translateY(10px)'};
+          transform-origin: 12.5px 10.5px;
+        `}
+      />
+      <rect
+        fill={fill}
+        id='Rectangle'
+        x='8'
+        y='10'
+        width='17'
+        height='3'
+        css={css`
+          display: block;
+          transform-box: fill-box;
+          transition: 0.3s ease transform;
+          transform: ${isOpen ? 'scaleX(1)' : 'scaleX(0)'};
+          transform-origin: ${isOpen ? '100% 100%' : '0 0'};
+        `}
+      />
+      <rect
+        fill={fill}
+        id='Rectangle'
+        x='0'
+        y='20'
+        width='25'
+        height='3'
+        css={css`
+          display: block;
+          transform-box: fill-box;
+          transition: 0.3s ease transform;
+          transform: ${isOpen
+            ? 'rotate(0deg) translateY(0)'
+            : 'rotate(45deg) translateY(-10px)'};
+          transform-origin: 12.5px -7.5px;
+        `}
+      />
     </g>
   </svg>
 );
