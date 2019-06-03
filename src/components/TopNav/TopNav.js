@@ -7,7 +7,6 @@ import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { ReactComponent as TAG } from './svg/tagLogo.svg';
 import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
-import Close from './svg/close';
 import Hamburger from './svg/hamburger';
 import { colors, mediaQueries, jsBreakpoints } from '../../styles';
 
@@ -61,6 +60,7 @@ const TopNav = ({ height, invert }) => {
             margin: 0;
             border: none;
             min-height: 25px;
+            cursor: pointer;
             :focus {
               outline: none;
             }
@@ -68,15 +68,14 @@ const TopNav = ({ height, invert }) => {
           type='button'
           onClick={() => toggleOpen()}
         >
-          {isOpen ? (
-            <Hamburger fill={invert ? colors.white : colors.darkgray} />
-          ) : (
-            <Close fill={invert ? colors.white : colors.darkgray} />
-          )}
+          <Hamburger
+            fill={invert ? colors.white : colors.darkgray}
+isOpen={isOpen}
+          />
         </button>
       </span>
       {/* // some transition in/out? */}
-      {isOpen && <Menu toggleOpen={toggleOpen} height={height} />}
+      <Menu toggleOpen={toggleOpen} height={height} menuOpen={isOpen} />
     </>
   );
 };
