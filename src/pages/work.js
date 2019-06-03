@@ -123,7 +123,6 @@ export default () => {
             }}
           >
             <Categories>
-              {/* query generated from tags? */}
               <ul>
                 <li className='active'>all</li>
                 {tags.map(tag => (
@@ -150,8 +149,11 @@ export default () => {
                     </h3>
                   </Link>
                   <ul>
-                    {study.relationships.field_tags.map(tag => (
-                      <li>{tag.name.toLowerCase()},</li>
+                    {study.relationships.field_tags.map((tag, i, arr) => (
+                      <li>
+                        {tag.name.toLowerCase()}
+                        {i !== arr.length - 1 && ','}
+                      </li>
                     ))}
                   </ul>
                 </StudyPreview>
