@@ -75,7 +75,7 @@ const TopNav = ({ height, invert }) => {
         </button>
       </span>
       {/* // some transition in/out? */}
-      {isOpen && <Menu toggleOpen={toggleOpen} height={height} />}
+      <Menu toggleOpen={toggleOpen} height={height} menuOpen={isOpen} />
     </>
   );
 };
