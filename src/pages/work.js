@@ -1,9 +1,9 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
+import Image from '../components/ContentBody';
 import { colors } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -34,7 +34,38 @@ export default () => {
       }
     }
   `;
-  const StudyPreview = styled.div``;
+  const StudyPreview = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    a {
+      text-decoration: none;
+      color: ${colors.darkgray};
+      padding: 2rem 0;
+      h1 {
+        display: inline;
+      }
+      h3 {
+        display: inline;
+      }
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      padding: 2rem 0;
+      margin: 0;
+      flex-direction: row;
+      li {
+        padding-right: 1rem;
+      }
+    }
+  `;
+  const BrandList = styled.div`
+    display: flex;
+    width: 80vw;
+    justify-content: space-around;
+    padding-top: 2rem;
+  `;
   return (
     <StaticQuery
       query={graphql`
@@ -45,15 +76,11 @@ export default () => {
               title
               field_subtitle
               field_inverse_header
-              field_primary_image_scale
-              field_tertiary_image_scale
-              field_secondary_image_scale
               relationships {
                 field_tags {
                   name
                 }
                 field_image {
-                  id
                   localFile {
                     publicURL
                   }
@@ -69,11 +96,11 @@ export default () => {
           <Layout
             headerData={{
               children: (
-                <>
+                <BrandList>
                   <p>google</p>
                   <p>google</p>
                   <p>google</p>
-                </>
+                </BrandList>
               ),
               title: 'We work with brands we love.',
             }}
@@ -90,13 +117,30 @@ export default () => {
                 <li>drupal</li>
               </ul>
             </Categories>
-            <FullWidthSection>
-              {studies.map(study => (
+            {studies.map(study => (
+              <FullWidthSection height='100%' id={study.id}>
                 <StudyPreview>
-                  <pre>{JSON.stringify(study)}</pre>
+                  <img
+                    src={study.relationships.field_image.localFile.publicURL}
+                    alt={study.title}
+                  />
+                  <Link
+                    to={`/studies/${study.title
+                      .toLowerCase()
+                      .replace(/ /g, '-')}`}
+                  >
+                    <h1>{study.title}</h1>
+                    {' - '}
+                    <h3>{study.field_subtitle}</h3>
+                  </Link>
+                  <ul>
+                    {study.relationships.field_tags.map(tag => (
+                      <li>{tag.name}</li>
+                    ))}
+                  </ul>
                 </StudyPreview>
-              ))}
-            </FullWidthSection>
+              </FullWidthSection>
+            ))}
           </Layout>
         );
       }}
