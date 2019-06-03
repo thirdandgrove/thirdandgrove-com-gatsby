@@ -23,8 +23,8 @@ const Hamburger = ({ fill, isOpen }) => (
           transform-box: fill-box;
           transition: 0.3s ease transform;
           transform: ${isOpen
-            ? 'rotate(0deg) translateY(0)'
-            : 'rotate(-45deg) translateY(10px)'};
+            ? 'rotate(-45deg) translateY(10px)'
+            : 'rotate(0) translateY(0)'};
           transform-origin: 12.5px 10.5px;
         `}
       />
@@ -55,8 +55,8 @@ const Hamburger = ({ fill, isOpen }) => (
           transform-box: fill-box;
           transition: 0.3s ease transform;
           transform: ${isOpen
-            ? 'rotate(0deg) translateY(0)'
-            : 'rotate(45deg) translateY(-10px)'};
+            ? 'rotate(45deg) translateY(-10px)'
+            : 'rotate(0deg) translateY(0)'};
           transform-origin: 12.5px -7.5px;
         `}
       />
