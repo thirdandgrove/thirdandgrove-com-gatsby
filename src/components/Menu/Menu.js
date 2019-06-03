@@ -5,19 +5,28 @@ import { css } from '@emotion/core';
 
 import { colors, mediaQueries } from '../../styles';
 
-const Menu = ({ height }) => {
+const Menu = ({ height, menuOpen }) => {
   const linkStyle = css`
-    color: ${colors.darkgray};
+    color: ${colors.darkgrayFaded};
     text-decoration: none;
+    transition: 0.3s ease color;
+    &:hover,
+    &:focus {
+      color: ${colors.darkgray};
+    }
   `;
   const sectionStyle = css`
-    padding: 3rem;
+    padding: 6rem 3rem 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     ${mediaQueries.phoneLarge} {
       padding: 0;
+
+      &:first-child {
+        padding-top: 3rem;
+      }
     }
     h5 {
       font-family: 'Canela-Thin';
@@ -35,7 +44,6 @@ const Menu = ({ height }) => {
     h1 {
       font-family: 'Canela-Medium';
       font-size: 48px;
-      color: ${colors.darkgray};
       letter-spacing: -0.2px;
       text-align: center;
       line-height: 81px;
@@ -50,19 +58,18 @@ const Menu = ({ height }) => {
       css={css`
         position: absolute;
         width: 100vw;
-        height: ${height};
-        min-height: ${height};
+        height: ${menuOpen ? height : '0'};
         display: flex;
-        padding: 3rem;
         justify-content: center;
         background-color: ${colors.lightblue};
+        transition: 0.3s ease height;
+        overflow: hidden;
         z-index: 1;
         ${mediaQueries.phoneLarge} {
           flex-direction: column;
           justify-content: flex-start;
-          height: 100%;
+          height: ${menuOpen ? '100%' : '0'};
           padding: 0;
-          padding-top: 3rem;
         }
         &::after {
           content: '';
