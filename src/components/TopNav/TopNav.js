@@ -70,7 +70,7 @@ const TopNav = ({ height, invert }) => {
         >
           <Hamburger
             fill={invert ? colors.white : colors.darkgray}
-            isOpen={!isOpen}
+isOpen={isOpen}
           />
         </button>
       </span>
