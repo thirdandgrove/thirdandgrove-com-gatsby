@@ -3,7 +3,6 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
-import Image from '../components/ContentBody';
 import { colors } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -23,7 +22,7 @@ export default () => {
       list-style: none;
       font-family: NBInternationalPro-Bol;
       font-size: 15px;
-      color: #757575;
+      color: ${colors.darkgrayFaded};
       letter-spacing: 2px;
       text-align: right;
       line-height: 36px;
@@ -31,6 +30,7 @@ export default () => {
       cursor: pointer;
       &.active {
         color: ${colors.darkgray};
+        text-decoration: underline;
       }
     }
   `;
@@ -38,25 +38,35 @@ export default () => {
     display: flex;
     flex-direction: column;
     width: 80vw;
+    padding-bottom: 5rem;
     a {
       text-decoration: none;
       color: ${colors.darkgray};
-      padding: 2rem 0;
+      padding-top: 2rem;
       h1 {
+        font-size: 48px;
         display: inline;
       }
       h3 {
+        font-size: 48px;
+        font-family: Canela-Thin;
         display: inline;
+        font-weight: 100;
       }
     }
     ul {
       list-style: none;
       display: flex;
-      padding: 2rem 0;
       margin: 0;
       flex-direction: row;
       li {
-        padding-right: 1rem;
+        padding-right: 0.5rem;
+        font-family: NBInternationalPro-Bol;
+        font-variant: small-caps;
+        font-size: 15px;
+        color: ${colors.darkgray};
+        letter-spacing: 2px;
+        line-height: 36px;
       }
     }
   `;
@@ -88,10 +98,17 @@ export default () => {
               }
             }
           }
+          allTaxonomyTermCaseStudyTags {
+            nodes {
+              id
+              name
+            }
+          }
         }
       `}
       render={data => {
         const studies = data.allCaseStudy.nodes;
+        const tags = data.allTaxonomyTermCaseStudyTags.nodes;
         return (
           <Layout
             headerData={{
@@ -109,12 +126,9 @@ export default () => {
               {/* query generated from tags? */}
               <ul>
                 <li className='active'>all</li>
-                <li>design</li>
-                <li>strategy</li>
-                <li>engineering</li>
-                <li>shopify</li>
-                <li>acquia</li>
-                <li>drupal</li>
+                {tags.map(tag => (
+                  <li>{tag.name.toLowerCase()}</li>
+                ))}
               </ul>
             </Categories>
             {studies.map(study => (
@@ -130,12 +144,14 @@ export default () => {
                       .replace(/ /g, '-')}`}
                   >
                     <h1>{study.title}</h1>
-                    {' - '}
-                    <h3>{study.field_subtitle}</h3>
+                    <h3>
+                      {' – '}
+                      {study.field_subtitle}
+                    </h3>
                   </Link>
                   <ul>
                     {study.relationships.field_tags.map(tag => (
-                      <li>{tag.name}</li>
+                      <li>{tag.name.toLowerCase()},</li>
                     ))}
                   </ul>
                 </StudyPreview>
