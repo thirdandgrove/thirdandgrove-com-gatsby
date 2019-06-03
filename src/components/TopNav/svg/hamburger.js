@@ -40,7 +40,7 @@ const Hamburger = ({ fill, isOpen }) => (
           transform-box: fill-box;
           transition: 0.3s ease transform;
           transform: ${isOpen ? 'scaleX(1)' : 'scaleX(0)'};
-          transform-origin: ${isOpen ? '100% 100%' : '0 0'};
+transform-origin: ${isOpen ? '0 0' : '100% 100%' };
         `}
       />
       <rect
