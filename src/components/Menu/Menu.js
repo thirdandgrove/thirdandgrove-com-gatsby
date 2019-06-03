@@ -6,26 +6,34 @@ import { css } from '@emotion/core';
 import { colors, mediaQueries } from '../../styles';
 
 const Menu = ({ height, menuOpen }) => {
-  const linkStyle = css`
-    color: ${colors.darkgrayFaded};
-    text-decoration: none;
-    transition: 0.3s ease color;
-    &:hover,
-    &:focus {
-      color: ${colors.darkgray};
+  const linkPrimaryStyle = css`
+    font-size: 48px;
+    line-height: 81px;
+    ${mediaQueries.desktop} {
+      line-height: 60px;
+      font-size: 36px;
+    }
+    ${mediaQueries.phoneLarge} {
+      line-height: 39px;
+      font-size: 24px;
+    }
+  `;
+  const linkSecondaryStyle = css`
+    font-size: 36px;
+    line-height: 60px;
+    ${mediaQueries.phoneLarge} {
+      line-height: 39px;
+      font-size: 24px;
     }
   `;
   const sectionStyle = css`
     padding: 6rem 3rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
     ${mediaQueries.phoneLarge} {
-      padding: 0;
+      padding: 30px 0 0;
 
       &:first-child {
-        padding-top: 3rem;
+        padding-top: 5rem;
       }
     }
     h5 {
@@ -39,17 +47,21 @@ const Menu = ({ height, menuOpen }) => {
       ${mediaQueries.phoneLarge} {
         line-height: 15px;
         font-size: 15px;
+        margin-bottom: 10px;
       }
     }
-    h1 {
+    a {
+      display: block;
+      color: ${colors.darkgrayFaded};
+      text-decoration: none;
+      transition: 0.3s ease color;
       font-family: 'Canela-Medium';
-      font-size: 48px;
       letter-spacing: -0.2px;
       text-align: center;
-      line-height: 81px;
-      ${mediaQueries.phoneLarge} {
-        line-height: 39px;
-        font-size: 24px;
+
+      &:hover,
+      &:focus {
+        color: ${colors.darkgray};
       }
     }
   `;
@@ -61,6 +73,7 @@ const Menu = ({ height, menuOpen }) => {
         height: ${menuOpen ? height : '0'};
         display: flex;
         justify-content: center;
+        align-items: center;
         background-color: ${colors.lightblue};
         transition: 0.3s ease height;
         overflow: hidden;
@@ -84,43 +97,56 @@ const Menu = ({ height, menuOpen }) => {
         }
       `}
     >
-      <section css={sectionStyle}>
-        <h5>Contents</h5>
-        <Link css={linkStyle} to='/work'>
-          <h1>Work</h1>
-        </Link>
-        <Link css={linkStyle} to='/capabilities'>
-          <h1>Capabilities</h1>
-        </Link>
-        <Link css={linkStyle} to='/insights'>
-          <h1>Insights</h1>
-        </Link>
-      </section>
+      <div
+        css={css`
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          width: 100%;
+          padding: 0 100px;
+          ${mediaQueries.phoneLarge} {
+            display: block;
+          }
+        `}
+      >
+        <section css={sectionStyle}>
+          <h5>Contents</h5>
+          <Link css={linkPrimaryStyle} to='/work'>
+            Work
+          </Link>
+          <Link css={linkPrimaryStyle} to='/capabilities'>
+            Capabilities
+          </Link>
+          <Link css={linkPrimaryStyle} to='/insights'>
+            Insights
+          </Link>
+        </section>
 
-      <section css={sectionStyle}>
-        <h5>Company</h5>
-        <Link css={linkStyle} to='/about'>
-          <h1>About</h1>
-        </Link>
-        <Link css={linkStyle} to='/careers'>
-          <h1>Careers</h1>
-        </Link>
-        <Link css={linkStyle} to='/contact'>
-          <h1>Contact</h1>
-        </Link>
-      </section>
-      <section css={sectionStyle}>
-        <h5>Partners</h5>
-        <Link css={linkStyle} to='/drupal'>
-          <h1>Drupal</h1>
-        </Link>
-        <Link css={linkStyle} to='/acquia'>
-          <h1>Acquia</h1>
-        </Link>
-        <Link css={linkStyle} to='/shopify'>
-          <h1>Shopify</h1>
-        </Link>
-      </section>
+        <section css={sectionStyle}>
+          <h5>Company</h5>
+          <Link css={linkPrimaryStyle} to='/about'>
+            About
+          </Link>
+          <Link css={linkPrimaryStyle} to='/careers'>
+            Careers
+          </Link>
+          <Link css={linkPrimaryStyle} to='/contact'>
+            Contact
+          </Link>
+        </section>
+        <section css={sectionStyle}>
+          <h5>Partners</h5>
+          <Link css={linkSecondaryStyle} to='/drupal'>
+            Drupal
+          </Link>
+          <Link css={linkSecondaryStyle} to='/acquia'>
+            Acquia
+          </Link>
+          <Link css={linkSecondaryStyle} to='/shopify'>
+            Shopify
+          </Link>
+        </section>
+      </div>
     </nav>
   );
 };
