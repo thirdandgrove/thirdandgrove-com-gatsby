@@ -7,7 +7,7 @@ export default ({ children, ...props }) => {
   const Button = styled.button`
     position: relative;
     min-width: 220px;
-    padding: 12px 15px 10px;
+    padding: 0;
     border: none;
     outline: none;
     font-family: 'NB International Pro';
@@ -19,6 +19,23 @@ export default ({ children, ...props }) => {
     background: transparent;
     color: ${colors.darkgray};
     cursor: pointer;
+
+    span {
+      display: block;
+      position: relative;
+      padding: 12px 15px 10px;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(
+        to bottom,
+        ${colors.darkgray},
+        ${colors.darkgray} 50%,
+        ${colors.white} 50%
+      );
+      background-size: 100% 200%;
+      background-position: top;
+      transition: all 0.3s ease;
+    }
     &::before {
       content: '';
       display: block;
@@ -32,7 +49,12 @@ export default ({ children, ...props }) => {
     }
     &:hover,
     &:focus {
-      color: ${colors.white};
+      transition: all 0.3s ease;
+
+      span {
+        background-position: bottom;
+      }
+
       &::before {
         height: 100%;
       }
@@ -40,13 +62,7 @@ export default ({ children, ...props }) => {
   `;
   return (
     <Button {...props}>
-      <span
-        css={css`
-          position: relative;
-        `}
-      >
-        {children}
-      </span>
+      <span>{children}</span>
     </Button>
   );
 };
