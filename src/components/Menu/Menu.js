@@ -27,13 +27,13 @@ const Menu = ({ height, menuOpen }) => {
     }
   `;
   const sectionStyle = css`
-    padding: 6rem 3rem 3rem;
+    padding: 0 3rem;
 
     ${mediaQueries.phoneLarge} {
       padding: 30px 0 0;
 
       &:first-child {
-        padding-top: 5rem;
+        padding-top: 0;
       }
     }
     h5 {
@@ -70,24 +70,25 @@ const Menu = ({ height, menuOpen }) => {
       css={css`
         position: absolute;
         width: 100vw;
-        height: ${menuOpen ? height : '0'};
+        height: ${menuOpen ? '100vh' : '0'};
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: ${colors.lightblue};
-        transition: 0.3s ease height;
+        transition: 0.3s ease all;
         overflow: hidden;
         z-index: 1;
+        top: ${menuOpen ? '0' : '100vh'};
         ${mediaQueries.phoneLarge} {
           flex-direction: column;
           justify-content: flex-start;
-          height: ${menuOpen ? '100%' : '0'};
+          height: ${menuOpen ? 'auto' : '0'};
+          min-height: ${menuOpen ? '100vh' : '0'};
           padding: 0;
         }
         &::after {
           content: '';
-          background: url('images/menuBackdrop.webp');
-          opacity: 0.15;
+          background: url('images/menu-bg.png');
           top: 0;
           left: 0;
           bottom: 0;
@@ -106,6 +107,7 @@ const Menu = ({ height, menuOpen }) => {
           padding: 0 100px;
           ${mediaQueries.phoneLarge} {
             display: block;
+            padding: 80px 100px 60px;
           }
         `}
       >
