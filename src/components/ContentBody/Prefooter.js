@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 
 import { TextWrapper } from '../Prefooter';
 import SplitSection from '../SplitSection';
-import Button from '../Button';
+import LazyImage from '../LazyImage';
 import { colors } from '../../styles';
 
 const Prefooter = ({ data }) => (
@@ -38,15 +38,7 @@ const Prefooter = ({ data }) => (
         }}
       />
     </TextWrapper>
-    <img
-      css={css`
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      `}
-      src={data.relationships.field_image.localFile.publicURL}
-      alt='prefooter'
-    />
+    <LazyImage id={data.relationships.field_image.id} />
   </SplitSection>
 );
 

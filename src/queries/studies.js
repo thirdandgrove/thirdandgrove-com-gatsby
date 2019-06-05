@@ -33,6 +33,7 @@ module.exports = `
           #       name
           #     }
           #     field_image {
+          #       id
           #       localFile {
           #         publicURL
           #       }
@@ -60,6 +61,7 @@ module.exports = `
                 name
               }
               field_image {
+                id
                 localFile {
                   publicURL
                 }
@@ -76,6 +78,7 @@ module.exports = `
                 name
               }
               field_image {
+                id
                 localFile {
                   publicURL
                 }

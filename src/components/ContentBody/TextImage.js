@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import SplitSection from '../SplitSection';
+import LazyImage from '../LazyImage';
 import { colors } from '../../styles';
 
 const TextImage = ({ data }) => {
@@ -23,11 +24,7 @@ const TextImage = ({ data }) => {
     <SplitSection padding='3rem'>
       {data.field_reversed ? (
         <>
-          <img
-            css={imageCss}
-            src={data.relationships.field_image.localFile.publicURL}
-            alt='article text split'
-          />
+          <LazyImage id={data.relationships.field_image.id} />
           <section
             css={textCss}
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
@@ -39,11 +36,7 @@ const TextImage = ({ data }) => {
             css={textCss}
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
           />
-          <img
-            css={imageCss}
-            src={data.relationships.field_image.localFile.publicURL}
-            alt='article text split'
-          />
+          <LazyImage id={data.relationships.field_image.id} />
         </>
       )}
     </SplitSection>

@@ -3,6 +3,7 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
+import LazyImage from '../components/LazyImage';
 import { colors } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -95,6 +96,7 @@ export default () => {
                   name
                 }
                 field_image {
+                  id
                   localFile {
                     publicURL
                   }
@@ -137,7 +139,7 @@ export default () => {
             {studies.map(study => (
               <FullWidthSection height='100%' id={study.id}>
                 <StudyPreview>
-                  <img
+                  <LazyImage
                     src={study.relationships.field_image.localFile.publicURL}
                     alt={study.title}
                   />
