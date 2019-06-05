@@ -139,10 +139,7 @@ export default () => {
             {studies.map(study => (
               <FullWidthSection height='100%' id={study.id}>
                 <StudyPreview>
-                  <LazyImage
-                    src={study.relationships.field_image.localFile.publicURL}
-                    alt={study.title}
-                  />
+                  <LazyImage id={study.relationships.field_image.id} />
                   <Link
                     to={`/studies/${study.title
                       .toLowerCase()
