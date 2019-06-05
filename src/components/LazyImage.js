@@ -32,13 +32,13 @@ const Image = ({ id }) => {
   `);
   // This is heavy, though a real dynamic query by ID is not possible
   // currently this will remain in use until an alternative is made available
-  return (
-    <Img
-      fluid={
-        data.allFileFile.nodes.find(node => node.id === id).localFile
-          .childImageSharp.fluid
-      }
-    />
-  );
+  const foundNode = data.allFileFile.nodes.find(node => node.id === id);
+  // guarding against bad data
+  const fluid =
+    foundNode &&
+    foundNode.localFile &&
+    foundNode.localFile.childImageSharp &&
+    foundNode.localFile.childImageSharp.fluid;
+  return foundNode ? <Img fluid={fluid} /> : null;
 };
 export default Image;
