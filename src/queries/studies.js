@@ -17,28 +17,6 @@ module.exports = `
           name
         }
         field_components {
-          # ... on component__text {
-          #   relationships {
-          #     component_type {
-          #       name
-          #     }
-          #   }
-          #   field_body {
-          #     processed
-          #   }
-          # }
-          # ... on component__image {
-          #   relationships {
-          #     component_type {
-          #       name
-          #     }
-          #     field_image {
-          #       localFile {
-          #         publicURL
-          #       }
-          #     }
-          #   }
-          # }
           ... on component__quote {
             relationships {
               component_type {

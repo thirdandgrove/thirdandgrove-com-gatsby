@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 
 import ArticlePreview from '../components/ArticlePreview';
 import Layout from '../components/layout';
-import { colors } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 
 export default () => {
@@ -17,33 +16,6 @@ export default () => {
     grid-column-gap: 250px;
     place-items: center center;
   `;
-  // Removed, will implement in a later version.
-  // const Categories = styled.nav`
-  //   width: 100%;
-  //   ul {
-  //     display: flex;
-  //     flex-direction: row;
-  //     justify-content: space-between;
-  //     width: 50%;
-  //     margin: 5rem auto;
-  //   }
-  //   li {
-  //     text-decoration: none;
-  //     font-variant: small-caps;
-  //     list-style: none;
-  //     font-family: NBInternationalPro-Bol;
-  //     font-size: 15px;
-  //     color: #757575;
-  //     letter-spacing: 2px;
-  //     text-align: right;
-  //     line-height: 36px;
-  //     padding-right: 15px;
-  //     cursor: pointer;
-  //     &.active {
-  //       color: ${colors.darkgray};
-  //     }
-  //   }
-  // `;
   return (
     <StaticQuery
       query={graphql`
@@ -140,17 +112,6 @@ export default () => {
               ),
             }}
           >
-            {/* <Categories>
-              <ul>
-                <li className='active'>all</li>
-                <li>design</li>
-                <li>strategy</li>
-                <li>engineering</li>
-                <li>shopify</li>
-                <li>acquia</li>
-                <li>drupal</li>
-              </ul>
-            </Categories> */}
             <FullWidthSection height='100%' padding='2rem'>
               <List>
                 {articles.slice(1).map(article => (

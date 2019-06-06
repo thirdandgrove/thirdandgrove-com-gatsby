@@ -7,34 +7,6 @@ import { colors } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 
 export default () => {
-  // Removed, will implement in a later version.
-  // const Categories = styled.nav`
-  //   width: 100%;
-  //   ul {
-  //     display: flex;
-  //     flex-direction: row;
-  //     justify-content: space-between;
-  //     width: 50%;
-  //     margin: 5rem auto;
-  //   }
-  //   li {
-  //     text-decoration: none;
-  //     font-variant: small-caps;
-  //     list-style: none;
-  //     font-family: NBInternationalPro-Bol;
-  //     font-size: 15px;
-  //     color: ${colors.darkgrayFaded};
-  //     letter-spacing: 2px;
-  //     text-align: right;
-  //     line-height: 36px;
-  //     padding-right: 15px;
-  //     cursor: pointer;
-  //     &.active {
-  //       color: ${colors.darkgray};
-  //       text-decoration: underline;
-  //     }
-  //   }
-  // `;
   const StudyPreview = styled.div`
     display: flex;
     flex-direction: column;
@@ -112,7 +84,6 @@ export default () => {
       `}
       render={data => {
         const studies = data.allCaseStudy.nodes;
-        // const tags = data.allTaxonomyTermCaseStudyTags.nodes;
         return (
           <Layout
             headerData={{
@@ -126,14 +97,6 @@ export default () => {
               title: 'We work with brands we love.',
             }}
           >
-            {/* <Categories>
-              <ul>
-                <li className='active'>all</li>
-                {tags.map(tag => (
-                  <li>{tag.name.toLowerCase()}</li>
-                ))}
-              </ul>
-            </Categories> */}
             {studies.map(study => (
               <FullWidthSection height='100%' id={study.id}>
                 <StudyPreview>
