@@ -1,131 +1,13 @@
 const path = require('path');
 
+const studiesQuery = require('./src/queries/studies');
+const insightsQuery = require('./src/queries/insights');
+const jobsQuery = require('./src/queries/jobs');
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const studies = await graphql(`
-    {
-      allCaseStudy {
-        nodes {
-          id
-          title
-          field_subtitle
-          field_primary_image_scale
-          field_tertiary_image_scale
-          field_secondary_image_scale
-          field_inverse_header
-          relationships {
-            node_type {
-              name
-            }
-            uid {
-              name
-            }
-            field_components {
-              # ... on component__text {
-              #   relationships {
-              #     component_type {
-              #       name
-              #     }
-              #   }
-              #   field_body {
-              #     processed
-              #   }
-              # }
-              # ... on component__image {
-              #   relationships {
-              #     component_type {
-              #       name
-              #     }
-              #     field_image {
-              #       localFile {
-              #         publicURL
-              #       }
-              #     }
-              #   }
-              # }
-              ... on component__quote {
-                relationships {
-                  component_type {
-                    name
-                  }
-                }
-                field_quote
-                field_footer_text
-              }
-              ... on component__prefooter {
-                field_body {
-                  processed
-                }
-                field_secondary_body {
-                  processed
-                }
-                relationships {
-                  component_type {
-                    name
-                  }
-                  field_image {
-                    localFile {
-                      publicURL
-                    }
-                  }
-                }
-              }
-              ... on component__text_image_split {
-                field_body {
-                  processed
-                }
-                field_reversed
-                relationships {
-                  component_type {
-                    name
-                  }
-                  field_image {
-                    localFile {
-                      publicURL
-                    }
-                  }
-                }
-              }
-              ... on component__text_quote_split {
-                field_body {
-                  processed
-                }
-                field_quote
-                field_reversed
-                relationships {
-                  component_type {
-                    name
-                  }
-                }
-              }
-            }
-            field_tags {
-              name
-            }
-            field_image {
-              id
-              localFile {
-                publicURL
-              }
-            }
-            field_tertiary_image {
-              id
-              localFile {
-                publicURL
-              }
-            }
-            field_secondary_image {
-              id
-              localFile {
-                publicURL
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  const studies = await graphql(studiesQuery);
 
   const Post = path.resolve(`src/templates/post.js`);
 
@@ -139,50 +21,7 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  const insights = await graphql(`
-    {
-      allInsight {
-        nodes {
-          id
-          title
-          field_inverse_header
-          created(formatString: "MMMM DD YYYY")
-          relationships {
-            node_type {
-              name
-            }
-            uid {
-              name
-            }
-            field_components {
-              ... on component__text {
-                relationships {
-                  component_type {
-                    name
-                  }
-                }
-                field_body {
-                  processed
-                }
-              }
-              ... on component__image {
-                relationships {
-                  component_type {
-                    name
-                  }
-                  field_image {
-                    localFile {
-                      publicURL
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  const insights = await graphql(insightsQuery);
 
   insights.data.allInsight.nodes.map(insightData =>
     createPage({
@@ -194,18 +33,7 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  const jobs = await graphql(`
-    query {
-      allResumatorJob {
-        nodes {
-          title
-          description
-          board_code
-          status
-        }
-      }
-    }
-  `);
+  const jobs = await graphql(jobsQuery);
 
   const JobTemplate = path.resolve(`src/templates/job.js`);
   jobs.data.allResumatorJob.nodes

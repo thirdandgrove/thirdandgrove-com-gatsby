@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import useInterval from '../hooks/useInterval';
+import React from 'react';
 
 import Layout from '../components/layout';
 import InsightsSlider from '../components/InsightsSlider';
@@ -9,23 +8,6 @@ import { ContactUs, BeUs } from '../components/Prefooter';
 import ProjectsSlider from '../components/ProjectsSlider';
 
 export default () => {
-  // this will be implemented in a future iteration
-  //
-  // const duration = 10000;
-  // const taglines = [
-  //   'We are an obsessive digital innovation company.',
-  //   'Design-first technologists who help innovative brands make their next move.',
-  //   'Some other amazing quote about TAG.',
-  // ];
-  // const [currentTagline, setTagline] = useState(0);
-  // // cycle through taglines
-  // useInterval(() => {
-  //   let next = currentTagline + 1;
-  //   if (next >= taglines.length) {
-  //     next = 0;
-  //   }
-  //   setTagline(next);
-  // }, duration);
   return (
     <Layout
       headerData={{
