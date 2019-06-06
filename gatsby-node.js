@@ -1,34 +1,53 @@
 const path = require('path');
 
-const studiesQuery = require('./src/queries/studies');
-const insightsQuery = require('./src/queries/insights');
 const jobsQuery = require('./src/queries/jobs');
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const studies = await graphql(studiesQuery);
-
-  const Post = path.resolve(`src/templates/post.js`);
+  const studies = await graphql(`
+    {
+      allCaseStudy {
+        nodes {
+          id
+          title
+          path {
+            alias
+          }
+        }
+      }
+    }
+  `);
 
   studies.data.allCaseStudy.nodes.map(studyData =>
     createPage({
-      path: `/studies/${studyData.title.toLowerCase().replace(/ /g, '-')}`,
-      component: Post,
+      path: studyData.path.alias,
+      component: path.resolve(`src/templates/studies.js`),
       context: {
-        post: { ...studyData },
+        StudyId: studyData.id,
       },
     })
   );
 
-  const insights = await graphql(insightsQuery);
-
+  const insights = await graphql(`
+    {
+      allInsight {
+        nodes {
+          id
+          title
+          path {
+            alias
+          }
+        }
+      }
+    }
+  `);
   insights.data.allInsight.nodes.map(insightData =>
     createPage({
-      path: `/insights/${insightData.title.toLowerCase().replace(/ /g, '-')}`,
-      component: Post,
+      path: insightData.path.alias,
+      component: path.resolve(`src/templates/insights.js`),
       context: {
-        post: { ...insightData },
+        PostId: insightData.id,
       },
     })
   );

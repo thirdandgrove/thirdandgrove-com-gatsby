@@ -25,6 +25,9 @@ const InsightsSlider = () => {
               title
               field_inverse_header
               created(formatString: "MMMM DD YYYY")
+              path {
+                alias
+              }
               relationships {
                 node_type {
                   name

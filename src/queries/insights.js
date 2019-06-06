@@ -1,7 +1,8 @@
-module.exports = `
-{
-  allInsight {
-    nodes {
+const { graphql } = require('gatsby');
+
+module.exports = graphql`
+  query($PostId: String!) {
+    insight(id: { eq: $PostId }) {
       id
       title
       field_inverse_header
@@ -35,18 +36,7 @@ module.exports = `
                   publicURL
                   childImageSharp {
                     fluid {
-                      base64
-                      tracedSVG
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                      originalImg
-                      originalName
-                      presentationWidth
-                      presentationHeight
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -57,5 +47,4 @@ module.exports = `
       }
     }
   }
-}
 `;

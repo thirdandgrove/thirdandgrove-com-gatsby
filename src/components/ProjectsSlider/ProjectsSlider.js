@@ -27,6 +27,9 @@ const ProjectsSlider = () => {
               field_primary_image_scale
               field_tertiary_image_scale
               field_secondary_image_scale
+              path {
+                alias
+              }
               relationships {
                 field_tags {
                   name
