@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import { StaticQuery, Link, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
@@ -22,46 +22,7 @@ export default () => {
         {
           allInsight {
             nodes {
-              id
-              title
-              field_inverse_header
-              created(formatString: "MMMM DD YYYY")
-              relationships {
-                node_type {
-                  name
-                }
-                field_tags {
-                  id
-                }
-                uid {
-                  name
-                }
-                field_components {
-                  ... on component__text {
-                    relationships {
-                      component_type {
-                        name
-                      }
-                    }
-                    field_body {
-                      processed
-                    }
-                  }
-                  ... on component__image {
-                    relationships {
-                      component_type {
-                        name
-                      }
-                      field_image {
-                        id
-                        localFile {
-                          publicURL
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+              ...InsightFragment
             }
           }
         }

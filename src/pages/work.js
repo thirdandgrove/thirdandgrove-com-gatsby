@@ -59,29 +59,7 @@ export default () => {
         {
           allCaseStudy {
             nodes {
-              id
-              title
-              field_subtitle
-              field_inverse_header
-              path {
-                alias
-              }
-              relationships {
-                field_tags {
-                  name
-                }
-                field_image {
-                  id
-                  localFile {
-                    publicURL
-                    childImageSharp {
-                      fluid {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              }
+              ...CaseStudyFragment
             }
           }
           allTaxonomyTermCaseStudyTags {
