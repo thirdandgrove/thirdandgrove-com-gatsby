@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import Img from 'gatsby-image';
 
 import { TextWrapper } from '../Prefooter';
 import SplitSection from '../SplitSection';
-import LazyImage from '../LazyImage';
 import { colors } from '../../styles';
 
 const Prefooter = ({ data }) => (
@@ -38,7 +38,9 @@ const Prefooter = ({ data }) => (
         }}
       />
     </TextWrapper>
-    <LazyImage id={data.relationships.field_image.id} />
+    <Img
+      fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
+    />
   </SplitSection>
 );
 

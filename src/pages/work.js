@@ -1,9 +1,9 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
-import LazyImage from '../components/LazyImage';
 import { colors } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -102,7 +102,12 @@ export default () => {
             {studies.map(study => (
               <FullWidthSection height='100%' id={study.id}>
                 <StudyPreview>
-                  <LazyImage id={study.relationships.field_image.id} />
+                  <Img
+                    fluid={
+                      study.relationships.field_image.localFile.childImageSharp
+                        .fluid
+                    }
+                  />
                   <Link
                     to={`/studies/${study.title
                       .toLowerCase()

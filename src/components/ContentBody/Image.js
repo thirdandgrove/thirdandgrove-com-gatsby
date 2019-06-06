@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import LazyImage from '../LazyImage';
+import Img from 'gatsby-image';
 
 const Image = ({ data }) => (
-  <LazyImage id={data.relationships.field_image.id} />
+  <Img fluid={data.relationships.field_image.localFile.childImageSharp.fluid} />
 );
 
 Image.propTypes = {

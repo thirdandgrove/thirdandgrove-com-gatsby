@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import Img from 'gatsby-image';
 
 import SplitSection from '../SplitSection';
-import LazyImage from '../LazyImage';
 import { colors } from '../../styles';
 
 const TextImage = ({ data }) => {
@@ -24,7 +24,11 @@ const TextImage = ({ data }) => {
     <SplitSection padding='3rem'>
       {data.field_reversed ? (
         <>
-          <LazyImage id={data.relationships.field_image.id} />
+          <Img
+            fluid={
+              data.relationships.field_image.localFile.childImageSharp.fluid
+            }
+          />
           <section
             css={textCss}
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
@@ -36,7 +40,11 @@ const TextImage = ({ data }) => {
             css={textCss}
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
           />
-          <LazyImage id={data.relationships.field_image.id} />
+          <Img
+            fluid={
+              data.relationships.field_image.localFile.childImageSharp.fluid
+            }
+          />
         </>
       )}
     </SplitSection>
