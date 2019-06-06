@@ -1,7 +1,5 @@
 const path = require('path');
 
-const jobsQuery = require('./src/queries/jobs');
-
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
@@ -52,7 +50,18 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  const jobs = await graphql(jobsQuery);
+  const jobs = await graphql(`
+    query {
+      allResumatorJob {
+        nodes {
+          title
+          description
+          board_code
+          status
+        }
+      }
+    }
+  `);
 
   const JobTemplate = path.resolve(`src/templates/job.js`);
   jobs.data.allResumatorJob.nodes
