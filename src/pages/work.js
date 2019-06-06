@@ -63,6 +63,9 @@ export default () => {
               title
               field_subtitle
               field_inverse_header
+              path {
+                alias
+              }
               relationships {
                 field_tags {
                   name
@@ -73,18 +76,7 @@ export default () => {
                     publicURL
                     childImageSharp {
                       fluid {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        srcWebp
-                        srcSetWebp
-                        sizes
-                        originalImg
-                        originalName
-                        presentationWidth
-                        presentationHeight
+                        ...GatsbyImageSharpFluid
                       }
                     }
                   }
@@ -124,11 +116,7 @@ export default () => {
                         .fluid
                     }
                   />
-                  <Link
-                    to={`/studies/${study.title
-                      .toLowerCase()
-                      .replace(/ /g, '-')}`}
-                  >
+                  <Link to={study.path.alias}>
                     <h1>{study.title}</h1>
                     <h3>
                       {' – '}
