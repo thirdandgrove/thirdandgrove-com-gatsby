@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import Img from 'gatsby-image';
 
 import { TextWrapper } from '../Prefooter';
 import SplitSection from '../SplitSection';
-import Button from '../Button';
 import { colors } from '../../styles';
 
 const Prefooter = ({ data }) => (
@@ -38,14 +38,8 @@ const Prefooter = ({ data }) => (
         }}
       />
     </TextWrapper>
-    <img
-      css={css`
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      `}
-      src={data.relationships.field_image.localFile.publicURL}
-      alt='prefooter'
+    <Img
+      fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
     />
   </SplitSection>
 );

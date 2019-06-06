@@ -53,6 +53,7 @@ export default () => {
                         name
                       }
                       field_image {
+                        id
                         localFile {
                           publicURL
                         }

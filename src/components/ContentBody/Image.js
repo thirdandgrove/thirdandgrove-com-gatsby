@@ -1,22 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
-
-import FullWidthSection from '../FullWidthSection';
+import Img from 'gatsby-image';
 
 const Image = ({ data }) => (
-  <FullWidthSection padding=' 0 3rem'>
-    <img
-      css={css`
-        height: 100%;
-        width: 100%;
-        padding: 0 3rem;
-        object-fit: cover;
-      `}
-      src={data.relationships.field_image.localFile.publicURL}
-      alt='article full width'
-    />
-  </FullWidthSection>
+  <Img fluid={data.relationships.field_image.localFile.childImageSharp.fluid} />
 );
 
 Image.propTypes = {

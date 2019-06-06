@@ -49,6 +49,7 @@ const InsightsSlider = () => {
                         name
                       }
                       field_image {
+                        id
                         localFile {
                           publicURL
                         }

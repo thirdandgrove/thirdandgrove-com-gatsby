@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
@@ -67,8 +68,25 @@ export default () => {
                   name
                 }
                 field_image {
+                  id
                   localFile {
                     publicURL
+                    childImageSharp {
+                      fluid {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                        originalImg
+                        originalName
+                        presentationWidth
+                        presentationHeight
+                      }
+                    }
                   }
                 }
               }
@@ -100,9 +118,11 @@ export default () => {
             {studies.map(study => (
               <FullWidthSection height='100%' id={study.id}>
                 <StudyPreview>
-                  <img
-                    src={study.relationships.field_image.localFile.publicURL}
-                    alt={study.title}
+                  <Img
+                    fluid={
+                      study.relationships.field_image.localFile.childImageSharp
+                        .fluid
+                    }
                   />
                   <Link
                     to={`/studies/${study.title

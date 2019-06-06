@@ -38,8 +38,25 @@ module.exports = `
                 name
               }
               field_image {
+                id
                 localFile {
                   publicURL
+                  childImageSharp {
+                    fluid {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                      originalImg
+                      originalName
+                      presentationWidth
+                      presentationHeight
+                    }
+                  }
                 }
               }
             }
@@ -54,8 +71,25 @@ module.exports = `
                 name
               }
               field_image {
+                id
                 localFile {
                   publicURL
+                  childImageSharp {
+                    fluid {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                      originalImg
+                      originalName
+                      presentationWidth
+                      presentationHeight
+                    }
+                  }
                 }
               }
             }
@@ -80,18 +114,66 @@ module.exports = `
           id
           localFile {
             publicURL
+            childImageSharp {
+              fluid {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+                originalImg
+                originalName
+                presentationWidth
+                presentationHeight
+              }
+            }
           }
         }
         field_tertiary_image {
           id
           localFile {
             publicURL
+            childImageSharp {
+              fluid {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+                originalImg
+                originalName
+                presentationWidth
+                presentationHeight
+              }
+            }
           }
         }
         field_secondary_image {
           id
           localFile {
             publicURL
+            childImageSharp {
+              fluid {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+                originalImg
+                originalName
+                presentationWidth
+                presentationHeight
+              }
+            }
           }
         }
       }
