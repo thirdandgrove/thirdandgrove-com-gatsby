@@ -59,37 +59,7 @@ export default () => {
         {
           allCaseStudy {
             nodes {
-              id
-              title
-              field_subtitle
-              field_inverse_header
-              relationships {
-                field_tags {
-                  name
-                }
-                field_image {
-                  id
-                  localFile {
-                    publicURL
-                    childImageSharp {
-                      fluid {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        srcWebp
-                        srcSetWebp
-                        sizes
-                        originalImg
-                        originalName
-                        presentationWidth
-                        presentationHeight
-                      }
-                    }
-                  }
-                }
-              }
+              ...CaseStudyFragment
             }
           }
           allTaxonomyTermCaseStudyTags {
@@ -124,11 +94,7 @@ export default () => {
                         .fluid
                     }
                   />
-                  <Link
-                    to={`/studies/${study.title
-                      .toLowerCase()
-                      .replace(/ /g, '-')}`}
-                  >
+                  <Link to={study.path.alias}>
                     <h1>{study.title}</h1>
                     <h3>
                       {' – '}

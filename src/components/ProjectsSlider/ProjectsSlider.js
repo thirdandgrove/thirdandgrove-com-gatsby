@@ -20,36 +20,7 @@ const ProjectsSlider = () => {
         {
           allCaseStudy {
             nodes {
-              id
-              title
-              field_subtitle
-              field_inverse_header
-              field_primary_image_scale
-              field_tertiary_image_scale
-              field_secondary_image_scale
-              relationships {
-                field_tags {
-                  name
-                }
-                field_image {
-                  id
-                  localFile {
-                    publicURL
-                  }
-                }
-                field_tertiary_image {
-                  id
-                  localFile {
-                    publicURL
-                  }
-                }
-                field_secondary_image {
-                  id
-                  localFile {
-                    publicURL
-                  }
-                }
-              }
+              ...CaseStudyFragment
             }
           }
         }

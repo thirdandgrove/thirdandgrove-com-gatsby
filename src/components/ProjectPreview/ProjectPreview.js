@@ -47,11 +47,7 @@ const ProjectPreview = ({ project, index }) => (
     <section>
       <h3>Our Work</h3>
       <h1>{project.title}</h1>
-      <Button
-        onClick={() =>
-          navigate(`/studies/${project.title.toLowerCase().replace(/ /g, '-')}`)
-        }
-      >
+      <Button onClick={() => navigate(project.path.alias)}>
         view case study
       </Button>
     </section>
