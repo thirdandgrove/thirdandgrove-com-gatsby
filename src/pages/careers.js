@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 
-import { colors } from '../styles';
+import { colors, fonts, weights } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -31,7 +31,8 @@ export default () => {
       text-decoration: none;
       font-variant: small-caps;
       list-style: none;
-      font-family: NBInternationalPro-Bol;
+      font-family: ${fonts.sans};
+      font-weight: ${weights.bold};
       font-size: 15px;
       color: ${colors.mediumgray};
       letter-spacing: 2px;
@@ -52,7 +53,8 @@ export default () => {
       padding: 2rem;
       text-align: center;
       a {
-        font-family: Canela-Bold;
+        font-family: ${fonts.serif};
+        font-weight: ${weights.bold};
         font-size: 57px;
         color: ${colors.darkgray};
         letter-spacing: 0;

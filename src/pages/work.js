@@ -4,7 +4,7 @@ import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
-import { colors } from '../styles';
+import { colors, fonts, weights } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 
 export default () => {
@@ -26,9 +26,9 @@ export default () => {
       }
       h3 {
         font-size: 48px;
-        font-family: Canela-Thin;
+        font-family: ${fonts.sans};
         display: inline;
-        font-weight: 100;
+        font-weight: ${weights.thin};
       }
     }
     ul {
@@ -38,7 +38,8 @@ export default () => {
       flex-direction: row;
       li {
         padding-right: 0.5rem;
-        font-family: NBInternationalPro-Bol;
+        font-family: ${fonts.sans};
+        font-weight: ${weights.bold};
         font-variant: small-caps;
         font-size: 15px;
         color: ${colors.darkgray};

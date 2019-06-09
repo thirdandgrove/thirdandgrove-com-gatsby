@@ -8,7 +8,13 @@ import Menu from '../Menu';
 import { ReactComponent as TAG } from './svg/tagLogo.svg';
 import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
 import Hamburger from './svg/hamburger';
-import { colors, mediaQueries, jsBreakpoints } from '../../styles';
+import {
+  colors,
+  mediaQueries,
+  jsBreakpoints,
+  fonts,
+  weights,
+} from '../../styles';
 
 const TopNav = ({ height, invert }) => {
   const [isOpen, setOpen] = useState(false);
@@ -21,7 +27,8 @@ const TopNav = ({ height, invert }) => {
         css={css`
           position: absolute;
           top: 0;
-          font-family: 'Canela-Medium';
+          font-family: ${fonts.serif};
+          font-weight: ${weights.medium};
           padding: 10px 25px;
           width: 100%;
           display: flex;

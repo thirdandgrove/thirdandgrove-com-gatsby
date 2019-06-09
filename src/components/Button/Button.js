@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 export default ({ children, ...props }) => {
   const Button = styled.button`
@@ -10,8 +10,8 @@ export default ({ children, ...props }) => {
     padding: 0;
     border: none;
     outline: none;
-    font-family: 'NB International Pro';
-    font-weight: 600;
+    font-family: ${fonts.sans};
+    font-weight: ${weights.bold};
     font-size: 15px;
     line-height: 1.2;
     letter-spacing: 2px;

@@ -252,6 +252,14 @@ export const globalStyles = css`
     font-size: 0.78405rem;
   }
 
+  p {
+    font-family: ${fonts.sans};
+    font-size: 21px;
+    letter-spacing: 0;
+    line-height: 1.7;
+    color: ${colors.darkgray};
+  }
+
   p *:last-child {
     margin-bottom: 0;
   }

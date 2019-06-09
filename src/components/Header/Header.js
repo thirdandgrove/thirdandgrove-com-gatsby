@@ -3,7 +3,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
-import { colors, mediaQueries } from '../../styles';
+import { colors, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
 const Header = ({
@@ -35,7 +35,7 @@ const Header = ({
     animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     line-height: 48px;
     font-size: 39px;
-    font-weight: 500;
+    font-weight: ${weights.medium};
     letter-spacing: -0.45px;
     width: 60%;
     text-align: center;
@@ -43,9 +43,8 @@ const Header = ({
 
     ${mediaQueries.phoneLarge} {
       font-size: 72px;
-      font-weight: 300;
-      line-height: inherit;
-      letter-spacing: auto;
+      line-height: 84px;
+      letter-spacing: -1px;
     }
   `;
   return (

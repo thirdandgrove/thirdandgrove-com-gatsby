@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
-import { colors, mediaQueries } from '../../styles';
+import { colors, fonts, weights, mediaQueries } from '../../styles';
 
 const Footer = () => {
   const linkStyle = css`
     color: ${colors.white};
     text-decoration: none;
-    font-family: 'NB International Pro';
+    font-family: ${fonts.sans};
     padding: 0.3rem;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: ${weights.bold};
     line-height: 45px;
 
     ${mediaQueries.phoneLarge} {

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { fonts, weights } from '../../styles';
 
 const TextWrapper = styled.span`
   margin: 0;
@@ -12,9 +13,9 @@ const TextWrapper = styled.span`
   flex-shrink: 0;
   background-color: ${props => props.backgroundColor};
   h3 {
-    font-family: Canela;
+    font-family: ${fonts.serif};
     font-size: 72px;
-    font-weight: 500;
+    font-weight: ${weights.medium};
     letter-spacing: -1px;
     line-height: 84px;
   }

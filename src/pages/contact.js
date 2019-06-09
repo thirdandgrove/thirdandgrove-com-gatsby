@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import ContactForm from '../components/ContactForm';
-import { mediaQueries } from '../styles';
+import { mediaQueries, colors, fonts, weights } from '../styles';
 
 export default () => {
   return (
@@ -24,23 +24,27 @@ export default () => {
           section {
             display: flex;
             align-items: center;
+            flex-direction: column;
 
             article {
               padding: 3rem 5rem;
               display: flex;
+              flex-direction: column;
               align-items: center;
 
               h3 {
-                font-family: 'NB International Pro';
+                font-family: ${fonts.sans};
+                font-weight: ${weights.regular};
                 font-size: 21px;
               }
               h5 {
-                font-family: 'NB International Pro';
+                font-family: ${fonts.sans};
                 font-size: 21px;
-                font-weight: 300;
+                font-weight: ${weights.light};
               }
             }
           }
+
           ${mediaQueries.phoneLarge} {
             flex-direction: row;
           }

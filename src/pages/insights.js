@@ -2,6 +2,7 @@ import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import { fonts, weights } from '../styles';
 
 import ArticlePreview from '../components/ArticlePreview';
 import Layout from '../components/layout';
@@ -78,7 +79,7 @@ export default () => {
                 <>
                   <span
                     css={css`
-                      font-family: 'NB International Pro';
+                      font-family: ${fonts.sans};
                       font-size: 15px;
                       padding: 2rem;
                     `}
@@ -90,8 +91,8 @@ export default () => {
                   <h3
                     css={css`
                       font-size: 72px;
-                      font-family: 'Canela-Medium';
-                      font-weight: 200;
+                      font-family: ${fonts.serif};
+                      font-weight: ${weights.medium};
                       width: 70%;
                       text-align: center;
                     `}

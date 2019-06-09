@@ -5,22 +5,22 @@ import { css } from '@emotion/core';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import WhereWeAre from '../components/WhereWeAre';
-import { colors } from '../styles';
+import { colors, fonts, weights } from '../styles';
 import Button from '../components/Button';
 
 export default () => {
   const h4style = css`
-    font-family: 'NBInternationalPro-Reg';
+    font-family: ${fonts.sans};
     font-size: 27px;
     color: ${colors.darkgrayFaded};
-    font-weight: 100;
+    font-weight: ${weights.regular};
     letter-spacing: 0.15px;
     text-align: center;
     line-height: 42px;
   `;
   const h3style = css`
-    font-family: 'Canela-Thin';
-    font-weight: 100;
+    font-family: ${fonts.serif};
+    font-weight: ${weights.thin};
     font-size: 36px;
     color: ${colors.darkgray};
     letter-spacing: 0.4px;
@@ -28,7 +28,8 @@ export default () => {
     line-height: 76px;
   `;
   const h1style = css`
-    font-family: 'Canela-Medium';
+    font-family: ${fonts.serif};
+    font-weight: ${weights.medium};
     font-size: 72px;
     color: ${colors.darkgray};
     letter-spacing: -0.83px;
@@ -74,7 +75,8 @@ export default () => {
               flex-direction: column;
               padding: 1rem 3rem;
               h1 {
-                font-family: 'Canela-Medium';
+                font-family: ${fonts.serif};
+                font-weight: ${weights.medium};
                 font-size: 120px;
                 color: ${colors.darkgray};
                 letter-spacing: -1.38px;
@@ -82,7 +84,8 @@ export default () => {
                 line-height: 84px;
               }
               h3 {
-                font-family: 'NBInternationalPro-Bol';
+                font-family: ${fonts.sans};
+                font-weight: ${weights.regular};
                 font-size: 14px;
                 color: ${colors.darkgray};
                 letter-spacing: 2.5px;

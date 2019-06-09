@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 export default styled.input`
   background: transparent;
@@ -8,8 +8,8 @@ export default styled.input`
   border: none;
   height: 61px;
   color: ${colors.darkgray};
-  font-family: 'NB International Pro';
-  font-weight: 600;
+  font-family: ${fonts.sans};
+  font-weight: ${weights.bold};
   font-size: 15px;
   letter-spacing: 2px;
   line-height: 36px;
@@ -18,10 +18,7 @@ export default styled.input`
   margin-bottom: 1rem;
   width: 100%;
   &::placeholder {
-    font-family: 'NB International Pro';
-    font-weight: 600;
     color: ${colors.darkgray};
-    text-transform: uppercase;
   }
   &:-webkit-autofill,
   &:-webkit-autofill:hover,

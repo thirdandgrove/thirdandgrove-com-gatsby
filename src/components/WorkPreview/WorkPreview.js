@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 const WorkPreview = ({ article }) => {
   const Card = styled.div`
@@ -22,14 +22,15 @@ const WorkPreview = ({ article }) => {
       flex-direction: column;
       width: 85%;
       p {
-        font-family: Canela-Bold;
+        font-family: ${fonts.serif};
+        font-weight: ${weights.bold};
         font-size: 33px;
         color: ${colors.darkgray};
         letter-spacing: 0;
         line-height: 52px;
       }
       footer {
-        font-family: 'NB International Pro';
+        font-family: ${fonts.sans};
         font-size: 15px;
       }
     }

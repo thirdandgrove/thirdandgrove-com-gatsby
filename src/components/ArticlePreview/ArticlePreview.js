@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 const ArticlePreview = ({ article }) => {
   const Card = styled.div`
@@ -23,7 +23,8 @@ const ArticlePreview = ({ article }) => {
       flex-direction: column;
       width: 85%;
       p {
-        font-family: Canela-Bold;
+        font-family: ${fonts.serif};
+        font-weight: ${weights.bold};
         font-size: 33px;
         color: ${colors.darkgray};
         letter-spacing: 0;
@@ -31,7 +32,7 @@ const ArticlePreview = ({ article }) => {
         padding: 0;
       }
       footer {
-        font-family: 'NB International Pro';
+        font-family: ${fonts.sans};
         font-size: 15px;
       }
     }
