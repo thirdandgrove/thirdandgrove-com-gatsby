@@ -52,11 +52,11 @@ const ContactFrom = () => {
       css={css`
         margin: 0 auto;
         margin-top: 2rem;
-        width: 980px;
+        width: 100vw;
         display: flex;
         flex-direction: column;
         ${mediaQueries.phoneLarge} {
-          width: 100vw;
+          width: 980px;
         }
       `}
     >
@@ -70,14 +70,17 @@ const ContactFrom = () => {
         <input type='hidden' name='contact' value='contact' />
         <span
           css={css`
-            display: grid;
-            grid-template-columns: repeat(2, 480px);
-            grid-column-gap: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 3rem;
+
             ${mediaQueries.phoneLarge} {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              margin: 0 3rem;
+              display: grid;
+              grid-template-columns: repeat(2, 480px);
+              grid-column-gap: 1rem;
+              margin: 0;
+              align-items: stretch;
             }
           `}
         >
@@ -114,11 +117,13 @@ const ContactFrom = () => {
         </span>
         <span
           css={css`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 3rem;
             ${mediaQueries.phoneLarge} {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              margin: 0 3rem;
+              display: inline;
+              margin: 0;
             }
           `}
         >

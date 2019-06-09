@@ -132,12 +132,12 @@ export const globalStyles = css`
   html {
     box-sizing: border-box;
     overflow-y: scroll;
-    font-size: 112.5%;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    font-size: 100%;
 
     ${mediaQueries.xs} {
-      font-size: 100%;
+      font-size: 112.5%;
     }
   }
 

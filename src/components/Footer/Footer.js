@@ -8,30 +8,32 @@ const Footer = () => {
     color: ${colors.white};
     text-decoration: none;
     font-family: 'NB International Pro';
-    padding-left: 20px;
+    padding: 0.3rem;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 45px;
+
+    ${mediaQueries.phoneLarge} {
+      padding-left: 20px;
+    }
     &:hover {
       transition: all ease-in-out 0.5s;
       text-decoration: underline;
-    }
-    ${mediaQueries.phoneLarge} {
-      padding: 0.3rem;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 45px;
     }
   `;
   const wrapperStyle = css`
     position: relative;
     bottom: 0;
-    height: 200px;
     background-color: ${colors.darkgray};
-    width: 100%;
+    height: 100%;
     color: ${colors.white};
     display: flex;
     align-items: center;
+    flex-direction: column;
     ${mediaQueries.phoneLarge} {
-      flex-direction: column;
-      height: 100%;
+      width: 100%;
+      height: 200px;
+      flex-direction: row;
     }
   `;
   return (

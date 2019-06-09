@@ -33,16 +33,19 @@ const Header = ({
     }
     position: relative;
     animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
-    font-size: 72px;
-    font-weight: 300;
+    line-height: 48px;
+    font-size: 39px;
+    font-weight: 500;
+    letter-spacing: -0.45px;
     width: 60%;
     text-align: center;
     color: ${defaultBackground ? colors.darkgray : '#efefef'};
+
     ${mediaQueries.phoneLarge} {
-      font-size: 39px;
-      font-weight: 500;
-      letter-spacing: -0.45px;
-      line-height: 48px;
+      font-size: 72px;
+      font-weight: 300;
+      line-height: inherit;
+      letter-spacing: auto;
     }
   `;
   return (

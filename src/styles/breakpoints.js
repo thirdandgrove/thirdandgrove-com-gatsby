@@ -3,7 +3,7 @@ const breakpoints = [480, 600, 900, 1200, 1800];
 const names = [`xs`, `phone`, `phoneLarge`, `desktop`, `desktopLarge`];
 
 export const mediaQueries = breakpoints.reduce((acc, bp, i) => {
-  acc[names[i]] = `@media (max-width: ${bp}px)`;
+  acc[names[i]] = `@media (min-width: ${bp}px)`;
   return acc;
 }, {});
 

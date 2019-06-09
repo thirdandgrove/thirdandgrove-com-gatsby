@@ -22,7 +22,7 @@ const TopNav = ({ height, invert }) => {
           position: absolute;
           top: 0;
           font-family: 'Canela-Medium';
-          padding: 10px 100px;
+          padding: 10px 25px;
           width: 100%;
           display: flex;
           background-color: transparent;
@@ -30,7 +30,7 @@ const TopNav = ({ height, invert }) => {
           align-items: center;
           z-index: 2;
           ${mediaQueries.phoneLarge} {
-            padding: 10px 25px;
+            padding: 10px 100px;
           }
         `}
       >
@@ -70,7 +70,7 @@ const TopNav = ({ height, invert }) => {
         >
           <Hamburger
             fill={invert ? colors.white : colors.darkgray}
-isOpen={isOpen}
+            isOpen={isOpen}
           />
         </button>
       </span>

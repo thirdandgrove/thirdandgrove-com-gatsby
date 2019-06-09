@@ -17,18 +17,19 @@ export default () => {
       <main
         css={css`
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           width: 100%;
           justify-content: center;
+
           section {
             display: flex;
-            flex-direction: column;
             align-items: center;
+
             article {
               padding: 3rem 5rem;
               display: flex;
               align-items: center;
-              flex-direction: column;
+
               h3 {
                 font-family: 'NB International Pro';
                 font-size: 21px;
@@ -41,7 +42,7 @@ export default () => {
             }
           }
           ${mediaQueries.phoneLarge} {
-            flex-direction: column;
+            flex-direction: row;
           }
         `}
       >
