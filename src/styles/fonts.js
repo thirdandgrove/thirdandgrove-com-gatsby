@@ -2,6 +2,7 @@
 export const fonts = {
   serif: `'Canela', serif`,
   sans: `'NB International Pro', sans-serif`,
+  mono: `'NB International Pro Mono', monospace`,
 };
 
 export const weights = {
