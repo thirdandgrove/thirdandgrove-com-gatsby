@@ -4,7 +4,7 @@ Gatsby rebuild of the TAG website
 
 ## Installation
 
-```bash
+```shell
 yarn
 ```
 
@@ -12,13 +12,13 @@ copy the `sample.env` to `.env` and add the appropriate credentials.
 
 ## Development
 
-```bash
+```shell
 yarn start
 ```
 
 ## Build
 
-```bash
+```shell
 yarn build
 ```
 
@@ -28,12 +28,12 @@ ensure that you have your dev server running `yarn start`
 
 for developing tests use-
 
-```bash
+```shell
 yarn cypress
 ```
 
 for testing alone-
 
-```bash
+```shell
 yarn test
 ```
