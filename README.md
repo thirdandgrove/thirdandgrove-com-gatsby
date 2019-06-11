@@ -21,3 +21,19 @@ yarn start
 ```
 yarn build
 ```
+
+## Testing
+
+ensure that you have your dev server running `yarn start'
+
+for developing tests use-
+
+```
+yarn cypress
+```
+
+for testing alone-
+
+```
+yarn test
+```
