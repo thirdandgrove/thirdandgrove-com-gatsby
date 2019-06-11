@@ -12,116 +12,116 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Thin.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-Thin.woff') format('woff');
     font-weight: 100;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-ThinItalic.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-ThinItalic.woff') format('woff');
     font-weight: 100;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Light.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-Light.woff') format('woff');
     font-weight: 300;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-LightItalic.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Regular.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-Regular.woff') format('woff');
     font-weight: 400;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-RegularItalic.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-RegularItalic.woff') format('woff');
     font-weight: 400;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Medium.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-Medium.woff') format('woff');
     font-weight: 500;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-MediumItalic.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-MediumItalic.woff') format('woff');
     font-weight: 500;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Bold.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-Bold.woff') format('woff');
     font-weight: 700;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-BoldItalic.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-BoldItalic.woff') format('woff');
     font-weight: 700;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Black.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-Black.woff') format('woff');
     font-weight: 900;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-BlackItalic.otf') format('otf');
+    src: url('/Fonts/Canela/Canela-BlackItalic.woff') format('woff');
     font-weight: 900;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'NB International Pro';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProRegular.otf')
-      format('otf');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProRegular.woff')
+      format('woff');
     font-weight: 400;
   }
 
   @font-face {
     font-family: 'NB International Pro';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProItalic.otf')
-      format('otf');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProItalic.woff')
+      format('woff');
     font-weight: 400;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'NB International Pro';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProBold.otf')
-      format('otf');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProBold.woff')
+      format('woff');
     font-weight: 700;
   }
 
   @font-face {
     font-family: 'NB International Pro';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProBoldItalic.otf')
-      format('otf');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProBoldItalic.woff')
+      format('woff');
     font-weight: 700;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'NB International Pro Mono';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProMono.otf')
-      format('otf');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProMono.woff')
+      format('woff');
     font-weight: 400;
   }
 
