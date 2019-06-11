@@ -4,11 +4,12 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import FullWidthSection from '../FullWidthSection';
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 const Quote = ({ data }) => {
   const quoteCss = css`
-    font-family: Canela-Medium;
+    font-family: ${fonts.serif};
+    font-weight: ${weights.medium};
     font-size: 61px;
     color: ${colors.darkgray};
     letter-spacing: 0;
@@ -16,7 +17,8 @@ const Quote = ({ data }) => {
   `;
   const BigYellow = styled.span`
     transform: scaleX(-1);
-    font-family: Canela-Medium;
+    font-family: ${fonts.serif};
+    font-weight: ${weights.medium};
     font-size: 61px;
     color: ${colors.yellow};
     letter-spacing: 0;
@@ -37,17 +39,7 @@ const Quote = ({ data }) => {
         {data.field_quote}
         <BigQuote />
       </div>
-      <div
-        css={css`
-          font-family: NBInternationalPro-Reg;
-          font-size: 21px;
-          color: ${colors.darkgray};
-          letter-spacing: 0;
-          line-height: 36px;
-        `}
-      >
-        — {data.field_footer_text}
-      </div>
+      <p>— {data.field_footer_text}</p>
     </FullWidthSection>
   );
 };

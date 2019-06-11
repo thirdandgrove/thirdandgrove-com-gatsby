@@ -8,7 +8,13 @@ import Menu from '../Menu';
 import { ReactComponent as TAG } from './svg/tagLogo.svg';
 import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
 import Hamburger from './svg/hamburger';
-import { colors, mediaQueries, jsBreakpoints } from '../../styles';
+import {
+  colors,
+  mediaQueries,
+  jsBreakpoints,
+  fonts,
+  weights,
+} from '../../styles';
 
 const TopNav = ({ height, invert }) => {
   const [isOpen, setOpen] = useState(false);
@@ -21,8 +27,9 @@ const TopNav = ({ height, invert }) => {
         css={css`
           position: absolute;
           top: 0;
-          font-family: 'Canela-Medium';
-          padding: 10px 100px;
+          font-family: ${fonts.serif};
+          font-weight: ${weights.medium};
+          padding: 10px 25px;
           width: 100%;
           display: flex;
           background-color: transparent;
@@ -30,7 +37,7 @@ const TopNav = ({ height, invert }) => {
           align-items: center;
           z-index: 2;
           ${mediaQueries.phoneLarge} {
-            padding: 10px 25px;
+            padding: 10px 100px;
           }
         `}
       >
@@ -70,7 +77,7 @@ const TopNav = ({ height, invert }) => {
         >
           <Hamburger
             fill={invert ? colors.white : colors.darkgray}
-isOpen={isOpen}
+            isOpen={isOpen}
           />
         </button>
       </span>

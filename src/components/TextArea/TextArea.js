@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 export default styled.textarea`
   background: transparent;
@@ -8,8 +8,8 @@ export default styled.textarea`
   border: none;
   width: 100%;
   color: ${colors.darkgray};
-  font-family: 'NB International Pro';
-  font-weight: 600;
+  font-family: ${fonts.sans};
+  font-weight: ${weights.bold};
   font-size: 15px;
   letter-spacing: 2px;
   line-height: 36px;
@@ -17,9 +17,6 @@ export default styled.textarea`
   padding: 20px;
   resize: none;
   &::placeholder {
-    font-family: 'NB International Pro';
-    font-weight: 600;
     color: ${colors.darkgray};
-    text-transform: uppercase;
   }
 `;

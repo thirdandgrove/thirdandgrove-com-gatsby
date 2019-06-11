@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import useWindow from '../../hooks/useWindow';
-import { colors, jsBreakpoints } from '../../styles';
+import { colors, jsBreakpoints, fonts } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
 const Text = ({ data }) => {
@@ -11,7 +11,7 @@ const Text = ({ data }) => {
 
   const textCss = css`
     p {
-      font-family: NBInternationalPro;
+      font-family: ${fonts.sans};
       font-size: 21px;
       color: ${colors.darkgray};
       letter-spacing: 0;

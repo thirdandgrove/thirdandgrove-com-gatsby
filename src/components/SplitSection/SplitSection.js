@@ -5,14 +5,14 @@ import styled from '@emotion/styled';
 import { mediaQueries } from '../../styles';
 
 const Wrapper = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  grid-template-columns: repeat(2, 1fr);
   margin: ${props => props.margin || 0};
   padding: ${props => props.padding || 0};
   ${mediaQueries.phoneLarge} {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 const SplitSection = ({ children, ...props }) => (

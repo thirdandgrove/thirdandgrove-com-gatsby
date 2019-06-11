@@ -19,11 +19,6 @@ export default () => {
           align-items: center;
           p {
             width: 60%;
-            font-family: 'NB International Pro';
-            font-size: 21px;
-            color: ${colors.darkgray};
-            letter-spacing: 0;
-            line-height: 36px;
             &:first-of-type {
               padding-top: 3rem;
             }
