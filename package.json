@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "babel-eslint": "~10.0.1",
+    "cypress": "^3.3.1",
     "eslint": "~5.15.1",
     "eslint-config-airbnb": "~17.1.0",
     "eslint-config-prettier": "~4.1.0",
@@ -42,7 +43,8 @@
     "eslint-plugin-react": "~7.12.4",
     "husky": "~1.3.1",
     "prettier": "~1.16.4",
-    "pretty-quick": "~1.10.0"
+    "pretty-quick": "~1.10.0",
+    "start-server-and-test": "^1.9.1"
   },
   "keywords": [
     "gatsby"
@@ -54,7 +56,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "yarn run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "cy": "cypress open",
+    "test": "start-server-and-test develop http://localhost:8000 cy",
     "lint": "node ./node_modules/eslint/bin/eslint . --ignore-path .gitignore"
   },
   "repository": {
