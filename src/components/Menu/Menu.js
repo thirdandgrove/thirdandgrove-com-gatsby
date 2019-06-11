@@ -147,6 +147,9 @@ const Menu = ({ height, menuOpen }) => {
           <Link css={linkSecondaryStyle} to='/shopify'>
             Shopify
           </Link>
+          <Link css={linkSecondaryStyle} to='/gatsby'>
+            Gatsby
+          </Link>
         </section>
       </div>
     </nav>
