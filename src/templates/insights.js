@@ -1,13 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { graphql } from 'gatsby';
 
 import { colors, fonts, weights } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
-const PostTemplate = ({ pageContext }) => {
-  const { post } = pageContext;
+export default ({ data }) => {
+  const post = data.insight;
   const isInsight = post.relationships.node_type.name === 'Insight';
   return (
     <Layout
@@ -83,8 +83,51 @@ const PostTemplate = ({ pageContext }) => {
   );
 };
 
-PostTemplate.propTypes = {
-  pageContext: PropTypes.object.isRequired,
-};
-
-export default PostTemplate;
+export const query = graphql`
+  query($PostId: String!) {
+    insight(id: { eq: $PostId }) {
+      id
+      title
+      field_inverse_header
+      created(formatString: "MMMM DD YYYY")
+      relationships {
+        node_type {
+          name
+        }
+        uid {
+          name
+        }
+        field_components {
+          ... on component__text {
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_body {
+              processed
+            }
+          }
+          ... on component__image {
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
