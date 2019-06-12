@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 
 import { TextWrapper } from '../Prefooter';
 import SplitSection from '../SplitSection';
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 const Prefooter = ({ data }) => (
   <SplitSection>
@@ -22,8 +22,8 @@ const Prefooter = ({ data }) => (
             width: 220px;
             height: 18px;
             color: ${colors.darkgray};
-            font-family: 'NB International Pro';
-            font-weight: 600;
+            font-family: ${fonts.sans};
+            font-weight: ${weights.bold};
             font-size: 15px;
             letter-spacing: 2px;
             line-height: 36px;

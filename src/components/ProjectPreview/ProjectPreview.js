@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 
 import Button from '../Button';
 import ImageCollage from './ImageCollage';
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 const ProjectPreview = ({ project, index }) => (
   <div
@@ -22,9 +22,9 @@ const ProjectPreview = ({ project, index }) => (
           width: 150px;
           height: 40px;
           color: ${colors.darkgray};
-          font-family: Canela-Thin;
+          font-family: ${fonts.serif};
           font-size: 36px;
-          font-weight: 100;
+          font-weight: ${weights.thin};
           letter-spacing: 0.45px;
           line-height: 76px;
           margin-bottom: 30px;
@@ -33,9 +33,9 @@ const ProjectPreview = ({ project, index }) => (
           width: 1120px;
           height: 222px;
           color: ${colors.darkgray};
-          font-family: Canela;
+          font-family: ${fonts.serif};
           font-size: 104px;
-          font-weight: 900;
+          font-weight: ${weights.black};
           letter-spacing: 1.39px;
           line-height: 98px;
           margin: 5rem 0 3rem 0;

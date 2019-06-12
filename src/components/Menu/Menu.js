@@ -3,59 +3,66 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { colors, mediaQueries } from '../../styles';
+import { colors, mediaQueries, fonts, weights } from '../../styles';
 
 const Menu = ({ height, menuOpen }) => {
   const linkPrimaryStyle = css`
-    font-size: 48px;
-    line-height: 81px;
-    ${mediaQueries.desktop} {
+    font-size: 24px;
+    line-height: 39px;
+
+    ${mediaQueries.phoneLarge} {
       line-height: 60px;
       font-size: 36px;
     }
-    ${mediaQueries.phoneLarge} {
-      line-height: 39px;
-      font-size: 24px;
+
+    ${mediaQueries.desktop} {
+      font-size: 48px;
+      line-height: 81px;
     }
   `;
   const linkSecondaryStyle = css`
-    font-size: 36px;
-    line-height: 60px;
+    line-height: 39px;
+    font-size: 24px;
     ${mediaQueries.phoneLarge} {
-      line-height: 39px;
-      font-size: 24px;
+      font-size: 36px;
+      line-height: 60px;
     }
   `;
   const sectionStyle = css`
-    padding: 0 3rem;
+    padding: 30px 0 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
 
     ${mediaQueries.phoneLarge} {
-      padding: 30px 0 0;
-
-      &:first-child {
-        padding-top: 0;
-      }
+      padding: 0 3rem;
     }
+
     h5 {
-      font-family: 'Canela-Thin';
-      font-weight: 300;
-      font-size: 21px;
+      font-family: ${fonts.serif};
+      font-weight: ${weights.thin};
       color: ${colors.darkgray};
       letter-spacing: -0.1px;
       text-align: center;
-      line-height: 81px;
+      line-height: 15px;
+      font-size: 15px;
+      margin-bottom: 10px;
+
       ${mediaQueries.phoneLarge} {
-        line-height: 15px;
-        font-size: 15px;
-        margin-bottom: 10px;
+        margin-bottom: 1.45rem;
+        line-height: 81px;
+        font-size: 21px;
       }
     }
+
     a {
       display: block;
       color: ${colors.darkgrayFaded};
       text-decoration: none;
       transition: 0.3s ease color;
-      font-family: 'Canela-Medium';
+      font-family: ${fonts.serif};
+      font-weight: ${weights.medium};
       letter-spacing: -0.2px;
       text-align: center;
 
@@ -70,22 +77,25 @@ const Menu = ({ height, menuOpen }) => {
       css={css`
         position: absolute;
         width: 100vw;
-        height: ${menuOpen ? '100vh' : '0'};
         display: flex;
-        justify-content: center;
         align-items: center;
         background-color: ${colors.lightblue};
         transition: 0.3s ease all;
         overflow: hidden;
         z-index: 1;
         top: ${menuOpen ? '0' : '100vh'};
+        flex-direction: column;
+        justify-content: flex-start;
+        height: ${menuOpen ? 'auto' : '0'};
+        min-height: ${menuOpen ? '100vh' : '0'};
+        padding: 0;
+
         ${mediaQueries.phoneLarge} {
-          flex-direction: column;
-          justify-content: flex-start;
-          height: ${menuOpen ? 'auto' : '0'};
-          min-height: ${menuOpen ? '100vh' : '0'};
-          padding: 0;
+          flex-direction: row;
+          justify-content: center;
+          height: ${menuOpen ? '100vh' : '0'};
         }
+
         &::after {
           content: '';
           background: url('images/menu-bg.png');
@@ -100,14 +110,12 @@ const Menu = ({ height, menuOpen }) => {
     >
       <div
         css={css`
-          display: flex;
-          align-items: flex-start;
-          justify-content: space-between;
+          padding: 80px 60px 60px;
           width: 100%;
-          padding: 0 100px;
           ${mediaQueries.phoneLarge} {
-            display: block;
-            padding: 80px 100px 60px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 100px;
           }
         `}
       >

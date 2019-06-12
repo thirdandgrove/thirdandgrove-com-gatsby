@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
-import { colors } from '../styles';
+import { colors, fonts, weights } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
@@ -29,7 +29,8 @@ export default ({ data }) => {
           {!isInsight && (
             <h1
               css={css`
-                font-family: Canela-Black;
+                font-family: ${fonts.serif};
+                font-weight: ${weights.black};
                 font-size: 100px;
                 color: ${colors.darkgray};
                 letter-spacing: 1.33px;
@@ -43,7 +44,8 @@ export default ({ data }) => {
           {post.relationships.field_tags && (
             <h4
               css={css`
-                font-family: NBInternationalPro-Reg;
+                font-family: ${fonts.sans};
+                font-weight: ${weights.regular};
                 font-size: 12px;
                 color: ${colors.darkgray};
                 letter-spacing: 3px;
@@ -57,7 +59,8 @@ export default ({ data }) => {
       )}
       <p
         css={css`
-          font-family: Canela-Thin;
+          font-family: ${fonts.serif};
+          font-weight: ${weights.thin};
           font-size: 39px;
           color: ${colors.darkgray};
           letter-spacing: -0.45px;

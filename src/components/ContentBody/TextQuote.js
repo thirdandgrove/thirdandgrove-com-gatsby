@@ -4,20 +4,12 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import SplitSection from '../SplitSection';
-import { colors } from '../../styles';
+import { colors, fonts, weights } from '../../styles';
 
 const TextQuote = ({ data }) => {
-  const textCss = css`
-    p {
-      font-family: NBInternationalPro;
-      font-size: 21px;
-      color: ${colors.darkgray};
-      letter-spacing: 0;
-      line-height: 36px;
-    }
-  `;
   const quoteCss = css`
-    font-family: Canela-Medium;
+    font-family: ${fonts.serif};
+    font-weight: ${weights.medium};
     font-size: 61px;
     color: ${colors.darkgray};
     letter-spacing: 0;
@@ -26,7 +18,8 @@ const TextQuote = ({ data }) => {
   `;
   const BigYellow = styled.span`
     transform: scaleX(-1);
-    font-family: Canela-Medium;
+    font-family: ${fonts.serif};
+    font-weight: ${weights.medium};
     font-size: 61px;
     color: ${colors.yellow};
     letter-spacing: 0;
@@ -41,7 +34,6 @@ const TextQuote = ({ data }) => {
       {data.field_reversed ? (
         <>
           <section
-            css={textCss}
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
           />
           <p css={quoteCss}>{data.field_quote}</p>
@@ -56,7 +48,6 @@ const TextQuote = ({ data }) => {
             </span>
           </section>
           <section
-            css={textCss}
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
           />
         </>
