@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import ContactForm from '../components/ContactForm';
-import { mediaQueries, colors, fonts, weights } from '../styles';
+import { mediaQueries, fonts, weights } from '../styles';
 
 export default () => {
   return (

@@ -3,7 +3,6 @@ import { css } from '@emotion/core';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { colors } from '../styles';
 
 export default () => {
   return (

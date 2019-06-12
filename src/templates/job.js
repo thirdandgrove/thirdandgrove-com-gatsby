@@ -1,11 +1,13 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import Button from '../components/Button';
 
-export default ({ pageContext }) => {
+const Job = ({ pageContext }) => {
   const { job } = pageContext;
   return (
     <Layout headerData={{ title: job.title }}>
@@ -28,3 +30,9 @@ export default ({ pageContext }) => {
     </Layout>
   );
 };
+
+Job.propTypes = {
+  pageContext: PropTypes.object.isRequired,
+};
+
+export default Job;

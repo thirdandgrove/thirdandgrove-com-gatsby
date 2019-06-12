@@ -66,6 +66,7 @@ const Hamburger = ({ fill, isOpen }) => (
 
 Hamburger.propTypes = {
   fill: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
 };
 
 export default Hamburger;

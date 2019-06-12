@@ -31,7 +31,9 @@ const ContactFrom = () => {
     // validate inputs
     if (!name || !email) {
       // notify user of required fields
+      // eslint-disable-next-line no-console
       console.error('missing required fields');
+      return;
     }
     fetch('/', {
       method: 'POST',
