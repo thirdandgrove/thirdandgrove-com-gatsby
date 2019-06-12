@@ -41,7 +41,7 @@ const TopNav = ({ invert }) => {
           }
         `}
       >
-        <Link to='/'>
+        <Link to='/' data-cy='homeButton'>
           {/* this guard keeps the Gatsby build from breaking */}
           {typeof window !== 'undefined' &&
             (width > jsBreakpoints.phoneLarge ? (
@@ -74,6 +74,7 @@ const TopNav = ({ invert }) => {
           `}
           type='button'
           onClick={() => toggleOpen()}
+          data-cy='menuButton'
         >
           <Hamburger
             fill={invert ? colors.white : colors.darkgray}

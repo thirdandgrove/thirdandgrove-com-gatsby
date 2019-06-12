@@ -50,6 +50,7 @@ export default () => {
                     }`}
                   </span>
                   <h3
+                    data-cy='insightTitle'
                     css={css`
                       font-size: 72px;
                       font-family: ${fonts.serif};
