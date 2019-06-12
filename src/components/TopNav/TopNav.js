@@ -16,7 +16,7 @@ import {
   weights,
 } from '../../styles';
 
-const TopNav = ({ height, invert }) => {
+const TopNav = ({ invert }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
@@ -82,19 +82,17 @@ const TopNav = ({ height, invert }) => {
         </button>
       </span>
       {/* // some transition in/out? */}
-      <Menu toggleOpen={toggleOpen} height={height} menuOpen={isOpen} />
+      <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />
     </>
   );
 };
 
 TopNav.propTypes = {
   invert: PropTypes.bool,
-  height: PropTypes.string,
 };
 
 TopNav.defaultProps = {
   invert: false,
-  height: '700px',
 };
 
 export default TopNav;

@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 
 export default () => {
   return (
-    <Layout headerData={{ title: 'Privacy Statement', height: '300px' }}>
+    <Layout headerData={{ title: 'Privacy Statement', height: '400px' }}>
       <main
         css={css`
           display: flex;
