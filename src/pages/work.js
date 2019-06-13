@@ -84,7 +84,7 @@ export default () => {
       }}
     >
       {studies.map(study => (
-        <FullWidthSection height='100%' id={study.id}>
+        <FullWidthSection height='100%' key={study.id}>
           <StudyPreview>
             <Img
               fluid={
@@ -100,7 +100,7 @@ export default () => {
             </Link>
             <ul>
               {study.relationships.field_tags.map((tag, i, arr) => (
-                <li>
+                <li key={JSON.stringify(tag)}>
                   {tag.name.toLowerCase()}
                   {i !== arr.length - 1 && ','}
                 </li>
