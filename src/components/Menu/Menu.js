@@ -31,7 +31,7 @@ const Menu = ({ menuOpen }) => {
   const sectionStyle = css`
     padding: 30px 0 0;
 
-    &:first-child {
+    &:first-of-type {
       padding-top: 0;
     }
 

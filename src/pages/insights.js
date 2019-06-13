@@ -1,8 +1,8 @@
 import React from 'react';
-import { StaticQuery, Link, graphql } from 'gatsby';
+import { useStaticQuery, Link, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { fonts, weights } from '../styles';
+import { fonts, weights, colors } from '../styles';
 
 import ArticlePreview from '../components/ArticlePreview';
 import Layout from '../components/layout';
@@ -17,75 +17,70 @@ export default () => {
     grid-column-gap: 250px;
     place-items: center center;
   `;
-  return (
-    <StaticQuery
-      query={graphql`
-        {
-          allInsight {
-            nodes {
-              ...InsightFragment
-            }
-          }
+  const data = useStaticQuery(graphql`
+    {
+      allInsight {
+        nodes {
+          ...InsightFragment
         }
-      `}
-      render={data => {
-        const articles = data.allInsight.nodes;
-        // newest article is in the header
-        const headerArticle = articles[0];
+      }
+    }
+  `);
+  const articles = data.allInsight.nodes;
+  // newest article is in the header
+  const headerArticle = articles[0];
 
-        return (
-          <Layout
-            headerData={{
-              children: (
-                <>
-                  <span
-                    css={css`
-                      font-family: ${fonts.sans};
-                      font-size: 15px;
-                      padding: 2rem;
-                    `}
-                  >
-                    {`${headerArticle.created} - ${
-                      headerArticle.relationships.uid.name
-                    }`}
-                  </span>
-                  <h3
-                    data-cy='insightTitle'
-                    css={css`
-                      font-size: 72px;
-                      font-family: ${fonts.serif};
-                      font-weight: ${weights.medium};
-                      width: 70%;
-                      text-align: center;
-                    `}
-                  >
-                    {headerArticle.title}
-                  </h3>
-                  <Link
-                    css={css`
-                      text-decoration: none;
-                      color: white;
-                    `}
-                    to={`/insights/${headerArticle.title
-                      .toLowerCase()
-                      .replace(/ /g, '-')}`}
-                  >
-                    read more
-                  </Link>
-                </>
-              ),
-            }}
-          >
-            <FullWidthSection height='100%' padding='2rem'>
-              <List>
-                {articles.slice(1).map(article => (
-                  <ArticlePreview key={article.title} article={article} />
-                ))}
-              </List>
-            </FullWidthSection>
-          </Layout>
-        );
+  return (
+    <Layout
+      headerData={{
+        children: (
+          <>
+            <span
+              css={css`
+                font-family: ${fonts.sans};
+                font-size: 15px;
+                padding: 2rem;
+              `}
+            >
+              {`${headerArticle.created} - ${
+                headerArticle.relationships.uid.name
+              }`}
+            </span>
+            <h3
+              data-cy='insightTitle'
+              css={css`
+                font-size: 72px;
+                font-family: ${fonts.serif};
+                font-weight: ${weights.medium};
+                width: 70%;
+                text-align: center;
+              `}
+            >
+              {headerArticle.title}
+            </h3>
+            <Link
+              css={css`
+                text-decoration: none;
+                color: ${colors.white};
+                :hover {
+                  color: ${colors.gray};
+                }
+              `}
+              to={headerArticle.path.alias}
+            >
+              read more
+            </Link>
+          </>
+        ),
       }}
-    />
+    >
+      <FullWidthSection height='100%' padding='2rem'>
+        <List>
+          {articles.slice(1).map(article => (
+            <ArticlePreview key={article.title} article={article} />
+          ))}
+        </List>
+      </FullWidthSection>
+    </Layout>
   );
 };

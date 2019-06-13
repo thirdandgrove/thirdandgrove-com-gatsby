@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 
@@ -54,68 +54,61 @@ export default () => {
     justify-content: space-around;
     padding-top: 2rem;
   `;
-  return (
-    <StaticQuery
-      query={graphql`
-        {
-          allCaseStudy {
-            nodes {
-              ...CaseStudyFragment
-            }
-          }
-          allTaxonomyTermCaseStudyTags {
-            nodes {
-              id
-              name
-            }
-          }
+  const data = useStaticQuery(graphql`
+    {
+      allCaseStudy {
+        nodes {
+          ...CaseStudyFragment
         }
-      `}
-      render={data => {
-        const studies = data.allCaseStudy.nodes;
-        return (
-          <Layout
-            headerData={{
-              children: (
-                <BrandList>
-                  <p>google</p>
-                  <p>google</p>
-                  <p>google</p>
-                </BrandList>
-              ),
-              title: 'We work with brands we love.',
-            }}
-          >
-            {studies.map(study => (
-              <FullWidthSection height='100%' id={study.id}>
-                <StudyPreview>
-                  <Img
-                    fluid={
-                      study.relationships.field_image.localFile.childImageSharp
-                        .fluid
-                    }
-                  />
-                  <Link to={study.path.alias}>
-                    <h1>{study.title}</h1>
-                    <h3>
-                      {' – '}
-                      {study.field_subtitle}
-                    </h3>
-                  </Link>
-                  <ul>
-                    {study.relationships.field_tags.map((tag, i, arr) => (
-                      <li>
-                        {tag.name.toLowerCase()}
-                        {i !== arr.length - 1 && ','}
-                      </li>
-                    ))}
-                  </ul>
-                </StudyPreview>
-              </FullWidthSection>
-            ))}
-          </Layout>
-        );
+      }
+      allTaxonomyTermCaseStudyTags {
+        nodes {
+          id
+          name
+        }
+      }
+    }
+  `);
+  const studies = data.allCaseStudy.nodes;
+  return (
+    <Layout
+      headerData={{
+        children: (
+          <BrandList>
+            <p>google</p>
+            <p>google</p>
+            <p>google</p>
+          </BrandList>
+        ),
+        title: 'We work with brands we love.',
       }}
-    />
+    >
+      {studies.map(study => (
+        <FullWidthSection height='100%' key={study.id}>
+          <StudyPreview>
+            <Img
+              fluid={
+                study.relationships.field_image.localFile.childImageSharp.fluid
+              }
+            />
+            <Link to={study.path.alias}>
+              <h1>{study.title}</h1>
+              <h3>
+                {' – '}
+                {study.field_subtitle}
+              </h3>
+            </Link>
+            <ul>
+              {study.relationships.field_tags.map((tag, i, arr) => (
+                <li key={JSON.stringify(tag)}>
+                  {tag.name.toLowerCase()}
+                  {i !== arr.length - 1 && ','}
+                </li>
+              ))}
+            </ul>
+          </StudyPreview>
+        </FullWidthSection>
+      ))}
+    </Layout>
   );
 };
