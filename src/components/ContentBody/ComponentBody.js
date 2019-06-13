@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Image from './Image';
 import Quote from './Quote';
@@ -16,11 +17,17 @@ const Components = {
   Prefooter,
 };
 
-export default ({ comp }) => {
+const ComponentBody = ({ comp }) => {
   // Dynamically select a component based on field name
   const componentName = comp.relationships.component_type.name
     .split(' ')
     .join('');
   const Component = Components[componentName];
-  return <Component key={JSON.stringify(comp)} data={comp} />;
+  return <Component data={comp} />;
 };
+
+ComponentBody.propTypes = {
+  comp: PropTypes.object.isRequired,
+};
+
+export default ComponentBody;
