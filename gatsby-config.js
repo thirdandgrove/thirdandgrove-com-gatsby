@@ -25,18 +25,18 @@ module.exports = {
         name: `third-and-grove`,
         short_name: `tag`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#fff`,
+        theme_color: `#EBC900`,
         display: `minimal-ui`,
       },
     },
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: process.env.DRUPAL_URL2,
+        baseUrl: process.env.DRUPAL_URL,
         basicAuth: {
-          username: process.env.BASIC_AUTH_USERNAME2,
-          password: process.env.BASIC_AUTH_PASSWORD2,
+          username: process.env.BASIC_AUTH_USERNAME,
+          password: process.env.BASIC_AUTH_PASSWORD,
         },
       },
     },
