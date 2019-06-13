@@ -36,6 +36,15 @@ export default () => {
       }
     }
   `;
+  const jobs = data.allResumatorJob.nodes;
+
+  // eliminate duplicate and closed job listings
+  const uniqueJobs = jobs
+    .filter(j => j.status === 'Open')
+    .map(e => e.title)
+    .map((e, i, final) => final.indexOf(e) === i && i)
+    .filter(e => jobs[e])
+    .map(e => jobs[e]);
 
   return (
     <Layout
@@ -46,17 +55,15 @@ export default () => {
     >
       <FullWidthSection height='100%'>
         <JobList>
-          {data.allResumatorJob.nodes
-            .filter(j => j.status === 'Open')
-            .map(job => (
-              <li>
-                <Link
-                  to={`/careers/${job.title.toLowerCase().replace(/ /g, '-')}`}
-                >
-                  {job.title}
-                </Link>
-              </li>
-            ))}
+          {uniqueJobs.map(job => (
+            <li key={JSON.stringify(job)}>
+              <Link
+                to={`/careers/${job.title.toLowerCase().replace(/ /g, '-')}`}
+              >
+                {job.title}
+              </Link>
+            </li>
+          ))}
         </JobList>
       </FullWidthSection>
     </Layout>
