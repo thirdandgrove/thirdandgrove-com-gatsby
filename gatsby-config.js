@@ -28,6 +28,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#EBC900`,
         display: `minimal-ui`,
+        icon: 'static/images/icon.png',
       },
     },
     {

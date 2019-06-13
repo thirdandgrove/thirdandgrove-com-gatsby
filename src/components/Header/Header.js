@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
+import SEO from '../seo';
 import { colors, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
@@ -10,6 +11,7 @@ const Header = ({
   defaultBackground,
   backgroundImage,
   title,
+  description,
   fade,
   height,
   children,
@@ -49,6 +51,7 @@ const Header = ({
   `;
   return (
     <>
+      <SEO title={title} description={description} />
       <TopNav invert={invert} />
       <FullWidthSection
         height={height}
@@ -69,6 +72,7 @@ const Header = ({
 Header.propTypes = {
   defaultBackground: PropTypes.bool,
   title: PropTypes.string,
+  description: PropTypes.string,
   fade: PropTypes.number,
   height: PropTypes.string,
   children: PropTypes.node,
@@ -80,6 +84,7 @@ Header.propTypes = {
 Header.defaultProps = {
   defaultBackground: true,
   title: null,
+  description: null,
   fade: 0,
   height: '700px',
   children: null,

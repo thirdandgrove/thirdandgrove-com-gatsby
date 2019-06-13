@@ -14,7 +14,6 @@ const ProjectsSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
   const data = useStaticQuery(graphql`
     {
       allCaseStudy {
@@ -24,7 +23,6 @@ const ProjectsSlider = () => {
       }
     }
   `);
-
   return (
     <FullWidthSection>
       <Slider
