@@ -43,7 +43,7 @@ export default () => {
       <FullWidthSection textAlign='center' height='100px' padding='3rem 0 0 0'>
         <h3 css={h3style}>What We Do</h3>
       </FullWidthSection>
-      <FullWidthSection padding='0 20vw' textAlign='center' height='350px'>
+      <FullWidthSection padding='0 20vw' textAlign='center' height='100%'>
         <h1>A digital innovation company.</h1>
         <h4 css={h4style}>
           What sets us apart from the pack is our deep understanding of
@@ -120,17 +120,6 @@ export default () => {
           background-color: ${colors.lightblue};
           z-index: 1;
           height: 550px;
-          &::after {
-            content: '';
-            background: url('images/menuBackdrop.webp');
-            opacity: 0.15;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            position: absolute;
-            z-index: -1;
-          }
         `}
       >
         <h3 css={h3style}>Making Moves?</h3>

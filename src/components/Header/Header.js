@@ -49,13 +49,17 @@ const Header = ({
   `;
   return (
     <>
-      <TopNav height={height} invert={invert} />
+      <TopNav invert={invert} />
       <FullWidthSection
         height={height}
         backgroundImage={backgroundImage}
         backgroundColor={color}
       >
-        {title && <h1 css={headerTitle}>{title}</h1>}
+        {title && (
+          <h1 data-cy='titleText' css={headerTitle}>
+            {title}
+          </h1>
+        )}
         {children && children}
       </FullWidthSection>
     </>

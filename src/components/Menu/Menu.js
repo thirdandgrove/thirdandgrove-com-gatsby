@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 
 import { colors, mediaQueries, fonts, weights } from '../../styles';
 
-const Menu = ({ height, menuOpen }) => {
+const Menu = ({ menuOpen }) => {
   const linkPrimaryStyle = css`
     font-size: 24px;
     line-height: 39px;
@@ -155,6 +155,9 @@ const Menu = ({ height, menuOpen }) => {
           <Link css={linkSecondaryStyle} to='/shopify'>
             Shopify
           </Link>
+          <Link css={linkSecondaryStyle} to='/gatsby'>
+            Gatsby
+          </Link>
         </section>
       </div>
     </nav>
@@ -162,7 +165,11 @@ const Menu = ({ height, menuOpen }) => {
 };
 
 Menu.propTypes = {
-  height: PropTypes.string.isRequired,
+  menuOpen: PropTypes.bool,
+};
+
+Menu.defaultProps = {
+  menuOpen: false,
 };
 
 export default Menu;

@@ -1,14 +1,11 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { colors } from '../styles';
+import Layout from '../components/layout';
 
 export default () => {
   return (
-    <>
-      <Header title='Privacy Statement' height='300px' />
+    <Layout headerData={{ title: 'Privacy Statement', height: '400px' }}>
       <main
         css={css`
           display: flex;
@@ -225,7 +222,6 @@ export default () => {
           <strong>hello@thirdandgrove.com.</strong>
         </p>
       </main>
-      <Footer />
-    </>
+    </Layout>
   );
 };

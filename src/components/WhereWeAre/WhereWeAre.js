@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
 import FullWidthSection from '../FullWidthSection';
 import { colors, fonts, weights } from '../../styles';
 
-export default ({ h3style, h4style, h1style }) => {
+const WhereWeAre = ({ h3style, h4style, h1style }) => {
   const [selected, updateSelection] = useState('boston');
   const listCss = css`
     list-style: none;
@@ -130,3 +131,11 @@ export default ({ h3style, h4style, h1style }) => {
     </FullWidthSection>
   );
 };
+
+WhereWeAre.propTypes = {
+  h3style: PropTypes.object.isRequired,
+  h4style: PropTypes.object.isRequired,
+  h1style: PropTypes.object.isRequired,
+};
+
+export default WhereWeAre;

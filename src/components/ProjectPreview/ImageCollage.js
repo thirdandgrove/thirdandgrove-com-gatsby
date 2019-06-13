@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-const ImageCollage = ({ index, images }) => {
-  const slideNumber = index + 1;
+const ImageCollage = ({ images }) => {
   const flexWrap = css`
     display: flex;
     position: relative;
@@ -18,6 +17,7 @@ const ImageCollage = ({ index, images }) => {
     }
   `;
   // // Alternate between the classes based on slide number
+  // const slideNumber = index + 1;
   // const selectedClass = () =>
   //   // eslint-disable-next-line no-nested-ternary
   //   slideNumber % 3 === 0 ? 3 : slideNumber % 2 === 0 ? 2 : 1;
@@ -46,7 +46,6 @@ const ImageCollage = ({ index, images }) => {
 };
 
 ImageCollage.propTypes = {
-  index: PropTypes.number.isRequired,
   images: PropTypes.object.isRequired,
 };
 

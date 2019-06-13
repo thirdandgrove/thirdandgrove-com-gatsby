@@ -16,7 +16,7 @@ import {
   weights,
 } from '../../styles';
 
-const TopNav = ({ height, invert }) => {
+const TopNav = ({ invert }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
@@ -41,7 +41,7 @@ const TopNav = ({ height, invert }) => {
           }
         `}
       >
-        <Link to='/'>
+        <Link to='/' data-cy='homeButton'>
           {/* this guard keeps the Gatsby build from breaking */}
           {typeof window !== 'undefined' &&
             (width > jsBreakpoints.phoneLarge ? (
@@ -74,6 +74,7 @@ const TopNav = ({ height, invert }) => {
           `}
           type='button'
           onClick={() => toggleOpen()}
+          data-cy='menuButton'
         >
           <Hamburger
             fill={invert ? colors.white : colors.darkgray}
@@ -82,19 +83,17 @@ const TopNav = ({ height, invert }) => {
         </button>
       </span>
       {/* // some transition in/out? */}
-      <Menu toggleOpen={toggleOpen} height={height} menuOpen={isOpen} />
+      <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />
     </>
   );
 };
 
 TopNav.propTypes = {
   invert: PropTypes.bool,
-  height: PropTypes.string,
 };
 
 TopNav.defaultProps = {
   invert: false,
-  height: '700px',
 };
 
 export default TopNav;

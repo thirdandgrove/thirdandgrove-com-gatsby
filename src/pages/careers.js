@@ -17,34 +17,6 @@ export default () => {
       }
     }
   `);
-  const Filter = styled.nav`
-    width: 100%;
-    ul {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 50%;
-      margin: 5rem auto;
-      margin-top: 1rem;
-    }
-    li {
-      text-decoration: none;
-      font-variant: small-caps;
-      list-style: none;
-      font-family: ${fonts.sans};
-      font-weight: ${weights.bold};
-      font-size: 15px;
-      color: ${colors.mediumgray};
-      letter-spacing: 2px;
-      text-align: right;
-      line-height: 36px;
-      padding-right: 15px;
-      &.active {
-        color: ${colors.darkgray};
-        text-decoration: underline;
-      }
-    }
-  `;
 
   const JobList = styled.ul`
     margin: 3rem auto;
@@ -72,27 +44,6 @@ export default () => {
         height: '450px',
       }}
     >
-      {/* <Filter>
-        <ul
-          css={css`
-            margin: 0 auto !important;
-          `}
-        >
-          <li
-            css={css`
-              margin: 0 auto;
-            `}
-          >
-            filter jobs
-          </li>
-        </ul>
-        <ul>
-          <li>creative</li>
-          <li>delivery</li>
-          <li>strategy</li>
-          <li>engineering</li>
-        </ul>
-      </Filter> */}
       <FullWidthSection height='100%'>
         <JobList>
           {data.allResumatorJob.nodes

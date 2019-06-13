@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
@@ -6,7 +7,7 @@ import { colors, fonts, weights } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
-export default ({ data }) => {
+const Insights = ({ data }) => {
   const post = data.insight;
   const isInsight = post.relationships.node_type.name === 'Insight';
   return (
@@ -83,6 +84,10 @@ export default ({ data }) => {
   );
 };
 
+Insights.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
 export const query = graphql`
   query($PostId: String!) {
     insight(id: { eq: $PostId }) {
@@ -131,3 +136,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Insights;

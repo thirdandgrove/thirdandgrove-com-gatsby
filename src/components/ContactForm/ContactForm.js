@@ -31,7 +31,9 @@ const ContactFrom = () => {
     // validate inputs
     if (!name || !email) {
       // notify user of required fields
+      // eslint-disable-next-line no-console
       console.error('missing required fields');
+      return;
     }
     fetch('/', {
       method: 'POST',
@@ -64,6 +66,7 @@ const ContactFrom = () => {
         name='contact'
         method='POST'
         data-netlify='true'
+        data-cy='contactForm'
         netlify-honeypot='bot-field'
         onSubmit={submitContact}
       >
@@ -130,6 +133,7 @@ const ContactFrom = () => {
           <TextArea
             value={formState.comments}
             onChange={updateInput}
+            data-cy='messageField'
             name='comments'
             placeholder='Leave a message'
           />
@@ -141,7 +145,9 @@ const ContactFrom = () => {
             margin-top: 4rem;
           `}
         >
-          <Button type='submit'>send</Button>
+          <Button data-cy='contactSubmit' type='submit'>
+            send
+          </Button>
         </span>
       </form>
     </main>

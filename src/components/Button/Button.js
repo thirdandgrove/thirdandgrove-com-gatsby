@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 import { colors, fonts, weights } from '../../styles';
 
-export default ({ children, ...props }) => {
-  const Button = styled.button`
+const Button = ({ children, ...props }) => {
+  const StyledButton = styled.button`
     position: relative;
     min-width: 220px;
     padding: 0;
@@ -61,8 +61,18 @@ export default ({ children, ...props }) => {
     }
   `;
   return (
-    <Button {...props}>
+    <StyledButton {...props}>
       <span>{children}</span>
-    </Button>
+    </StyledButton>
   );
 };
+
+Button.propTypes = {
+  children: PropTypes.node,
+};
+
+Button.defaultProps = {
+  children: null,
+};
+
+export default Button;

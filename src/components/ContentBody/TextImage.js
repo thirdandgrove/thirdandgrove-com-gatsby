@@ -1,15 +1,11 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
 import Img from 'gatsby-image';
 
 import SplitSection from '../SplitSection';
 
 const TextImage = ({ data }) => {
-  const imageCss = css`
-    justify-self: center;
-    align-self: center;
-  `;
   return (
     <SplitSection padding='3rem'>
       {data.field_reversed ? (
