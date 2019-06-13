@@ -11,6 +11,7 @@ const Header = ({
   defaultBackground,
   backgroundImage,
   title,
+  metaTitle,
   description,
   fade,
   height,
@@ -51,7 +52,7 @@ const Header = ({
   `;
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO title={title || metaTitle} description={description} />
       <TopNav invert={invert} />
       <FullWidthSection
         height={height}
@@ -72,6 +73,7 @@ const Header = ({
 Header.propTypes = {
   defaultBackground: PropTypes.bool,
   title: PropTypes.string,
+  metaTitle: PropTypes.string,
   description: PropTypes.string,
   fade: PropTypes.number,
   height: PropTypes.string,
@@ -84,6 +86,7 @@ Header.propTypes = {
 Header.defaultProps = {
   defaultBackground: true,
   title: null,
+  metaTitle: null,
   description: null,
   fade: 0,
   height: '700px',

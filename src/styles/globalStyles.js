@@ -404,7 +404,7 @@ export const globalStyles = css`
     -webkit-font-feature-settings: 'tnum';
     padding: 0.725rem 0.96667rem calc(0.725rem - 1px);
 
-    &:first-child {
+    &:first-of-type {
       padding-left: 0;
     }
 
