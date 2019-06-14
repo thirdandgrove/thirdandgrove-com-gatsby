@@ -32,8 +32,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-drupal`,
+      resolve: `gatsby-source-drupal-preview`,
       options: {
+        preview: true,
         baseUrl: process.env.DRUPAL_URL,
         basicAuth: {
           username: process.env.BASIC_AUTH_USERNAME,
