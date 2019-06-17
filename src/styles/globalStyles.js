@@ -583,6 +583,7 @@ export const globalStyles = css`
     width: 1220px;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `;
