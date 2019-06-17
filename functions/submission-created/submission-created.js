@@ -4,7 +4,9 @@
 
 const key = process.env.PIPEDRIVE_KEY;
 exports.handler = function(event, context, callback) {
-  console.log(event);
+  const body = JSON.parse(event.body).payload;
+  console.log({ body });
+
   callback(null, {
     statusCode: 200,
     body: 'fired!!!',
