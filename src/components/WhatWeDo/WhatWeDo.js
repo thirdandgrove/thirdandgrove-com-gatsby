@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import Button from '../Button';
-import { colors, fonts, weights, mediaQueries } from '../../styles';
+import { colors, weights, mediaQueries } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
 const WhatWeDo = () => {
