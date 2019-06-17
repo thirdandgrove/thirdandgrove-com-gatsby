@@ -35,9 +35,9 @@ const Studies = ({ data }) => {
                 font-family: ${fonts.sans};
                 font-weight: ${weights.regular};
                 font-size: 12px;
-                color: ${colors.darkgray};
                 letter-spacing: 3px;
-                line-height: 16px;
+                line-height: 21px;
+                text-transform: uppercase;
               `}
             >
               {post.relationships.field_tags.map(tag => tag.name).join(', ')}
@@ -48,10 +48,14 @@ const Studies = ({ data }) => {
             css={css`
               font-family: ${fonts.serif};
               font-weight: ${weights.thin};
-              font-size: 39px;
-              color: ${colors.darkgray};
-              letter-spacing: -0.45px;
-              line-height: 84px;
+              font-size: 24px;
+              line-height: 1.5;
+
+              ${mediaQueries.phoneLarge} {
+                font-size: 39px;
+                line-height: 2.15;
+                letter-spacing: -0.45px;
+              }
             `}
           >
             {post.field_subtitle}
