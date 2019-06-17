@@ -31,7 +31,7 @@ const TextQuote = ({ data }) => {
 
   // TODO: Quote attribution
   return (
-    <SplitSection padding='3rem'>
+    <SplitSection className='container-max'>
       {data.field_reversed ? (
         <>
           <section

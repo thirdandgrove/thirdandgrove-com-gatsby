@@ -224,12 +224,28 @@ export const globalStyles = css`
   h6 {
     padding: 0;
     margin: 0 0 1.45rem;
+    font-family: ${fonts.serif};
     font-weight: ${weights.medium};
     line-height: 1.1;
   }
 
   h1 {
     font-size: 2.25rem;
+  }
+
+  .h1--xl {
+    margin-bottom: 10px;
+    font-size: 39px;
+    line-height: 1.23;
+    font-weight: ${weights.black};
+    letter-spacing: 0.52px;
+
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 20px;
+      font-size: 100px;
+      line-height: 1;
+      letter-spacing: 1.33px;
+    }
   }
 
   h2 {

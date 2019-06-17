@@ -30,17 +30,18 @@ const Quote = ({ data }) => {
   return (
     <FullWidthSection
       css={css`
-        display: block;
-        height: 100%;
-        padding: 3rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
       `}
     >
-      <div css={quoteCss}>
-        <BigQuote />
-        {data.field_quote}
-        <BigQuote />
+      <div className='container-max'>
+        <div css={quoteCss}>
+          <BigQuote />
+          {data.field_quote}
+          <BigQuote />
+        </div>
+        <p>— {data.field_footer_text}</p>
       </div>
-      <p>— {data.field_footer_text}</p>
     </FullWidthSection>
   );
 };

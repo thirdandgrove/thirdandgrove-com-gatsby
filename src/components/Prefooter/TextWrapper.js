@@ -6,7 +6,6 @@ const TextWrapper = styled.span`
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 500px;
   justify-content: center;
   align-items: center;
   flex-grow: 1;

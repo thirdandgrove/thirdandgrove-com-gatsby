@@ -7,7 +7,7 @@ import SplitSection from '../SplitSection';
 
 const TextImage = ({ data }) => {
   return (
-    <SplitSection padding='3rem'>
+    <SplitSection className='container-max'>
       {data.field_reversed ? (
         <>
           <Img
