@@ -23,6 +23,7 @@
     "gatsby-source-drupal-preview": "^0.2.0",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-sharp": "^2.1.17",
+    "netlify-lambda": "^1.4.13",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
