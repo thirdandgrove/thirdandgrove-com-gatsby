@@ -570,4 +570,19 @@ export const globalStyles = css`
     -webkit-appearance: button;
     font: inherit;
   }
+
+  /*
+   * Grid
+   *
+   * The site at its widest uses a 24-column grid with 20px gutters, with a
+   * max-width of 1220px (including outside gutters)
+   *
+   */
+
+  .container-max {
+    width: 1220px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
 `;
