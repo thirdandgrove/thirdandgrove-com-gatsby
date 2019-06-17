@@ -1,8 +1,7 @@
 /* eslint-disable */
-// require('dotenv').config();
 // const fetch = require('node-fetch');
 
-const key = process.env.PIPEDRIVE_KEY;
+// const key = process.env.PIPEDRIVE_KEY;
 exports.handler = function(event, context, callback) {
   const body = JSON.parse(event.body).payload;
   console.log({ body });
