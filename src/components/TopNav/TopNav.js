@@ -23,21 +23,25 @@ const TopNav = ({ invert }) => {
   const { width } = useWindow();
   return (
     <>
-      <span
+      <div
+        className='container-max'
         css={css`
           position: absolute;
           top: 0;
           font-family: ${fonts.serif};
           font-weight: ${weights.medium};
-          padding: 10px 25px;
-          width: 100%;
+          padding-top: 20px;
+          padding-bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
           display: flex;
           background-color: transparent;
           justify-content: space-between;
           align-items: center;
           z-index: 2;
+
           ${mediaQueries.phoneLarge} {
-            padding: 10px 100px;
+            padding-top: 30px;
           }
         `}
       >
@@ -47,7 +51,7 @@ const TopNav = ({ invert }) => {
             (width > jsBreakpoints.phoneLarge ? (
               <ThirdAndGrove
                 css={css`
-                  height: 150px;
+                  height: 22px;
                   fill: ${invert ? colors.white : colors.darkgray};
                 `}
               />
@@ -81,7 +85,7 @@ const TopNav = ({ invert }) => {
             isOpen={isOpen}
           />
         </button>
-      </span>
+      </div>
       {/* // some transition in/out? */}
       <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />
     </>

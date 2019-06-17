@@ -36,7 +36,7 @@ const Menu = ({ menuOpen }) => {
     }
 
     ${mediaQueries.phoneLarge} {
-      padding: 0 3rem;
+      padding: 0 40px;
     }
 
     h5 {
@@ -109,13 +109,15 @@ const Menu = ({ menuOpen }) => {
       `}
     >
       <div
+        className='container-max'
         css={css`
-          padding: 80px 60px 60px;
-          width: 100%;
+          padding-top: 80px;
+          padding-bottom: 60px;
           ${mediaQueries.phoneLarge} {
             display: flex;
             justify-content: space-between;
-            padding: 0 100px;
+            padding-top: 0;
+            padding-bottom: 0;
           }
         `}
       >
