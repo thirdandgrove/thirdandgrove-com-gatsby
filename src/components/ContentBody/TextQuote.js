@@ -5,29 +5,46 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import SplitSection from '../SplitSection';
-import { colors, fonts, weights } from '../../styles';
+import { colors, fonts, weights, mediaQueries } from '../../styles';
 
 const TextQuote = ({ data }) => {
   const quoteCss = css`
     font-family: ${fonts.serif};
     font-weight: ${weights.medium};
-    font-size: 61px;
-    color: ${colors.darkgray};
-    letter-spacing: 0;
-    line-height: 76px;
-    padding: 1rem;
+    font-size: 39px;
+    line-height: 1.15;
+    ${mediaQueries.phoneLarge} {
+      font-size: 61px;
+      line-height: 1.25;
+    }
   `;
   const BigYellow = styled.span`
-    transform: scaleX(-1);
-    font-family: ${fonts.serif};
-    font-weight: ${weights.medium};
-    font-size: 61px;
     color: ${colors.yellow};
-    letter-spacing: 0;
-    line-height: 76px;
-    padding: 0;
   `;
-  const BigQuote = () => <BigYellow>&quot;</BigYellow>;
+  // Uncomment this when quote attribution field is added
+  // Removing in the meantime so I don't get a warning for unused variables
+  // const attrCss = css`
+  //   margin-bottom: 0;
+  //   font-size: 12px;
+  //   line-height: 3;
+  //   ${mediaQueries.phoneLarge} {
+  //     font-size: 21px;
+  //     line-height: 1.71;
+  //   }
+  // `;
+  const BigQuoteL = () => (
+    <BigYellow
+      css={css`
+        ${mediaQueries.desktop} {
+          position: absolute;
+          margin-left: -26px;
+        }
+      `}
+    >
+      &ldquo;
+    </BigYellow>
+  );
+  const BigQuoteR = () => <BigYellow>&rdquo;</BigYellow>;
 
   // TODO: Quote attribution
   return (
@@ -37,16 +54,36 @@ const TextQuote = ({ data }) => {
           <section
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
           />
-          <p css={quoteCss}>{data.field_quote}</p>
+          <section
+            css={css`
+              padding-top: 40px;
+              ${mediaQueries.phoneLarge} {
+                padding-top: 0;
+              }
+            `}
+          >
+            <div css={quoteCss}>
+              <BigQuoteL />
+              {data.field_quote}
+              <BigQuoteR />
+            </div>
+          </section>
         </>
       ) : (
         <>
-          <section css={quoteCss}>
-            <BigQuote />
-            <span css={quoteCss}>
+          <section
+            css={css`
+              padding-bottom: 40px;
+              ${mediaQueries.phoneLarge} {
+                padding-bottom: 0;
+              }
+            `}
+          >
+            <div css={quoteCss}>
+              <BigQuoteL />
               {data.field_quote}
-              <BigQuote />
-            </span>
+              <BigQuoteR />
+            </div>
           </section>
           <section
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
