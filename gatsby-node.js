@@ -50,6 +50,32 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
+  const legacyInsights = await graphql(`
+    {
+      allNodeLegacyInsight {
+        nodes {
+          id
+          title
+          created(formatString: "MMMM DD YYYY")
+          relationships {
+            uid {
+              name
+            }
+          }
+        }
+      }
+    }
+  `);
+  legacyInsights.data.allNodeLegacyInsight.nodes.map(legacyInsight =>
+    createPage({
+      path: legacyInsight.path.alias,
+      component: path.resolve(`src/templates/legacyInsights.js`),
+      context: {
+        legacyInsight,
+      },
+    })
+  );
+
   const jobs = await graphql(`
     query {
       allResumatorJob {
