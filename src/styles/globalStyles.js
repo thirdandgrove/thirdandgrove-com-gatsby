@@ -231,21 +231,6 @@ export const globalStyles = css`
     font-size: 2.25rem;
   }
 
-  .h1--xl {
-    margin-bottom: 10px;
-    font-size: 39px;
-    line-height: 1.23;
-    font-weight: ${weights.black};
-    letter-spacing: 0.52px;
-
-    ${mediaQueries.phoneLarge} {
-      margin-bottom: 20px;
-      font-size: 100px;
-      line-height: 1;
-      letter-spacing: 1.33px;
-    }
-  }
-
   h2 {
     font-size: 1.62671rem;
   }
@@ -604,42 +589,5 @@ export const globalStyles = css`
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
-  }
-
-  /*
-   * Big quotes
-   */
-
-  .quote-text {
-    font-weight: ${weights.medium};
-    font-size: 39px;
-    line-height: 1.15;
-    ${mediaQueries.phoneLarge} {
-      font-size: 61px;
-      line-height: 1.25;
-    }
-  }
-
-  .quo-l {
-    color: ${colors.yellow};
-
-    ${mediaQueries.desktop} {
-      position: absolute;
-      margin-left: -26px;
-    }
-  }
-
-  .quo-r {
-    color: ${colors.yellow};
-  }
-
-  .quote-attr {
-    margin-bottom: 0;
-    font-size: 12px;
-    line-height: 3;
-    ${mediaQueries.phoneLarge} {
-      font-size: 21px;
-      line-height: 1.71;
-    }
   }
 `;

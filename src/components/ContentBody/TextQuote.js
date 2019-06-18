@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import SplitSection from '../SplitSection';
-import { mediaQueries } from '../../styles';
+import { mediaQueries, quoteText, quoL, quoR } from '../../styles';
 
 const TextQuote = ({ data }) => {
   // TODO: Quote attribution
@@ -23,10 +23,10 @@ const TextQuote = ({ data }) => {
               }
             `}
           >
-            <div className='quote-text'>
-              <span className='quo-l'>&ldquo;</span>
+            <div css={quoteText}>
+              <span css={quoL}>&ldquo;</span>
               {data.field_quote}
-              <span className='quo-r'>&rdquo;</span>
+              <span css={quoR}>&rdquo;</span>
             </div>
           </section>
         </>
@@ -40,10 +40,10 @@ const TextQuote = ({ data }) => {
               }
             `}
           >
-            <div className='quote-text'>
-              <span className='quo-l'>&ldquo;</span>
+            <div css={quoteText}>
+              <span css={quoL}>&ldquo;</span>
               {data.field_quote}
-              <span className='quo-r'>&rdquo;</span>
+              <span css={quoR}>&rdquo;</span>
             </div>
           </section>
           <section

@@ -1,6 +1,9 @@
-export { colors } from './css-utils';
-export { fonts } from './css-utils';
-export { weights } from './css-utils';
-export { mediaQueries } from './css-utils';
-export { jsBreakpoints } from './css-utils';
+export {
+  colors,
+  fonts,
+  weights,
+  mediaQueries,
+  jsBreakpoints,
+} from './css-utils';
 export { globalStyles } from './globalStyles';
+export { h1Xl, quoteText, quoL, quoR, quoteAttr } from './custom-css';

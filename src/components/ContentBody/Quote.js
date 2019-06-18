@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
-import { mediaQueries } from '../../styles';
+import { mediaQueries, quoteText, quoL, quoR, quoteAttr } from '../../styles';
 
 const Quote = ({ data }) => {
   return (
@@ -20,12 +20,12 @@ const Quote = ({ data }) => {
       `}
     >
       <div className='container-max'>
-        <div className='quote-text'>
-          <span className='quo-l'>&ldquo;</span>
+        <div css={quoteText}>
+          <span css={quoL}>&ldquo;</span>
           {data.field_quote}
-          <span className='quo-r'>&rdquo;</span>
+          <span css={quoR}>&rdquo;</span>
         </div>
-        <p className='quote-attr'>— {data.field_footer_text}</p>
+        <p css={quoteAttr}>— {data.field_footer_text}</p>
       </div>
     </FullWidthSection>
   );
