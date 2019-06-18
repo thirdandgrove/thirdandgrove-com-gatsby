@@ -607,4 +607,41 @@ export const globalStyles = css`
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  /*
+   * Big quotes
+   */
+
+  .quote-text {
+    font-weight: ${weights.medium};
+    font-size: 39px;
+    line-height: 1.15;
+    ${mediaQueries.phoneLarge} {
+      font-size: 61px;
+      line-height: 1.25;
+    }
+  }
+
+  .quo-l {
+    color: ${colors.yellow};
+
+    ${mediaQueries.desktop} {
+      position: absolute;
+      margin-left: -26px;
+    }
+  }
+
+  .quo-r {
+    color: ${colors.yellow};
+  }
+
+  .quote-attr {
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 3;
+    ${mediaQueries.phoneLarge} {
+      font-size: 21px;
+      line-height: 1.71;
+    }
+  }
 `;

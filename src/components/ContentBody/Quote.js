@@ -5,44 +5,9 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import FullWidthSection from '../FullWidthSection';
-import { colors, fonts, weights, mediaQueries } from '../../styles';
+import { mediaQueries } from '../../styles';
 
 const Quote = ({ data }) => {
-  const quoteCss = css`
-    font-family: ${fonts.serif};
-    font-weight: ${weights.medium};
-    font-size: 39px;
-    line-height: 1.15;
-    ${mediaQueries.phoneLarge} {
-      font-size: 61px;
-      line-height: 1.25;
-    }
-  `;
-  const BigYellow = styled.span`
-    color: ${colors.yellow};
-  `;
-  const attrCss = css`
-    margin-bottom: 0;
-    font-size: 12px;
-    line-height: 3;
-    ${mediaQueries.phoneLarge} {
-      font-size: 21px;
-      line-height: 1.71;
-    }
-  `;
-  const BigQuoteL = () => (
-    <BigYellow
-      css={css`
-        ${mediaQueries.desktop} {
-          position: absolute;
-          margin-left: -26px;
-        }
-      `}
-    >
-      &ldquo;
-    </BigYellow>
-  );
-  const BigQuoteR = () => <BigYellow>&rdquo;</BigYellow>;
   return (
     <FullWidthSection
       height='auto'
@@ -56,12 +21,12 @@ const Quote = ({ data }) => {
       `}
     >
       <div className='container-max'>
-        <div css={quoteCss}>
-          <BigQuoteL />
+        <div className='quote-text'>
+          <span className='quo-l'>&ldquo;</span>
           {data.field_quote}
-          <BigQuoteR />
+          <span className='quo-r'>&rdquo;</span>
         </div>
-        <p css={attrCss}>— {data.field_footer_text}</p>
+        <p className='quote-attr'>— {data.field_footer_text}</p>
       </div>
     </FullWidthSection>
   );
