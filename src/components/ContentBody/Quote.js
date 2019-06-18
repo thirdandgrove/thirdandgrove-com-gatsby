@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 
 import FullWidthSection from '../FullWidthSection';
 import { mediaQueries } from '../../styles';

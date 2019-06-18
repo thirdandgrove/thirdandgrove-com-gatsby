@@ -1,10 +1,8 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
-
 import useWindow from '../../hooks/useWindow';
-import { colors, jsBreakpoints, fonts, mediaQueries } from '../../styles';
+import { jsBreakpoints } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
 const Text = ({ data }) => {

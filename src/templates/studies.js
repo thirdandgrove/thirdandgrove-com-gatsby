@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
-import { colors, fonts, weights, mediaQueries } from '../styles';
+import { fonts, weights, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 

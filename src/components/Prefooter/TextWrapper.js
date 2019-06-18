@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { fonts, weights, mediaQueries } from '../../styles';
+import { weights, mediaQueries } from '../../styles';
 
 const TextWrapper = styled.span`
   margin: 0;
