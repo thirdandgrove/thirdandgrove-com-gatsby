@@ -4,7 +4,9 @@ const fetch = require('node-fetch');
 exports.handler = async function(event, _context, callback) {
   const key = process.env.PIPEDRIVE_KEY;
   const body = JSON.parse(event.body).payload;
-  console.log(body.payload);
+
+  console.log('submission', { body });
+
   const { name, email, phone, website, comments } = body.data;
   if (!name || !email) {
     console.log('error, no name or email sent');
