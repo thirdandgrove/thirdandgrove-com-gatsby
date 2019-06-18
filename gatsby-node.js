@@ -57,6 +57,9 @@ exports.createPages = async ({ actions, graphql }) => {
           id
           title
           created(formatString: "MMMM DD YYYY")
+          path {
+            alias
+          }
           relationships {
             uid {
               name
