@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import ReactHtmlParser from 'react-html-parser';
+// import Img from 'gatsby-image';
+// import ReactHtmlParser from 'react-html-parser';
 
 import Layout from '../components/layout';
 
-const LegacyInsights = ({ data, pageContext }) => {
+const LegacyInsights = ({ pageContext }) => {
   const article = pageContext.legacyInsight;
 
   // const articleBodyElements = new ReactHtmlParser(article.body.processed, {
@@ -66,7 +66,8 @@ const LegacyInsights = ({ data, pageContext }) => {
 };
 
 LegacyInsights.propTypes = {
-  data: PropTypes.object.isRequired,
+  // data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 };
 
 export const query = graphql`
