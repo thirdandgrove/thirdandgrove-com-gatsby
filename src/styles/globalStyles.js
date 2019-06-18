@@ -269,11 +269,16 @@ export const globalStyles = css`
   }
 
   p {
+    margin-bottom: 27px;
     font-family: ${fonts.sans};
-    font-size: 21px;
+    font-size: 16px;
     letter-spacing: 0;
     line-height: 1.7;
-    color: ${colors.darkgray};
+
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 36px;
+      font-size: 21px;
+    }
   }
 
   p *:last-child {

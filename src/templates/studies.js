@@ -32,12 +32,17 @@ const Studies = ({ data }) => {
           {post.relationships.field_tags && (
             <h4
               css={css`
+                margin-bottom: 40px;
                 font-family: ${fonts.sans};
                 font-weight: ${weights.regular};
                 font-size: 12px;
                 letter-spacing: 3px;
                 line-height: 21px;
                 text-transform: uppercase;
+
+                ${mediaQueries.phoneLarge} {
+                  margin-bottom: 65px;
+                }
               `}
             >
               {post.relationships.field_tags.map(tag => tag.name).join(', ')}
@@ -46,12 +51,14 @@ const Studies = ({ data }) => {
 
           <p
             css={css`
+              margin-bottom: 5px;
               font-family: ${fonts.serif};
               font-weight: ${weights.thin};
               font-size: 24px;
               line-height: 1.5;
 
               ${mediaQueries.phoneLarge} {
+                margin-bottom: 40px;
                 font-size: 39px;
                 line-height: 2.15;
                 letter-spacing: -0.45px;

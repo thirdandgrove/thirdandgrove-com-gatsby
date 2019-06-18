@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import { css } from '@emotion/core';
+import { mediaQueries } from '../../styles';
 
 import SplitSection from '../SplitSection';
 
@@ -14,6 +16,11 @@ const TextImage = ({ data }) => {
             fluid={
               data.relationships.field_image.localFile.childImageSharp.fluid
             }
+            css={css`
+              ${mediaQueries.desktop} {
+                margin-right: 50px;
+              }
+            `}
           />
           <section
             dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
@@ -28,6 +35,13 @@ const TextImage = ({ data }) => {
             fluid={
               data.relationships.field_image.localFile.childImageSharp.fluid
             }
+            css={css`
+              margin-bottom: 40px;
+
+              ${mediaQueries.desktop} {
+                margin-left: 50px;
+              }
+            `}
           />
         </>
       )}
