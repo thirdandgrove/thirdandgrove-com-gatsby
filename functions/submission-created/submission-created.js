@@ -8,10 +8,7 @@ exports.handler = async function(event, _context, callback) {
   console.log('submission', { body });
 
   const { name, email, phone, website, comments } = body.data;
-  if (!name || !email) {
-    console.log('error, no name or email sent');
-    return res.end();
-  }
+
   const names = name.split(' ');
   let [first_name, last_name] = names;
   if (names.length > 2) {
