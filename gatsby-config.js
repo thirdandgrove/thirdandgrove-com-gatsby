@@ -49,5 +49,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: 'GTM-NWCDM93',
+        includeInDevelopment: false,
+      },
+    },
   ],
 };
