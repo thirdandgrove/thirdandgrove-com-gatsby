@@ -33,9 +33,7 @@ const h2Styles = css`
 `;
 
 const wrapperStyles = css`
-   {
-    /* TODO: change data model to provide a color. */
-  }
+  /* TODO: change data model to provide a color. */
   background-color: ${colors.yellow};
   min-height: 300px;
   padding: 40px 20px;
@@ -43,9 +41,22 @@ const wrapperStyles = css`
 
   ${mediaQueries.phoneLarge} {
     min-height: 610px;
-    padding-top: 0;
-    padding-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 70px;
     justify-content: space-evenly;
+  }
+`;
+
+const imgStyles = css`
+  height: 300px;
+
+  ${mediaQueries.phoneLarge} {
+    height: auto;
+  }
+
+  div {
+    height: 100%;
+    padding-bottom: 0 !important; // Blame Gatsby :p
   }
 `;
 
@@ -58,6 +69,7 @@ const Prefooter = ({ data }) => (
       <Button>View Case Study</Button>
     </TextWrapper>
     <Img
+      css={imgStyles}
       fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
     />
   </SplitSection>
