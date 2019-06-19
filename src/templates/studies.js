@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
-import { fonts, weights, mediaQueries } from '../styles';
+import { fonts, weights, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
@@ -18,7 +18,7 @@ const Studies = ({ data }) => {
         invert: post.field_inverse_header,
       }}
     >
-      <div className='container-max'>
+      <div css={container.max}>
         <header
           css={css`
             padding-top: 20px;

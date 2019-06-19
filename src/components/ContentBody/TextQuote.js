@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import SplitSection from '../SplitSection';
-import { mediaQueries, quoteText, quoL, quoR } from '../../styles';
+import { mediaQueries, quoteText, quoL, quoR, container } from '../../styles';
 
 const TextQuote = ({ data }) => {
   // TODO: Quote attribution
   return (
-    <SplitSection className='container-max'>
+    <SplitSection css={container.max}>
       {data.field_reversed ? (
         <>
           <section

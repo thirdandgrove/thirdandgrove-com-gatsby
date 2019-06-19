@@ -2,9 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-
 import FullWidthSection from '../FullWidthSection';
-import { mediaQueries, quoteText, quoL, quoR, quoteAttr } from '../../styles';
+import {
+  mediaQueries,
+  quoteText,
+  quoL,
+  quoR,
+  quoteAttr,
+  container,
+} from '../../styles';
 
 const Quote = ({ data }) => {
   return (
@@ -19,7 +25,7 @@ const Quote = ({ data }) => {
         }
       `}
     >
-      <div className='container-max'>
+      <div css={container.max}>
         <div css={quoteText}>
           <span css={quoL}>&ldquo;</span>
           {data.field_quote}

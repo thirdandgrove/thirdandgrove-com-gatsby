@@ -3,13 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
-import { mediaQueries } from '../../styles';
+import { mediaQueries, container } from '../../styles';
 
 import SplitSection from '../SplitSection';
 
 const TextImage = ({ data }) => {
   return (
-    <SplitSection className='container-max'>
+    <SplitSection css={container.max}>
       {data.field_reversed ? (
         <>
           <Img

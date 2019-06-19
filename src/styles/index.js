@@ -6,4 +6,11 @@ export {
   jsBreakpoints,
 } from './css-utils';
 export { globalStyles } from './globalStyles';
-export { h1Xl, quoteText, quoL, quoR, quoteAttr } from './custom-css';
+export {
+  container,
+  h1Xl,
+  quoteText,
+  quoL,
+  quoR,
+  quoteAttr,
+} from './custom-css';

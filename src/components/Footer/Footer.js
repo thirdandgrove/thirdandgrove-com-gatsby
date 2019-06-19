@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
-import { colors, fonts, weights, mediaQueries } from '../../styles';
+import { colors, fonts, weights, mediaQueries, container } from '../../styles';
 
 const Footer = () => {
   const linkStyle = css`
@@ -39,7 +39,7 @@ const Footer = () => {
   `;
   return (
     <div css={wrapperStyle}>
-      <div css={innerWrapperStyle} className='container-max'>
+      <div css={[innerWrapperStyle, container.max]}>
         <Link css={linkStyle} to='/work'>
           Work
         </Link>
