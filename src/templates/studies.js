@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
-import { fonts, weights, mediaQueries, container } from '../styles';
+import { fonts, weights, mediaQueries, container, h1Xl } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
@@ -28,7 +28,7 @@ const Studies = ({ data }) => {
             }
           `}
         >
-          <h1 className='h1--xl'>{post.title}</h1>
+          <h1 css={h1Xl}>{post.title}</h1>
           {post.relationships.field_tags && (
             <h4
               css={css`
