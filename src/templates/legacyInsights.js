@@ -50,7 +50,7 @@ const LegacyInsights = ({ pageContext, data }) => {
             <h3
               css={css`
                 font-size: 72px;
-                font-family: 'Canela-Medium';
+                font-family: ${fonts.serif};
                 font-weight: 200;
                 width: 70%;
                 text-align: center;
