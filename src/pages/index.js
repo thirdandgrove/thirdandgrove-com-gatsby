@@ -27,7 +27,7 @@ export default () => {
 };
 
 // define fragments
-export const query = graphql`
+export const InsightFragment = graphql`
   fragment InsightFragment on insight {
     id
     title
@@ -75,6 +75,9 @@ export const query = graphql`
       }
     }
   }
+`;
+
+export const CaseStudyFragment = graphql`
   fragment CaseStudyFragment on case_study {
     id
     title
