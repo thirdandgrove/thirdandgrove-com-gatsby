@@ -5,11 +5,6 @@ import styled from '@emotion/styled';
 import { mediaQueries } from '../../styles';
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: ${props => props.margin || 0};
-  padding: ${props => props.padding || 0};
   ${mediaQueries.phoneLarge} {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

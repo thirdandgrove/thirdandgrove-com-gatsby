@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
-import { colors, fonts, weights } from '../styles';
+import { fonts, weights, mediaQueries, container, h1Xl } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
@@ -18,55 +18,58 @@ const Studies = ({ data }) => {
         invert: post.field_inverse_header,
       }}
     >
-      <header
-        css={css`
-          padding-left: 3rem;
-          padding-top: 3rem;
-        `}
-      >
-        <h1
+      <div css={container.max}>
+        <header
           css={css`
-            font-family: ${fonts.serif};
-            font-weight: ${weights.black};
-            font-size: 100px;
-            color: ${colors.darkgray};
-            letter-spacing: 1.33px;
-            line-height: 76px;
-            padding-top: 3rem;
+            padding-top: 20px;
+
+            ${mediaQueries.phoneLarge} {
+              padding-top: 50px;
+            }
           `}
         >
-          {post.title}
-        </h1>
-        {post.relationships.field_tags && (
-          <h4
+          <h1 css={h1Xl}>{post.title}</h1>
+          {post.relationships.field_tags && (
+            <h4
+              css={css`
+                margin-bottom: 40px;
+                font-family: ${fonts.sans};
+                font-weight: ${weights.regular};
+                font-size: 12px;
+                letter-spacing: 3px;
+                line-height: 21px;
+                text-transform: uppercase;
+
+                ${mediaQueries.phoneLarge} {
+                  margin-bottom: 65px;
+                }
+              `}
+            >
+              {post.relationships.field_tags.map(tag => tag.name).join(', ')}
+            </h4>
+          )}
+
+          <p
             css={css`
-              font-family: ${fonts.sans};
-              font-weight: ${weights.regular};
-              font-size: 12px;
-              color: ${colors.darkgray};
-              letter-spacing: 3px;
-              line-height: 16px;
+              margin-bottom: 5px;
+              font-family: ${fonts.serif};
+              font-weight: ${weights.thin};
+              font-size: 24px;
+              line-height: 1.5;
+
+              ${mediaQueries.phoneLarge} {
+                margin-bottom: 40px;
+                font-size: 39px;
+                line-height: 2.15;
+                letter-spacing: -0.45px;
+              }
             `}
           >
-            {post.relationships.field_tags.map(tag => tag.name).join(', ')}
-          </h4>
-        )}
-      </header>
+            {post.field_subtitle}
+          </p>
+        </header>
+      </div>
 
-      <p
-        css={css`
-          font-family: ${fonts.serif};
-          font-weight: ${weights.thin};
-          font-size: 39px;
-          color: ${colors.darkgray};
-          letter-spacing: -0.45px;
-          line-height: 84px;
-          padding-top: 3rem;
-          padding-left: 3rem;
-        `}
-      >
-        {post.field_subtitle}
-      </p>
       {post.relationships.field_components.map(comp => (
         <ContentBody key={comp.id} comp={comp} />
       ))}

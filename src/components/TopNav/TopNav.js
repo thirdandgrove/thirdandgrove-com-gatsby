@@ -14,6 +14,7 @@ import {
   jsBreakpoints,
   fonts,
   weights,
+  container,
 } from '../../styles';
 
 const TopNav = ({ invert }) => {
@@ -24,26 +25,28 @@ const TopNav = ({ invert }) => {
   return (
     <>
       <div
-        className='container-max'
-        css={css`
-          position: absolute;
-          top: 0;
-          font-family: ${fonts.serif};
-          font-weight: ${weights.medium};
-          padding-top: 20px;
-          padding-bottom: 10px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          background-color: transparent;
-          justify-content: space-between;
-          align-items: center;
-          z-index: 2;
+        css={[
+          container.max,
+          css`
+            position: absolute;
+            top: 0;
+            font-family: ${fonts.serif};
+            font-weight: ${weights.medium};
+            padding-top: 20px;
+            padding-bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            background-color: transparent;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2;
 
-          ${mediaQueries.phoneLarge} {
-            padding-top: 30px;
-          }
-        `}
+            ${mediaQueries.phoneLarge} {
+              padding-top: 30px;
+            }
+          `,
+        ]}
       >
         <Link to='/' data-cy='homeButton'>
           {/* this guard keeps the Gatsby build from breaking */}

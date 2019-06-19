@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { colors, mediaQueries, fonts, weights } from '../../styles';
+import { colors, mediaQueries, fonts, weights, container } from '../../styles';
 
 const Menu = ({ menuOpen }) => {
   const linkPrimaryStyle = css`
@@ -109,17 +109,19 @@ const Menu = ({ menuOpen }) => {
       `}
     >
       <div
-        className='container-max'
-        css={css`
-          padding-top: 80px;
-          padding-bottom: 60px;
-          ${mediaQueries.phoneLarge} {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 0;
-            padding-bottom: 0;
-          }
-        `}
+        css={[
+          container.max,
+          css`
+            padding-top: 80px;
+            padding-bottom: 60px;
+            ${mediaQueries.phoneLarge} {
+              display: flex;
+              justify-content: space-between;
+              padding-top: 0;
+              padding-bottom: 0;
+            }
+          `,
+        ]}
       >
         <section css={sectionStyle}>
           <h5>Contents</h5>
