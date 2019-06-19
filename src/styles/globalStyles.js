@@ -1,9 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 // Global CSS Styles
 import { css } from '@emotion/core';
-import { colors } from './colors';
-import { fonts, weights } from './fonts';
-import { mediaQueries } from './breakpoints';
+import { colors, fonts, weights, mediaQueries } from './css-utils';
 
 export const globalStyles = css`
   /*
@@ -224,6 +222,7 @@ export const globalStyles = css`
   h6 {
     padding: 0;
     margin: 0 0 1.45rem;
+    font-family: ${fonts.serif};
     font-weight: ${weights.medium};
     line-height: 1.1;
   }
@@ -253,11 +252,16 @@ export const globalStyles = css`
   }
 
   p {
+    margin-bottom: 27px;
     font-family: ${fonts.sans};
-    font-size: 21px;
+    font-size: 16px;
     letter-spacing: 0;
     line-height: 1.7;
-    color: ${colors.darkgray};
+
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 36px;
+      font-size: 21px;
+    }
   }
 
   p *:last-child {
@@ -569,21 +573,5 @@ export const globalStyles = css`
   ::-webkit-file-upload-button {
     -webkit-appearance: button;
     font: inherit;
-  }
-
-  /*
-   * Grid
-   *
-   * The site at its widest uses a 24-column grid with 20px gutters, with a
-   * max-width of 1220px (including outside gutters)
-   *
-   */
-
-  .container-max {
-    width: 1220px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
   }
 `;
