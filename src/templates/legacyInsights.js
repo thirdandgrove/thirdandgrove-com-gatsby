@@ -51,7 +51,6 @@ const LegacyInsights = ({ pageContext, data }) => {
               css={css`
                 font-size: 72px;
                 font-family: ${fonts.serif};
-                font-weight: 200;
                 width: 70%;
                 text-align: center;
               `}
