@@ -2,34 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
-// import Img from 'gatsby-image';
-// import ReactHtmlParser from 'react-html-parser';
+import Img from 'gatsby-image';
+import ReactHtmlParser from 'react-html-parser';
 
 import Layout from '../components/layout';
 
-const LegacyInsights = ({ pageContext }) => {
+const LegacyInsights = ({ pageContext, data }) => {
   const article = pageContext.legacyInsight;
 
-  // const articleBodyElements = new ReactHtmlParser(article.body.processed, {
-  //   transform: function transform(node) {
-  //     // html parser finds an image
-  //     if (node.type === 'tag' && node.name === 'img') {
-  //       const uuid = node.attribs['data-entity-uuid'];
-  //       const foundFile = data.allFileFile.edges.find(
-  //         file => file.node.drupal_id === uuid && file.node.localFile
-  //       );
-  //       // guard against bad data, so much bad data.
-  //       const src =
-  //         foundFile &&
-  //         foundFile.node.localFile &&
-  //         foundFile.node.localFile.childImageSharp &&
-  //         foundFile.node.localFile.childImageSharp.fluid;
-  //       return src ? <Img alt='alt' fluid={src} /> : undefined;
-  //     }
+  const articleBodyElements = new ReactHtmlParser(article.body.processed, {
+    transform: function transform(node) {
+      // html parser finds an image
+      if (node.type === 'tag' && node.name === 'img') {
+        const uuid = node.attribs['data-entity-uuid'];
+        const foundFile = data.allFileFile.edges.find(
+          file => file.node.drupal_id === uuid && file.node.localFile
+        );
+        // guard against bad data, so much bad data.
+        const src =
+          foundFile &&
+          foundFile.node.localFile &&
+          foundFile.node.localFile.childImageSharp &&
+          foundFile.node.localFile.childImageSharp.fluid;
+        return src ? <Img alt='alt' fluid={src} /> : undefined;
+      }
 
-  //     return undefined;
-  //   },
-  // });
+      return undefined;
+    },
+  });
 
   return (
     <Layout
@@ -60,13 +60,13 @@ const LegacyInsights = ({ pageContext }) => {
         ),
       }}
     >
-      {/* {articleBodyElements} */}
+      {ReactHtmlParser(article.body.processed)}
     </Layout>
   );
 };
 
 LegacyInsights.propTypes = {
-  // data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 };
 
