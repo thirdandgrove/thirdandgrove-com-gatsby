@@ -5,26 +5,28 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import ReactHtmlParser from 'react-html-parser';
 
+import { fonts } from '../styles';
 import Layout from '../components/layout';
+import FullWidthSection from '../components/FullWidthSection';
 
 const LegacyInsights = ({ pageContext, data }) => {
   const article = pageContext.legacyInsight;
 
-  const articleBodyElements = new ReactHtmlParser(article.body.processed, {
+  const articleBodyElements = new ReactHtmlParser(article.body.value, {
     transform: function transform(node) {
       // html parser finds an image
       if (node.type === 'tag' && node.name === 'img') {
         const uuid = node.attribs['data-entity-uuid'];
-        const foundFile = data.allFileFile.edges.find(
-          file => file.node.drupal_id === uuid && file.node.localFile
+        const foundFile = data.allFileFile.nodes.find(
+          file => file.drupal_id === uuid
         );
         // guard against bad data, so much bad data.
         const src =
           foundFile &&
-          foundFile.node.localFile &&
-          foundFile.node.localFile.childImageSharp &&
-          foundFile.node.localFile.childImageSharp.fluid;
-        return src ? <Img alt='alt' fluid={src} /> : undefined;
+          foundFile.localFile &&
+          foundFile.localFile.childImageSharp &&
+          foundFile.localFile.childImageSharp.fluid;
+        return src ? <Img fluid={src} /> : undefined;
       }
 
       return undefined;
@@ -38,7 +40,7 @@ const LegacyInsights = ({ pageContext, data }) => {
           <>
             <span
               css={css`
-                font-family: 'NB International Pro';
+                font-family: ${fonts.sans};
                 font-size: 15px;
                 padding: 2rem;
               `}
@@ -60,7 +62,9 @@ const LegacyInsights = ({ pageContext, data }) => {
         ),
       }}
     >
-      {articleBodyElements}
+      <FullWidthSection height='100%' padding='6rem'>
+        {articleBodyElements}
+      </FullWidthSection>
     </Layout>
   );
 };
@@ -73,14 +77,12 @@ LegacyInsights.propTypes = {
 export const query = graphql`
   query {
     allFileFile {
-      edges {
-        node {
-          drupal_id
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 2000) {
-                ...GatsbyImageSharpFluid
-              }
+      nodes {
+        drupal_id
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 2000) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

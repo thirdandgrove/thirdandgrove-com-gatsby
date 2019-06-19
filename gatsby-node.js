@@ -58,7 +58,7 @@ exports.createPages = async ({ actions, graphql }) => {
           title
           created(formatString: "MMMM DD YYYY")
           body {
-            processed
+            value
           }
           path {
             alias
