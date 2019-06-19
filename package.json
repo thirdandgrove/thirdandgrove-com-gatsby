@@ -15,6 +15,7 @@
     "gatsby": "^2.3.16",
     "gatsby-image": "^2.0.37",
     "gatsby-plugin-emotion": "^4.0.6",
+    "gatsby-plugin-google-tagmanager": "^2.0.15",
     "gatsby-plugin-manifest": "^2.0.28",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
