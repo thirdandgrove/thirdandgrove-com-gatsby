@@ -15,6 +15,7 @@ const Header = ({
   description,
   fade,
   height,
+  mobileHeight,
   children,
   color,
   invert,
@@ -35,6 +36,7 @@ const Header = ({
       }
     }
     position: relative;
+    margin-bottom: 0;
     animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     line-height: 48px;
     font-size: 39px;
@@ -50,15 +52,16 @@ const Header = ({
       letter-spacing: -1px;
     }
   `;
+  const sectionCSS = css`
+    padding: 88px 0;
+    background-image: url(${backgroundImage});
+    background-color: ${color};
+  `;
   return (
     <>
       <SEO title={title || metaTitle} description={description} />
       <TopNav invert={invert} />
-      <FullWidthSection
-        height={height}
-        backgroundImage={backgroundImage}
-        backgroundColor={color}
-      >
+      <FullWidthSection css={sectionCSS}>
         {title && (
           <h1 data-cy='titleText' css={headerTitle}>
             {title}
@@ -77,6 +80,7 @@ Header.propTypes = {
   description: PropTypes.string,
   fade: PropTypes.number,
   height: PropTypes.string,
+  mobileHeight: PropTypes.string,
   children: PropTypes.node,
   backgroundImage: PropTypes.string,
   invert: PropTypes.bool,
@@ -90,6 +94,7 @@ Header.defaultProps = {
   description: null,
   fade: 0,
   height: '700px',
+  mobileHeight: '300px',
   children: null,
   backgroundImage: '',
   invert: false,

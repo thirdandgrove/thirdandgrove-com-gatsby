@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-import { fonts, weights } from '../../styles';
+import { fonts, weights, mediaQueries } from '../../styles';
 
 export default styled.section`
   width: 100%;
-  height: ${props => props.height || '700px'};
+  min-height: ${props => props.mobileHeight || '300px'};
   display: flex;
   font-family: ${fonts.serif};
   font-weight: ${weights.medium};
@@ -17,4 +17,8 @@ export default styled.section`
   background-position: center;
   padding: ${props => props.padding};
   text-align: ${props => props.textAlign};
+
+  ${mediaQueries.phoneLarge} {
+    min-height: ${props => props.height || '700px'};
+  }
 `;
