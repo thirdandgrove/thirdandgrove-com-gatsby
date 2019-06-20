@@ -61,7 +61,11 @@ const Header = ({
     <>
       <SEO title={title || metaTitle} description={description} />
       <TopNav invert={invert} />
-      <FullWidthSection css={sectionCSS}>
+      <FullWidthSection
+        css={sectionCSS}
+        height={height}
+        mobileHeight={mobileHeight}
+      >
         {title && (
           <h1 data-cy='titleText' css={headerTitle}>
             {title}
