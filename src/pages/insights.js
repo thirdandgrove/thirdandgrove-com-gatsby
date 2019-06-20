@@ -2,8 +2,8 @@ import React from 'react';
 import { useStaticQuery, Link, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { fonts, weights, colors } from '../styles';
 
+import { fonts, weights, colors } from '../styles';
 import ArticlePreview from '../components/ArticlePreview';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import useWindow from '../../hooks/useWindow';
 import { jsBreakpoints } from '../../styles';
 import FullWidthSection from '../FullWidthSection';

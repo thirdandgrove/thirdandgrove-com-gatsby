@@ -1,9 +1,10 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 
-import TextWrapper from './TextWrapper';
 import Button from '../Button';
 import { colors } from '../../styles';
+
+import TextWrapper from './TextWrapper';
 
 const BeUs = () => (
   <TextWrapper backgroundColor={colors.lightblue}>

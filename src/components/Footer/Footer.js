@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
+
 import { colors, fonts, weights, mediaQueries, container } from '../../styles';
 
 const Footer = () => {

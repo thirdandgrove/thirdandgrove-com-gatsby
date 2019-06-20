@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
+
 import Button from '../Button';
 import { TextWrapper } from '../Prefooter';
 import SplitSection from '../SplitSection';
