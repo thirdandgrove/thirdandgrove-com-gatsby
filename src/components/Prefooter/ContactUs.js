@@ -1,9 +1,10 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 
-import TextWrapper from './TextWrapper';
-import Button from '../Button';
 import { colors } from '../../styles';
+import Button from '../Button';
+
+import TextWrapper from './TextWrapper';
 
 const ContactUs = () => (
   <TextWrapper backgroundColor={colors.yellow}>

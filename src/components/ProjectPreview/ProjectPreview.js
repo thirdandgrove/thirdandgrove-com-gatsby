@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import Button from '../Button';
-import ImageCollage from './ImageCollage';
 import { colors, fonts, weights } from '../../styles';
+
+import ImageCollage from './ImageCollage';
 
 const ProjectPreview = ({ project, index }) => (
   <div

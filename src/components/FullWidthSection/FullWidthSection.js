@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { fonts, weights, mediaQueries } from '../../styles';
 
 export default styled.section`

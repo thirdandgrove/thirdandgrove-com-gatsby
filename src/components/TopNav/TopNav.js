@@ -5,9 +5,6 @@ import { css } from '@emotion/core';
 
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
-import { ReactComponent as TAG } from './svg/tagLogo.svg';
-import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
-import Hamburger from './svg/hamburger';
 import {
   colors,
   mediaQueries,
@@ -16,6 +13,10 @@ import {
   weights,
   container,
 } from '../../styles';
+
+import { ReactComponent as TAG } from './svg/tagLogo.svg';
+import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
+import Hamburger from './svg/hamburger';
 
 const TopNav = ({ invert }) => {
   const [isOpen, setOpen] = useState(false);
