@@ -54,11 +54,14 @@ const ProjectPreview = ({ project, index }) => (
     </section>
     <ImageCollage
       images={{
-        primary: project.relationships.field_image.localFile.publicURL,
+        primary:
+          project.relationships.field_image.localFile.childImageSharp.fluid.src,
         secondary:
-          project.relationships.field_secondary_image.localFile.publicURL,
+          project.relationships.field_secondary_image.localFile.childImageSharp
+            .fluid.src,
         tertiary:
-          project.relationships.field_tertiary_image.localFile.publicURL,
+          project.relationships.field_tertiary_image.localFile.childImageSharp
+            .fluid.src,
       }}
       index={index}
     />

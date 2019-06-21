@@ -64,7 +64,7 @@ export const query = graphql`
               localFile {
                 publicURL
                 childImageSharp {
-                  fluid {
+                  fluid(maxWidth: 850, maxHeight: 850) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -95,7 +95,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid {
+            fluid(maxWidth: 850, maxHeight: 850) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -106,7 +106,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid {
+            fluid(maxWidth: 850, maxHeight: 850) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -117,7 +117,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid {
+            fluid(maxWidth: 850, maxHeight: 850) {
               ...GatsbyImageSharpFluid
             }
           }
