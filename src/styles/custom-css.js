@@ -39,6 +39,19 @@ export const h1Xl = css`
   }
 `;
 
+export const h1L = css`
+  font-size: 39px;
+  font-weight: ${weights.medium};
+  line-height: 1.23;
+  letter-spacing: -0.45px;
+
+  ${mediaQueries.phoneLarge} {
+    font-size: 72px;
+    line-height: 1.16;
+    letter-spacing: 0;
+  }
+`;
+
 // Large quotes
 export const quoteText = css`
   font-weight: ${weights.medium};

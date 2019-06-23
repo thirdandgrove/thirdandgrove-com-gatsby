@@ -1,10 +1,11 @@
 import React from 'react';
-import { useStaticQuery, Link, graphql } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
-import { fonts, weights, colors } from '../styles';
+import { fonts, h1L, mediaQueries } from '../styles';
 import ArticlePreview from '../components/ArticlePreview';
+import Button from '../components/Button';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -48,28 +49,23 @@ export default () => {
             </span>
             <h3
               data-cy='insightTitle'
-              css={css`
-                font-size: 72px;
-                font-family: ${fonts.serif};
-                font-weight: ${weights.medium};
-                width: 70%;
-                text-align: center;
-              `}
+              css={[
+                h1L,
+                css`
+                  padding: 0 20px;
+                  text-align: center;
+                  ${mediaQueries.phoneLarge} {
+                    width: 70%;
+                  }
+                `,
+              ]}
             >
               {headerArticle.title}
             </h3>
-            <Link
-              css={css`
-                text-decoration: none;
-                color: ${colors.white};
-                :hover {
-                  color: ${colors.gray};
-                }
-              `}
-              to={headerArticle.path.alias}
-            >
-              read more
-            </Link>
+
+            <Button onClick={() => navigate(`${headerArticle.path.alias}`)}>
+              Read More
+            </Button>
           </>
         ),
       }}
