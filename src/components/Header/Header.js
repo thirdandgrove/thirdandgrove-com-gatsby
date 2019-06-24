@@ -19,6 +19,7 @@ const Header = ({
   children,
   color,
   invert,
+  keywords,
 }) => {
   const headerTitle = css`
     @keyframes fadeInOut {
@@ -59,7 +60,11 @@ const Header = ({
   `;
   return (
     <>
-      <SEO title={title || metaTitle} description={description} />
+      <SEO
+        title={title || metaTitle}
+        description={description}
+        keywords={keywords}
+      />
       <TopNav invert={invert} />
       <FullWidthSection
         css={sectionCSS}

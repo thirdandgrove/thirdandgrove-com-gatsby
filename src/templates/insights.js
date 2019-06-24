@@ -10,11 +10,23 @@ import ContentBody from '../components/ContentBody';
 const Insights = ({ data }) => {
   const post = data.insight;
 
+  // standin for when a description field for metadata is available
+  const postText = post.relationships.field_components.find(
+    comp => comp.relationships.component_type.name === 'Text'
+  ).field_body.processed;
+  const description = postText.slice(
+    postText.indexOf('>') + 1,
+    postText.indexOf('>') + 158
+  );
+
+  const keywords = post.relationships.field_tags;
   return (
     <Layout
       headerData={{
         title: post.title,
         invert: post.field_inverse_header,
+        description,
+        keywords,
       }}
     >
       <p
@@ -49,6 +61,9 @@ export const query = graphql`
       title
       field_inverse_header
       created(formatString: "MMMM DD YYYY")
+      path {
+        alias
+      }
       relationships {
         node_type {
           name
@@ -58,7 +73,6 @@ export const query = graphql`
         }
         field_components {
           ... on component__text {
-            id
             relationships {
               component_type {
                 name
@@ -69,7 +83,6 @@ export const query = graphql`
             }
           }
           ... on component__image {
-            id
             relationships {
               component_type {
                 name
@@ -79,7 +92,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800, maxHeight: 600) {
+                    fluid(maxWidth: 850, maxHeight: 850) {
                       ...GatsbyImageSharpFluid
                     }
                   }
