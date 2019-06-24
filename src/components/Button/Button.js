@@ -7,7 +7,6 @@ import { colors, fonts, weights } from '../../styles';
 const Button = ({ children, ...props }) => {
   const StyledButton = styled.button`
     position: relative;
-    min-width: 220px;
     padding: 0;
     border: none;
     outline: none;
@@ -24,7 +23,7 @@ const Button = ({ children, ...props }) => {
     span {
       display: block;
       position: relative;
-      padding: 12px 15px 10px;
+      padding: 17px 28px;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-image: linear-gradient(
