@@ -1,22 +1,14 @@
 import React from 'react';
-import { useStaticQuery, Link, graphql } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 
-import { fonts, weights, colors } from '../styles';
+import { fonts, weights, h1L, mediaQueries, container } from '../styles';
 import ArticlePreview from '../components/ArticlePreview';
+import Button from '../components/Button';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
 export default () => {
-  const List = styled.div`
-    display: grid;
-    margin: 0 auto;
-    width: 80vw;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 250px;
-    place-items: center center;
-  `;
   const data = useStaticQuery(graphql`
     {
       allInsight {
@@ -35,51 +27,66 @@ export default () => {
       headerData={{
         children: (
           <>
-            <span
+            <div
               css={css`
+                margin-top: 20px;
                 font-family: ${fonts.sans};
                 font-size: 15px;
-                padding: 2rem;
+                font-weight: ${weights.bold};
+                letter-spacing: 2px;
+                line-height: 2.4;
+                text-transform: uppercase;
               `}
             >
               {`${headerArticle.created} - ${
                 headerArticle.relationships.uid.name
               }`}
-            </span>
+            </div>
             <h3
               data-cy='insightTitle'
-              css={css`
-                font-size: 72px;
-                font-family: ${fonts.serif};
-                font-weight: ${weights.medium};
-                width: 70%;
-                text-align: center;
-              `}
+              css={[
+                h1L,
+                css`
+                  padding: 0 20px;
+                  margin: 30px 0 60px;
+                  text-align: center;
+                  ${mediaQueries.phoneLarge} {
+                    width: 70%;
+                    margin: 40px auto 50px;
+                  }
+                `,
+              ]}
             >
               {headerArticle.title}
             </h3>
-            <Link
-              css={css`
-                text-decoration: none;
-                color: ${colors.white};
-                :hover {
-                  color: ${colors.gray};
-                }
-              `}
-              to={headerArticle.path.alias}
-            >
-              read more
-            </Link>
+
+            <Button onClick={() => navigate(`${headerArticle.path.alias}`)}>
+              Read More
+            </Button>
           </>
         ),
       }}
     >
-      <FullWidthSection height='100%' padding='2rem'>
-        <List>
+      <FullWidthSection>
+        <div
+          css={[
+            container.max,
+            css`
+              padding-top: 20px;
+              ${mediaQueries.phoneLarge} {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-column-gap: 10%;
+                place-items: center top;
+                padding-top: 90px;
+              }
+            `,
+          ]}
+        >
           {articles.slice(1).map(article => (
             <ArticlePreview key={article.title} article={article} />
           ))}
-        </List>
+        </div>
       </FullWidthSection>
     </Layout>
   );

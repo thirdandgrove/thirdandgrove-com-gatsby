@@ -9,6 +9,7 @@ export { globalStyles } from './globalStyles';
 export {
   container,
   h1Xl,
+  h1L,
   quoteText,
   quoL,
   quoR,
