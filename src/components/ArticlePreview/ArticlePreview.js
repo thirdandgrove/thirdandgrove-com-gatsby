@@ -21,6 +21,7 @@ const ArticlePreview = ({ article }) => {
       /* @TODO Get actual image in here */
       height: 400px;
       background: ${colors.gray};
+      transition-timing-function: ease;
     }
 
     h2 {
@@ -69,10 +70,13 @@ const ArticlePreview = ({ article }) => {
             <Spring
               delay={0}
               to={{
-                transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
+                transform: isVisible ? 'translateY(0)' : 'translateY(400px)',
+                opacity: isVisible ? '1' : '0',
               }}
             >
-              {({ transform }) => <div style={{ transform }} />}
+              {({ transform, opacity }) => (
+                <div style={{ transform, opacity }} />
+              )}
             </Spring>
           )}
         </VisibilitySensor>
