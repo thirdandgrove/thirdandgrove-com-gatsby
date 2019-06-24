@@ -1,4 +1,6 @@
 import React from 'react';
+import { Spring } from 'react-spring/renderprops';
+import VisibilitySensor from '../VisibilitySensor/VisibilitySensor';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -18,7 +20,7 @@ const ArticlePreview = ({ article }) => {
     div {
       /* @TODO Get actual image in here */
       height: 400px;
-      background-color: ${colors.gray};
+      background: ${colors.gray};
     }
 
     h2 {
@@ -62,7 +64,19 @@ const ArticlePreview = ({ article }) => {
         `}
         to={article.path.alias}
       >
-        <div />
+        <VisibilitySensor once partialVisibility offset={{ bottom: -100 }}>
+          {({ isVisible }) => (
+            <Spring
+              delay={0}
+              to={{
+                transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
+              }}
+            >
+              {({ transform }) => <div style={{ transform }} />}
+            </Spring>
+          )}
+        </VisibilitySensor>
+
         <h2>{article.title}</h2>
         <footer>
           {`${article.created} - ${article.relationships.uid.name}`}
