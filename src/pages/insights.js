@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
-import { fonts, h1L, mediaQueries } from '../styles';
+import { fonts, weights, h1L, mediaQueries } from '../styles';
 import ArticlePreview from '../components/ArticlePreview';
 import Button from '../components/Button';
 import Layout from '../components/layout';
@@ -36,26 +36,32 @@ export default () => {
       headerData={{
         children: (
           <>
-            <span
+            <div
               css={css`
+                margin-top: 20px;
                 font-family: ${fonts.sans};
                 font-size: 15px;
-                padding: 2rem;
+                font-weight: ${weights.bold};
+                letter-spacing: 2px;
+                line-height: 2.4;
+                text-transform: uppercase;
               `}
             >
               {`${headerArticle.created} - ${
                 headerArticle.relationships.uid.name
               }`}
-            </span>
+            </div>
             <h3
               data-cy='insightTitle'
               css={[
                 h1L,
                 css`
                   padding: 0 20px;
+                  margin: 30px 0 60px;
                   text-align: center;
                   ${mediaQueries.phoneLarge} {
                     width: 70%;
+                    margin: 40px auto 50px;
                   }
                 `,
               ]}
