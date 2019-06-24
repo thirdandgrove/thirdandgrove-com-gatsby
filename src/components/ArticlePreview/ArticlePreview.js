@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
+import Fade from 'react-reveal/Fade';
 
 import { colors, fonts, weights, mediaQueries } from '../../styles';
 
@@ -62,7 +63,9 @@ const ArticlePreview = ({ article }) => {
         `}
         to={article.path.alias}
       >
-        <div />
+        <Fade bottom>
+          <div />
+        </Fade>
         <h2>{article.title}</h2>
         <footer>
           {`${article.created} - ${article.relationships.uid.name}`}

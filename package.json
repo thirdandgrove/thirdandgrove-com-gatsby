@@ -29,6 +29,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-html-parser": "^2.0.2",
+    "react-reveal": "^1.2.2",
     "react-slick": "^0.24.0",
     "slick-carousel": "^1.8.1"
   },
