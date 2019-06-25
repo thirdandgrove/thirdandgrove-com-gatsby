@@ -42,7 +42,7 @@ const Menu = ({ menuOpen }) => {
     h5 {
       font-family: ${fonts.serif};
       font-weight: ${weights.thin};
-      color: ${colors.darkgray};
+      color: ${colors.white};
       letter-spacing: -0.1px;
       text-align: center;
       line-height: 15px;
@@ -58,7 +58,7 @@ const Menu = ({ menuOpen }) => {
 
     a {
       display: block;
-      color: ${colors.darkgrayFaded};
+      color: ${colors.whiteFaded};
       text-decoration: none;
       transition: 0.3s ease color;
       font-family: ${fonts.serif};
@@ -68,7 +68,7 @@ const Menu = ({ menuOpen }) => {
 
       &:hover,
       &:focus {
-        color: ${colors.darkgray};
+        color: ${colors.white};
       }
     }
   `;
@@ -79,7 +79,7 @@ const Menu = ({ menuOpen }) => {
         width: 100vw;
         display: flex;
         align-items: center;
-        background-color: ${colors.lightblue};
+        background-color: ${colors.darkgray};
         transition: 0.3s ease all;
         overflow: hidden;
         z-index: 1;
@@ -94,17 +94,6 @@ const Menu = ({ menuOpen }) => {
           flex-direction: row;
           justify-content: center;
           height: ${menuOpen ? '100vh' : '0'};
-        }
-
-        &::after {
-          content: '';
-          background: url('images/menu-bg.png');
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          position: absolute;
-          z-index: -1;
         }
       `}
     >

@@ -34,6 +34,7 @@ export const weights = {
 /* Colors */
 export const colors = {
   white: `#fff`,
+  whiteFaded: `rgba(255, 255, 255, 0.7)`,
   black: `#000`,
   gray: `#e0e0e0`,
   darkgray: `#29292a`,
