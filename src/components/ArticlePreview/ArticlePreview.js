@@ -50,43 +50,42 @@ const ArticlePreview = ({ article }) => {
     }
   `;
   return (
-    <Card>
-      <Link
-        css={css`
-          display: block;
-          text-decoration: none;
-          color: ${colors.darkgrayFaded};
-          transition: 0.3s ease color;
+    <VisibilitySensor once partialVisibility offset={{ bottom: -100 }}>
+      {({ isVisible }) => (
+        <Spring
+          delay={0}
+          to={{
+            transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
+            opacity: isVisible ? '1' : '0',
+          }}
+        >
+          {({ transform, opacity }) => (
+            <Card style={{ transform, opacity }}>
+              <Link
+                css={css`
+                  display: block;
+                  text-decoration: none;
+                  color: ${colors.darkgrayFaded};
+                  transition: 0.3s ease color;
 
-          &:hover,
-          &:focus {
-            color: ${colors.darkgray};
-          }
-        `}
-        to={article.path.alias}
-      >
-        <VisibilitySensor once partialVisibility offset={{ bottom: -100 }}>
-          {({ isVisible }) => (
-            <Spring
-              delay={0}
-              to={{
-                transform: isVisible ? 'translateY(0)' : 'translateY(400px)',
-                opacity: isVisible ? '1' : '0',
-              }}
-            >
-              {({ transform, opacity }) => (
-                <div style={{ transform, opacity }} />
-              )}
-            </Spring>
+                  &:hover,
+                  &:focus {
+                    color: ${colors.darkgray};
+                  }
+                `}
+                to={article.path.alias}
+              >
+                <div />
+                <h2>{article.title}</h2>
+                <footer>
+                  {`${article.created} - ${article.relationships.uid.name}`}
+                </footer>
+              </Link>
+            </Card>
           )}
-        </VisibilitySensor>
-
-        <h2>{article.title}</h2>
-        <footer>
-          {`${article.created} - ${article.relationships.uid.name}`}
-        </footer>
-      </Link>
-    </Card>
+        </Spring>
+      )}
+    </VisibilitySensor>
   );
 };
 

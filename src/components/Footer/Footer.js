@@ -36,6 +36,7 @@ const Footer = () => {
   const innerWrapperStyle = css`
     ${mediaQueries.phoneLarge} {
       display: flex;
+      justify-content: center;
     }
   `;
   return (

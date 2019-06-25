@@ -56,13 +56,13 @@ const TopNav = ({ invert }) => {
               <ThirdAndGrove
                 css={css`
                   height: 22px;
-                  fill: ${invert ? colors.white : colors.darkgray};
+                  fill: ${isOpen || invert ? colors.white : colors.darkgray};
                 `}
               />
             ) : (
               <TAG
                 css={css`
-                  fill: ${invert ? colors.white : colors.darkgray};
+                  fill: ${isOpen || invert ? colors.white : colors.darkgray};
                   height: 50px;
                 `}
               />
@@ -85,7 +85,7 @@ const TopNav = ({ invert }) => {
           data-cy='menuButton'
         >
           <Hamburger
-            fill={invert ? colors.white : colors.darkgray}
+            fill={isOpen || invert ? colors.white : colors.darkgray}
             isOpen={isOpen}
           />
         </button>
