@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
+import { container } from '../../styles';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
@@ -27,10 +28,14 @@ const ProjectsSlider = () => {
     <FullWidthSection>
       <Slider
         {...settings}
-        css={css`
-          max-width: 100%;
-          max-height: 100%;
-        `}
+        css={[
+          container.max,
+          css`
+            .slick-track {
+              display: flex;
+            }
+          `,
+        ]}
       >
         {data.allCaseStudy.nodes.map((node, i) => {
           return <ProjectPreview key={node.title} index={i} project={node} />;
