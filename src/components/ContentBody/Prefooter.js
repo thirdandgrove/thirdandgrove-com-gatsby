@@ -62,7 +62,13 @@ const imgStyles = css`
 `;
 
 const Prefooter = ({ data }) => (
-  <SplitSection>
+  <SplitSection
+    css={css`
+      ${mediaQueries.phoneLarge} {
+        margin-top: 100px;
+      }
+    `}
+  >
     <TextWrapper css={wrapperStyles}>
       {/* TODO: change data model to reference another article. */}
       <p css={pStyles}>Up Next</p>
