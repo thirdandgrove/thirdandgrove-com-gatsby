@@ -7,14 +7,14 @@ import { colors, fonts, weights, mediaQueries, container } from '../../styles';
 const Footer = () => {
   const linkStyle = css`
     display: block;
-    color: ${colors.white};
+    color: ${colors.whiteFaded};
     text-decoration: none;
     font-family: ${fonts.sans};
     padding: 13px;
     font-size: 18px;
     line-height: 1;
     font-weight: ${weights.bold};
-    transition: all ease-in-out 0.3s;
+    transition: all ease 0.3s;
 
     ${mediaQueries.phoneLarge} {
       margin-right: 40px;
@@ -22,6 +22,7 @@ const Footer = () => {
     }
     &:hover {
       text-decoration: underline;
+      color: ${colors.white};
     }
   `;
   const wrapperStyle = css`
