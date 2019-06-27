@@ -1,91 +1,88 @@
 import React from 'react';
-import { Spring } from 'react-spring/renderprops';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-import VisibilitySensor from '../VisibilitySensor/VisibilitySensor';
-import { colors, fonts, weights, mediaQueries } from '../../styles';
+import { colors, fonts, weights, mediaQueries, container } from '../../styles';
 
 const ArticlePreviewSlide = ({ article }) => {
   const Card = styled.div`
-    width: 100%;
-    margin-bottom: 40px;
-
-    ${mediaQueries.phoneLarge} {
-      margin-bottom: 90px;
-    }
-
-    div {
-      /* @TODO Get actual image in here */
-      height: 400px;
-      background: ${colors.gray};
-      transition-timing-function: ease;
-    }
-
-    h2 {
-      margin: 32px 0 14px;
+    h3 {
+      margin: 15px 20px 35px;
       font-weight: ${weights.bold};
       font-size: 27px;
       line-height: 1.44;
 
       ${mediaQueries.phoneLarge} {
-        width: 80%;
-        margin: 50px auto 30px;
-        font-size: 33px;
-        line-height: 1.58;
+        margin: 0 0 30px;
+        font-size: 57px;
+        line-height: 1.26;
       }
     }
     footer {
+      margin: 0 20px;
       font-family: ${fonts.sans};
       font-weight: ${weights.light};
       font-size: 15px;
       line-height: 2.4;
 
       ${mediaQueries.phoneLarge} {
-        width: 80%;
-        margin: 0 auto;
+        margin: 0;
       }
     }
   `;
   return (
-    <VisibilitySensor once partialVisibility offset={{ bottom: -100 }}>
-      {({ isVisible }) => (
-        <Spring
-          delay={0}
-          to={{
-            transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-            opacity: isVisible ? '1' : '0',
-          }}
-        >
-          {({ transform, opacity }) => (
-            <Card style={{ transform, opacity }}>
-              <Link
-                css={css`
-                  display: block;
-                  text-decoration: none;
-                  color: ${colors.darkgrayFaded};
-                  transition: 0.3s ease color;
+    <Card>
+      <Link
+        css={[
+          container.max,
+          css`
+            display: block;
+            text-decoration: none;
+            color: ${colors.darkgrayFaded};
+            transition: 0.3s ease all;
 
-                  &:hover,
-                  &:focus {
-                    color: ${colors.darkgray};
-                  }
-                `}
-                to={article.path.alias}
-              >
-                <div />
-                <h2>{article.title}</h2>
-                <footer>
-                  {`${article.created} - ${article.relationships.uid.name}`}
-                </footer>
-              </Link>
-            </Card>
-          )}
-        </Spring>
-      )}
-    </VisibilitySensor>
+            ${mediaQueries.phoneLarge} {
+              display: flex;
+              align-items: center;
+            }
+
+            &:hover,
+            &:focus {
+              color: ${colors.darkgray};
+            }
+
+            .slick-current + .slick-slide & {
+              margin-left: 0;
+              padding-left: 0;
+            }
+          `,
+        ]}
+        to={article.path.alias}
+      >
+        <div
+          css={css`
+            height: 400px;
+            flex: 0 0 38%;
+            background: ${colors.gray};
+          `}
+        />
+        <div
+          css={css`
+            flex: 0 0 43%;
+            ${mediaQueries.phoneLarge} {
+              margin-left: 9.3%;
+            }
+          `}
+        >
+          <h3>{article.title}</h3>
+          <footer>
+            {`${article.created} - ${article.relationships.uid.name}`}
+          </footer>
+        </div>
+      </Link>
+    </Card>
   );
 };
 
