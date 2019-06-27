@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Slider from 'react-slick';
 import { css } from '@emotion/core';
 
-import { mediaQueries, weights, smSectionHead } from '../../styles';
+import { mediaQueries, smSectionHead } from '../../styles';
 import ArticlePreviewSlide from '../ArticlePreviewSlide';
 import FullWidthSection from '../FullWidthSection';
 import Button from '../Button';
