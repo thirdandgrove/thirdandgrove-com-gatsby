@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import WhereWeAre from '../components/WhereWeAre';
-import { colors, fonts, weights } from '../styles';
+import { colors, fonts, weights, smSectionHead, h1L } from '../styles';
 import Button from '../components/Button';
 
 export default () => {
@@ -18,30 +18,12 @@ export default () => {
     text-align: center;
     line-height: 42px;
   `;
-  const h3style = css`
-    font-family: ${fonts.serif};
-    font-weight: ${weights.thin};
-    font-size: 36px;
-    color: ${colors.darkgray};
-    letter-spacing: 0.4px;
-    text-align: center;
-    line-height: 76px;
-  `;
-  const h1style = css`
-    font-family: ${fonts.serif};
-    font-weight: ${weights.medium};
-    font-size: 72px;
-    color: ${colors.darkgray};
-    letter-spacing: -0.83px;
-    text-align: center;
-    line-height: 84px;
-  `;
   return (
     <Layout
       headerData={{ title: 'This is Third and Grove. See what makes us, us.' }}
     >
       <FullWidthSection textAlign='center' height='100px' padding='3rem 0 0 0'>
-        <h3 css={h3style}>What We Do</h3>
+        <h3 css={smSectionHead}>What We Do</h3>
       </FullWidthSection>
       <FullWidthSection padding='0 20vw' textAlign='center' height='100%'>
         <h1>A digital innovation company.</h1>
@@ -57,8 +39,8 @@ export default () => {
         textAlign='center'
         height='100%'
       >
-        <h3 css={h3style}>On Working Remotely</h3>
-        <h1 css={h1style}>Empowering our people.</h1>
+        <h3 css={smSectionHead}>On Working Remotely</h3>
+        <h1 css={h1L}>Empowering our people.</h1>
         <h4 css={h4style}>
           Time is of the essence. We don’t want to waste yours. Everyone is
           unique, and we believe in embracing this to give everyone the freedom
@@ -113,7 +95,7 @@ export default () => {
           </div>
         </section>
       </FullWidthSection>
-      <WhereWeAre h1style={h1style} h3style={h3style} h4style={h4style} />
+      <WhereWeAre h1style={h1L} h3style={smSectionHead} h4style={h4style} />
       <FullWidthSection
         height='550px'
         css={css`
@@ -122,10 +104,10 @@ export default () => {
           height: 550px;
         `}
       >
-        <h3 css={h3style}>Making Moves?</h3>
+        <h3 css={smSectionHead}>Making Moves?</h3>
         <h1
           css={[
-            h1style,
+            h1L,
             css`
               padding: 2rem 0;
             `,

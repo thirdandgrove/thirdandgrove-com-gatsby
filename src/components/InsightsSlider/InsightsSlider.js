@@ -1,9 +1,9 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Slider from 'react-slick';
 import { css } from '@emotion/core';
 
-import { mediaQueries, weights } from '../../styles';
+import { mediaQueries, weights, smSectionHead } from '../../styles';
 import ArticlePreviewSlide from '../ArticlePreviewSlide';
 import FullWidthSection from '../FullWidthSection';
 import Button from '../Button';
@@ -48,23 +48,7 @@ const InsightsSlider = () => {
         }
       `}
     >
-      <h2
-        css={css`
-          margin-bottom: 0;
-          font-size: 21px;
-          font-weight: ${weights.thin};
-          letter-spacing: 0.23px;
-          line-height: 76px;
-
-          ${mediaQueries.phoneLarge} {
-            margin-bottom: 30px;
-            font-size: 36px;
-            letter-spacing: 0.4px;
-          }
-        `}
-      >
-        Insights
-      </h2>
+      <h2 css={smSectionHead}>Insights</h2>
       <Slider
         {...settings}
         css={css`
@@ -85,12 +69,9 @@ const InsightsSlider = () => {
           return <ArticlePreviewSlide key={node.title} article={node} />;
         })}
       </Slider>
-      <Button>Our Insights</Button>
+      <Button onClick={() => navigate(`/insights`)}>Our Insights</Button>
     </FullWidthSection>
   );
 };
-
-// @todo link the button to the landing page
-// @todo consolidate text styles for this h2 and the other hp section headings
 
 export default InsightsSlider;

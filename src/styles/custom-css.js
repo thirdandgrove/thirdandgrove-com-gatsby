@@ -9,8 +9,8 @@ import { colors, weights, mediaQueries } from './css-utils';
 
 // Containers
 // (There are going to be more widths as the projet progresses)
-const contWidths = [1220];
-const contLabels = [`max`];
+const contWidths = [820, 1220];
+const contLabels = [`textOnly`, `max`];
 
 export const container = contWidths.reduce((acc, w, i) => {
   acc[contLabels[i]] = css`
@@ -49,6 +49,21 @@ export const h1L = css`
     font-size: 72px;
     line-height: 1.16;
     letter-spacing: 0;
+  }
+`;
+
+export const smSectionHead = css`
+  margin-bottom: 0;
+  font-size: 21px;
+  font-weight: ${weights.thin};
+  letter-spacing: 0.23px;
+  line-height: 3.62;
+
+  ${mediaQueries.phoneLarge} {
+    margin-bottom: 30px;
+    font-size: 36px;
+    line-height: 2;
+    letter-spacing: 0.4px;
   }
 `;
 

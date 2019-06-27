@@ -10,6 +10,7 @@ export {
   container,
   h1Xl,
   h1L,
+  smSectionHead,
   quoteText,
   quoL,
   quoR,
