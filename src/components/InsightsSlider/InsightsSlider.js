@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Slider from 'react-slick';
 import { css } from '@emotion/core';
 
-import ArticlePreview from '../ArticlePreview';
+import ArticlePreviewSlide from '../ArticlePreviewSlide';
 import FullWidthSection from '../FullWidthSection';
 
 const InsightsSlider = () => {
@@ -34,7 +34,7 @@ const InsightsSlider = () => {
         `}
       >
         {data.allInsight.nodes.map(node => {
-          return <ArticlePreview key={node.title} article={node} />;
+          return <ArticlePreviewSlide key={node.title} article={node} />;
         })}
       </Slider>
     </FullWidthSection>
