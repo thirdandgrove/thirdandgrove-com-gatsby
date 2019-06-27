@@ -114,9 +114,6 @@ export const query = graphql`
             field_body {
               processed
             }
-            field_secondary_body {
-              processed
-            }
             relationships {
               component_type {
                 name
