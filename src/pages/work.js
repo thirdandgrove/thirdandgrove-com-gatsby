@@ -1,6 +1,6 @@
 import React from 'react';
 import { Spring } from 'react-spring/renderprops';
-import { useStaticQuery, graphql, Link, navigate } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
