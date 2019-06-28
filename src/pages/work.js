@@ -47,7 +47,7 @@ export default () => {
         title: 'We work with brands we love.',
       }}
     >
-      {studies.map(study => (
+      {studies.map((study, idx) => (
         <FullWidthSection height='0' key={study.id}>
           <div>
             <Link
