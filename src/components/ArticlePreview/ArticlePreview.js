@@ -50,7 +50,7 @@ const ArticlePreview = ({ article }) => {
     }
   `;
   return (
-    <VisibilitySensor once partialVisibility offset={{ bottom: -100 }}>
+    <VisibilitySensor once partialVisibility offset={{ bottom: 0 }}>
       {({ isVisible }) => (
         <Spring
           delay={0}

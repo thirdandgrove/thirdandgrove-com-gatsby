@@ -2,7 +2,6 @@ import React from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
-import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
@@ -12,23 +11,11 @@ import FullWidthSection from '../components/FullWidthSection';
 import VisibilitySensor from '../components/VisibilitySensor/VisibilitySensor';
 
 export default () => {
-  const BrandList = styled.div`
-    display: flex;
-    width: 80vw;
-    justify-content: space-around;
-    padding-top: 2rem;
-  `;
   const data = useStaticQuery(graphql`
     {
       allCaseStudy {
         nodes {
           ...CaseStudyFragment
-        }
-      }
-      allTaxonomyTermCaseStudyTags {
-        nodes {
-          id
-          name
         }
       }
     }
@@ -37,14 +24,8 @@ export default () => {
   return (
     <Layout
       headerData={{
-        children: (
-          <BrandList>
-            <p>Google</p>
-            <p>Quicken</p>
-            <p>Benefit</p>
-          </BrandList>
-        ),
         title: 'We work with brands we love.',
+        height: '450px',
       }}
     >
       {studies.map((study, idx) => (
@@ -85,11 +66,7 @@ export default () => {
                 }
               `}
             >
-              <VisibilitySensor
-                once
-                partialVisibility
-                offset={{ bottom: -100 }}
-              >
+              <VisibilitySensor once partialVisibility offset={{ bottom: 0 }}>
                 {({ isVisible }) => (
                   <Spring
                     delay={0}

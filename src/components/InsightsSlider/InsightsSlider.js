@@ -12,10 +12,11 @@ const InsightsSlider = () => {
   const settings = {
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 7500,
+    cssEase: 'ease-in-out',
     centerPadding: 100,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     centerMode: true,
     responsive: [
       {
