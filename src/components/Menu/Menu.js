@@ -59,8 +59,6 @@ const Menu = ({ menuOpen }) => {
     a {
       display: block;
       color: ${colors.whiteFaded};
-      text-decoration: none;
-      transition: 0.3s ease color;
       font-family: ${fonts.serif};
       font-weight: ${weights.medium};
       letter-spacing: -0.2px;

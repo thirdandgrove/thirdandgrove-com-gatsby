@@ -64,14 +64,6 @@ const ArticlePreview = ({ article }) => {
               <Link
                 css={css`
                   display: block;
-                  text-decoration: none;
-                  color: ${colors.darkgrayFaded};
-                  transition: 0.3s ease color;
-
-                  &:hover,
-                  &:focus {
-                    color: ${colors.darkgray};
-                  }
                 `}
                 to={article.path.alias}
               >

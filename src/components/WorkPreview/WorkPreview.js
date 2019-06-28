@@ -43,13 +43,7 @@ const WorkPreview = ({ article }) => {
     }
   `;
   return (
-    <Link
-      css={css`
-        text-decoration: none;
-        color: black;
-      `}
-      to={`/articles${article.path.alias}`}
-    >
+    <Link to={`/articles${article.path.alias}`}>
       <Card>
         <div />
         <span>
