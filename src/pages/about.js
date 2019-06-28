@@ -57,7 +57,6 @@ export default () => {
               flex-direction: column;
               padding: 1rem 3rem;
               h1 {
-                font-family: ${fonts.serif};
                 font-weight: ${weights.medium};
                 font-size: 120px;
                 color: ${colors.darkgray};

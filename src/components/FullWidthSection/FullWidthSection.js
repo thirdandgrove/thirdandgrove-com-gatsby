@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
 
-import { fonts, weights, mediaQueries } from '../../styles';
+import { weights, mediaQueries } from '../../styles';
 
 export default styled.section`
   width: 100%;
   min-height: ${props => props.mobileHeight || '300px'};
   display: flex;
-  font-family: ${fonts.serif};
   font-weight: ${weights.medium};
   flex-direction: column;
   align-items: center;

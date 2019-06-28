@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import Button from '../Button';
-import { colors, fonts, weights, smSectionHead } from '../../styles';
+import { colors, weights, smSectionHead } from '../../styles';
 
 import ImageCollage from './ImageCollage';
 
@@ -23,7 +23,6 @@ const ProjectPreview = ({ project, index }) => (
           width: 1120px;
           height: 222px;
           color: ${colors.darkgray};
-          font-family: ${fonts.serif};
           font-size: 104px;
           font-weight: ${weights.black};
           letter-spacing: 1.39px;
