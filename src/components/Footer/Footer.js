@@ -21,7 +21,6 @@ const Footer = () => {
       padding: 11px 0;
     }
     &:hover {
-      text-decoration: underline;
       color: ${colors.white};
     }
   `;

@@ -64,7 +64,7 @@ export const query = graphql`
               localFile {
                 publicURL
                 childImageSharp {
-                  fluid(maxWidth: 850, maxHeight: 850) {
+                  fluid(maxWidth: 630, maxHeight: 630) {
                     ...GatsbyImageSharpFluid
                   }
                 }

@@ -9,7 +9,7 @@ import TextWrapper from './TextWrapper';
 
 const wrapperStyles = css`
   ${mediaQueries.phoneLarge} {
-  	min-height: 500px;
+    min-height: 500px;
   }
 `;
 

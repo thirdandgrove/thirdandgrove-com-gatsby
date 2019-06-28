@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import Button from '../Button';
-import { colors, fonts, weights } from '../../styles';
+import { colors, fonts, weights, smSectionHead } from '../../styles';
 
 import ImageCollage from './ImageCollage';
 
@@ -19,17 +19,6 @@ const ProjectPreview = ({ project, index }) => (
       padding: 3rem;
       section {
         z-index: 2;
-        h3 {
-          width: 150px;
-          height: 40px;
-          color: ${colors.darkgray};
-          font-family: ${fonts.serif};
-          font-size: 36px;
-          font-weight: ${weights.thin};
-          letter-spacing: 0.45px;
-          line-height: 76px;
-          margin-bottom: 30px;
-        }
         h1 {
           width: 1120px;
           height: 222px;
@@ -46,7 +35,7 @@ const ProjectPreview = ({ project, index }) => (
     key={project.title}
   >
     <section>
-      <h3>Our Work</h3>
+      <h3 css={smSectionHead}>Our Work</h3>
       <h1>{project.title}</h1>
       <Button onClick={() => navigate(project.path.alias)}>
         view case study

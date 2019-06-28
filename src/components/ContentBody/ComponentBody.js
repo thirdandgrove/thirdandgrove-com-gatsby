@@ -18,6 +18,11 @@ const Components = {
 };
 
 const ComponentBody = ({ comp }) => {
+  // Ensure relationships exists before rendering.
+  if (comp.relationships == null) {
+    return <div />;
+  }
+
   // Dynamically select a component based on field name
   const componentName = comp.relationships.component_type.name
     .split(' ')

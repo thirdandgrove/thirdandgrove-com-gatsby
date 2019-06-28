@@ -2,13 +2,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
-import Img from 'gatsby-image';
+import { navigate } from 'gatsby';
 
 import Button from '../Button';
 import { TextWrapper } from '../Prefooter';
 import SplitSection from '../SplitSection';
 import { colors, fonts, weights, mediaQueries } from '../../styles';
-import { navigate } from 'gatsby';
 
 const pStyles = css`
   margin-bottom: 25px;
@@ -43,34 +42,46 @@ const Prefooter = ({ data }) => (
     `}
   >
     <div>
-      <TextWrapper backgroundImage={data.relationships.field_image} 
-      backgroundColor={data.field_primary_color !== null ? data.field_primary_color.color : colors.yellow}>
+      <TextWrapper
+        backgroundImage={data.relationships.field_image}
+        backgroundColor={
+          data.field_primary_color !== null
+            ? data.field_primary_color.color
+            : colors.yellow
+        }
+      >
         <p css={pStyles}>{data.field_primary_lead_in_text}</p>
         <h2 css={h2Styles}>{data.field_primary_body}</h2>
-        {
-          data.field_primary_cta !== null ? 
-          (
-            <Button onClick={() => navigate(data.field_primary_cta.uri.replace('internal:', ''))}>
-              {data.field_primary_cta.title}
-            </Button>
-          ) : 
-          (null)
-        }
+        {data.field_primary_cta !== null ? (
+          <Button
+            onClick={() =>
+              navigate(data.field_primary_cta.uri.replace('internal:', ''))
+            }
+          >
+            {data.field_primary_cta.title}
+          </Button>
+        ) : null}
       </TextWrapper>
     </div>
     <div>
-      <TextWrapper backgroundColor={data.field_secondary_color !== null ? data.field_secondary_color.color : colors.yellow}>
+      <TextWrapper
+        backgroundColor={
+          data.field_secondary_color !== null
+            ? data.field_secondary_color.color
+            : colors.yellow
+        }
+      >
         <p css={pStyles}>{data.field_secondary_lead_in_text}</p>
         <h2 css={h2Styles}>{data.field_secondary_body}</h2>
-        {
-          data.field_secondary_cta !== null ? 
-          (
-            <Button onClick={() => navigate(data.field_secondary_cta.uri.replace('internal:', ''))}>
-              {data.field_secondary_cta.title}
-            </Button>
-          ) : 
-          (null)
-        }
+        {data.field_secondary_cta !== null ? (
+          <Button
+            onClick={() =>
+              navigate(data.field_secondary_cta.uri.replace('internal:', ''))
+            }
+          >
+            {data.field_secondary_cta.title}
+          </Button>
+        ) : null}
       </TextWrapper>
     </div>
   </SplitSection>

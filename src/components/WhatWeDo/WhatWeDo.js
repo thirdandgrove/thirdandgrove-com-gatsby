@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import Button from '../Button';
-import { colors, weights, mediaQueries } from '../../styles';
+import { colors, mediaQueries, smSectionHead } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
 const WhatWeDo = () => {
@@ -37,23 +37,7 @@ const WhatWeDo = () => {
         }
       `}
     >
-      <h3
-        css={css`
-          margin-bottom: 0;
-          font-size: 21px;
-          font-weight: ${weights.thin};
-          letter-spacing: 0.23px;
-          line-height: 76px;
-
-          ${mediaQueries.phoneLarge} {
-            margin-bottom: 30px;
-            font-size: 36px;
-            letter-spacing: 0.4px;
-          }
-        `}
-      >
-        What We Do
-      </h3>
+      <h3 css={smSectionHead}>What We Do</h3>
       <h1 css={headingCss}>Technology</h1>
       <h1 css={headingCss}>Strategy</h1>
       <h1 css={headingCss}>Creative</h1>

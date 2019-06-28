@@ -1,70 +1,21 @@
 import React from 'react';
+import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
-import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
-import { colors, fonts, weights } from '../styles';
+import Button from '../components/Button';
+import { colors, weights, mediaQueries, container } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
+import VisibilitySensor from '../components/VisibilitySensor/VisibilitySensor';
 
 export default () => {
-  const StudyPreview = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
-    padding-bottom: 5rem;
-    :first-of-type {
-      padding-top: 5rem;
-    }
-    a {
-      text-decoration: none;
-      color: ${colors.darkgray};
-      padding-top: 2rem;
-      h1 {
-        font-size: 48px;
-        display: inline;
-      }
-      h3 {
-        font-size: 48px;
-        font-family: ${fonts.sans};
-        display: inline;
-        font-weight: ${weights.thin};
-      }
-    }
-    ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      flex-direction: row;
-      li {
-        padding-right: 0.5rem;
-        font-family: ${fonts.sans};
-        font-weight: ${weights.bold};
-        font-variant: small-caps;
-        font-size: 15px;
-        color: ${colors.darkgray};
-        letter-spacing: 2px;
-        line-height: 36px;
-      }
-    }
-  `;
-  const BrandList = styled.div`
-    display: flex;
-    width: 80vw;
-    justify-content: space-around;
-    padding-top: 2rem;
-  `;
   const data = useStaticQuery(graphql`
     {
       allCaseStudy {
         nodes {
           ...CaseStudyFragment
-        }
-      }
-      allTaxonomyTermCaseStudyTags {
-        nodes {
-          id
-          name
         }
       }
     }
@@ -73,40 +24,134 @@ export default () => {
   return (
     <Layout
       headerData={{
-        children: (
-          <BrandList>
-            <p>google</p>
-            <p>google</p>
-            <p>google</p>
-          </BrandList>
-        ),
         title: 'We work with brands we love.',
+        height: '450px',
       }}
     >
-      {studies.map(study => (
-        <FullWidthSection height='100%' key={study.id}>
-          <StudyPreview>
-            <Img
-              fluid={
-                study.relationships.field_image.localFile.childImageSharp.fluid
+      {studies.map((study, idx) => (
+        <FullWidthSection
+          height='0'
+          key={study.id}
+          css={css`
+            &:first-child {
+              margin-top: 40px;
+
+              ${mediaQueries.phoneLarge} {
+                margin-top: 175px;
               }
-            />
-            <Link to={study.path.alias}>
-              <h1>{study.title}</h1>
-              <h3>
-                {' – '}
-                {study.field_subtitle}
-              </h3>
+            }
+          `}
+        >
+          <div css={container.medium}>
+            <Link
+              to={study.path.alias}
+              css={css`
+                display: block;
+                margin-bottom: 40px;
+                text-decoration: none;
+                color: ${colors.darkgrayFaded};
+                transition: 0.3s ease color;
+
+                ${mediaQueries.phoneLarge} {
+                  display: flex;
+                  justify-content: space-between;
+                  flex-direction: ${idx % 2 ? 'row-reverse' : 'row'};
+                  align-items: center;
+                  margin-bottom: 175px;
+                }
+
+                &:hover,
+                &:focus {
+                  color: ${colors.darkgray};
+                }
+              `}
+            >
+              <VisibilitySensor once partialVisibility offset={{ bottom: 0 }}>
+                {({ isVisible }) => (
+                  <Spring
+                    delay={0}
+                    to={{
+                      transform: isVisible
+                        ? 'translateY(0)'
+                        : 'translateY(200px)',
+                      opacity: isVisible ? '1' : '0',
+                    }}
+                  >
+                    {({ transform, opacity }) => (
+                      <Img
+                        fluid={
+                          study.relationships.field_image.localFile
+                            .childImageSharp.fluid
+                        }
+                        style={{ transform, opacity }}
+                        css={css`
+                          width: 100%;
+                          margin-bottom: 20px;
+
+                          ${mediaQueries.phoneLarge} {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                            flex-basis: ${idx % 2 ? '64%' : '49%'};
+                            width: ${idx % 2 ? '64%' : '49%'};
+                            margin-bottom: 0;
+
+                            > div {
+                              padding-bottom: ${idx % 2
+                                ? '76% !important'
+                                : '100%'};
+                              padding-bottom: ${idx % 4 === 2
+                                ? '131% !important'
+                                : '100%'};
+                            }
+                          }
+                        `}
+                      />
+                    )}
+                  </Spring>
+                )}
+              </VisibilitySensor>
+
+              <div
+                css={css`
+                  ${mediaQueries.phoneLarge} {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    flex-basis: ${idx % 2 ? '30%' : '45%'};
+                    width: ${idx % 2 ? '30%' : '45%'};
+                  }
+                `}
+              >
+                <h1
+                  css={css`
+                    margin-bottom: 0;
+                    font-size: 27px;
+                    line-height: 1;
+                    font-weight: ${weights.bold};
+
+                    ${mediaQueries.phoneLarge} {
+                      font-size: 48px;
+                    }
+                  `}
+                >
+                  {study.title}
+                </h1>
+                <h3
+                  css={css`
+                    font-size: 21px;
+                    line-height: 1.6;
+                    font-weight: ${weights.thin};
+
+                    ${mediaQueries.phoneLarge} {
+                      font-size: 30px;
+                    }
+                  `}
+                >
+                  {study.field_subtitle}
+                </h3>
+                <Button>View Case Study</Button>
+              </div>
             </Link>
-            <ul>
-              {study.relationships.field_tags.map((tag, i, arr) => (
-                <li key={JSON.stringify(tag)}>
-                  {tag.name.toLowerCase()}
-                  {i !== arr.length - 1 && ','}
-                </li>
-              ))}
-            </ul>
-          </StudyPreview>
+          </div>
         </FullWidthSection>
       ))}
     </Layout>
