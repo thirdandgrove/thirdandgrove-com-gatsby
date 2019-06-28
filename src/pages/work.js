@@ -7,7 +7,7 @@ import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import Button from '../components/Button';
-import { colors, weights, mediaQueries } from '../styles';
+import { colors, weights, mediaQueries, container } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import VisibilitySensor from '../components/VisibilitySensor/VisibilitySensor';
 
@@ -49,13 +49,19 @@ export default () => {
     >
       {studies.map((study, idx) => (
         <FullWidthSection height='0' key={study.id}>
-          <div>
+          <div css={container.medium}>
             <Link
               to={study.path.alias}
               css={css`
                 text-decoration: none;
                 color: ${colors.darkgrayFaded};
                 transition: 0.3s ease color;
+
+                ${mediaQueries.phoneLarge} {
+                  display: flex;
+                  justify-content: space-between;
+                  flex-direction: ${idx % 2 ? 'row-reverse' : 'row'};
+                }
 
                 &:hover,
                 &:focus {
@@ -85,6 +91,9 @@ export default () => {
                             .childImageSharp.fluid
                         }
                         style={{ transform, opacity }}
+                        css={css`
+                          min-width: 300px;
+                        `}
                       />
                     )}
                   </Spring>
