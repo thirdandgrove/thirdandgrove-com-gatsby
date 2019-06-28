@@ -48,11 +48,25 @@ export default () => {
       }}
     >
       {studies.map((study, idx) => (
-        <FullWidthSection height='0' key={study.id}>
+        <FullWidthSection
+          height='0'
+          key={study.id}
+          css={css`
+            &:first-child {
+              margin-top: 40px;
+
+              ${mediaQueries.phoneLarge} {
+                margin-top: 175px;
+              }
+            }
+          `}
+        >
           <div css={container.medium}>
             <Link
               to={study.path.alias}
               css={css`
+                display: block;
+                margin-bottom: 40px;
                 text-decoration: none;
                 color: ${colors.darkgrayFaded};
                 transition: 0.3s ease color;
@@ -61,6 +75,8 @@ export default () => {
                   display: flex;
                   justify-content: space-between;
                   flex-direction: ${idx % 2 ? 'row-reverse' : 'row'};
+                  align-items: center;
+                  margin-bottom: 175px;
                 }
 
                 &:hover,
@@ -92,7 +108,25 @@ export default () => {
                         }
                         style={{ transform, opacity }}
                         css={css`
-                          min-width: 300px;
+                          width: 100%;
+                          margin-bottom: 20px;
+
+                          ${mediaQueries.phoneLarge} {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+                            flex-basis: ${idx % 2 ? '64%' : '49%'};
+                            width: ${idx % 2 ? '64%' : '49%'};
+                            margin-bottom: 0;
+
+                            > div {
+                              padding-bottom: ${idx % 2
+                                ? '76% !important'
+                                : '100%'};
+                              padding-bottom: ${idx % 4 === 2
+                                ? '131% !important'
+                                : '100%'};
+                            }
+                          }
                         `}
                       />
                     )}
@@ -100,7 +134,16 @@ export default () => {
                 )}
               </VisibilitySensor>
 
-              <div>
+              <div
+                css={css`
+                  ${mediaQueries.phoneLarge} {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    flex-basis: ${idx % 2 ? '30%' : '45%'};
+                    width: ${idx % 2 ? '30%' : '45%'};
+                  }
+                `}
+              >
                 <h1
                   css={css`
                     margin-bottom: 0;
