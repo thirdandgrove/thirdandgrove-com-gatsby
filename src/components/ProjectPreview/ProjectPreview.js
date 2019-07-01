@@ -8,9 +8,47 @@ import { colors, weights, smSectionHead } from '../../styles';
 
 import ImageCollage from './ImageCollage';
 
-const ProjectPreview = ({ project, index }) => (
-  <div
-    css={css`
+const ProjectPreview = ({ project, index }) => {
+  // Prepare image srcset based on Type (A, B, or C).
+  const primaryImageData = project.relationships.field_image.localFile;
+  const secondaryImageData =
+    project.relationships.field_secondary_image.localFile;
+  const tertiaryImageData =
+    project.relationships.field_tertiary_image.localFile;
+
+  // Assuming type-a is the default.
+  const images = {
+    primary: {
+      mobile: primaryImageData.childImageMobile,
+      desktop: primaryImageData.childImageTypeA,
+    },
+    secondary: {
+      mobile: secondaryImageData.childImageMobile,
+      desktop: secondaryImageData.childImageTypeA,
+    },
+    tertiary: {
+      mobile: tertiaryImageData.childImageMobile,
+      desktop: tertiaryImageData.childImageTypeA,
+    },
+  };
+  switch (project.field_image_arrangement) {
+    case 'type-b':
+      images.primary.desktop = primaryImageData.childImageTypeB;
+      images.secondary.desktop = secondaryImageData.childImageTypeB;
+      images.tertiary.desktop = primaryImageData.childImageTypeB;
+      break;
+    case 'type-c':
+      images.primary.desktop = primaryImageData.childImageTypeC;
+      images.secondary.desktop = secondaryImageData.childImageTypeC;
+      images.tertiary.desktop = primaryImageData.childImageTypeC;
+      break;
+    default:
+      break;
+  }
+
+  return (
+    <div
+      css={css`
       display: flex;
       height: 650px;
       max-width: 100%;
@@ -29,32 +67,20 @@ const ProjectPreview = ({ project, index }) => (
           line-height: 98px;
           margin: 5rem 0 3rem 0;
         }
-      }
-    `}
-    key={project.title}
-  >
-    <section>
-      <h3 css={smSectionHead}>Our Work</h3>
-      <h1>{project.title}</h1>
-      <Button onClick={() => navigate(project.path.alias)}>
-        view case study
-      </Button>
-    </section>
-    <ImageCollage
-      images={{
-        primary:
-          project.relationships.field_image.localFile.childImageSharp.fluid.src,
-        secondary:
-          project.relationships.field_secondary_image.localFile.childImageSharp
-            .fluid.src,
-        tertiary:
-          project.relationships.field_tertiary_image.localFile.childImageSharp
-            .fluid.src,
-      }}
-      index={index}
-    />
-  </div>
-);
+      `}
+      key={project.title}
+    >
+      <section>
+        <h3 css={smSectionHead}>Our Work</h3>
+        <h1>{project.title}</h1>
+        <Button onClick={() => navigate(project.path.alias)}>
+          view case study
+        </Button>
+      </section>
+      <ImageCollage images={images} index={index} />
+    </div>
+  );
+};
 
 ProjectPreview.propTypes = {
   project: PropTypes.object.isRequired,
