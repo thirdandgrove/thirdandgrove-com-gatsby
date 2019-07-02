@@ -26,42 +26,45 @@ const ImageCollage = ({ images }) => {
   //   slideNumber % 3 === 0 ? 3 : slideNumber % 2 === 0 ? 2 : 1;
   const selectedClass = () => 1;
 
-  // Prepare fixed images data for art-directed images using media queries.
+  // Pass array of fixed images with media query for art direction.
   // @see https://www.gatsbyjs.org/packages/gatsby-image/#art-directing-multiple-images
-  const srcset = {
-    primary: [
-      images.primary.mobile.fixed,
-      {
-        ...images.primary.desktop.fixed,
-        media: `${mediaQueries.desktop}`,
-      },
-    ],
-    secondary: [
-      images.secondary.mobile.fixed,
-      {
-        ...images.secondary.desktop.fixed,
-        media: `(min-width: 1200px)`,
-      },
-    ],
-    tertiary: [
-      images.tertiary.mobile.fixed,
-      {
-        ...images.tertiary.desktop.fixed,
-        media: `${mediaQueries.desktop}`,
-      },
-    ],
-  };
-
   return (
     <article css={flexWrap}>
       <div className='twoStack'>
         <Img
-          // src={images.secondary.mobile.fixed.src}
-          fixed={images.secondary.mobile.fixed}
+          fixed={[
+            images.secondary.mobile.fixed,
+            {
+              ...images.secondary.desktop.fixed,
+              media: mediaQueries.desktop.replace(`@media`, ``).trim(),
+            },
+          ]}
           alt='secondary'
           className={`secondary${selectedClass()}`}
         />
+        <Img
+          fixed={[
+            images.primary.mobile.fixed,
+            {
+              ...images.secondary.desktop.fixed,
+              media: mediaQueries.desktop.replace(`@media`, ``).trim(),
+            },
+          ]}
+          alt='primary'
+          className={`primary${selectedClass()}`}
+        />
       </div>
+      <Img
+        fixed={[
+          images.tertiary.mobile.fixed,
+          {
+            ...images.tertiary.desktop.fixed,
+            media: mediaQueries.desktop.replace(`@media`, ``).trim(),
+          },
+        ]}
+        alt='primary'
+        className={`tertiary${selectedClass()}`}
+      />
     </article>
   );
 };
