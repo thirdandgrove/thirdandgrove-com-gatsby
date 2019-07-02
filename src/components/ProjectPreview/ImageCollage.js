@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
-const ImageCollage = ({ images }) => {
+import { mediaQueries } from '../../styles';
+
+const ImageCollage = ({ images, type }) => {
   const flexWrap = css`
     display: flex;
     position: relative;
@@ -22,23 +25,44 @@ const ImageCollage = ({ images }) => {
   //   // eslint-disable-next-line no-nested-ternary
   //   slideNumber % 3 === 0 ? 3 : slideNumber % 2 === 0 ? 2 : 1;
   const selectedClass = () => 1;
+
+  // Pass array of fixed images with media query for art direction.
+  // @see https://www.gatsbyjs.org/packages/gatsby-image/#art-directing-multiple-images
   return (
-    <article css={flexWrap}>
+    <article className={type} css={flexWrap}>
       <div className='twoStack'>
-        <img
-          src={images.secondary}
+        <Img
+          fixed={[
+            images.secondary.mobile.fixed,
+            {
+              ...images.secondary.desktop.fixed,
+              media: mediaQueries.desktop.replace(`@media`, ``).trim(),
+            },
+          ]}
           alt='secondary'
           className={`secondary${selectedClass()}`}
         />
-        <img
-          src={images.primary}
+        <Img
+          fixed={[
+            images.primary.mobile.fixed,
+            {
+              ...images.secondary.desktop.fixed,
+              media: mediaQueries.desktop.replace(`@media`, ``).trim(),
+            },
+          ]}
           alt='primary'
           className={`primary${selectedClass()}`}
         />
       </div>
-      <img
-        src={images.tertiary}
-        alt='tertiary'
+      <Img
+        fixed={[
+          images.tertiary.mobile.fixed,
+          {
+            ...images.tertiary.desktop.fixed,
+            media: mediaQueries.desktop.replace(`@media`, ``).trim(),
+          },
+        ]}
+        alt='primary'
         className={`tertiary${selectedClass()}`}
       />
     </article>
@@ -47,6 +71,7 @@ const ImageCollage = ({ images }) => {
 
 ImageCollage.propTypes = {
   images: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ImageCollage;

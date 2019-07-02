@@ -80,9 +80,7 @@ export const query = graphql`
     title
     field_subtitle
     field_inverse_header
-    field_primary_image_scale
-    field_tertiary_image_scale
-    field_secondary_image_scale
+    field_image_arrangement
     path {
       alias
     }
@@ -99,15 +97,24 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
-        }
-      }
-      field_tertiary_image {
-        id
-        localFile {
-          publicURL
-          childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid
+          childImageMobile: childImageSharp {
+            fixed(width: 670, height: 520) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeA: childImageSharp {
+            fixed(width: 900, height: 640) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeB: childImageSharp {
+            fixed(width: 760, height: 840) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeC: childImageSharp {
+            fixed(width: 840, height: 680) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
@@ -119,6 +126,57 @@ export const query = graphql`
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
               ...GatsbyImageSharpFluid
+            }
+          }
+          childImageMobile: childImageSharp {
+            fixed(width: 400, height: 300) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeA: childImageSharp {
+            fixed(width: 500, height: 360) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeB: childImageSharp {
+            fixed(width: 680, height: 520) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeC: childImageSharp {
+            fixed(width: 540, height: 420) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
+      field_tertiary_image {
+        id
+        localFile {
+          publicURL
+          childImageSharp {
+            fluid(maxWidth: 850, maxHeight: 850) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+          childImageMobile: childImageSharp {
+            fixed(width: 240, height: 300) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeA: childImageSharp {
+            fixed(width: 500, height: 990) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeB: childImageSharp {
+            fixed(width: 460, height: 410) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          childImageTypeC: childImageSharp {
+            fixed(width: 640, height: 420) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
