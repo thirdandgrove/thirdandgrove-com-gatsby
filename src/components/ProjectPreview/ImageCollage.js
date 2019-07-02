@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 
 import { mediaQueries } from '../../styles';
 
-const ImageCollage = ({ images }) => {
+const ImageCollage = ({ images, type }) => {
   const flexWrap = css`
     display: flex;
     position: relative;
@@ -29,7 +29,7 @@ const ImageCollage = ({ images }) => {
   // Pass array of fixed images with media query for art direction.
   // @see https://www.gatsbyjs.org/packages/gatsby-image/#art-directing-multiple-images
   return (
-    <article css={flexWrap}>
+    <article className={type} css={flexWrap}>
       <div className='twoStack'>
         <Img
           fixed={[
@@ -71,6 +71,7 @@ const ImageCollage = ({ images }) => {
 
 ImageCollage.propTypes = {
   images: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ImageCollage;

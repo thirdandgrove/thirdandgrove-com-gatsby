@@ -77,7 +77,7 @@ const ProjectPreview = ({ project, index }) => {
           view case study
         </Button>
       </section>
-      <ImageCollage images={images} index={index} />
+      <ImageCollage images={images} type={project.field_image_arrangement} />
     </div>
   );
 };
