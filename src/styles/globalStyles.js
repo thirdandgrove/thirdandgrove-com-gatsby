@@ -270,12 +270,16 @@ export const globalStyles = css`
   }
 
   a {
+    text-decoration: none;
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
+    color: ${colors.darkgrayFaded};
+    transition: 0.3s ease all;
 
     &:hover,
     &:focus {
       outline-width: 0;
+      color: ${colors.darkgray};
     }
   }
 

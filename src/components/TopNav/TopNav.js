@@ -5,14 +5,7 @@ import { css } from '@emotion/core';
 
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
-import {
-  colors,
-  mediaQueries,
-  jsBreakpoints,
-  fonts,
-  weights,
-  container,
-} from '../../styles';
+import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
 
 import { ReactComponent as TAG } from './svg/tagLogo.svg';
 import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
@@ -31,14 +24,11 @@ const TopNav = ({ invert }) => {
           css`
             position: absolute;
             top: 0;
-            font-family: ${fonts.serif};
-            font-weight: ${weights.medium};
             padding-top: 20px;
             padding-bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            background-color: transparent;
             justify-content: space-between;
             align-items: center;
             z-index: 2;

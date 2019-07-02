@@ -6,7 +6,7 @@ import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
 import FullWidthSection from '../FullWidthSection';
-import { colors, fonts, weights } from '../../styles';
+import { colors } from '../../styles';
 
 const WhereWeAre = ({ h3style, h4style, h1style }) => {
   const [selected, updateSelection] = useState('boston');
@@ -70,8 +70,6 @@ const WhereWeAre = ({ h3style, h4style, h1style }) => {
                 cursor: pointer;
                 ::before {
                   content: '2';
-                  font-family: ${fonts.serif};
-                  font-weight: ${weights.medium};
                   font-size: 18px;
                   letter-spacing: 0;
                   line-height: 76px;

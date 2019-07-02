@@ -39,18 +39,10 @@ const ArticlePreviewSlide = ({ article }) => {
           container.max,
           css`
             display: block;
-            text-decoration: none;
-            color: ${colors.darkgrayFaded};
-            transition: 0.3s ease all;
 
             ${mediaQueries.phoneLarge} {
               display: flex;
               align-items: center;
-            }
-
-            &:hover,
-            &:focus {
-              color: ${colors.darkgray};
             }
 
             .slick-current + .slick-slide & {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { colors, mediaQueries, fonts, weights, container } from '../../styles';
+import { colors, mediaQueries, weights, container } from '../../styles';
 
 const Menu = ({ menuOpen }) => {
   const linkPrimaryStyle = css`
@@ -40,7 +40,6 @@ const Menu = ({ menuOpen }) => {
     }
 
     h5 {
-      font-family: ${fonts.serif};
       font-weight: ${weights.thin};
       color: ${colors.white};
       letter-spacing: -0.1px;
@@ -59,9 +58,6 @@ const Menu = ({ menuOpen }) => {
     a {
       display: block;
       color: ${colors.whiteFaded};
-      text-decoration: none;
-      transition: 0.3s ease color;
-      font-family: ${fonts.serif};
       font-weight: ${weights.medium};
       letter-spacing: -0.2px;
       text-align: center;

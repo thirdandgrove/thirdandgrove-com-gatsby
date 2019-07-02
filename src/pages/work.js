@@ -6,7 +6,7 @@ import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import Button from '../components/Button';
-import { colors, weights, mediaQueries, container } from '../styles';
+import { weights, mediaQueries, container } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import VisibilitySensor from '../components/VisibilitySensor/VisibilitySensor';
 
@@ -48,9 +48,6 @@ export default () => {
               css={css`
                 display: block;
                 margin-bottom: 40px;
-                text-decoration: none;
-                color: ${colors.darkgrayFaded};
-                transition: 0.3s ease color;
 
                 ${mediaQueries.phoneLarge} {
                   display: flex;
@@ -58,11 +55,6 @@ export default () => {
                   flex-direction: ${idx % 2 ? 'row-reverse' : 'row'};
                   align-items: center;
                   margin-bottom: 175px;
-                }
-
-                &:hover,
-                &:focus {
-                  color: ${colors.darkgray};
                 }
               `}
             >
