@@ -87,9 +87,7 @@ export const query = graphql`
       id
       title
       field_subtitle
-      field_primary_image_scale
-      field_tertiary_image_scale
-      field_secondary_image_scale
+      field_image_arrangement
       field_inverse_header
       relationships {
         node_type {
