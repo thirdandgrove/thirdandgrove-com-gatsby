@@ -32,7 +32,6 @@ export default () => {
                 margin-top: 20px;
                 font-family: ${fonts.sans};
                 font-size: 15px;
-                font-weight: ${weights.bold};
                 letter-spacing: 2px;
                 line-height: 2.4;
                 text-transform: uppercase;
