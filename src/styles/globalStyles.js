@@ -476,7 +476,8 @@ export const globalStyles = css`
     margin: 1em 40px;
   }
 
-  img {
+  img,
+  picture {
     max-width: 100%;
     border-style: none;
   }

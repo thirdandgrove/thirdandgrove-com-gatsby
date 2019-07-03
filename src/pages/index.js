@@ -98,7 +98,7 @@ export const query = graphql`
             }
           }
           childImageMobile: childImageSharp {
-            fixed(width: 670, height: 520) {
+            fixed(width: 335, height: 260) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -129,7 +129,7 @@ export const query = graphql`
             }
           }
           childImageMobile: childImageSharp {
-            fixed(width: 400, height: 300) {
+            fixed(width: 1, height: 1) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -160,7 +160,7 @@ export const query = graphql`
             }
           }
           childImageMobile: childImageSharp {
-            fixed(width: 240, height: 300) {
+            fixed(width: 1, height: 1) {
               ...GatsbyImageSharpFixed
             }
           }
