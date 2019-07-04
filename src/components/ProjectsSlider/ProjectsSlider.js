@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
 import { mediaQueries } from '../../styles';
-
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
