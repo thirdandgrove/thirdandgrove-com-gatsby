@@ -10,10 +10,8 @@ import ImageCollage from './ImageCollage';
 
 const slideStyles = css`
   ${mediaQueries.phoneLarge} {
-    display: grid;
-    grid-column-gap: 20px;
-    grid-template-columns: 400px 110px auto;
-    grid-template-rows: 50px auto 50px;
+    position: relative;
+    min-height: 540px;
   }
 `;
 
@@ -57,40 +55,10 @@ const ProjectPreview = ({ project }) => {
 
   return (
     <div key={project.title} css={[container.max, slideStyles]}>
-      <h3
-        css={[
-          smSectionHead,
-          css`
-            ${mediaQueries.phoneLarge} {
-              grid-column: 1 / 2;
-              grid-row: 1 / 2;
-            }
-          `,
-        ]}
-      >
-        Our Work
-      </h3>
-      <h1
-        css={css`
-          ${mediaQueries.phoneLarge} {
-            grid-column: 1 / 3;
-            grid-row: 2 / 3;
-          }
-        `}
-      >
-        {project.title}
-      </h1>
-
+      <h3 css={smSectionHead}>Our Work</h3>
+      <h1>{project.title}</h1>
       <ImageCollage images={images} type={project.field_image_arrangement} />
-      <Button
-        onClick={() => navigate(project.path.alias)}
-        css={css`
-          ${mediaQueries.phoneLarge} {
-            grid-column: 1 / 2;
-            grid-row: 3 / 4;
-          }
-        `}
-      >
+      <Button onClick={() => navigate(project.path.alias)}>
         View Case Study
       </Button>
     </div>

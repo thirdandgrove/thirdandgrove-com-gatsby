@@ -8,89 +8,141 @@ import { mediaQueries } from '../../styles';
 const ImageCollage = ({ images, type }) => {
   const selectedClass = () => 1;
 
+  // Doing all this positioning the old-fashioned way because it doesn't actually
+  // follow consistent layout rules that could be used to form a grid. Prepare for
+  // allllll the intrinsic ratios.
   const collageWrapper = css`
     ${mediaQueries.phoneLarge} {
-      outline: solid 1px red;
-      grid-column: 2 / 4;
-      grid-row: 1 / 4;
-      display: grid;
-      grid-template-columns: repeat(16, 1fr);
-      grid-template-rows: repeat(14, 20px);
-      grid-column-gap: 20px;
-      grid-row-gap: 20px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
 
       &.type-a {
+        left: 430px;
+        right: 70px;
+
+        .collage-board {
+          padding-top: 75%;
+        }
+
         .primary-wrapper {
-          padding-top: 71%;
+          top: 0;
+          left: 0;
+          width: 62.5%;
+          height: 59.26%;
         }
 
         .secondary-wrapper {
-          padding-top: 72%;
+          bottom: 0;
+          right: 37.5%;
+          width: 34.72%;
+          height: 33.33%;
         }
 
         .tertiary-wrapper {
-          padding-top: 198%;
+          bottom: 0;
+          right: 0;
+          width: 34.72%;
+          height: 91.67%;
         }
       }
 
       &.type-b {
+        left: 450px;
+        right: 20px;
+
+        .collage-board {
+          padding-top: 66.67%;
+        }
+
         .primary-wrapper {
-          padding-top: 81%;
-          grid-column: 8 / 17;
-          grid-row: 3 / 11;
+          top: 8%;
+          right: 0;
+          width: 50.67%;
+          height: 84%;
         }
 
         .secondary-wrapper {
-          padding-top: 76%;
-          grid-column: 2 / 8;
-          grid-row: 8 / 15;
+          bottom: 0;
+          left: 0;
+          width: 45.33%;
+          height: 52%;
         }
 
         .tertiary-wrapper {
-          padding-top: 89%;
-          grid-column: 1 / 8;
-          grid-row: 1 / 6;
+          top: 0;
+          right: 54.67%;
+          width: 30.67%;
+          height: 42%;
         }
       }
 
       &.type-c {
+        left: 430px;
+        right: 20px;
+
+        .collage-board {
+          padding-top: 58.44%;
+        }
+
         .primary-wrapper {
-          padding-top: 110%;
+          top: 12.22%;
+          right: 0;
+          width: 54.5%;
+          height: 75.56%;
         }
 
         .secondary-wrapper {
-          padding-top: 78%;
+          bottom: 0;
+          right: 58.44%;
+          width: 35.06%;
+          height: 46.67%;
         }
 
         .tertiary-wrapper {
-          padding-top: 65.6%;
+          top: 0;
+          left: 0;
+          width: 41.56%;
+          height: 46.67%;
         }
       }
     }
   `;
 
-  const primaryWrapperMobile = css`
-    position: relative;
-    height: 0;
-    padding-top: 77.6%;
-    overflow: hidden;
-  `;
-
-  const secTertWrapperBase = css`
-    position: relative;
-    display: none;
+  const collageBoardBase = css`
     ${mediaQueries.phoneLarge} {
-      display: block;
+      position: relative;
       height: 0;
       overflow: hidden;
     }
   `;
 
+  const primaryWrapperBase = css`
+    position: relative;
+    height: 0;
+    padding-top: 77.6%;
+    overflow: hidden;
+
+    ${mediaQueries.phoneLarge} {
+      position: absolute;
+      padding-top: 0;
+    }
+  `;
+
+  const secTertWrapperBase = css`
+    display: none;
+    position: absolute;
+    overflow: hidden;
+
+    ${mediaQueries.phoneLarge} {
+      display: block;
+    }
+  `;
+
   const imageStyles = css`
-    display: block !important;
     position: absolute !important;
-    height: 100% !important;
     width: 100% !important;
+    height: 100% !important;
     top: 0;
   `;
 
@@ -98,47 +150,49 @@ const ImageCollage = ({ images, type }) => {
   // @see https://www.gatsbyjs.org/packages/gatsby-image/#art-directing-multiple-images
   return (
     <div className={type} css={collageWrapper}>
-      <div css={primaryWrapperMobile} className='primary-wrapper'>
-        <Img
-          fixed={[
-            images.primary.mobile.fixed,
-            {
-              ...images.primary.phoneLarge.fixed,
-              media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
-            },
-          ]}
-          alt='primary'
-          className={`primary${selectedClass()}`}
-          css={imageStyles}
-        />
-      </div>
-      <div css={secTertWrapperBase} className='secondary-wrapper'>
-        <Img
-          fixed={[
-            images.secondary.mobile.fixed,
-            {
-              ...images.secondary.phoneLarge.fixed,
-              media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
-            },
-          ]}
-          alt='secondary'
-          className={`secondary${selectedClass()}`}
-          css={imageStyles}
-        />
-      </div>
-      <div css={secTertWrapperBase} className='tertiary-wrapper'>
-        <Img
-          fixed={[
-            images.tertiary.mobile.fixed,
-            {
-              ...images.tertiary.phoneLarge.fixed,
-              media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
-            },
-          ]}
-          alt='tertiary'
-          className={`tertiary${selectedClass()}`}
-          css={imageStyles}
-        />
+      <div className='collage-board' css={collageBoardBase}>
+        <div css={primaryWrapperBase} className='primary-wrapper'>
+          <Img
+            fixed={[
+              images.primary.mobile.fixed,
+              {
+                ...images.primary.phoneLarge.fixed,
+                media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
+              },
+            ]}
+            alt='primary'
+            className={`primary${selectedClass()}`}
+            css={imageStyles}
+          />
+        </div>
+        <div css={secTertWrapperBase} className='secondary-wrapper'>
+          <Img
+            fixed={[
+              images.secondary.mobile.fixed,
+              {
+                ...images.secondary.phoneLarge.fixed,
+                media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
+              },
+            ]}
+            alt='secondary'
+            className={`secondary${selectedClass()}`}
+            css={imageStyles}
+          />
+        </div>
+        <div css={secTertWrapperBase} className='tertiary-wrapper'>
+          <Img
+            fixed={[
+              images.tertiary.mobile.fixed,
+              {
+                ...images.tertiary.phoneLarge.fixed,
+                media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
+              },
+            ]}
+            alt='tertiary'
+            className={`tertiary${selectedClass()}`}
+            css={imageStyles}
+          />
+        </div>
       </div>
     </div>
   );

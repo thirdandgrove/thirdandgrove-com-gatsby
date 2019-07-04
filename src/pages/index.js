@@ -103,17 +103,17 @@ export const query = graphql`
             }
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 900, height: 640) {
+            fixed(width: 450, height: 320) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 760, height: 840) {
+            fixed(width: 380, height: 420) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 840, height: 680) {
+            fixed(width: 420, height: 340) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -134,17 +134,17 @@ export const query = graphql`
             }
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 500, height: 360) {
+            fixed(width: 250, height: 180) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 680, height: 520) {
+            fixed(width: 340, height: 260) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 540, height: 420) {
+            fixed(width: 270, height: 210) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -165,17 +165,17 @@ export const query = graphql`
             }
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 500, height: 990) {
+            fixed(width: 250, height: 495) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 460, height: 410) {
+            fixed(width: 230, height: 210) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 640, height: 420) {
+            fixed(width: 320, height: 210) {
               ...GatsbyImageSharpFixed
             }
           }
