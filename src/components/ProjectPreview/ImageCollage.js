@@ -16,6 +16,8 @@ const ImageCollage = ({ images, type }) => {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      margin-bottom: 0;
+      z-index: -1;
 
       &.type-a {
         left: 430px;
@@ -144,6 +146,7 @@ const ImageCollage = ({ images, type }) => {
     width: 100% !important;
     height: 100% !important;
     top: 0;
+    left: 0;
   `;
 
   // Pass array of fixed images with media query for art direction.
