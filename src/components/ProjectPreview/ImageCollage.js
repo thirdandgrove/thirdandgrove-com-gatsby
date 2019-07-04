@@ -12,6 +12,8 @@ const ImageCollage = ({ images, type }) => {
   // follow consistent layout rules that could be used to form a grid. Prepare for
   // allllll the intrinsic ratios.
   const collageWrapper = css`
+    margin-bottom: 40px;
+
     ${mediaQueries.phoneLarge} {
       position: absolute;
       top: 50%;

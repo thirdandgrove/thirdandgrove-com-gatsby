@@ -41,7 +41,7 @@ const h3Styles = css`
   line-height: 1;
 
   ${mediaQueries.phoneLarge} {
-    margin-top: 70px;
+    margin-top: 0;
   }
 `;
 
