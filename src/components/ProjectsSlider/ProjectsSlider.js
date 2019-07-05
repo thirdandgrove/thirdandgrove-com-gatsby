@@ -10,9 +10,12 @@ import FullWidthSection from '../FullWidthSection';
 const ProjectsSlider = () => {
   const settings = {
     arrows: true,
+    autoplay: true,
+    autoplaySpeed: 7500,
+    cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
   };

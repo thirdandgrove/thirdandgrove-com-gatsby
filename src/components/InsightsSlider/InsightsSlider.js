@@ -13,7 +13,7 @@ const InsightsSlider = () => {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 7500,
-    cssEase: 'ease-in-out',
+    cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
     centerPadding: 100,
     infinite: true,
     speed: 1000,
