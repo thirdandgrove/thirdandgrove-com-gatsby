@@ -18,6 +18,7 @@ const ImageCollage = ({ images, type }) => {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      margin-top: -20px;
       margin-bottom: 0;
       z-index: -1;
 

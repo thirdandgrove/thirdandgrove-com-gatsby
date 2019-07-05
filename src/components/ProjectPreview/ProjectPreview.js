@@ -12,8 +12,13 @@ const slideStyles = css`
   text-align: center;
   ${mediaQueries.phoneLarge} {
     position: relative;
-    min-height: 540px;
+    min-height: 750px;
+    padding-bottom: 20px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
 `;
 
