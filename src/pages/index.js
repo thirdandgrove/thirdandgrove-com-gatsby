@@ -2,11 +2,12 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
-import InsightsSlider from '../components/InsightsSlider';
+import ProjectsSlider from '../components/ProjectsSlider';
 import WhatWeDo from '../components/WhatWeDo';
+import InsightsSlider from '../components/InsightsSlider';
+import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
-import ProjectsSlider from '../components/ProjectsSlider';
 
 export default () => {
   return (
@@ -18,6 +19,7 @@ export default () => {
       <ProjectsSlider />
       <WhatWeDo />
       <InsightsSlider />
+      <LogoGrid title='A Few of Our Friends' />
       <SplitSection>
         <ContactUs />
         <BeUs />
