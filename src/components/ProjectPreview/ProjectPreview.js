@@ -21,7 +21,7 @@ const slideStyles = css`
 // too big for certain client names on mobile.
 const h1Styles = css`
   margin-bottom: 10px;
-  font-size: 60px;
+  font-size: 48px;
   line-height: 1.27;
   font-weight: ${weights.black};
   letter-spacing: 0.8px;
