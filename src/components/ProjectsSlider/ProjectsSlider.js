@@ -8,6 +8,8 @@ import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
 const ProjectsSlider = () => {
+  let foo = 1;
+
   const settings = {
     arrows: true,
     autoplay: true,
@@ -18,6 +20,10 @@ const ProjectsSlider = () => {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    afterChange: currentSlide => {
+      foo = currentSlide + 1;
+      console.log(foo);
+    },
   };
 
   const data = useStaticQuery(graphql`
@@ -92,9 +98,12 @@ const ProjectsSlider = () => {
         `}
       >
         {data.allCaseStudy.nodes.map((node, i) => {
-          return <ProjectPreview key={node.title} index={i} project={node} />;
+          return <ProjectPreview key={node.title} project={node} />;
         })}
       </Slider>
+      <h1>
+        {foo} of {data.allCaseStudy.nodes.length}
+      </h1>
     </FullWidthSection>
   );
 };
