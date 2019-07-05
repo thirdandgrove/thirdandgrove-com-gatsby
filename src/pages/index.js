@@ -19,7 +19,7 @@ export default () => {
       <ProjectsSlider />
       <WhatWeDo />
       <InsightsSlider />
-      <LogoGrid title='A Few of Our Friends' />
+      <LogoGrid title='A Few of Our Friends' logoset='default' />
       <SplitSection>
         <ContactUs />
         <BeUs />

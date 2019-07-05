@@ -4,7 +4,20 @@ import PropTypes from 'prop-types';
 
 import FullWidthSection from '../FullWidthSection';
 
-const LogoGrid = ({ title, logos }) => {
+const LogoGrid = ({ title, logoset }) => {
+  const logosets = {
+    default: [
+      { src: 'images/logos/google.svg', alt: 'Google' },
+      { src: 'images/logos/fox.svg', alt: 'FOX' },
+      { src: 'images/logos/ge.svg', alt: 'GE' },
+      { src: 'images/logos/absolut.svg', alt: 'Absolut Vodka' },
+      { src: 'images/logos/quicken.svg', alt: 'Quicken' },
+      { src: 'images/logos/ucla.svg', alt: 'UCLA' },
+      { src: 'images/logos/williams-sonoma.svg', alt: 'Williams-Sonoma Inc.' },
+      { src: 'images/logos/dwell.svg', alt: 'dwell' },
+    ],
+  };
+
   const Logos = styled.div`
     display: flex;
   `;
@@ -13,7 +26,7 @@ const LogoGrid = ({ title, logos }) => {
     <FullWidthSection>
       <h2>{title}</h2>
       <Logos>
-        {logos.map((logo, i) => (
+        {logosets[logoset].map((logo, i) => (
           <img src={logo.src} alt={logo.alt} index={i} />
         ))}
       </Logos>
@@ -23,14 +36,11 @@ const LogoGrid = ({ title, logos }) => {
 
 LogoGrid.propTypes = {
   title: PropTypes.string.isRequired,
-  logos: PropTypes.array,
+  logoset: PropTypes.string,
 };
 
 LogoGrid.defaultProps = {
-  logos: [
-    { src: 'images/icon.png', alt: 'Third and Grove' },
-    { src: 'images/icon.png', alt: 'Third and Grove' },
-  ],
+  logoset: 'default',
 };
 
 export default LogoGrid;
