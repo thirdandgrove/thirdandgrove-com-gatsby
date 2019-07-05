@@ -2,7 +2,7 @@
 /* Variables and functions specifically for CSS-in-JS use */
 
 /* Media queries */
-const breakpoints = [480, 900, 1200];
+const breakpoints = [480, 900, 1220];
 const names = [`xs`, `phoneLarge`, `desktop`];
 
 export const mediaQueries = breakpoints.reduce((acc, bp, i) => {

@@ -4,11 +4,53 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import Button from '../Button';
-import { colors, weights, smSectionHead } from '../../styles';
+import { smSectionHead, container, mediaQueries, weights } from '../../styles';
 
 import ImageCollage from './ImageCollage';
 
-const ProjectPreview = ({ project, index }) => {
+const slideStyles = css`
+  text-align: center;
+  ${mediaQueries.phoneLarge} {
+    position: relative;
+    min-height: 750px;
+    padding-bottom: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+`;
+
+// @todo talk to designers about h1 consistency across slides and font being
+// too big for certain client names on mobile.
+const h1Styles = css`
+  margin-bottom: 10px;
+  font-size: 48px;
+  line-height: 1.27;
+  font-weight: ${weights.black};
+  letter-spacing: 0.8px;
+
+  ${mediaQueries.phoneLarge} {
+    max-width: 550px;
+    min-height: 182px;
+    margin-bottom: 40px;
+    font-size: 104px;
+    line-height: 0.94;
+    letter-spacing: 1.4px;
+  }
+`;
+
+const h3Styles = css`
+  margin: 40px 0 20px;
+  line-height: 1;
+
+  ${mediaQueries.phoneLarge} {
+    margin-top: 0;
+  }
+`;
+
+const ProjectPreview = ({ project }) => {
   // Prepare image srcset based on Type (A, B, or C).
   const primaryImageData = project.relationships.field_image.localFile;
   const secondaryImageData =
@@ -20,71 +62,46 @@ const ProjectPreview = ({ project, index }) => {
   const images = {
     primary: {
       mobile: primaryImageData.childImageMobile,
-      desktop: primaryImageData.childImageTypeA,
+      phoneLarge: primaryImageData.childImageTypeA,
     },
     secondary: {
       mobile: secondaryImageData.childImageMobile,
-      desktop: secondaryImageData.childImageTypeA,
+      phoneLarge: secondaryImageData.childImageTypeA,
     },
     tertiary: {
       mobile: tertiaryImageData.childImageMobile,
-      desktop: tertiaryImageData.childImageTypeA,
+      phoneLarge: tertiaryImageData.childImageTypeA,
     },
   };
   switch (project.field_image_arrangement) {
     case 'type-b':
-      images.primary.desktop = primaryImageData.childImageTypeB;
-      images.secondary.desktop = secondaryImageData.childImageTypeB;
-      images.tertiary.desktop = primaryImageData.childImageTypeB;
+      images.primary.phoneLarge = primaryImageData.childImageTypeB;
+      images.secondary.phoneLarge = secondaryImageData.childImageTypeB;
+      images.tertiary.phoneLarge = tertiaryImageData.childImageTypeB;
       break;
     case 'type-c':
-      images.primary.desktop = primaryImageData.childImageTypeC;
-      images.secondary.desktop = secondaryImageData.childImageTypeC;
-      images.tertiary.desktop = primaryImageData.childImageTypeC;
+      images.primary.phoneLarge = primaryImageData.childImageTypeC;
+      images.secondary.phoneLarge = secondaryImageData.childImageTypeC;
+      images.tertiary.phoneLarge = tertiaryImageData.childImageTypeC;
       break;
     default:
       break;
   }
 
   return (
-    <div
-      css={css`
-      display: flex;
-      height: 650px;
-      max-width: 100%;
-      justify-content: center;
-      align-items: center;
-      padding: 3rem;
-      section {
-        z-index: 2;
-        h1 {
-          width: 1120px;
-          height: 222px;
-          color: ${colors.darkgray};
-          font-size: 104px;
-          font-weight: ${weights.black};
-          letter-spacing: 1.39px;
-          line-height: 98px;
-          margin: 5rem 0 3rem 0;
-        }
-      `}
-      key={project.title}
-    >
-      <section>
-        <h3 css={smSectionHead}>Our Work</h3>
-        <h1>{project.title}</h1>
-        <Button onClick={() => navigate(project.path.alias)}>
-          view case study
-        </Button>
-      </section>
+    <div key={project.title} css={[container.max, slideStyles]}>
+      <h3 css={[smSectionHead, h3Styles]}>Our Work</h3>
+      <h1 css={h1Styles}>{project.title}</h1>
       <ImageCollage images={images} type={project.field_image_arrangement} />
+      <Button onClick={() => navigate(project.path.alias)}>
+        View Case Study
+      </Button>
     </div>
   );
 };
 
 ProjectPreview.propTypes = {
   project: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
 };
 
 export default ProjectPreview;
