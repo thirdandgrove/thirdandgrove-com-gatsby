@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { colors, fonts, weights } from '../styles';
+import { colors, fonts, mediaQueries, weights } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
@@ -24,11 +24,24 @@ const Insights = ({ data }) => {
         invert: post.field_inverse_header,
         defaultBackground: false,
         color: `${colors.lightgreen}`,
+        mobileHeight: '470px',
       }}
     >
       {imageSrc ? (
         <Img
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+          css={css`
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: -100px;
+            max-width: 980px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: -165px;
+            }
+          `}
         />
       ) : (
         undefined

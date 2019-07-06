@@ -54,6 +54,7 @@ const TopNav = ({ invert }) => {
                 css={css`
                   fill: ${isOpen || invert ? colors.white : colors.darkgray};
                   height: 50px;
+                  margin-left: -10px;
                 `}
               />
             ))}

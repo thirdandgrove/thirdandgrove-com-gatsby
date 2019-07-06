@@ -37,26 +37,36 @@ const Header = ({
       }
     }
     position: relative;
-    margin-bottom: 0;
+    margin-bottom: 85px;
     animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     line-height: 48px;
     font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
-    width: 60%;
     text-align: center;
     color: ${defaultBackground ? colors.darkgray : color.lightgray};
 
     ${mediaQueries.phoneLarge} {
+      width: 75%;
+      margin-bottom: 0;
       font-size: 72px;
       line-height: 84px;
       letter-spacing: -1px;
     }
+
+    ${mediaQueries.desktop} {
+      width: 50%;
+    }
   `;
   const sectionCSS = css`
-    padding: 88px 0;
+    padding: 88px 20px;
     background-image: url(${backgroundImage});
     background-color: ${color};
+    justify-content: flex-start;
+
+    ${mediaQueries.desktop} {
+      justify-content: center;
+    }
   `;
   const headerlabel = css`
     margin-top: 68px;
