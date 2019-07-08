@@ -4,12 +4,12 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-import { mediaQueries, smSectionHead } from '../../styles';
+import { colors, mediaQueries, smSectionHead } from '../../styles';
 import ArticlePreviewSlide from '../ArticlePreviewSlide';
 import FullWidthSection from '../FullWidthSection';
 import Button from '../Button';
 
-const InsightsSlider = ({ showButton }) => {
+const InsightsSlider = ({ showButton, backgroundColor }) => {
   const settings = {
     arrows: false,
     autoplay: true,
@@ -43,6 +43,7 @@ const InsightsSlider = ({ showButton }) => {
       css={css`
         padding-top: 25px;
         padding-bottom: 60px;
+        background-color: ${backgroundColor};
 
         ${mediaQueries.phoneLarge} {
           padding-bottom: 115px;
@@ -82,10 +83,12 @@ const InsightsSlider = ({ showButton }) => {
 
 InsightsSlider.propTypes = {
   showButton: PropTypes.bool,
+  backgroundColor: PropTypes.string,
 };
 
 InsightsSlider.defaultProps = {
   showButton: true,
+  backgroundColor: colors.white,
 };
 
 export default InsightsSlider;

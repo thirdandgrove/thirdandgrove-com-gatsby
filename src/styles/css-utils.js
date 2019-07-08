@@ -37,7 +37,7 @@ export const colors = {
   whiteFaded: `rgba(255, 255, 255, 0.7)`,
   black: `#000`,
   gray: `#e0e0e0`,
-  lightgray: `#efefef`,
+  lightgray: `#F8F8F9;`,
   darkgray: `#29292a`,
   darkgrayFaded: `rgb(41, 41, 42, 0.7)`,
   mediumgray: `#757575`,
