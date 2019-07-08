@@ -269,6 +269,16 @@ export const globalStyles = css`
     margin-bottom: 0;
   }
 
+  p.dropCap::first-letter {
+    height: 50px;
+    width: 50px;
+    color: ${colors.reallydarkgray};
+    font-family: ${fonts.serif};
+    font-size: 50px;
+    line-height: 25px;
+    text-align: center;
+  }
+
   a {
     text-decoration: none;
     background-color: transparent;
