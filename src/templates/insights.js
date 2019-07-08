@@ -4,9 +4,10 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { colors, mediaQueries } from '../styles';
+import { colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
+import FullWidthSection from '../components/FullWidthSection';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -49,9 +50,11 @@ const Insights = ({ data }) => {
       ) : (
         undefined
       )}
-      {post.relationships.field_components.map(comp => (
-        <ContentBody key={comp.id} comp={comp} />
-      ))}
+      <div css={container.max}>
+        {post.relationships.field_components.map(comp => (
+          <ContentBody key={comp.id} comp={comp} />
+        ))}
+      </div>
     </Layout>
   );
 };
