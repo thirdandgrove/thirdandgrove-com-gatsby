@@ -51,7 +51,11 @@ const Insights = ({ data }) => {
       {post.relationships.field_components.map(comp => (
         <ContentBody key={comp.id} comp={comp} />
       ))}
-      <InsightsSlider showButton={false} backgroundColor={colors.lightgray} />
+      <InsightsSlider
+        showButton={false}
+        backgroundColor={colors.lightgray}
+        title='You May Also Like'
+      />
     </Layout>
   );
 };
