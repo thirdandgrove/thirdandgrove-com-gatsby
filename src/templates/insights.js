@@ -27,7 +27,7 @@ const Insights = ({ data }) => {
         mobileHeight: '470px',
       }}
     >
-      {imageSrc ? (
+      {imageSrc && (
         <Img
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
           css={css`
@@ -46,8 +46,6 @@ const Insights = ({ data }) => {
             }
           `}
         />
-      ) : (
-        undefined
       )}
       <div css={container.max}>
         {post.relationships.field_components.map(comp => (
