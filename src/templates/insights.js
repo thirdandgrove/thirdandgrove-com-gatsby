@@ -49,20 +49,6 @@ const Insights = ({ data }) => {
       ) : (
         undefined
       )}
-      <p
-        css={css`
-          font-family: ${fonts.serif};
-          font-weight: ${weights.thin};
-          font-size: 39px;
-          color: ${colors.darkgray};
-          letter-spacing: -0.45px;
-          line-height: 84px;
-          padding-top: 3rem;
-          padding-left: 3rem;
-        `}
-      >
-        {post.field_subtitle}
-      </p>
       {post.relationships.field_components.map(comp => (
         <ContentBody key={comp.id} comp={comp} />
       ))}
