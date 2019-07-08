@@ -4,17 +4,26 @@ import PropTypes from 'prop-types';
 
 import FullWidthSection from '../FullWidthSection';
 
+import { ReactComponent as GoogleLogo } from './logos/google.svg';
+import { ReactComponent as FoxLogo } from './logos/fox.svg';
+import { ReactComponent as GELogo } from './logos/ge.svg';
+import { ReactComponent as AbsolutLogo } from './logos/absolut.svg';
+import { ReactComponent as QuickenLogo } from './logos/quicken.svg';
+import { ReactComponent as UCLALogo } from './logos/ucla.svg';
+import { ReactComponent as WSILogo } from './logos/williamsSonoma.svg';
+import { ReactComponent as DwellLogo } from './logos/dwell.svg';
+
 const LogoGrid = ({ title, logoset }) => {
   const logosets = {
     default: [
-      { src: 'images/logos/google.svg', alt: 'Google' },
-      { src: 'images/logos/fox.svg', alt: 'FOX' },
-      { src: 'images/logos/ge.svg', alt: 'GE' },
-      { src: 'images/logos/absolut.svg', alt: 'Absolut Vodka' },
-      { src: 'images/logos/quicken.svg', alt: 'Quicken' },
-      { src: 'images/logos/ucla.svg', alt: 'UCLA' },
-      { src: 'images/logos/williams-sonoma.svg', alt: 'Williams-Sonoma Inc.' },
-      { src: 'images/logos/dwell.svg', alt: 'dwell' },
+      <GoogleLogo alt='Google logo' />,
+      <FoxLogo alt='FOX logo' />,
+      <GELogo alt='GE logo' />,
+      <AbsolutLogo alt='Absolut Vodka logo' />,
+      <QuickenLogo alt='Quicken logo' />,
+      <UCLALogo alt='UCLA logo' />,
+      <WSILogo alt='Williams-Sonoma Inc. logo' />,
+      <DwellLogo alt='dwell logo' />,
     ],
   };
 
@@ -26,8 +35,8 @@ const LogoGrid = ({ title, logoset }) => {
     <FullWidthSection>
       <h2>{title}</h2>
       <Logos>
-        {logosets[logoset].map((logo, i) => (
-          <img src={logo.src} alt={logo.alt} index={i} />
+        {logosets[logoset].map(logo => (
+          <>{logo}</>
         ))}
       </Logos>
     </FullWidthSection>
