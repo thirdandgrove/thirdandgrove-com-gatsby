@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
@@ -10,7 +11,7 @@ import { weights, mediaQueries, container } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 
-const Project = ({ study, idx }) => {
+const Project = ({ study, index }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
   return (
@@ -37,7 +38,7 @@ const Project = ({ study, idx }) => {
             ${mediaQueries.phoneLarge} {
               display: flex;
               justify-content: space-between;
-              flex-direction: ${idx % 2 ? 'row-reverse' : 'row'};
+              flex-direction: ${index % 2 ? 'row-reverse' : 'row'};
               align-items: center;
               margin-bottom: 175px;
             }
@@ -64,13 +65,13 @@ const Project = ({ study, idx }) => {
                   ${mediaQueries.phoneLarge} {
                     flex-grow: 0;
                     flex-shrink: 0;
-                    flex-basis: ${idx % 2 ? '64%' : '49%'};
-                    width: ${idx % 2 ? '64%' : '49%'};
+                    flex-basis: ${index % 2 ? '64%' : '49%'};
+                    width: ${index % 2 ? '64%' : '49%'};
                     margin-bottom: 0;
 
                     > div {
-                      padding-bottom: ${idx % 2 ? '76% !important' : '100%'};
-                      padding-bottom: ${idx % 4 === 2
+                      padding-bottom: ${index % 2 ? '76% !important' : '100%'};
+                      padding-bottom: ${index % 4 === 2
                         ? '131% !important'
                         : '100%'};
                     }
@@ -85,8 +86,8 @@ const Project = ({ study, idx }) => {
               ${mediaQueries.phoneLarge} {
                 flex-grow: 0;
                 flex-shrink: 0;
-                flex-basis: ${idx % 2 ? '30%' : '45%'};
-                width: ${idx % 2 ? '30%' : '45%'};
+                flex-basis: ${index % 2 ? '30%' : '45%'};
+                width: ${index % 2 ? '30%' : '45%'};
               }
             `}
           >
@@ -125,6 +126,11 @@ const Project = ({ study, idx }) => {
   );
 };
 
+Project.propTypes = {
+  study: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+};
+
 export default () => {
   const data = useStaticQuery(graphql`
     {
@@ -143,8 +149,8 @@ export default () => {
         height: '450px',
       }}
     >
-      {studies.map((study, idx) => (
-        <Project study={study} idx={idx} key={study.id} />
+      {studies.map((study, index) => (
+        <Project study={study} index={index} key={study.id} />
       ))}
     </Layout>
   );
