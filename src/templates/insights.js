@@ -7,6 +7,7 @@ import Img from 'gatsby-image';
 import { colors, fonts, weights } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
+import InsightsSlider from '../components/InsightsSlider';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -50,6 +51,7 @@ const Insights = ({ data }) => {
       {post.relationships.field_components.map(comp => (
         <ContentBody key={comp.id} comp={comp} />
       ))}
+      <InsightsSlider showButton={false} />
     </Layout>
   );
 };
