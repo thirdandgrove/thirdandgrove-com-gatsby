@@ -72,10 +72,8 @@ const InsightsSlider = ({ showButton, backgroundColor, title }) => {
           return <ArticlePreviewSlide key={node.title} article={node} />;
         })}
       </Slider>
-      {showButton ? (
+      {showButton && (
         <Button onClick={() => navigate(`/insights`)}>Our Insights</Button>
-      ) : (
-        undefined
       )}
     </FullWidthSection>
   );
