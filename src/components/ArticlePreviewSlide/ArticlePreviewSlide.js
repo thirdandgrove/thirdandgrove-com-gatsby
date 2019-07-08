@@ -34,7 +34,7 @@ const ArticlePreviewSlide = ({ article }) => {
   `;
   return (
     <Card>
-      <Link
+      <span
         css={[
           container.max,
           css`
@@ -51,7 +51,6 @@ const ArticlePreviewSlide = ({ article }) => {
             }
           `,
         ]}
-        to={article.path.alias}
       >
         <div
           css={css`
@@ -68,12 +67,14 @@ const ArticlePreviewSlide = ({ article }) => {
             }
           `}
         >
-          <h3>{article.title}</h3>
-          <footer>
-            {`${article.created} - ${article.relationships.uid.name}`}
-          </footer>
+          <Link to={article.path.alias}>
+            <h3>{article.title}</h3>
+            <footer>
+              {`${article.created} - ${article.relationships.uid.name}`}
+            </footer>
+          </Link>
         </div>
-      </Link>
+      </span>
     </Card>
   );
 };
