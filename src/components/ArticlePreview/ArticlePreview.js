@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-// import VisibilitySensor from '../VisibilitySensor/VisibilitySensor';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { colors, fonts, weights, mediaQueries } from '../../styles';
 
