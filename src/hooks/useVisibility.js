@@ -58,7 +58,7 @@ export function useIsVisible(nodeRef) {
     setVisible(isIntersecting);
   }
 
-  useEffect(() => VO.watch(nodeRef.current, handleVisibilityChange), []);
+  useEffect(() => VO.watch(nodeRef.current, handleVisibilityChange), [nodeRef]);
 
   return isVisible;
 }
@@ -72,7 +72,7 @@ export function useHasBeenVisible(nodeRef) {
     }
   }
 
-  useEffect(() => VO.watch(nodeRef.current, handleVisibilityChange), []);
+  useEffect(() => VO.watch(nodeRef.current, handleVisibilityChange), [nodeRef]);
 
   return isVisible;
 }
