@@ -261,7 +261,6 @@ export const globalStyles = css`
 
     ${mediaQueries.phoneLarge} {
       margin-bottom: 36px;
-      font-size: 21px;
     }
   }
 
