@@ -27,12 +27,10 @@ const Insights = ({ data }) => {
         color: `${colors.lightgreen}`,
       }}
     >
-      {imageSrc ? (
+      {imageSrc && (
         <Img
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
         />
-      ) : (
-        undefined
       )}
       <p
         css={css`
