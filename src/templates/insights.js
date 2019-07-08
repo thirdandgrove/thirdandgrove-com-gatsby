@@ -7,7 +7,6 @@ import Img from 'gatsby-image';
 import { colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
-import FullWidthSection from '../components/FullWidthSection';
 
 const Insights = ({ data }) => {
   const post = data.insight;
