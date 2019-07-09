@@ -13,7 +13,7 @@ const ProjectsSlider = () => {
 
   const data = useStaticQuery(graphql`
     {
-      allCaseStudy {
+      allCaseStudy(limit: 0) {
         nodes {
           ...CaseStudyFragment
         }
