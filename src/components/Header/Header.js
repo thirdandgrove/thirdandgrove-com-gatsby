@@ -84,6 +84,22 @@ const Header = ({
       margin-bottom: 60px;
     }
   `;
+  const headerlabel = css`
+    margin-top: 68px;
+    margin-bottom: 40px;
+    font-family: ${fonts.sans};
+    font-size: 15px;
+    font-weight: ${weights.light};
+    letter-spacing: 2px;
+    line-height: 36px;
+    text-transform: capitalize;
+    color: ${colors.reallydarkgray};
+
+    ${mediaQueries.desktop} {
+      margin-top: -100px;
+      margin-bottom: 60px;
+    }
+  `;
   return (
     <>
       <SEO title={title || metaTitle} description={description} />

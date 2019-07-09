@@ -7,6 +7,7 @@ import Img from 'gatsby-image';
 import { colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
+import InsightsSlider from '../components/InsightsSlider';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -52,6 +53,11 @@ const Insights = ({ data }) => {
           <ContentBody key={comp.id} comp={comp} />
         ))}
       </div>
+      <InsightsSlider
+        showButton={false}
+        backgroundColor={colors.lightgray}
+        title='You May Also Like'
+      />
     </Layout>
   );
 };
