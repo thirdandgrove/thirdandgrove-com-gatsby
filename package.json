@@ -19,7 +19,7 @@
     "gatsby-plugin-manifest": "^2.0.28",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
-    "gatsby-plugin-sharp": "^2.0.32",
+    "gatsby-plugin-sharp": "^2.2.3",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-source-drupal": "^3.2.3",
     "gatsby-source-filesystem": "^2.0.29",
