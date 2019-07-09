@@ -5982,9 +5982,9 @@ gatsby-plugin-emotion@^4.0.6:
     "@emotion/babel-preset-css-prop" "^10.0.5"
 
 gatsby-plugin-google-tagmanager@^2.0.15:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.1.1.tgz#2ce091f9d871ed922e87d4b457cd0467fc48d9bd"
-  integrity sha512-xYshQ33knoePRYH+VamJ2NwY2sePbz49vF0+kvDC0D0D1mxL48KwdOJDouyuSRmA01J+rjwLkeIjlKvJaJuxqA==
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.1.2.tgz#9c57974acc99376351fcb0ac4e72373f81eab5d0"
+  integrity sha512-HZEKnXQ7FUN1atTTmNPao/73qh/NNGGjHKH/Oy8kU2fQLy0M62W4yk4ug+m0ZJZW8NLjmdNuWMgkLG220l5bOA==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -6135,9 +6135,9 @@ gatsby-transformer-sharp@^2.1.17:
     sharp "^0.22.1"
 
 gatsby@^2.3.16:
-  version "2.13.9"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.9.tgz#9952acb547a217b3e104ab7f90549ca4e74d2ae1"
-  integrity sha512-h/MpRGfifFE1J47eGatF0TEl8JepnG+g4hI2ZrFSWiH/1NuiVH9exZLvsNT9E48m9GFW9YVnRExsmoEjpLcmWA==
+  version "2.13.10"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.10.tgz#01efdf748c8cc693fc3d8dc6f9640951c2344184"
+  integrity sha512-5oMeDQngEw1zzk+43TY7ncBW+S9iX1w+Ru4hsnH4bYQ/WaiD0qX8KqR6/3CrI3qeyjFVZhMOq0vOTg5ej5jDJQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
