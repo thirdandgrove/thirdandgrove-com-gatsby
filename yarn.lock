@@ -1634,9 +1634,9 @@
   integrity sha1-fyrX7FX5FEgvybHsS7GuYCjUYGY=
 
 "@types/node@*":
-  version "12.6.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.0.tgz#3ab4ef2d634d6e0f6d0c85edafdbbb8ae88c9609"
-  integrity sha512-dVeOVH/lhZ2Cki5Emh0aKeXUcWG1+EDTkqyzdgPe0ZjzgvBhzSFlogc6rm8uUd0I+XGK5fcp9DsMv5Wofe0/3w==
+  version "12.6.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.1.tgz#d5544f6de0aae03eefbb63d5120f6c8be0691946"
+  integrity sha512-rp7La3m845mSESCgsJePNL/JQyhkOJA6G4vcwvVgkDAwHhGdq5GCumxmPjEk1MZf+8p5ZQAUE7tqgQRQTXN7uQ==
 
 "@types/node@^7.0.11":
   version "7.10.6"
@@ -5982,9 +5982,9 @@ gatsby-plugin-emotion@^4.0.6:
     "@emotion/babel-preset-css-prop" "^10.0.5"
 
 gatsby-plugin-google-tagmanager@^2.0.15:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.1.1.tgz#2ce091f9d871ed922e87d4b457cd0467fc48d9bd"
-  integrity sha512-xYshQ33knoePRYH+VamJ2NwY2sePbz49vF0+kvDC0D0D1mxL48KwdOJDouyuSRmA01J+rjwLkeIjlKvJaJuxqA==
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.1.2.tgz#9c57974acc99376351fcb0ac4e72373f81eab5d0"
+  integrity sha512-HZEKnXQ7FUN1atTTmNPao/73qh/NNGGjHKH/Oy8kU2fQLy0M62W4yk4ug+m0ZJZW8NLjmdNuWMgkLG220l5bOA==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -6135,9 +6135,9 @@ gatsby-transformer-sharp@^2.1.17:
     sharp "^0.22.1"
 
 gatsby@^2.3.16:
-  version "2.13.9"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.9.tgz#9952acb547a217b3e104ab7f90549ca4e74d2ae1"
-  integrity sha512-h/MpRGfifFE1J47eGatF0TEl8JepnG+g4hI2ZrFSWiH/1NuiVH9exZLvsNT9E48m9GFW9YVnRExsmoEjpLcmWA==
+  version "2.13.10"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.10.tgz#01efdf748c8cc693fc3d8dc6f9640951c2344184"
+  integrity sha512-5oMeDQngEw1zzk+43TY7ncBW+S9iX1w+Ru4hsnH4bYQ/WaiD0qX8KqR6/3CrI3qeyjFVZhMOq0vOTg5ej5jDJQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -11342,9 +11342,9 @@ redux-thunk@^2.3.0:
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
 redux@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
-  integrity sha512-R7bAtSkk7nY6O/OYMVR9RiBI+XghjF9rlbl5806HJbQph0LJVHZrU5oaO4q70eUKiqMRqm4y07KLTlMZ2BlVmg==
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.2.tgz#597cc660a99f91412e31c96c3da10ed8ace0715d"
+  integrity sha512-oAiFLWYQhbpSvzjcVfgQ90MlZ0u6uDIHFK41Q0/BnCfjEg96SACzwUFwDVUKz/LP/SwJORGaFY8AM5wOB/zf0A==
   dependencies:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
