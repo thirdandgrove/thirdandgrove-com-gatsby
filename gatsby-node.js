@@ -5,7 +5,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const studies = await graphql(`
     {
-      allCaseStudy {
+      allCaseStudy(limit: 5) {
         nodes {
           id
           title
@@ -29,7 +29,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const insights = await graphql(`
     {
-      allInsight {
+      allInsight(limit: 5) {
         nodes {
           id
           title
@@ -52,7 +52,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const legacyInsights = await graphql(`
     {
-      allNodeLegacyInsight {
+      allNodeLegacyInsight(limit: 5) {
         nodes {
           id
           title
