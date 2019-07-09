@@ -1,14 +1,15 @@
 import React from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import Slider from 'react-slick';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-import { mediaQueries, smSectionHead } from '../../styles';
+import { colors, mediaQueries, smSectionHead } from '../../styles';
 import ArticlePreviewSlide from '../ArticlePreviewSlide';
 import FullWidthSection from '../FullWidthSection';
 import Button from '../Button';
 
-const InsightsSlider = () => {
+const InsightsSlider = ({ showButton, backgroundColor, title }) => {
   const settings = {
     arrows: false,
     autoplay: true,
@@ -42,6 +43,7 @@ const InsightsSlider = () => {
       css={css`
         padding-top: 25px;
         padding-bottom: 60px;
+        background-color: ${backgroundColor};
 
         ${mediaQueries.phoneLarge} {
           padding-bottom: 115px;
@@ -49,7 +51,7 @@ const InsightsSlider = () => {
         }
       `}
     >
-      <h2 css={smSectionHead}>Insights</h2>
+      <h2 css={smSectionHead}>{title}</h2>
       <Slider
         {...settings}
         css={css`
@@ -70,9 +72,23 @@ const InsightsSlider = () => {
           return <ArticlePreviewSlide key={node.title} article={node} />;
         })}
       </Slider>
-      <Button onClick={() => navigate(`/insights`)}>Our Insights</Button>
+      {showButton && (
+        <Button onClick={() => navigate(`/insights`)}>Our Insights</Button>
+      )}
     </FullWidthSection>
   );
+};
+
+InsightsSlider.propTypes = {
+  showButton: PropTypes.bool,
+  backgroundColor: PropTypes.string,
+  title: PropTypes.string,
+};
+
+InsightsSlider.defaultProps = {
+  showButton: true,
+  backgroundColor: colors.white,
+  title: `Insights`,
 };
 
 export default InsightsSlider;
