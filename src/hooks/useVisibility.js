@@ -92,7 +92,7 @@ export function useHasBeenPartlyVisible(nodeRef, threshold = 0.5) {
   useEffect(() => {
     setIntersectionObserverOptions({ threshold });
     return VO.watch(nodeRef.current, handleVisibilityChange);
-  }, [nodeRef]);
+  }, [nodeRef, threshold]);
 
   return isVisible;
 }

@@ -212,7 +212,7 @@ const ImageCollage = ({ images, type }) => {
 
 ImageCollage.propTypes = {
   images: PropTypes.object.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.number.isRequired,
 };
 
 export default ImageCollage;

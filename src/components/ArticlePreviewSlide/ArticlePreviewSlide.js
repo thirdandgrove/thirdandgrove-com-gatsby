@@ -101,6 +101,7 @@ const ArticlePreviewSlide = ({ article, index }) => {
 
 ArticlePreviewSlide.propTypes = {
   article: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default ArticlePreviewSlide;
