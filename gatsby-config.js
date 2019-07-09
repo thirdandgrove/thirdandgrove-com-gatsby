@@ -32,7 +32,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-drupal-preview`,
+      resolve: `gatsby-source-drupal`,
       options: {
         preview: true,
         baseUrl: process.env.DRUPAL_URL,
