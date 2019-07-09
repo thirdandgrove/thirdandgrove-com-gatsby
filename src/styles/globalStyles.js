@@ -269,13 +269,16 @@ export const globalStyles = css`
   }
 
   p.dropCap::first-letter {
-    height: 50px;
-    width: 50px;
+    float: left;
+    padding: 4px 20px 0;
     color: ${colors.reallydarkgray};
     font-family: ${fonts.serif};
     font-size: 50px;
-    line-height: 25px;
-    text-align: center;
+    line-height: 1;
+
+    ${mediaQueries.phoneLarge} {
+      padding: 6px 20px 0;
+    }
   }
 
   a {
