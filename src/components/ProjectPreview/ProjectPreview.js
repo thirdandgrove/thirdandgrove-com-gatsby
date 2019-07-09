@@ -22,22 +22,44 @@ const slideStyles = css`
   }
 `;
 
-// @todo talk to designers about h1 consistency across slides and font being
-// too big for certain client names on mobile.
-const h1Styles = css`
+const slideTitleWrapper = css`
+  display: flex;
+  width: 100%;
+  min-height: 120px;
   margin-bottom: 10px;
+  align-items: center;
+  ${mediaQueries.phoneLarge} {
+    max-width: 550px;
+    min-height: 194px;
+    margin-bottom: 40px;
+  }
+`;
+
+const h1Styles = css`
+  width: 100%;
+  margin-bottom: 0;
   font-size: 48px;
   line-height: 1.27;
   font-weight: ${weights.black};
   letter-spacing: 0.8px;
+  opacity: 0;
+  transition: 0.6s ease all;
+
+  .slick-active & {
+    opacity: 1;
+  }
 
   ${mediaQueries.phoneLarge} {
-    max-width: 550px;
-    min-height: 182px;
-    margin-bottom: 40px;
+    margin-bottom: 0;
     font-size: 104px;
     line-height: 0.94;
     letter-spacing: 1.4px;
+    transform: translateX(200px);
+    opacity: 0;
+
+    .slick-active & {
+      transform: translateX(0);
+    }
   }
 `;
 
@@ -91,7 +113,9 @@ const ProjectPreview = ({ project }) => {
   return (
     <div key={project.title} css={[container.max, slideStyles]}>
       <h3 css={[smSectionHead, h3Styles]}>Our Work</h3>
-      <h1 css={h1Styles}>{project.title}</h1>
+      <div css={slideTitleWrapper}>
+        <h1 css={h1Styles}>{project.title}</h1>
+      </div>
       <ImageCollage images={images} type={project.field_image_arrangement} />
       <Button onClick={() => navigate(project.path.alias)}>
         View Case Study
