@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { fonts, weights, h1L, mediaQueries, container } from '../styles';
+import { fonts, h1L, mediaQueries, container } from '../styles';
 import ArticlePreview from '../components/ArticlePreview';
 import Button from '../components/Button';
 import Layout from '../components/layout';
