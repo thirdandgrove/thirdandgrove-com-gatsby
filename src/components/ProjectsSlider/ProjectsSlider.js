@@ -25,10 +25,9 @@ const ProjectsSlider = () => {
     arrows: true,
     autoplay: true,
     autoplaySpeed: 7500,
-    cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
     dots: false,
     infinite: true,
-    speed: 1000,
+    speed: 0,
     slidesToShow: 1,
     slidesToScroll: 1,
     afterChange: currentSlide => {
@@ -87,9 +86,16 @@ const ProjectsSlider = () => {
             width: 20px;
             height: 16px;
             z-index: 999;
+            opacity: 0.7;
+            transition: 0.3s ease opacity;
 
             ${mediaQueries.phoneLarge} {
               bottom: 80px;
+            }
+
+            &:hover,
+            &:focus {
+              opacity: 1;
             }
 
             &::before {
@@ -124,7 +130,7 @@ const ProjectsSlider = () => {
 
             ${mediaQueries.desktop} {
               left: 50%;
-              margin-left: -560px;
+              margin-left: -555px;
             }
           }
         `}
