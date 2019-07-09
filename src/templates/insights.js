@@ -2,21 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 import { colors, fonts, weights } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
+import InsightsSlider from '../components/InsightsSlider';
 
 const Insights = ({ data }) => {
   const post = data.insight;
+  const imageSrc =
+    post.relationships.field_image &&
+    post.relationships.field_image.localFile &&
+    post.relationships.field_image.localFile.childImageSharp &&
+    post.relationships.field_image.localFile.childImageSharp.fluid;
 
   return (
     <Layout
       headerData={{
         title: post.title,
+        label: `${post.created} - ${post.relationships.uid.name}`,
         invert: post.field_inverse_header,
+        defaultBackground: false,
+        color: `${colors.lightgreen}`,
       }}
     >
+      {imageSrc && (
+        <Img
+          fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+        />
+      )}
       <p
         css={css`
           font-family: ${fonts.serif};
@@ -34,6 +49,11 @@ const Insights = ({ data }) => {
       {post.relationships.field_components.map(comp => (
         <ContentBody key={comp.id} comp={comp} />
       ))}
+      <InsightsSlider
+        showButton={false}
+        backgroundColor={colors.lightgray}
+        title='You May Also Like'
+      />
     </Layout>
   );
 };
@@ -55,6 +75,17 @@ export const query = graphql`
         }
         uid {
           name
+        }
+        field_image {
+          id
+          localFile {
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 980, maxHeight: 500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         field_components {
           ... on component__text {

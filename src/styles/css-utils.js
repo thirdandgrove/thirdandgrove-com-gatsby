@@ -31,15 +31,18 @@ export const weights = {
   black: `900`,
 };
 
-/* Colors */
+/* Colors - Use a RGB to HEX converter */
 export const colors = {
   white: `#fff`,
   whiteFaded: `rgba(255, 255, 255, 0.7)`,
   black: `#000`,
   gray: `#e0e0e0`,
+  lightgray: `#F8F8F9;`,
   darkgray: `#29292a`,
   darkgrayFaded: `rgb(41, 41, 42, 0.7)`,
   mediumgray: `#757575`,
+  reallydarkgray: `#282829;`,
   yellow: `#EBC900`,
   lightblue: `#a5e6ec`,
+  lightgreen: `#cef5e2`,
 };
