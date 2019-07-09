@@ -7,31 +7,39 @@ import FullWidthSection from '../FullWidthSection';
 
 const WhatWeDo = () => {
   const headingCss = css`
-    font-size: 60px;
-    line-height: 1.5;
-    letter-spacing: -0.7px;
-    opacity: 0.5;
+    margin-bottom: 5px;
+    font-size: 48px;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    opacity: 0.7;
     cursor: pointer;
     transition: 0.3s ease all;
+
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
+
     ${mediaQueries.phoneLarge} {
-      font-size: 120px;
-      line-height: 1.25;
-      letter-spacing: -1.5px;
+      font-size: 90px;
+      line-height: 1.33;
+      letter-spacing: -1.13px;
+      margin-bottom: 0;
     }
 
     &:hover {
       opacity: 1;
     }
   `;
+
   return (
     <FullWidthSection
       backgroundColor={colors.lightblue}
-      height='auto'
+      height='750px'
+      mobileHeight='550px'
       css={css`
         padding-top: 40px;
         padding-bottom: 60px;
         ${mediaQueries.phoneLarge} {
-          min-height: 100vh;
           padding-top: 80px;
           padding-bottom: 100px;
         }

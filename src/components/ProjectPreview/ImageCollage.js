@@ -150,6 +150,12 @@ const ImageCollage = ({ images, type }) => {
     height: 100% !important;
     top: 0;
     left: 0;
+    opacity: 0;
+    transition: 0.6s ease all;
+
+    .slick-active & {
+      opacity: 1;
+    }
   `;
 
   // Pass array of fixed images with media query for art direction.
