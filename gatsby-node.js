@@ -1,5 +1,11 @@
 const path = require('path');
 
+// issue with sharp workaround
+// eslint-disable-next-line import/no-extraneous-dependencies
+const sharp = require('sharp');
+
+sharp.simd(false);
+sharp.cache(false);
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
