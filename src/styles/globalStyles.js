@@ -261,12 +261,21 @@ export const globalStyles = css`
 
     ${mediaQueries.phoneLarge} {
       margin-bottom: 36px;
-      font-size: 21px;
     }
   }
 
   p *:last-child {
     margin-bottom: 0;
+  }
+
+  p.dropCap::first-letter {
+    height: 50px;
+    width: 50px;
+    color: ${colors.reallydarkgray};
+    font-family: ${fonts.serif};
+    font-size: 50px;
+    line-height: 25px;
+    text-align: center;
   }
 
   a {

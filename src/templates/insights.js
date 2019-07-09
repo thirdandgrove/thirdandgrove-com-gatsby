@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { colors, fonts, weights } from '../styles';
+import { colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 import InsightsSlider from '../components/InsightsSlider';
@@ -25,30 +25,34 @@ const Insights = ({ data }) => {
         invert: post.field_inverse_header,
         defaultBackground: false,
         color: `${colors.lightgreen}`,
+        mobileHeight: '470px',
       }}
     >
       {imageSrc && (
         <Img
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+          css={css`
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: -100px;
+            max-width: 980px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-top: -165px;
+            }
+
+            ${mediaQueries.desktop} {
+              margin-left: auto;
+              margin-right: auto;
+            }
+          `}
         />
       )}
-      <p
-        css={css`
-          font-family: ${fonts.serif};
-          font-weight: ${weights.thin};
-          font-size: 39px;
-          color: ${colors.darkgray};
-          letter-spacing: -0.45px;
-          line-height: 84px;
-          padding-top: 3rem;
-          padding-left: 3rem;
-        `}
-      >
-        {post.field_subtitle}
-      </p>
-      {post.relationships.field_components.map(comp => (
-        <ContentBody key={comp.id} comp={comp} />
-      ))}
+      <div css={container.max}>
+        {post.relationships.field_components.map(comp => (
+          <ContentBody key={comp.id} comp={comp} />
+        ))}
+      </div>
       <InsightsSlider
         showButton={false}
         backgroundColor={colors.lightgray}
