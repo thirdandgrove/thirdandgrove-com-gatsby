@@ -48,11 +48,9 @@ const Insights = ({ data }) => {
           `}
         />
       )}
-      <div css={container.max}>
-        {post.relationships.field_components.map(comp => (
-          <ContentBody key={comp.id} comp={comp} />
-        ))}
-      </div>
+      {post.relationships.field_components.map(comp => (
+        <ContentBody key={comp.id} comp={comp} />
+      ))}
       <InsightsSlider
         showButton={false}
         backgroundColor={colors.lightgray}

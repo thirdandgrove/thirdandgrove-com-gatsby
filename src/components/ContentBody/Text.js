@@ -2,22 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import useWindow from '../../hooks/useWindow';
-import { jsBreakpoints } from '../../styles';
-import FullWidthSection from '../FullWidthSection';
+import Section from '../Section';
 
 const Text = ({ data }) => {
-  const { width } = useWindow();
-
   return (
-    <FullWidthSection
-      height='100%'
-      padding={width > jsBreakpoints.phoneLarge ? '3rem 16rem' : '3rem'}
-    >
+    <Section width='680'>
       <section
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       />
-    </FullWidthSection>
+    </Section>
   );
 };
 
