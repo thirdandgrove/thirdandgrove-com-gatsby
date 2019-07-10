@@ -6,11 +6,10 @@ import Section from '../Section';
 
 const Text = ({ data }) => {
   return (
-    <Section width='680'>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
-    </Section>
+    <Section
+      width='680'
+      dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+    />
   );
 };
 
