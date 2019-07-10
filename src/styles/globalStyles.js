@@ -89,6 +89,13 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro';
+    src: url('/Fonts/NBInternationalPro/NBInternationalProLight.woff')
+      format('woff');
+    font-weight: 100;
+  }
+
+  @font-face {
+    font-family: 'NB International Pro';
     src: url('/Fonts/NBInternationalPro/NBInternationalProRegular.woff')
       format('woff');
     font-weight: 400;
