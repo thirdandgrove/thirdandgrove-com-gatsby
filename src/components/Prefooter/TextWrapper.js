@@ -5,7 +5,7 @@ import { weights, mediaQueries } from '../../styles';
 
 const TextWrapper = styled.span`
   display: flex;
-  min-height: 300px;
+  min-height: 450px;
   margin: 0;
   padding: 40px 20px;
   text-align: center;
@@ -32,21 +32,22 @@ const TextWrapper = styled.span`
   background-position: center;
 
   ${mediaQueries.phoneLarge} {
-    min-height: 610px;
-    padding-top: 20px;
-    padding-bottom: 70px;
+    min-height: 500px;
+    padding: 100px 20px 100px;
     justify-content: space-evenly;
   }
 
   h3 {
+    margin-bottom: 28px;
     font-size: 42px;
     font-weight: ${weights.medium};
-    letter-spacing: -1px;
-    line-height: 1.9;
+    letter-spacing: -0.2px;
+    line-height: 1.375;
 
     ${mediaQueries.phoneLarge} {
-      font-size: 72px;
-      line-height: 1.17;
+      font-size: 48px;
+      margin-bottom: 0;
+      font-weight: ${weights.bold};
     }
   }
 `;
