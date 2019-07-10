@@ -30,13 +30,13 @@ yarn build
 
 ensure that you have your dev server running `yarn start`
 
-for developing tests use-
+for developing tests use -
 
 ```shell
 yarn cypress
 ```
 
-for testing alone-
+for testing alone -
 
 ```shell
 yarn test

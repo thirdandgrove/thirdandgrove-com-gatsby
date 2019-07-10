@@ -25,6 +25,24 @@ const LogoGrid = ({ title, logoset }) => {
       <WSILogo alt='Williams-Sonoma Inc. logo' />,
       <DwellLogo alt='dwell logo' />,
     ],
+    about: [
+      <GoogleLogo alt='Google logo' />,
+      <FoxLogo alt='FOX logo' />,
+      <GELogo alt='GE logo' />,
+      <AbsolutLogo alt='Absolut Vodka logo' />,
+      <QuickenLogo alt='Quicken logo' />,
+      <UCLALogo alt='UCLA logo' />,
+      <WSILogo alt='Williams-Sonoma Inc. logo' />,
+      <DwellLogo alt='dwell logo' />,
+      <GoogleLogo alt='Google logo' />,
+      <FoxLogo alt='FOX logo' />,
+      <GELogo alt='GE logo' />,
+      <AbsolutLogo alt='Absolut Vodka logo' />,
+      <QuickenLogo alt='Quicken logo' />,
+      <UCLALogo alt='UCLA logo' />,
+      <WSILogo alt='Williams-Sonoma Inc. logo' />,
+      <DwellLogo alt='dwell logo' />,
+    ],
   };
 
   const Logos = styled.div`
