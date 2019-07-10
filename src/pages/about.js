@@ -5,6 +5,7 @@ import { css } from '@emotion/core';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import WhereWeAre from '../components/WhereWeAre';
+import LogoGrid from '../components/LogoGrid';
 import { colors, fonts, weights, smSectionHead, h1L } from '../styles';
 import Button from '../components/Button';
 
@@ -95,6 +96,7 @@ export default () => {
         </section>
       </FullWidthSection>
       <WhereWeAre h1style={h1L} h3style={smSectionHead} h4style={h4style} />
+      <LogoGrid title='Proud Parners' logoset='about' />
       <FullWidthSection
         height='550px'
         css={css`
