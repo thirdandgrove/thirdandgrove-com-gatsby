@@ -23,18 +23,28 @@ const Footer = () => {
     }
   `;
   const wrapperStyle = css`
-    padding: 60px 0;
+    padding: 20px 0;
     text-align: center;
     background-color: ${colors.darkgray};
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 
     ${mediaQueries.phoneLarge} {
+      display: block;
       padding: 80px 0;
+      min-height: 0;
     }
   `;
   const innerWrapperStyle = css`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 50vh;
     ${mediaQueries.phoneLarge} {
-      display: flex;
+      flex-direction: row;
       justify-content: center;
+      min-height: 0;
     }
   `;
   return (

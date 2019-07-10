@@ -14,6 +14,7 @@ export default () => {
     <Layout
       headerData={{
         title: 'We are an obsessive digital innovation company.',
+        mobileHeight: '93vh',
       }}
     >
       <ProjectsSlider />
