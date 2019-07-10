@@ -16,7 +16,6 @@ const Header = ({
   label,
   metaTitle,
   description,
-  fade,
   height,
   mobileHeight,
   children,
@@ -27,20 +26,6 @@ const Header = ({
   const isVisible = useHasBeenVisible(nodeRef, 1);
 
   const headerTitle = css`
-    @keyframes fadeInOut {
-      0%,
-      3% {
-        opacity: 0;
-      }
-      10%,
-      90% {
-        opacity: 1;
-      }
-      98%,
-      100% {
-        opacity: 0;
-      }
-    }
     position: relative;
     margin-bottom: 85px;
     line-height: 48px;
@@ -49,7 +34,7 @@ const Header = ({
     letter-spacing: -0.45px;
     text-align: center;
     color: ${defaultBackground ? colors.darkgray : color.lightgray};
-    transition: 1s ease all;
+    transition: 0.4s ease-out all;
 
     &::after {
       content: '';
@@ -154,7 +139,6 @@ Header.propTypes = {
   label: PropTypes.string,
   metaTitle: PropTypes.string,
   description: PropTypes.string,
-  fade: PropTypes.number,
   height: PropTypes.string,
   mobileHeight: PropTypes.string,
   children: PropTypes.node,
@@ -169,7 +153,6 @@ Header.defaultProps = {
   label: null,
   metaTitle: null,
   description: null,
-  fade: 0,
   height: '700px',
   mobileHeight: '300px',
   children: null,
