@@ -5,16 +5,18 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-import { useHasBeenVisible } from '../../hooks/useVisibility';
+import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
 import { colors, fonts, weights, mediaQueries } from '../../styles';
 
 const ArticlePreview = ({ article }) => {
   const nodeRef = useRef();
-  const isVisible = useHasBeenVisible(nodeRef);
+  const isVisible = useHasBeenPartlyVisible(nodeRef, 1);
 
   const Card = styled.div`
     width: 100%;
     margin-bottom: 40px;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out;
 
     ${mediaQueries.phoneLarge} {
       margin-bottom: 90px;
@@ -24,7 +26,6 @@ const ArticlePreview = ({ article }) => {
       /* @TODO Get actual image in here */
       height: 400px;
       background: ${colors.gray};
-      transition-timing-function: ease;
     }
 
     h2 {
@@ -40,6 +41,7 @@ const ArticlePreview = ({ article }) => {
         line-height: 1.58;
       }
     }
+
     footer {
       font-family: ${fonts.sans};
       font-weight: ${weights.light};
@@ -53,32 +55,30 @@ const ArticlePreview = ({ article }) => {
     }
   `;
   return (
-    <span ref={nodeRef}>
-      <Spring
-        delay={0}
-        to={{
-          transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-          opacity: isVisible ? '1' : '0',
-        }}
-      >
-        {({ transform, opacity }) => (
-          <Card style={{ transform, opacity }}>
-            <Link
-              css={css`
-                display: block;
-              `}
-              to={article.path.alias}
-            >
-              <div />
-              <h2>{article.title}</h2>
-              <footer>
-                {`${article.created} - ${article.relationships.uid.name}`}
-              </footer>
-            </Link>
-          </Card>
-        )}
-      </Spring>
-    </span>
+    <Spring
+      delay={0}
+      to={{
+        transform: isVisible ? 'translateY(0)' : 'translateY(100px)',
+        opacity: isVisible ? '1' : '0',
+      }}
+    >
+      {({ transform, opacity }) => (
+        <Card style={{ transform, opacity }}>
+          <Link
+            css={css`
+              display: block;
+            `}
+            to={article.path.alias}
+          >
+            <div ref={nodeRef} />
+            <h2>{article.title}</h2>
+            <footer>
+              {`${article.created} - ${article.relationships.uid.name}`}
+            </footer>
+          </Link>
+        </Card>
+      )}
+    </Spring>
   );
 };
 
