@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { Spring } from 'react-spring/renderprops';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
+import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { colors, fonts, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
@@ -21,6 +23,9 @@ const Header = ({
   color,
   invert,
 }) => {
+  const nodeRef = useRef();
+  const isVisible = useHasBeenVisible(nodeRef, 1);
+
   const headerTitle = css`
     @keyframes fadeInOut {
       0%,
@@ -38,13 +43,25 @@ const Header = ({
     }
     position: relative;
     margin-bottom: 85px;
-    animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     line-height: 48px;
     font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
     text-align: center;
     color: ${defaultBackground ? colors.darkgray : color.lightgray};
+    transition: 1s ease all;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: ${color};
+      transition: inherit;
+    }
 
     ${mediaQueries.phoneLarge} {
       width: 75%;
@@ -99,9 +116,31 @@ const Header = ({
           </span>
         )}
         {title && (
-          <h1 data-cy='titleText' css={headerTitle}>
-            {title}
-          </h1>
+          <Spring
+            delay={0}
+            to={{
+              transform: isVisible ? 'translateY(0)' : 'translateY(50%)',
+              afterHeight: isVisible ? '0' : '100%',
+            }}
+          >
+            {({ transform, afterHeight }) => (
+              <h1
+                data-cy='titleText'
+                css={[
+                  headerTitle,
+                  css`
+                    &::after {
+                      height: ${afterHeight};
+                    }
+                  `,
+                ]}
+                style={{ transform }}
+                ref={nodeRef}
+              >
+                {title}
+              </h1>
+            )}
+          </Spring>
         )}
         {children && children}
       </FullWidthSection>
