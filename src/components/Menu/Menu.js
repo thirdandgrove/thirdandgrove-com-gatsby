@@ -7,13 +7,8 @@ import { colors, mediaQueries, weights, container } from '../../styles';
 
 const Menu = ({ menuOpen }) => {
   const linkPrimaryStyle = css`
-    font-size: 24px;
-    line-height: 39px;
-
-    ${mediaQueries.phoneLarge} {
-      line-height: 60px;
-      font-size: 36px;
-    }
+    font-size: 36px;
+    line-height: 57px;
 
     ${mediaQueries.desktop} {
       font-size: 48px;
@@ -21,7 +16,7 @@ const Menu = ({ menuOpen }) => {
     }
   `;
   const linkSecondaryStyle = css`
-    line-height: 39px;
+    line-height: 42px;
     font-size: 24px;
     ${mediaQueries.phoneLarge} {
       font-size: 36px;
@@ -29,12 +24,6 @@ const Menu = ({ menuOpen }) => {
     }
   `;
   const sectionStyle = css`
-    padding: 30px 0 0;
-
-    &:first-of-type {
-      padding-top: 0;
-    }
-
     ${mediaQueries.phoneLarge} {
       padding: 0 40px;
     }
@@ -68,6 +57,29 @@ const Menu = ({ menuOpen }) => {
       }
     }
   `;
+
+  const sectionPrimaryStyle = css`
+    h5 {
+      display: none;
+
+      ${mediaQueries.phoneLarge} {
+        display: block;
+      }
+    }
+  `;
+
+  const sectionSecondaryStyle = css`
+    padding-top: 40px;
+  `;
+
+  const linksWrapper = css`
+    columns: 2;
+
+    ${mediaQueries.phoneLarge} {
+      columns: 1;
+    }
+  `;
+
   return (
     <nav
       css={css`
@@ -81,14 +93,13 @@ const Menu = ({ menuOpen }) => {
         z-index: 1;
         top: ${menuOpen ? '0' : '100vh'};
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         height: ${menuOpen ? 'auto' : '0'};
         min-height: ${menuOpen ? '100vh' : '0'};
         padding: 0;
 
         ${mediaQueries.phoneLarge} {
           flex-direction: row;
-          justify-content: center;
           height: ${menuOpen ? '100vh' : '0'};
         }
       `}
@@ -108,7 +119,7 @@ const Menu = ({ menuOpen }) => {
           `,
         ]}
       >
-        <section css={sectionStyle}>
+        <section css={[sectionStyle, sectionPrimaryStyle]}>
           <h5>Contents</h5>
           <Link css={linkPrimaryStyle} to='/work'>
             Work
@@ -121,7 +132,7 @@ const Menu = ({ menuOpen }) => {
           </Link>
         </section>
 
-        <section css={sectionStyle}>
+        <section css={[sectionStyle, sectionPrimaryStyle]}>
           <h5>Company</h5>
           <Link css={linkPrimaryStyle} to='/about'>
             About
@@ -133,20 +144,22 @@ const Menu = ({ menuOpen }) => {
             Contact
           </Link>
         </section>
-        <section css={sectionStyle}>
+        <section css={[sectionStyle, sectionSecondaryStyle]}>
           <h5>Partners</h5>
-          <Link css={linkSecondaryStyle} to='/drupal'>
-            Drupal
-          </Link>
-          <Link css={linkSecondaryStyle} to='/acquia'>
-            Acquia
-          </Link>
-          <Link css={linkSecondaryStyle} to='/shopify'>
-            Shopify
-          </Link>
-          <Link css={linkSecondaryStyle} to='/gatsby'>
-            Gatsby
-          </Link>
+          <div css={linksWrapper}>
+            <Link css={linkSecondaryStyle} to='/drupal'>
+              Drupal
+            </Link>
+            <Link css={linkSecondaryStyle} to='/acquia'>
+              Acquia
+            </Link>
+            <Link css={linkSecondaryStyle} to='/shopify'>
+              Shopify
+            </Link>
+            <Link css={linkSecondaryStyle} to='/gatsby'>
+              Gatsby
+            </Link>
+          </div>
         </section>
       </div>
     </nav>
