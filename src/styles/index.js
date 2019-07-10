@@ -7,6 +7,7 @@ export {
 } from './css-utils';
 export { globalStyles } from './globalStyles';
 export {
+  contWidths,
   container,
   h1Xl,
   h1L,
