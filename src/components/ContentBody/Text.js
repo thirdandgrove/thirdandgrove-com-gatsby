@@ -8,6 +8,7 @@ const Text = ({ data }) => {
   return (
     <Section
       width='680'
+      margin='80px auto'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
     />
   );
