@@ -67,7 +67,9 @@ export default () => {
       </SplitSection>
       <SplitSection
         css={css`
-          padding: 2rem 5rem;
+          justify-items: center;
+          place-items: center;
+          padding: 6rem;
         `}
       >
         <Block>
@@ -89,7 +91,9 @@ export default () => {
       </SplitSection>
       <SplitSection
         css={css`
-          padding: 2rem 5rem;
+          justify-items: center;
+          place-items: center;
+          padding: 6rem;
         `}
       >
         <Imageplaceholder />
