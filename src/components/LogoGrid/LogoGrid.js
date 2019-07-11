@@ -25,6 +25,8 @@ import { ReactComponent as DwellLogo } from './logos/dwell.svg';
 const LogoGrid = ({ title, logoset }) => {
   const { width } = useWindow();
 
+  /* @todo make this into some sort of loop and array so we don't repeat
+   * the same ternary statement 30 times */
   const logosets = {
     default: [
       <GoogleLogo
