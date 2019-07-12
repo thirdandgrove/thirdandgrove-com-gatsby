@@ -117,8 +117,8 @@ const Menu = ({ menuOpen }) => {
   return (
     <nav
       css={css`
-        position: absolute;
-        width: 100vw;
+        position: fixed;
+        width: 100%;
         display: flex;
         align-items: center;
         background-color: ${colors.darkgray};
