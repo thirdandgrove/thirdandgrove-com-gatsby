@@ -44,14 +44,19 @@ const Header = ({
     font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
-    width: 60%;
+    width: 80%;
     text-align: center;
     color: ${defaultBackground ? colors.darkgray : color.lightgray};
 
     ${mediaQueries.phoneLarge} {
+      width: 75%;
       font-size: 72px;
       line-height: 84px;
       letter-spacing: -1px;
+    }
+
+    ${mediaQueries.desktop} {
+      width: 60%;
     }
   `;
   const sectionCSS = css`
@@ -71,7 +76,7 @@ const Header = ({
     color: ${colors.reallydarkgray};
 
     ${mediaQueries.desktop} {
-      margin-top: -100px;
+      margin-top: 0;
       margin-bottom: 60px;
     }
   `;
