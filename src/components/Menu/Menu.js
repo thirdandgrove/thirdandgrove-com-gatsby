@@ -8,20 +8,23 @@ import { colors, mediaQueries, weights, container } from '../../styles';
 const Menu = ({ menuOpen }) => {
   const textFadeIn = css`
     position: relative;
-    transition: 0.5s ease-out all 0.2s;
     opacity: ${menuOpen ? '1' : '0'};
     transform: translateY(${menuOpen ? '0' : '50%'});
+    transition-property: color, transform, opacity;
+    transition-timing-function: ease-out;
+    transition-duration: 0.5s;
+    transition-delay: 0s, 0.2s; 0.2s;
 
     &:nth-of-type(2) {
-      transition-delay: 0.4s;
+      transition-delay: 0s, 0.4s; 0.4s;
     }
 
     &:nth-of-type(3) {
-      transition-delay: 0.6s;
+      transition-delay: 0s, 0.6s; 0.6s;
     }
 
     &:nth-of-type(4) {
-      transition-delay: 0.8s;
+      transition-delay: 0s, 0.8s; 0.8s;
     }
 
     &::after {
@@ -108,9 +111,11 @@ const Menu = ({ menuOpen }) => {
 
   const linksWrapper = css`
     columns: 2;
+    max-height: 90px;
 
     ${mediaQueries.phoneLarge} {
       columns: 1;
+      max-height: none;
     }
   `;
 
