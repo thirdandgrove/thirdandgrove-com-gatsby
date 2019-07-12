@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FullWidthSection from '../FullWidthSection';
-import { contWidths as w, weights } from '../../styles';
+import { contWidths, weights } from '../../styles';
 
 const Text = ({ data }) => {
   return (
     <FullWidthSection
-      width={`${w[0]}px`}
+      width={`${contWidths[0]}px`}
       fontWeight={weights.thin}
       margin='80px auto'
       padding='0 20px'
