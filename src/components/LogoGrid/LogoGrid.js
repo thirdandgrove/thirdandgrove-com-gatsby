@@ -24,50 +24,49 @@ import { ReactComponent as DwellLogo } from './logos/dwell.svg';
 
 const LogoGrid = ({ title, logoset }) => {
   const { width } = useWindow();
+  const isSmScreen = width < jsBreakpoints.phoneLarge;
 
-  /* @todo make this into some sort of loop and array so we don't repeat
-   * the same ternary statement 30 times */
   const logosets = {
     default: [
       <GoogleLogo
         alt='Google'
-        width={width < jsBreakpoints.phoneLarge ? '105' : '134'}
-        height={width < jsBreakpoints.phoneLarge ? '35' : '44'}
+        width={isSmScreen ? '105' : '134'}
+        height={isSmScreen ? '35' : '44'}
       />,
       <FoxLogo
         alt='FOX'
-        width={width < jsBreakpoints.phoneLarge ? '68' : '84'}
-        height={width < jsBreakpoints.phoneLarge ? '30' : '36'}
+        width={isSmScreen ? '68' : '84'}
+        height={isSmScreen ? '30' : '36'}
       />,
       <GELogo
         alt='GE'
-        width={width < jsBreakpoints.phoneLarge ? '51' : '72'}
-        height={width < jsBreakpoints.phoneLarge ? '51' : '72'}
+        width={isSmScreen ? '51' : '72'}
+        height={isSmScreen ? '51' : '72'}
       />,
       <AbsolutLogo
         alt='Absolut Vodka'
-        width={width < jsBreakpoints.phoneLarge ? '87' : '116'}
-        height={width < jsBreakpoints.phoneLarge ? '40' : '54'}
+        width={isSmScreen ? '87' : '116'}
+        height={isSmScreen ? '40' : '54'}
       />,
       <QuickenLogo
         alt='Quicken'
-        width={width < jsBreakpoints.phoneLarge ? '107' : '134'}
-        height={width < jsBreakpoints.phoneLarge ? '24' : '30'}
+        width={isSmScreen ? '107' : '134'}
+        height={isSmScreen ? '24' : '30'}
       />,
       <UCLALogo
         alt='UCLA'
-        width={width < jsBreakpoints.phoneLarge ? '87' : '116'}
-        height={width < jsBreakpoints.phoneLarge ? '40' : '54'}
+        width={isSmScreen ? '87' : '116'}
+        height={isSmScreen ? '40' : '54'}
       />,
       <WSILogo
         alt='Williams-Sonoma Inc.'
-        width={width < jsBreakpoints.phoneLarge ? '96' : '116'}
-        height={width < jsBreakpoints.phoneLarge ? '31' : '38'}
+        width={isSmScreen ? '96' : '116'}
+        height={isSmScreen ? '31' : '38'}
       />,
       <DwellLogo
         alt='dwell'
-        width={width < jsBreakpoints.phoneLarge ? '78' : '94'}
-        height={width < jsBreakpoints.phoneLarge ? '30' : '36'}
+        width={isSmScreen ? '78' : '94'}
+        height={isSmScreen ? '30' : '36'}
       />,
     ],
     about: [
