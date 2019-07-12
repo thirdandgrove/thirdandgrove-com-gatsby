@@ -20,6 +20,7 @@ const Header = ({
   children,
   color,
   invert,
+  vertSpacing,
 }) => {
   const headerTitle = css`
     @keyframes fadeInOut {
@@ -37,7 +38,7 @@ const Header = ({
       }
     }
     position: relative;
-    margin-bottom: 0;
+    margin-bottom: ${vertSpacing};
     animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     line-height: 48px;
     font-size: 39px;
@@ -46,6 +47,7 @@ const Header = ({
     width: 60%;
     text-align: center;
     color: ${defaultBackground ? colors.darkgray : color.lightgray};
+
     ${mediaQueries.phoneLarge} {
       font-size: 72px;
       line-height: 84px;
@@ -92,6 +94,11 @@ const Header = ({
             {title}
           </h1>
         )}
+        <div
+          css={css`
+            padding-top: {vertSpacing};
+          `}
+        />
         {children && children}
       </FullWidthSection>
     </>
@@ -111,6 +118,7 @@ Header.propTypes = {
   backgroundImage: PropTypes.string,
   invert: PropTypes.bool,
   color: PropTypes.string,
+  vertSpacing: PropTypes.string,
 };
 
 Header.defaultProps = {
@@ -126,6 +134,7 @@ Header.defaultProps = {
   backgroundImage: '',
   invert: false,
   color: colors.yellow,
+  vertSpacing: '0',
 };
 
 export default Header;
