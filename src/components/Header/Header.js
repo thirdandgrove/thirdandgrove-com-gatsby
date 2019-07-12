@@ -19,7 +19,7 @@ const Header = ({
   children,
   color,
   invert,
-  vertSpacing,
+  marginBottom,
 }) => {
   const headerTitle = css`
     @keyframes fadeInOut {
@@ -37,7 +37,7 @@ const Header = ({
       }
     }
     position: relative;
-    margin-bottom: ${vertSpacing};
+    margin-bottom: ${marginBottom};
     animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     line-height: 48px;
     font-size: 39px;
@@ -99,7 +99,7 @@ const Header = ({
         )}
         <div
           css={css`
-            padding-top: {vertSpacing};
+            padding-top: {marginBottom};
           `}
         />
         {children && children}
@@ -120,7 +120,7 @@ Header.propTypes = {
   children: PropTypes.node,
   invert: PropTypes.bool,
   color: PropTypes.string,
-  vertSpacing: PropTypes.string,
+  marginBottom: PropTypes.string,
 };
 
 Header.defaultProps = {
@@ -135,7 +135,7 @@ Header.defaultProps = {
   children: null,
   invert: false,
   color: colors.yellow,
-  vertSpacing: '0',
+  marginBottom: '0',
 };
 
 export default Header;
