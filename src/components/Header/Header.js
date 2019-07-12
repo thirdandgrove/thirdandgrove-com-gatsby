@@ -88,7 +88,7 @@ const Header = ({
   `;
   return (
     <>
-      <SEO title={title || metaTitle} description={description} />
+      <SEO title={metaTitle || title} description={description} />
       <TopNav invert={invert} />
       <FullWidthSection
         css={sectionCSS}
@@ -135,7 +135,7 @@ const Header = ({
 
 Header.propTypes = {
   defaultBackground: PropTypes.bool,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
   metaTitle: PropTypes.string,
   description: PropTypes.string,

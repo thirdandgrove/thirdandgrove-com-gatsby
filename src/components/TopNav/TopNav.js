@@ -22,7 +22,7 @@ const TopNav = ({ invert }) => {
         css={[
           container.max,
           css`
-            position: absolute;
+            position: ${isOpen ? 'fixed' : 'absolute'};
             top: 0;
             padding-top: 20px;
             padding-bottom: 10px;

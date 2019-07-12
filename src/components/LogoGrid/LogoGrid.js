@@ -158,8 +158,11 @@ const LogoGrid = ({ title, logoset }) => {
       <div css={[container.max, containerStyles]}>
         <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
         <Logos>
-          {logosets[logoset].map(logo => (
-            <div css={logoItem}>{logo}</div>
+          {logosets[logoset].map((logo, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={i} css={logoItem}>
+              {logo}
+            </div>
           ))}
         </Logos>
       </div>
