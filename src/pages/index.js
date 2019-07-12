@@ -14,6 +14,7 @@ export default () => {
   return (
     <Layout
       headerData={{
+        metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
             We are an <span className='underline'>obsessive</span> digital

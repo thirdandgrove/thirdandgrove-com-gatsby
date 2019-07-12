@@ -88,7 +88,7 @@ const Header = ({
   `;
   return (
     <>
-      <SEO title={title || metaTitle} description={description} />
+      <SEO title={metaTitle || title} description={description} />
       <TopNav invert={invert} />
       <FullWidthSection
         css={sectionCSS}
