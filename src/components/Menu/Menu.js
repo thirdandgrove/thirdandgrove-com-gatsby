@@ -6,6 +6,51 @@ import { css } from '@emotion/core';
 import { colors, mediaQueries, weights, container } from '../../styles';
 
 const Menu = ({ menuOpen }) => {
+  const textFadeIn = css`
+    position: relative;
+    transition: 0.5s ease-out all 0.2s;
+    opacity: ${menuOpen ? '1' : '0'};
+    transform: translateY(${menuOpen ? '0' : '50%'});
+
+    &:nth-of-type(2) {
+      transition-delay: 0.4s;
+    }
+
+    &:nth-of-type(3) {
+      transition-delay: 0.6s;
+    }
+
+    &:nth-of-type(4) {
+      transition-delay: 0.8s;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: ${colors.darkgray};
+      transition: inherit;
+      height: ${menuOpen ? '0' : '100%'};
+    }
+  `;
+
+  const linkBaseStyles = css`
+    display: block;
+    color: ${colors.whiteFaded};
+    font-weight: ${weights.medium};
+    letter-spacing: -0.2px;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      color: ${colors.white};
+    }
+  `;
+
   const linkPrimaryStyle = css`
     font-size: 36px;
     line-height: 57px;
@@ -15,6 +60,7 @@ const Menu = ({ menuOpen }) => {
       line-height: 81px;
     }
   `;
+
   const linkSecondaryStyle = css`
     line-height: 42px;
     font-size: 24px;
@@ -23,38 +69,10 @@ const Menu = ({ menuOpen }) => {
       line-height: 60px;
     }
   `;
+
   const sectionStyle = css`
     ${mediaQueries.phoneLarge} {
       padding: 0 40px;
-    }
-
-    h5 {
-      font-weight: ${weights.thin};
-      color: ${colors.white};
-      letter-spacing: -0.1px;
-      text-align: center;
-      line-height: 15px;
-      font-size: 15px;
-      margin-bottom: 10px;
-
-      ${mediaQueries.phoneLarge} {
-        margin-bottom: 1.45rem;
-        line-height: 81px;
-        font-size: 21px;
-      }
-    }
-
-    a {
-      display: block;
-      color: ${colors.whiteFaded};
-      font-weight: ${weights.medium};
-      letter-spacing: -0.2px;
-      text-align: center;
-
-      &:hover,
-      &:focus {
-        color: ${colors.white};
-      }
     }
   `;
 
@@ -70,6 +88,22 @@ const Menu = ({ menuOpen }) => {
 
   const sectionSecondaryStyle = css`
     padding-top: 40px;
+  `;
+
+  const sectionHeaderStyle = css`
+    font-weight: ${weights.thin};
+    color: ${colors.white};
+    letter-spacing: -0.1px;
+    text-align: center;
+    line-height: 15px;
+    font-size: 15px;
+    margin-bottom: 10px;
+
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 1.45rem;
+      line-height: 81px;
+      font-size: 21px;
+    }
   `;
 
   const linksWrapper = css`
@@ -120,43 +154,70 @@ const Menu = ({ menuOpen }) => {
         ]}
       >
         <section css={[sectionStyle, sectionPrimaryStyle]}>
-          <h5>Contents</h5>
-          <Link css={linkPrimaryStyle} to='/work'>
+          <h5 css={[sectionHeaderStyle, textFadeIn]}>Contents</h5>
+          <Link css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]} to='/work'>
             Work
           </Link>
-          <Link css={linkPrimaryStyle} to='/capabilities'>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/capabilities'
+          >
             Capabilities
           </Link>
-          <Link css={linkPrimaryStyle} to='/insights'>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/insights'
+          >
             Insights
           </Link>
         </section>
 
         <section css={[sectionStyle, sectionPrimaryStyle]}>
-          <h5>Company</h5>
-          <Link css={linkPrimaryStyle} to='/about'>
+          <h5 css={[sectionHeaderStyle, textFadeIn]}>Company</h5>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/about'
+          >
             About
           </Link>
-          <Link css={linkPrimaryStyle} to='/careers'>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/careers'
+          >
             Careers
           </Link>
-          <Link css={linkPrimaryStyle} to='/contact'>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/contact'
+          >
             Contact
           </Link>
         </section>
         <section css={[sectionStyle, sectionSecondaryStyle]}>
-          <h5>Partners</h5>
+          <h5 css={[sectionHeaderStyle, textFadeIn]}>Partners</h5>
           <div css={linksWrapper}>
-            <Link css={linkSecondaryStyle} to='/drupal'>
+            <Link
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              to='/drupal'
+            >
               Drupal
             </Link>
-            <Link css={linkSecondaryStyle} to='/acquia'>
+            <Link
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              to='/acquia'
+            >
               Acquia
             </Link>
-            <Link css={linkSecondaryStyle} to='/shopify'>
+            <Link
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              to='/shopify'
+            >
               Shopify
             </Link>
-            <Link css={linkSecondaryStyle} to='/gatsby'>
+            <Link
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              to='/gatsby'
+            >
               Gatsby
             </Link>
           </div>
