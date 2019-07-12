@@ -6,73 +6,124 @@ import { css } from '@emotion/core';
 import { colors, mediaQueries, weights, container } from '../../styles';
 
 const Menu = ({ menuOpen }) => {
-  const linkPrimaryStyle = css`
-    font-size: 24px;
-    line-height: 39px;
+  const textFadeIn = css`
+    position: relative;
+    opacity: ${menuOpen ? '1' : '0'};
+    transform: translateY(${menuOpen ? '0' : '50%'});
+    transition-property: color, transform, opacity;
+    transition-timing-function: ease-out;
+    transition-duration: 0.5s;
+    transition-delay: 0s, 0.2s; 0.2s;
 
-    ${mediaQueries.phoneLarge} {
-      line-height: 60px;
-      font-size: 36px;
+    &:nth-of-type(2) {
+      transition-delay: 0s, 0.4s; 0.4s;
     }
+
+    &:nth-of-type(3) {
+      transition-delay: 0s, 0.6s; 0.6s;
+    }
+
+    &:nth-of-type(4) {
+      transition-delay: 0s, 0.8s; 0.8s;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: ${colors.darkgray};
+      transition: inherit;
+      height: ${menuOpen ? '0' : '100%'};
+    }
+  `;
+
+  const linkBaseStyles = css`
+    display: block;
+    color: ${colors.whiteFaded};
+    font-weight: ${weights.medium};
+    letter-spacing: -0.2px;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      color: ${colors.white};
+    }
+  `;
+
+  const linkPrimaryStyle = css`
+    font-size: 36px;
+    line-height: 57px;
 
     ${mediaQueries.desktop} {
       font-size: 48px;
       line-height: 81px;
     }
   `;
+
   const linkSecondaryStyle = css`
-    line-height: 39px;
+    line-height: 42px;
     font-size: 24px;
     ${mediaQueries.phoneLarge} {
       font-size: 36px;
       line-height: 60px;
     }
   `;
+
   const sectionStyle = css`
-    padding: 30px 0 0;
-
-    &:first-of-type {
-      padding-top: 0;
-    }
-
     ${mediaQueries.phoneLarge} {
       padding: 0 40px;
     }
+  `;
 
+  const sectionPrimaryStyle = css`
     h5 {
-      font-weight: ${weights.thin};
-      color: ${colors.white};
-      letter-spacing: -0.1px;
-      text-align: center;
-      line-height: 15px;
-      font-size: 15px;
-      margin-bottom: 10px;
+      display: none;
 
       ${mediaQueries.phoneLarge} {
-        margin-bottom: 1.45rem;
-        line-height: 81px;
-        font-size: 21px;
-      }
-    }
-
-    a {
-      display: block;
-      color: ${colors.whiteFaded};
-      font-weight: ${weights.medium};
-      letter-spacing: -0.2px;
-      text-align: center;
-
-      &:hover,
-      &:focus {
-        color: ${colors.white};
+        display: block;
       }
     }
   `;
+
+  const sectionSecondaryStyle = css`
+    padding-top: 40px;
+  `;
+
+  const sectionHeaderStyle = css`
+    font-weight: ${weights.thin};
+    color: ${colors.white};
+    letter-spacing: -0.1px;
+    text-align: center;
+    line-height: 15px;
+    font-size: 15px;
+    margin-bottom: 10px;
+
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 1.45rem;
+      line-height: 81px;
+      font-size: 21px;
+    }
+  `;
+
+  const linksWrapper = css`
+    columns: 2;
+    max-height: 90px;
+
+    ${mediaQueries.phoneLarge} {
+      columns: 1;
+      max-height: none;
+    }
+  `;
+
   return (
     <nav
       css={css`
-        position: absolute;
-        width: 100vw;
+        position: fixed;
+        width: 100%;
         display: flex;
         align-items: center;
         background-color: ${colors.darkgray};
@@ -81,14 +132,13 @@ const Menu = ({ menuOpen }) => {
         z-index: 1;
         top: ${menuOpen ? '0' : '100vh'};
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         height: ${menuOpen ? 'auto' : '0'};
         min-height: ${menuOpen ? '100vh' : '0'};
         padding: 0;
 
         ${mediaQueries.phoneLarge} {
           flex-direction: row;
-          justify-content: center;
           height: ${menuOpen ? '100vh' : '0'};
         }
       `}
@@ -108,45 +158,74 @@ const Menu = ({ menuOpen }) => {
           `,
         ]}
       >
-        <section css={sectionStyle}>
-          <h5>Contents</h5>
-          <Link css={linkPrimaryStyle} to='/work'>
+        <section css={[sectionStyle, sectionPrimaryStyle]}>
+          <h5 css={[sectionHeaderStyle, textFadeIn]}>Contents</h5>
+          <Link css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]} to='/work'>
             Work
           </Link>
-          <Link css={linkPrimaryStyle} to='/capabilities'>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/capabilities'
+          >
             Capabilities
           </Link>
-          <Link css={linkPrimaryStyle} to='/insights'>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/insights'
+          >
             Insights
           </Link>
         </section>
 
-        <section css={sectionStyle}>
-          <h5>Company</h5>
-          <Link css={linkPrimaryStyle} to='/about'>
+        <section css={[sectionStyle, sectionPrimaryStyle]}>
+          <h5 css={[sectionHeaderStyle, textFadeIn]}>Company</h5>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/about'
+          >
             About
           </Link>
-          <Link css={linkPrimaryStyle} to='/careers'>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/careers'
+          >
             Careers
           </Link>
-          <Link css={linkPrimaryStyle} to='/contact'>
+          <Link
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/contact'
+          >
             Contact
           </Link>
         </section>
-        <section css={sectionStyle}>
-          <h5>Partners</h5>
-          <Link css={linkSecondaryStyle} to='/drupal'>
-            Drupal
-          </Link>
-          <Link css={linkSecondaryStyle} to='/acquia'>
-            Acquia
-          </Link>
-          <Link css={linkSecondaryStyle} to='/shopify'>
-            Shopify
-          </Link>
-          <Link css={linkSecondaryStyle} to='/gatsby'>
-            Gatsby
-          </Link>
+        <section css={[sectionStyle, sectionSecondaryStyle]}>
+          <h5 css={[sectionHeaderStyle, textFadeIn]}>Partners</h5>
+          <div css={linksWrapper}>
+            <Link
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              to='/drupal'
+            >
+              Drupal
+            </Link>
+            <Link
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              to='/acquia'
+            >
+              Acquia
+            </Link>
+            <Link
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              to='/shopify'
+            >
+              Shopify
+            </Link>
+            <Link
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              to='/gatsby'
+            >
+              Gatsby
+            </Link>
+          </div>
         </section>
       </div>
     </nav>

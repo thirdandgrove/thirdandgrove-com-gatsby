@@ -9,7 +9,7 @@ import { colors, weights, mediaQueries } from './css-utils';
 
 // Containers
 // (There are going to be more widths as the projet progresses)
-const contWidths = [680, 820, 1020, 1220];
+export const contWidths = [680, 820, 1020, 1220];
 const contLabels = [`min`, `textOnly`, `medium`, `max`];
 
 export const container = contWidths.reduce((acc, w, i) => {

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
 
@@ -13,7 +14,13 @@ export default () => {
   return (
     <Layout
       headerData={{
-        title: 'We are an obsessive digital innovation company.',
+        metaTitle: `We are an obsessive digital innovation company`,
+        title: (
+          <>
+            We are an <span className='underline'>obsessive</span> digital
+            innovation company.
+          </>
+        ),
         mobileHeight: '93vh',
       }}
     >
