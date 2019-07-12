@@ -13,8 +13,12 @@ export default () => {
   return (
     <Layout
       headerData={{
-        title:
-          'We are an <span class="underline">obsessive</span> digital innovation company.',
+        title: (
+          <>
+            We are an <span className='underline'>obsessive</span> digital
+            innovation company.
+          </>
+        ),
         mobileHeight: '93vh',
       }}
     >

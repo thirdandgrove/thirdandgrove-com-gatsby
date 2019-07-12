@@ -121,8 +121,9 @@ const Header = ({
                 ]}
                 style={{ transform }}
                 ref={nodeRef}
-                dangerouslySetInnerHTML={{ __html: title }}
-              />
+              >
+                {title}
+              </h1>
             )}
           </Spring>
         )}
