@@ -9,7 +9,6 @@ import FullWidthSection from '../FullWidthSection';
 
 const Header = ({
   defaultBackground,
-  backgroundImage,
   title,
   label,
   metaTitle,
@@ -61,7 +60,6 @@ const Header = ({
   `;
   const sectionCSS = css`
     padding: 88px 0;
-    background-image: url(${backgroundImage});
     background-color: ${color};
   `;
   const headerlabel = css`
@@ -120,7 +118,6 @@ Header.propTypes = {
   height: PropTypes.string,
   mobileHeight: PropTypes.string,
   children: PropTypes.node,
-  backgroundImage: PropTypes.string,
   invert: PropTypes.bool,
   color: PropTypes.string,
   vertSpacing: PropTypes.string,
@@ -136,7 +133,6 @@ Header.defaultProps = {
   height: '700px',
   mobileHeight: '300px',
   children: null,
-  backgroundImage: '',
   invert: false,
   color: colors.yellow,
   vertSpacing: '0',
