@@ -20,21 +20,21 @@ const Header = ({
   children,
   color,
   invert,
-  vertSpacing,
+  marginBottom,
 }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef, 1);
 
   const headerTitle = css`
     position: relative;
-    margin-bottom: ${vertSpacing};
+    margin-bottom: ${marginBottom};
     line-height: 48px;
     font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
     width: 80%;
     text-align: center;
-    color: ${defaultBackground ? colors.darkgray : color.lightgray};
+    color: ${defaultBackground ? colors.darkgray : colors.lightgray};
     transition: 0.4s ease-out all;
 
     &::after {
@@ -123,7 +123,7 @@ const Header = ({
         )}
         <div
           css={css`
-            padding-top: {vertSpacing};
+            padding-top: {marginBottom};
           `}
         />
         {children && children}
@@ -143,7 +143,7 @@ Header.propTypes = {
   children: PropTypes.node,
   invert: PropTypes.bool,
   color: PropTypes.string,
-  vertSpacing: PropTypes.string,
+  marginBottom: PropTypes.string,
 };
 
 Header.defaultProps = {
@@ -157,7 +157,7 @@ Header.defaultProps = {
   children: null,
   invert: false,
   color: colors.yellow,
-  vertSpacing: '0',
+  marginBottom: '0',
 };
 
 export default Header;

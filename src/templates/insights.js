@@ -26,7 +26,7 @@ const Insights = ({ data }) => {
         defaultBackground: false,
         color: `${colors.lightgreen}`,
         mobileHeight: '470px',
-        vertSpacing: '70px',
+        marginBottom: '70px',
       }}
     >
       {imageSrc && (
