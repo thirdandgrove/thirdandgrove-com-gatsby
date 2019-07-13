@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { Spring } from 'react-spring/renderprops';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
+import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { colors, fonts, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
@@ -13,7 +15,6 @@ const Header = ({
   label,
   metaTitle,
   description,
-  fade,
   height,
   mobileHeight,
   children,
@@ -21,24 +22,12 @@ const Header = ({
   invert,
   vertSpacing,
 }) => {
+  const nodeRef = useRef();
+  const isVisible = useHasBeenVisible(nodeRef, 1);
+
   const headerTitle = css`
-    @keyframes fadeInOut {
-      0%,
-      3% {
-        opacity: 0;
-      }
-      10%,
-      90% {
-        opacity: 1;
-      }
-      98%,
-      100% {
-        opacity: 0;
-      }
-    }
     position: relative;
     margin-bottom: ${vertSpacing};
-    animation: ${fade ? `fadeInOut ${fade}ms ease infinite` : `none`};
     line-height: 48px;
     font-size: 39px;
     font-weight: ${weights.medium};
@@ -46,6 +35,19 @@ const Header = ({
     width: 80%;
     text-align: center;
     color: ${defaultBackground ? colors.darkgray : color.lightgray};
+    transition: 0.4s ease-out all;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: ${color};
+      transition: inherit;
+    }
 
     ${mediaQueries.phoneLarge} {
       width: 75%;
@@ -80,7 +82,7 @@ const Header = ({
   `;
   return (
     <>
-      <SEO title={title || metaTitle} description={description} />
+      <SEO title={metaTitle || title} description={description} />
       <TopNav invert={invert} />
       <FullWidthSection
         css={sectionCSS}
@@ -93,9 +95,31 @@ const Header = ({
           </span>
         )}
         {title && (
-          <h1 data-cy='titleText' css={headerTitle}>
-            {title}
-          </h1>
+          <Spring
+            delay={0}
+            to={{
+              transform: isVisible ? 'translateY(0)' : 'translateY(50%)',
+              afterHeight: isVisible ? '0' : '100%',
+            }}
+          >
+            {({ transform, afterHeight }) => (
+              <h1
+                data-cy='titleText'
+                css={[
+                  headerTitle,
+                  css`
+                    &::after {
+                      height: ${afterHeight};
+                    }
+                  `,
+                ]}
+                style={{ transform }}
+                ref={nodeRef}
+              >
+                {title}
+              </h1>
+            )}
+          </Spring>
         )}
         <div
           css={css`
@@ -110,11 +134,10 @@ const Header = ({
 
 Header.propTypes = {
   defaultBackground: PropTypes.bool,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
   metaTitle: PropTypes.string,
   description: PropTypes.string,
-  fade: PropTypes.number,
   height: PropTypes.string,
   mobileHeight: PropTypes.string,
   children: PropTypes.node,
@@ -129,7 +152,6 @@ Header.defaultProps = {
   label: null,
   metaTitle: null,
   description: null,
-  fade: 0,
   height: '700px',
   mobileHeight: '300px',
   children: null,

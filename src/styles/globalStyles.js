@@ -89,6 +89,13 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro';
+    src: url('/Fonts/NBInternationalPro/NBInternationalProLight.woff')
+      format('woff');
+    font-weight: 100;
+  }
+
+  @font-face {
+    font-family: 'NB International Pro';
     src: url('/Fonts/NBInternationalPro/NBInternationalProRegular.woff')
       format('woff');
     font-weight: 400;
@@ -299,6 +306,32 @@ export const globalStyles = css`
   strong,
   dt {
     font-weight: ${weights.bold};
+  }
+
+  /* custom scribbly underline image */
+  .underline {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 4px;
+      left: -10px;
+      width: calc(100% + 20px);
+      top: 100%;
+      background-image: url('/images/underline.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      ${mediaQueries.phoneLarge} {
+        top: auto;
+        bottom: 0;
+        height: 7px;
+        left: -20px;
+        width: calc(100% + 40px);
+      }
+    }
   }
 
   abbr[title] {

@@ -3,20 +3,21 @@ import styled from '@emotion/styled';
 import { weights, mediaQueries } from '../../styles';
 
 export default styled.section`
-  width: 100%;
+  width: ${props => props.width || '100%'};
   min-height: ${props => props.mobileHeight || '300px'};
   display: flex;
-  font-weight: ${weights.medium};
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  font-weight: ${props => props.fontWeight || weights.medium};
+  flex-direction: ${props => props.flexDirection || 'column'};
+  align-items: ${props => props.align || 'center'};
+  justify-content: ${props => props.justify || 'center'};
   background-color: ${props => props.backgroundColor};
   background-image: url(${props => props.backgroundImage});
   background-size: cover;
   overflow: hidden;
   background-position: center;
-  padding: ${props => props.padding};
-  text-align: ${props => props.textAlign};
+  margin: ${props => props.margin || '0 auto'};
+  padding: ${props => props.padding || '0 20px'};
+  text-align: ${props => props.textAlign || 'center'};
 
   ${mediaQueries.phoneLarge} {
     min-height: ${props => props.height || '700px'};

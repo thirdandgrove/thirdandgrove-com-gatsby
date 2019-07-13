@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { colors, mediaQueries, container } from '../styles';
+import { colors, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 import InsightsSlider from '../components/InsightsSlider';
@@ -46,11 +46,9 @@ const Insights = ({ data }) => {
           `}
         />
       )}
-      <div css={container.max}>
-        {post.relationships.field_components.map(comp => (
-          <ContentBody key={comp.id} comp={comp} />
-        ))}
-      </div>
+      {post.relationships.field_components.map(comp => (
+        <ContentBody key={comp.id} comp={comp} />
+      ))}
       <InsightsSlider
         showButton={false}
         backgroundColor={colors.lightgray}
