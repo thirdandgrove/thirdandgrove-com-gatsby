@@ -91,6 +91,15 @@ export const query = graphql`
     field_subtitle
     field_inverse_header
     field_image_arrangement
+    field_image {
+      alt
+    }
+    field_secondary_image {
+      alt
+    }
+    field_tertiary_image {
+      alt
+    }
     path {
       alias
     }
