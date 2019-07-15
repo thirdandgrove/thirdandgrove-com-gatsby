@@ -10,8 +10,20 @@ import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { colors, fonts, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
+/**
+ * Header for every page
+ * note which props are passed through
+ * @param {string} title - passed through to SEO
+ * @param {string} label
+ * @param {string} metaTitle
+ * @param {string} description - passed through to SEO
+ * @param {string} height
+ * @param {string} mobileHeight
+ * @param {node} children
+ * @param {string} color
+ * @param {boolean} invert - passed through to TopNav
+ */
 const Header = ({
-  backgroundImage,
   title,
   label,
   metaTitle,
@@ -87,7 +99,6 @@ const Header = ({
   `;
   const sectionCSS = css`
     padding: 88px 20px;
-    background-image: url(${backgroundImage});
     background-color: ${color};
     justify-content: flex-start;
 
@@ -158,6 +169,8 @@ const Header = ({
   );
 };
 
+// if this is modified please keep in sync with ../layout.js definition
+// for 'headerData' shape object
 Header.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
@@ -166,7 +179,6 @@ Header.propTypes = {
   height: PropTypes.string,
   mobileHeight: PropTypes.string,
   children: PropTypes.node,
-  backgroundImage: PropTypes.string,
   invert: PropTypes.bool,
   color: PropTypes.string,
 };
@@ -179,7 +191,6 @@ Header.defaultProps = {
   height: '700px',
   mobileHeight: '300px',
   children: null,
-  backgroundImage: '',
   invert: false,
   color: colors.yellow,
 };

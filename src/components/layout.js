@@ -20,7 +20,17 @@ const Layout = ({ children, headerData }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  headerData: PropTypes.object,
+  headerData: PropTypes.shape({
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    label: PropTypes.string,
+    metaTitle: PropTypes.string,
+    description: PropTypes.string,
+    height: PropTypes.string,
+    mobileHeight: PropTypes.string,
+    children: PropTypes.node,
+    invert: PropTypes.bool,
+    color: PropTypes.string,
+  }),
 };
 
 Layout.defaultProps = {
