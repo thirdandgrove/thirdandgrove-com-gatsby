@@ -13,18 +13,18 @@ const Menu = ({ menuOpen }) => {
     transition-property: color, transform, opacity;
     transition-timing-function: ease-out;
     transition-duration: 0.5s;
-    transition-delay: 0s, 0.2s; 0.2s;
+    transition-delay: 0s, 0.2s, 0.2s;
 
     &:nth-of-type(2) {
-      transition-delay: 0s, 0.4s; 0.4s;
+      transition-delay: 0s, 0.4s, 0.4s;
     }
 
     &:nth-of-type(3) {
-      transition-delay: 0s, 0.6s; 0.6s;
+      transition-delay: 0s, 0.6s, 0.6s;
     }
 
     &:nth-of-type(4) {
-      transition-delay: 0s, 0.8s; 0.8s;
+      transition-delay: 0s, 0.8s, 0.8s;
     }
 
     &::after {
