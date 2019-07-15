@@ -21,22 +21,26 @@ export default () => {
 
   const JobList = styled.ul`
     margin-left: 0;
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 120px;
+    }
     li {
       list-style: none;
-      margin: 50px 0;
+      margin: 57px 0;
       text-align: center;
+
       ${mediaQueries.phoneLarge} {
-        margin: 60px 0;
+        margin: 73px 0;
       }
 
       a {
-        font-weight: ${weights.bold};
+        font-weight: ${weights.light};
         font-size: 30px;
         text-align: center;
-        line-height: 1.1;
+        line-height: 1.3;
         ${mediaQueries.phoneLarge} {
-          font-size: 57px;
-          line-height: 1.26;
+          font-size: 48px;
+          line-height: 1.5;
         }
       }
     }
@@ -54,8 +58,9 @@ export default () => {
   return (
     <Layout
       headerData={{
-        title: 'Careers',
+        title: 'We work with the best.',
         height: '400px',
+        mobileHeight: '93vh',
       }}
     >
       <FullWidthSection
@@ -74,10 +79,12 @@ export default () => {
               text-align: center;
               font-size: 15px;
               font-family: ${fonts.sans};
-              font-weight: ${weights.bold};
-              text-transform: uppercase;
-              letter-spacing: 2px;
+              font-weight: ${weights.light};
               color: ${colors.mediumgray};
+
+              ${mediaQueries.phoneLarge} {
+                margin-top: 60px;
+              }
             `}
           >
             All positions are fully remote.
