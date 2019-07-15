@@ -85,14 +85,17 @@ const ProjectPreview = ({ project }) => {
     primary: {
       mobile: primaryImageData.childImageMobile,
       phoneLarge: primaryImageData.childImageTypeA,
+      alt: project.field_image.alt,
     },
     secondary: {
       mobile: secondaryImageData.childImageMobile,
       phoneLarge: secondaryImageData.childImageTypeA,
+      alt: project.field_secondary_image.alt,
     },
     tertiary: {
       mobile: tertiaryImageData.childImageMobile,
       phoneLarge: tertiaryImageData.childImageTypeA,
+      alt: project.field_tertiary_image.alt,
     },
   };
   switch (project.field_image_arrangement) {

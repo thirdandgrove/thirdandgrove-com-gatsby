@@ -17,15 +17,16 @@ const ArticlePreviewSlide = ({ article, index }) => {
     transition-timing-function: ease-out;
 
     h3 {
-      margin: 15px 20px 35px;
+      margin: 15px 20px 20px;
       font-weight: ${weights.bold};
-      font-size: 27px;
-      line-height: 1.44;
+      font-size: 21px;
+      line-height: 1.57;
 
       ${mediaQueries.phoneLarge} {
         margin: 0 0 30px;
-        font-size: 57px;
-        line-height: 1.26;
+        font-size: 48px;
+        line-height: 1.375;
+        letter-spacing: -0.2px;
       }
     }
     footer {
@@ -33,10 +34,11 @@ const ArticlePreviewSlide = ({ article, index }) => {
       font-family: ${fonts.sans};
       font-weight: ${weights.light};
       font-size: 15px;
-      line-height: 2.4;
+      line-height: 1.7;
 
       ${mediaQueries.phoneLarge} {
         margin: 0;
+        letter-spacing: 0.2px;
       }
     }
   `;

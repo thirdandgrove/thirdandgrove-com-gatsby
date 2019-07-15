@@ -15,7 +15,7 @@ const InsightsSlider = ({ showButton, backgroundColor, title }) => {
     autoplay: true,
     autoplaySpeed: 7500,
     cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
-    centerPadding: 100,
+    centerPadding: 90,
     infinite: true,
     speed: 1000,
     centerMode: true,
@@ -23,7 +23,7 @@ const InsightsSlider = ({ showButton, backgroundColor, title }) => {
       {
         breakpoint: 900,
         settings: {
-          centerPadding: 20,
+          centerPadding: 10,
         },
       },
     ],
@@ -43,6 +43,8 @@ const InsightsSlider = ({ showButton, backgroundColor, title }) => {
       css={css`
         padding-top: 25px;
         padding-bottom: 60px;
+        padding-left: 0;
+        padding-right: 0;
         background-color: ${backgroundColor};
 
         ${mediaQueries.phoneLarge} {
@@ -57,13 +59,11 @@ const InsightsSlider = ({ showButton, backgroundColor, title }) => {
         css={css`
           max-width: 100%;
           max-height: 100%;
-          margin-bottom: 75px;
+          margin-bottom: 65px;
 
           .slick-list {
-            padding: 0 20px;
-
             ${mediaQueries.phoneLarge} {
-              padding: 0 100px;
+              padding: 0 90px;
             }
           }
         `}

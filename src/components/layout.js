@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { globalStyles } from '../styles';
 
+import { headerPropTypes } from './Header/Header';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -20,7 +21,7 @@ const Layout = ({ children, headerData }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  headerData: PropTypes.object,
+  headerData: PropTypes.shape(headerPropTypes),
 };
 
 Layout.defaultProps = {
