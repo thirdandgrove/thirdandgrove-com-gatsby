@@ -159,11 +159,6 @@ const Header = ({
             )}
           </Spring>
         )}
-        <div
-          css={css`
-            padding-top: {marginBottom};
-          `}
-        />
         {children && children}
       </FullWidthSection>
     </>
