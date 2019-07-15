@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 import React, { useRef } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import PropTypes from 'prop-types';
@@ -9,9 +10,20 @@ import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { colors, fonts, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
+/**
+ * Header for every page
+ * note which props are passed through
+ * @param {string} title - passed through to SEO
+ * @param {string} label
+ * @param {string} metaTitle - passed through to SEO
+ * @param {string} description - passed through to SEO
+ * @param {string} height - passed to wrapper component
+ * @param {string} mobileHeight - passed to wrapper component
+ * @param {node} children
+ * @param {string} color
+ * @param {boolean} invert - passed through to TopNav
+ */
 const Header = ({
-  defaultBackground,
-  backgroundImage,
   title,
   label,
   metaTitle,
@@ -25,6 +37,31 @@ const Header = ({
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef, 1);
 
+  const isLightBackground = value => {
+    let r;
+    let g;
+    let b;
+
+    if (value.match(/^rgb/)) {
+      // If HEX --> store the red, green, blue values in separate variables
+      [r, g, b] = value.match(
+        /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
+      );
+    } else {
+      // If RGB --> Convert it to HEX: http://gist.github.com/983661
+      const rgbVal = +`0x${value
+        .slice(1)
+        .replace(value.length < 5 && /./g, '$&$&')}`;
+
+      r = rgbVal >> 16;
+      g = rgbVal & 255;
+      b = (rgbVal >> 8) & 255;
+    }
+    return (
+      Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b)) > 127.5
+    );
+  };
+
   const headerTitle = css`
     position: relative;
     margin-bottom: 85px;
@@ -33,7 +70,7 @@ const Header = ({
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
     text-align: center;
-    color: ${defaultBackground ? colors.darkgray : color.lightgray};
+    color: ${isLightBackground(color) ? colors.darkgray : colors.lightgray};
     transition: 0.4s ease-out all;
 
     &::after {
@@ -62,7 +99,6 @@ const Header = ({
   `;
   const sectionCSS = css`
     padding: 88px 20px;
-    background-image: url(${backgroundImage});
     background-color: ${color};
     justify-content: flex-start;
 
@@ -133,8 +169,8 @@ const Header = ({
   );
 };
 
-Header.propTypes = {
-  defaultBackground: PropTypes.bool,
+// this is exported for use in layout.js
+export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
   metaTitle: PropTypes.string,
@@ -142,13 +178,13 @@ Header.propTypes = {
   height: PropTypes.string,
   mobileHeight: PropTypes.string,
   children: PropTypes.node,
-  backgroundImage: PropTypes.string,
   invert: PropTypes.bool,
   color: PropTypes.string,
 };
 
+Header.propTypes = headerPropTypes;
+
 Header.defaultProps = {
-  defaultBackground: true,
   title: null,
   label: null,
   metaTitle: null,
@@ -156,7 +192,6 @@ Header.defaultProps = {
   height: '700px',
   mobileHeight: '300px',
   children: null,
-  backgroundImage: '',
   invert: false,
   color: colors.yellow,
 };
