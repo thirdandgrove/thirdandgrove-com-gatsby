@@ -26,6 +26,7 @@ const Insights = ({ data }) => {
         defaultBackground: false,
         color: `${colors.lightgreen}`,
         mobileHeight: '470px',
+        marginBottom: '70px',
       }}
     >
       {imageSrc && (
@@ -38,12 +39,9 @@ const Insights = ({ data }) => {
             max-width: 980px;
 
             ${mediaQueries.phoneLarge} {
-              margin-top: -165px;
-            }
-
-            ${mediaQueries.desktop} {
               margin-left: auto;
               margin-right: auto;
+              margin-top: -165px;
             }
           `}
         />

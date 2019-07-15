@@ -22,6 +22,7 @@ import FullWidthSection from '../FullWidthSection';
  * @param {node} children
  * @param {string} color
  * @param {boolean} invert - passed through to TopNav
+ * @param {string} marginBottom
  */
 const Header = ({
   title,
@@ -33,6 +34,7 @@ const Header = ({
   children,
   color,
   invert,
+  marginBottom,
 }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef, 1);
@@ -64,11 +66,12 @@ const Header = ({
 
   const headerTitle = css`
     position: relative;
-    margin-bottom: 85px;
+    margin-bottom: ${marginBottom};
     line-height: 48px;
     font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
+    width: 80%;
     text-align: center;
     color: ${isLightBackground(color) ? colors.darkgray : colors.lightgray};
     transition: 0.4s ease-out all;
@@ -87,24 +90,18 @@ const Header = ({
 
     ${mediaQueries.phoneLarge} {
       width: 75%;
-      margin-bottom: 0;
       font-size: 72px;
       line-height: 84px;
       letter-spacing: -1px;
     }
 
     ${mediaQueries.desktop} {
-      width: 50%;
+      width: 60%;
     }
   `;
   const sectionCSS = css`
-    padding: 88px 20px;
+    padding: 88px 0;
     background-color: ${color};
-    justify-content: flex-start;
-
-    ${mediaQueries.desktop} {
-      justify-content: center;
-    }
   `;
   const headerlabel = css`
     margin-top: 68px;
@@ -118,7 +115,7 @@ const Header = ({
     color: ${colors.reallydarkgray};
 
     ${mediaQueries.desktop} {
-      margin-top: -100px;
+      margin-top: 0;
       margin-bottom: 60px;
     }
   `;
@@ -180,6 +177,7 @@ export const headerPropTypes = {
   children: PropTypes.node,
   invert: PropTypes.bool,
   color: PropTypes.string,
+  marginBottom: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -194,6 +192,7 @@ Header.defaultProps = {
   children: null,
   invert: false,
   color: colors.yellow,
+  marginBottom: '0',
 };
 
 export default Header;
