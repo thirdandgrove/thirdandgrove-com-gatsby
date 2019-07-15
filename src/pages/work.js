@@ -7,7 +7,7 @@ import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import Button from '../components/Button';
-import { weights, mediaQueries, container } from '../styles';
+import { weights, mediaQueries, container, fonts } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 
@@ -18,9 +18,11 @@ const Project = ({ study, index }) => {
     <FullWidthSection
       ref={nodeRef}
       height='0'
+      padding='0'
+      textAlign='left'
       css={css`
         &:first-child {
-          margin-top: 40px;
+          margin-top: 20px;
 
           ${mediaQueries.phoneLarge} {
             margin-top: 175px;
@@ -33,14 +35,14 @@ const Project = ({ study, index }) => {
           to={study.path.alias}
           css={css`
             display: block;
-            margin-bottom: 40px;
+            margin-bottom: 125px;
 
             ${mediaQueries.phoneLarge} {
               display: flex;
               justify-content: space-between;
               flex-direction: ${index % 2 ? 'row-reverse' : 'row'};
               align-items: center;
-              margin-bottom: 175px;
+              margin-bottom: 170px;
             }
           `}
         >
@@ -83,23 +85,40 @@ const Project = ({ study, index }) => {
 
           <div
             css={css`
+              position: relative;
+
               ${mediaQueries.phoneLarge} {
                 flex-grow: 0;
                 flex-shrink: 0;
-                flex-basis: ${index % 2 ? '30%' : '45%'};
-                width: ${index % 2 ? '30%' : '45%'};
+                flex-basis: ${index % 2 ? '30%' : '40%'};
+                width: ${index % 2 ? '30%' : '40%'};
+              }
+
+              &::after {
+                content: '+';
+                position: absolute;
+                right: 0;
+                top: 0;
+                font-size: 15px;
+                line-height: 1.8;
+                font-weight: ${weights.bold};
+                font-family: ${fonts.sans};
+
+                ${mediaQueries.phoneLarge} {
+                  display: none;
+                }
               }
             `}
           >
             <h1
               css={css`
                 margin-bottom: 0;
-                font-size: 27px;
-                line-height: 1;
+                font-size: 21px;
+                line-height: 1.4;
                 font-weight: ${weights.bold};
 
                 ${mediaQueries.phoneLarge} {
-                  font-size: 48px;
+                  font-size: 33px;
                 }
               `}
             >
@@ -107,18 +126,32 @@ const Project = ({ study, index }) => {
             </h1>
             <h3
               css={css`
-                font-size: 21px;
+                font-size: 15px;
                 line-height: 1.6;
                 font-weight: ${weights.thin};
+                font-family: ${fonts.sans};
+                letter-spacing: 0.2px;
 
                 ${mediaQueries.phoneLarge} {
-                  font-size: 30px;
+                  margin-bottom: 50px;
+                  font-size: 16px;
+                  line-height: 1.69;
                 }
               `}
             >
               {study.field_subtitle}
             </h3>
-            <Button>View Case Study</Button>
+            <Button
+              css={css`
+                display: none;
+
+                ${mediaQueries.phoneLarge} {
+                  display: inline-block;
+                }
+              `}
+            >
+              View Case Study
+            </Button>
           </div>
         </Link>
       </div>
@@ -146,7 +179,8 @@ export default () => {
     <Layout
       headerData={{
         title: 'We work with brands we love.',
-        height: '450px',
+        mobileHeight: '93vh',
+        height: '400px',
       }}
     >
       {studies.map((study, index) => (

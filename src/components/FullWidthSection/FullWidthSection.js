@@ -17,7 +17,7 @@ export default styled.section`
   background-position: center;
   margin: ${props => props.margin || '0 auto'};
   padding: ${props => props.padding || '0 20px'};
-  text-align: ${props => props.textAlign || 'center'};
+  text-align: ${props => props.textAlign || 'left'};
 
   ${mediaQueries.phoneLarge} {
     min-height: ${props => props.height || '700px'};
