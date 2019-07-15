@@ -24,30 +24,30 @@ const ImageCollage = ({ images, type }) => {
 
       &.type-a {
         left: 430px;
-        right: 70px;
+        right: 60px;
 
         .collage-board {
-          padding-top: 75%;
+          padding-top: 74%;
         }
 
         .primary-wrapper {
           top: 0;
           left: 0;
-          width: 62.5%;
+          width: 61.6%;
           height: 59.26%;
         }
 
         .secondary-wrapper {
-          bottom: 0;
-          right: 37.5%;
-          width: 34.72%;
+          bottom: 2%;
+          right: 38.4%;
+          width: 34.25%;
           height: 33.33%;
         }
 
         .tertiary-wrapper {
           bottom: 0;
           right: 0;
-          width: 34.72%;
+          width: 34.25%;
           height: 91.67%;
         }
       }
