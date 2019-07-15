@@ -169,9 +169,8 @@ const Header = ({
   );
 };
 
-// if this is modified please keep in sync with ../layout.js definition
-// for 'headerData' shape object
-Header.propTypes = {
+// this is exported for use in layout.js
+export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
   metaTitle: PropTypes.string,
@@ -182,6 +181,8 @@ Header.propTypes = {
   invert: PropTypes.bool,
   color: PropTypes.string,
 };
+
+Header.propTypes = headerPropTypes;
 
 Header.defaultProps = {
   title: null,
