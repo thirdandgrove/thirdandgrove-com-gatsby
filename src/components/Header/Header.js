@@ -15,10 +15,10 @@ import FullWidthSection from '../FullWidthSection';
  * note which props are passed through
  * @param {string} title - passed through to SEO
  * @param {string} label
- * @param {string} metaTitle
+ * @param {string} metaTitle - passed through to SEO
  * @param {string} description - passed through to SEO
- * @param {string} height
- * @param {string} mobileHeight
+ * @param {string} height - passed to wrapper component
+ * @param {string} mobileHeight - passed to wrapper component
  * @param {node} children
  * @param {string} color
  * @param {boolean} invert - passed through to TopNav
