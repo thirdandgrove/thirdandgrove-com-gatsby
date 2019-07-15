@@ -172,7 +172,7 @@ const ImageCollage = ({ images, type }) => {
                 media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
               },
             ]}
-            alt='primary'
+            alt={images.primary.alt}
             className={`primary${selectedClass()}`}
             css={imageStyles}
           />
@@ -186,7 +186,7 @@ const ImageCollage = ({ images, type }) => {
                 media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
               },
             ]}
-            alt='secondary'
+            alt={images.secondary.alt}
             className={`secondary${selectedClass()}`}
             css={imageStyles}
           />
@@ -200,7 +200,7 @@ const ImageCollage = ({ images, type }) => {
                 media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
               },
             ]}
-            alt='tertiary'
+            alt={images.tertiary.alt}
             className={`tertiary${selectedClass()}`}
             css={imageStyles}
           />
