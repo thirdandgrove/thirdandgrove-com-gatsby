@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 
 import { colors, mediaQueries, weights, container } from '../../styles';
 
-const Menu = ({ menuOpen }) => {
+const Menu = ({ menuOpen, toggleOpen }) => {
   const textFadeIn = css`
     position: relative;
     opacity: ${menuOpen ? '1' : '0'};
@@ -160,17 +160,23 @@ const Menu = ({ menuOpen }) => {
       >
         <section css={[sectionStyle, sectionPrimaryStyle]}>
           <h5 css={[sectionHeaderStyle, textFadeIn]}>Contents</h5>
-          <Link css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]} to='/work'>
+          <Link
+            onClick={() => toggleOpen()}
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            to='/work'
+          >
             Work
           </Link>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            onClick={() => toggleOpen()}
             to='/capabilities'
           >
             Capabilities
           </Link>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            onClick={() => toggleOpen()}
             to='/insights'
           >
             Insights
@@ -181,18 +187,21 @@ const Menu = ({ menuOpen }) => {
           <h5 css={[sectionHeaderStyle, textFadeIn]}>Company</h5>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            onClick={() => toggleOpen()}
             to='/about'
           >
             About
           </Link>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            onClick={() => toggleOpen()}
             to='/careers'
           >
             Careers
           </Link>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
+            onClick={() => toggleOpen()}
             to='/contact'
           >
             Contact
@@ -203,24 +212,28 @@ const Menu = ({ menuOpen }) => {
           <div css={linksWrapper}>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              onClick={() => toggleOpen()}
               to='/drupal'
             >
               Drupal
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              onClick={() => toggleOpen()}
               to='/acquia'
             >
               Acquia
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              onClick={() => toggleOpen()}
               to='/shopify'
             >
               Shopify
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
+              onClick={() => toggleOpen()}
               to='/gatsby'
             >
               Gatsby
@@ -233,11 +246,8 @@ const Menu = ({ menuOpen }) => {
 };
 
 Menu.propTypes = {
-  menuOpen: PropTypes.bool,
-};
-
-Menu.defaultProps = {
-  menuOpen: false,
+  menuOpen: PropTypes.bool.isRequired,
+  toggleOpen: PropTypes.func.isRequired,
 };
 
 export default Menu;
