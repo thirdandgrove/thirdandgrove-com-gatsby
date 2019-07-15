@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 import React, { useRef } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import PropTypes from 'prop-types';
@@ -10,7 +11,6 @@ import { colors, fonts, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
 const Header = ({
-  defaultBackground,
   backgroundImage,
   title,
   label,
@@ -25,6 +25,31 @@ const Header = ({
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef, 1);
 
+  const isLightBackground = value => {
+    let r;
+    let g;
+    let b;
+
+    if (value.match(/^rgb/)) {
+      // If HEX --> store the red, green, blue values in separate variables
+      [r, g, b] = value.match(
+        /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
+      );
+    } else {
+      // If RGB --> Convert it to HEX: http://gist.github.com/983661
+      const rgbVal = +`0x${value
+        .slice(1)
+        .replace(value.length < 5 && /./g, '$&$&')}`;
+
+      r = rgbVal >> 16;
+      g = rgbVal & 255;
+      b = (rgbVal >> 8) & 255;
+    }
+    return (
+      Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b)) > 127.5
+    );
+  };
+
   const headerTitle = css`
     position: relative;
     margin-bottom: 85px;
@@ -33,7 +58,7 @@ const Header = ({
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
     text-align: center;
-    color: ${defaultBackground ? colors.darkgray : color.lightgray};
+    color: ${isLightBackground(color) ? colors.darkgray : colors.lightgray};
     transition: 0.4s ease-out all;
 
     &::after {
@@ -134,7 +159,6 @@ const Header = ({
 };
 
 Header.propTypes = {
-  defaultBackground: PropTypes.bool,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
   metaTitle: PropTypes.string,
@@ -148,7 +172,6 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  defaultBackground: true,
   title: null,
   label: null,
   metaTitle: null,
