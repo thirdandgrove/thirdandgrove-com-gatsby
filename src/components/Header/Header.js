@@ -22,6 +22,7 @@ import FullWidthSection from '../FullWidthSection';
  * @param {node} children
  * @param {string} color
  * @param {boolean} invert - passed through to TopNav
+ * @param {string} marginBottom
  */
 const Header = ({
   title,
