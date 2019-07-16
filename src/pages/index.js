@@ -11,7 +11,7 @@ import SplitSection from '../components/SplitSection';
 import VideoSection from '../components/VideoSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
 
-export default ({ data }) => {
+export default () => {
   const videoData = useStaticQuery(graphql`
     {
       allNodeHomePage(limit: 1) {
