@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { css } from '@emotion/core';
 
@@ -16,10 +15,10 @@ const ContactFrom = () => {
     phone: '',
     website: '',
   });
-  const [sending, updateSending] = useState(false);
   const [errors, updateErrors] = useState(null);
-
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const updateInput = event => {
+    updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
 
@@ -31,15 +30,26 @@ const ContactFrom = () => {
 
   const submitContact = event => {
     event.preventDefault();
-    updateSending(true);
     const { name, email } = formState;
+    if (hasSubmitted) {
+      // deter multiple submissions
+      updateErrors({ error: 'The form has already been submitted.' });
+      return;
+    }
     // validate inputs
     if (!name || !email) {
       // notify user of required fields
-      updateSending(false);
-      updateErrors({ name, email });
+      const currentErrs = {};
+      if (!name) {
+        currentErrs.name = 'Name is required';
+      }
+      if (!email) {
+        currentErrs.email = 'Email is required';
+      }
+      updateErrors(currentErrs);
       return;
     }
+    // the form has not been submitted
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -52,15 +62,16 @@ const ContactFrom = () => {
         phone: '',
         website: '',
       });
-      updateSending(false);
+      setHasSubmitted(true);
     });
   };
 
+  // eslint-disable-next-line react/prop-types
   const ErrorToaster = ({ errs }) => {
-    const hasErrors = errs && Object.keys(errs).filter(key => !errs[key]);
     return errs ? (
       <span
         css={css`
+          position: absolute;
           align-self: center;
           p {
             display: inline;
@@ -68,11 +79,11 @@ const ContactFrom = () => {
           }
         `}
       >
-        {hasErrors &&
-          hasErrors.map((key, i) => (
-            <p>
-              {key} is required{' '}
-              {i !== hasErrors.length - 1 && <span>&nbsp;&amp;&nbsp;</span>}
+        {errs &&
+          Object.values(errs).map((err, i) => (
+            <p key={err}>
+              {err}{' '}
+              {i !== Object.keys(errs).length - 1 && <span>&nbsp;-&nbsp;</span>}
             </p>
           ))}
       </span>
@@ -170,12 +181,20 @@ const ContactFrom = () => {
             display: flex;
             justify-content: center;
             margin-top: 4rem;
+          `}
+        >
+          <Button data-cy='contactSubmit' type='submit'>
+            send
+          </Button>
+        </span>
+        <span
+          css={css`
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
             flex-direction: column;
           `}
         >
-          <Button data-cy='contactSubmit' disabled={sending} type='submit'>
-            send
-          </Button>
           <ErrorToaster errs={errors} />
         </span>
       </form>
