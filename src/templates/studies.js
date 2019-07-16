@@ -46,28 +46,26 @@ const Studies = ({ data }) => {
           `}
         />
       )}
-      {post.relationships.field_components.map(comp => (
-        <ContentBody key={comp.id} comp={comp} />
-      ))}
-
       <p
         css={css`
-          margin-bottom: 5px;
-          font-family: ${fonts.serif};
-          font-weight: ${weights.thin};
-          font-size: 24px;
-          line-height: 1.5;
+          ${container.min};
+          font-family: ${fonts.sans};
+          font-size: 21px;
+          font-weight: bold;
+          letter-spacing: -0.5px;
+          line-height: 30px;
+          padding-top: 54px;
 
-          ${mediaQueries.phoneLarge} {
-            margin-bottom: 40px;
-            font-size: 39px;
-            line-height: 2.15;
-            letter-spacing: -0.45px;
-          }
+          ${mediaQueries.desktop} }
+          letter-spacing: normal;
+          padding-top: 75px;
         `}
       >
         {post.field_subtitle}
       </p>
+      {post.relationships.field_components.map(comp => (
+        <ContentBody key={comp.id} comp={comp} />
+      ))}
     </Layout>
   );
 };
