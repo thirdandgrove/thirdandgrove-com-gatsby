@@ -8,6 +8,7 @@ import WhatWeDo from '../components/WhatWeDo';
 import InsightsSlider from '../components/InsightsSlider';
 import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
+import VideoSection from '../components/VideoSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
 
 export default () => {
@@ -24,6 +25,7 @@ export default () => {
         mobileHeight: '93vh',
       }}
     >
+      <VideoSection url='https://vimeo.com/345725942' />
       <ProjectsSlider />
       <WhatWeDo />
       <InsightsSlider />
