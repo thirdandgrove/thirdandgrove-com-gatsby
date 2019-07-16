@@ -67,11 +67,11 @@ const Header = ({
   const headerTitle = css`
     position: relative;
     margin-bottom: ${marginBottom};
+    padding: 0 20px;
     line-height: 48px;
     font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
-    width: 80%;
     text-align: center;
     color: ${isLightBackground(color) ? colors.darkgray : colors.lightgray};
     transition: 0.4s ease-out all;
