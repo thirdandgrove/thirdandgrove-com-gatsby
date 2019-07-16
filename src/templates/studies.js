@@ -2,20 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
-import { fonts, weights, mediaQueries, container, h1Xl } from '../styles';
+import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
 const Studies = ({ data }) => {
   const post = data.caseStudy;
+  const imageSrc =
+    post.relationships.field_image &&
+    post.relationships.field_image.localFile &&
+    post.relationships.field_image.localFile.childImageSharp &&
+    post.relationships.field_image.localFile.childImageSharp.fluid;
 
   return (
     <Layout
       headerData={{
-        backgroundImage: post.relationships.field_image.localFile.publicURL,
         metaTitle: post.title,
+        title: post.title,
         invert: post.field_inverse_header,
+        defaultBackground: false,
+        color: `${colors.lightgreen}`,
+        mobileHeight: '470px',
+        marginBottom: '70px',
       }}
     >
       <div css={container.max}>
@@ -28,26 +38,28 @@ const Studies = ({ data }) => {
             }
           `}
         >
-          <h1 css={h1Xl}>{post.title}</h1>
-          {post.relationships.field_tags && (
-            <h4
+          {imageSrc && (
+            <Img
+              fluid={
+                post.relationships.field_image.localFile.childImageSharp.fluid
+              }
               css={css`
-                margin-bottom: 40px;
-                font-family: ${fonts.sans};
-                font-weight: ${weights.regular};
-                font-size: 12px;
-                letter-spacing: 3px;
-                line-height: 21px;
-                text-transform: uppercase;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: -100px;
+                max-width: 980px;
 
                 ${mediaQueries.phoneLarge} {
-                  margin-bottom: 65px;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-top: -165px;
                 }
               `}
-            >
-              {post.relationships.field_tags.map(tag => tag.name).join(', ')}
-            </h4>
+            />
           )}
+          {post.relationships.field_components.map(comp => (
+            <ContentBody key={comp.id} comp={comp} />
+          ))}
 
           <p
             css={css`
