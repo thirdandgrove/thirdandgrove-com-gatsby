@@ -37,15 +37,13 @@ export default ({data}) => {
         mobileHeight: '93vh',
       }}
     >
-      <ProjectsSlider />
-
       <StaticQuery
         query={videoQuery}
         render={data => (
           <VideoSection url={data.allNodeHomePage.edges[0].node.field_video} />
         )}
       />
-
+      <ProjectsSlider />
       <WhatWeDo />
       <InsightsSlider />
       <LogoGrid title='A Few of Our Friends' />
