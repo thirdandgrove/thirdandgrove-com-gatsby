@@ -6,7 +6,7 @@ import { css } from '@emotion/core';
 import Input from '../Input';
 import Button from '../Button';
 import TextArea from '../TextArea';
-import { mediaQueries } from '../../styles';
+import { mediaQueries, colors } from '../../styles';
 
 const ContactFrom = () => {
   const [formState, updateForm] = useState({
@@ -16,9 +16,13 @@ const ContactFrom = () => {
     phone: '',
     website: '',
   });
+  const [sending, updateSending] = useState(false);
+  const [errors, updateErrors] = useState(null);
+
   const updateInput = event => {
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
+
   const encode = data => {
     return Object.keys(data)
       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
@@ -27,28 +31,54 @@ const ContactFrom = () => {
 
   const submitContact = event => {
     event.preventDefault();
+    updateSending(true);
     const { name, email } = formState;
     // validate inputs
     if (!name || !email) {
       // notify user of required fields
-      // eslint-disable-next-line no-console
-      console.error('missing required fields');
+      updateSending(false);
+      updateErrors({ name, email });
       return;
     }
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...formState }),
-    }).then(() =>
+    }).then(() => {
       updateForm({
         comments: 'Thank you for your inquiry.',
         email: '',
         name: '',
         phone: '',
         website: '',
-      })
-    );
+      });
+      updateSending(false);
+    });
   };
+
+  const ErrorToaster = ({ errs }) => {
+    const hasErrors = errs && Object.keys(errs).filter(key => !errs[key]);
+    return errs ? (
+      <span
+        css={css`
+          align-self: center;
+          p {
+            display: inline;
+            color: ${colors.red};
+          }
+        `}
+      >
+        {hasErrors &&
+          hasErrors.map((key, i) => (
+            <p>
+              {key} is required{' '}
+              {i !== hasErrors.length - 1 && <span>&nbsp;&amp;&nbsp;</span>}
+            </p>
+          ))}
+      </span>
+    ) : null;
+  };
+
   return (
     <main
       css={css`
@@ -88,7 +118,6 @@ const ContactFrom = () => {
           `}
         >
           <Input
-            required
             value={formState.name}
             onChange={updateInput}
             type='text'
@@ -96,7 +125,6 @@ const ContactFrom = () => {
             name='name'
           />
           <Input
-            required
             value={formState.email}
             onChange={updateInput}
             type='email'
@@ -106,15 +134,14 @@ const ContactFrom = () => {
           <Input
             value={formState.website}
             onChange={updateInput}
-            type='url'
-            placeholder='website'
+            placeholder='website [optional]'
             name='website'
           />
           <Input
             value={formState.phone}
             onChange={updateInput}
             type='tel'
-            placeholder='phone'
+            placeholder='phone [optional]'
             name='phone'
           />
         </span>
@@ -143,11 +170,13 @@ const ContactFrom = () => {
             display: flex;
             justify-content: center;
             margin-top: 4rem;
+            flex-direction: column;
           `}
         >
-          <Button data-cy='contactSubmit' type='submit'>
+          <Button data-cy='contactSubmit' disabled={sending} type='submit'>
             send
           </Button>
+          <ErrorToaster errs={errors} />
         </span>
       </form>
     </main>
