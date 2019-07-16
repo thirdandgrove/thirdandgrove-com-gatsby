@@ -27,4 +27,7 @@ export default styled.input`
     /* this hack allows the background color of autocomplete to stay transparent */
     transition: background-color 5000s ease-in-out 0s;
   }
+  &:invalid {
+    border: ${colors.red} 1px solid;
+  }
 `;
