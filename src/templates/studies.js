@@ -24,8 +24,9 @@ const Studies = ({ data }) => {
         invert: post.field_inverse_header,
         defaultBackground: false,
         color: `${colors.lightgreen}`,
-        mobileHeight: '470px',
+        mobileHeight: '460px',
         marginBottom: '70px',
+        label: post.relationships.field_tags.map(tag => tag.name).join(', '),
       }}
     >
       <div css={container.max}>
