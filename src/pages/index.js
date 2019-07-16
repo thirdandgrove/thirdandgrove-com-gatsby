@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -11,9 +11,9 @@ import SplitSection from '../components/SplitSection';
 import VideoSection from '../components/VideoSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
 
-export default ({data}) => {
-  const videoQuery = graphql`
-    query VideoQuery {
+export default ({ data }) => {
+  const videoData = useStaticQuery(graphql`
+    {
       allNodeHomePage(limit: 1) {
         edges {
           node {
@@ -22,7 +22,7 @@ export default ({data}) => {
         }
       }
     }
-  `;
+  `);
 
   return (
     <Layout
@@ -37,12 +37,7 @@ export default ({data}) => {
         mobileHeight: '93vh',
       }}
     >
-      <StaticQuery
-        query={videoQuery}
-        render={data => (
-          <VideoSection url={data.allNodeHomePage.edges[0].node.field_video} />
-        )}
-      />
+      <VideoSection url={videoData.allNodeHomePage.edges[0].node.field_video} />
       <ProjectsSlider />
       <WhatWeDo />
       <InsightsSlider />
