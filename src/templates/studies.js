@@ -29,63 +29,45 @@ const Studies = ({ data }) => {
         label: post.relationships.field_tags.map(tag => tag.name).join(', '),
       }}
     >
-      <div css={container.max}>
-        <header
+      {imageSrc && (
+        <Img
+          fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
           css={css`
-            padding-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: -100px;
+            max-width: 980px;
 
             ${mediaQueries.phoneLarge} {
-              padding-top: 50px;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: -165px;
             }
           `}
-        >
-          {imageSrc && (
-            <Img
-              fluid={
-                post.relationships.field_image.localFile.childImageSharp.fluid
-              }
-              css={css`
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-top: -100px;
-                max-width: 980px;
-
-                ${mediaQueries.phoneLarge} {
-                  margin-left: auto;
-                  margin-right: auto;
-                  margin-top: -165px;
-                }
-              `}
-            />
-          )}
-          {post.relationships.field_components.map(comp => (
-            <ContentBody key={comp.id} comp={comp} />
-          ))}
-
-          <p
-            css={css`
-              margin-bottom: 5px;
-              font-family: ${fonts.serif};
-              font-weight: ${weights.thin};
-              font-size: 24px;
-              line-height: 1.5;
-
-              ${mediaQueries.phoneLarge} {
-                margin-bottom: 40px;
-                font-size: 39px;
-                line-height: 2.15;
-                letter-spacing: -0.45px;
-              }
-            `}
-          >
-            {post.field_subtitle}
-          </p>
-        </header>
-      </div>
-
+        />
+      )}
       {post.relationships.field_components.map(comp => (
         <ContentBody key={comp.id} comp={comp} />
       ))}
+
+      <p
+        css={css`
+          margin-bottom: 5px;
+          font-family: ${fonts.serif};
+          font-weight: ${weights.thin};
+          font-size: 24px;
+          line-height: 1.5;
+
+          ${mediaQueries.phoneLarge} {
+            margin-bottom: 40px;
+            font-size: 39px;
+            line-height: 2.15;
+            letter-spacing: -0.45px;
+          }
+        `}
+      >
+        {post.field_subtitle}
+      </p>
     </Layout>
   );
 };
