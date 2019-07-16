@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { fonts, colors, mediaQueries, container } from '../styles';
+import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
@@ -49,9 +49,9 @@ const Studies = ({ data }) => {
       <p
         css={css`
           ${container.min};
-          font-family: ${fonts.sans};
+          font-family: ${fonts.serif};
           font-size: 21px;
-          font-weight: bold;
+          font-weight: ${weights.medium};
           letter-spacing: -0.5px;
           line-height: 30px;
           padding-top: 54px;
