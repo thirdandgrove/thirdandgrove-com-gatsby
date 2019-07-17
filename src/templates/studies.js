@@ -25,7 +25,7 @@ const Studies = ({ data }) => {
         title: post.title,
         invert: post.field_inverse_header,
         defaultBackground: false,
-        color: backgroundColor && colors.yellow,
+        color: backgroundColor || colors.yellow,
         height: '500px',
         mobileHeight: '470px',
         marginBottom: '70px',
