@@ -24,7 +24,7 @@ const Studies = ({ data }) => {
         invert: post.field_inverse_header,
         defaultBackground: false,
         color: `${colors.lightgreen}`,
-        mobileHeight: '460px',
+        mobileHeight: '470px',
         marginBottom: '70px',
         label: post.relationships.field_tags.map(tag => tag.name).join(', '),
       }}
@@ -54,11 +54,14 @@ const Studies = ({ data }) => {
           font-weight: ${weights.medium};
           letter-spacing: -0.5px;
           line-height: 30px;
-          padding-top: 54px;
+          padding-top: 55px;
+          margin-bottom: 20px;
 
-          ${mediaQueries.desktop} }
-          letter-spacing: normal;
-          padding-top: 75px;
+          ${mediaQueries.desktop} {
+            letter-spacing: normal;
+            padding-top: 75px;
+            margin-bottom: 60px;
+          }
         `}
       >
         {post.field_subtitle}
