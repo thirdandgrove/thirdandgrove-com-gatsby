@@ -16,6 +16,8 @@ const Studies = ({ data }) => {
     post.relationships.field_image.localFile.childImageSharp &&
     post.relationships.field_image.localFile.childImageSharp.fluid;
 
+  const backgroundColor = post.field_color && post.field_color.color;
+
   return (
     <Layout
       headerData={{
@@ -23,7 +25,7 @@ const Studies = ({ data }) => {
         title: post.title,
         invert: post.field_inverse_header,
         defaultBackground: false,
-        color: `${colors.lightgreen}`,
+        color: backgroundColor && colors.yellow,
         height: '500px',
         mobileHeight: '470px',
         marginBottom: '70px',
@@ -87,6 +89,9 @@ export const query = graphql`
       field_subtitle
       field_image_arrangement
       field_inverse_header
+      field_color {
+        color
+      }
       relationships {
         node_type {
           name
