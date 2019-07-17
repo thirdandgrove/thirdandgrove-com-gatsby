@@ -22,7 +22,7 @@ const sectionStyle = css`
     font-size: 16px;
     font-weight: ${weights.bold};
     letter-spacing: 0.2px;
-    line-height: 27px;
+    line-height: 1.69;
     margin-bottom: 30px;
 
     ${mediaQueries.desktop} {

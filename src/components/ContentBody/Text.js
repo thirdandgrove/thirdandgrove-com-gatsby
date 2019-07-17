@@ -22,7 +22,7 @@ const Text = ({ data }) => {
           font-size: 21px;
           font-weight: ${weights.bold};
           letter-spacing: 0.2px;
-          line-height: 30px;
+          line-height: 1.43;
         }
         ${mediaQueries.desktop} {
           width: ${contValues.min};

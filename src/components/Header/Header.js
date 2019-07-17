@@ -70,7 +70,7 @@ const Header = ({
     position: relative;
     margin-bottom: ${marginBottom};
     padding: 0 20px;
-    line-height: 48px;
+    line-height: 1.23;
     font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
@@ -93,7 +93,7 @@ const Header = ({
     ${mediaQueries.phoneLarge} {
       width: 75%;
       font-size: 72px;
-      line-height: 84px;
+      line-height: 1.17;
       letter-spacing: -1px;
     }
 
@@ -112,7 +112,7 @@ const Header = ({
     font-size: 15px;
     font-weight: ${weights.light};
     letter-spacing: 2px;
-    line-height: 36px;
+    line-height: 2.4;
     text-transform: capitalize;
     color: ${colors.reallydarkgray};
 

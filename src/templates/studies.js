@@ -57,7 +57,7 @@ const Studies = ({ data }) => {
           font-size: 21px;
           font-weight: ${weights.medium};
           letter-spacing: -0.5px;
-          line-height: 30px;
+          line-height: 1.43;
           padding: 55px 20px 0;
           margin-bottom: 20px;
 
