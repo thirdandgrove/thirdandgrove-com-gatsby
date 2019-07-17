@@ -11,6 +11,7 @@ import {
   quoR,
   quoteAttr,
   container,
+  contValues,
 } from '../../styles';
 
 const Quote = ({ data }) => {
@@ -18,11 +19,11 @@ const Quote = ({ data }) => {
     <FullWidthSection
       height='auto'
       css={css`
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding: 40px 20px;
+        width: 100%;
         ${mediaQueries.phoneLarge} {
-          padding-top: 110px;
-          padding-bottom: 110px;
+          padding: 110px 0;
+          width: ${contValues.min};
         }
       `}
     >

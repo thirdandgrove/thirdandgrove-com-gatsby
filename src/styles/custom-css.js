@@ -72,14 +72,17 @@ export const smSectionHead = css`
   }
 `;
 
-// Large quotes
+// Quotes
 export const quoteText = css`
-  font-weight: ${weights.medium};
   font-size: 39px;
+  font-weight: ${weights.medium};
   line-height: 1.15;
+
   ${mediaQueries.phoneLarge} {
-    font-size: 61px;
-    line-height: 1.25;
+    font-weight: ${weights.bold};
+    text-align: center;
+    letter-spacing: -0.16px;
+    line-height: 1.38;
   }
 `;
 
@@ -100,8 +103,12 @@ export const quoteAttr = css`
   margin-bottom: 0;
   font-size: 12px;
   line-height: 3;
+
   ${mediaQueries.phoneLarge} {
-    font-size: 21px;
-    line-height: 1.71;
+    font-size: 16px;
+    font-weight: ${weights.light};
+    letter-spacing: 0.2px;
+    line-height: 1.56;
+    text-align: center;
   }
 `;
