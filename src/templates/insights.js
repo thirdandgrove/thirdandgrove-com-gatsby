@@ -17,6 +17,8 @@ const Insights = ({ data }) => {
     post.relationships.field_image.localFile.childImageSharp &&
     post.relationships.field_image.localFile.childImageSharp.fluid;
 
+  const backgroundColor = post.field_color && post.field_color.color;
+
   return (
     <Layout
       headerData={{
@@ -24,7 +26,7 @@ const Insights = ({ data }) => {
         label: `${post.created} - ${post.relationships.uid.name}`,
         invert: post.field_inverse_header,
         defaultBackground: false,
-        color: `${colors.lightgreen}`,
+        color: backgroundColor || colors.yellow,
         mobileHeight: '470px',
         marginBottom: '70px',
       }}
@@ -68,6 +70,9 @@ export const query = graphql`
       id
       title
       field_inverse_header
+      field_color {
+        color
+      }
       created(formatString: "MMMM DD YYYY")
       relationships {
         node_type {
