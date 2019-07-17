@@ -15,6 +15,7 @@ import FullWidthSection from '../FullWidthSection';
  * note which props are passed through
  * @param {string} title - passed through to SEO
  * @param {string} label
+ * @param {bool} labelMobileOnly
  * @param {string} metaTitle - passed through to SEO
  * @param {string} description - passed through to SEO
  * @param {string} height - passed to wrapper component
@@ -27,6 +28,7 @@ import FullWidthSection from '../FullWidthSection';
 const Header = ({
   title,
   label,
+  labelMobileOnly,
   metaTitle,
   description,
   height,
@@ -67,11 +69,11 @@ const Header = ({
   const headerTitle = css`
     position: relative;
     margin-bottom: ${marginBottom};
-    line-height: 48px;
+    padding: 0 20px;
+    line-height: 1.23;
     font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
-    width: 80%;
     text-align: center;
     color: ${isLightBackground(color) ? colors.darkgray : colors.lightgray};
     transition: 0.4s ease-out all;
@@ -91,7 +93,7 @@ const Header = ({
     ${mediaQueries.phoneLarge} {
       width: 75%;
       font-size: 72px;
-      line-height: 84px;
+      line-height: 1.17;
       letter-spacing: -1px;
     }
 
@@ -110,13 +112,14 @@ const Header = ({
     font-size: 15px;
     font-weight: ${weights.light};
     letter-spacing: 2px;
-    line-height: 36px;
+    line-height: 2.4;
     text-transform: capitalize;
     color: ${colors.reallydarkgray};
 
     ${mediaQueries.desktop} {
       margin-top: 0;
       margin-bottom: 60px;
+      ${labelMobileOnly && `display: none`};
     }
   `;
   return (
@@ -170,6 +173,7 @@ const Header = ({
 export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
+  labelMobileOnly: PropTypes.bool,
   metaTitle: PropTypes.string,
   description: PropTypes.string,
   height: PropTypes.string,
@@ -185,6 +189,7 @@ Header.propTypes = headerPropTypes;
 Header.defaultProps = {
   title: null,
   label: null,
+  labelMobileOnly: false,
   metaTitle: null,
   description: null,
   height: '700px',

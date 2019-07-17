@@ -2,74 +2,74 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
-import { fonts, weights, mediaQueries, container, h1Xl } from '../styles';
+import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 
 const Studies = ({ data }) => {
   const post = data.caseStudy;
+  const imageSrc =
+    post.relationships.field_image &&
+    post.relationships.field_image.localFile &&
+    post.relationships.field_image.localFile.childImageSharp &&
+    post.relationships.field_image.localFile.childImageSharp.fluid;
+
+  const backgroundColor = post.field_color && post.field_color.color;
 
   return (
     <Layout
       headerData={{
-        backgroundImage: post.relationships.field_image.localFile.publicURL,
         metaTitle: post.title,
+        title: post.title,
         invert: post.field_inverse_header,
+        defaultBackground: false,
+        color: backgroundColor || colors.yellow,
+        height: '500px',
+        mobileHeight: '470px',
+        marginBottom: '70px',
+        label: post.relationships.field_tags.map(tag => tag.name).join(', '),
+        labelMobileOnly: true,
       }}
     >
-      <div css={container.max}>
-        <header
+      {imageSrc && (
+        <Img
+          fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
           css={css`
-            padding-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: -100px;
+            max-width: 980px;
 
             ${mediaQueries.phoneLarge} {
-              padding-top: 50px;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: -165px;
             }
           `}
-        >
-          <h1 css={h1Xl}>{post.title}</h1>
-          {post.relationships.field_tags && (
-            <h4
-              css={css`
-                margin-bottom: 40px;
-                font-family: ${fonts.sans};
-                font-weight: ${weights.regular};
-                font-size: 12px;
-                letter-spacing: 3px;
-                line-height: 21px;
-                text-transform: uppercase;
+        />
+      )}
+      <p
+        css={css`
+          ${container.min};
+          font-family: ${fonts.serif};
+          font-size: 21px;
+          font-weight: ${weights.medium};
+          letter-spacing: -0.5px;
+          line-height: 1.43;
+          padding: 55px 20px 0;
+          margin-bottom: 20px;
 
-                ${mediaQueries.phoneLarge} {
-                  margin-bottom: 65px;
-                }
-              `}
-            >
-              {post.relationships.field_tags.map(tag => tag.name).join(', ')}
-            </h4>
-          )}
-
-          <p
-            css={css`
-              margin-bottom: 5px;
-              font-family: ${fonts.serif};
-              font-weight: ${weights.thin};
-              font-size: 24px;
-              line-height: 1.5;
-
-              ${mediaQueries.phoneLarge} {
-                margin-bottom: 40px;
-                font-size: 39px;
-                line-height: 2.15;
-                letter-spacing: -0.45px;
-              }
-            `}
-          >
-            {post.field_subtitle}
-          </p>
-        </header>
-      </div>
-
+          ${mediaQueries.desktop} {
+            letter-spacing: normal;
+            padding: 75px 0 0;
+            margin-bottom: 60px;
+          }
+        `}
+      >
+        {post.field_subtitle}
+      </p>
       {post.relationships.field_components.map(comp => (
         <ContentBody key={comp.id} comp={comp} />
       ))}
@@ -89,6 +89,9 @@ export const query = graphql`
       field_subtitle
       field_image_arrangement
       field_inverse_header
+      field_color {
+        color
+      }
       relationships {
         node_type {
           name
