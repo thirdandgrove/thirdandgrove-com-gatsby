@@ -11,6 +11,11 @@ const sectionStyle = css`
   ${container.min};
   font-weight: ${weights.thin};
   grid-column-gap: 20px;
+  padding: 0 20px;
+
+  ${mediaQueries.desktop} {
+    padding: 0;
+  }
 
   h3 {
     font-family: ${fonts.sans};
@@ -37,7 +42,7 @@ const TextImage = ({ data }) => {
       />
     </SplitSection>
   ) : (
-    <SplitSection css={sectionStyle} gridOverride='50% 44%'>
+    <SplitSection css={sectionStyle} gridOverride='54% 40%'>
       <section
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       />

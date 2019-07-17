@@ -54,12 +54,12 @@ const Studies = ({ data }) => {
           font-weight: ${weights.medium};
           letter-spacing: -0.5px;
           line-height: 30px;
-          padding-top: 55px;
+          padding: 55px 20px 0;
           margin-bottom: 20px;
 
           ${mediaQueries.desktop} {
             letter-spacing: normal;
-            padding-top: 75px;
+            padding: 75px 0 0;
             margin-bottom: 60px;
           }
         `}
