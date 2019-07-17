@@ -103,8 +103,12 @@ export const quoteAttr = css`
   margin-bottom: 0;
   font-size: 12px;
   line-height: 3;
+
   ${mediaQueries.phoneLarge} {
-    font-size: 21px;
-    line-height: 1.71;
+    font-size: 16px;
+    font-weight: ${weights.light};
+    letter-spacing: 0.2px;
+    line-height: 1.56;
+    text-align: center;
   }
 `;
