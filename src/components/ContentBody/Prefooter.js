@@ -45,7 +45,7 @@ const Prefooter = ({ data }) => (
       <TextWrapper
         backgroundImage={data.relationships.field_image}
         backgroundColor={
-          data.field_primary_color !== null
+          data.field_primary_color
             ? data.field_primary_color.color
             : colors.yellow
         }
@@ -66,14 +66,14 @@ const Prefooter = ({ data }) => (
     <div>
       <TextWrapper
         backgroundColor={
-          data.field_secondary_color !== null
+          data.field_secondary_color
             ? data.field_secondary_color.color
             : colors.yellow
         }
       >
         <p css={pStyles}>{data.field_secondary_lead_in_text}</p>
         <h2 css={h2Styles}>{data.field_secondary_body}</h2>
-        {data.field_secondary_cta !== null ? (
+        {data.field_secondary_cta ? (
           <Button
             onClick={() =>
               navigate(data.field_secondary_cta.uri.replace('internal:', ''))
