@@ -72,14 +72,17 @@ export const smSectionHead = css`
   }
 `;
 
-// Large quotes
+// Quotes
 export const quoteText = css`
-  font-weight: ${weights.medium};
   font-size: 39px;
+  font-weight: ${weights.medium};
   line-height: 1.15;
+
   ${mediaQueries.phoneLarge} {
-    font-size: 61px;
-    line-height: 1.25;
+    font-weight: ${weights.bold};
+    text-align: center;
+    letter-spacing: -0.16px;
+    line-height: 1.38;
   }
 `;
 
