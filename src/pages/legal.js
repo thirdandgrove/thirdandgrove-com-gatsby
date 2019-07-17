@@ -18,7 +18,12 @@ export default () => {
       <main
         css={css`
           ${container.min}
-          padding: 80px 0;
+          padding-top: 80px;
+
+          ${mediaQueries.desktop} {
+            padding-left: 0;
+            padding-right: 0;
+          }
         `}
       >
         <h5
