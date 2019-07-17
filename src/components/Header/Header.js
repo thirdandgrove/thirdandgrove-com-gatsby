@@ -15,6 +15,7 @@ import FullWidthSection from '../FullWidthSection';
  * note which props are passed through
  * @param {string} title - passed through to SEO
  * @param {string} label
+ * @param {bool} labelMobileOnly
  * @param {string} metaTitle - passed through to SEO
  * @param {string} description - passed through to SEO
  * @param {string} height - passed to wrapper component
@@ -27,6 +28,7 @@ import FullWidthSection from '../FullWidthSection';
 const Header = ({
   title,
   label,
+  labelMobileOnly,
   metaTitle,
   description,
   height,
@@ -117,6 +119,7 @@ const Header = ({
     ${mediaQueries.desktop} {
       margin-top: 0;
       margin-bottom: 60px;
+      ${labelMobileOnly && `display: none`};
     }
   `;
   return (
@@ -170,6 +173,7 @@ const Header = ({
 export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
+  labelMobileOnly: PropTypes.bool,
   metaTitle: PropTypes.string,
   description: PropTypes.string,
   height: PropTypes.string,
@@ -185,6 +189,7 @@ Header.propTypes = headerPropTypes;
 Header.defaultProps = {
   title: null,
   label: null,
+  labelMobileOnly: false,
   metaTitle: null,
   description: null,
   height: '700px',

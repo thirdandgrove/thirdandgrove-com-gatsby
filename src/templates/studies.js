@@ -24,9 +24,11 @@ const Studies = ({ data }) => {
         invert: post.field_inverse_header,
         defaultBackground: false,
         color: `${colors.lightgreen}`,
+        height: '500px',
         mobileHeight: '470px',
         marginBottom: '70px',
         label: post.relationships.field_tags.map(tag => tag.name).join(', '),
+        labelMobileOnly: true,
       }}
     >
       {imageSrc && (
