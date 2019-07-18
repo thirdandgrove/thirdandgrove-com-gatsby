@@ -13,11 +13,11 @@ script:
 
 deploy:
   - provider: script
-    script: netlify deploy --dir=public
+    script: netlify deploy --dir=public --functions=functions
     on:
       all_branches: true
   - provider: script
-    script: netlify deploy --dir=public --prod
+    script: netlify deploy --dir=public  --functions=functions --prod
     on:
       branch: master
 
