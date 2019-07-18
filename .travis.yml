@@ -11,10 +11,19 @@ script:
   - yarn install
   - yarn build
 
+deploy:
+  - provider: script
+    script: netlify deploy --dir=public
+    on:
+      all_branches: true
+  - provider: script
+    script: netlify deploy --dir=public --prod
+    on:
+      branch: master
+
 cache: 
   directories:
     - node_modules
     - .cache
     - public
     - $(npm config get prefix)/bin/netlify
-    - netlify deploy --dir=public
