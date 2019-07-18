@@ -1,0 +1,31 @@
+os: linux
+dist: xenial
+language: node_js
+node_js:
+  - '10'
+
+before_install:
+  - npm install netlify-cli -g
+
+script:
+  - yarn install
+  - yarn build
+
+deploy:
+  - provider: script
+    script: netlify deploy --dir=public --functions=functions
+    skip_cleanup: true
+    on:
+      all_branches: true
+  - provider: script
+    script: netlify deploy --dir=public  --functions=functions --prod
+    skip_cleanup: true
+    on:
+      branch: master
+
+cache: 
+  directories:
+    - node_modules
+    - .cache
+    - public
+    - $(npm config get prefix)/bin/netlify

@@ -2,7 +2,7 @@
 
 Gatsby rebuild of the TAG website.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4dcee2e8-0ff5-4db4-9a96-ed82462bf64b/deploy-status)](https://app.netlify.com/sites/tagd8-gatsby/deploys)
+[![Build Status](https://travis-ci.com/thirdandgrove/tagd8_gatsby.svg?token=8cRB8zRRadyPAS6R4Cji&branch=master)](https://travis-ci.com/thirdandgrove/tagd8_gatsby)
 
 ![Twitter Follow](https://img.shields.io/twitter/follow/thirdandgrove.svg?label=Third%20%26%20Grove&style=social)
 
