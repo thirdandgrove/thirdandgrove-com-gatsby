@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
@@ -70,7 +71,16 @@ const ArticlePreview = ({ article }) => {
             `}
             to={article.path.alias}
           >
-            <div ref={nodeRef} />
+            <div ref={nodeRef}>
+              {article.relationships.field_image && (
+                <Img
+                  fluid={
+                    article.relationships.field_image.localFile.childImageSharp
+                      .fluid
+                  }
+                />
+              )}
+            </div>
             <h2>{article.title}</h2>
             <footer>
               {`${article.created} - ${article.relationships.uid.name}`}

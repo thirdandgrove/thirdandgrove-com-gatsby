@@ -67,6 +67,16 @@ export const query = graphql`
       uid {
         name
       }
+      field_image {
+        id
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 400, maxHeight: 530) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
       field_components {
         ... on component__text {
           relationships {
