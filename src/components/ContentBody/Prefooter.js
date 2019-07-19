@@ -14,6 +14,7 @@ const pStyles = css`
   font-size: 24px;
   font-family: ${fonts.serif};
   font-weight: ${weights.thin};
+
   ${mediaQueries.phoneLarge} {
     margin-bottom: 0;
   }
@@ -33,6 +34,12 @@ const h2Styles = css`
   }
 `;
 
+const preFooterStyles = css`
+  ${mediaQueries.phoneLarge} {
+    min-height: 600px;
+  }
+`;
+
 const Prefooter = ({ data }) => (
   <SplitSection
     css={css`
@@ -43,6 +50,7 @@ const Prefooter = ({ data }) => (
   >
     <div>
       <TextWrapper
+        css={preFooterStyles}
         backgroundImage={data.relationships.field_image}
         backgroundColor={
           data.field_primary_color
@@ -52,7 +60,7 @@ const Prefooter = ({ data }) => (
       >
         <p css={pStyles}>{data.field_primary_lead_in_text}</p>
         <h2 css={h2Styles}>{data.field_primary_body}</h2>
-        {data.field_primary_cta !== null ? (
+        {data.field_primary_cta && (
           <Button
             onClick={() =>
               navigate(data.field_primary_cta.uri.replace('internal:', ''))
@@ -60,11 +68,12 @@ const Prefooter = ({ data }) => (
           >
             {data.field_primary_cta.title}
           </Button>
-        ) : null}
+        )}
       </TextWrapper>
     </div>
     <div>
       <TextWrapper
+        css={preFooterStyles}
         backgroundColor={
           data.field_secondary_color
             ? data.field_secondary_color.color
@@ -73,7 +82,7 @@ const Prefooter = ({ data }) => (
       >
         <p css={pStyles}>{data.field_secondary_lead_in_text}</p>
         <h2 css={h2Styles}>{data.field_secondary_body}</h2>
-        {data.field_secondary_cta ? (
+        {data.field_secondary_cta && (
           <Button
             onClick={() =>
               navigate(data.field_secondary_cta.uri.replace('internal:', ''))
@@ -81,7 +90,7 @@ const Prefooter = ({ data }) => (
           >
             {data.field_secondary_cta.title}
           </Button>
-        ) : null}
+        )}
       </TextWrapper>
     </div>
   </SplitSection>
