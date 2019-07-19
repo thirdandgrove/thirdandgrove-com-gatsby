@@ -14,6 +14,7 @@ const pStyles = css`
   font-size: 24px;
   font-family: ${fonts.serif};
   font-weight: ${weights.thin};
+
   ${mediaQueries.phoneLarge} {
     margin-bottom: 0;
   }
@@ -33,6 +34,12 @@ const h2Styles = css`
   }
 `;
 
+const preFooterStyles = css`
+  ${mediaQueries.phoneLarge} {
+    min-height: 600px;
+  }
+`;
+
 const Prefooter = ({ data }) => (
   <SplitSection
     css={css`
@@ -43,6 +50,7 @@ const Prefooter = ({ data }) => (
   >
     <div>
       <TextWrapper
+        css={preFooterStyles}
         backgroundImage={data.relationships.field_image}
         backgroundColor={
           data.field_primary_color
@@ -65,6 +73,7 @@ const Prefooter = ({ data }) => (
     </div>
     <div>
       <TextWrapper
+        css={preFooterStyles}
         backgroundColor={
           data.field_secondary_color
             ? data.field_secondary_color.color
