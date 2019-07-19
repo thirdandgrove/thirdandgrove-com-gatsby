@@ -70,22 +70,86 @@ const LogoGrid = ({ title, logoset }) => {
       />,
     ],
     about: [
-      <GoogleLogo alt='Google' />,
-      <FoxLogo alt='FOX' />,
-      <GELogo alt='GE' />,
-      <AbsolutLogo alt='Absolut Vodka' />,
-      <QuickenLogo alt='Quicken' />,
-      <UCLALogo alt='UCLA' />,
-      <WSILogo alt='Williams-Sonoma Inc.' />,
-      <DwellLogo alt='dwell' />,
-      <GoogleLogo alt='Google' />,
-      <FoxLogo alt='FOX' />,
-      <GELogo alt='GE' />,
-      <AbsolutLogo alt='Absolut Vodka' />,
-      <QuickenLogo alt='Quicken' />,
-      <UCLALogo alt='UCLA' />,
-      <WSILogo alt='Williams-Sonoma Inc.' />,
-      <DwellLogo alt='dwell' />,
+      <GoogleLogo
+        alt='Google'
+        width={isSmScreen ? '105' : '134'}
+        height={isSmScreen ? '35' : '44'}
+      />,
+      <FoxLogo
+        alt='FOX'
+        width={isSmScreen ? '68' : '84'}
+        height={isSmScreen ? '30' : '36'}
+      />,
+      <GELogo
+        alt='GE'
+        width={isSmScreen ? '51' : '72'}
+        height={isSmScreen ? '51' : '72'}
+      />,
+      <AbsolutLogo
+        alt='Absolut Vodka'
+        width={isSmScreen ? '87' : '116'}
+        height={isSmScreen ? '40' : '54'}
+      />,
+      <QuickenLogo
+        alt='Quicken'
+        width={isSmScreen ? '107' : '134'}
+        height={isSmScreen ? '24' : '30'}
+      />,
+      <UCLALogo
+        alt='UCLA'
+        width={isSmScreen ? '87' : '116'}
+        height={isSmScreen ? '40' : '54'}
+      />,
+      <WSILogo
+        alt='Williams-Sonoma Inc.'
+        width={isSmScreen ? '96' : '116'}
+        height={isSmScreen ? '31' : '38'}
+      />,
+      <DwellLogo
+        alt='dwell'
+        width={isSmScreen ? '78' : '94'}
+        height={isSmScreen ? '30' : '36'}
+      />,
+      <GoogleLogo
+        alt='Google'
+        width={isSmScreen ? '105' : '134'}
+        height={isSmScreen ? '35' : '44'}
+      />,
+      <FoxLogo
+        alt='FOX'
+        width={isSmScreen ? '68' : '84'}
+        height={isSmScreen ? '30' : '36'}
+      />,
+      <GELogo
+        alt='GE'
+        width={isSmScreen ? '51' : '72'}
+        height={isSmScreen ? '51' : '72'}
+      />,
+      <AbsolutLogo
+        alt='Absolut Vodka'
+        width={isSmScreen ? '87' : '116'}
+        height={isSmScreen ? '40' : '54'}
+      />,
+      <QuickenLogo
+        alt='Quicken'
+        width={isSmScreen ? '107' : '134'}
+        height={isSmScreen ? '24' : '30'}
+      />,
+      <UCLALogo
+        alt='UCLA'
+        width={isSmScreen ? '87' : '116'}
+        height={isSmScreen ? '40' : '54'}
+      />,
+      <WSILogo
+        alt='Williams-Sonoma Inc.'
+        width={isSmScreen ? '96' : '116'}
+        height={isSmScreen ? '31' : '38'}
+      />,
+      <DwellLogo
+        alt='dwell'
+        width={isSmScreen ? '78' : '94'}
+        height={isSmScreen ? '30' : '36'}
+      />,
     ],
   };
 
@@ -142,10 +206,14 @@ const LogoGrid = ({ title, logoset }) => {
   `;
 
   const containerStyles = css`
-    min-height: calc(100vh - 100px);
+    min-height: 100vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
 
     ${mediaQueries.phoneLarge} {
       min-height: 0;
+      padding-top: 85px;
+      padding-bottom: 85px;
     }
   `;
 
