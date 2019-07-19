@@ -173,20 +173,6 @@ export const query = graphql`
               }
             }
           }
-
-          ... on component__text_quote_split {
-            id
-            field_body {
-              processed
-            }
-            field_quote
-            field_reversed
-            relationships {
-              component_type {
-                name
-              }
-            }
-          }
         }
         field_tags {
           name
