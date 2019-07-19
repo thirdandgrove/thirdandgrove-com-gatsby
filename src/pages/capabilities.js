@@ -44,7 +44,7 @@ const Capability = ({ content, index }) => {
         <div
           css={css`
             display: block;
-            margin-bottom: 125px;
+            margin-bottom: 90px;
 
             ${mediaQueries.phoneLarge} {
               display: flex;
