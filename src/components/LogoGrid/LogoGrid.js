@@ -30,8 +30,8 @@ const LogoGrid = ({ title, logoset }) => {
     default: [
       <GoogleLogo
         alt='Google'
-        width={isSmScreen ? '105' : '134'}
-        height={isSmScreen ? '35' : '44'}
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
       />,
       <FoxLogo
         alt='FOX'
@@ -40,8 +40,8 @@ const LogoGrid = ({ title, logoset }) => {
       />,
       <GELogo
         alt='GE'
-        width={isSmScreen ? '51' : '72'}
-        height={isSmScreen ? '51' : '72'}
+        width={isSmScreen ? '53' : '72'}
+        height={isSmScreen ? '53' : '72'}
       />,
       <AbsolutLogo
         alt='Absolut Vodka'
