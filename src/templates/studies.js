@@ -53,7 +53,7 @@ const Studies = ({ data }) => {
       <p
         css={css`
           font-family: ${fonts.sans};
-          font-size: 30px;
+          font-size: 21px;
           font-weight: ${weights.bold};
           line-height: 1;
           padding: 55px 20px 0;
