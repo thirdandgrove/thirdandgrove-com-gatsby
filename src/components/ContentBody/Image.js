@@ -11,7 +11,7 @@ const Image = ({ data }) => (
     css={css`
       margin-bottom: 70px;
 
-      ${mediaQueries.desktop} {
+      ${mediaQueries.phoneLarge} {
         ${container.min};
         margin-bottom: 70px;
       }
@@ -19,7 +19,7 @@ const Image = ({ data }) => (
       img {
         padding: 0 20px;
 
-        ${mediaQueries.desktop} {
+        ${mediaQueries.phoneLarge} {
           padding: 0;
         }
       }

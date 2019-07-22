@@ -16,4 +16,5 @@ export {
   quoL,
   quoR,
   quoteAttr,
+  contentHeadings,
 } from './custom-css';
