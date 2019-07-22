@@ -66,7 +66,7 @@ export default () => {
         ),
       }}
     >
-      <FullWidthSection>
+      <FullWidthSection padding='0'>
         <div
           css={[
             container.max,
