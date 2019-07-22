@@ -43,6 +43,8 @@ const preFooterStyles = css`
 const Prefooter = ({ data }) => (
   <SplitSection
     css={css`
+      margin-top: 40px;
+
       ${mediaQueries.phoneLarge} {
         margin-top: 100px;
       }
