@@ -35,6 +35,8 @@ const h2Styles = css`
 `;
 
 const preFooterStyles = css`
+  min-height: 300px;
+
   ${mediaQueries.phoneLarge} {
     min-height: 600px;
   }
