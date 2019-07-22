@@ -52,16 +52,15 @@ const Studies = ({ data }) => {
       )}
       <p
         css={css`
-          ${container.min};
-          font-family: ${fonts.serif};
+          font-family: ${fonts.sans};
           font-size: 21px;
-          font-weight: ${weights.medium};
-          letter-spacing: -0.5px;
-          line-height: 1.43;
+          font-weight: ${weights.bold};
+          line-height: 1;
           padding: 55px 20px 0;
           margin-bottom: 20px;
 
-          ${mediaQueries.desktop} {
+          ${mediaQueries.phoneLarge} {
+            ${container.min};
             letter-spacing: normal;
             padding: 75px 0 0;
             margin-bottom: 60px;
@@ -100,6 +99,36 @@ export const query = graphql`
           name
         }
         field_components {
+          ... on component__text {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_body {
+              processed
+            }
+          }
+          ... on component__image {
+            id
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, maxHeight: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
           ... on component__quote {
             id
             relationships {

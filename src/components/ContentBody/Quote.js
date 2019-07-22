@@ -4,36 +4,28 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
-import {
-  mediaQueries,
-  quoteText,
-  quoL,
-  quoR,
-  quoteAttr,
-  container,
-  contValues,
-} from '../../styles';
+import { quoteText, quoL, quoR, quoteAttr, container } from '../../styles';
 
 const Quote = ({ data }) => {
   return (
     <FullWidthSection
       height='auto'
+      mobileHeight='auto'
+      margin='0 0 60px'
       css={css`
-        padding: 40px 20px;
+        padding: 0;
         width: 100%;
-        ${mediaQueries.phoneLarge} {
-          padding: 110px 0;
-          width: ${contValues.min};
-        }
       `}
     >
-      <div css={container.max}>
+      <div css={container.min}>
         <div css={quoteText}>
           <span css={quoL}>&ldquo;</span>
           {data.field_quote}
           <span css={quoR}>&rdquo;</span>
         </div>
-        <p css={quoteAttr}>— {data.field_footer_text}</p>
+        {data.field_footer_text && (
+          <p css={quoteAttr}>— {data.field_footer_text}</p>
+        )}
       </div>
     </FullWidthSection>
   );

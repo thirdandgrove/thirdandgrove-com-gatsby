@@ -35,6 +35,8 @@ const h2Styles = css`
 `;
 
 const preFooterStyles = css`
+  min-height: 300px;
+
   ${mediaQueries.phoneLarge} {
     min-height: 600px;
   }
@@ -43,6 +45,8 @@ const preFooterStyles = css`
 const Prefooter = ({ data }) => (
   <SplitSection
     css={css`
+      margin-top: 40px;
+
       ${mediaQueries.phoneLarge} {
         margin-top: 100px;
       }

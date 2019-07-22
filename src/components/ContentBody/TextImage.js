@@ -4,30 +4,23 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
-import { fonts, weights, container, mediaQueries } from '../../styles';
+import {
+  weights,
+  container,
+  mediaQueries,
+  contentHeadings,
+} from '../../styles';
 import SplitSection from '../SplitSection';
 
 const sectionStyle = css`
   ${container.min};
+  ${contentHeadings};
   font-weight: ${weights.thin};
   grid-column-gap: 20px;
   padding: 0 20px;
 
-  ${mediaQueries.desktop} {
+  ${mediaQueries.phoneLarge} {
     padding: 0;
-  }
-
-  h3 {
-    font-family: ${fonts.sans};
-    font-size: 16px;
-    font-weight: ${weights.bold};
-    letter-spacing: 0.2px;
-    line-height: 1.69;
-    margin-bottom: 30px;
-
-    ${mediaQueries.desktop} {
-      margin-bottom: 60px;
-    }
   }
 `;
 
