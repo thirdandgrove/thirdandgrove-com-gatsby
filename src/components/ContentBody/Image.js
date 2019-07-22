@@ -9,11 +9,19 @@ const Image = ({ data }) => (
   <Img
     fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
     css={css`
-      padding: 0 20px;
+      margin-bottom: 70px;
 
       ${mediaQueries.desktop} {
         ${container.min};
-        padding: 0;
+        margin-bottom: 70px;
+      }
+
+      img {
+        padding: 0 20px;
+
+        ${mediaQueries.desktop} {
+          padding: 0;
+        }
       }
     `}
   />
