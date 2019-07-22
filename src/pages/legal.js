@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
-import { container, mediaQueries } from '../styles';
+import { container, mediaQueries, fonts, weights } from '../styles';
 
 export default () => {
   const date = 'Effective: Apr 1, 2019';
@@ -21,6 +21,7 @@ export default () => {
         css={css`
           ${container.min}
           padding-top: 80px;
+          font-weight: ${weights.light};
 
           ${mediaQueries.desktop} {
             padding-left: 0;
@@ -28,16 +29,23 @@ export default () => {
           }
         `}
       >
-        <h5
+        <strong
           css={css`
             display: none;
+
             ${mediaQueries.desktop} {
               display: block;
+              font-family: ${fonts.sans};
+              font-size: 16px;
+              font-weight: ${weights.bold};
+              letter-spacing: 0.2px;
+              line-height: 1.69;
+              margin-bottom: 30px;
             }
           `}
         >
           {date}
-        </h5>
+        </strong>
         <p>
           Third & Grove LLC. (“Third & Grove,” “we,” “us,” “our”) is committed
           to letting you know how we will collect and use your personally
