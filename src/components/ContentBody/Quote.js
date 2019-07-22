@@ -33,7 +33,9 @@ const Quote = ({ data }) => {
           {data.field_quote}
           <span css={quoR}>&rdquo;</span>
         </div>
-        <p css={quoteAttr}>— {data.field_footer_text}</p>
+        {data.field_footer_text && (
+          <p css={quoteAttr}>— {data.field_footer_text}</p>
+        )}
       </div>
     </FullWidthSection>
   );
