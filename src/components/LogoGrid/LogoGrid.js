@@ -17,10 +17,14 @@ import { ReactComponent as GoogleLogo } from './logos/google.svg';
 import { ReactComponent as FoxLogo } from './logos/fox.svg';
 import { ReactComponent as GELogo } from './logos/ge.svg';
 import { ReactComponent as AbsolutLogo } from './logos/absolut.svg';
+import { ReactComponent as CCLogo } from './logos/californiaClosets.svg';
 import { ReactComponent as QuickenLogo } from './logos/quicken.svg';
 import { ReactComponent as UCLALogo } from './logos/ucla.svg';
 import { ReactComponent as WSILogo } from './logos/williamsSonoma.svg';
 import { ReactComponent as DwellLogo } from './logos/dwell.svg';
+import { ReactComponent as BenefitLogo } from './logos/benefit.svg';
+import { ReactComponent as SunpowerLogo } from './logos/sunpower.svg';
+import { ReactComponent as PernodLogo } from './logos/pernodricard.svg';
 
 const LogoGrid = ({ title, logoset }) => {
   const { width } = useWindow();
@@ -28,45 +32,45 @@ const LogoGrid = ({ title, logoset }) => {
 
   const logosets = {
     default: [
+      <UCLALogo
+        alt='UCLA'
+        width={isSmScreen ? '85' : '116'}
+        height={isSmScreen ? '40' : '54'}
+      />,
       <GoogleLogo
         alt='Google'
-        width={isSmScreen ? '105' : '134'}
-        height={isSmScreen ? '35' : '44'}
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
       />,
-      <FoxLogo
-        alt='FOX'
-        width={isSmScreen ? '68' : '84'}
-        height={isSmScreen ? '30' : '36'}
+      <BenefitLogo
+        alt='Benefit'
+        width={isSmScreen ? '105' : '140'}
+        height={isSmScreen ? '35' : '46'}
+      />,
+      <CCLogo
+        alt='California Closets'
+        width={isSmScreen ? '99' : '136'}
+        height={isSmScreen ? '37' : '50'}
       />,
       <GELogo
         alt='GE'
-        width={isSmScreen ? '51' : '72'}
-        height={isSmScreen ? '51' : '72'}
-      />,
-      <AbsolutLogo
-        alt='Absolut Vodka'
-        width={isSmScreen ? '87' : '116'}
-        height={isSmScreen ? '40' : '54'}
-      />,
-      <QuickenLogo
-        alt='Quicken'
-        width={isSmScreen ? '107' : '134'}
-        height={isSmScreen ? '24' : '30'}
-      />,
-      <UCLALogo
-        alt='UCLA'
-        width={isSmScreen ? '87' : '116'}
-        height={isSmScreen ? '40' : '54'}
+        width={isSmScreen ? '53' : '72'}
+        height={isSmScreen ? '53' : '72'}
       />,
       <WSILogo
         alt='Williams-Sonoma Inc.'
-        width={isSmScreen ? '96' : '116'}
-        height={isSmScreen ? '31' : '38'}
+        width={isSmScreen ? '98' : '134'}
+        height={isSmScreen ? '32' : '43'}
       />,
-      <DwellLogo
-        alt='dwell'
-        width={isSmScreen ? '78' : '94'}
-        height={isSmScreen ? '30' : '36'}
+      <SunpowerLogo
+        alt='Sunpower'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <PernodLogo
+        alt='Pernod Ricard'
+        width={isSmScreen ? '125' : '171'}
+        height={isSmScreen ? '49' : '63'}
       />,
     ],
     about: [
