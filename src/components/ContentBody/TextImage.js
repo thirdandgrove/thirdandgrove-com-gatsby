@@ -14,13 +14,17 @@ import SplitSection from '../SplitSection';
 
 const sectionStyle = css`
   ${container.min};
-  ${contentHeadings};
   font-weight: ${weights.thin};
   grid-column-gap: 20px;
   padding: 0 20px;
 
   ${mediaQueries.phoneLarge} {
     padding: 0;
+  }
+
+  h2,
+  h3 {
+    ${contentHeadings};
   }
 `;
 

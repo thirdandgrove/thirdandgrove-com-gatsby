@@ -114,22 +114,10 @@ export const quoteAttr = css`
 `;
 
 export const contentHeadings = css`
-  h2,
-  h3 {
-    font-family: ${fonts.sans};
-    font-size: 16px;
-    font-weight: ${weights.bold};
-    letter-spacing: 0.2px;
-    line-height: 1.69;
-    margin-bottom: 30px;
-
-    ${mediaQueries.desktop} {
-      margin-bottom: 60px;
-    }
-  }
-
-  ${mediaQueries.phoneLarge} {
-    padding: 0;
-    width: ${contValues.min};
-  }
+  font-family: ${fonts.sans};
+  font-size: 16px;
+  font-weight: ${weights.bold};
+  letter-spacing: 0.2px;
+  line-height: 1.69;
+  margin-bottom: 30px;
 `;
