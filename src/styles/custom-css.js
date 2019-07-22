@@ -5,7 +5,7 @@
 // CSS classes in a non-JS-based theme.
 import { css } from '@emotion/core';
 
-import { colors, weights, mediaQueries } from './css-utils';
+import { fonts, colors, weights, mediaQueries } from './css-utils';
 
 // Containers
 // (There are going to be more widths as the projet progresses)
@@ -110,5 +110,26 @@ export const quoteAttr = css`
     letter-spacing: 0.2px;
     line-height: 1.56;
     text-align: center;
+  }
+`;
+
+export const contentHeadings = css`
+  h2,
+  h3 {
+    font-family: ${fonts.sans};
+    font-size: 16px;
+    font-weight: ${weights.bold};
+    letter-spacing: 0.2px;
+    line-height: 1.69;
+    margin-bottom: 30px;
+
+    ${mediaQueries.desktop} {
+      margin-bottom: 60px;
+    }
+  }
+
+  ${mediaQueries.phoneLarge} {
+    padding: 0;
+    width: ${contValues.min};
   }
 `;

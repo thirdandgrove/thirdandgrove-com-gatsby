@@ -23,13 +23,9 @@ const Quote = ({ data }) => {
       css={css`
         padding: 0;
         width: 100%;
-
-        ${mediaQueries.phoneLarge} {
-          width: ${contValues.min};
-        }
       `}
     >
-      <div css={container.max}>
+      <div css={container.min}>
         <div css={quoteText}>
           <span css={quoL}>&ldquo;</span>
           {data.field_quote}
