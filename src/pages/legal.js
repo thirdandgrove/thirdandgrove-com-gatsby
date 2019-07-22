@@ -5,13 +5,15 @@ import Layout from '../components/layout';
 import { container, mediaQueries } from '../styles';
 
 export default () => {
+  const date = 'Effective: Apr 1, 2019';
+
   return (
     <Layout
       headerData={{
         title: 'Privacy Statement',
         height: '400px',
         mobileHeight: '93vh',
-        label: 'Effective: Apr 1, 2019',
+        label: date,
         labelMobileOnly: true,
       }}
     >
@@ -34,7 +36,7 @@ export default () => {
             }
           `}
         >
-          Effective: Apr 1, 2019
+          {date}
         </h5>
         <p>
           Third & Grove LLC. (“Third & Grove,” “we,” “us,” “our”) is committed
