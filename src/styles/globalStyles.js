@@ -263,11 +263,11 @@ export const globalStyles = css`
     margin-bottom: 27px;
     font-family: ${fonts.sans};
     font-size: 16px;
-    letter-spacing: 0;
+    letter-spacing: 0.2;
     line-height: 1.7;
 
     ${mediaQueries.phoneLarge} {
-      margin-bottom: 36px;
+      margin-bottom: 30px;
     }
   }
 
