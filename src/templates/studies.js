@@ -52,16 +52,15 @@ const Studies = ({ data }) => {
       )}
       <p
         css={css`
-          ${container.min};
-          font-family: ${fonts.serif};
-          font-size: 21px;
-          font-weight: ${weights.medium};
-          letter-spacing: -0.5px;
-          line-height: 1.43;
+          font-family: ${fonts.sans};
+          font-size: 30px;
+          font-weight: ${weights.bold};
+          line-height: 1;
           padding: 55px 20px 0;
           margin-bottom: 20px;
 
-          ${mediaQueries.desktop} {
+          ${mediaQueries.phoneLarge} {
+            ${container.min};
             letter-spacing: normal;
             padding: 75px 0 0;
             margin-bottom: 60px;
