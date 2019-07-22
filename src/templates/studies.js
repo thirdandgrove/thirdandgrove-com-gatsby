@@ -100,6 +100,36 @@ export const query = graphql`
           name
         }
         field_components {
+          ... on component__text {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_body {
+              processed
+            }
+          }
+          ... on component__image {
+            id
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, maxHeight: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
           ... on component__quote {
             id
             relationships {
