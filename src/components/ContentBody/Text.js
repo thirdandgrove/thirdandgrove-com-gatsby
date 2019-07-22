@@ -24,6 +24,9 @@ const Text = ({ data }) => {
           letter-spacing: 0.2px;
           line-height: 1.43;
         }
+        h3 {
+          margin-bottom: 24px;
+        }
         ${mediaQueries.desktop} {
           width: ${contValues.min};
           padding: 0;
