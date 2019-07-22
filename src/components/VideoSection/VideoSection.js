@@ -26,6 +26,7 @@ const VideoSection = ({ url }) => {
 
   const sectionStyles = css`
     position: relative;
+    padding: 0;
     background: ${colors.darkgray};
   `;
 
@@ -193,7 +194,7 @@ const VideoSection = ({ url }) => {
       </div>
       <ReactPlayer
         // see: https://www.npmjs.com/package/react-player for props
-        width={width}
+        width='100%'
         css={playerStyles}
         url={theUrl}
         playing={playing}
