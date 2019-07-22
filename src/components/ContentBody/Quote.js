@@ -4,15 +4,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
-import {
-  mediaQueries,
-  quoteText,
-  quoL,
-  quoR,
-  quoteAttr,
-  container,
-  contValues,
-} from '../../styles';
+import { quoteText, quoL, quoR, quoteAttr, container } from '../../styles';
 
 const Quote = ({ data }) => {
   return (
