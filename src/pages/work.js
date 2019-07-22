@@ -126,7 +126,7 @@ const Project = ({ study, index }) => {
             </h1>
             <h3
               css={css`
-                font-size: 15px;
+                font-size: 16px;
                 line-height: 1.6;
                 font-weight: ${weights.thin};
                 font-family: ${fonts.sans};
@@ -134,7 +134,6 @@ const Project = ({ study, index }) => {
 
                 ${mediaQueries.phoneLarge} {
                   margin-bottom: 50px;
-                  font-size: 16px;
                   line-height: 1.69;
                 }
               `}
