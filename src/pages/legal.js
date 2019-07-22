@@ -2,7 +2,13 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
-import { container, mediaQueries, fonts, weights } from '../styles';
+import {
+  container,
+  mediaQueries,
+  fonts,
+  weights,
+  contentHeadings,
+} from '../styles';
 
 export default () => {
   const date = 'Effective: Apr 1, 2019';
@@ -27,25 +33,25 @@ export default () => {
             padding-left: 0;
             padding-right: 0;
           }
+
+          strong {
+            ${contentHeadings};
+            margin-bottom: 30px;
+          }
         `}
       >
-        <strong
+        <h2
           css={css`
             display: none;
 
             ${mediaQueries.desktop} {
               display: block;
-              font-family: ${fonts.sans};
-              font-size: 16px;
-              font-weight: ${weights.bold};
-              letter-spacing: 0.2px;
-              line-height: 1.69;
-              margin-bottom: 30px;
+              ${contentHeadings};
             }
           `}
         >
           {date}
-        </strong>
+        </h2>
         <p>
           Third & Grove LLC. (“Third & Grove,” “we,” “us,” “our”) is committed
           to letting you know how we will collect and use your personally
@@ -78,8 +84,8 @@ export default () => {
           We may collect three basic types of information about users of the
           Website.
         </p>
+        <strong>Information You Give Us:</strong>
         <p>
-          <strong>Information You Give Us:</strong>
           We receive and store information you enter on our Websites or give us
           in any other way, including your name, mailing address, phone number,
           email address, and job application.
