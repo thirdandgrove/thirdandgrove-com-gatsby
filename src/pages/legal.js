@@ -28,11 +28,13 @@ export default () => {
         css={css`
           ${container.min}
           padding-top: 80px;
+          margin-bottom: 70px;
           font-weight: ${weights.light};
 
           ${mediaQueries.desktop} {
             padding-left: 0;
             padding-right: 0;
+            margin-bottom: 140px;
           }
 
           strong {
