@@ -10,11 +10,12 @@ const Text = ({ data }) => {
   return (
     <FullWidthSection
       fontWeight={weights.thin}
-      margin='80px auto'
+      margin='0 auto'
       padding='0 20px'
       textAlign='left'
       align='start'
       justify='start'
+      height='300px'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
         h2,
