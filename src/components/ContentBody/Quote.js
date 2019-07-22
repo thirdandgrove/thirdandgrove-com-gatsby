@@ -18,11 +18,13 @@ const Quote = ({ data }) => {
   return (
     <FullWidthSection
       height='auto'
+      mobileHeight='auto'
+      margin='0 0 60px'
       css={css`
-        padding: 40px 20px;
+        padding: 0;
         width: 100%;
+
         ${mediaQueries.phoneLarge} {
-          padding: 110px 0;
           width: ${contValues.min};
         }
       `}
