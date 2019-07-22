@@ -25,7 +25,7 @@ export default () => {
           margin-bottom: 70px;
           font-weight: ${weights.light};
 
-          ${mediaQueries.desktop} {
+          ${mediaQueries.phoneLarge} {
             padding-left: 0;
             padding-right: 0;
             margin-bottom: 140px;
@@ -34,6 +34,10 @@ export default () => {
           strong {
             ${contentHeadings};
             margin-bottom: 30px;
+          }
+
+          p > strong {
+            margin-right: 4px;
           }
         `}
       >
@@ -81,8 +85,8 @@ export default () => {
           We may collect three basic types of information about users of the
           Website.
         </p>
-        <strong>Information You Give Us:</strong>
         <p>
+          <strong>Information You Give Us:</strong>
           We receive and store information you enter on our Websites or give us
           in any other way, including your name, mailing address, phone number,
           email address, and job application.
@@ -133,8 +137,6 @@ export default () => {
         </p>
         <p>
           <strong>Third-Party Agents and Service Providers:</strong>
-        </p>
-        <p>
           We have third-party agents, subsidiaries, affiliates and service
           providers that perform functions on our behalf, including, but not
           limited to, hosting, providing the platform used to deliver the
@@ -144,8 +146,6 @@ export default () => {
         </p>
         <p>
           <strong>Assignment:</strong>
-        </p>
-        <p>
           We may change our ownership or corporate organization while providing
           the Website. We may also sell certain assets associated with the
           Website. In such event, we may transfer some or all of your
@@ -153,13 +153,15 @@ export default () => {
           another entity with which we have merged.
         </p>
         <p>
-          Law Enforcement, Legal Process, and Emergency Situations: We may also
-          use or disclose your personal information if required to do so by law
-          or on the good-faith belief that such action is necessary to: (1)
-          conform to applicable law or comply with legal process served on us or
-          the Website; (2) protect and defend our rights or property, the
-          Website or our users, or (3) act to protect the personal safety of us,
-          users of the Website, or the public.
+          <strong>
+            Law Enforcement, Legal Process, and Emergency Situations:
+          </strong>
+          We may also use or disclose your personal information if required to
+          do so by law or on the good-faith belief that such action is necessary
+          to: (1) conform to applicable law or comply with legal process served
+          on us or the Website; (2) protect and defend our rights or property,
+          the Website or our users, or (3) act to protect the personal safety of
+          us, users of the Website, or the public.
         </p>
         <p>
           <strong>Cookies & Tracking Technologies</strong>
@@ -213,16 +215,15 @@ export default () => {
           <strong>Other Important Information</strong>
         </p>
         <p>
-          Users Under Thirteen: Our Website is intended for users ages 13 and
-          older only. Accordingly, we will not knowingly collect or use any
-          personal information from children that we know to be under the age of
-          13. If we become aware of personal information in our database that
-          was collected from a child under 13, we will delete such information.
+          <strong>Users Under Thirteen:</strong>
+          Our Website is intended for users ages 13 and older only. Accordingly,
+          we will not knowingly collect or use any personal information from
+          children that we know to be under the age of 13. If we become aware of
+          personal information in our database that was collected from a child
+          under 13, we will delete such information.
         </p>
         <p>
           <strong>Users Outside of the United States:</strong>
-        </p>
-        <p>
           If you use our Website outside of the United States, you understand
           and consent to the transfer of your personal information to, and the
           collection, processing, and storage of your personal information in,
@@ -232,8 +233,6 @@ export default () => {
         </p>
         <p>
           <strong>Your California Privacy Rights:</strong>
-        </p>
-        <p>
           If you are a California resident, California law permits you to
           request certain information regarding the disclosure of your personal
           information by us and our related companies to third parties for the
