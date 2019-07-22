@@ -17,16 +17,16 @@ const Text = ({ data }) => {
       justify='start'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
-        h2 {
+        h2,
+        h3 {
           font-family: ${fonts.sans};
           font-size: 21px;
           font-weight: ${weights.bold};
           letter-spacing: 0.2px;
           line-height: 1.43;
-        }
-        h3 {
           margin-bottom: 24px;
         }
+
         ${mediaQueries.desktop} {
           width: ${contValues.min};
           padding: 0;
