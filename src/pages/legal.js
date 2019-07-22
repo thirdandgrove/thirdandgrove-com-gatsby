@@ -2,13 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
-import {
-  container,
-  mediaQueries,
-  fonts,
-  weights,
-  contentHeadings,
-} from '../styles';
+import { container, mediaQueries, weights, contentHeadings } from '../styles';
 
 export default () => {
   const date = 'Effective: Apr 1, 2019';
