@@ -17,7 +17,7 @@ import FullWidthSection from '../FullWidthSection';
  * @param {string} metaTitle - passed through to SEO
  * @param {string} description - passed through to SEO
  * @param {string} height - passed to wrapper component
- * @param {string} mobileHeight - passed to wrapper component
+ * @param {string} minHeight - passed to wrapper component
  * @param {node} children
  * @param {string} color
  * @param {boolean} invert - passed through to TopNav
@@ -30,7 +30,7 @@ const Header = ({
   metaTitle,
   description,
   height,
-  mobileHeight,
+  minHeight,
   children,
   color,
   invert,
@@ -61,6 +61,9 @@ const Header = ({
     );
   };
 
+  const fontColor =
+    isLightBackground(color) && !invert ? colors.darkgray : colors.lightgray;
+
   const headerTitle = css`
     @keyframes headerSlide {
       0% {
@@ -88,7 +91,7 @@ const Header = ({
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
     text-align: center;
-    color: ${isLightBackground(color) ? colors.darkgray : colors.lightgray};
+    color: ${fontColor};
     transform: translateY(50%);
     animation-name: headerSlide;
     animation-duration: 0.7s;
@@ -136,7 +139,7 @@ const Header = ({
     letter-spacing: 2px;
     line-height: 2.4;
     text-transform: capitalize;
-    color: ${colors.reallydarkgray};
+    color: ${fontColor};
 
     ${mediaQueries.desktop} {
       margin-top: 0;
@@ -148,11 +151,7 @@ const Header = ({
     <>
       <SEO title={metaTitle || title} description={description} />
       <TopNav invert={invert} />
-      <FullWidthSection
-        css={sectionCSS}
-        height={height}
-        mobileHeight={mobileHeight}
-      >
+      <FullWidthSection css={sectionCSS} height={height} minHeight={minHeight}>
         {label && (
           <span data-cy='labelText' css={headerlabel}>
             {label}
@@ -177,7 +176,7 @@ export const headerPropTypes = {
   metaTitle: PropTypes.string,
   description: PropTypes.string,
   height: PropTypes.string,
-  mobileHeight: PropTypes.string,
+  minHeight: PropTypes.string,
   children: PropTypes.node,
   invert: PropTypes.bool,
   color: PropTypes.string,
@@ -193,7 +192,7 @@ Header.defaultProps = {
   metaTitle: null,
   description: null,
   height: '700px',
-  mobileHeight: '300px',
+  minHeight: '300px',
   children: null,
   invert: false,
   color: colors.yellow,

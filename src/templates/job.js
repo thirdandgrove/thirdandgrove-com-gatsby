@@ -50,7 +50,7 @@ const Job = ({ pageContext }) => {
     <Layout
       headerData={{
         title: job.title,
-        mobileHeight: '93vh',
+        minHeight: '93vh',
         children: (
           <>
             <Button

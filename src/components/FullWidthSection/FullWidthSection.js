@@ -4,7 +4,7 @@ import { weights, mediaQueries } from '../../styles';
 
 export default styled.section`
   width: ${props => props.width || '100%'};
-  min-height: ${props => props.mobileHeight || '300px'};
+  min-height: ${props => props.minHeight || '300px'};
   display: flex;
   font-weight: ${props => props.fontWeight || weights.medium};
   flex-direction: ${props => props.flexDirection || 'column'};

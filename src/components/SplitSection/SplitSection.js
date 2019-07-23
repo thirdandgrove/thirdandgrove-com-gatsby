@@ -4,13 +4,13 @@ import { css } from '@emotion/core';
 
 import { mediaQueries } from '../../styles';
 
-const SplitSection = ({ children, gridOverride, ...props }) => (
+const SplitSection = ({ children, gridTemplateColumns, ...props }) => (
   <div
     {...props}
     css={css`
       ${mediaQueries.phoneLarge} {
         display: grid;
-        grid-template-columns: ${gridOverride};
+        grid-template-columns: ${gridTemplateColumns};
         justify-content: space-between;
       }
     `}
@@ -20,7 +20,7 @@ const SplitSection = ({ children, gridOverride, ...props }) => (
 );
 
 SplitSection.propTypes = {
-  gridOverride: PropTypes.string,
+  gridTemplateColumns: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -28,7 +28,7 @@ SplitSection.propTypes = {
 };
 
 SplitSection.defaultProps = {
-  gridOverride: 'repeat(2, 1fr)',
+  gridTemplateColumns: 'repeat(2, 1fr)',
 };
 
 export default SplitSection;

@@ -14,7 +14,7 @@ export default () => {
       headerData={{
         title: 'Privacy Statement',
         height: '400px',
-        mobileHeight: '93vh',
+        minHeight: '93vh',
         label: date,
         labelMobileOnly: true,
       }}

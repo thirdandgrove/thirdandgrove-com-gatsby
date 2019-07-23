@@ -178,7 +178,7 @@ export default () => {
     <Layout
       headerData={{
         title: 'We work with brands we love.',
-        mobileHeight: '93vh',
+        minHeight: '93vh',
         height: '400px',
       }}
     >

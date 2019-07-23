@@ -23,7 +23,7 @@ export default () => {
     <Layout
       headerData={{
         title: 'This is Third and Grove. See what makes us, us.',
-        mobileHeight: '93vh',
+        minHeight: '93vh',
       }}
     >
       <FullWidthSection textAlign='center' height='100px' padding='3rem 0 0 0'>

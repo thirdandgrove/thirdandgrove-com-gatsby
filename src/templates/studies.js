@@ -27,7 +27,7 @@ const Studies = ({ data }) => {
         defaultBackground: false,
         color: backgroundColor || colors.yellow,
         height: '500px',
-        mobileHeight: '470px',
+        minHeight: '470px',
         marginBottom: '70px',
         label: post.relationships.field_tags.map(tag => tag.name).join(', '),
         labelMobileOnly: true,

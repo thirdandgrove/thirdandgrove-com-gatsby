@@ -10,7 +10,7 @@ const Quote = ({ data }) => {
   return (
     <FullWidthSection
       height='auto'
-      mobileHeight='auto'
+      minHeight='auto'
       margin='0 0 60px'
       css={css`
         padding: 0;
