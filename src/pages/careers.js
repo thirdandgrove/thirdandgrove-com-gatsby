@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-import { colors, fonts, weights, container, mediaQueries } from '../styles';
+import { fonts, weights, container, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -21,23 +21,23 @@ export default () => {
 
   const JobList = styled.ul`
     margin-left: 0;
+    margin-bottom: 114px;
+
     ${mediaQueries.phoneLarge} {
       margin-bottom: 120px;
     }
+
     li {
       list-style: none;
-      margin: 57px 0;
+      margin: 73px 0;
       text-align: center;
-
-      ${mediaQueries.phoneLarge} {
-        margin: 73px 0;
-      }
 
       a {
         font-weight: ${weights.light};
         font-size: 30px;
         text-align: center;
         line-height: 1.3;
+
         ${mediaQueries.phoneLarge} {
           font-size: 48px;
           line-height: 1.5;
@@ -80,7 +80,6 @@ export default () => {
               font-size: 15px;
               font-family: ${fonts.sans};
               font-weight: ${weights.light};
-              color: ${colors.mediumgray};
 
               ${mediaQueries.phoneLarge} {
                 margin-top: 60px;

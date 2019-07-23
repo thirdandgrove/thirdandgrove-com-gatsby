@@ -31,7 +31,7 @@ const TopNav = ({ invert }) => {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 2;
+            z-index: 4;
 
             ${mediaQueries.phoneLarge} {
               padding-top: 30px;
