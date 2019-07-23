@@ -129,7 +129,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
         background-color: ${colors.darkgray};
         transition: 0.3s ease all;
         overflow: hidden;
-        z-index: 1;
+        z-index: 3;
         top: ${menuOpen ? '0' : '100vh'};
         flex-direction: column;
         justify-content: center;
