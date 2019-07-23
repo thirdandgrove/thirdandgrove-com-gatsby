@@ -71,7 +71,17 @@ export const query = graphql`
         id
         localFile {
           childImageSharp {
-            fluid(maxWidth: 400, maxHeight: 530) {
+            fluid(maxWidth: 530, maxHeight: 400) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+          childImageSlideMobile: childImageSharp {
+            fluid(maxWidth: 325, maxHeight: 250) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+          childImageSlideDesktop: childImageSharp {
+            fluid(maxWidth: 450, maxHeight: 400) {
               ...GatsbyImageSharpFluid
             }
           }

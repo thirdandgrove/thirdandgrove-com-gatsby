@@ -21,7 +21,10 @@ export default () => {
   `;
   return (
     <Layout
-      headerData={{ title: 'This is Third and Grove. See what makes us, us.' }}
+      headerData={{
+        title: 'This is Third and Grove. See what makes us, us.',
+        mobileHeight: '93vh',
+      }}
     >
       <FullWidthSection textAlign='center' height='100px' padding='3rem 0 0 0'>
         <h3 css={smSectionHead}>What We Do</h3>

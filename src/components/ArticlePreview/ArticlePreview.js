@@ -7,7 +7,7 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
-import { colors, fonts, weights, mediaQueries } from '../../styles';
+import { fonts, weights, mediaQueries } from '../../styles';
 
 const ArticlePreview = ({ article }) => {
   const nodeRef = useRef();
@@ -21,12 +21,6 @@ const ArticlePreview = ({ article }) => {
 
     ${mediaQueries.phoneLarge} {
       margin-bottom: 90px;
-    }
-
-    div {
-      /* @TODO Get actual image in here */
-      height: 400px;
-      background: ${colors.gray};
     }
 
     h2 {

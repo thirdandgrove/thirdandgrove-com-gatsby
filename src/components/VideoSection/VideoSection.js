@@ -134,11 +134,13 @@ const VideoSection = ({ url }) => {
       position: absolute;
       top: 50%;
       left: 50%;
+      margin-left: 0;
       transform: translate(-50%, -50%);
       z-index: 2;
       font-size: 72px;
       line-height: 1.16;
       letter-spacing: -1px;
+      text-align: center;
     }
   `;
 

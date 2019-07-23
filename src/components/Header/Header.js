@@ -1,12 +1,10 @@
 /* eslint-disable no-bitwise */
-import React, { useRef } from 'react';
-import { Spring } from 'react-spring/renderprops';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
-import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { colors, fonts, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
@@ -38,9 +36,6 @@ const Header = ({
   invert,
   marginBottom,
 }) => {
-  const nodeRef = useRef();
-  const isVisible = useHasBeenVisible(nodeRef, 1);
-
   const isLightBackground = value => {
     let r;
     let g;
@@ -67,6 +62,24 @@ const Header = ({
   };
 
   const headerTitle = css`
+    @keyframes headerSlide {
+      0% {
+        transform: translateY(50%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes afterReveal {
+      0% {
+        height: 100%;
+      }
+      100% {
+        height: 0;
+      }
+    }
+
     position: relative;
     margin-bottom: ${marginBottom};
     padding: 0 20px;
@@ -76,7 +89,12 @@ const Header = ({
     letter-spacing: -0.45px;
     text-align: center;
     color: ${isLightBackground(color) ? colors.darkgray : colors.lightgray};
-    transition: 0.4s ease-out all;
+    transform: translateY(50%);
+    animation-name: headerSlide;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 
     &::after {
       content: '';
@@ -87,7 +105,11 @@ const Header = ({
       height: 100%;
       width: 100%;
       background: ${color};
-      transition: inherit;
+      animation-name: afterReveal;
+      animation-duration: inherit;
+      animation-timing-function: inherit;
+      animation-iteration-count: inherit;
+      animation-fill-mode: inherit;
     }
 
     ${mediaQueries.phoneLarge} {
@@ -137,31 +159,9 @@ const Header = ({
           </span>
         )}
         {title && (
-          <Spring
-            delay={0}
-            to={{
-              transform: isVisible ? 'translateY(0)' : 'translateY(50%)',
-              afterHeight: isVisible ? '0' : '100%',
-            }}
-          >
-            {({ transform, afterHeight }) => (
-              <h1
-                data-cy='titleText'
-                css={[
-                  headerTitle,
-                  css`
-                    &::after {
-                      height: ${afterHeight};
-                    }
-                  `,
-                ]}
-                style={{ transform }}
-                ref={nodeRef}
-              >
-                {title}
-              </h1>
-            )}
-          </Spring>
+          <h1 data-cy='titleText' css={headerTitle}>
+            {title}
+          </h1>
         )}
         {children && children}
       </FullWidthSection>

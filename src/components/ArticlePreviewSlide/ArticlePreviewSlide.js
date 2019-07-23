@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
-import { colors, fonts, weights, mediaQueries, container } from '../../styles';
+import { fonts, weights, mediaQueries, container } from '../../styles';
 
 const ArticlePreviewSlide = ({ article, index }) => {
   const nodeRef = useRef();
@@ -74,11 +75,35 @@ const ArticlePreviewSlide = ({ article, index }) => {
             <div
               ref={nodeRef}
               css={css`
-                height: 400px;
                 flex: 0 0 38%;
-                background: ${colors.gray};
+
+                .gatsby-image-wrapper > div {
+                  // Forcing correct image aspect ratio, overriding inline
+                  // gatsby-image provided styles
+                  padding-bottom: 77% !important;
+
+                  ${mediaQueries.phoneLarge} {
+                    padding-bottom: 88.9% !important;
+                  }
+                }
               `}
-            />
+            >
+              {article.relationships.field_image && (
+                <Img
+                  fluid={[
+                    article.relationships.field_image.localFile
+                      .childImageSlideMobile.fluid,
+                    {
+                      ...article.relationships.field_image.localFile
+                        .childImageSlideDesktop.fluid,
+                      media: mediaQueries.phoneLarge
+                        .replace(`@media`, ``)
+                        .trim(),
+                    },
+                  ]}
+                />
+              )}
+            </div>
             <div
               css={css`
                 flex: 0 0 43%;

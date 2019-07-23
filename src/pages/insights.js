@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { fonts, h1L, mediaQueries, container } from '../styles';
+import { fonts, h1L, mediaQueries, container, colors } from '../styles';
 import ArticlePreview from '../components/ArticlePreview';
 import Button from '../components/Button';
 import Layout from '../components/layout';
@@ -21,6 +21,57 @@ export default () => {
   const articles = data.allInsight.nodes;
   // newest article is in the header
   const headerArticle = articles[0];
+
+  const headerStyles = css`
+    @keyframes headerSlide {
+      0% {
+        transform: translateY(50%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes afterReveal {
+      0% {
+        height: 100%;
+      }
+      100% {
+        height: 0;
+      }
+    }
+
+    padding: 0 20px;
+    margin: 30px 0 60px;
+    text-align: center;
+    transform: translateY(50%);
+    animation-name: headerSlide;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: ${colors.yellow};
+      animation-name: afterReveal;
+      animation-duration: inherit;
+      animation-timing-function: inherit;
+      animation-iteration-count: inherit;
+      animation-fill-mode: inherit;
+    }
+
+    ${mediaQueries.phoneLarge} {
+      width: 70%;
+      margin: 40px auto 50px;
+    }
+  `;
 
   return (
     <Layout
@@ -41,21 +92,7 @@ export default () => {
                 headerArticle.relationships.uid.name
               }`}
             </div>
-            <h3
-              data-cy='insightTitle'
-              css={[
-                h1L,
-                css`
-                  padding: 0 20px;
-                  margin: 30px 0 60px;
-                  text-align: center;
-                  ${mediaQueries.phoneLarge} {
-                    width: 70%;
-                    margin: 40px auto 50px;
-                  }
-                `,
-              ]}
-            >
+            <h3 data-cy='insightTitle' css={[h1L, headerStyles]}>
               {headerArticle.title}
             </h3>
 
@@ -66,7 +103,7 @@ export default () => {
         ),
       }}
     >
-      <FullWidthSection>
+      <FullWidthSection padding='0'>
         <div
           css={[
             container.max,
