@@ -39,7 +39,7 @@ export const colors = {
   gray: `#e0e0e0`,
   lightgray: `#F8F8F9;`,
   darkgray: `#29292a`,
-  darkgrayFaded: `rgb(41, 41, 42, 0.7)`,
+  darkgrayFaded: `rgba(41, 41, 42, 0.7)`,
   mediumgray: `#757575`,
   midgray: `#525252`,
   reallydarkgray: `#282829;`,
