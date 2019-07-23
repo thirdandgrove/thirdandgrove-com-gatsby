@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
@@ -79,7 +80,7 @@ export default () => {
           image<h2>Acquia Cloud</h2>
           <p>
             Expertise with Cloud Hooks and APIs for faster, less error-prone
-            development.{' '}
+            development.
           </p>
         </article>
         <article>
