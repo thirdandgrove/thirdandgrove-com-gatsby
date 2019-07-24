@@ -25,8 +25,8 @@ export default () => {
       headerData={{
         invert: true,
         label:
-          'Deep Integrations — Rich Personalization — Efficient Development',
-        title: 'Squeeze every last drop out of your Acquia investment.',
+          'Battle Tested Processes — Damn Good Engineers — Decoupled Pioneer',
+        title: 'Drupal leader and contributor since inception.',
         color: colors.drupalBlue,
       }}
     >
