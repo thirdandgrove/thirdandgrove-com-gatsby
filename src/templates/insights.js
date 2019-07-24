@@ -38,12 +38,14 @@ const Insights = ({ data }) => {
             margin-left: 20px;
             margin-right: 20px;
             margin-top: -100px;
+            margin-bottom: 60px;
             max-width: 980px;
 
             ${mediaQueries.phoneLarge} {
               margin-left: auto;
               margin-right: auto;
               margin-top: -165px;
+              margin-bottom: 80px;
             }
           `}
         />
