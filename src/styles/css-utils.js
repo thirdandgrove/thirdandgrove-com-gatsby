@@ -47,7 +47,7 @@ export const colors = {
   lightblue: `#a5e6ec`,
   acquiaBlue: `#0678BE`,
   lightgreen: `#cef5e2`,
-  rebeccaPurple: '#663399',
+  gatsbyPurple: '#663399',
   drupalBlue: '#53B0EB',
   red: 'red',
 };

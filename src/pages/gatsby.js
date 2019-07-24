@@ -14,7 +14,7 @@ export default () => {
         invert: true,
         label: 'Fast — Secure — Scalable',
         title: 'The future of Front End.',
-        color: colors.rebeccaPurple,
+        color: colors.gatsbyPurple,
       }}
     >
       <FullWidthSection padding='0'>
