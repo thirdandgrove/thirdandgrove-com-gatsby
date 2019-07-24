@@ -30,23 +30,32 @@ const ContactFrom = () => {
 
   const submitContact = event => {
     event.preventDefault();
-    const { name, email } = formState;
+    const { name, email, website } = formState;
     if (hasSubmitted) {
       // deter multiple submissions
       updateErrors({ error: 'The form has already been submitted.' });
       return;
     }
     // validate inputs
-    if (!name || !email) {
+    if (!name || !email || !website) {
       // notify user of required fields
       const currentErrs = {};
       if (!name) {
         currentErrs.name = 'Name is required';
       }
+      if (!website) {
+        currentErrs.website = 'Website is required';
+      }
       if (!email) {
         currentErrs.email = 'Email is required';
       }
       updateErrors(currentErrs);
+      return;
+    }
+    if (!website.includes('.') && website.length > 3) {
+      // currently we only validate that a dot is present
+      // a more strict validation could exclude valid edgecases
+      updateErrors({ website: 'Website must be valid' });
       return;
     }
     // the form has not been submitted
@@ -73,6 +82,8 @@ const ContactFrom = () => {
         css={css`
           position: absolute;
           align-self: center;
+          width: 100%;
+          text-align: center;
           p {
             display: inline;
             color: ${colors.red};
@@ -145,7 +156,7 @@ const ContactFrom = () => {
           <Input
             value={formState.website}
             onChange={updateInput}
-            placeholder='website [optional]'
+            placeholder='website'
             name='website'
           />
           <Input
