@@ -281,6 +281,7 @@ export const globalStyles = css`
     color: ${colors.reallydarkgray};
     font-family: ${fonts.serif};
     font-size: 50px;
+    font-weight: ${weights.regular};
     line-height: 1;
 
     ${mediaQueries.phoneLarge} {
