@@ -19,6 +19,7 @@ const Components = {
 
 const ComponentBody = ({ comp }) => {
   // Ensure relationships exists before rendering.
+  console.log(comp);
   if (comp.relationships == null) {
     return <div />;
   }

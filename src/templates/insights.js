@@ -107,6 +107,16 @@ export const query = graphql`
               processed
             }
           }
+          ... on component__quote {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_quote
+            field_footer_text
+          }
           ... on component__image {
             id
             relationships {
