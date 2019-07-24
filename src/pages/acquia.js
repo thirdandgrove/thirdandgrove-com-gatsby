@@ -95,7 +95,7 @@ export default () => {
       </SplitSection>
       <FullWidthSection>
         <h2>Your DXP Solution</h2>
-        acquia brand map image
+        <img src='/images/dxp-solution.png' alt='dxp solution' />
       </FullWidthSection>
       <Quote
         data={{
