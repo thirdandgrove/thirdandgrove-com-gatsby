@@ -224,7 +224,7 @@ const LogoGrid = ({ title, logoset }) => {
   return (
     <FullWidthSection
       backgroundColor={colors.lightgray}
-      mobileHeight='100vh'
+      minHeight='100vh'
       height='600px'
     >
       <div css={[container.max, containerStyles]}>

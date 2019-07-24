@@ -30,7 +30,7 @@ const sectionStyle = css`
 
 const TextImage = ({ data }) => {
   return data.field_reversed ? (
-    <SplitSection css={sectionStyle} gridOverride='45% 49%'>
+    <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <Img
         fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
       />
@@ -39,7 +39,7 @@ const TextImage = ({ data }) => {
       />
     </SplitSection>
   ) : (
-    <SplitSection css={sectionStyle} gridOverride='54% 40%'>
+    <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
       <section
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       />

@@ -35,7 +35,7 @@ const WhatWeDo = () => {
     <FullWidthSection
       backgroundColor={colors.lightblue}
       height='750px'
-      mobileHeight='550px'
+      minHeight='550px'
       css={css`
         padding-top: 40px;
         padding-bottom: 60px;

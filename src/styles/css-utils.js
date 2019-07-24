@@ -45,6 +45,9 @@ export const colors = {
   reallydarkgray: `#282829;`,
   yellow: `#EBC900`,
   lightblue: `#a5e6ec`,
+  acquiaBlue: `#0678BE`,
   lightgreen: `#cef5e2`,
+  gatsbyPurple: '#663399',
+  drupalBlue: '#53B0EB',
   red: 'red',
 };

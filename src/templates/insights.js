@@ -27,7 +27,7 @@ const Insights = ({ data }) => {
         invert: post.field_inverse_header,
         defaultBackground: false,
         color: backgroundColor || colors.yellow,
-        mobileHeight: '470px',
+        mobileMinHeight: '470px',
         marginBottom: '70px',
       }}
     >

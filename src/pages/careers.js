@@ -60,7 +60,7 @@ export default () => {
       headerData={{
         title: 'We work with the best.',
         height: '400px',
-        mobileHeight: '93vh',
+        mobileMinHeight: '93vh',
       }}
     >
       <FullWidthSection

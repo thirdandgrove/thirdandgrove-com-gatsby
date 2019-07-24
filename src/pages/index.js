@@ -34,7 +34,7 @@ export default () => {
             innovation company.
           </>
         ),
-        mobileHeight: '93vh',
+        mobileMinHeight: '93vh',
       }}
     >
       <VideoSection url={videoData.allNodeHomePage.edges[0].node.field_video} />
