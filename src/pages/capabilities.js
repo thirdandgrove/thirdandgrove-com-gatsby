@@ -133,7 +133,7 @@ export default () => {
     <Layout
       headerData={{
         title: `All the stuff we're good at.`,
-        minHeight: '93vh',
+        mobileMinHeight: '93vh',
         height: '400px',
       }}
     >

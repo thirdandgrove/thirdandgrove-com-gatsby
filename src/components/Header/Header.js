@@ -17,7 +17,7 @@ import FullWidthSection from '../FullWidthSection';
  * @param {string} metaTitle - passed through to SEO
  * @param {string} description - passed through to SEO
  * @param {string} height - passed to wrapper component
- * @param {string} minHeight - passed to wrapper component
+ * @param {string} mobileMinHeight - passed to wrapper component
  * @param {node} children
  * @param {string} color
  * @param {boolean} invert - passed through to TopNav
@@ -30,7 +30,7 @@ const Header = ({
   metaTitle,
   description,
   height,
-  minHeight,
+  mobileMinHeight,
   children,
   color,
   invert,
@@ -151,7 +151,11 @@ const Header = ({
     <>
       <SEO title={metaTitle || title} description={description} />
       <TopNav invert={invert} />
-      <FullWidthSection css={sectionCSS} height={height} minHeight={minHeight}>
+      <FullWidthSection
+        css={sectionCSS}
+        height={height}
+        minHeight={mobileMinHeight}
+      >
         {label && (
           <span data-cy='labelText' css={headerlabel}>
             {label}
@@ -176,7 +180,7 @@ export const headerPropTypes = {
   metaTitle: PropTypes.string,
   description: PropTypes.string,
   height: PropTypes.string,
-  minHeight: PropTypes.string,
+  mobileMinHeight: PropTypes.string,
   children: PropTypes.node,
   invert: PropTypes.bool,
   color: PropTypes.string,
@@ -192,7 +196,7 @@ Header.defaultProps = {
   metaTitle: null,
   description: null,
   height: '700px',
-  minHeight: '300px',
+  mobileMinHeight: '300px',
   children: null,
   invert: false,
   color: colors.yellow,
