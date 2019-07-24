@@ -11,7 +11,7 @@ import { ReactComponent as TAG } from './svg/tagLogo.svg';
 import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
 import Hamburger from './svg/hamburger';
 
-const TopNav = ({ invert }) => {
+const TopNav = ({ fill }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
@@ -46,13 +46,13 @@ const TopNav = ({ invert }) => {
               <ThirdAndGrove
                 css={css`
                   height: 22px;
-                  fill: ${isOpen || invert ? colors.white : colors.darkgray};
+                  fill: ${isOpen ? colors.lightgray : fill};
                 `}
               />
             ) : (
               <TAG
                 css={css`
-                  fill: ${isOpen || invert ? colors.white : colors.darkgray};
+                  fill: ${isOpen ? colors.lightgray : fill};
                   height: 50px;
                   margin-left: -10px;
                 `}
@@ -75,10 +75,7 @@ const TopNav = ({ invert }) => {
           onClick={() => toggleOpen()}
           data-cy='menuButton'
         >
-          <Hamburger
-            fill={isOpen || invert ? colors.white : colors.darkgray}
-            isOpen={isOpen}
-          />
+          <Hamburger fill={isOpen ? colors.lightgray : fill} isOpen={isOpen} />
         </button>
       </div>
       {/* // some transition in/out? */}
@@ -88,11 +85,11 @@ const TopNav = ({ invert }) => {
 };
 
 TopNav.propTypes = {
-  invert: PropTypes.bool,
+  fill: PropTypes.string,
 };
 
 TopNav.defaultProps = {
-  invert: false,
+  fill: colors.lightgray,
 };
 
 export default TopNav;

@@ -4,12 +4,15 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { colors, mediaQueries } from '../styles';
+import useWindow from '../hooks/useWindow';
+import { colors, mediaQueries, jsBreakpoints } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 import InsightsSlider from '../components/InsightsSlider';
 
 const Insights = ({ data }) => {
+  const { width } = useWindow();
+  const isPhone = width < jsBreakpoints.phoneLarge;
   const post = data.insight;
   const imageSrc =
     post.relationships.field_image &&
@@ -52,7 +55,7 @@ const Insights = ({ data }) => {
         <ContentBody key={comp.id} comp={comp} />
       ))}
       <InsightsSlider
-        showButton={false}
+        showButton={isPhone}
         backgroundColor={colors.lightgray}
         title='You May Also Like'
       />
