@@ -12,6 +12,9 @@ import {
 } from '../../styles';
 
 const Text = ({ data }) => {
+  console.log(data.isFirstText, data.type);
+  const renderDropCap = data.type === 'insight' && data.isFirstText;
+  console.log(renderDropCap);
   return (
     <FullWidthSection
       fontWeight={weights.thin}
