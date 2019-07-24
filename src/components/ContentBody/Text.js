@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
-import { contentHeadings, weights } from '../../styles';
+import {
+  contentHeadings,
+  weights,
+  contValues,
+  mediaQueries,
+} from '../../styles';
 
 const Text = ({ data }) => {
   return (
@@ -21,6 +26,11 @@ const Text = ({ data }) => {
         h2,
         h3 {
           ${contentHeadings}
+        }
+
+        ${mediaQueries.phoneLarge} {
+          padding: 0;
+          width: ${contValues.min};
         }
       `}
     />
