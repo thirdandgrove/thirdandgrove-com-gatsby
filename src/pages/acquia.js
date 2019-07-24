@@ -77,14 +77,16 @@ export default () => {
       </SplitSection>
       <SplitSection>
         <article>
-          image<h2>Acquia Cloud</h2>
+          <img src='/images/acquia-cloud.png' alt='cloud' />
+          <h2>Acquia Cloud</h2>
           <p>
             Expertise with Cloud Hooks and APIs for faster, less error-prone
             development.
           </p>
         </article>
         <article>
-          image<h2>Acquia Lift</h2>
+          <img src='/images/acquia-lift.png' alt='lift' />
+          <h2>Acquia Lift</h2>
           <p>
             Improve visitor engagement with an achievable & data-driven
             personalization plan.
@@ -93,7 +95,7 @@ export default () => {
       </SplitSection>
       <FullWidthSection>
         <h2>Your DXP Solution</h2>
-        acquia brand map image
+        <img src='/images/dxp-solution.png' alt='dxp solution' />
       </FullWidthSection>
       <Quote
         data={{
