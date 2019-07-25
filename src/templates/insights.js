@@ -107,6 +107,25 @@ export const query = graphql`
               processed
             }
           }
+          ... on component__image {
+            id
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, maxHeight: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
           ... on component__quote {
             id
             relationships {
@@ -117,8 +136,52 @@ export const query = graphql`
             field_quote
             field_footer_text
           }
-          ... on component__image {
+
+          ... on component__prefooter {
             id
+            field_primary_lead_in_text
+            field_primary_body
+            field_primary_cta {
+              uri
+              title
+            }
+            field_primary_color {
+              color
+            }
+            field_secondary_lead_in_text
+            field_secondary_body
+            field_secondary_cta {
+              uri
+              title
+            }
+            field_secondary_color {
+              color
+            }
+            relationships {
+              component_type {
+                name
+              }
+
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 600, maxHeight: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          ... on component__text_image_split {
+            id
+            field_body {
+              processed
+            }
+            field_reversed
             relationships {
               component_type {
                 name
