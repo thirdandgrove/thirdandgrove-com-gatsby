@@ -72,8 +72,10 @@ const ArticlePreviewSlide = ({ article, index }) => {
                 }
 
                 .slick-current + .slick-slide & {
+                  // Making the next slide peek in from the right.
                   margin-left: 0;
                   padding-left: 0;
+                  padding-right: 40px;
                 }
               `,
             ]}
@@ -111,6 +113,7 @@ const ArticlePreviewSlide = ({ article, index }) => {
             <div
               css={css`
                 flex: 0 0 43%;
+
                 ${mediaQueries.phoneLarge} {
                   margin-left: 9.3%;
                 }
