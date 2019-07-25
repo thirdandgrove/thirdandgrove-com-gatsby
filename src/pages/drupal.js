@@ -52,7 +52,7 @@ export default () => {
         </span>
       </FullWidthSection>
       <ProjectsSlider />
-      <LogoGrid title='Some of Our Drupal Clients' />
+      <LogoGrid logoset='drupal' title='Some of Our Drupal Clients' />
       <SplitSection
         css={css`
           margin: 5rem auto;
