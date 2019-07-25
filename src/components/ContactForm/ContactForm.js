@@ -30,14 +30,14 @@ const ContactFrom = () => {
 
   const submitContact = event => {
     event.preventDefault();
-    const { name, email, website } = formState;
+    const { name, email, website, comments } = formState;
     if (hasSubmitted) {
       // deter multiple submissions
       updateErrors({ error: 'The form has already been submitted.' });
       return;
     }
     // validate inputs
-    if (!name || !email || !website) {
+    if (!name || !email || !website || !comments) {
       // notify user of required fields
       const currentErrs = {};
       if (!name) {
@@ -48,6 +48,9 @@ const ContactFrom = () => {
       }
       if (!email) {
         currentErrs.email = 'Email is required';
+      }
+      if (!comments) {
+        currentErrs.comments = 'Comments is required';
       }
       updateErrors(currentErrs);
       return;
