@@ -25,12 +25,12 @@ import { ReactComponent as DwellLogo } from './logos/dwell.svg';
 import { ReactComponent as BenefitLogo } from './logos/benefit.svg';
 import { ReactComponent as SunpowerLogo } from './logos/sunpower.svg';
 import { ReactComponent as PernodLogo } from './logos/pernodricard.svg';
-import { ReactComponent as MintLogo } from './logos/mintlogo.svg';
+import { ReactComponent as MintLogo } from './logos/intuit-mint.svg';
 import { ReactComponent as Glanbia } from './logos/glanbia.svg';
-import { ReactComponent as Wvi } from './logos/wvi.svg';
-import { ReactComponent as KingArthur } from './logos/kingarthur.svg';
+import { ReactComponent as Wvi } from './logos/world-vision.svg';
+import { ReactComponent as KingArthur } from './logos/kaf.svg';
 import { ReactComponent as CloudHealth } from './logos/cloudhealth.svg';
-import { ReactComponent as CooperVision } from './logos/coopervision-logo.svg';
+import { ReactComponent as CooperVision } from './logos/cooper-vision.svg';
 
 const LogoGrid = ({ title, logoset }) => {
   const { width } = useWindow();
