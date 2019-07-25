@@ -54,7 +54,7 @@ export default () => {
         </span>
       </FullWidthSection>
       <ProjectsSlider />
-      <LogoGrid title='Some of Our Acquia Clients' />
+      <LogoGrid logoset='acquia' title='Some of Our Acquia Clients' />
       <SplitSection
         css={css`
           margin: 5rem auto;
