@@ -54,6 +54,15 @@ const Capability = ({ content, index }) => {
               margin-bottom: 170px;
             }
 
+            h2 {
+              font-size: 2.0625rem; /* 33px */
+              font-weight: ${weights.bold};
+            }
+
+            p {
+              font-weight: ${weights.light};
+            }
+
             ul {
               margin: 0;
               li {
@@ -132,7 +141,7 @@ export default () => {
   return (
     <Layout
       headerData={{
-        title: `All the stuff we're good at.`,
+        title: `All the stuff we’re good at.`,
         mobileMinHeight: '93vh',
         height: '400px',
       }}
@@ -143,8 +152,8 @@ export default () => {
             <h2>Technology</h2>
             <p>
               Work with the best engineers in the room—no matter what room
-              you&quot;re in. Our engineers are writing and discovering the
-              future of digital excellence
+              you’re in. Our engineers are writing and discovering the future of
+              digital excellence.
             </p>
             <ul>
               <li>Front-End Development</li>
@@ -163,7 +172,7 @@ export default () => {
           <>
             <h2>Strategy</h2>
             <p>
-              The foundation for great work. Know your customer, your goals and
+              The foundation for great work. Know your customer, your goals, and
               how to reach them.
             </p>
             <ul>
