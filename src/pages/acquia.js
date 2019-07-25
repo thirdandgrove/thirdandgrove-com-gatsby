@@ -93,10 +93,6 @@ export default () => {
           </p>
         </article>
       </SplitSection>
-      <FullWidthSection>
-        <h2>Your DXP Solution</h2>
-        <img src='/images/dxp-solution.png' alt='dxp solution' />
-      </FullWidthSection>
       <Quote
         data={{
           field_quote:
