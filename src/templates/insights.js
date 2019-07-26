@@ -38,7 +38,13 @@ const Insights = ({ data }) => {
     >
       {imageSrc && (
         <Img
-          fluid={imageSrc}
+          fluid={[
+            post.relationships.field_image.localFile.mobileImage.fluid,
+            {
+              ...post.relationships.field_image.localFile.desktopImage.fluid,
+              media: jsBreakpoints.phoneLarge,
+            },
+          ]}
           alt={imageAlt}
           css={css`
             margin-left: 20px;
