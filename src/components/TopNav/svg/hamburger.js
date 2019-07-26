@@ -12,13 +12,13 @@ const Hamburger = ({ fill, isOpen }) => (
   >
     <g id='Hamburger'>
       <rect
-        fill={fill}
         id='Rectangle'
         x='0'
         y='0'
         width='25'
         height='3'
         css={css`
+          fill: ${fill};
           display: block;
           transform-box: fill-box;
           transition: 0.3s ease transform;
@@ -29,13 +29,13 @@ const Hamburger = ({ fill, isOpen }) => (
         `}
       />
       <rect
-        fill={fill}
         id='Rectangle'
         x='8'
         y='10'
         width='17'
         height='3'
         css={css`
+          fill: ${fill};
           display: block;
           transform-box: fill-box;
           transition: 0.3s ease transform;
@@ -44,13 +44,13 @@ const Hamburger = ({ fill, isOpen }) => (
         `}
       />
       <rect
-        fill={fill}
         id='Rectangle'
         x='0'
         y='20'
         width='25'
         height='3'
         css={css`
+          fill: ${fill};
           display: block;
           transform-box: fill-box;
           transition: 0.3s ease transform;

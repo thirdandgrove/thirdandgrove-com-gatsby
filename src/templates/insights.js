@@ -4,12 +4,15 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { colors, mediaQueries } from '../styles';
+import useWindow from '../hooks/useWindow';
+import { colors, mediaQueries, jsBreakpoints } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 import InsightsSlider from '../components/InsightsSlider';
 
 const Insights = ({ data }) => {
+  const { width } = useWindow();
+  const isPhone = width < jsBreakpoints.phoneLarge;
   const post = data.insight;
   const imageSrc =
     post.relationships.field_image &&
@@ -55,7 +58,7 @@ const Insights = ({ data }) => {
         <ContentBody key={comp.id} comp={comp} />
       ))}
       <InsightsSlider
-        showButton={false}
+        showButton={isPhone}
         backgroundColor={colors.lightgray}
         title='You May Also Like'
       />
@@ -115,6 +118,79 @@ export const query = graphql`
             field_image {
               alt
             }
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, maxHeight: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+          ... on component__quote {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_quote
+            field_footer_text
+          }
+
+          ... on component__prefooter {
+            id
+            field_primary_lead_in_text
+            field_primary_body
+            field_primary_cta {
+              uri
+              title
+            }
+            field_primary_color {
+              color
+            }
+            field_secondary_lead_in_text
+            field_secondary_body
+            field_secondary_cta {
+              uri
+              title
+            }
+            field_secondary_color {
+              color
+            }
+            relationships {
+              component_type {
+                name
+              }
+
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 600, maxHeight: 600) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          ... on component__text_image_split {
+            id
+            field_body {
+              processed
+            }
+            field_reversed
             relationships {
               component_type {
                 name

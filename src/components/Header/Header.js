@@ -150,7 +150,7 @@ const Header = ({
   return (
     <>
       <SEO title={metaTitle || title} description={description} />
-      <TopNav invert={invert} />
+      <TopNav fill={fontColor} />
       <FullWidthSection
         css={sectionCSS}
         height={height}
