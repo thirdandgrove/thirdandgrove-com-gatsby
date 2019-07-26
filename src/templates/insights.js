@@ -20,6 +20,8 @@ const Insights = ({ data }) => {
     post.relationships.field_image.localFile.childImageSharp &&
     post.relationships.field_image.localFile.childImageSharp.fluid;
 
+  const imageAlt = post.field_image && post.field_image.alt;
+
   const backgroundColor = post.field_color && post.field_color.color;
 
   return (
@@ -36,8 +38,8 @@ const Insights = ({ data }) => {
     >
       {imageSrc && (
         <Img
-          fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
-          alt={post.field_image.alt}
+          fluid={imageSrc}
+          alt={imageAlt}
           css={css`
             margin-left: 20px;
             margin-right: 20px;
