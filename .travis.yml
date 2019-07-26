@@ -16,11 +16,6 @@ deploy:
     script: scripts/deploy.sh
     skip_cleanup: true
     on:
-      all_branches: true
-  - provider: script
-    script: netlify deploy --dir=public  --functions=functions --prod
-    skip_cleanup: true
-    on:
       branch: master
 
 cache:
