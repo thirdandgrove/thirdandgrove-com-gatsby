@@ -275,20 +275,6 @@ export const globalStyles = css`
     margin-bottom: 0;
   }
 
-  p.dropCap::first-letter {
-    float: left;
-    padding: 4px 20px 0;
-    color: ${colors.reallydarkgray};
-    font-family: ${fonts.serif};
-    font-size: 50px;
-    font-weight: ${weights.regular};
-    line-height: 1;
-
-    ${mediaQueries.phoneLarge} {
-      padding: 6px 20px 0;
-    }
-  }
-
   a {
     text-decoration: none;
     background-color: transparent;

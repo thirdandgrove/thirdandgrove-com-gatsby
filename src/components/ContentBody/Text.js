@@ -9,12 +9,11 @@ import {
   weights,
   contValues,
   mediaQueries,
+  dropCap,
 } from '../../styles';
 
 const Text = ({ data }) => {
-  console.log(data.isFirstText, data.type);
   const renderDropCap = data.type === 'insight' && data.isFirstText;
-  console.log(renderDropCap);
   return (
     <FullWidthSection
       fontWeight={weights.thin}
@@ -35,6 +34,8 @@ const Text = ({ data }) => {
           padding: 0;
           width: ${contValues.min};
         }
+
+        ${renderDropCap && dropCap}
       `}
     />
   );

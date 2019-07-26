@@ -121,3 +121,19 @@ export const contentHeadings = css`
   line-height: 1.69;
   margin-bottom: 30px;
 `;
+
+export const dropCap = css`
+  & > p:first-of-type::first-letter {
+    float: left;
+    padding: 4px 20px 0;
+    color: ${colors.reallydarkgray};
+    font-family: ${fonts.serif};
+    font-size: 50px;
+    font-weight: ${weights.regular};
+    line-height: 1;
+
+    ${mediaQueries.phoneLarge} {
+      padding: 6px 20px 0;
+    }
+  }
+`;
