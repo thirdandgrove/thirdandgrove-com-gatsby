@@ -54,7 +54,7 @@ export default () => {
         </span>
       </FullWidthSection>
       <ProjectsSlider />
-      <LogoGrid title='Some of Our Acquia Clients' />
+      <LogoGrid logoset='acquia' title='Some of Our Acquia Clients' />
       <SplitSection
         css={css`
           margin: 5rem auto;
@@ -93,10 +93,6 @@ export default () => {
           </p>
         </article>
       </SplitSection>
-      <FullWidthSection>
-        <h2>Your DXP Solution</h2>
-        <img src='/images/dxp-solution.png' alt='dxp solution' />
-      </FullWidthSection>
       <Quote
         data={{
           field_quote:

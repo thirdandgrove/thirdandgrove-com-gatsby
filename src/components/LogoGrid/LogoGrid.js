@@ -25,12 +25,97 @@ import { ReactComponent as DwellLogo } from './logos/dwell.svg';
 import { ReactComponent as BenefitLogo } from './logos/benefit.svg';
 import { ReactComponent as SunpowerLogo } from './logos/sunpower.svg';
 import { ReactComponent as PernodLogo } from './logos/pernodricard.svg';
+import { ReactComponent as MintLogo } from './logos/intuit-mint.svg';
+import { ReactComponent as Glanbia } from './logos/glanbia.svg';
+import { ReactComponent as Wvi } from './logos/world-vision.svg';
+import { ReactComponent as KingArthur } from './logos/kaf.svg';
+import { ReactComponent as CloudHealth } from './logos/cloudhealth.svg';
+import { ReactComponent as CooperVision } from './logos/cooper-vision.svg';
 
 const LogoGrid = ({ title, logoset }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
 
   const logosets = {
+    acquia: [
+      <MintLogo
+        alt='Mint'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <SunpowerLogo
+        alt='Sunpower'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <Glanbia
+        alt='Glanbia'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <Wvi
+        alt='World Vision'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <KingArthur
+        alt='King Arthur'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <CooperVision
+        alt='Cooper Vision'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <CloudHealth
+        alt='Cloud Health'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+    ],
+    drupal: [
+      <MintLogo
+        alt='Mint'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <SunpowerLogo
+        alt='Sunpower'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <BenefitLogo
+        alt='Benefit'
+        width={isSmScreen ? '105' : '140'}
+        height={isSmScreen ? '35' : '46'}
+      />,
+      <Wvi
+        alt='World Vision'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <KingArthur
+        alt='King Arthur'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <CooperVision
+        alt='Cooper Vision'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <CloudHealth
+        alt='Cloud Health'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '17' : '24'}
+      />,
+      <UCLALogo
+        alt='UCLA'
+        width={isSmScreen ? '85' : '116'}
+        height={isSmScreen ? '40' : '54'}
+      />,
+    ],
     default: [
       <UCLALogo
         alt='UCLA'
