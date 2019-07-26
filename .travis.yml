@@ -13,17 +13,17 @@ script:
 
 deploy:
   - provider: script
-    script: 'netlify deploy --dir=public --functions=functions --message="$TRAVIS_COMMIT: $TRAVIS_COMMIT_MESSAGE"'
+    script: netlify deploy --dir=public --functions=functions
     skip_cleanup: true
     on:
       all_branches: true
   - provider: script
-    script: 'netlify deploy --dir=public  --functions=functions --prod --message="$TRAVIS_COMMIT: $TRAVIS_COMMIT_MESSAGE"'
+    script: netlify deploy --dir=public  --functions=functions --prod
     skip_cleanup: true
     on:
       branch: master
 
-cache:
+cache: 
   directories:
     - node_modules
     - .cache
