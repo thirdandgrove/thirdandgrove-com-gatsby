@@ -59,6 +59,7 @@ const Project = ({ study, index }) => {
                   study.relationships.field_image.localFile.childImageSharp
                     .fluid
                 }
+                alt={study.field_image.alt}
                 style={{ transform, opacity }}
                 css={css`
                   width: 100%;

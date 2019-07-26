@@ -72,6 +72,7 @@ const ArticlePreview = ({ article }) => {
                     article.relationships.field_image.localFile.childImageSharp
                       .fluid
                   }
+                  alt={article.field_image.alt}
                 />
               )}
             </div>

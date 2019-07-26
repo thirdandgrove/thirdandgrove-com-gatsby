@@ -8,6 +8,7 @@ import { container, mediaQueries } from '../../styles';
 const Image = ({ data }) => (
   <Img
     fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
+    alt={data.field_image.alt}
     css={css`
       margin: 0 20px 70px;
 

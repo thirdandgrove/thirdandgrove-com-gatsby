@@ -56,6 +56,9 @@ export const query = graphql`
     id
     title
     field_inverse_header
+    field_image {
+      alt
+    }
     created(formatString: "MMMM DD YYYY")
     path {
       alias
@@ -99,6 +102,10 @@ export const query = graphql`
           }
         }
         ... on component__image {
+          id
+          field_image {
+            alt
+          }
           relationships {
             component_type {
               name

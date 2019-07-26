@@ -36,6 +36,7 @@ const Studies = ({ data }) => {
       {imageSrc && (
         <Img
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+          alt={post.field_image.alt}
           css={css`
             margin-left: 20px;
             margin-right: 20px;
@@ -91,6 +92,15 @@ export const query = graphql`
       field_color {
         color
       }
+      field_image {
+        alt
+      }
+      field_secondary_image {
+        alt
+      }
+      field_tertiary_image {
+        alt
+      }
       relationships {
         node_type {
           name
@@ -112,6 +122,9 @@ export const query = graphql`
           }
           ... on component__image {
             id
+            field_image {
+              alt
+            }
             relationships {
               component_type {
                 name
@@ -184,6 +197,9 @@ export const query = graphql`
             field_body {
               processed
             }
+            field_image {
+              alt
+            }
             field_reversed
             relationships {
               component_type {
@@ -217,7 +233,7 @@ export const query = graphql`
             }
           }
         }
-        field_tertiary_image {
+        field_secondary_image {
           id
           localFile {
             publicURL
@@ -228,7 +244,7 @@ export const query = graphql`
             }
           }
         }
-        field_secondary_image {
+        field_tertiary_image {
           id
           localFile {
             publicURL
