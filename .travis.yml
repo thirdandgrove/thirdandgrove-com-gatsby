@@ -13,7 +13,7 @@ script:
 
 deploy:
   - provider: script
-    script: netlify deploy --dir=public --functions=functions
+    script: scripts/deploy.sh
     skip_cleanup: true
     on:
       all_branches: true
@@ -23,7 +23,7 @@ deploy:
     on:
       branch: master
 
-cache: 
+cache:
   directories:
     - node_modules
     - .cache
