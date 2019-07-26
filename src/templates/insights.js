@@ -166,11 +166,13 @@ export const query = graphql`
             field_secondary_color {
               color
             }
+            field_image {
+              alt
+            }
             relationships {
               component_type {
                 name
               }
-
               field_image {
                 id
                 localFile {
@@ -189,6 +191,9 @@ export const query = graphql`
             id
             field_body {
               processed
+            }
+            field_image {
+              alt
             }
             field_reversed
             relationships {
