@@ -99,6 +99,20 @@ export const query = graphql`
                 ...GatsbyImageSharpFluid
               }
             }
+            mobileImage: childImageSharp {
+              fluid(maxHeight: 250) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+            desktopImage: childImageSharp {
+              fluid(
+                maxWidth: 980
+                maxHeight: 500
+                srcSetBreakpoints: [480, 900, 1200]
+              ) {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
         field_components {
