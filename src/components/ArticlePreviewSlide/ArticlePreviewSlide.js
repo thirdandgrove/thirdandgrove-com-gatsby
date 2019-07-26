@@ -107,6 +107,7 @@ const ArticlePreviewSlide = ({ article, index }) => {
                       media: jsBreakpoints.phoneLarge,
                     },
                   ]}
+                  alt={article.field_image.alt}
                 />
               )}
             </div>

@@ -33,6 +33,7 @@ const TextImage = ({ data }) => {
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <Img
         fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
+        alt={data.field_image.alt}
       />
       <section
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
@@ -45,6 +46,7 @@ const TextImage = ({ data }) => {
       />
       <Img
         fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
+        alt={data.field_image.alt}
         css={css`
           margin-bottom: 40px;
         `}

@@ -34,6 +34,7 @@ const Insights = ({ data }) => {
       {imageSrc && (
         <Img
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+          alt={post.field_image.alt}
           css={css`
             margin-left: 20px;
             margin-right: 20px;
@@ -75,6 +76,9 @@ export const query = graphql`
       field_color {
         color
       }
+      field_image {
+        alt
+      }
       created(formatString: "MMMM DD YYYY")
       relationships {
         node_type {
@@ -108,6 +112,9 @@ export const query = graphql`
           }
           ... on component__image {
             id
+            field_image {
+              alt
+            }
             relationships {
               component_type {
                 name
