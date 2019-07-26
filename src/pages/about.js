@@ -116,7 +116,7 @@ export default () => {
       }}
     >
       <FullWidthSection padding='10vw' textAlign='center' height='100%'>
-        <p>image of tag team</p>
+        <img src='/images/team.png' alt='TAG Team' />
         <Row>
           <div>
             <h1>2014</h1>
@@ -289,7 +289,7 @@ export default () => {
         <SplitSection>
           <Location>
             <h1>Boston</h1>
-            <img src='' alt='Boston' />
+            <img src='/images/boston.png' alt='Boston' />
             <h3>1st One’s on Us</h3>
             <span>
               <p>Wink &amp; Nod</p>
@@ -299,7 +299,7 @@ export default () => {
           </Location>
           <Location>
             <h1>Oakland</h1>
-            <img src='' alt='Oakland' />
+            <img src='/images/oakland.png' alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <span>
               <p>Cafe Van Kleef</p>
