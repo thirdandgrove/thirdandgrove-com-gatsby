@@ -43,7 +43,7 @@ const Insights = ({ data }) => {
         marginBottom: '70px',
       }}
     >
-      <div css={imageSrc || wrapperStyle}>
+      <div css={imageSrc === 'undefined' && wrapperStyle}>
         {imageSrc && (
           <Img
             fluid={imageSrc}
