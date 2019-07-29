@@ -1,5 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/core';
+import { navigate } from 'gatsby';
 
 import Button from '../Button';
 import { colors, mediaQueries, smSectionHead } from '../../styles';
@@ -49,7 +50,9 @@ const WhatWeDo = () => {
       <h1 css={headingCss}>Technology</h1>
       <h1 css={headingCss}>Strategy</h1>
       <h1 css={headingCss}>Creative</h1>
-      <Button onClick={() => navigate(`/capabilities`)}>Our Capabilities</Button>
+      <Button onClick={() => navigate(`/capabilities`)}>
+        Our Capabilities
+      </Button>
     </FullWidthSection>
   );
 };
