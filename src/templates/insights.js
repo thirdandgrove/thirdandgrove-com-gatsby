@@ -23,6 +23,13 @@ const Insights = ({ data }) => {
   const imageAlt = post.field_image && post.field_image.alt;
 
   const backgroundColor = post.field_color && post.field_color.color;
+  const wrapperStyle = css`
+    padding-top: 40px;
+
+    ${mediaQueries.phoneLarge} {
+      padding-top: 110px;
+    }
+  `;
 
   return (
     <Layout
@@ -36,27 +43,31 @@ const Insights = ({ data }) => {
         marginBottom: '70px',
       }}
     >
-      {imageSrc && (
-        <Img
-          fluid={imageSrc}
-          alt={imageAlt}
-          css={css`
-            margin-left: 20px;
-            margin-right: 20px;
-            margin-top: -100px;
-            margin-bottom: 60px;
-            max-width: 980px;
+      <div css={imageSrc || wrapperStyle}>
+        {imageSrc && (
+          <Img
+            fluid={imageSrc}
+            alt={imageAlt}
+            css={css`
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-top: -100px;
+              margin-bottom: 60px;
+              max-width: 980px;
 
-            ${mediaQueries.phoneLarge} {
-              margin-left: auto;
-              margin-right: auto;
-              margin-top: -165px;
-              margin-bottom: 80px;
-            }
-          `}
-        />
-      )}
-      <ContentBody comps={post.relationships.field_components} type='insight' />
+              ${mediaQueries.phoneLarge} {
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: -165px;
+                margin-bottom: 80px;
+              }
+            `}
+          />
+        )}
+        {post.relationships.field_components.map(comp => (
+          <ContentBody key={comp.id} comp={comp} />
+        ))}
+      </div>
       <InsightsSlider
         showButton={isPhone}
         backgroundColor={colors.lightgray}
