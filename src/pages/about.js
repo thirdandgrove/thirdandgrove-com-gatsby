@@ -222,7 +222,7 @@ export default () => {
             <h2>Jennifer Slemp</h2>
             <p>Chief Operations Officer</p>
             <h2>Christina Andrade</h2>
-            <p>QA Lead</p>
+            <p>Director of Operations</p>
           </NameCol>
         </SplitSection>
       </FullWidthSection>
