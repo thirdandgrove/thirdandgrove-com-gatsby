@@ -17,22 +17,33 @@ const Components = {
   Prefooter,
 };
 
-const ComponentBody = ({ comp }) => {
-  // Ensure relationships exists before rendering.
-  if (comp.relationships == null) {
-    return <div />;
-  }
-
-  // Dynamically select a component based on field name
-  const componentName = comp.relationships.component_type.name
-    .split(' ')
-    .join('');
-  const Component = Components[componentName];
-  return <Component data={comp} />;
+const ComponentBody = ({ comps, type }) => {
+  const validComps = comps.filter(comp => comp.relationships);
+  const firstText = validComps.find(comp =>
+    comp.relationships.component_type.name.toLowerCase().includes('text')
+  );
+  return (
+    <>
+      {validComps.map(comp => {
+        // Dynamically select a component based on field name
+        const componentName = comp.relationships.component_type.name
+          .split(' ')
+          .join('');
+        const Component = Components[componentName];
+        return (
+          <Component
+            data={{ ...comp, type, isFirstText: firstText.id === comp.id }}
+            key={comp.id}
+          />
+        );
+      })}
+    </>
+  );
 };
 
 ComponentBody.propTypes = {
-  comp: PropTypes.object.isRequired,
+  comps: PropTypes.arrayOf(PropTypes.object).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ComponentBody;

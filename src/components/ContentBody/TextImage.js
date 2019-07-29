@@ -9,26 +9,30 @@ import {
   container,
   mediaQueries,
   contentHeadings,
+  dropCap,
 } from '../../styles';
 import SplitSection from '../SplitSection';
 
-const sectionStyle = css`
-  ${container.min};
-  font-weight: ${weights.thin};
-  grid-column-gap: 20px;
-  padding: 0 20px;
-
-  ${mediaQueries.phoneLarge} {
-    padding: 0;
-  }
-
-  h2,
-  h3 {
-    ${contentHeadings};
-  }
-`;
-
 const TextImage = ({ data }) => {
+  const renderDropCap = data.type === 'insight' && data.isFirstText;
+  const sectionStyle = css`
+    ${container.min};
+    font-weight: ${weights.thin};
+    grid-column-gap: 20px;
+    padding: 0 20px;
+
+    ${mediaQueries.phoneLarge} {
+      padding: 0;
+    }
+
+    h2,
+    h3 {
+      ${contentHeadings};
+    }
+
+    ${renderDropCap && dropCap}
+  `;
+
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <Img
