@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
-import { mediaQueries, jsBreakpoints } from '../../styles';
+import mediaQueries from '../../styles';
 
 const ImageCollage = ({ images, type }) => {
   const selectedClass = () => 1;

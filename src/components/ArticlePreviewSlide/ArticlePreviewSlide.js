@@ -7,13 +7,7 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
-import {
-  fonts,
-  weights,
-  mediaQueries,
-  jsBreakpoints,
-  container,
-} from '../../styles';
+import { fonts, weights, mediaQueries, container } from '../../styles';
 
 const ArticlePreviewSlide = ({ article, index }) => {
   const nodeRef = useRef();
