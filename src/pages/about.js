@@ -206,9 +206,9 @@ export default () => {
         <SplitSection>
           <NameCol>
             <h2>Justin Emond</h2>
-            <p>Chief Executive Officer</p>
+            <p>Co-Founder, Chief Executive Officer</p>
             <h2>Matt Davis</h2>
-            <p>Chief Technical Officer</p>
+            <p>Director of Engineering</p>
             <h2>Jennifer Slemp</h2>
             <p>Chief Strategy Officer</p>
             <h2>Jen May</h2>
@@ -221,8 +221,8 @@ export default () => {
             <p>Executive Creative Director</p>
             <h2>Jennifer Slemp</h2>
             <p>Chief Operations Officer</p>
-            <h2>Lorem Ipsum</h2>
-            <p>Lorem Ipsum</p>
+            <h2>Christina Andrade</h2>
+            <p>QA Lead</p>
           </NameCol>
         </SplitSection>
       </FullWidthSection>
