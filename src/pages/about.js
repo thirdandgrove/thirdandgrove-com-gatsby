@@ -6,7 +6,15 @@ import styled from '@emotion/styled';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
-import { colors, fonts, weights, smSectionHead, h1L } from '../styles';
+import {
+  colors,
+  fonts,
+  weights,
+  smSectionHead,
+  h1L,
+  container,
+  mediaQueries,
+} from '../styles';
 import Button from '../components/Button';
 
 export default () => {
@@ -41,27 +49,27 @@ export default () => {
   const Row = styled.section`
     display: flex;
     justify-content: space-between;
-    padding-top: 5rem;
+    padding-top: 16px;
+    margin-bottom: 16px;
     div {
       display: flex;
       flex-direction: column;
-      padding: 1rem 3rem;
+      padding: 2rem 3rem;
       h1 {
         font-weight: ${weights.medium};
         font-size: 48px;
         color: ${colors.darkgray};
         letter-spacing: -1.38px;
         text-align: center;
-        line-height: 84px;
+        margin-bottom: 12px;
       }
       h3 {
-        font-family: ${fonts.serif};
+        font-family: ${fonts.sans};
         font-weight: ${weights.light};
         font-size: 15px;
         color: ${colors.darkgray};
         letter-spacing: 0.2px;
         text-align: center;
-        line-height: 36px;
       }
     }
   `;
@@ -115,7 +123,18 @@ export default () => {
         height: '400px',
       }}
     >
-      <FullWidthSection padding='10vw' textAlign='center' height='100%'>
+      <FullWidthSection
+        textAlign='center'
+        height='100%'
+        css={css`
+          ${container.medium};
+          padding-top: 20px;
+
+          ${mediaQueries.phoneLarge} {
+            padding-top: 150px;
+          }
+        `}
+      >
         <img src='/images/team.png' alt='TAG Team' />
         <Row>
           <div>
