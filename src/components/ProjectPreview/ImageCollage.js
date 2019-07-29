@@ -169,7 +169,7 @@ const ImageCollage = ({ images, type }) => {
               images.primary.mobile.fixed,
               {
                 ...images.primary.phoneLarge.fixed,
-                media: jsBreakpoints.phoneLarge,
+                media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
               },
             ]}
             alt={images.primary.alt}
@@ -183,7 +183,7 @@ const ImageCollage = ({ images, type }) => {
               images.secondary.mobile.fixed,
               {
                 ...images.secondary.phoneLarge.fixed,
-                media: jsBreakpoints.phoneLarge,
+                media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
               },
             ]}
             alt={images.secondary.alt}
@@ -197,7 +197,7 @@ const ImageCollage = ({ images, type }) => {
               images.tertiary.mobile.fixed,
               {
                 ...images.tertiary.phoneLarge.fixed,
-                media: jsBreakpoints.phoneLarge,
+                media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
               },
             ]}
             alt={images.tertiary.alt}

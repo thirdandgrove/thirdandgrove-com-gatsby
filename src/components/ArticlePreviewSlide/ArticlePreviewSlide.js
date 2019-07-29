@@ -104,7 +104,9 @@ const ArticlePreviewSlide = ({ article, index }) => {
                     {
                       ...article.relationships.field_image.localFile
                         .childImageSlideDesktop.fluid,
-                      media: jsBreakpoints.phoneLarge,
+                      media: mediaQueries.phoneLarge
+                        .replace(`@media`, ``)
+                        .trim(),
                     },
                   ]}
                   alt={article.field_image.alt}

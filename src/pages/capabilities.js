@@ -5,13 +5,7 @@ import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
 
-import {
-  fonts,
-  mediaQueries,
-  container,
-  weights,
-  jsBreakpoints,
-} from '../styles';
+import { fonts, mediaQueries, container, weights } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
@@ -149,7 +143,7 @@ const CapabilitiesPage = ({ data }) => {
           data.technologyImageMobile.childImageSharp.fluid,
           {
             ...data.technologyImageDesktop.childImageSharp.fluid,
-            media: jsBreakpoints.phoneLarge,
+            media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
           },
         ]}
         imageAlt='Laptop on desk with drink'
@@ -178,7 +172,7 @@ const CapabilitiesPage = ({ data }) => {
           data.strategyImageMobile.childImageSharp.fluid,
           {
             ...data.strategyImageDesktop.childImageSharp.fluid,
-            media: jsBreakpoints.phoneLarge,
+            media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
           },
         ]}
         imageAlt='Two office workers looking at a chart on a laptop'
@@ -206,7 +200,7 @@ const CapabilitiesPage = ({ data }) => {
           data.creativeImageMobile.childImageSharp.fluid,
           {
             ...data.creativeImageDesktop.childImageSharp.fluid,
-            media: jsBreakpoints.phoneLarge,
+            media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
           },
         ]}
         imageAlt='Man drawing logos in a notebook'
