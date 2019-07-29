@@ -51,6 +51,11 @@ export default () => {
     justify-content: space-between;
     padding-top: 16px;
     margin-bottom: 16px;
+
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 75px;
+    }
+
     div {
       display: flex;
       flex-direction: column;
@@ -62,6 +67,10 @@ export default () => {
         letter-spacing: -1.38px;
         text-align: center;
         margin-bottom: 12px;
+
+        ${mediaQueries.phoneLarge} {
+          margin-bottom: 36px;
+        }
       }
       h3 {
         font-family: ${fonts.sans};
