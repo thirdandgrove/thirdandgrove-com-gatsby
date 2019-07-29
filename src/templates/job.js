@@ -18,25 +18,24 @@ const Job = ({ pageContext }) => {
     font-weight: ${weights.light};
     letter-spacing: 0.2px;
 
-    h2 {
+    strong:only-child {
+      display: block;
       margin-top: 60px;
+      margin-bottom: -7px;
       font-family: inherit;
       font-size: 21px;
       line-height: 1.4px;
       font-weight: ${weights.bold};
-
-      &:first-child {
-        margin-top: 0;
-      }
     }
 
     ${mediaQueries.phoneLarge} {
       padding-top: 100px;
       padding-bottom: 100px;
 
-      h2 {
+      strong:only-child {
         font-size: 18px;
         line-height: 1.39;
+        margin-bottom: -27px;
       }
 
       ul {
