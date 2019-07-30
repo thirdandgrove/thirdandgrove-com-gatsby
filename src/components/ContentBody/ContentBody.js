@@ -17,7 +17,12 @@ const Components = {
   Prefooter,
 };
 
-const ComponentBody = ({ comps, type }) => {
+const ContentBody = ({ comps, type }) => {
+  if (!Array.isArray(comps)) {
+    throw new Error(
+      `Comps prop is not an array, ${typeof comps} cannot be passed to ContentBody.`
+    );
+  }
   const validComps = comps.filter(comp => comp.relationships);
   const firstText = validComps.find(comp =>
     comp.relationships.component_type.name.toLowerCase().includes('text')
@@ -41,9 +46,9 @@ const ComponentBody = ({ comps, type }) => {
   );
 };
 
-ComponentBody.propTypes = {
+ContentBody.propTypes = {
   comps: PropTypes.arrayOf(PropTypes.object).isRequired,
   type: PropTypes.string.isRequired,
 };
 
-export default ComponentBody;
+export default ContentBody;

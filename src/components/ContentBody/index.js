@@ -1,3 +1,3 @@
-import ComponentBody from './ComponentBody';
+import ContentBody from './ContentBody';
 
-export default ComponentBody;
+export default ContentBody;
