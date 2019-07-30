@@ -274,25 +274,32 @@ export default () => {
       </FullWidthSection>
       <FullWidthSection
         minHeight='500px'
-        height='500px'
+        height='400px'
         backgroundColor={colors.lightblue}
+        padding='0 0 30px'
         css={css`
           z-index: 1;
         `}
       >
         <h3 css={smSectionHead}>Making Moves?</h3>
-        <h1
-          css={[
-            h1L,
-            css`
-              padding: 2rem 0;
-              text-align: center;
-              font-weight: ${weights.bold};
-            `,
-          ]}
+        <h2
+          css={css`
+            color: ${colors.reallydarkgray};
+            font-size: 39px;
+            font-weight: ${weights.bold};
+            letter-spacing: -0.45px;
+            line-height: 1.23;
+            text-align: center;
+            margin-bottom: 30px;
+
+            ${mediaQueries.phoneLarge} {
+              font-size: 48px;
+              letter-spacing: -0.2px;
+            }
+          `}
         >
           Show us what you&apos;re made of.
-        </h1>
+        </h2>
         <Button onClick={() => navigate(`/careers`)}>
           view open positions
         </Button>
