@@ -50,12 +50,13 @@ export default () => {
   const Row = styled.section`
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-evenly;
     padding-top: 48px;
     margin-bottom: 12px;
-    max-width: ${contValues.medium};
 
     ${mediaQueries.phoneLarge} {
-      margin-bottom: 75px;
+      width: ${contValues.medium};
+      margin-bottom: 70px;
     }
 
     div {
@@ -64,6 +65,7 @@ export default () => {
 
       ${mediaQueries.phoneLarge} {
         width: auto;
+        padding: 0 2rem;
       }
 
       h1 {
