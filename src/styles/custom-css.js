@@ -63,6 +63,7 @@ export const smSectionHead = css`
   font-weight: ${weights.thin};
   letter-spacing: 0.23px;
   line-height: 3.62;
+  color: ${colors.reallydarkgray};
 
   ${mediaQueries.phoneLarge} {
     margin-bottom: 30px;

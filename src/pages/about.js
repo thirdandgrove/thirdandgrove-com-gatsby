@@ -178,17 +178,6 @@ export default () => {
           background-color: ${colors.lightblue};
           z-index: 1;
           height: 600px;
-          h3 {
-            height: 50px;
-            width: 880px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.serif};
-            font-size: 36px;
-            font-weight: 100;
-            letter-spacing: 0.4px;
-            line-height: 76px;
-            text-align: center;
-          }
           h1 {
             height: 168px;
             width: 980px;
@@ -213,7 +202,7 @@ export default () => {
           }
         `}
       >
-        <h3>Radically Honest</h3>
+        <h3 css={smSectionHead}>Radically Honest</h3>
         <h1>
           If you had a bit of food stuck in your teeth, we’d let you know.
         </h1>
@@ -224,21 +213,7 @@ export default () => {
         </p>
       </FullWidthSection>
       <FullWidthSection>
-        <h3
-          css={css`
-            height: 50px;
-            width: 580px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.serif};
-            font-size: 36px;
-            font-weight: 100;
-            letter-spacing: 0.4px;
-            line-height: 76px;
-            text-align: center;
-          `}
-        >
-          Who We Are
-        </h3>
+        <h3 css={smSectionHead}>Who We Are</h3>
         <SplitSection>
           <NameCol>
             <h2>Justin Emond</h2>
@@ -307,21 +282,7 @@ export default () => {
         </Row>
       </FullWidthSection>
       <FullWidthSection>
-        <h3
-          css={css`
-            height: 50px;
-            width: 580px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.serif};
-            font-size: 36px;
-            font-weight: 100;
-            letter-spacing: 0.4px;
-            line-height: 76px;
-            text-align: center;
-          `}
-        >
-          Where We Are
-        </h3>
+        <h3 css={smSectionHead}>Where We Are</h3>
         <SplitSection>
           <Location>
             <h1>Boston</h1>
@@ -346,11 +307,11 @@ export default () => {
         </SplitSection>
       </FullWidthSection>
       <FullWidthSection
-        height='550px'
+        minHeight='500px'
+        height='500px'
+        backgroundColor={colors.lightblue}
         css={css`
-          background-color: ${colors.lightblue};
           z-index: 1;
-          height: 550px;
         `}
       >
         <h3 css={smSectionHead}>Making Moves?</h3>
@@ -359,6 +320,8 @@ export default () => {
             h1L,
             css`
               padding: 2rem 0;
+              text-align: center;
+              font-weight: ${weights.bold};
             `,
           ]}
         >
