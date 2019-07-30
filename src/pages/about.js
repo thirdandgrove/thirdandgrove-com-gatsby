@@ -195,6 +195,14 @@ export default () => {
         <SplitSection
           css={css`
             padding-top: 20px;
+
+            ${mediaQueries.phoneLarge} {
+              grid-column-gap: 100px;
+            }
+
+            ${mediaQueries.desktop} {
+              grid-column-gap: 270px;
+            }
           `}
         >
           <NameCol>
