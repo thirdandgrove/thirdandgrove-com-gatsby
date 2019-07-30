@@ -85,7 +85,7 @@ export default () => {
   const Location = styled.section`
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 0 20px 64px;
     h1 {
       ${h1L};
       padding-top: 10px;
@@ -100,7 +100,7 @@ export default () => {
       font-size: 21px;
       font-weight: bold;
       letter-spacing: -0.5px;
-      line-height: 30px;
+      margin-bottom: 12px;
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
@@ -108,13 +108,18 @@ export default () => {
     div {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      ${mediaQueries.phoneLarge} {
+        align-items: center;
+      }
       p {
         ${pLight};
         padding: 0;
-        margin: 3px;
+        margin: 0 0 1px 0;
       }
     }
   `;
+
   return (
     <Layout
       headerData={{
