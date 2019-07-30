@@ -85,28 +85,25 @@ export default () => {
   const Location = styled.section`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 0 20px;
     h1 {
-      height: 84px;
-      width: 335px;
-      color: ${colors.darkgray};
-      font-family: ${fonts.serif};
-      font-size: 72px;
-      font-weight: 500;
-      letter-spacing: -1px;
-      line-height: 84px;
-      text-align: center;
+      ${h1L};
+      padding-top: 10px;
+      margin-bottom: 8px;
+      ${mediaQueries.phoneLarge} {
+        text-align: center;
+      }
     }
     h3 {
-      height: 30px;
-      width: 335px;
-      color: ${colors.darkgray};
+      color: ${colors.reallydarkgray};
       font-family: ${fonts.sans};
       font-size: 21px;
       font-weight: bold;
       letter-spacing: -0.5px;
       line-height: 30px;
-      text-align: center;
+      ${mediaQueries.phoneLarge} {
+        text-align: center;
+      }
     }
     span {
       display: flex;
@@ -245,11 +242,11 @@ export default () => {
           </div>
         </Row>
       </FullWidthSection>
-      <FullWidthSection>
+      <FullWidthSection padding='44px 0 0'>
         <h3 css={smSectionHead}>Where We Are</h3>
         <SplitSection>
           <Location>
-            <h1>Boston</h1>
+            <h1 css={h1L}>Boston</h1>
             <img src='/images/boston.png' alt='Boston' />
             <h3>1st One’s on Us</h3>
             <span>
@@ -259,7 +256,7 @@ export default () => {
             </span>
           </Location>
           <Location>
-            <h1>Oakland</h1>
+            <h1 css={h1L}>Oakland</h1>
             <img src='/images/oakland.png' alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <span>
