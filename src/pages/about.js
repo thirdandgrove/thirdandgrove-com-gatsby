@@ -252,7 +252,7 @@ export default () => {
         <SplitSection>
           <Location>
             <h1 css={h1L}>Boston</h1>
-            <img src='/images/boston.png' alt='Boston' />
+            <img src='/images/boston.png' alt='Boston' width='530px' />
             <h3>1st One’s on Us</h3>
             <div>
               <p>Wink &amp; Nod</p>
@@ -262,7 +262,7 @@ export default () => {
           </Location>
           <Location>
             <h1 css={h1L}>Oakland</h1>
-            <img src='/images/oakland.png' alt='Oakland' />
+            <img src='/images/oakland.png' alt='Oakland' width='530px' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>
               <p>Cafe Van Kleef</p>
