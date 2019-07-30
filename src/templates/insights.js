@@ -64,7 +64,10 @@ const Insights = ({ data }) => {
             `}
           />
         )}
-        <ContentBody comps={post.relationships.field_components} type='study' />
+        <ContentBody
+          comps={post.relationships.field_components}
+          type='insight'
+        />
       </div>
       <InsightsSlider
         showButton={isPhone}
