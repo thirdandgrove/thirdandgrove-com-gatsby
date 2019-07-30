@@ -12,7 +12,6 @@ const WhatWeDo = () => {
     font-size: 48px;
     line-height: 1.4;
     letter-spacing: -0.5px;
-    opacity: 0.7;
     cursor: pointer;
     transition: 0.3s ease all;
 
@@ -27,8 +26,12 @@ const WhatWeDo = () => {
       margin-bottom: 0;
     }
 
-    &:hover {
-      opacity: 1;
+    a {
+      color: ${colors.darkgrayFaded};
+    }
+
+    a:hover {
+      color: ${colors.darkgray};
     }
   `;
 
@@ -47,9 +50,15 @@ const WhatWeDo = () => {
       `}
     >
       <h3 css={smSectionHead}>What We Do</h3>
-      <h1 css={headingCss}>Technology</h1>
-      <h1 css={headingCss}>Strategy</h1>
-      <h1 css={headingCss}>Creative</h1>
+      <h4 css={headingCss}>
+        <a href='/capabilities'>Technology</a>
+      </h4>
+      <h4 css={headingCss}>
+        <a href='/capabilities'>Strategy</a>
+      </h4>
+      <h4 css={headingCss}>
+        <a href='/capabilities'>Creative</a>
+      </h4>
       <Button onClick={() => navigate(`/capabilities`)}>
         Our Capabilities
       </Button>
