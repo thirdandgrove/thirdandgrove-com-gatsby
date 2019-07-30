@@ -64,9 +64,7 @@ const Insights = ({ data }) => {
             `}
           />
         )}
-        {post.relationships.field_components.map(comp => (
-          <ContentBody key={comp.id} comp={comp} />
-        ))}
+        <ContentBody comps={post.relationships.field_components} type='study' />
       </div>
       <InsightsSlider
         showButton={isPhone}
