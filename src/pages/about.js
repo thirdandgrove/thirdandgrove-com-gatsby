@@ -14,6 +14,7 @@ import {
   h1L,
   container,
   mediaQueries,
+  contValues,
 } from '../styles';
 import Button from '../components/Button';
 
@@ -48,18 +49,18 @@ export default () => {
   `;
   const Row = styled.section`
     display: flex;
-    justify-content: space-between;
-    padding-top: 16px;
-    margin-bottom: 16px;
+    flex-flow: row wrap;
+    padding-top: 48px;
+    margin-bottom: 12px;
+    max-width: ${contValues.medium};
 
     ${mediaQueries.phoneLarge} {
       margin-bottom: 75px;
     }
 
     div {
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 3rem;
+      width: 50%;
+      margin-bottom: 40px;
       h1 {
         font-weight: ${weights.medium};
         font-size: 48px;
