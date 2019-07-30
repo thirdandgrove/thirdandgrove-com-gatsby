@@ -6,7 +6,17 @@ import styled from '@emotion/styled';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
-import { colors, fonts, weights, smSectionHead, h1L } from '../styles';
+import {
+  colors,
+  fonts,
+  weights,
+  smSectionHead,
+  h1L,
+  container,
+  mediaQueries,
+  contValues,
+  pLight,
+} from '../styles';
 import Button from '../components/Button';
 
 export default () => {
@@ -14,99 +24,101 @@ export default () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3rem;
     h2 {
-      height: 40px;
-      width: 430px;
-      color: ${colors.darkgray};
-      font-family: ${fonts.serif};
-      font-size: 27px;
+      font-size: 21px;
       font-weight: bold;
-      line-height: 52px;
       text-align: center;
+      margin-bottom: 6px;
+
+      ${mediaQueries.phoneLarge} {
+        font-size: 27px;
+      }
     }
     p {
-      height: 60px;
-      width: 430px;
-      color: ${colors.darkgray};
-      font-family: ${fonts.sans};
-      font-size: 16px;
-      font-weight: 300;
-      letter-spacing: 0.2px;
-      line-height: 27px;
-      text-align: center;
-      padding-bottom: 90px;
+      ${pLight};
+      margin-bottom: 64px;
     }
   `;
   const Row = styled.section`
     display: flex;
-    justify-content: space-between;
-    padding-top: 5rem;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    padding-top: 48px;
+    margin-bottom: 12px;
+
+    ${mediaQueries.phoneLarge} {
+      width: ${contValues.medium};
+    }
+
     div {
-      display: flex;
-      flex-direction: column;
-      padding: 1rem 3rem;
+      width: 50%;
+      margin-bottom: 40px;
+
+      ${mediaQueries.phoneLarge} {
+        width: auto;
+        padding: 0 2rem;
+      }
+
       h1 {
         font-weight: ${weights.medium};
         font-size: 48px;
         color: ${colors.darkgray};
         letter-spacing: -1.38px;
         text-align: center;
-        line-height: 84px;
+        margin-bottom: 12px;
+
+        ${mediaQueries.phoneLarge} {
+          margin-bottom: 36px;
+        }
       }
       h3 {
-        font-family: ${fonts.serif};
+        font-family: ${fonts.sans};
         font-weight: ${weights.light};
         font-size: 15px;
         color: ${colors.darkgray};
         letter-spacing: 0.2px;
         text-align: center;
-        line-height: 36px;
       }
     }
   `;
   const Location = styled.section`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 0 20px 64px;
     h1 {
-      height: 84px;
-      width: 335px;
-      color: ${colors.darkgray};
-      font-family: ${fonts.serif};
-      font-size: 72px;
-      font-weight: 500;
-      letter-spacing: -1px;
-      line-height: 84px;
-      text-align: center;
+      ${h1L};
+      padding-top: 10px;
+      margin-bottom: 8px;
+      ${mediaQueries.phoneLarge} {
+        text-align: center;
+      }
     }
     h3 {
-      height: 30px;
-      width: 335px;
-      color: ${colors.darkgray};
+      color: ${colors.reallydarkgray};
       font-family: ${fonts.sans};
       font-size: 21px;
       font-weight: bold;
       letter-spacing: -0.5px;
-      line-height: 30px;
-      text-align: center;
+      margin-bottom: 12px;
+      ${mediaQueries.phoneLarge} {
+        text-align: center;
+      }
     }
-    span {
+    div {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      ${mediaQueries.phoneLarge} {
+        align-items: center;
+      }
       p {
-        color: ${colors.darkgray};
-        font-family: ${fonts.sans};
-        font-size: 16px;
-        font-weight: 300;
-        letter-spacing: 0.2px;
-        line-height: 27px;
-        text-align: center;
+        ${pLight};
         padding: 0;
-        margin: 3px;
+        margin: 0 0 1px 0;
       }
     }
   `;
+
   return (
     <Layout
       headerData={{
@@ -115,7 +127,19 @@ export default () => {
         height: '400px',
       }}
     >
-      <FullWidthSection padding='10vw' textAlign='center' height='100%'>
+      <FullWidthSection
+        textAlign='center'
+        height='100%'
+        css={css`
+          ${container.medium};
+          padding-top: 20px;
+
+          ${mediaQueries.phoneLarge} {
+            padding-top: 150px;
+            margin-bottom: 58px;
+          }
+        `}
+      >
         <img src='/images/team.png' alt='TAG Team' />
         <Row>
           <div>
@@ -142,68 +166,53 @@ export default () => {
           background-color: ${colors.lightblue};
           z-index: 1;
           height: 600px;
-          h3 {
-            height: 50px;
-            width: 880px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.serif};
-            font-size: 36px;
-            font-weight: 100;
-            letter-spacing: 0.4px;
-            line-height: 76px;
-            text-align: center;
-          }
-          h1 {
-            height: 168px;
-            width: 980px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.serif};
-            font-size: 72px;
-            font-weight: 500;
-            letter-spacing: -1px;
-            line-height: 84px;
-            text-align: center;
-          }
-          p {
-            height: 60px;
-            width: 680px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.sans};
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 0.2px;
-            line-height: 27px;
-            text-align: center;
-          }
+          text-align: center;
         `}
       >
-        <h3>Radically Honest</h3>
-        <h1>
+        <h3 css={smSectionHead}>Radically Honest</h3>
+        <h1 css={[h1L, container.medium]}>
           If you had a bit of food stuck in your teeth, we’d let you know.
         </h1>
-        <p>
+        <p
+          css={[
+            pLight,
+            css`
+              padding-top: 10px;
+
+              ${mediaQueries.phoneLarge} {
+                width: ${contValues.min};
+              }
+            `,
+          ]}
+        >
           We work with brands we love and can’t wait to help grow. That means we
           might not always tell you what you want to hear, but we’ll definitely
           tell you what you need to hear.
         </p>
       </FullWidthSection>
-      <FullWidthSection>
-        <h3
+      <FullWidthSection
+        css={css`
+          padding: 44px 0 0;
+
+          ${mediaQueries.desktop} {
+            padding: 120px 0;
+          }
+        `}
+      >
+        <h3 css={smSectionHead}>Who We Are</h3>
+        <SplitSection
           css={css`
-            height: 50px;
-            width: 580px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.serif};
-            font-size: 36px;
-            font-weight: 100;
-            letter-spacing: 0.4px;
-            line-height: 76px;
-            text-align: center;
+            padding-top: 20px;
+
+            ${mediaQueries.phoneLarge} {
+              grid-column-gap: 100px;
+            }
+
+            ${mediaQueries.desktop} {
+              grid-column-gap: 270px;
+            }
           `}
         >
-          Who We Are
-        </h3>
-        <SplitSection>
           <NameCol>
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
@@ -228,24 +237,21 @@ export default () => {
       </FullWidthSection>
       <FullWidthSection
         backgroundColor={colors.yellow}
-        padding='10vw'
         textAlign='center'
         height='750px'
+        minHeight='730px'
       >
         <h3 css={smSectionHead}>Remote Control</h3>
         <h1 css={h1L}>80% distributed, 100% united</h1>
         <h4
-          css={css`
-            height: 60px;
-            width: 680px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.sans};
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 0.2px;
-            line-height: 27px;
-            text-align: center;
-          `}
+          css={[
+            pLight,
+            css`
+              ${mediaQueries.phoneLarge} {
+                width: ${contValues.min};
+              }
+            `,
+          ]}
         >
           While we have offices in Boston and Oakland, we embrace a remote
           culture, allowing our staff the freedom to do their best, wherever
@@ -270,64 +276,67 @@ export default () => {
           </div>
         </Row>
       </FullWidthSection>
-      <FullWidthSection>
-        <h3
-          css={css`
-            height: 50px;
-            width: 580px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.serif};
-            font-size: 36px;
-            font-weight: 100;
-            letter-spacing: 0.4px;
-            line-height: 76px;
-            text-align: center;
-          `}
-        >
-          Where We Are
-        </h3>
+      <FullWidthSection
+        css={css`
+          padding: 44px 0 0;
+
+          ${mediaQueries.desktop} {
+            padding: 70px 0;
+          }
+        `}
+      >
+        <h3 css={smSectionHead}>Where We Are</h3>
         <SplitSection>
           <Location>
-            <h1>Boston</h1>
-            <img src='/images/boston.png' alt='Boston' />
+            <h1 css={h1L}>Boston</h1>
+            <img src='/images/boston.png' alt='Boston' width='530px' />
             <h3>1st One’s on Us</h3>
-            <span>
+            <div>
               <p>Wink &amp; Nod</p>
               <p>Lucy&apos; Lounge</p>
               <p>UpperWest</p>
-            </span>
+            </div>
           </Location>
           <Location>
-            <h1>Oakland</h1>
-            <img src='/images/oakland.png' alt='Oakland' />
+            <h1 css={h1L}>Oakland</h1>
+            <img src='/images/oakland.png' alt='Oakland' width='530px' />
             <h3>If it’s Done, We’re Probably Here</h3>
-            <span>
+            <div>
               <p>Cafe Van Kleef</p>
               <p>The Ruby Room</p>
               <p>The Alley</p>
-            </span>
+            </div>
           </Location>
         </SplitSection>
       </FullWidthSection>
       <FullWidthSection
-        height='550px'
+        minHeight='500px'
+        height='400px'
+        backgroundColor={colors.lightblue}
+        padding='0 0 30px'
         css={css`
-          background-color: ${colors.lightblue};
           z-index: 1;
-          height: 550px;
         `}
       >
         <h3 css={smSectionHead}>Making Moves?</h3>
-        <h1
-          css={[
-            h1L,
-            css`
-              padding: 2rem 0;
-            `,
-          ]}
+        <h2
+          css={css`
+            color: ${colors.reallydarkgray};
+            font-size: 39px;
+            font-weight: ${weights.bold};
+            letter-spacing: -0.45px;
+            line-height: 1.23;
+            text-align: center;
+            margin-bottom: 30px;
+
+            ${mediaQueries.phoneLarge} {
+              font-size: 48px;
+              letter-spacing: -0.2px;
+            }
+          `}
         >
           Show us what you&apos;re made of.
-        </h1>
+        </h2>
         <Button onClick={() => navigate(`/careers`)}>
           view open positions
         </Button>
