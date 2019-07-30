@@ -190,7 +190,15 @@ export default () => {
           tell you what you need to hear.
         </p>
       </FullWidthSection>
-      <FullWidthSection padding='44px 0 0'>
+      <FullWidthSection
+        css={css`
+          padding: 44px 0 0;
+
+          ${mediaQueries.desktop} {
+            padding: 120px 0;
+          }
+        `}
+      >
         <h3 css={smSectionHead}>Who We Are</h3>
         <SplitSection
           css={css`
@@ -268,7 +276,15 @@ export default () => {
           </div>
         </Row>
       </FullWidthSection>
-      <FullWidthSection padding='44px 0 0'>
+      <FullWidthSection
+        css={css`
+          padding: 44px 0 0;
+
+          ${mediaQueries.desktop} {
+            padding: 70px 0;
+          }
+        `}
+      >
         <h3 css={smSectionHead}>Where We Are</h3>
         <SplitSection>
           <Location>
