@@ -223,7 +223,7 @@ export default () => {
       >
         <h3 css={smSectionHead}>Remote Control</h3>
         <h1 css={h1L}>80% distributed, 100% united</h1>
-        <h4 css={pLight}>
+        <h4 css={[pLight, container.min]}>
           While we have offices in Boston and Oakland, we embrace a remote
           culture, allowing our staff the freedom to do their best, wherever
           that might be.
