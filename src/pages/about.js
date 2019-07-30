@@ -178,6 +178,10 @@ export default () => {
             pLight,
             css`
               padding-top: 10px;
+
+              ${mediaQueries.phoneLarge} {
+                width: ${contValues.min};
+              }
             `,
           ]}
         >
@@ -223,7 +227,16 @@ export default () => {
       >
         <h3 css={smSectionHead}>Remote Control</h3>
         <h1 css={h1L}>80% distributed, 100% united</h1>
-        <h4 css={[pLight, container.min]}>
+        <h4
+          css={[
+            pLight,
+            css`
+              ${mediaQueries.phoneLarge} {
+                width: ${contValues.min};
+              }
+            `,
+          ]}
+        >
           While we have offices in Boston and Oakland, we embrace a remote
           culture, allowing our staff the freedom to do their best, wherever
           that might be.
