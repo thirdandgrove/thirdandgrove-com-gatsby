@@ -12,6 +12,7 @@ import {
   smSectionHead,
   container,
 } from '../../styles';
+
 import logoSets from './logosets';
 
 const LogoGrid = ({ title, logoset }) => {
