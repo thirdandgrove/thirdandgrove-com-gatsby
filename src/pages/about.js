@@ -217,9 +217,9 @@ export default () => {
       </FullWidthSection>
       <FullWidthSection
         backgroundColor={colors.yellow}
-        padding='44px 0'
         textAlign='center'
         height='750px'
+        minHeight='730px'
       >
         <h3 css={smSectionHead}>Remote Control</h3>
         <h1 css={h1L}>80% distributed, 100% united</h1>
