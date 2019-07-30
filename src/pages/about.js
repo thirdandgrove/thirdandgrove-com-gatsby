@@ -105,7 +105,7 @@ export default () => {
         text-align: center;
       }
     }
-    span {
+    div {
       display: flex;
       flex-direction: column;
       p {
@@ -249,21 +249,21 @@ export default () => {
             <h1 css={h1L}>Boston</h1>
             <img src='/images/boston.png' alt='Boston' />
             <h3>1st One’s on Us</h3>
-            <span>
+            <div>
               <p>Wink &amp; Nod</p>
               <p>Lucy&apos; Lounge</p>
               <p>UpperWest</p>
-            </span>
+            </div>
           </Location>
           <Location>
             <h1 css={h1L}>Oakland</h1>
             <img src='/images/oakland.png' alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
-            <span>
+            <div>
               <p>Cafe Van Kleef</p>
               <p>The Ruby Room</p>
               <p>The Alley</p>
-            </span>
+            </div>
           </Location>
         </SplitSection>
       </FullWidthSection>
