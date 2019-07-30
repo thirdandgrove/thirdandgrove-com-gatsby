@@ -48,7 +48,6 @@ export default () => {
 
     ${mediaQueries.phoneLarge} {
       width: ${contValues.medium};
-      margin-bottom: 70px;
     }
 
     div {
@@ -217,7 +216,7 @@ export default () => {
       </FullWidthSection>
       <FullWidthSection
         backgroundColor={colors.yellow}
-        padding='10vw'
+        padding='44px 0'
         textAlign='center'
         height='750px'
       >
