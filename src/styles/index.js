@@ -18,4 +18,5 @@ export {
   quoteAttr,
   contentHeadings,
   dropCap,
+  pLight,
 } from './custom-css';

@@ -138,3 +138,15 @@ export const dropCap = css`
     }
   }
 `;
+
+export const pLight = css`
+   {
+    color: ${colors.reallydarkgray};
+    font-family: ${fonts.sans};
+    font-size: 16px;
+    font-weight: ${weights.light};
+    letter-spacing: 0.2px;
+    line-height: 1.69;
+    text-align: center;
+  }
+`;

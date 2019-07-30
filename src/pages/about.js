@@ -15,6 +15,7 @@ import {
   container,
   mediaQueries,
   contValues,
+  pLight,
 } from '../styles';
 import Button from '../components/Button';
 
@@ -23,28 +24,19 @@ export default () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3rem;
     h2 {
-      height: 40px;
-      width: 430px;
-      color: ${colors.darkgray};
-      font-family: ${fonts.serif};
-      font-size: 27px;
+      font-size: 21px;
       font-weight: bold;
-      line-height: 52px;
       text-align: center;
+      margin-bottom: 6px;
+
+      ${mediaQueries.phoneLarge} {
+        font-size: 27px;
+      }
     }
     p {
-      height: 60px;
-      width: 430px;
-      color: ${colors.darkgray};
-      font-family: ${fonts.sans};
-      font-size: 16px;
-      font-weight: 300;
-      letter-spacing: 0.2px;
-      line-height: 27px;
-      text-align: center;
-      padding-bottom: 90px;
+      ${pLight};
+      margin-bottom: 64px;
     }
   `;
   const Row = styled.section`
@@ -120,13 +112,7 @@ export default () => {
       display: flex;
       flex-direction: column;
       p {
-        color: ${colors.darkgray};
-        font-family: ${fonts.sans};
-        font-size: 16px;
-        font-weight: 300;
-        letter-spacing: 0.2px;
-        line-height: 27px;
-        text-align: center;
+        ${pLight};
         padding: 0;
         margin: 3px;
       }
@@ -178,43 +164,33 @@ export default () => {
           background-color: ${colors.lightblue};
           z-index: 1;
           height: 600px;
-          h1 {
-            height: 168px;
-            width: 980px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.serif};
-            font-size: 72px;
-            font-weight: 500;
-            letter-spacing: -1px;
-            line-height: 84px;
-            text-align: center;
-          }
-          p {
-            height: 60px;
-            width: 680px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.sans};
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 0.2px;
-            line-height: 27px;
-            text-align: center;
-          }
+          text-align: center;
         `}
       >
         <h3 css={smSectionHead}>Radically Honest</h3>
-        <h1>
+        <h1 css={[h1L, container.medium]}>
           If you had a bit of food stuck in your teeth, we’d let you know.
         </h1>
-        <p>
+        <p
+          css={[
+            pLight,
+            css`
+              padding-top: 10px;
+            `,
+          ]}
+        >
           We work with brands we love and can’t wait to help grow. That means we
           might not always tell you what you want to hear, but we’ll definitely
           tell you what you need to hear.
         </p>
       </FullWidthSection>
-      <FullWidthSection>
+      <FullWidthSection padding='44px 0 0'>
         <h3 css={smSectionHead}>Who We Are</h3>
-        <SplitSection>
+        <SplitSection
+          css={css`
+            padding-top: 20px;
+          `}
+        >
           <NameCol>
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
@@ -245,19 +221,7 @@ export default () => {
       >
         <h3 css={smSectionHead}>Remote Control</h3>
         <h1 css={h1L}>80% distributed, 100% united</h1>
-        <h4
-          css={css`
-            height: 60px;
-            width: 680px;
-            color: ${colors.darkgray};
-            font-family: ${fonts.sans};
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 0.2px;
-            line-height: 27px;
-            text-align: center;
-          `}
-        >
+        <h4 css={pLight}>
           While we have offices in Boston and Oakland, we embrace a remote
           culture, allowing our staff the freedom to do their best, wherever
           that might be.
