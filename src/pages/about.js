@@ -136,6 +136,7 @@ export default () => {
 
           ${mediaQueries.phoneLarge} {
             padding-top: 150px;
+            margin-bottom: 58px;
           }
         `}
       >
