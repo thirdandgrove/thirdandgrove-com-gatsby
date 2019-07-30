@@ -168,18 +168,13 @@ Project.propTypes = {
 };
 
 export default () => {
-  const data = useStaticQuery(graphql`
+  const { allCaseStudy, allNodeHomePage } = useStaticQuery(graphql`
     {
       allCaseStudy {
         nodes {
           ...CaseStudyFragment
         }
       }
-    }
-  `);
-  const studies = data.allCaseStudy.nodes;
-  const videoData = useStaticQuery(graphql`
-    {
       allNodeHomePage(limit: 1) {
         edges {
           node {
@@ -189,6 +184,7 @@ export default () => {
       }
     }
   `);
+  const studies = allCaseStudy.nodes;
   return (
     <Layout
       headerData={{
@@ -197,7 +193,7 @@ export default () => {
         height: '400px',
       }}
     >
-      <VideoSection url={videoData.allNodeHomePage.edges[0].node.field_video} />
+      <VideoSection url={allNodeHomePage.edges[0].node.field_video} />
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}
