@@ -49,5 +49,6 @@ export const colors = {
   lightgreen: `#cef5e2`,
   gatsbyPurple: '#663399',
   drupalBlue: '#53B0EB',
+  shopifyGreen: '#80AB42',
   red: 'red',
 };
