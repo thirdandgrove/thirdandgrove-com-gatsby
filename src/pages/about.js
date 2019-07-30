@@ -61,6 +61,11 @@ export default () => {
     div {
       width: 50%;
       margin-bottom: 40px;
+
+      ${mediaQueries.phoneLarge} {
+        width: auto;
+      }
+
       h1 {
         font-weight: ${weights.medium};
         font-size: 48px;
