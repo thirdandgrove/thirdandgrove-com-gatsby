@@ -206,23 +206,23 @@ export default () => {
         <SplitSection>
           <NameCol>
             <h2>Justin Emond</h2>
-            <p>Chief Executive Officer</p>
+            <p>Co-Founder, Chief Executive Officer</p>
             <h2>Matt Davis</h2>
-            <p>Chief Technical Officer</p>
-            <h2>Jennifer Slemp</h2>
-            <p>Chief Strategy Officer</p>
+            <p>Director of Engineering</p>
+            <h2>Jen Slemp</h2>
+            <p>Director of Strategy</p>
             <h2>Jen May</h2>
             <p>Director of Delivery</p>
           </NameCol>
           <NameCol>
-            <h2>Tony Severo</h2>
-            <p>Co-Founder, Director of Strategy &amp; Innovation</p>
+            <h2>Anthony Severo</h2>
+            <p>Co-Founder, Chief Strategy Officer</p>
             <h2>Adam Strom</h2>
-            <p>Executive Creative Director</p>
-            <h2>Jennifer Slemp</h2>
-            <p>Chief Operations Officer</p>
-            <h2>Lorem Ipsum</h2>
-            <p>Lorem Ipsum</p>
+            <p>Creative Director</p>
+            <h2>Christina Andrade</h2>
+            <p>Director of Operations</p>
+            <h2>Angela Prendergast</h2>
+            <p>QA Lead</p>
           </NameCol>
         </SplitSection>
       </FullWidthSection>

@@ -10,6 +10,7 @@ import Button from '../components/Button';
 import { weights, mediaQueries, container, fonts } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
+import VideoSection from '../components/VideoSection';
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -21,7 +22,7 @@ const Project = ({ study, index }) => {
       padding='0'
       textAlign='left'
       css={css`
-        &:first-child {
+        &:nth-child(2) {
           margin-top: 20px;
 
           ${mediaQueries.phoneLarge} {
@@ -167,16 +168,23 @@ Project.propTypes = {
 };
 
 export default () => {
-  const data = useStaticQuery(graphql`
+  const { allCaseStudy, allNodeHomePage } = useStaticQuery(graphql`
     {
       allCaseStudy {
         nodes {
           ...CaseStudyFragment
         }
       }
+      allNodeHomePage(limit: 1) {
+        edges {
+          node {
+            field_video
+          }
+        }
+      }
     }
   `);
-  const studies = data.allCaseStudy.nodes;
+  const studies = allCaseStudy.nodes;
   return (
     <Layout
       headerData={{
@@ -185,6 +193,7 @@ export default () => {
         height: '400px',
       }}
     >
+      <VideoSection url={allNodeHomePage.edges[0].node.field_video} />
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}
