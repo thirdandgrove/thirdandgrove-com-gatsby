@@ -104,7 +104,13 @@ export default () => {
         </div>
       </FullWidthSection>
       <ProjectsSlider backgroundColor={colors.lightgray} />
-      <LogoGrid logoset='acquia' title='Some of Our Acquia Clients' />
+      <LogoGrid
+        logoset='acquia'
+        title='Some of Our Acquia Clients'
+        css={css`
+          background-color: red;
+        `}
+      />
       <SplitSection
         gridTemplateColumns='repeat(3, 1fr)'
         css={css`

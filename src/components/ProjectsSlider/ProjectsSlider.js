@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
-import { mediaQueries, fonts, weights } from '../../styles';
+import { mediaQueries, fonts, weights, colors } from '../../styles';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
@@ -155,7 +155,7 @@ ProjectsSlider.propTypes = {
 };
 
 ProjectsSlider.defaultProps = {
-  backgroundColor: 'none',
+  backgroundColor: colors.white,
 };
 
 export default ProjectsSlider;
