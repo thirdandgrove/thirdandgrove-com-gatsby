@@ -7,7 +7,7 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import ProjectsSlider from '../components/ProjectsSlider';
 import LogoGrid from '../components/LogoGrid';
-import { colors } from '../styles';
+import { colors, mediaQueries, fonts, weights } from '../styles';
 import SplitSection from '../components/SplitSection';
 import InsightsSlider from '../components/InsightsSlider';
 import Quote from '../components/ContentBody/Quote';
@@ -20,6 +20,13 @@ export default () => {
     align-items: center;
     justify-content: center;
   `;
+  const sectionPadding = css`
+    padding: 50px 20px;
+
+    ${mediaQueries.phoneLarge} {
+      padding: 117px 0;
+    }
+  `;
   return (
     <Layout
       headerData={{
@@ -31,17 +38,49 @@ export default () => {
         mobileMinHeight: '620px',
       }}
     >
-      <FullWidthSection height='400px' padding='0'>
-        <h4>Team up with a partner who is tight with Acquia</h4>
+      <FullWidthSection
+        height='400px'
+        align='left'
+        css={css`
+          ${sectionPadding}
+          h3 {
+            font-family: ${fonts.sans};
+            font-size: 18px;
+            font-weight: ${weights.bold};
+            line-height: 1.39;
+            margin-bottom: 12px;
+          }
+          p {
+            font-weight: ${weights.light};
+          }
+          span {
+            ${mediaQueries.phoneLarge} {
+              display: flex;
+            }
+          }
+          ul {
+            margin: 0;
+            font-family: ${fonts.sans};
+            font-weight: ${weights.bold};
+            list-style: none;
+
+            li {
+              margin-bottom: 4px;
+
+              &:before {
+                content: '—';
+                padding-right: 2px;
+              }
+            }
+          }
+        `}
+      >
+        <h3>Team up with a partner who is tight with Acquia</h3>
         <p>
           Fewer conversations about development and more about how to improve
           visitor engagement.
         </p>
-        <span
-          css={css`
-            display: flex;
-          `}
-        >
+        <span>
           <ul>
             <li>Migration</li>
             <li>Personalization</li>
