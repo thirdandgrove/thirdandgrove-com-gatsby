@@ -53,7 +53,7 @@ export default () => {
           p {
             font-weight: ${weights.light};
           }
-          span {
+          div {
             ${mediaQueries.phoneLarge} {
               display: flex;
             }
@@ -80,7 +80,7 @@ export default () => {
           Fewer conversations about development and more about how to improve
           visitor engagement.
         </p>
-        <span>
+        <div>
           <ul>
             <li>Migration</li>
             <li>Personalization</li>
@@ -91,7 +91,7 @@ export default () => {
             <li>Resource Augmentation</li>
             <li>Training</li>
           </ul>
-        </span>
+        </div>
       </FullWidthSection>
       <ProjectsSlider />
       <LogoGrid logoset='acquia' title='Some of Our Acquia Clients' />
