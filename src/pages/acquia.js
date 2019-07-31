@@ -103,14 +103,14 @@ export default () => {
           </ul>
         </div>
       </FullWidthSection>
-      <ProjectsSlider />
+      <ProjectsSlider backgroundColor={colors.lightgray} />
       <LogoGrid logoset='acquia' title='Some of Our Acquia Clients' />
       <SplitSection
+        gridTemplateColumns='repeat(3, 1fr)'
         css={css`
           margin: 5rem auto;
           width: 760px;
         `}
-        gridTemplateColumns='repeat(3, 1fr)'
       >
         <Tripple>
           <h1>100%</h1>
