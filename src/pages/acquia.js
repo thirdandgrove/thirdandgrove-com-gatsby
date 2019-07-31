@@ -7,7 +7,7 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import ProjectsSlider from '../components/ProjectsSlider';
 import LogoGrid from '../components/LogoGrid';
-import { colors, mediaQueries, fonts, weights } from '../styles';
+import { colors, mediaQueries, fonts, weights, container } from '../styles';
 import SplitSection from '../components/SplitSection';
 import InsightsSlider from '../components/InsightsSlider';
 import Quote from '../components/ContentBody/Quote';
@@ -24,7 +24,7 @@ export default () => {
     padding: 50px 20px;
 
     ${mediaQueries.phoneLarge} {
-      padding: 117px 0;
+      padding: 110px 0;
     }
   `;
   return (
@@ -56,13 +56,19 @@ export default () => {
           div {
             ${mediaQueries.phoneLarge} {
               display: flex;
+              justify-content: space-between;
             }
           }
           ul {
             margin: 0;
+            font-size: 16px;
             font-family: ${fonts.sans};
             font-weight: ${weights.bold};
             list-style: none;
+
+            &:last-of-type {
+              margin-right: 100px;
+            }
 
             li {
               margin-bottom: 4px;
@@ -72,6 +78,10 @@ export default () => {
                 padding-right: 2px;
               }
             }
+          }
+
+          ${mediaQueries.phoneLarge} {
+            ${container.min}
           }
         `}
       >
