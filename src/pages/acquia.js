@@ -28,6 +28,7 @@ export default () => {
           'Deep Integrations — Rich Personalization — Efficient Development',
         title: 'Squeeze every last drop out of your Acquia investment.',
         color: colors.acquiaBlue,
+        mobileMinHeight: '620px',
       }}
     >
       <FullWidthSection height='400px' padding='0'>

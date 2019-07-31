@@ -135,10 +135,12 @@ const Header = ({
     font-family: ${fonts.sans};
     font-size: 15px;
     font-weight: ${weights.light};
-    letter-spacing: 2px;
     line-height: 2.4;
     text-transform: capitalize;
     color: ${fontColor};
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
 
     ${mediaQueries.desktop} {
       margin-bottom: 42px;
