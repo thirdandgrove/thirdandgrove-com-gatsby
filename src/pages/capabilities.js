@@ -100,7 +100,9 @@ const Capability = ({ imageSrc, imageAlt, content, index }) => {
 
                     > div {
                       padding-bottom: ${index % 2 ? '76% !important' : '100%'};
-                      padding-bottom: ${index % 4 === 2 ? '131%' : '100%'};
+                      padding-bottom: ${index % 4 === 2
+                        ? '131% !important'
+                        : '100%'};
                     }
                   }
                 `}
