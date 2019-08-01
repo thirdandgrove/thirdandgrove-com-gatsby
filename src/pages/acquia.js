@@ -107,9 +107,7 @@ export default () => {
       <LogoGrid
         logoset='acquia'
         title='Some of Our Acquia Clients'
-        css={css`
-          background-color: red;
-        `}
+        backgroundColor={colors.white}
       />
       <SplitSection
         gridTemplateColumns='repeat(3, 1fr)'
