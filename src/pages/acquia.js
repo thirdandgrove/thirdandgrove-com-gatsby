@@ -7,18 +7,32 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import ProjectsSlider from '../components/ProjectsSlider';
 import LogoGrid from '../components/LogoGrid';
-import { colors, mediaQueries, fonts, weights, container } from '../styles';
+import {
+  colors,
+  mediaQueries,
+  fonts,
+  weights,
+  container,
+  pLight,
+} from '../styles';
 import SplitSection from '../components/SplitSection';
 import InsightsSlider from '../components/InsightsSlider';
 import Quote from '../components/ContentBody/Quote';
 
 export default () => {
   const Tripple = styled.article`
-    justify-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 80px;
+    h1 {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+    p {
+      ${pLight};
+    }
   `;
   const sectionPadding = css`
     padding: 50px 20px;
@@ -112,8 +126,7 @@ export default () => {
       <SplitSection
         gridTemplateColumns='repeat(3, 1fr)'
         css={css`
-          margin: 5rem auto;
-          width: 760px;
+          border: 1px solid red;
         `}
       >
         <Tripple>
