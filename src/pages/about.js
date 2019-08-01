@@ -1,5 +1,6 @@
 import React from 'react';
-import { navigate } from 'gatsby';
+import { navigate, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
@@ -19,7 +20,7 @@ import {
 } from '../styles';
 import Button from '../components/Button';
 
-export default () => {
+export default ({ data }) => {
   const NameCol = styled.section`
     display: flex;
     flex-direction: column;
@@ -118,7 +119,12 @@ export default () => {
       }
     }
   `;
-
+  const images = data.allFile.nodes;
+  const bostonSrc = images.find(img => img.name === 'boston').childImageSharp
+    .fluid;
+  const oaklandSrc = images.find(img => img.name === 'oakland').childImageSharp
+    .fluid;
+  const teamSrc = images.find(img => img.name === 'team').childImageSharp.fluid;
   return (
     <Layout
       headerData={{
@@ -140,7 +146,13 @@ export default () => {
           }
         `}
       >
-        <img src='/images/team.png' alt='TAG Team' />
+        <Img
+          fluid={teamSrc}
+          alt='TAG Team'
+          css={css`
+            width: 100%;
+          `}
+        />
         <Row>
           <div>
             <h1>2014</h1>
@@ -289,7 +301,7 @@ export default () => {
         <SplitSection>
           <Location>
             <h1 css={h1L}>Boston</h1>
-            <img src='/images/boston.png' alt='Boston' width='530px' />
+            <Img fluid={bostonSrc} alt='Boston' width='530px' />
             <h3>1st One’s on Us</h3>
             <div>
               <p>Wink &amp; Nod</p>
@@ -299,7 +311,7 @@ export default () => {
           </Location>
           <Location>
             <h1 css={h1L}>Oakland</h1>
-            <img src='/images/oakland.png' alt='Oakland' width='530px' />
+            <Img fluid={oaklandSrc} alt='Oakland' width='530px' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>
               <p>Cafe Van Kleef</p>
@@ -344,3 +356,18 @@ export default () => {
     </Layout>
   );
 };
+
+export const query = graphql`
+  {
+    allFile(filter: { absolutePath: { regex: "/boston|oakland|team/" } }) {
+      nodes {
+        name
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+`;
