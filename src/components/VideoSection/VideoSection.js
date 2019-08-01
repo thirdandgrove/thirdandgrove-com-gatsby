@@ -182,6 +182,7 @@ const VideoSection = ({ url, teaser }) => {
               setHasInteracted(true);
               // Switch to full video.
               setUrl(url);
+              setPlaying(true); // Necessary for mobile.
             } else {
               setPlaying(!playing);
             }
