@@ -50,7 +50,7 @@ const Insights = ({ data }) => {
               post.relationships.field_image.localFile.mobileImage.fluid,
               {
                 ...post.relationships.field_image.localFile.desktopImage.fluid,
-                media: jsBreakpoints.phoneLarge,
+                media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
               },
             ]}
             alt={imageAlt}
