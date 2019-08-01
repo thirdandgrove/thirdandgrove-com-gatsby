@@ -33,6 +33,10 @@ export default () => {
     p {
       ${pLight};
     }
+
+    ${mediaQueries.phoneLarge} {
+      justify-content: flex-start;
+    }
   `;
   const sectionPadding = css`
     padding: 50px 20px;
@@ -126,7 +130,9 @@ export default () => {
       <SplitSection
         gridTemplateColumns='repeat(3, 1fr)'
         css={css`
-          border: 1px solid red;
+          ${mediaQueries.phoneLarge} {
+            ${container.textOnly}
+          }
         `}
       >
         <Tripple>
