@@ -14,12 +14,12 @@ import {
 } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
-const VideoSection = ({ url }) => {
+const VideoSection = ({ url, teaser }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
   const [playing, setPlaying] = useState(!isSmScreen);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [theUrl, setUrl] = useState(url);
+  const [activeUrl, setUrl] = useState(teaser);
   const [buttonX, setButtonX] = useState('50%');
   const [buttonY, setButtonY] = useState('50%');
   const [buttonVisible, setButtonVisible] = useState(false);
@@ -180,11 +180,8 @@ const VideoSection = ({ url }) => {
           onClick={() => {
             if (!hasInteracted) {
               setHasInteracted(true);
-              // Starting the video over from the beginning now that the user
-              // has chosen to watch and it's unmuted. Adding the ? because if
-              // I reset it to the exact same URL, Gatsby is smart/dumb enough to
-              // realize it's the same and just continue on.
-              setUrl(url + '?');
+              // Switch to full video.
+              setUrl(url);
             } else {
               setPlaying(!playing);
             }
@@ -198,7 +195,7 @@ const VideoSection = ({ url }) => {
         // see: https://www.npmjs.com/package/react-player for props
         width='100%'
         css={playerStyles}
-        url={theUrl}
+        url={activeUrl}
         playing={playing}
         volume={hasInteracted ? 1 : 0} // Mute on autoplay
         config={{
@@ -208,6 +205,7 @@ const VideoSection = ({ url }) => {
               controls: false,
               responsive: true,
               autoplay: !isSmScreen,
+              loop: true,
             },
           },
         }}
@@ -218,6 +216,7 @@ const VideoSection = ({ url }) => {
 
 VideoSection.propTypes = {
   url: PropTypes.string.isRequired,
+  teaser: PropTypes.string.isRequired,
 };
 
 export default VideoSection;
