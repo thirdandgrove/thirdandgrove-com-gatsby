@@ -9,7 +9,7 @@ export default () => {
   return (
     <Layout
       headerData={{
-        title: 'Contact Us',
+        title: 'Contact us:',
         height: '850px',
         children: <ContactForm />,
       }}
