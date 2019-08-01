@@ -179,6 +179,7 @@ export default () => {
         edges {
           node {
             field_video
+            field_video_short
           }
         }
       }
@@ -193,7 +194,10 @@ export default () => {
         height: '400px',
       }}
     >
-      <VideoSection url={allNodeHomePage.edges[0].node.field_video} />
+      <VideoSection
+        url={allNodeHomePage.edges[0].node.field_video}
+        teaser={allNodeHomePage.edges[0].node.field_video_short}
+      />
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}
