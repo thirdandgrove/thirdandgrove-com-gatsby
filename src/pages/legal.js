@@ -22,14 +22,15 @@ export default () => {
       <main
         css={css`
           ${container.min}
-          padding-top: 80px;
-          margin-bottom: 70px;
+          padding-top: 30px;
+          margin-bottom: 60px;
           font-weight: ${weights.light};
 
           ${mediaQueries.phoneLarge} {
             padding-left: 0;
             padding-right: 0;
-            margin-bottom: 140px;
+            padding-top: 80px;
+            margin-bottom: 130px;
           }
 
           strong {

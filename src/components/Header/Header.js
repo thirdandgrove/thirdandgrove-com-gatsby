@@ -131,8 +131,7 @@ const Header = ({
     background-color: ${color};
   `;
   const headerlabel = css`
-    margin-top: 68px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     font-family: ${fonts.sans};
     font-size: 15px;
     font-weight: ${weights.light};
@@ -142,8 +141,7 @@ const Header = ({
     color: ${fontColor};
 
     ${mediaQueries.desktop} {
-      margin-top: 0;
-      margin-bottom: 60px;
+      margin-bottom: 42px;
       ${labelMobileOnly && `display: none`};
     }
   `;
