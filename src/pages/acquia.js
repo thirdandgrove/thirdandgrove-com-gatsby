@@ -148,7 +148,25 @@ export default () => {
           <p>Acquia MVP</p>
         </Tripple>
       </SplitSection>
-      <SplitSection>
+      <SplitSection
+        css={css`
+          ${container.medium}
+          img {
+            width: 100px;
+          }
+          h2 {
+            color: ${colors.reallydarkgray};
+            font-family: ${fonts.sans};
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 14px;
+          }
+          p {
+            font-weight: ${weights.light};
+            margin-bottom: 50px;
+          }
+        `}
+      >
         <article>
           <img src='/images/acquia-cloud.png' alt='cloud' />
           <h2>Acquia Cloud</h2>
@@ -161,7 +179,7 @@ export default () => {
           <img src='/images/acquia-lift.png' alt='lift' />
           <h2>Acquia Lift</h2>
           <p>
-            Improve visitor engagement with an achievable & data-driven
+            Improve visitor engagement with an achievable &amp; data-driven
             personalization plan.
           </p>
         </article>
