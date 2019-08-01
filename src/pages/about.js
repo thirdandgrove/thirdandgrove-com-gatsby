@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { navigate, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
@@ -20,7 +21,7 @@ import {
 } from '../styles';
 import Button from '../components/Button';
 
-export default ({ data }) => {
+const About = ({ data }) => {
   const NameCol = styled.section`
     display: flex;
     flex-direction: column;
@@ -356,6 +357,12 @@ export default ({ data }) => {
     </Layout>
   );
 };
+
+About.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default About;
 
 export const query = graphql`
   {
