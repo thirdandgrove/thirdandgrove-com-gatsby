@@ -9,7 +9,7 @@ import Button from '../Button';
 import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
 
-const ContactFrom = () => {
+const ContactForm = () => {
   const [formState, updateForm] = useState({
     comments: '',
     email: '',
@@ -94,6 +94,11 @@ const ContactFrom = () => {
       line-height: 1.3;
       transition: 0.3s ease all;
     }
+  `;
+
+  const fullWidth = css`
+    grid-column-start: 1;
+    grid-column-end: 3;
   `;
 
   // eslint-disable-next-line react/prop-types
@@ -238,24 +243,12 @@ const ContactFrom = () => {
               id='cf-phone'
             />
           </label>
-        </span>
-        <span
-          css={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 3rem;
-            ${mediaQueries.phoneLarge} {
-              display: inline;
-              margin: 0;
-            }
-          `}
-        >
-          <label htmlFor='cf-message' css={labelCss}>
+
+          <label htmlFor='cf-message' css={[labelCss, fullWidth]}>
             <span
               css={css`
-                top: ${formState.phone ? '6px' : '16px'};
-                font-size: ${formState.phone ? '9px' : '15px'};
+                top: ${formState.comments ? '6px' : '16px'};
+                font-size: ${formState.comments ? '9px' : '15px'};
               `}
             >
               Leave a Message
@@ -276,21 +269,26 @@ const ContactFrom = () => {
             />
           </label>
         </span>
-        <span
+        <div
           css={css`
             display: flex;
             justify-content: center;
-            margin-top: 4rem;
+            margin-top: 35px;
+            margin-bottom: -50px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
           `}
         >
           <Button data-cy='contactSubmit' type='submit'>
             send
           </Button>
-        </span>
+        </div>
         <ErrorToaster errs={errors} />
       </form>
     </main>
   );
 };
 
-export default ContactFrom;
+export default ContactForm;

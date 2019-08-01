@@ -193,7 +193,6 @@ export const globalStyles = css`
   figure,
   table,
   fieldset,
-  form,
   noscript,
   iframe,
   address {
