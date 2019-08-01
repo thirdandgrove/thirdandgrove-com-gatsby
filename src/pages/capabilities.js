@@ -53,6 +53,10 @@ const Capability = ({ imageSrc, imageAlt, content, index }) => {
             h2 {
               font-size: 2.0625rem; /* 33px */
               font-weight: ${weights.bold};
+
+              ${mediaQueries.phoneLarge} {
+                font-size: 1.83333rem; /* 33px with base 18 (112.5%) */
+              }
             }
 
             p {
