@@ -63,6 +63,7 @@ export const smSectionHead = css`
   font-weight: ${weights.thin};
   letter-spacing: 0.23px;
   line-height: 3.62;
+  color: ${colors.reallydarkgray};
 
   ${mediaQueries.phoneLarge} {
     margin-bottom: 30px;
@@ -120,4 +121,32 @@ export const contentHeadings = css`
   letter-spacing: 0.2px;
   line-height: 1.69;
   margin-bottom: 30px;
+`;
+
+export const dropCap = css`
+  & > p:first-of-type::first-letter {
+    float: left;
+    padding: 4px 20px 0;
+    color: ${colors.reallydarkgray};
+    font-family: ${fonts.serif};
+    font-size: 50px;
+    font-weight: ${weights.regular};
+    line-height: 1;
+
+    ${mediaQueries.phoneLarge} {
+      padding: 6px 20px 0;
+    }
+  }
+`;
+
+export const pLight = css`
+   {
+    color: ${colors.reallydarkgray};
+    font-family: ${fonts.sans};
+    font-size: 16px;
+    font-weight: ${weights.light};
+    letter-spacing: 0.2px;
+    line-height: 1.69;
+    text-align: center;
+  }
 `;

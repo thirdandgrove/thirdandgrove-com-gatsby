@@ -17,4 +17,6 @@ export {
   quoR,
   quoteAttr,
   contentHeadings,
+  dropCap,
+  pLight,
 } from './custom-css';

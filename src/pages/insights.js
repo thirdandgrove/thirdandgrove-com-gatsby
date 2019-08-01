@@ -85,7 +85,6 @@ export default () => {
                 font-size: 15px;
                 letter-spacing: 2px;
                 line-height: 2.4;
-                text-transform: uppercase;
               `}
             >
               {`${headerArticle.created} - ${
