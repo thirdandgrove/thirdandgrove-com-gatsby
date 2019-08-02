@@ -5,7 +5,13 @@ import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
 
-import { fonts, mediaQueries, container, weights } from '../styles';
+import {
+  fonts,
+  mediaQueries,
+  jsBreakpoints,
+  container,
+  weights,
+} from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
@@ -47,6 +53,10 @@ const Capability = ({ imageSrc, imageAlt, content, index }) => {
             h2 {
               font-size: 2.0625rem; /* 33px */
               font-weight: ${weights.bold};
+
+              ${mediaQueries.phoneLarge} {
+                font-size: 1.83333rem; /* 33px with base 18 (112.5%) */
+              }
             }
 
             p {
@@ -94,7 +104,9 @@ const Capability = ({ imageSrc, imageAlt, content, index }) => {
 
                     > div {
                       padding-bottom: ${index % 2 ? '76% !important' : '100%'};
-                      padding-bottom: ${index % 4 === 2 ? '131%' : '100%'};
+                      padding-bottom: ${index % 4 === 2
+                        ? '131% !important'
+                        : '100%'};
                     }
                   }
                 `}
@@ -143,7 +155,7 @@ const CapabilitiesPage = ({ data }) => {
           data.technologyImageMobile.childImageSharp.fluid,
           {
             ...data.technologyImageDesktop.childImageSharp.fluid,
-            media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
+            media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
           },
         ]}
         imageAlt='Laptop on desk with drink'
@@ -172,7 +184,7 @@ const CapabilitiesPage = ({ data }) => {
           data.strategyImageMobile.childImageSharp.fluid,
           {
             ...data.strategyImageDesktop.childImageSharp.fluid,
-            media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
+            media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
           },
         ]}
         imageAlt='Two office workers looking at a chart on a laptop'
@@ -200,7 +212,7 @@ const CapabilitiesPage = ({ data }) => {
           data.creativeImageMobile.childImageSharp.fluid,
           {
             ...data.creativeImageDesktop.childImageSharp.fluid,
-            media: mediaQueries.phoneLarge.replace(`@media`, ``).trim(),
+            media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
           },
         ]}
         imageAlt='Man drawing logos in a notebook'

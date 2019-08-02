@@ -9,13 +9,13 @@ export default styled.textarea`
   width: 100%;
   color: ${colors.darkgray};
   font-family: ${fonts.sans};
-  font-weight: ${weights.bold};
-  font-size: 15px;
+  font-weight: ${weights.light};
+  font-size: 16px;
   letter-spacing: 2px;
-  line-height: 36px;
-  text-transform: uppercase;
+  line-height: 1.3;
   padding: 20px;
   resize: none;
+
   &::placeholder {
     color: ${colors.darkgray};
   }
