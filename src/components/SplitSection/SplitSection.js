@@ -4,13 +4,19 @@ import { css } from '@emotion/core';
 
 import { mediaQueries } from '../../styles';
 
-const SplitSection = ({ children, gridTemplateColumns, ...props }) => (
+const SplitSection = ({
+  children,
+  gridTemplateColumns,
+  gridColumnGap,
+  ...props
+}) => (
   <div
     {...props}
     css={css`
       ${mediaQueries.phoneLarge} {
         display: grid;
         grid-template-columns: ${gridTemplateColumns};
+        grid-column-gap: ${gridColumnGap};
         justify-content: space-between;
       }
     `}
@@ -21,6 +27,7 @@ const SplitSection = ({ children, gridTemplateColumns, ...props }) => (
 
 SplitSection.propTypes = {
   gridTemplateColumns: PropTypes.string,
+  gridColumnGap: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -29,6 +36,7 @@ SplitSection.propTypes = {
 
 SplitSection.defaultProps = {
   gridTemplateColumns: 'repeat(2, 1fr)',
+  gridColumnGap: 'inherit',
 };
 
 export default SplitSection;

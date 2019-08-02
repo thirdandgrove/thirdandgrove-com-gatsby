@@ -1,14 +1,15 @@
 /* eslint-disable prefer-template */
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Slider from 'react-slick';
 
-import { mediaQueries, fonts, weights } from '../../styles';
+import { mediaQueries, fonts, weights, colors } from '../../styles';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
-const ProjectsSlider = () => {
+const ProjectsSlider = ({ backgroundColor }) => {
   const [count, setCount] = useState('01');
 
   const data = useStaticQuery(graphql`
@@ -65,6 +66,7 @@ const ProjectsSlider = () => {
   return (
     <FullWidthSection
       height='750px'
+      backgroundColor={backgroundColor}
       css={css`
         position: relative;
       `}
@@ -146,6 +148,14 @@ const ProjectsSlider = () => {
       </footer>
     </FullWidthSection>
   );
+};
+
+ProjectsSlider.propTypes = {
+  backgroundColor: PropTypes.string,
+};
+
+ProjectsSlider.defaultProps = {
+  backgroundColor: colors.white,
 };
 
 export default ProjectsSlider;
