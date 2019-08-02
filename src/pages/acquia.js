@@ -199,7 +199,7 @@ export default () => {
             'Joe Wykes - SVP Global Channels & eCommerce - Acquia',
         }}
       />
-      <InsightsSlider showButton={false} />
+      <InsightsSlider showButton={false} backgroundColor={colors.lightgray} />
     </Layout>
   );
 };
