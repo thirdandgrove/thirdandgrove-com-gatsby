@@ -19,7 +19,9 @@ import {
 const Boston = ({ data }) => {
   return (
     <Layout
-      headerData={{ title: 'You won’t find a better Drupal agency in Boston' }}
+      headerData={{
+        title: 'You won’t find a better Drupal agency in the Bay Area',
+      }}
     >
       <FullWidthSection
         fontWeight={weights.thin}
@@ -141,8 +143,7 @@ const Boston = ({ data }) => {
           field_body: {
             processed: `<h2> Want to catch up over coffee or a drink?</h2>
           <p>
-            We’re located in Downtown Crossing but enjoy putting in some miles to
-            get around the city (no, not walking, uber of course).
+          We’re located in the amazing creator space at 1528 Webster St in Downtown Oakland but find ourselves all over the Bay Area to meet with our clients (one of the truest forms of love—taking the Bart so our clients don’t have to).
           </p>`,
           },
           field_image: { alt: 'San Francisco' },
