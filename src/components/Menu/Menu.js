@@ -213,28 +213,28 @@ const Menu = ({ menuOpen, toggleOpen }) => {
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
               onClick={() => toggleOpen()}
-              to='/drupal'
+              to='/partners/drupal'
             >
               Drupal
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
               onClick={() => toggleOpen()}
-              to='/acquia'
+              to='/partners/acquia'
             >
               Acquia
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
               onClick={() => toggleOpen()}
-              to='/shopify'
+              to='/partners/shopify'
             >
               Shopify
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
               onClick={() => toggleOpen()}
-              to='/gatsby'
+              to='/partners/gatsby'
             >
               Gatsby
             </Link>
