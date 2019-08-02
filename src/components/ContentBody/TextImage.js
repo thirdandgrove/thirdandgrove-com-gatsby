@@ -14,6 +14,14 @@ import {
 import SplitSection from '../SplitSection';
 
 const TextImage = ({ data }) => {
+  // We expect this data to always exist, but adding a safety check so
+  // server-side builds do not fail.
+  const imageSrc =
+    data.relationships.field_image &&
+    data.relationships.field_image.localFile &&
+    data.relationships.field_image.localFile.childImageSharp &&
+    data.relationships.field_image.localFile.childImageSharp.fluid;
+
   const renderDropCap = data.type === 'insight' && data.isFirstText;
   const sectionStyle = css`
     ${container.min};
@@ -33,30 +41,43 @@ const TextImage = ({ data }) => {
     ${renderDropCap && dropCap}
   `;
 
-  return data.field_reversed ? (
-    <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
-      <Img
-        fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
-        alt={data.field_image.alt}
-      />
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
-    </SplitSection>
-  ) : (
-    <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
-      <Img
-        fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
-        alt={data.field_image.alt}
-        css={css`
-          margin-bottom: 40px;
-        `}
-      />
-    </SplitSection>
-  );
+  let component = <></>;
+  if (imageSrc) {
+    if (data.field_reversed) {
+      component = (
+        <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
+          <Img
+            fluid={
+              data.relationships.field_image.localFile.childImageSharp.fluid
+            }
+            alt={data.field_image.alt}
+          />
+          <section
+            dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+          />
+        </SplitSection>
+      );
+    } else {
+      component = (
+        <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
+          <section
+            dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+          />
+          <Img
+            fluid={
+              data.relationships.field_image.localFile.childImageSharp.fluid
+            }
+            alt={data.field_image.alt}
+            css={css`
+              margin-bottom: 40px;
+            `}
+          />
+        </SplitSection>
+      );
+    }
+  }
+
+  return component;
 };
 
 TextImage.propTypes = {
