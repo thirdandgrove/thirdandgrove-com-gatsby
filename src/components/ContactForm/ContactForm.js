@@ -81,9 +81,24 @@ const ContactForm = () => {
   };
 
   const labelCss = css`
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 0.7;
+      }
+    }
+
     display: block;
     position: relative;
     width: 100%;
+    animation: fadein 3s 1 forwards;
+
+    &:focus-within {
+      opacity: 1 !important;
+    }
 
     span {
       position: absolute;
@@ -93,6 +108,26 @@ const ContactForm = () => {
       letter-spacing: 2px;
       line-height: 1.3;
       transition: 0.3s ease all;
+    }
+  `;
+
+  const inactiveLabel = css`
+    span {
+      top: 16px;
+      font-size: 15px;
+    }
+  `;
+
+  const activeLabel = css`
+    opacity: 1 !important;
+
+    span {
+      top: 6px;
+      font-size: 9px;
+    }
+
+    input {
+      padding-top: 10px;
     }
   `;
 
@@ -173,15 +208,11 @@ const ContactForm = () => {
             }
           `}
         >
-          <label htmlFor='cf-name' css={labelCss}>
-            <span
-              css={css`
-                top: ${formState.name ? '6px' : '16px'};
-                font-size: ${formState.name ? '9px' : '15px'};
-              `}
-            >
-              Name
-            </span>
+          <label
+            htmlFor='cf-name'
+            css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
+          >
+            <span>Name</span>
             <Input
               value={formState.name}
               onChange={updateInput}
@@ -191,15 +222,11 @@ const ContactForm = () => {
             />
           </label>
 
-          <label htmlFor='cf-email' css={labelCss}>
-            <span
-              css={css`
-                top: ${formState.email ? '6px' : '16px'};
-                font-size: ${formState.email ? '9px' : '15px'};
-              `}
-            >
-              Email
-            </span>
+          <label
+            htmlFor='cf-email'
+            css={[labelCss, formState.email ? activeLabel : inactiveLabel]}
+          >
+            <span>Email</span>
             <Input
               value={formState.email}
               onChange={updateInput}
@@ -209,15 +236,11 @@ const ContactForm = () => {
             />
           </label>
 
-          <label htmlFor='cf-website' css={labelCss}>
-            <span
-              css={css`
-                top: ${formState.website ? '6px' : '16px'};
-                font-size: ${formState.website ? '9px' : '15px'};
-              `}
-            >
-              Website
-            </span>
+          <label
+            htmlFor='cf-website'
+            css={[labelCss, formState.website ? activeLabel : inactiveLabel]}
+          >
+            <span>Website</span>
             <Input
               value={formState.website}
               onChange={updateInput}
@@ -226,15 +249,11 @@ const ContactForm = () => {
             />
           </label>
 
-          <label htmlFor='cf-phone' css={labelCss}>
-            <span
-              css={css`
-                top: ${formState.phone ? '6px' : '16px'};
-                font-size: ${formState.phone ? '9px' : '15px'};
-              `}
-            >
-              Phone [optional]
-            </span>
+          <label
+            htmlFor='cf-phone'
+            css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}
+          >
+            <span>Phone [optional]</span>
             <Input
               value={formState.phone}
               onChange={updateInput}
@@ -244,15 +263,15 @@ const ContactForm = () => {
             />
           </label>
 
-          <label htmlFor='cf-message' css={[labelCss, fullWidth]}>
-            <span
-              css={css`
-                top: ${formState.comments ? '6px' : '16px'};
-                font-size: ${formState.comments ? '9px' : '15px'};
-              `}
-            >
-              Leave a Message
-            </span>
+          <label
+            htmlFor='cf-message'
+            css={[
+              labelCss,
+              fullWidth,
+              formState.comments ? activeLabel : inactiveLabel,
+            ]}
+          >
+            <span>Leave a Message</span>
             <TextArea
               value={formState.comments}
               onChange={updateInput}
