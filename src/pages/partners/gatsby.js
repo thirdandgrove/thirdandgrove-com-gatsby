@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 
-import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
-import { colors } from '../styles';
-import InsightsSlider from '../components/InsightsSlider';
-import Quote from '../components/ContentBody/Quote';
+import Layout from '../../components/layout';
+import FullWidthSection from '../../components/FullWidthSection';
+import { colors } from '../../styles';
+import InsightsSlider from '../../components/InsightsSlider';
+import Quote from '../../components/ContentBody/Quote';
 
 export default () => {
   return (
