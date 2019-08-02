@@ -74,7 +74,11 @@ const Boston = ({ data }) => {
           }
         `}
       >
-        <ul>
+        <ul
+          css={css`
+            padding: 3rem 0;
+          `}
+        >
           <li>
             <strong>Over 177,000 hours on Drupal 8.</strong> That&apos;s over
             7,375 days of our lives (talk about time well spent.)
@@ -98,11 +102,26 @@ const Boston = ({ data }) => {
           </li>
         </ul>
       </FullWidthSection>
+      <FullWidthSection
+        margin='0 auto'
+        padding='0 20px'
+        textAlign='left'
+        align='start'
+        justify='start'
+        height='100%'
+        css={css`
+          ${mediaQueries.phoneLarge} {
+            padding: 0;
+            width: ${contValues.min};
+          }
+        `}
+      >
+        <h2> Full Digital Coverage</h2>
+      </FullWidthSection>
       <Text
         data={{
           field_body: {
             processed: `
-          <h2> Full Digital Coverage</h2>
           <h3> Digital Strategy</h3>
           <p>
             The foundation of success. We know what rocks to look under to drive
