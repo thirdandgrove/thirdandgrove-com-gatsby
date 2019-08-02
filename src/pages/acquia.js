@@ -191,6 +191,7 @@ export default () => {
         </article>
       </SplitSection>
       <Quote
+        size='small'
         data={{
           field_quote:
             'Through their significant contributions to the Drupal ecosystem and to helping clients like Mint.com engage in new ways with their audience, Third & Grove have proven themselves to be an invaluable partner as the Acquia community continues to grow.',
@@ -198,7 +199,7 @@ export default () => {
             'Joe Wykes - SVP Global Channels & eCommerce - Acquia',
         }}
       />
-      <InsightsSlider />
+      <InsightsSlider showButton='false' />
     </Layout>
   );
 };
