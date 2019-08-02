@@ -18,7 +18,10 @@ const TextWrapper = styled.span`
   background-image: ${props => {
     if (
       typeof props.backgroundImage === 'undefined' ||
-      props.backgroundImage == null
+      !props.backgroundImage ||
+      !props.backgroundImage.localFile ||
+      !props.backgroundImage.localFile.childImageSharp.fluid ||
+      !props.backgroundImage.localFile.childImageSharp.fluid.src
     ) {
       return 'none';
     } else {
