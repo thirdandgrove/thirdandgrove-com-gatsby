@@ -39,10 +39,10 @@ const Quote = ({ data, size }) => {
     font-size: ${size === 'small' ? '16px' : '12px'};
     text-align: ${size === 'small' ? 'center' : 'left'};
     padding-top: 10px;
+    font-weight: ${weights.light};
 
     ${mediaQueries.phoneLarge} {
       font-size: 16px;
-      font-weight: ${weights.light};
       letter-spacing: 0.2px;
       line-height: 1.56;
       text-align: center;
