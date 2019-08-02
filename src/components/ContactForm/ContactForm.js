@@ -1,13 +1,15 @@
 /* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from 'react';
 import { css } from '@emotion/core';
 
 import Input from '../Input';
 import Button from '../Button';
 import TextArea from '../TextArea';
-import { mediaQueries, colors } from '../../styles';
+import { mediaQueries, colors, fonts, weights } from '../../styles';
 
-const ContactFrom = () => {
+const ContactForm = () => {
   const [formState, updateForm] = useState({
     comments: '',
     email: '',
@@ -78,29 +80,96 @@ const ContactFrom = () => {
     });
   };
 
+  const labelCss = css`
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 0.7;
+      }
+    }
+
+    display: block;
+    position: relative;
+    width: 100%;
+    animation: fadein 3s 1 forwards;
+
+    &:focus-within {
+      opacity: 1 !important;
+    }
+
+    span {
+      position: absolute;
+      left: 20px;
+      font-family: ${fonts.sans};
+      font-weight: ${weights.light};
+      letter-spacing: 2px;
+      line-height: 1.3;
+      transition: 0.3s ease all;
+    }
+  `;
+
+  const inactiveLabel = css`
+    span {
+      top: 16px;
+      font-size: 15px;
+    }
+  `;
+
+  const activeLabel = css`
+    opacity: 1 !important;
+
+    span {
+      top: 6px;
+      font-size: 9px;
+    }
+
+    input {
+      padding-top: 10px;
+    }
+  `;
+
+  const fullWidth = css`
+    grid-column-start: 1;
+    grid-column-end: 3;
+  `;
+
   // eslint-disable-next-line react/prop-types
   const ErrorToaster = ({ errs }) => {
     return errs ? (
-      <span
+      <div
         css={css`
-          position: absolute;
-          align-self: center;
-          width: 100%;
-          text-align: center;
-          p {
-            display: inline;
-            color: ${colors.red};
-          }
+          display: flex;
+          justify-content: center;
+          margin-top: 4rem;
+          flex-direction: column;
         `}
       >
-        {errs &&
-          Object.values(errs).map((err, i) => (
-            <p key={err}>
-              {err}{' '}
-              {i !== Object.keys(errs).length - 1 && <span>&nbsp;-&nbsp;</span>}
-            </p>
-          ))}
-      </span>
+        <span
+          css={css`
+            position: absolute;
+            align-self: center;
+            width: 100%;
+            text-align: center;
+            p {
+              display: inline;
+              color: ${colors.red};
+            }
+          `}
+        >
+          {errs &&
+            Object.values(errs).map((err, i) => (
+              <p key={err}>
+                {err}{' '}
+                {i !== Object.keys(errs).length - 1 && (
+                  <span>&nbsp;-&nbsp;</span>
+                )}
+              </p>
+            ))}
+        </span>
+      </div>
     ) : null;
   };
 
@@ -108,13 +177,12 @@ const ContactFrom = () => {
     <main
       css={css`
         margin: 0 auto;
+        padding: 0 20px;
+        width: 100%;
+        max-width: 920px;
         margin-top: 2rem;
-        width: 100vw;
         display: flex;
         flex-direction: column;
-        ${mediaQueries.phoneLarge} {
-          width: 980px;
-        }
       `}
     >
       <form
@@ -131,89 +199,115 @@ const ContactFrom = () => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 3rem;
 
             ${mediaQueries.phoneLarge} {
               display: grid;
-              grid-template-columns: repeat(2, 480px);
-              grid-column-gap: 1rem;
-              margin: 0;
+              grid-template-columns: repeat(2, calc(50% - 10px));
+              grid-column-gap: 20px;
               align-items: stretch;
             }
           `}
         >
-          <Input
-            value={formState.name}
-            onChange={updateInput}
-            type='text'
-            placeholder='name'
-            name='name'
-          />
-          <Input
-            value={formState.email}
-            onChange={updateInput}
-            type='email'
-            placeholder='email'
-            name='email'
-          />
-          <Input
-            value={formState.website}
-            onChange={updateInput}
-            placeholder='website'
-            name='website'
-          />
-          <Input
-            value={formState.phone}
-            onChange={updateInput}
-            type='tel'
-            placeholder='phone [optional]'
-            name='phone'
-          />
+          <label
+            htmlFor='cf-name'
+            css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
+          >
+            <span>Name</span>
+            <Input
+              value={formState.name}
+              onChange={updateInput}
+              type='text'
+              name='name'
+              id='cf-name'
+            />
+          </label>
+
+          <label
+            htmlFor='cf-email'
+            css={[labelCss, formState.email ? activeLabel : inactiveLabel]}
+          >
+            <span>Email</span>
+            <Input
+              value={formState.email}
+              onChange={updateInput}
+              type='email'
+              name='email'
+              id='cf-email'
+            />
+          </label>
+
+          <label
+            htmlFor='cf-website'
+            css={[labelCss, formState.website ? activeLabel : inactiveLabel]}
+          >
+            <span>Website</span>
+            <Input
+              value={formState.website}
+              onChange={updateInput}
+              name='website'
+              id='cf-website'
+            />
+          </label>
+
+          <label
+            htmlFor='cf-phone'
+            css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}
+          >
+            <span>Phone [optional]</span>
+            <Input
+              value={formState.phone}
+              onChange={updateInput}
+              type='tel'
+              name='phone'
+              id='cf-phone'
+            />
+          </label>
+
+          <label
+            htmlFor='cf-message'
+            css={[
+              labelCss,
+              fullWidth,
+              formState.comments ? activeLabel : inactiveLabel,
+            ]}
+          >
+            <span>Leave a Message</span>
+            <TextArea
+              value={formState.comments}
+              onChange={updateInput}
+              data-cy='messageField'
+              name='comments'
+              id='cf-message'
+              css={css`
+                height: 130px;
+
+                ${mediaQueries.phoneLarge} {
+                  height: 200px;
+                }
+              `}
+            />
+          </label>
         </span>
-        <span
-          css={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 3rem;
-            ${mediaQueries.phoneLarge} {
-              display: inline;
-              margin: 0;
-            }
-          `}
-        >
-          <TextArea
-            value={formState.comments}
-            onChange={updateInput}
-            data-cy='messageField'
-            name='comments'
-            placeholder='Leave a message'
-          />
-        </span>
-        <span
+        <div
           css={css`
             display: flex;
             justify-content: center;
-            margin-top: 4rem;
+            margin-top: 35px;
+            margin-bottom: -50px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
           `}
         >
           <Button data-cy='contactSubmit' type='submit'>
             send
           </Button>
-        </span>
-        <span
-          css={css`
-            display: flex;
-            justify-content: center;
-            margin-top: 4rem;
-            flex-direction: column;
-          `}
-        >
-          <ErrorToaster errs={errors} />
-        </span>
+        </div>
+        <ErrorToaster errs={errors} />
       </form>
     </main>
   );
 };
 
-export default ContactFrom;
+export default ContactForm;

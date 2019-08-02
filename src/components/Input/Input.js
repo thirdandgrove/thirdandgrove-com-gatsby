@@ -6,20 +6,21 @@ export default styled.input`
   background: transparent;
   outline: 1px solid ${colors.darkgray};
   border: none;
-  height: 61px;
+  height: 50px;
   color: ${colors.darkgray};
   font-family: ${fonts.sans};
-  font-weight: ${weights.bold};
-  font-size: 15px;
+  font-weight: ${weights.light};
+  font-size: 16px;
   letter-spacing: 2px;
-  line-height: 36px;
-  text-transform: uppercase;
-  padding: 20px;
-  margin-bottom: 1rem;
+  line-height: 50px;
+  padding: 0 20px;
+  margin-bottom: 20px;
   width: 100%;
+
   &::placeholder {
     color: ${colors.darkgray};
   }
+
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
@@ -27,6 +28,7 @@ export default styled.input`
     /* this hack allows the background color of autocomplete to stay transparent */
     transition: background-color 5000s ease-in-out 0s;
   }
+
   &:invalid {
     border: ${colors.red} 1px solid;
   }
