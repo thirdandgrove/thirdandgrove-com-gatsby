@@ -84,10 +84,6 @@ export default () => {
             font-weight: ${weights.bold};
             list-style: none;
 
-            &:last-of-type {
-              margin-right: 100px;
-            }
-
             li {
               margin-bottom: 4px;
 
@@ -100,6 +96,9 @@ export default () => {
 
           ${mediaQueries.phoneLarge} {
             ${container.min}
+            ul:last-of-type {
+              margin-right: 100px;
+            }
           }
         `}
       >
