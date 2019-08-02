@@ -1,13 +1,21 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
+import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
-import { colors } from '../styles';
+import { colors, mediaQueries, fonts, weights, container } from '../styles';
 import InsightsSlider from '../components/InsightsSlider';
 import Quote from '../components/ContentBody/Quote';
 
 export default () => {
+  const sectionPadding = css`
+    padding: 50px 20px;
+
+    ${mediaQueries.phoneLarge} {
+      padding: 200px 0 90px;
+    }
+  `;
   return (
     <Layout
       headerData={{
@@ -15,9 +23,28 @@ export default () => {
         label: 'Fast — Secure — Scalable',
         title: 'The future of Front End.',
         color: colors.gatsbyPurple,
+        mobileMinHeight: '620px',
       }}
     >
-      <FullWidthSection padding='0'>
+      <FullWidthSection
+        align='left'
+        css={css`
+          ${sectionPadding}
+          ${container.min}
+          h4 {
+            color: ${colors.reallydarkgray};
+            font-family: ${fonts.sans};
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 14px;
+          }
+          p {
+            font-weight: ${weights.light};
+            margin-bottom: 50px;
+            letter-spacing: -0.1px;
+          }
+        `}
+      >
         <h4>
           Build a digital experience that your competitors can’t compete with
         </h4>
@@ -40,13 +67,14 @@ export default () => {
         </p>
       </FullWidthSection>
       <Quote
+        size='small'
         data={{
           field_quote:
             'We’re excited about Third and Grove’s groundbreaking work integrating Drupal + Gatsby. As a clear leader in the community, they’ve proven themselves in developing cutting-edge experiences that bring best-of-breed technologies together.',
           field_footer_text: 'Sam Bhagwat, Gatsby co-founder/COO',
         }}
       />
-      <InsightsSlider />
+      <InsightsSlider showButton={false} backgroundColor={colors.lightgray} />
     </Layout>
   );
 };
