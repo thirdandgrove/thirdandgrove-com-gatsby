@@ -21,6 +21,5 @@ deploy:
 cache:
   directories:
     - node_modules
-    - .cache
     - public
     - $(npm config get prefix)/bin/netlify
