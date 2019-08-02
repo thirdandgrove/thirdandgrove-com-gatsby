@@ -43,7 +43,13 @@ const Insights = ({ data }) => {
       <div css={imageSrc === 'undefined' && wrapperStyle}>
         {imageSrc && (
           <Img
-            fluid={imageSrc}
+            fluid={[
+              post.relationships.field_image.localFile.mobileImage.fluid,
+              {
+                ...post.relationships.field_image.localFile.desktopImage.fluid,
+                media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+              },
+            ]}
             alt={imageAlt}
             css={css`
               margin-left: 20px;
@@ -105,6 +111,20 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+            mobileImage: childImageSharp {
+              fluid(maxHeight: 250) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+            desktopImage: childImageSharp {
+              fluid(
+                maxWidth: 980
+                maxHeight: 500
+                srcSetBreakpoints: [480, 900, 1200]
+              ) {
                 ...GatsbyImageSharpFluid
               }
             }
