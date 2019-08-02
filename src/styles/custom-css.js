@@ -73,47 +73,6 @@ export const smSectionHead = css`
   }
 `;
 
-// Quotes
-export const quoteText = css`
-  font-size: 39px;
-  font-weight: ${weights.medium};
-  line-height: 1.15;
-
-  ${mediaQueries.phoneLarge} {
-    font-weight: ${weights.bold};
-    text-align: center;
-    letter-spacing: -0.16px;
-    line-height: 1.38;
-  }
-`;
-
-export const quoL = css`
-  color: ${colors.yellow};
-
-  ${mediaQueries.desktop} {
-    position: absolute;
-    margin-left: -26px;
-  }
-`;
-
-export const quoR = css`
-  color: ${colors.yellow};
-`;
-
-export const quoteAttr = css`
-  margin-bottom: 0;
-  font-size: 12px;
-  line-height: 3;
-
-  ${mediaQueries.phoneLarge} {
-    font-size: 16px;
-    font-weight: ${weights.light};
-    letter-spacing: 0.2px;
-    line-height: 1.56;
-    text-align: center;
-  }
-`;
-
 export const contentHeadings = css`
   font-family: ${fonts.sans};
   font-size: 16px;
