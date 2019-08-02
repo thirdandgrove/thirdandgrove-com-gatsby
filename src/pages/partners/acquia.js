@@ -7,18 +7,43 @@ import Layout from '../../components/layout';
 import FullWidthSection from '../../components/FullWidthSection';
 import ProjectsSlider from '../../components/ProjectsSlider';
 import LogoGrid from '../../components/LogoGrid';
-import { colors } from '../../styles';
+import {
+  colors,
+  mediaQueries,
+  fonts,
+  weights,
+  container,
+  pLight,
+} from '../../styles';
 import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 
 export default () => {
   const Tripple = styled.article`
-    justify-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 80px;
+    h1 {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+    p {
+      ${pLight};
+    }
+
+    ${mediaQueries.phoneLarge} {
+      justify-content: flex-start;
+    }
+  `;
+  const sectionPadding = css`
+    padding: 50px 20px;
+
+    ${mediaQueries.phoneLarge} {
+      padding: 110px 0;
+    }
   `;
   return (
     <Layout
@@ -28,19 +53,62 @@ export default () => {
           'Deep Integrations — Rich Personalization — Efficient Development',
         title: 'Squeeze every last drop out of your Acquia investment.',
         color: colors.acquiaBlue,
+        mobileMinHeight: '620px',
       }}
     >
-      <FullWidthSection height='400px' padding='0'>
-        <h4>Team up with a partner who is tight with Acquia</h4>
+      <FullWidthSection
+        height='400px'
+        align='left'
+        css={css`
+          ${sectionPadding}
+          h3 {
+            font-family: ${fonts.sans};
+            font-size: 18px;
+            font-weight: ${weights.bold};
+            line-height: 1.39;
+            margin-bottom: 12px;
+          }
+          p {
+            font-weight: ${weights.light};
+          }
+          div {
+            ${mediaQueries.phoneLarge} {
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+          ul {
+            margin: 0;
+            font-size: 16px;
+            font-family: ${fonts.sans};
+            font-weight: ${weights.bold};
+            list-style: none;
+
+            &:last-of-type {
+              margin-right: 100px;
+            }
+
+            li {
+              margin-bottom: 4px;
+
+              &:before {
+                content: '—';
+                padding-right: 2px;
+              }
+            }
+          }
+
+          ${mediaQueries.phoneLarge} {
+            ${container.min}
+          }
+        `}
+      >
+        <h3>Team up with a partner who is tight with Acquia</h3>
         <p>
           Fewer conversations about development and more about how to improve
           visitor engagement.
         </p>
-        <span
-          css={css`
-            display: flex;
-          `}
-        >
+        <div>
           <ul>
             <li>Migration</li>
             <li>Personalization</li>
@@ -51,16 +119,21 @@ export default () => {
             <li>Resource Augmentation</li>
             <li>Training</li>
           </ul>
-        </span>
+        </div>
       </FullWidthSection>
-      <ProjectsSlider />
-      <LogoGrid logoset='acquia' title='Some of Our Acquia Clients' />
+      <ProjectsSlider backgroundColor={colors.lightgray} />
+      <LogoGrid
+        logoset='acquia'
+        title='Some of Our Acquia Clients'
+        backgroundColor={colors.white}
+      />
       <SplitSection
-        css={css`
-          margin: 5rem auto;
-          width: 760px;
-        `}
         gridTemplateColumns='repeat(3, 1fr)'
+        css={css`
+          ${mediaQueries.phoneLarge} {
+            ${container.textOnly}
+          }
+        `}
       >
         <Tripple>
           <h1>100%</h1>
@@ -75,7 +148,31 @@ export default () => {
           <p>Acquia MVP</p>
         </Tripple>
       </SplitSection>
-      <SplitSection>
+      <SplitSection
+        gridColumnGap='16px'
+        css={css`
+          ${container.min}
+          img {
+            width: 100px;
+          }
+          h2 {
+            color: ${colors.reallydarkgray};
+            font-family: ${fonts.sans};
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 14px;
+          }
+          p {
+            font-weight: ${weights.light};
+            margin-bottom: 50px;
+            letter-spacing: -0.1px;
+          }
+
+          ${mediaQueries.phoneLarge} {
+            padding: 0;
+          }
+        `}
+      >
         <article>
           <img src='/images/acquia-cloud.png' alt='cloud' />
           <h2>Acquia Cloud</h2>
@@ -88,12 +185,13 @@ export default () => {
           <img src='/images/acquia-lift.png' alt='lift' />
           <h2>Acquia Lift</h2>
           <p>
-            Improve visitor engagement with an achievable & data-driven
+            Improve visitor engagement with an achievable &amp; data-driven
             personalization plan.
           </p>
         </article>
       </SplitSection>
       <Quote
+        size='small'
         data={{
           field_quote:
             'Through their significant contributions to the Drupal ecosystem and to helping clients like Mint.com engage in new ways with their audience, Third & Grove have proven themselves to be an invaluable partner as the Acquia community continues to grow.',
@@ -101,7 +199,7 @@ export default () => {
             'Joe Wykes - SVP Global Channels & eCommerce - Acquia',
         }}
       />
-      <InsightsSlider />
+      <InsightsSlider showButton={false} backgroundColor={colors.lightgray} />
     </Layout>
   );
 };

@@ -72,50 +72,50 @@ export default (logoset, isSmScreen) => {
     acquia: [
       <MintLogo
         alt='Mint'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '100' : '156'}
+        height={isSmScreen ? '32' : '50'}
       />,
       <SunpowerLogo
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        height={isSmScreen ? '32' : '44'}
       />,
       <Glanbia
         alt='Glanbia'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '100' : '148'}
+        height={isSmScreen ? '49' : '74'}
       />,
       <Wvi
         alt='World Vision'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '188' : '194'}
+        height={isSmScreen ? '100' : '40'}
       />,
       <KingArthur
         alt='King Arthur'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
       />,
       <CooperVision
         alt='Cooper Vision'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '134' : '177'}
+        height={isSmScreen ? '24' : '32'}
       />,
       <CloudHealth
         alt='Cloud Health'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '126' : '170'}
+        height={isSmScreen ? '122' : '50'}
       />,
     ],
     drupal: [
       <MintLogo
         alt='Mint'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '100' : '156'}
+        height={isSmScreen ? '32' : '50'}
       />,
       <SunpowerLogo
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        height={isSmScreen ? '32' : '44'}
       />,
       <BenefitLogo
         alt='Benefit'
@@ -124,23 +124,23 @@ export default (logoset, isSmScreen) => {
       />,
       <Wvi
         alt='World Vision'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '188' : '194'}
+        height={isSmScreen ? '100' : '40'}
       />,
       <KingArthur
         alt='King Arthur'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
       />,
       <CooperVision
         alt='Cooper Vision'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '134' : '177'}
+        height={isSmScreen ? '24' : '32'}
       />,
       <CloudHealth
         alt='Cloud Health'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '126' : '170'}
+        height={isSmScreen ? '122' : '50'}
       />,
       <UCLALogo
         alt='UCLA'
