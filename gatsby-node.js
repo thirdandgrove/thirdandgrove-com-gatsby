@@ -106,7 +106,7 @@ exports.createPages = async ({ actions, graphql }) => {
     .filter(j => j.status === 'Open')
     .map(job =>
       createPage({
-        path: `/careers/${job.title.toLowerCase().replace(/ /g, '-')}`,
+        path: `/careers/${job.title.toLowerCase().replace(/ /g, '-')}/`,
         component: JobTemplate,
         context: {
           job,
