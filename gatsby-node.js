@@ -1,11 +1,7 @@
 const path = require('path');
 
-// issue with sharp workaround
-// eslint-disable-next-line import/no-extraneous-dependencies
-const sharp = require('sharp');
+const { ensureTrailingSlash } = require('./src/util');
 
-sharp.simd(false);
-sharp.cache(false);
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
@@ -25,7 +21,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   studies.data.allCaseStudy.nodes.map(studyData =>
     createPage({
-      path: studyData.path.alias,
+      path: ensureTrailingSlash(studyData.path.alias),
       component: path.resolve(`src/templates/studies.js`),
       context: {
         StudyId: studyData.id,
@@ -48,7 +44,7 @@ exports.createPages = async ({ actions, graphql }) => {
   `);
   insights.data.allInsight.nodes.map(insightData =>
     createPage({
-      path: insightData.path.alias,
+      path: ensureTrailingSlash(insightData.path.alias),
       component: path.resolve(`src/templates/insights.js`),
       context: {
         PostId: insightData.id,
@@ -80,7 +76,7 @@ exports.createPages = async ({ actions, graphql }) => {
   `);
   legacyInsights.data.allNodeLegacyInsight.nodes.map(legacyInsight =>
     createPage({
-      path: legacyInsight.path.alias,
+      path: ensureTrailingSlash(legacyInsight.path.alias),
       component: path.resolve(`src/templates/legacyInsights.js`),
       context: {
         legacyInsight,
