@@ -9,7 +9,7 @@ before_install:
 
 script:
   - yarn install
-  - yarn build
+  - travis_wait 30 yarn build
 
 deploy:
   - provider: script
