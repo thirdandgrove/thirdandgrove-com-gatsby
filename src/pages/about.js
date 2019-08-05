@@ -86,7 +86,14 @@ const About = ({ data }) => {
   const Location = styled.section`
     display: flex;
     flex-direction: column;
-    padding: 0 20px 64px;
+    margin-bottom: 64px;
+    &:hover {
+      h1,
+      h3,
+      p {
+        opacity: 0.7;
+      }
+    }
     h1 {
       ${h1L};
       padding-top: 10px;
@@ -101,6 +108,7 @@ const About = ({ data }) => {
       font-size: 21px;
       font-weight: bold;
       letter-spacing: -0.5px;
+      padding-top: 20px;
       margin-bottom: 12px;
       ${mediaQueries.phoneLarge} {
         text-align: center;
@@ -121,10 +129,12 @@ const About = ({ data }) => {
     }
   `;
   const images = data.allFile.nodes;
-  const bostonSrc = images.find(img => img.name === 'boston').childImageSharp
-    .fluid;
-  const oaklandSrc = images.find(img => img.name === 'oakland').childImageSharp
-    .fluid;
+  const bostonSrc = [
+    images.find(img => img.name === 'boston').mobileImage.fluid,
+  ];
+  const oaklandSrc = [
+    images.find(img => img.name === 'oakland').mobileImage.fluid,
+  ];
   const teamSrc = images.find(img => img.name === 'team').childImageSharp.fluid;
   return (
     <Layout
@@ -299,10 +309,10 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Where We Are</h3>
-        <SplitSection>
+        <SplitSection css={container.max} gridColumnGap='20px'>
           <Location>
             <h1 css={h1L}>Boston</h1>
-            <Img fluid={bostonSrc} alt='Boston' width='530px' />
+            <Img fluid={bostonSrc} alt='Boston' />
             <h3>1st One’s on Us</h3>
             <div>
               <p>Wink &amp; Nod</p>
@@ -312,7 +322,7 @@ const About = ({ data }) => {
           </Location>
           <Location>
             <h1 css={h1L}>Oakland</h1>
-            <Img fluid={oaklandSrc} alt='Oakland' width='530px' />
+            <Img fluid={oaklandSrc} alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>
               <p>Cafe Van Kleef</p>
@@ -371,6 +381,16 @@ export const query = graphql`
         name
         childImageSharp {
           fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+        mobileImage: childImageSharp {
+          fluid(maxWidth: 335, maxHeight: 335) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+        desktopImage: childImageSharp {
+          fluid(maxWidth: 530, maxHeight: 335) {
             ...GatsbyImageSharpFluid
           }
         }
