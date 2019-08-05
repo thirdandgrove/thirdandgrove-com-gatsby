@@ -30,8 +30,8 @@ export default (logoset, isSmScreen) => {
     shopify: [
       <Memebox
         alt='Memebox'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '116' : '166'}
+        height={isSmScreen ? '16' : '24'}
       />,
       <CCLogo
         alt='California Closets'
@@ -40,33 +40,33 @@ export default (logoset, isSmScreen) => {
       />,
       <Goldwin
         alt='Goldwin'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '125' : '180'}
+        height={isSmScreen ? '36' : '52'}
       />,
       <Gaiam
         alt='Gaiam'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '61' : '81'}
+        height={isSmScreen ? '68' : '90'}
       />,
       <Brainiac
         alt='Brainiac'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '93' : '150'}
+        height={isSmScreen ? '31' : '51'}
       />,
       <Equator
         alt='Equator'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '99' : '150'}
+        height={isSmScreen ? '34' : '52'}
       />,
       <AbsolutLogo
         alt='Absolut Vodka'
-        width={isSmScreen ? '87' : '116'}
-        height={isSmScreen ? '40' : '54'}
+        width={isSmScreen ? '94' : '150'}
+        height={isSmScreen ? '20' : '32'}
       />,
       <Jameson
         alt='Absolut Vodka'
-        width={isSmScreen ? '87' : '116'}
-        height={isSmScreen ? '40' : '54'}
+        width={isSmScreen ? '95' : '150'}
+        height={isSmScreen ? '48' : '76'}
       />,
     ],
     acquia: [
