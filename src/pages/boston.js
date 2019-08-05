@@ -47,8 +47,10 @@ const Boston = ({ data }) => {
         >
           We&apos;re a full-service Boston-based agency with the best engineers
           in the city—any city really. We are the only company to employ a
-          Drupal 8 core maintainer and consistently rank in the top 10 of Drupal
-          agencies in the world.
+          Drupal 8 core maintainer and consistently rank in the{' '}
+          <a href='https://www.drupal.org/drupal-services'>
+            top 10 of Drupal agencies in the world.
+          </a>
         </p>
       </FullWidthSection>
       <FullWidthSection
@@ -85,7 +87,7 @@ const Boston = ({ data }) => {
           </li>
           <li>
             <strong>100% Acquia Certified.</strong> Feel free to check in with
-            someone at Acquia about us.
+            anyone at Acquia about us.
           </li>
           <li>
             <strong>Writing Drupal 9.</strong> Our Drupal 8 core maintainer
@@ -98,7 +100,7 @@ const Boston = ({ data }) => {
           <li>
             <strong>Obsessive about innovation.</strong> We were the first to
             build a headless Drupal site for Quicken.com and won the Acquia 2014
-            MVP for our work on their cloud APIs.
+            MVP for our work on Acquia’s cloud APIs.
           </li>
         </ul>
       </FullWidthSection>
@@ -116,7 +118,7 @@ const Boston = ({ data }) => {
           }
         `}
       >
-        <h2> Full Digital Coverage</h2>
+        <h2>Full Digital Coverage</h2>
       </FullWidthSection>
       <Text
         data={{
@@ -137,7 +139,30 @@ const Boston = ({ data }) => {
             Our bread and butter. We’ve earned our technical chops and commerce
             knowledge by working on some of the biggest commerce sites in the world.
           </p>
-          <h2> We know our stuff but we’re not know-it-alls.</h2>
+          `,
+          },
+        }}
+      />
+      <FullWidthSection
+        margin='0 auto'
+        padding='0 20px'
+        textAlign='left'
+        align='start'
+        justify='start'
+        height='100%'
+        css={css`
+          ${mediaQueries.phoneLarge} {
+            padding: 0;
+            width: ${contValues.min};
+          }
+        `}
+      >
+        <h2>We know our stuff but we’re not know-it-alls.</h2>
+      </FullWidthSection>
+      <Text
+        data={{
+          field_body: {
+            processed: `
           <p>
             Two heads are better than one but a unified team is better than two. We
             deliver the knowledge and horsepower but you bring the experience that
