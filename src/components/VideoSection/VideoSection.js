@@ -17,9 +17,10 @@ import FullWidthSection from '../FullWidthSection';
 const VideoSection = ({ url, teaser }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
+  const startingUrl = isSmScreen ? url : teaser;
   const [playing, setPlaying] = useState(!isSmScreen);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [activeUrl, setUrl] = useState(teaser);
+  const [activeUrl, setUrl] = useState(startingUrl);
   const [buttonX, setButtonX] = useState('50%');
   const [buttonY, setButtonY] = useState('50%');
   const [buttonVisible, setButtonVisible] = useState(false);
@@ -178,13 +179,18 @@ const VideoSection = ({ url, teaser }) => {
           type='button'
           css={btnStyles}
           onClick={() => {
-            if (!hasInteracted) {
-              setHasInteracted(true);
-              // Switch to full video.
-              setUrl(url);
-              setPlaying(true); // Necessary for mobile.
-            } else {
+            if (hasInteracted) {
               setPlaying(!playing);
+            } else {
+              setHasInteracted(true);
+
+              if (isSmScreen) {
+                // Since there's no autoplay on mobile
+                setPlaying(true);
+              } else {
+                // Since desktop autoplays with the teaser version
+                setUrl(url);
+              }
             }
           }}
         >
