@@ -4,15 +4,12 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import useWindow from '../hooks/useWindow';
 import { colors, mediaQueries, jsBreakpoints } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 import InsightsSlider from '../components/InsightsSlider';
 
 const Insights = ({ data }) => {
-  const { width } = useWindow();
-  const isPhone = width < jsBreakpoints.phoneLarge;
   const post = data.insight;
   const imageSrc =
     post.relationships.field_image &&
@@ -46,7 +43,13 @@ const Insights = ({ data }) => {
       <div css={imageSrc === 'undefined' && wrapperStyle}>
         {imageSrc && (
           <Img
-            fluid={imageSrc}
+            fluid={[
+              post.relationships.field_image.localFile.mobileImage.fluid,
+              {
+                ...post.relationships.field_image.localFile.desktopImage.fluid,
+                media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+              },
+            ]}
             alt={imageAlt}
             css={css`
               margin-left: 20px;
@@ -70,7 +73,7 @@ const Insights = ({ data }) => {
         />
       </div>
       <InsightsSlider
-        showButton={isPhone}
+        showButton={false}
         backgroundColor={colors.lightgray}
         title='You May Also Like'
       />
@@ -108,6 +111,20 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+            mobileImage: childImageSharp {
+              fluid(maxHeight: 250) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+            desktopImage: childImageSharp {
+              fluid(
+                maxWidth: 980
+                maxHeight: 500
+                srcSetBreakpoints: [480, 900, 1200]
+              ) {
                 ...GatsbyImageSharpFluid
               }
             }

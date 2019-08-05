@@ -30,8 +30,8 @@ export default (logoset, isSmScreen) => {
     shopify: [
       <Memebox
         alt='Memebox'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '116' : '166'}
+        height={isSmScreen ? '16' : '24'}
       />,
       <CCLogo
         alt='California Closets'
@@ -40,82 +40,82 @@ export default (logoset, isSmScreen) => {
       />,
       <Goldwin
         alt='Goldwin'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '125' : '180'}
+        height={isSmScreen ? '36' : '52'}
       />,
       <Gaiam
         alt='Gaiam'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '61' : '81'}
+        height={isSmScreen ? '68' : '90'}
       />,
       <Brainiac
         alt='Brainiac'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '93' : '150'}
+        height={isSmScreen ? '31' : '51'}
       />,
       <Equator
         alt='Equator'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '99' : '150'}
+        height={isSmScreen ? '34' : '52'}
       />,
       <AbsolutLogo
         alt='Absolut Vodka'
-        width={isSmScreen ? '87' : '116'}
-        height={isSmScreen ? '40' : '54'}
+        width={isSmScreen ? '94' : '150'}
+        height={isSmScreen ? '20' : '32'}
       />,
       <Jameson
         alt='Absolut Vodka'
-        width={isSmScreen ? '87' : '116'}
-        height={isSmScreen ? '40' : '54'}
+        width={isSmScreen ? '95' : '150'}
+        height={isSmScreen ? '48' : '76'}
       />,
     ],
     acquia: [
       <MintLogo
         alt='Mint'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '100' : '156'}
+        height={isSmScreen ? '32' : '50'}
       />,
       <SunpowerLogo
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        height={isSmScreen ? '32' : '44'}
       />,
       <Glanbia
         alt='Glanbia'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '100' : '148'}
+        height={isSmScreen ? '49' : '74'}
       />,
       <Wvi
         alt='World Vision'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '188' : '194'}
+        height={isSmScreen ? '100' : '40'}
       />,
       <KingArthur
         alt='King Arthur'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
       />,
       <CooperVision
         alt='Cooper Vision'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '134' : '177'}
+        height={isSmScreen ? '24' : '32'}
       />,
       <CloudHealth
         alt='Cloud Health'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '126' : '170'}
+        height={isSmScreen ? '122' : '50'}
       />,
     ],
     drupal: [
       <MintLogo
         alt='Mint'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '100' : '156'}
+        height={isSmScreen ? '32' : '50'}
       />,
       <SunpowerLogo
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        height={isSmScreen ? '32' : '44'}
       />,
       <BenefitLogo
         alt='Benefit'
@@ -124,23 +124,23 @@ export default (logoset, isSmScreen) => {
       />,
       <Wvi
         alt='World Vision'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '188' : '194'}
+        height={isSmScreen ? '100' : '40'}
       />,
       <KingArthur
         alt='King Arthur'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
       />,
       <CooperVision
         alt='Cooper Vision'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '134' : '177'}
+        height={isSmScreen ? '24' : '32'}
       />,
       <CloudHealth
         alt='Cloud Health'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        width={isSmScreen ? '126' : '170'}
+        height={isSmScreen ? '122' : '50'}
       />,
       <UCLALogo
         alt='UCLA'
