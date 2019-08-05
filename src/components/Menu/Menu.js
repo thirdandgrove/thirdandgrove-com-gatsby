@@ -67,6 +67,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
   const linkSecondaryStyle = css`
     line-height: 42px;
     font-size: 24px;
+
     ${mediaQueries.phoneLarge} {
       font-size: 36px;
       line-height: 60px;
@@ -114,7 +115,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
     max-height: 90px;
 
     ${mediaQueries.phoneLarge} {
-      columns: 1;
+      columns: unset;
       max-height: none;
     }
   `;
