@@ -14,6 +14,7 @@ import {
   jsBreakpoints,
   container,
 } from '../../styles';
+import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreviewSlide = ({ article, index }) => {
   const nodeRef = useRef();
@@ -120,7 +121,7 @@ const ArticlePreviewSlide = ({ article, index }) => {
                 }
               `}
             >
-              <Link to={article.path.alias}>
+              <Link to={ensureTrailingSlash(article.path.alias)}>
                 <h3>{article.title}</h3>
                 <footer>
                   {`${article.created} - ${article.relationships.uid.name}`}

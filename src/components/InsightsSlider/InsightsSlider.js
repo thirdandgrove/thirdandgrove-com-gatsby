@@ -129,7 +129,7 @@ const InsightsSlider = ({ showButton, backgroundColor, title }) => {
         })}
       </Slider>
       {showButton && (
-        <Button onClick={() => navigate(`/insights`)}>Our Insights</Button>
+        <Button onClick={() => navigate(`/insights/`)}>Our Insights</Button>
       )}
     </FullWidthSection>
   );
