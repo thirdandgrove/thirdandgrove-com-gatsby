@@ -92,7 +92,7 @@ export default () => {
             {uniqueJobs.map(job => (
               <li key={JSON.stringify(job)}>
                 <Link
-                  to={`/careers/${job.title.toLowerCase().replace(/ /g, '-')}`}
+                  to={`/careers/${job.title.toLowerCase().replace(/ /g, '-')}/`}
                 >
                   {job.title}
                 </Link>

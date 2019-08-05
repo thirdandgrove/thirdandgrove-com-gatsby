@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
 import { fonts, weights, mediaQueries } from '../../styles';
+import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreview = ({ article }) => {
   const nodeRef = useRef();
@@ -63,7 +64,7 @@ const ArticlePreview = ({ article }) => {
             css={css`
               display: block;
             `}
-            to={article.path.alias}
+            to={ensureTrailingSlash(article.path.alias)}
           >
             <div ref={nodeRef}>
               {article.relationships.field_image && (

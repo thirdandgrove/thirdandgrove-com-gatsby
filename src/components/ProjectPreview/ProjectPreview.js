@@ -5,6 +5,7 @@ import { css } from '@emotion/core';
 
 import Button from '../Button';
 import { smSectionHead, container, mediaQueries, weights } from '../../styles';
+import { ensureTrailingSlash } from '../../util';
 
 import ImageCollage from './ImageCollage';
 
@@ -120,7 +121,7 @@ const ProjectPreview = ({ project }) => {
         <h1 css={h1Styles}>{project.title}</h1>
       </div>
       <ImageCollage images={images} type={project.field_image_arrangement} />
-      <Button onClick={() => navigate(project.path.alias)}>
+      <Button onClick={() => navigate(ensureTrailingSlash(project.path.alias))}>
         View Case Study
       </Button>
     </div>

@@ -59,7 +59,7 @@ const WhatWeDo = () => {
       <h4 css={headingCss}>
         <a href='/capabilities'>Creative</a>
       </h4>
-      <Button onClick={() => navigate(`/capabilities`)}>
+      <Button onClick={() => navigate(`/capabilities/`)}>
         Our Capabilities
       </Button>
     </FullWidthSection>

@@ -43,7 +43,7 @@ const WorkPreview = ({ article }) => {
     }
   `;
   return (
-    <Link to={`/articles${article.path.alias}`}>
+    <Link to={`/articles${article.path.alias}/`}>
       <Card>
         <div />
         <span>

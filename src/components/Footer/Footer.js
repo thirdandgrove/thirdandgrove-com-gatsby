@@ -50,25 +50,25 @@ const Footer = () => {
   return (
     <div css={wrapperStyle}>
       <div css={[innerWrapperStyle, container.max]}>
-        <Link css={linkStyle} to='/work'>
+        <Link css={linkStyle} to='/work/'>
           Work
         </Link>
-        <Link css={linkStyle} to='/capabilities'>
+        <Link css={linkStyle} to='/capabilities/'>
           Capabilities
         </Link>
-        <Link css={linkStyle} to='/insights'>
+        <Link css={linkStyle} to='/insights/'>
           Insights
         </Link>
-        <Link css={linkStyle} to='/about'>
+        <Link css={linkStyle} to='/about/'>
           About
         </Link>
-        <Link css={linkStyle} to='/careers'>
+        <Link css={linkStyle} to='/careers/'>
           Careers
         </Link>
-        <Link css={linkStyle} to='/contact'>
+        <Link css={linkStyle} to='/contact/'>
           Contact
         </Link>
-        <Link css={linkStyle} to='/legal'>
+        <Link css={linkStyle} to='/legal/'>
           Legal
         </Link>
       </div>
