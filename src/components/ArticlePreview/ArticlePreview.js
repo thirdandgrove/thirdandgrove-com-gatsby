@@ -16,7 +16,7 @@ const ArticlePreview = ({ article }) => {
 
   const Card = styled.div`
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 116px;
     transition-duration: 0.4s;
     transition-timing-function: ease-out;
 
