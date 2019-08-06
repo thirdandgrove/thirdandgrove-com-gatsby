@@ -9,14 +9,7 @@ import Image from 'gatsby-image';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import Text from '../components/ContentBody/Text';
-import {
-  fonts,
-  weights,
-  contValues,
-  mediaQueries,
-  container,
-  contentHeadings,
-} from '../styles';
+import { fonts, weights, contValues, mediaQueries, container } from '../styles';
 import SplitSection from '../components/SplitSection';
 
 const Boston = ({ data }) => {
