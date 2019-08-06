@@ -16,7 +16,7 @@ import FullWidthSection from '../FullWidthSection';
 
 const VideoSection = ({ url, teaser }) => {
   const { width } = useWindow();
-  const isSmScreen = width < jsBreakpoints.phoneLarge;
+  const isSmScreen = width < jsBreakpoints.xs;
   const startingUrl = isSmScreen ? url : teaser;
   const [playing, setPlaying] = useState(!isSmScreen);
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -54,7 +54,7 @@ const VideoSection = ({ url, teaser }) => {
       margin: 0 0 0 -82.7vh;
     }
 
-    ${mediaQueries.phoneLarge} {
+    ${mediaQueries.xs} {
       padding-top: 56.25%;
 
       > div > div {
@@ -97,12 +97,12 @@ const VideoSection = ({ url, teaser }) => {
       border-right-width: 0;
       border-left: solid 16px ${colors.white};
 
-      ${mediaQueries.phoneLarge} {
+      ${mediaQueries.xs} {
         display: none;
       }
     }
 
-    ${mediaQueries.phoneLarge} {
+    ${mediaQueries.xs} {
       display: ${buttonVisible ? 'block' : 'none'};
       position: fixed;
       top: ${buttonY + 'px'};
@@ -131,10 +131,11 @@ const VideoSection = ({ url, teaser }) => {
     letter-spacing: -0.28px;
     color: ${colors.white};
 
-    ${mediaQueries.phoneLarge} {
+    ${mediaQueries.xs} {
       position: absolute;
       top: 50%;
       left: 50%;
+      width: calc(100% - 40px);
       margin-left: 0;
       transform: translate(-50%, -50%);
       z-index: 2;
@@ -156,7 +157,7 @@ const VideoSection = ({ url, teaser }) => {
     align-items: center;
     z-index: 2;
 
-    ${mediaQueries.phoneLarge} {
+    ${mediaQueries.xs} {
       position: static;
       transform: none;
     }
