@@ -16,6 +16,7 @@ import {
   h1L,
   container,
   mediaQueries,
+  jsBreakpoints,
   contValues,
   pLight,
 } from '../styles';
@@ -86,7 +87,7 @@ const About = ({ data }) => {
   const Location = styled.section`
     display: flex;
     flex-direction: column;
-    margin-bottom: 64px;
+    margin-bottom: 50px;
     &:hover {
       h1,
       h3,
@@ -131,9 +132,17 @@ const About = ({ data }) => {
   const images = data.allFile.nodes;
   const bostonSrc = [
     images.find(img => img.name === 'boston').mobileImage.fluid,
+    {
+      ...images.find(img => img.name === 'boston').desktopImage.fluid,
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+    },
   ];
   const oaklandSrc = [
     images.find(img => img.name === 'oakland').mobileImage.fluid,
+    {
+      ...images.find(img => img.name === 'oakland').desktopImage.fluid,
+      media: `(min-width: ${jsBreakpoints.desktop}px)`,
+    },
   ];
   const teamSrc = images.find(img => img.name === 'team').childImageSharp.fluid;
   return (
@@ -380,17 +389,17 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 980, maxHeight: 480) {
             ...GatsbyImageSharpFluid
           }
         }
         mobileImage: childImageSharp {
-          fluid(maxWidth: 335, maxHeight: 335) {
+          fluid(cropFocus: CENTER, maxHeight: 335, maxWidth: 335) {
             ...GatsbyImageSharpFluid
           }
         }
         desktopImage: childImageSharp {
-          fluid(maxWidth: 530, maxHeight: 335) {
+          fluid(maxWidth: 530, srcSetBreakpoints: [480, 900, 1200]) {
             ...GatsbyImageSharpFluid
           }
         }
