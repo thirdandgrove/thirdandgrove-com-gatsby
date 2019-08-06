@@ -7,11 +7,12 @@ import ArticlePreview from '../components/ArticlePreview';
 import Button from '../components/Button';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
+import { ensureTrailingSlash } from '../util';
 
 export default () => {
   const data = useStaticQuery(graphql`
     {
-      allInsight {
+      allInsight(sort: { fields: created, order: DESC }) {
         nodes {
           ...InsightFragment
         }
@@ -95,7 +96,11 @@ export default () => {
               {headerArticle.title}
             </h3>
 
-            <Button onClick={() => navigate(`${headerArticle.path.alias}`)}>
+            <Button
+              onClick={() =>
+                navigate(ensureTrailingSlash(headerArticle.path.alias))
+              }
+            >
               Read More
             </Button>
           </>

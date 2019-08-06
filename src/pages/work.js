@@ -11,6 +11,7 @@ import { weights, mediaQueries, container, fonts } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import VideoSection from '../components/VideoSection';
+import { ensureTrailingSlash } from '../util';
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -33,7 +34,7 @@ const Project = ({ study, index }) => {
     >
       <div css={container.medium}>
         <Link
-          to={study.path.alias}
+          to={ensureTrailingSlash(study.path.alias)}
           css={css`
             display: block;
             margin-bottom: 125px;

@@ -369,7 +369,7 @@ const About = ({ data }) => {
         >
           Show us what you&apos;re made of.
         </h2>
-        <Button onClick={() => navigate(`/careers`)}>
+        <Button onClick={() => navigate(`/careers/`)}>
           view open positions
         </Button>
       </FullWidthSection>

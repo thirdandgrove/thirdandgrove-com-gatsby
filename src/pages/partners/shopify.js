@@ -98,7 +98,7 @@ export default () => {
       <ProjectsSlider backgroundColor={colors.lightgray} />
       <LogoGrid
         logoset='shopify'
-        title='Some of Our Acquia Clients'
+        title='Some of Our Shopify Clients'
         backgroundColor={colors.white}
       />
       <SplitSection

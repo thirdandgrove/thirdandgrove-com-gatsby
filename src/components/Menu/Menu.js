@@ -164,21 +164,21 @@ const Menu = ({ menuOpen, toggleOpen }) => {
           <Link
             onClick={() => toggleOpen()}
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
-            to='/work'
+            to='/work/'
           >
             Work
           </Link>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
             onClick={() => toggleOpen()}
-            to='/capabilities'
+            to='/capabilities/'
           >
             Capabilities
           </Link>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
             onClick={() => toggleOpen()}
-            to='/insights'
+            to='/insights/'
           >
             Insights
           </Link>
@@ -189,21 +189,21 @@ const Menu = ({ menuOpen, toggleOpen }) => {
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
             onClick={() => toggleOpen()}
-            to='/about'
+            to='/about/'
           >
             About
           </Link>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
             onClick={() => toggleOpen()}
-            to='/careers'
+            to='/careers/'
           >
             Careers
           </Link>
           <Link
             css={[linkPrimaryStyle, textFadeIn, linkBaseStyles]}
             onClick={() => toggleOpen()}
-            to='/contact'
+            to='/contact/'
           >
             Contact
           </Link>
@@ -214,28 +214,28 @@ const Menu = ({ menuOpen, toggleOpen }) => {
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
               onClick={() => toggleOpen()}
-              to='/partners/drupal'
+              to='/partners/drupal/'
             >
               Drupal
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
               onClick={() => toggleOpen()}
-              to='/partners/acquia'
+              to='/partners/acquia/'
             >
               Acquia
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
               onClick={() => toggleOpen()}
-              to='/partners/shopify'
+              to='/partners/shopify/'
             >
               Shopify
             </Link>
             <Link
               css={[linkSecondaryStyle, textFadeIn, linkBaseStyles]}
               onClick={() => toggleOpen()}
-              to='/partners/gatsby'
+              to='/partners/gatsby/'
             >
               Gatsby
             </Link>
