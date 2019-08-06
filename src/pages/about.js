@@ -141,7 +141,7 @@ const About = ({ data }) => {
     images.find(img => img.name === 'oakland').mobileImage.fluid,
     {
       ...images.find(img => img.name === 'oakland').desktopImage.fluid,
-      media: `(min-width: ${jsBreakpoints.desktop}px)`,
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
     },
   ];
   const teamSrc = images.find(img => img.name === 'team').childImageSharp.fluid;
@@ -394,7 +394,7 @@ export const query = graphql`
           }
         }
         mobileImage: childImageSharp {
-          fluid(cropFocus: CENTER, maxHeight: 335, maxWidth: 335) {
+          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
             ...GatsbyImageSharpFluid
           }
         }
