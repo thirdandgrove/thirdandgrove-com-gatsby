@@ -134,7 +134,7 @@ const About = ({ data }) => {
       padding-bottom: 100% !important;
 
       ${mediaQueries.phoneLarge} {
-        padding-bottom: 57.9% !important;
+        padding-bottom: 63.2% !important;
       }
     }
   `;
@@ -327,7 +327,7 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Where We Are</h3>
-        <SplitSection css={container.max} gridColumnGap='20px'>
+        <SplitSection css={container.large} gridColumnGap='20px'>
           <Location>
             <h1 css={h1L}>Boston</h1>
             <Img fluid={bostonSrc} alt='Boston' />
