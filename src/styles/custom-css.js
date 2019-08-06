@@ -73,6 +73,15 @@ export const smSectionHead = css`
   }
 `;
 
+export const contentH2 = css`
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-family: ${fonts.sans};
+  font-size: 21px;
+  font-weight: ${weights.bold};
+  line-height: 1.4;
+`;
+
 export const contentHeadings = css`
   font-family: ${fonts.sans};
   font-size: 16px;
