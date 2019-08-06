@@ -115,7 +115,7 @@ const About = ({ data }) => {
         text-align: center;
       }
     }
-    div {
+    & > div {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -126,6 +126,15 @@ const About = ({ data }) => {
         ${pLight};
         padding: 0;
         margin: 0 0 1px 0;
+      }
+    }
+    .gatsby-image-wrapper > div {
+      // Forcing correct image aspect ratio, overriding inline
+      // gatsby-image provided styles
+      padding-bottom: 100% !important;
+
+      ${mediaQueries.phoneLarge} {
+        padding-bottom: 57.9% !important;
       }
     }
   `;
