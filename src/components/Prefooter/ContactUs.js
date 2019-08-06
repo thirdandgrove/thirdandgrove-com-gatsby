@@ -16,7 +16,7 @@ const wrapperStyles = css`
 const ContactUs = () => (
   <TextWrapper backgroundColor={colors.yellow} css={wrapperStyles}>
     <h3>Get to know us.</h3>
-    <Button onClick={() => navigate(`/contact`)}>Contact Us</Button>
+    <Button onClick={() => navigate(`/contact/`)}>Contact Us</Button>
   </TextWrapper>
 );
 

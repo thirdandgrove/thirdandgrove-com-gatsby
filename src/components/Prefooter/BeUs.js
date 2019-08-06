@@ -16,7 +16,7 @@ const wrapperStyles = css`
 const BeUs = () => (
   <TextWrapper backgroundColor={colors.lightblue} css={wrapperStyles}>
     <h3>Get to be us.</h3>
-    <Button onClick={() => navigate(`/careers`)}>Work at TAG</Button>
+    <Button onClick={() => navigate(`/careers/`)}>Work at TAG</Button>
   </TextWrapper>
 );
 

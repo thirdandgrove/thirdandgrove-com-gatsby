@@ -8,6 +8,7 @@ import Button from '../Button';
 import { TextWrapper } from '../Prefooter';
 import SplitSection from '../SplitSection';
 import { colors, fonts, weights, mediaQueries } from '../../styles';
+import { ensureTrailingSlash } from '../../util';
 
 const pStyles = css`
   margin-bottom: 25px;
@@ -67,7 +68,11 @@ const Prefooter = ({ data }) => (
         {data.field_primary_cta && (
           <Button
             onClick={() =>
-              navigate(data.field_primary_cta.uri.replace('internal:', ''))
+              navigate(
+                ensureTrailingSlash(
+                  data.field_primary_cta.uri.replace('internal:', '')
+                )
+              )
             }
           >
             {data.field_primary_cta.title}
@@ -89,7 +94,11 @@ const Prefooter = ({ data }) => (
         {data.field_secondary_cta && (
           <Button
             onClick={() =>
-              navigate(data.field_secondary_cta.uri.replace('internal:', ''))
+              navigate(
+                ensureTrailingSlash(
+                  data.field_secondary_cta.uri.replace('internal:', '')
+                )
+              )
             }
           >
             {data.field_secondary_cta.title}
