@@ -45,7 +45,7 @@ export const query = graphql`
     field_image {
       alt
     }
-    created(formatString: "MMMM DD YYYY")
+    created(formatString: "MMM D, YYYY")
     path {
       alias
     }

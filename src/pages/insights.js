@@ -2,7 +2,14 @@ import React from 'react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { fonts, h1L, mediaQueries, container, colors } from '../styles';
+import {
+  fonts,
+  weights,
+  h1L,
+  mediaQueries,
+  container,
+  colors,
+} from '../styles';
 import ArticlePreview from '../components/ArticlePreview';
 import Button from '../components/Button';
 import Layout from '../components/layout';
@@ -79,19 +86,29 @@ export default () => {
       headerData={{
         children: (
           <>
-            <div
+            <span
+              data-cy='labelText'
               css={css`
-                margin-top: 20px;
+                margin-bottom: 32px;
                 font-family: ${fonts.sans};
                 font-size: 15px;
-                letter-spacing: 2px;
+                font-weight: ${weights.light};
                 line-height: 2.4;
+                text-transform: capitalize;
+                color: ${colors.darkgray};
+                text-align: center;
+                padding-left: 20px;
+                padding-right: 20px;
+
+                ${mediaQueries.desktop} {
+                  margin-bottom: 42px;
+                }
               `}
             >
-              {`${headerArticle.created} - ${
+              {`${headerArticle.created} – ${
                 headerArticle.relationships.uid.name
               }`}
-            </div>
+            </span>
             <h3 data-cy='insightTitle' css={[h1L, headerStyles]}>
               {headerArticle.title}
             </h3>

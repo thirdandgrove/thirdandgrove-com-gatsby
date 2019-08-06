@@ -32,7 +32,7 @@ const Insights = ({ data }) => {
     <Layout
       headerData={{
         title: post.title,
-        label: `${post.created} - ${post.relationships.uid.name}`,
+        label: `${post.created} – ${post.relationships.uid.name}`,
         invert: post.field_inverse_header,
         defaultBackground: false,
         color: backgroundColor || colors.yellow,
@@ -97,7 +97,7 @@ export const query = graphql`
       field_image {
         alt
       }
-      created(formatString: "MMMM DD YYYY")
+      created(formatString: "MMM D, YYYY")
       relationships {
         node_type {
           name
