@@ -40,7 +40,16 @@ const Insights = ({ data }) => {
         marginBottom: '70px',
       }}
     >
-      <div css={imageSrc === undefined && wrapperStyle}>
+      <div
+        css={[
+          css`
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 90px;
+            }
+          `,
+          imageSrc === undefined && wrapperStyle,
+        ]}
+      >
         {imageSrc && (
           <Img
             fluid={[
