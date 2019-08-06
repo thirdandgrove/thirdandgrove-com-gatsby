@@ -8,7 +8,7 @@ import {
   contentH2,
   contentHeadings,
   weights,
-  contValues,
+  container,
   mediaQueries,
   dropCap,
 } from '../../styles';
@@ -26,17 +26,18 @@ const Text = ({ data }) => {
       height='auto'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
+        ${container.min}
+
+        ${mediaQueries.phoneLarge} {
+          padding: 0;
+        }
+
         h2 {
           ${contentH2}
         }
 
         h3 {
           ${contentHeadings}
-        }
-
-        ${mediaQueries.phoneLarge} {
-          padding: 0;
-          width: ${contValues.min};
         }
 
         ${renderDropCap && dropCap}
