@@ -378,26 +378,28 @@ export const globalStyles = css`
 
   ul,
   ol {
-    margin: 0 0 1.45rem 1.45rem;
-    padding: 0;
+    margin: 0 0 1.45rem;
+    padding: 0 0 0 1rem;
+    font-family: ${fonts.sans};
+    font-size: 16px;
     list-style-position: outside;
     list-style-image: none;
   }
 
   ol li,
   ul li {
-    padding-left: 0;
+    padding-left: 0.45rem;
     margin-bottom: calc(1.45rem / 2);
   }
 
   li > ol {
-    margin-left: 1.45rem;
+    padding-left: 1.45rem;
     margin-bottom: calc(1.45rem / 2);
     margin-top: calc(1.45rem / 2);
   }
 
   li > ul {
-    margin-left: 1.45rem;
+    padding-left: 1.45rem;
     margin-bottom: calc(1.45rem / 2);
     margin-top: calc(1.45rem / 2);
   }
@@ -451,6 +453,11 @@ export const globalStyles = css`
     &:last-child {
       padding-right: 0;
     }
+  }
+
+  td *:last-child,
+  th *:last-child {
+    margin-bottom: 0;
   }
 
   pre {
