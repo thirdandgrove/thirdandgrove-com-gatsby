@@ -8,6 +8,7 @@ import {
   weights,
   container,
   mediaQueries,
+  contentH2,
   contentHeadings,
   dropCap,
 } from '../../styles';
@@ -25,7 +26,10 @@ const TextImage = ({ data }) => {
       padding: 0;
     }
 
-    h2,
+    h2 {
+      ${contentH2}
+    }
+
     h3 {
       ${contentHeadings};
     }

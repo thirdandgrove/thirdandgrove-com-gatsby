@@ -12,6 +12,7 @@ export {
   h1Xl,
   h1L,
   smSectionHead,
+  contentH2,
   contentHeadings,
   dropCap,
   pLight,
