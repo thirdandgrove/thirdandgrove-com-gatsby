@@ -16,6 +16,7 @@ import {
   h1L,
   container,
   mediaQueries,
+  jsBreakpoints,
   contValues,
   pLight,
 } from '../styles';
@@ -86,7 +87,14 @@ const About = ({ data }) => {
   const Location = styled.section`
     display: flex;
     flex-direction: column;
-    padding: 0 20px 64px;
+    margin-bottom: 50px;
+    &:hover {
+      h1,
+      h3,
+      p {
+        opacity: 0.7;
+      }
+    }
     h1 {
       ${h1L};
       padding-top: 10px;
@@ -101,12 +109,13 @@ const About = ({ data }) => {
       font-size: 21px;
       font-weight: bold;
       letter-spacing: -0.5px;
+      padding-top: 20px;
       margin-bottom: 12px;
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
     }
-    div {
+    & > div {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -119,12 +128,31 @@ const About = ({ data }) => {
         margin: 0 0 1px 0;
       }
     }
+    .gatsby-image-wrapper > div {
+      // Forcing correct image aspect ratio, overriding inline
+      // gatsby-image provided styles
+      padding-bottom: 100% !important;
+
+      ${mediaQueries.phoneLarge} {
+        padding-bottom: 63.2% !important;
+      }
+    }
   `;
   const images = data.allFile.nodes;
-  const bostonSrc = images.find(img => img.name === 'boston').childImageSharp
-    .fluid;
-  const oaklandSrc = images.find(img => img.name === 'oakland').childImageSharp
-    .fluid;
+  const bostonSrc = [
+    images.find(img => img.name === 'boston').mobileImage.fluid,
+    {
+      ...images.find(img => img.name === 'boston').desktopImage.fluid,
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+    },
+  ];
+  const oaklandSrc = [
+    images.find(img => img.name === 'oakland').mobileImage.fluid,
+    {
+      ...images.find(img => img.name === 'oakland').desktopImage.fluid,
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+    },
+  ];
   const teamSrc = images.find(img => img.name === 'team').childImageSharp.fluid;
   return (
     <Layout
@@ -299,10 +327,10 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Where We Are</h3>
-        <SplitSection>
+        <SplitSection css={container.large} gridColumnGap='20px'>
           <Location>
             <h1 css={h1L}>Boston</h1>
-            <Img fluid={bostonSrc} alt='Boston' width='530px' />
+            <Img fluid={bostonSrc} alt='Boston' />
             <h3>1st One’s on Us</h3>
             <div>
               <p>Wink &amp; Nod</p>
@@ -312,7 +340,7 @@ const About = ({ data }) => {
           </Location>
           <Location>
             <h1 css={h1L}>Oakland</h1>
-            <Img fluid={oaklandSrc} alt='Oakland' width='530px' />
+            <Img fluid={oaklandSrc} alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>
               <p>Cafe Van Kleef</p>
@@ -370,7 +398,17 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 980, maxHeight: 480) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+        mobileImage: childImageSharp {
+          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+        desktopImage: childImageSharp {
+          fluid(maxWidth: 530, srcSetBreakpoints: [480, 900, 1200]) {
             ...GatsbyImageSharpFluid
           }
         }
