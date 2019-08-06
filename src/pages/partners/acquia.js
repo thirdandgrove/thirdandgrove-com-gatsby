@@ -132,6 +132,7 @@ export default () => {
         css={css`
           ${mediaQueries.phoneLarge} {
             ${container.textOnly}
+            padding-top: 96px;
           }
         `}
       >
