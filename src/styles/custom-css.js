@@ -24,6 +24,11 @@ export const container = contWidths.reduce((acc, w, i) => {
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
+
+    ${mediaQueries.phoneLarge} {
+      padding-left: 0;
+      padding-right: 0;
+    }
   `;
   return acc;
 }, {});
