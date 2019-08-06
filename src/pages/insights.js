@@ -12,7 +12,7 @@ import { ensureTrailingSlash } from '../util';
 export default () => {
   const data = useStaticQuery(graphql`
     {
-      allInsight {
+      allInsight(sort: { fields: created, order: DESC }) {
         nodes {
           ...InsightFragment
         }
