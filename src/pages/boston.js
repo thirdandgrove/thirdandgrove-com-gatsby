@@ -1,25 +1,28 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
 import propTypes from 'prop-types';
 import { css } from '@emotion/core';
+import Image from 'gatsby-image';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import Text from '../components/ContentBody/Text';
-import TextImage from '../components/ContentBody/TextImage';
 import {
   fonts,
   weights,
   contValues,
   mediaQueries,
+  container,
   contentHeadings,
 } from '../styles';
+import SplitSection from '../components/SplitSection';
 
 const Boston = ({ data }) => {
   return (
     <Layout
-      headerData={{ title: 'You won’t find a better Drupal agency in Boston' }}
+      headerData={{ title: 'You won’t find a better Drupal agency in Boston.' }}
     >
       <FullWidthSection
         fontWeight={weights.thin}
@@ -29,11 +32,8 @@ const Boston = ({ data }) => {
         align='start'
         justify='start'
         height='100%'
+        minHeight='100%'
         css={css`
-          h2,
-          h3 {
-            ${contentHeadings}
-          }
           ${mediaQueries.phoneLarge} {
             padding: 0;
             width: ${contValues.min};
@@ -78,12 +78,12 @@ const Boston = ({ data }) => {
       >
         <ul
           css={css`
-            padding: 3rem 0;
+            padding: 2rem 0;
           `}
         >
           <li>
             <strong>Over 177,000 hours on Drupal 8.</strong> That&apos;s over
-            7,375 days of our lives (talk about time well spent.)
+            7,375 days of our lives (talk about time well spent).
           </li>
           <li>
             <strong>100% Acquia Certified.</strong> Feel free to check in with
@@ -110,6 +110,7 @@ const Boston = ({ data }) => {
         textAlign='left'
         align='start'
         justify='start'
+        minHeight='100%'
         height='100%'
         css={css`
           ${mediaQueries.phoneLarge} {
@@ -150,6 +151,7 @@ const Boston = ({ data }) => {
         align='start'
         justify='start'
         height='100%'
+        minHeight='100%'
         css={css`
           ${mediaQueries.phoneLarge} {
             padding: 0;
@@ -180,25 +182,35 @@ const Boston = ({ data }) => {
           },
         }}
       />
-      <TextImage
-        data={{
-          field_body: {
-            processed: `<h2> Want to catch up over coffee or a drink?</h2>
-          <p>
-            We’re located in Downtown Crossing but enjoy putting in some miles to
-            get around the city (no, not walking, uber of course).
-          </p>`,
-          },
-          field_image: { alt: 'Boston' },
-          relationships: {
-            field_image: {
-              localFile: {
-                childImageSharp: { fluid: data.file.childImageSharp.fluid },
-              },
-            },
-          },
-        }}
-      />
+      <SplitSection
+        css={css`
+          font-weight: ${weights.thin};
+          grid-column-gap: 20px;
+          padding: 0 20px;
+          ${mediaQueries.phoneLarge} {
+            ${container.min};
+            padding: 0;
+            padding-bottom: 4rem;
+          }
+        `}
+      >
+        <section
+          dangerouslySetInnerHTML={{
+            __html: `<h2> Want to catch up over coffee or a drink?</h2>
+            <p>
+              We’re located in Downtown Crossing but enjoy putting in some miles to
+              get around the city (no, not walking, uber of course).
+            </p>`,
+          }}
+        />
+        <Image
+          fluid={data.file.childImageSharp.fluid}
+          alt='Boston'
+          css={css`
+            margin-bottom: 40px;
+          `}
+        />
+      </SplitSection>
     </Layout>
   );
 };
