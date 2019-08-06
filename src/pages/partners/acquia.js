@@ -29,6 +29,10 @@ export default () => {
     h1 {
       font-size: 48px;
       margin-bottom: 8px;
+
+      ${mediaQueries.phoneLarge} {
+        margin-bottom: 30px;
+      }
     }
     p {
       ${pLight};
@@ -155,6 +159,7 @@ export default () => {
           ${container.min}
           img {
             width: 100px;
+            margin-bottom: 35px;
           }
           h2 {
             color: ${colors.reallydarkgray};
@@ -170,7 +175,7 @@ export default () => {
           }
 
           ${mediaQueries.phoneLarge} {
-            padding: 0;
+            padding: 70px 0;
           }
         `}
       >
