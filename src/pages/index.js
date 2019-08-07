@@ -10,7 +10,8 @@ import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
 
-export default () => {
+// eslint-disable-next-line react/prop-types
+export default ({ data }) => {
   return (
     <Layout
       headerData={{
@@ -24,9 +25,9 @@ export default () => {
         mobileMinHeight: '93vh',
       }}
     >
-      <ProjectsSlider />
+      <ProjectsSlider data={data.allCaseStudy} />
       <WhatWeDo />
-      <InsightsSlider />
+      <InsightsSlider data={data.allInsight} />
       <LogoGrid title='A Few of Our Friends' />
       <SplitSection>
         <ContactUs />
@@ -38,6 +39,18 @@ export default () => {
 
 // define fragments
 export const query = graphql`
+  {
+    allCaseStudy(sort: { fields: created, order: DESC }, limit: 5) {
+      nodes {
+        ...CaseStudyFragment
+      }
+    }
+    allInsight(sort: { fields: created, order: DESC }, limit: 5) {
+      nodes {
+        ...InsightFragment
+      }
+    }
+  }
   fragment InsightFragment on insight {
     id
     title

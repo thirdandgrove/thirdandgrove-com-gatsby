@@ -1,5 +1,6 @@
 import React from 'react';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
+import PropTypes from 'prop-types';
+import { graphql, navigate } from 'gatsby';
 import { css } from '@emotion/core';
 
 import { fonts, h1L, mediaQueries, container, colors } from '../styles';
@@ -9,16 +10,7 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { ensureTrailingSlash } from '../util';
 
-export default () => {
-  const data = useStaticQuery(graphql`
-    {
-      allInsight {
-        nodes {
-          ...InsightFragment
-        }
-      }
-    }
-  `);
+const Insights = ({ data }) => {
   const articles = data.allInsight.nodes;
   // newest article is in the header
   const headerArticle = articles[0];
@@ -131,3 +123,19 @@ export default () => {
     </Layout>
   );
 };
+
+Insights.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export const data = graphql`
+  {
+    allInsight {
+      nodes {
+        ...InsightFragment
+      }
+    }
+  }
+`;
+
+export default Insights;
