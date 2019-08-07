@@ -16,11 +16,10 @@ import FullWidthSection from '../FullWidthSection';
 
 const VideoSection = ({ url, teaser }) => {
   const { width } = useWindow();
-  const isSmScreen = width < jsBreakpoints.xs;
-  const startingUrl = isSmScreen ? url : teaser;
+  const isSmScreen = width < jsBreakpoints.phoneLarge;
   const [playing, setPlaying] = useState(!isSmScreen);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [activeUrl, setUrl] = useState(startingUrl);
+  const [activeUrl, setUrl] = useState(teaser);
   const [buttonX, setButtonX] = useState('50%');
   const [buttonY, setButtonY] = useState('50%');
   const [buttonVisible, setButtonVisible] = useState(false);
@@ -32,77 +31,38 @@ const VideoSection = ({ url, teaser }) => {
   `;
 
   const playerStyles = css`
+    display: none;
     position: relative;
     height: 0 !important;
-    padding-top: 550px;
     overflow: hidden;
     opacity: ${hasInteracted && playing ? '1' : '0.65'};
 
     > div {
-      // Don't get me started on this thing's markup
       position: absolute;
       top: 0;
-
-      > div {
-        padding-top: 550px !important;
-      }
     }
 
-    iframe {
-      width: 165.4vh !important;
-      left: 50% !important;
-      margin: 0 0 0 -82.7vh;
-    }
-
-    ${mediaQueries.xs} {
+    ${mediaQueries.phoneLarge} {
+      display: block;
       padding-top: 56.25%;
 
       > div > div {
         padding-top: 56.25% !important;
       }
-
-      iframe {
-        width: 100% !important;
-        left: 0 !important;
-        margin: 0;
-      }
     }
   `;
 
   const btnStyles = css`
-    display: block;
-    position: relative;
-    width: 80px;
-    height: 80px;
     border-radius: 50%;
     border: solid 2px ${colors.white};
     background: rgba(180, 180, 180, 0.2); // @todo update this
-    font-size: 0;
-    color: transparent;
     cursor: pointer;
 
     &:focus {
       outline: none;
     }
 
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      height: 0;
-      width: 0;
-      top: 30px;
-      left: 32px;
-      border: solid transparent 10px;
-      border-right-width: 0;
-      border-left: solid 16px ${colors.white};
-
-      ${mediaQueries.xs} {
-        display: none;
-      }
-    }
-
-    ${mediaQueries.xs} {
+    ${mediaQueries.phoneLarge} {
       display: ${buttonVisible ? 'block' : 'none'};
       position: fixed;
       top: ${buttonY + 'px'};
@@ -122,44 +82,18 @@ const VideoSection = ({ url, teaser }) => {
     }
   `;
 
-  const h2Styles = css`
-    display: ${hasInteracted && playing ? 'none' : 'block'};
-    margin-left: 18px;
-    margin-bottom: 0;
-    font-size: 21px;
-    line-height: 2.3;
-    letter-spacing: -0.28px;
-    color: ${colors.white};
-
-    ${mediaQueries.xs} {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: calc(100% - 40px);
-      margin-left: 0;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      font-size: 72px;
-      line-height: 1.16;
-      letter-spacing: -1px;
-      text-align: center;
-    }
-  `;
-
   const detailWrapper = css`
-    position: absolute;
+    display: none;
     top: 50%;
     left: 20px;
     right: 20px;
-    transform: translateY(-50%);
-    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
 
-    ${mediaQueries.xs} {
+    ${mediaQueries.phoneLarge} {
       position: static;
-      transform: none;
+      display: flex;
     }
   `;
 
@@ -184,20 +118,12 @@ const VideoSection = ({ url, teaser }) => {
               setPlaying(!playing);
             } else {
               setHasInteracted(true);
-
-              if (isSmScreen) {
-                // Since there's no autoplay on mobile
-                setPlaying(true);
-              } else {
-                // Since desktop autoplays with the teaser version
-                setUrl(url);
-              }
+              setUrl(url);
             }
           }}
         >
           {hasInteracted && playing ? 'Pause' : 'Play'}
         </button>
-        <h2 css={h2Styles}>Watch Our Reel</h2>
       </div>
       <ReactPlayer
         // see: https://www.npmjs.com/package/react-player for props
@@ -212,7 +138,7 @@ const VideoSection = ({ url, teaser }) => {
             playerOptions: {
               controls: false,
               responsive: true,
-              autoplay: !isSmScreen,
+              autoplay: true,
               loop: true,
             },
           },
