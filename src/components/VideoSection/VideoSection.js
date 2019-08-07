@@ -119,6 +119,7 @@ const VideoSection = ({ url, teaser }) => {
             } else {
               setHasInteracted(true);
               setUrl(url);
+              setPlaying(true);
             }
           }}
         >
