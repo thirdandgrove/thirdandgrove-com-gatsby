@@ -1,272 +1,319 @@
 import React from 'react';
 
-import { ReactComponent as GoogleLogo } from './logos/google.svg';
-import { ReactComponent as FoxLogo } from './logos/fox.svg';
-import { ReactComponent as GELogo } from './logos/ge.svg';
-import { ReactComponent as AbsolutLogo } from './logos/absolut-logo.svg';
-import { ReactComponent as CCLogo } from './logos/californiaClosets.svg';
-import { ReactComponent as QuickenLogo } from './logos/quicken.svg';
-import { ReactComponent as UCLALogo } from './logos/ucla.svg';
-import { ReactComponent as WSILogo } from './logos/williamsSonoma.svg';
-import { ReactComponent as DwellLogo } from './logos/dwell.svg';
-import { ReactComponent as BenefitLogo } from './logos/benefit.svg';
-import { ReactComponent as SunpowerLogo } from './logos/sunpower.svg';
-import { ReactComponent as PernodLogo } from './logos/pernodricard.svg';
-import { ReactComponent as MintLogo } from './logos/intuit-mint.svg';
-import { ReactComponent as Glanbia } from './logos/glanbia.svg';
-import { ReactComponent as Wvi } from './logos/world-vision.svg';
-import { ReactComponent as KingArthur } from './logos/kaf.svg';
-import { ReactComponent as CloudHealth } from './logos/cloudhealth.svg';
-import { ReactComponent as CooperVision } from './logos/cooper-vision.svg';
-import { ReactComponent as Memebox } from './logos/memebox-logo.svg';
-import { ReactComponent as Goldwin } from './logos/goldwin-logo.svg';
-import { ReactComponent as Gaiam } from './logos/gaiam-logo.svg';
-import { ReactComponent as Brainiac } from './logos/brainiac-logo.svg';
-import { ReactComponent as Equator } from './logos/equator-logo.svg';
-import { ReactComponent as Jameson } from './logos/jameson-logo.svg';
+import googleLogo from './logos/google.svg';
+import foxLogo from './logos/fox.svg';
+import geLogo from './logos/ge.svg';
+import absolutLogo from './logos/absolut-logo.svg';
+import ccLogo from './logos/californiaClosets.svg';
+import quickenLogo from './logos/quicken.svg';
+import uclaLogo from './logos/ucla.svg';
+import wsiLogo from './logos/williamsSonoma.svg';
+import dwellLogo from './logos/dwell.svg';
+import benefitLogo from './logos/benefit.svg';
+import sunpowerLogo from './logos/sunpower.svg';
+import pernodLogo from './logos/pernodricard.svg';
+import mintLogo from './logos/intuit-mint.svg';
+import glanbia from './logos/glanbia.svg';
+import wvi from './logos/world-vision.svg';
+import kingArthur from './logos/kaf.svg';
+import cloudHealth from './logos/cloudhealth.svg';
+import cooperVision from './logos/cooper-vision.svg';
+import memebox from './logos/memebox-logo.svg';
+import goldwin from './logos/goldwin-logo.svg';
+import gaiam from './logos/gaiam-logo.svg';
+import brainiac from './logos/brainiac-logo.svg';
+import equator from './logos/equator-logo.svg';
+import jameson from './logos/jameson-logo.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
     shopify: [
-      <Memebox
-        alt='Memebox'
+      <img
+        src={memebox}
+        alt='memebox'
         width={isSmScreen ? '116' : '166'}
         height={isSmScreen ? '16' : '24'}
       />,
-      <CCLogo
+      <img
+        src={ccLogo}
         alt='California Closets'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
-      <Goldwin
-        alt='Goldwin'
+      <img
+        src={goldwin}
+        alt='goldwin'
         width={isSmScreen ? '125' : '180'}
         height={isSmScreen ? '36' : '52'}
       />,
-      <Gaiam
-        alt='Gaiam'
+      <img
+        src={gaiam}
+        alt='gaiam'
         width={isSmScreen ? '61' : '81'}
         height={isSmScreen ? '68' : '90'}
       />,
-      <Brainiac
-        alt='Brainiac'
+      <img
+        src={brainiac}
+        alt='brainiac'
         width={isSmScreen ? '93' : '150'}
         height={isSmScreen ? '31' : '51'}
       />,
-      <Equator
-        alt='Equator'
+      <img
+        src={equator}
+        alt='equator'
         width={isSmScreen ? '99' : '150'}
         height={isSmScreen ? '34' : '52'}
       />,
-      <AbsolutLogo
+      <img
+        src={absolutLogo}
         alt='Absolut Vodka'
         width={isSmScreen ? '94' : '150'}
         height={isSmScreen ? '20' : '32'}
       />,
-      <Jameson
-        alt='Jameson'
+      <img
+        src={jameson}
+        alt='jameson'
         width={isSmScreen ? '95' : '150'}
         height={isSmScreen ? '48' : '76'}
       />,
     ],
     acquia: [
-      <MintLogo
+      <img
+        src={mintLogo}
         alt='Mint'
         width={isSmScreen ? '100' : '156'}
         height={isSmScreen ? '32' : '50'}
       />,
-      <SunpowerLogo
+      <img
+        src={sunpowerLogo}
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
         height={isSmScreen ? '32' : '44'}
       />,
-      <Glanbia
-        alt='Glanbia'
+      <img
+        src={glanbia}
+        alt='glanbia'
         width={isSmScreen ? '100' : '148'}
         height={isSmScreen ? '49' : '74'}
       />,
-      <Wvi
+      <img
+        src={wvi}
         alt='World Vision'
         width={isSmScreen ? '188' : '194'}
         height={isSmScreen ? '100' : '40'}
       />,
-      <KingArthur
+      <img
+        src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
         height={isSmScreen ? '62' : '94'}
       />,
-      <CooperVision
+      <img
+        src={cooperVision}
         alt='Cooper Vision'
         width={isSmScreen ? '134' : '177'}
         height={isSmScreen ? '24' : '32'}
       />,
-      <CloudHealth
+      <img
+        src={cloudHealth}
         alt='Cloud Health'
         width={isSmScreen ? '126' : '170'}
         height={isSmScreen ? '122' : '50'}
       />,
     ],
     drupal: [
-      <MintLogo
+      <img
+        src={mintLogo}
         alt='Mint'
         width={isSmScreen ? '100' : '156'}
         height={isSmScreen ? '32' : '50'}
       />,
-      <SunpowerLogo
+      <img
+        src={sunpowerLogo}
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
         height={isSmScreen ? '32' : '44'}
       />,
-      <BenefitLogo
+      <img
+        src={benefitLogo}
         alt='Benefit'
         width={isSmScreen ? '105' : '140'}
         height={isSmScreen ? '35' : '46'}
       />,
-      <Wvi
+      <img
+        src={wvi}
         alt='World Vision'
         width={isSmScreen ? '188' : '194'}
         height={isSmScreen ? '100' : '40'}
       />,
-      <KingArthur
+      <img
+        src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
         height={isSmScreen ? '62' : '94'}
       />,
-      <CooperVision
+      <img
+        src={cooperVision}
         alt='Cooper Vision'
         width={isSmScreen ? '134' : '177'}
         height={isSmScreen ? '24' : '32'}
       />,
-      <CloudHealth
+      <img
+        src={cloudHealth}
         alt='Cloud Health'
         width={isSmScreen ? '126' : '170'}
         height={isSmScreen ? '122' : '50'}
       />,
-      <UCLALogo
+      <img
+        src={uclaLogo}
         alt='UCLA'
         width={isSmScreen ? '85' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
     ],
     default: [
-      <UCLALogo
+      <img
+        src={uclaLogo}
         alt='UCLA'
         width={isSmScreen ? '85' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
-      <GoogleLogo
+      <img
+        src={googleLogo}
         alt='Google'
         width={isSmScreen ? '99' : '134'}
         height={isSmScreen ? '33' : '44'}
       />,
-      <BenefitLogo
+      <img
+        src={benefitLogo}
         alt='Benefit'
         width={isSmScreen ? '105' : '140'}
         height={isSmScreen ? '35' : '46'}
       />,
-      <CCLogo
+      <img
+        src={ccLogo}
         alt='California Closets'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
-      <GELogo
+      <img
+        src={geLogo}
         alt='GE'
         width={isSmScreen ? '53' : '72'}
         height={isSmScreen ? '53' : '72'}
       />,
-      <WSILogo
+      <img
+        src={wsiLogo}
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '98' : '134'}
         height={isSmScreen ? '32' : '43'}
       />,
-      <SunpowerLogo
+      <img
+        src={sunpowerLogo}
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
         height={isSmScreen ? '17' : '24'}
       />,
-      <PernodLogo
+      <img
+        src={pernodLogo}
         alt='Pernod Ricard'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
     ],
     about: [
-      <GoogleLogo
+      <img
+        src={googleLogo}
         alt='Google'
         width={isSmScreen ? '105' : '134'}
         height={isSmScreen ? '35' : '44'}
       />,
-      <FoxLogo
+      <img
+        src={foxLogo}
         alt='FOX'
         width={isSmScreen ? '68' : '84'}
         height={isSmScreen ? '30' : '36'}
       />,
-      <GELogo
+      <img
+        src={geLogo}
         alt='GE'
         width={isSmScreen ? '51' : '72'}
         height={isSmScreen ? '51' : '72'}
       />,
-      <AbsolutLogo
+      <img
+        src={absolutLogo}
         alt='Absolut Vodka'
         width={isSmScreen ? '87' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
-      <QuickenLogo
+      <img
+        src={quickenLogo}
         alt='Quicken'
         width={isSmScreen ? '107' : '134'}
         height={isSmScreen ? '24' : '30'}
       />,
-      <UCLALogo
+      <img
+        src={uclaLogo}
         alt='UCLA'
         width={isSmScreen ? '87' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
-      <WSILogo
+      <img
+        src={wsiLogo}
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '96' : '116'}
         height={isSmScreen ? '31' : '38'}
       />,
-      <DwellLogo
+      <img
+        src={dwellLogo}
         alt='dwell'
         width={isSmScreen ? '78' : '94'}
         height={isSmScreen ? '30' : '36'}
       />,
-      <GoogleLogo
+      <img
+        src={googleLogo}
         alt='Google'
         width={isSmScreen ? '105' : '134'}
         height={isSmScreen ? '35' : '44'}
       />,
-      <FoxLogo
+      <img
+        src={foxLogo}
         alt='FOX'
         width={isSmScreen ? '68' : '84'}
         height={isSmScreen ? '30' : '36'}
       />,
-      <GELogo
+      <img
+        src={geLogo}
         alt='GE'
         width={isSmScreen ? '51' : '72'}
         height={isSmScreen ? '51' : '72'}
       />,
-      <AbsolutLogo
+      <img
+        src={absolutLogo}
         alt='Absolut Vodka'
         width={isSmScreen ? '87' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
-      <QuickenLogo
+      <img
+        src={quickenLogo}
         alt='Quicken'
         width={isSmScreen ? '107' : '134'}
         height={isSmScreen ? '24' : '30'}
       />,
-      <UCLALogo
+      <img
+        src={uclaLogo}
         alt='UCLA'
         width={isSmScreen ? '87' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
-      <WSILogo
+      <img
+        src={wsiLogo}
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '96' : '116'}
         height={isSmScreen ? '31' : '38'}
       />,
-      <DwellLogo
+      <img
+        src={dwellLogo}
         alt='dwell'
         width={isSmScreen ? '78' : '94'}
         height={isSmScreen ? '30' : '36'}
