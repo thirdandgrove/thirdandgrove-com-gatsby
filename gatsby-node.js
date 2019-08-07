@@ -62,7 +62,7 @@ exports.createPages = async ({ actions, graphql }) => {
         nodes {
           id
           title
-          created(formatString: "MMMM DD YYYY")
+          created(formatString: "MMM D, YYYY")
           body {
             value
           }
@@ -126,7 +126,7 @@ exports.createPages = async ({ actions, graphql }) => {
           field_image {
             alt
           }
-          created(formatString: "MMMM DD YYYY")
+          created(formatString: "MMM D, YYYY")
           path {
             alias
           }
