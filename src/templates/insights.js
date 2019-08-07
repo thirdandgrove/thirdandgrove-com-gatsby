@@ -73,6 +73,7 @@ const Insights = ({ data }) => {
         />
       </div>
       <InsightsSlider
+        data={data.allInsight}
         showButton={false}
         backgroundColor={colors.lightgray}
         title='You May Also Like'
@@ -87,6 +88,11 @@ Insights.propTypes = {
 
 export const query = graphql`
   query($PostId: String!) {
+    allInsight {
+      nodes {
+        ...InsightFragment
+      }
+    }
     insight(id: { eq: $PostId }) {
       id
       title

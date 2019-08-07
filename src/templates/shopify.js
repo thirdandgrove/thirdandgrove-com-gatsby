@@ -2,16 +2,19 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-import Layout from '../../components/layout';
-import FullWidthSection from '../../components/FullWidthSection';
-import ProjectsSlider from '../../components/ProjectsSlider';
-import LogoGrid from '../../components/LogoGrid';
-import { colors, mediaQueries, fonts, weights, container } from '../../styles';
-import SplitSection from '../../components/SplitSection';
-import InsightsSlider from '../../components/InsightsSlider';
-import Quote from '../../components/ContentBody/Quote';
+import Layout from '../components/layout';
+import FullWidthSection from '../components/FullWidthSection';
+import ProjectsSlider from '../components/ProjectsSlider';
+import LogoGrid from '../components/LogoGrid';
+import { colors, mediaQueries, fonts, weights, container } from '../styles';
+import SplitSection from '../components/SplitSection';
+import InsightsSlider from '../components/InsightsSlider';
+import Quote from '../components/ContentBody/Quote';
 
-export default () => {
+// eslint-disable-next-line react/prop-types
+export default ({ pageContext }) => {
+  const { allInsight } = pageContext.insightSlider.data;
+  const { allCaseStudy } = pageContext.projectSlider.data;
   const sectionPadding = css`
     padding: 50px 20px;
 
@@ -95,7 +98,7 @@ export default () => {
           </ul>
         </div>
       </FullWidthSection>
-      <ProjectsSlider backgroundColor={colors.lightgray} />
+      <ProjectsSlider data={allCaseStudy} backgroundColor={colors.lightgray} />
       <LogoGrid
         logoset='shopify'
         title='Some of Our Shopify Clients'
@@ -164,7 +167,11 @@ export default () => {
           field_footer_text: 'Rob Barr, Agency Partnerships, ReCharge Payments',
         }}
       />
-      <InsightsSlider showButton={false} backgroundColor={colors.lightgray} />
+      <InsightsSlider
+        data={allInsight}
+        showButton={false}
+        backgroundColor={colors.lightgray}
+      />
     </Layout>
   );
 };

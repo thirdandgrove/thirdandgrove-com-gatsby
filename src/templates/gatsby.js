@@ -2,13 +2,15 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-import Layout from '../../components/layout';
-import FullWidthSection from '../../components/FullWidthSection';
-import { colors, mediaQueries, fonts, weights, container } from '../../styles';
-import InsightsSlider from '../../components/InsightsSlider';
-import Quote from '../../components/ContentBody/Quote';
+import Layout from '../components/layout';
+import FullWidthSection from '../components/FullWidthSection';
+import { colors, mediaQueries, fonts, weights, container } from '../styles';
+import InsightsSlider from '../components/InsightsSlider';
+import Quote from '../components/ContentBody/Quote';
 
-export default () => {
+// eslint-disable-next-line react/prop-types
+export default ({ pageContext }) => {
+  const { allInsight } = pageContext.insightSlider.data;
   const sectionPadding = css`
     padding: 50px 20px;
 
@@ -74,7 +76,11 @@ export default () => {
           field_footer_text: 'Sam Bhagwat, Gatsby co-founder/COO',
         }}
       />
-      <InsightsSlider showButton={false} backgroundColor={colors.lightgray} />
+      <InsightsSlider
+        data={allInsight}
+        showButton={false}
+        backgroundColor={colors.lightgray}
+      />
     </Layout>
   );
 };
