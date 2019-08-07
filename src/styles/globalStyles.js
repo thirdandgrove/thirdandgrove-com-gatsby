@@ -11,78 +11,78 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Thin.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-Thin.woff2') format('woff2');
     font-weight: 100;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-ThinItalic.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-ThinItalic.woff2') format('woff2');
     font-weight: 100;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Light.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-Light.woff2') format('woff2');
     font-weight: 300;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-LightItalic.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-LightItalic.woff2') format('woff2');
     font-weight: 300;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Regular.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-Regular.woff2') format('woff2');
     font-weight: 400;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-RegularItalic.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-RegularItalic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Medium.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-Medium.woff2') format('woff2');
     font-weight: 500;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-MediumItalic.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-MediumItalic.woff2') format('woff2');
     font-weight: 500;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Bold.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-Bold.woff2') format('woff2');
     font-weight: 700;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-BoldItalic.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-Black.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-Black.woff2') format('woff2');
     font-weight: 900;
   }
 
   @font-face {
     font-family: 'Canela';
-    src: url('/Fonts/Canela/Canela-BlackItalic.woff') format('woff');
+    src: url('/Fonts/Canela/Canela-BlackItalic.woff2') format('woff2');
     font-weight: 900;
     font-style: italic;
   }
@@ -96,38 +96,38 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProRegular.woff')
-      format('woff');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProRegular.woff2')
+      format('woff2');
     font-weight: 400;
   }
 
   @font-face {
     font-family: 'NB International Pro';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProItalic.woff')
-      format('woff');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProItalic.woff2')
+      format('woff2');
     font-weight: 400;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'NB International Pro';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProBold.woff')
-      format('woff');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProBold.woff2')
+      format('woff2');
     font-weight: 700;
   }
 
   @font-face {
     font-family: 'NB International Pro';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProBoldItalic.woff')
-      format('woff');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProBoldItalic.woff2')
+      format('woff2');
     font-weight: 700;
     font-style: italic;
   }
 
   @font-face {
     font-family: 'NB International Pro Mono';
-    src: url('/Fonts/NBInternationalPro/NBInternationalProMono.woff')
-      format('woff');
+    src: url('/Fonts/NBInternationalPro/NBInternationalProMono.woff2')
+      format('woff2');
     font-weight: 400;
   }
 
