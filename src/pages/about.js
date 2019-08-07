@@ -16,16 +16,29 @@ import {
   h1L,
   container,
   mediaQueries,
+  jsBreakpoints,
   contValues,
   pLight,
 } from '../styles';
 import Button from '../components/Button';
 
 const About = ({ data }) => {
-  const NameCol = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  const leadersCss = css`
+    padding-top: 20px;
+
+    ${mediaQueries.phoneLarge} {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    div {
+      ${mediaQueries.phoneLarge} {
+        flex: 0 0 calc(50% - 60px);
+        width: calc(50% - 60px);
+      }
+    }
+
     h2 {
       font-size: 21px;
       font-weight: bold;
@@ -36,11 +49,13 @@ const About = ({ data }) => {
         font-size: 27px;
       }
     }
+
     p {
       ${pLight};
       margin-bottom: 64px;
     }
   `;
+
   const Row = styled.section`
     display: flex;
     flex-flow: row wrap;
@@ -86,7 +101,14 @@ const About = ({ data }) => {
   const Location = styled.section`
     display: flex;
     flex-direction: column;
-    padding: 0 20px 64px;
+    margin-bottom: 50px;
+    &:hover {
+      h1,
+      h3,
+      p {
+        opacity: 0.7;
+      }
+    }
     h1 {
       ${h1L};
       padding-top: 10px;
@@ -101,12 +123,13 @@ const About = ({ data }) => {
       font-size: 21px;
       font-weight: bold;
       letter-spacing: -0.5px;
+      padding-top: 20px;
       margin-bottom: 12px;
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
     }
-    div {
+    & > div {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -119,17 +142,36 @@ const About = ({ data }) => {
         margin: 0 0 1px 0;
       }
     }
+    .gatsby-image-wrapper > div {
+      // Forcing correct image aspect ratio, overriding inline
+      // gatsby-image provided styles
+      padding-bottom: 100% !important;
+
+      ${mediaQueries.phoneLarge} {
+        padding-bottom: 63.2% !important;
+      }
+    }
   `;
   const images = data.allFile.nodes;
-  const bostonSrc = images.find(img => img.name === 'boston').childImageSharp
-    .fluid;
-  const oaklandSrc = images.find(img => img.name === 'oakland').childImageSharp
-    .fluid;
+  const bostonSrc = [
+    images.find(img => img.name === 'boston').mobileImage.fluid,
+    {
+      ...images.find(img => img.name === 'boston').desktopImage.fluid,
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+    },
+  ];
+  const oaklandSrc = [
+    images.find(img => img.name === 'oakland').mobileImage.fluid,
+    {
+      ...images.find(img => img.name === 'oakland').desktopImage.fluid,
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+    },
+  ];
   const teamSrc = images.find(img => img.name === 'team').childImageSharp.fluid;
   return (
     <Layout
       headerData={{
-        title: 'A relentless pursuit of perfection',
+        title: 'A relentless pursuit of perfection.',
         mobileMinHeight: '93vh',
         height: '400px',
       }}
@@ -213,40 +255,41 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Who We Are</h3>
-        <SplitSection
-          css={css`
-            padding-top: 20px;
 
-            ${mediaQueries.phoneLarge} {
-              grid-column-gap: 100px;
-            }
-
-            ${mediaQueries.desktop} {
-              grid-column-gap: 270px;
-            }
-          `}
-        >
-          <NameCol>
+        <div css={[leadersCss, container.medium]}>
+          <div>
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
-            <h2>Matt Davis</h2>
-            <p>Director of Engineering</p>
-            <h2>Jen Slemp</h2>
-            <p>Director of Strategy</p>
-            <h2>Jen May</h2>
-            <p>Director of Delivery</p>
-          </NameCol>
-          <NameCol>
+          </div>
+          <div>
             <h2>Anthony Severo</h2>
             <p>Co-Founder, Chief Strategy Officer</p>
+          </div>
+          <div>
+            <h2>Matt Davis</h2>
+            <p>Director of Engineering</p>
+          </div>
+          <div>
             <h2>Adam Strom</h2>
             <p>Creative Director</p>
+          </div>
+          <div>
+            <h2>Jen Slemp</h2>
+            <p>Director of Strategy</p>
+          </div>
+          <div>
             <h2>Christina Andrade</h2>
             <p>Director of Operations</p>
+          </div>
+          <div>
+            <h2>Jen May</h2>
+            <p>Director of Delivery</p>
+          </div>
+          <div>
             <h2>Angela Prendergast</h2>
             <p>QA Lead</p>
-          </NameCol>
-        </SplitSection>
+          </div>
+        </div>
       </FullWidthSection>
       <FullWidthSection
         backgroundColor={colors.yellow}
@@ -273,19 +316,19 @@ const About = ({ data }) => {
         <Row>
           <div>
             <h1>01</h1>
-            <h3>drive efficiency</h3>
+            <h3>Drive Efficiency</h3>
           </div>
           <div>
             <h1>02</h1>
-            <h3>boost morale</h3>
+            <h3>Best Talent</h3>
           </div>
           <div>
             <h1>03</h1>
-            <h3>greater diversity</h3>
+            <h3>Greater Diversity</h3>
           </div>
           <div>
             <h1>04</h1>
-            <h3>good for the planet</h3>
+            <h3>Good for the Planet</h3>
           </div>
         </Row>
       </FullWidthSection>
@@ -299,10 +342,10 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Where We Are</h3>
-        <SplitSection>
+        <SplitSection css={container.large} gridColumnGap='20px'>
           <Location>
             <h1 css={h1L}>Boston</h1>
-            <Img fluid={bostonSrc} alt='Boston' width='530px' />
+            <Img fluid={bostonSrc} alt='Boston' />
             <h3>1st One’s on Us</h3>
             <div>
               <p>Wink &amp; Nod</p>
@@ -312,7 +355,7 @@ const About = ({ data }) => {
           </Location>
           <Location>
             <h1 css={h1L}>Oakland</h1>
-            <Img fluid={oaklandSrc} alt='Oakland' width='530px' />
+            <Img fluid={oaklandSrc} alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>
               <p>Cafe Van Kleef</p>
@@ -370,7 +413,17 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 980, maxHeight: 480) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+        mobileImage: childImageSharp {
+          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+        desktopImage: childImageSharp {
+          fluid(maxWidth: 530, srcSetBreakpoints: [480, 900, 1200]) {
             ...GatsbyImageSharpFluid
           }
         }

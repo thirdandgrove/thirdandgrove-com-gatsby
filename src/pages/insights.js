@@ -1,24 +1,23 @@
 import React from 'react';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
+import PropTypes from 'prop-types';
+import { graphql, navigate } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { fonts, h1L, mediaQueries, container, colors } from '../styles';
+import {
+  fonts,
+  h1L,
+  mediaQueries,
+  container,
+  colors,
+  weights,
+} from '../styles';
 import ArticlePreview from '../components/ArticlePreview';
 import Button from '../components/Button';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { ensureTrailingSlash } from '../util';
 
-export default () => {
-  const data = useStaticQuery(graphql`
-    {
-      allInsight {
-        nodes {
-          ...InsightFragment
-        }
-      }
-    }
-  `);
+const Insights = ({ data }) => {
   const articles = data.allInsight.nodes;
   // newest article is in the header
   const headerArticle = articles[0];
@@ -83,8 +82,9 @@ export default () => {
               css={css`
                 margin-top: 20px;
                 font-family: ${fonts.sans};
+                font-weight: ${weights.light};
                 font-size: 15px;
-                letter-spacing: 2px;
+                letter-spacing: 0.2px;
                 line-height: 2.4;
               `}
             >
@@ -113,12 +113,15 @@ export default () => {
             container.max,
             css`
               padding-top: 20px;
+              margin-bottom: 30px;
+
               ${mediaQueries.phoneLarge} {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 grid-column-gap: 10%;
                 place-items: center top;
-                padding-top: 90px;
+                padding-top: 143px;
+                margin-bottom: 0;
               }
             `,
           ]}
@@ -131,3 +134,19 @@ export default () => {
     </Layout>
   );
 };
+
+Insights.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export const data = graphql`
+  {
+    allInsight {
+      nodes {
+        ...InsightFragment
+      }
+    }
+  }
+`;
+
+export default Insights;

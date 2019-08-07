@@ -8,6 +8,7 @@ import {
   weights,
   container,
   mediaQueries,
+  contentH2,
   contentHeadings,
   dropCap,
 } from '../../styles';
@@ -16,7 +17,7 @@ import SplitSection from '../SplitSection';
 const TextImage = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
   const sectionStyle = css`
-    ${container.min};
+    ${container.min}
     font-weight: ${weights.thin};
     grid-column-gap: 20px;
     padding: 0 20px;
@@ -25,9 +26,12 @@ const TextImage = ({ data }) => {
       padding: 0;
     }
 
-    h2,
+    h2 {
+      ${contentH2}
+    }
+
     h3 {
-      ${contentHeadings};
+      ${contentHeadings}
     }
 
     ${renderDropCap && dropCap}

@@ -52,7 +52,7 @@ const ContactForm = () => {
         currentErrs.email = 'Email is required';
       }
       if (!comments) {
-        currentErrs.comments = 'Comments is required';
+        currentErrs.comments = 'Message is required';
       }
       updateErrors(currentErrs);
       return;
@@ -120,6 +120,7 @@ const ContactForm = () => {
 
   const activeLabel = css`
     opacity: 1 !important;
+    animation: none;
 
     span {
       top: 6px;
@@ -149,10 +150,14 @@ const ContactForm = () => {
       >
         <span
           css={css`
-            position: absolute;
             align-self: center;
             width: 100%;
             text-align: center;
+
+            ${mediaQueries.phoneLarge} {
+              position: absolute;
+            }
+
             p {
               display: inline;
               color: ${colors.red};

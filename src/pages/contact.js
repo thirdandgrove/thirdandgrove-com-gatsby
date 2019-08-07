@@ -29,6 +29,7 @@ export default () => {
     font-family: ${fonts.sans};
     font-weight: ${weights.bold};
     font-size: 21px;
+    line-height: 1.7;
 
     ${mediaQueries.phoneLarge} {
       font-size: 18px;
@@ -58,9 +59,10 @@ export default () => {
     margin: 0;
 
     ${mediaQueries.phoneLarge} {
+      margin-top: 11px;
       display: flex;
       justify-content: center;
-      line-height: 1.1;
+      line-height: 1;
     }
 
     li {
@@ -92,7 +94,9 @@ export default () => {
 
         <div css={contactItem}>
           <h3 css={headingCss}>New Business</h3>
-          <a href='business@thirdandgrove.com'>business@thirdandgrove.com</a>
+          <a href='mailto:business@thirdandgrove.com'>
+            business@thirdandgrove.com
+          </a>
         </div>
 
         <div css={contactItem}>

@@ -8,9 +8,9 @@ import { css } from '@emotion/core';
 import { fonts, colors, weights, mediaQueries } from './css-utils';
 
 // Containers
-// (There are going to be more widths as the projet progresses)
-const contWidths = [680, 820, 1020, 1220];
-const contLabels = [`min`, `textOnly`, `medium`, `max`];
+// (There are going to be more widths as the project progresses)
+const contWidths = [680, 820, 1020, 1120, 1220];
+const contLabels = [`min`, `textOnly`, `medium`, `large`, `max`];
 
 export const contValues = contWidths.reduce((acc, value, i) => {
   acc[contLabels[i]] = `${value}px`;
@@ -71,6 +71,15 @@ export const smSectionHead = css`
     line-height: 2;
     letter-spacing: 0.4px;
   }
+`;
+
+export const contentH2 = css`
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-family: ${fonts.sans};
+  font-size: 21px;
+  font-weight: ${weights.bold};
+  line-height: 1.4;
 `;
 
 export const contentHeadings = css`
