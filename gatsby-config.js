@@ -11,14 +11,6 @@ module.exports = {
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-      options: {
-        analyzerPort: 3000,
-        production: true,
-        generateStatsFile: true,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
