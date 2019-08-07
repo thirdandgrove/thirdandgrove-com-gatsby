@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
