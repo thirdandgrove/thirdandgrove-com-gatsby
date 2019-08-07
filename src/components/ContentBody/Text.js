@@ -22,7 +22,7 @@ const Text = ({ data }) => {
       textAlign='left'
       align='start'
       justify='start'
-      height='300px'
+      height='auto'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
         h2,

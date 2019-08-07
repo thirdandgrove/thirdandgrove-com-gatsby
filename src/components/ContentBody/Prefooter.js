@@ -11,27 +11,29 @@ import { colors, fonts, weights, mediaQueries } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const pStyles = css`
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   font-size: 24px;
+  line-height: 1.46;
   font-family: ${fonts.serif};
   font-weight: ${weights.thin};
 
   ${mediaQueries.phoneLarge} {
-    margin-bottom: 0;
+    margin-bottom: 60px;
   }
 `;
 
 const h2Styles = css`
-  margin-bottom: 35px;
-  font-size: 45px;
-  line-height: 1.7;
-  letter-spacing: 0.6px;
-  font-weight: ${weights.black};
+  margin-bottom: 25px;
+  font-size: 39px;
+  line-height: 1.5;
+  letter-spacing: -0.45px;
+  font-weight: ${weights.bold};
   ${mediaQueries.phoneLarge} {
-    margin-bottom: 0;
+    margin-bottom: 60px;
     font-size: 72px;
     line-height: 1;
     letter-spacing: 0.96px;
+    font-weight: ${weights.medium};
   }
 `;
 
@@ -40,6 +42,7 @@ const preFooterStyles = css`
 
   ${mediaQueries.phoneLarge} {
     min-height: 600px;
+    justify-content: center;
   }
 `;
 
