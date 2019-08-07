@@ -59,7 +59,7 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '34' : '52'}
       />,
       <AbsolutLogo
-        alt='AbsolutLogo'
+        alt='Absolut Vodka'
         width={isSmScreen ? '94' : '150'}
         height={isSmScreen ? '20' : '32'}
       />,
