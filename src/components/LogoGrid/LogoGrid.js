@@ -51,16 +51,9 @@ const LogoGrid = ({ title, logoset, backgroundColor }) => {
       margin-bottom: 110px;
     }
 
-    svg {
+    img {
       max-width: 100%;
       height: auto;
-
-      *,
-      path,
-      g,
-      polyline {
-        fill: ${colors.midgray};
-      }
     }
   `;
 
