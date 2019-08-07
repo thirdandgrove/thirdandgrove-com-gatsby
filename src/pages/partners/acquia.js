@@ -154,9 +154,17 @@ export default () => {
         </Tripple>
       </SplitSection>
       <SplitSection
-        gridColumnGap='16px'
+        gridTemplateColumns='repeat(2, 350px)'
         css={css`
           ${container.min}
+          padding: 0;
+
+          ${mediaQueries.phoneLarge} {
+            padding: 70px 0;
+          }
+          article:first-child {
+            padding-right: 20px;
+          }
           img {
             width: 100px;
             margin-bottom: 35px;
@@ -171,11 +179,6 @@ export default () => {
           p {
             font-weight: ${weights.light};
             margin-bottom: 50px;
-            letter-spacing: -0.1px;
-          }
-
-          ${mediaQueries.phoneLarge} {
-            padding: 70px 0;
           }
         `}
       >
