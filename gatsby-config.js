@@ -7,7 +7,15 @@ module.exports = {
     author: `@thirdandgrove`,
   },
   plugins: [
-    `gatsby-plugin-netlify`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          '/*.woff/*.woff2': ['Cache-Control:  max-age=31536000'],
+        },
+        mergeCachingHeaders: true,
+      },
+    },
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-react-helmet`,
     {
