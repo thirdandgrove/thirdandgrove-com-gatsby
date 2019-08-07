@@ -40,7 +40,16 @@ const Insights = ({ data }) => {
         marginBottom: '70px',
       }}
     >
-      <div css={imageSrc === 'undefined' && wrapperStyle}>
+      <div
+        css={[
+          css`
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 90px;
+            }
+          `,
+          imageSrc === undefined && wrapperStyle,
+        ]}
+      >
         {imageSrc && (
           <Img
             fluid={[
@@ -103,7 +112,7 @@ export const query = graphql`
       field_image {
         alt
       }
-      created(formatString: "MMMM DD YYYY")
+      created(formatString: "MMM D, YYYY")
       relationships {
         node_type {
           name
@@ -162,7 +171,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800, maxHeight: 600) {
+                    fluid(maxWidth: 800) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -240,7 +249,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800, maxHeight: 600) {
+                    fluid(maxWidth: 800) {
                       ...GatsbyImageSharpFluid
                     }
                   }

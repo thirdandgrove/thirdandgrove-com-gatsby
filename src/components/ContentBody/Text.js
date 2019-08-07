@@ -5,9 +5,10 @@ import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
 import {
+  contentH2,
   contentHeadings,
   weights,
-  contValues,
+  container,
   mediaQueries,
   dropCap,
 } from '../../styles';
@@ -25,14 +26,18 @@ const Text = ({ data }) => {
       height='auto'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
-        h2,
-        h3 {
-          ${contentHeadings}
-        }
+        ${container.min}
 
         ${mediaQueries.phoneLarge} {
           padding: 0;
-          width: ${contValues.min};
+        }
+
+        h2 {
+          ${contentH2}
+        }
+
+        h3 {
+          ${contentHeadings}
         }
 
         ${renderDropCap && dropCap}
