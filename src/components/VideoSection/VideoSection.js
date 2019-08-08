@@ -38,7 +38,6 @@ const VideoSection = ({ url, teaser }) => {
     opacity: ${hasInteracted && playing ? '1' : '0.65'};
 
     > div {
-      // Don't get me started on this thing's markup
       position: absolute;
       top: 0;
 
@@ -121,29 +120,6 @@ const VideoSection = ({ url, teaser }) => {
     }
   `;
 
-  const h2Styles = css`
-    display: ${hasInteracted && playing ? 'none' : 'block'};
-    margin-left: 18px;
-    margin-bottom: 0;
-    font-size: 21px;
-    line-height: 2.3;
-    letter-spacing: -0.28px;
-    color: ${colors.white};
-
-    ${mediaQueries.phoneLarge} {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-left: 0;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      font-size: 72px;
-      line-height: 1.16;
-      letter-spacing: -1px;
-      text-align: center;
-    }
-  `;
-
   const detailWrapper = css`
     position: absolute;
     top: 50%;
@@ -178,19 +154,17 @@ const VideoSection = ({ url, teaser }) => {
           type='button'
           css={btnStyles}
           onClick={() => {
-            if (!hasInteracted) {
-              setHasInteracted(true);
-              // Switch to full video.
-              setUrl(url);
-              setPlaying(true); // Necessary for mobile.
-            } else {
+            if (hasInteracted) {
               setPlaying(!playing);
+            } else {
+              setHasInteracted(true);
+              setUrl(url);
+              setPlaying(true);
             }
           }}
         >
           {hasInteracted && playing ? 'Pause' : 'Play'}
         </button>
-        <h2 css={h2Styles}>Watch Our Reel</h2>
       </div>
       <ReactPlayer
         // see: https://www.npmjs.com/package/react-player for props
@@ -206,7 +180,7 @@ const VideoSection = ({ url, teaser }) => {
               controls: false,
               responsive: true,
               autoplay: !isSmScreen,
-              loop: true,
+              loop: !isSmScreen,
             },
           },
         }}
