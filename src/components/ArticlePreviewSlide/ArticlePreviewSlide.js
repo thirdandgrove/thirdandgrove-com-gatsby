@@ -23,6 +23,7 @@ const ArticlePreviewSlide = ({ article, index }) => {
   const Card = styled.div`
     transition-duration: 0.4s;
     transition-timing-function: ease-out;
+    opacity: 1 !important;
 
     h3 {
       margin: 15px 20px 20px;
