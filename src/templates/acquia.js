@@ -86,6 +86,7 @@ export default ({ pageContext }) => {
           }
           ul {
             margin: 0;
+            padding: 0;
             font-size: 16px;
             font-family: ${fonts.sans};
             font-weight: ${weights.bold};
