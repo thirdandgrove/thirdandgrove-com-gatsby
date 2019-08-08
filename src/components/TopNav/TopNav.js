@@ -39,7 +39,7 @@ const TopNav = ({ fill }) => {
           `,
         ]}
       >
-        <Link to='/' data-cy='homeButton'>
+        <Link to='/' aria-label='return to homepage' data-cy='homeButton'>
           {/* this guard keeps the Gatsby build from breaking */}
           {typeof window !== 'undefined' &&
             (width > jsBreakpoints.phoneLarge ? (
@@ -74,6 +74,7 @@ const TopNav = ({ fill }) => {
           type='button'
           onClick={() => toggleOpen()}
           data-cy='menuButton'
+          aria-label='open site menu'
         >
           <Hamburger fill={isOpen ? colors.lightgray : fill} isOpen={isOpen} />
         </button>
