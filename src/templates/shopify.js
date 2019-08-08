@@ -6,23 +6,17 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import ProjectsSlider from '../components/ProjectsSlider';
 import LogoGrid from '../components/LogoGrid';
-import { colors, mediaQueries, fonts, weights, container } from '../styles';
+import { colors } from '../styles';
 import SplitSection from '../components/SplitSection';
 import InsightsSlider from '../components/InsightsSlider';
 import Quote from '../components/ContentBody/Quote';
-import { partnersProjects } from '../styles/custom-css';
+import { partnersProjects, partnersSub } from '../styles/custom-css';
 
 // eslint-disable-next-line react/prop-types
 export default ({ pageContext }) => {
   const { allInsight } = pageContext.insightSlider.data;
   const { allCaseStudy } = pageContext.projectSlider.data;
-  const sectionPadding = css`
-    padding: 50px 20px;
 
-    ${mediaQueries.phoneLarge} {
-      padding: 110px 0;
-    }9
-  `;
   return (
     <Layout
       headerData={{
@@ -35,53 +29,7 @@ export default ({ pageContext }) => {
         titlePadding: '0 100px',
       }}
     >
-      <FullWidthSection
-        height='400px'
-        align='left'
-        css={css`
-          ${sectionPadding}
-          h4 {
-            font-family: ${fonts.sans};
-            font-size: 18px;
-            font-weight: ${weights.bold};
-            line-height: 1.39;
-            margin-bottom: 12px;
-          }
-          p {
-            font-weight: ${weights.light};
-          }
-          div {
-            ${mediaQueries.phoneLarge} {
-              display: flex;
-              justify-content: space-between;
-            }
-          }
-          ul {
-            margin: 0;
-            font-size: 16px;
-            font-family: ${fonts.sans};
-            font-weight: ${weights.bold};
-            list-style: none;
-
-            li {
-              margin-bottom: 4px;
-
-              &:before {
-                content: '—';
-                padding-right: 2px;
-              }
-            }
-          }
-
-          ${mediaQueries.phoneLarge} {
-            ${container.min}
-
-            ul:last-of-type {
-              margin-right: 100px;
-            }
-          }
-        `}
-      >
+      <FullWidthSection height='400px' align='left' css={partnersSub}>
         <h4>Scalable, commerce-first experiences</h4>
         <p>
           Commerce is increasingly less about selling and more about inspiring

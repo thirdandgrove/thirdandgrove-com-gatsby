@@ -17,4 +17,5 @@ export {
   dropCap,
   pLight,
   partnersProjects,
+  partnersSub,
 } from './custom-css';

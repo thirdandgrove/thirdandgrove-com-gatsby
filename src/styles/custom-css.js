@@ -142,3 +142,53 @@ export const partnersProjects = css`
     letter-spacing: -0.1px;
   }
 `;
+
+export const partnersSub = css`
+  padding: 50px 20px;
+
+  ${mediaQueries.phoneLarge} {
+    padding: 110px 0;
+  }
+  h4 {
+    font-family: ${fonts.sans};
+    font-size: 18px;
+    font-weight: ${weights.bold};
+    line-height: 1.39;
+    margin-bottom: 12px;
+  }
+  p {
+    font-weight: ${weights.light};
+  }
+  div {
+    ${mediaQueries.phoneLarge} {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: ${fonts.sans};
+    font-weight: ${weights.bold};
+    list-style: none;
+
+    li {
+      margin-bottom: 4px;
+      padding-left: 0;
+
+      &:before {
+        content: '—';
+        padding-right: 2px;
+      }
+    }
+  }
+
+  ${mediaQueries.phoneLarge} {
+    ${container.min}
+
+    ul:last-of-type {
+      margin-right: 100px;
+    }
+  }
+`;
