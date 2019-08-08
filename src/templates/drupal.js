@@ -32,6 +32,10 @@ export default ({ pageContext }) => {
     h1 {
       font-size: 48px;
       margin-bottom: 8px;
+
+      ${mediaQueries.phoneLarge} {
+        margin-bottom: 30px;
+      }
     }
     p {
       ${pLight};
@@ -136,7 +140,7 @@ export default ({ pageContext }) => {
         css={css`
           ${mediaQueries.phoneLarge} {
             ${container.textOnly}
-          }
+            padding-top: 30px;
         `}
       >
         <Tripple>
@@ -173,7 +177,7 @@ export default ({ pageContext }) => {
           }
 
           ${mediaQueries.phoneLarge} {
-            ${sectionPadding}
+            padding: 110px 0;
           }
         `}
       >
