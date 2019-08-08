@@ -1,12 +1,10 @@
-import React, { useRef } from 'react';
-import { Spring } from 'react-spring/renderprops';
+import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
 import {
   fonts,
   weights,
@@ -17,13 +15,11 @@ import {
 import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreviewSlide = ({ article, index }) => {
-  const nodeRef = useRef();
-  const isVisible = useHasBeenPartlyVisible(nodeRef, 0.7);
-
   const Card = styled.div`
     transition-duration: 0.4s;
     transition-timing-function: ease-out;
     opacity: 1 !important;
+    padding: 0;
 
     h3 {
       margin: 15px 20px 20px;
@@ -52,87 +48,76 @@ const ArticlePreviewSlide = ({ article, index }) => {
     }
   `;
   return (
-    <Spring
-      delay={0}
-      to={{
-        /* Only transform it's the first slide, i.e. index == 0 */
-        transform: isVisible || index ? 'translateY(0)' : 'translateY(100px)',
-        opacity: isVisible ? '1' : '0',
-      }}
-    >
-      {({ transform, opacity }) => (
-        <Card style={{ transform, opacity }}>
-          <span
-            css={[
-              container.max,
-              css`
-                display: block;
+    <Card>
+      <span
+        css={[
+          container.max,
+          css`
+            display: block;
+            padding: 0;
 
-                ${mediaQueries.phoneLarge} {
-                  display: flex;
-                  align-items: center;
-                }
+            ${mediaQueries.phoneLarge} {
+              display: flex;
+              align-items: center;
+            }
 
-                .slick-current + .slick-slide & {
-                  // Making the next slide peek in from the right.
-                  margin-left: 0;
-                  padding-left: 0;
-                  padding-right: 40px;
-                }
-              `,
-            ]}
-          >
-            <div
-              ref={nodeRef}
-              css={css`
-                flex: 0 0 38%;
+            .slick-current + .slick-slide & {
+              // Making the next slide peek in from the right.
+              margin-left: 0;
+              padding-left: 0;
+              padding-right: 40px;
+            }
+          `,
+        ]}
+      >
+        <div
+          css={css`
+            flex: 0 0 38%;
 
-                .gatsby-image-wrapper > div {
-                  // Forcing correct image aspect ratio, overriding inline
-                  // gatsby-image provided styles
-                  padding-bottom: 77% !important;
+            .gatsby-image-wrapper > div {
+              // Forcing correct image aspect ratio, overriding inline
+              // gatsby-image provided styles
+              padding-bottom: 77% !important;
 
-                  ${mediaQueries.phoneLarge} {
-                    padding-bottom: 88.9% !important;
-                  }
-                }
-              `}
-            >
-              {article.relationships.field_image && (
-                <Img
-                  fluid={[
-                    article.relationships.field_image.localFile
-                      .childImageSlideMobile.fluid,
-                    {
-                      ...article.relationships.field_image.localFile
-                        .childImageSlideDesktop.fluid,
-                      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-                    },
-                  ]}
-                  alt={article.field_image.alt}
-                />
-              )}
-            </div>
-            <div
-              css={css`
-                flex: 0 0 43%;
+              ${mediaQueries.phoneLarge} {
+                padding-bottom: 88.9% !important;
+              }
+            }
+          `}
+        >
+          {article.relationships.field_image && (
+            <Img
+              fluid={[
+                article.relationships.field_image.localFile
+                  .childImageSlideMobile.fluid,
+                {
+                  ...article.relationships.field_image.localFile
+                    .childImageSlideDesktop.fluid,
+                  media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+                },
+              ]}
+              alt={article.field_image.alt}
+            />
+          )}
+        </div>
+        <div
+          css={css`
+            flex: 0 0 43%;
 
-                ${mediaQueries.phoneLarge} {
-                  margin-left: 9.3%;
-                }
-              `}
-            >
-              <Link to={ensureTrailingSlash(article.path.alias)}>
-                <h3>{article.title}</h3>
-                <footer>
-                  {`${article.created} - ${article.relationships.uid.name}`}
-                </footer>
-              </Link>
-            </div>
-          </span>
-        </Card>
-      )}
-    </Spring>
+            ${mediaQueries.phoneLarge} {
+              margin-left: 9.3%;
+            }
+          `}
+        >
+          <Link to={ensureTrailingSlash(article.path.alias)}>
+            <h3>{article.title}</h3>
+            <footer>
+              {`${article.created} - ${article.relationships.uid.name}`}
+            </footer>
+          </Link>
+        </div>
+      </span>
+    </Card>
   );
 };
 
