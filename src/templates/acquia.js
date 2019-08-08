@@ -91,8 +91,10 @@ export default ({ pageContext }) => {
             font-weight: ${weights.bold};
             list-style: none;
 
-            &:last-of-type {
-              margin-right: 100px;
+            ${mediaQueries.phoneLarge} {
+              &:last-of-type {
+                margin-right: 100px;
+              }
             }
 
             li {
@@ -122,11 +124,10 @@ export default ({ pageContext }) => {
             <li>Migration</li>
             <li>Replatform/redesign</li>
             <li>Personalization</li>
-            <li>Ongoing support</li>
           </ul>
           <ul>
+            <li>Ongoing support</li>
             <li>Infrastructure Audit</li>
-            <li>Resource Augmentation</li>
             <li>Training and resource augmentation</li>
           </ul>
         </div>
@@ -163,17 +164,18 @@ export default ({ pageContext }) => {
         gridTemplateColumns='repeat(2, 350px)'
         css={css`
           ${container.min}
-          padding: 0;
-
           ${mediaQueries.phoneLarge} {
             padding: 70px 0;
           }
-
-          article:first-child {
-            padding-right: 20px;
-          }
-          article:last-of-type {
-            width: 460px;
+          article {
+            ${mediaQueries.phoneLarge} {
+              &:first-child {
+                padding-right: 20px;
+              }
+              &:last-of-type {
+                width: 460px;
+              }
+            }
           }
           img {
             width: 100px;
