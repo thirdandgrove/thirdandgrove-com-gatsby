@@ -11,8 +11,6 @@ import {
   container,
   mediaQueries,
   dropCap,
-  colors,
-  fonts,
 } from '../../styles';
 
 const Text = ({ data }) => {
