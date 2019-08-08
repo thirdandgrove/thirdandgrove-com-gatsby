@@ -7,11 +7,18 @@ import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import Button from '../components/Button';
-import { weights, mediaQueries, container, fonts } from '../styles';
+import {
+  weights,
+  mediaQueries,
+  container,
+  fonts,
+  jsBreakpoints,
+} from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import VideoSection from '../components/VideoSection';
 import { ensureTrailingSlash } from '../util';
+import useWindow from '../hooks/useWindow';
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -187,6 +194,8 @@ export default () => {
     }
   `);
   const studies = allCaseStudy.nodes;
+  const { width } = useWindow();
+  const isLargeScreen = width > jsBreakpoints.phoneLarge;
   return (
     <Layout
       headerData={{
@@ -195,10 +204,12 @@ export default () => {
         height: '400px',
       }}
     >
-      <VideoSection
-        url={allNodeHomePage.edges[0].node.field_video}
-        teaser={allNodeHomePage.edges[0].node.field_video_short}
-      />
+      {isLargeScreen && (
+        <VideoSection
+          url={allNodeHomePage.edges[0].node.field_video}
+          teaser={allNodeHomePage.edges[0].node.field_video_short}
+        />
+      )}
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}
