@@ -31,35 +31,73 @@ const VideoSection = ({ url, teaser }) => {
   `;
 
   const playerStyles = css`
-    display: none;
     position: relative;
     height: 0 !important;
+    padding-top: 550px;
     overflow: hidden;
     opacity: ${hasInteracted && playing ? '1' : '0.65'};
 
     > div {
       position: absolute;
       top: 0;
+
+      > div {
+        padding-top: 550px !important;
+      }
+    }
+
+    iframe {
+      width: 165.4vh !important;
+      left: 50% !important;
+      margin: 0 0 0 -82.7vh;
     }
 
     ${mediaQueries.phoneLarge} {
-      display: block;
       padding-top: 56.25%;
 
       > div > div {
         padding-top: 56.25% !important;
       }
+
+      iframe {
+        width: 100% !important;
+        left: 0 !important;
+        margin: 0;
+      }
     }
   `;
 
   const btnStyles = css`
+    display: block;
+    position: relative;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: solid 2px ${colors.white};
     background: rgba(180, 180, 180, 0.2); // @todo update this
+    font-size: 0;
+    color: transparent;
     cursor: pointer;
 
     &:focus {
       outline: none;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: 30px;
+      left: 32px;
+      border: solid transparent 10px;
+      border-right-width: 0;
+      border-left: solid 16px ${colors.white};
+
+      ${mediaQueries.phoneLarge} {
+        display: none;
+      }
     }
 
     ${mediaQueries.phoneLarge} {
@@ -83,17 +121,19 @@ const VideoSection = ({ url, teaser }) => {
   `;
 
   const detailWrapper = css`
-    display: none;
+    position: absolute;
     top: 50%;
     left: 20px;
     right: 20px;
+    transform: translateY(-50%);
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
 
     ${mediaQueries.phoneLarge} {
       position: static;
-      display: flex;
+      transform: none;
     }
   `;
 
@@ -140,7 +180,7 @@ const VideoSection = ({ url, teaser }) => {
               controls: false,
               responsive: true,
               autoplay: true,
-              loop: true,
+              loop: !isSmScreen,
             },
           },
         }}
