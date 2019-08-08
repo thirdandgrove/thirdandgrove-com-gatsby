@@ -179,7 +179,7 @@ const VideoSection = ({ url, teaser }) => {
             playerOptions: {
               controls: false,
               responsive: true,
-              autoplay: true,
+              autoplay: !isSmScreen,
               loop: !isSmScreen,
             },
           },

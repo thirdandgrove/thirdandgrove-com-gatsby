@@ -195,7 +195,7 @@ export default () => {
   `);
   const studies = allCaseStudy.nodes;
   const { width } = useWindow();
-  const isLargeScreen = width > jsBreakpoints.phoneLarge;
+  const isLargeScreen = width >= jsBreakpoints.phoneLarge;
   return (
     <Layout
       headerData={{
