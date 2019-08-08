@@ -48,7 +48,7 @@ export const colors = {
   acquiaBlue: `#0678BE`,
   lightgreen: `#cef5e2`,
   gatsbyPurple: '#663399',
-  drupalBlue: '#53B0EB',
+  drupalBlue: '#29A8DF',
   shopifyGreen: '#80AB42',
   red: 'red',
 };

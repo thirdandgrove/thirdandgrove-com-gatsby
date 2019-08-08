@@ -82,15 +82,17 @@ export default ({ pageContext }) => {
           }
           ul {
             margin: 0;
+            padding: 0;
             font-size: 16px;
             font-family: ${fonts.sans};
             font-weight: ${weights.bold};
             list-style: none;
 
-            &:last-of-type {
-              margin-right: 100px;
+            ${mediaQueries.phoneLarge} {
+              &:last-of-type {
+                margin-right: 100px;
+              }
             }
-
             li {
               margin-bottom: 4px;
 
