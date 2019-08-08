@@ -221,7 +221,11 @@ export default ({ pageContext }) => {
             'Steve Reichgut,  Former Director of Web Engineering & Web Operations at Benefit Cosmetics',
         }}
       />
-      <InsightsSlider data={allInsight} showButton={false} />
+      <InsightsSlider
+        data={allInsight}
+        showButton={false}
+        backgroundColor={colors.lightgray}
+      />
     </Layout>
   );
 };
