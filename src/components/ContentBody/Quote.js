@@ -26,7 +26,7 @@ const Quote = ({ data, size }) => {
 
     ${mediaQueries.desktop} {
       position: absolute;
-      margin-left: -26px;
+      margin-left: ${size === 'small' ? '-12px' : '-26px'};
     }
   `;
 
@@ -49,15 +49,7 @@ const Quote = ({ data, size }) => {
     }
   `;
   return (
-    <FullWidthSection
-      height='auto'
-      minHeight='auto'
-      margin='0 0 60px'
-      css={css`
-        padding: 0;
-        width: 100%;
-      `}
-    >
+    <FullWidthSection height='auto' minHeight='auto' margin='0 0 60px'>
       <div css={container.min}>
         <div css={quoteText}>
           <span css={quoL}>&ldquo;</span>

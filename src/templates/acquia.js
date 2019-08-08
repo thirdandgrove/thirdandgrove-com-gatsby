@@ -32,6 +32,10 @@ export default ({ pageContext }) => {
     h1 {
       font-size: 48px;
       margin-bottom: 8px;
+
+      ${mediaQueries.phoneLarge} {
+        margin-bottom: 30px;
+      }
     }
     p {
       ${pLight};
@@ -135,6 +139,7 @@ export default ({ pageContext }) => {
         css={css`
           ${mediaQueries.phoneLarge} {
             ${container.textOnly}
+            padding-top: 96px;
           }
         `}
       >
@@ -152,11 +157,20 @@ export default ({ pageContext }) => {
         </Tripple>
       </SplitSection>
       <SplitSection
-        gridColumnGap='16px'
+        gridTemplateColumns='repeat(2, 350px)'
         css={css`
           ${container.min}
+          padding: 0;
+
+          ${mediaQueries.phoneLarge} {
+            padding: 70px 0;
+          }
+          article:first-child {
+            padding-right: 20px;
+          }
           img {
             width: 100px;
+            margin-bottom: 35px;
           }
           h2 {
             color: ${colors.reallydarkgray};
@@ -168,11 +182,6 @@ export default ({ pageContext }) => {
           p {
             font-weight: ${weights.light};
             margin-bottom: 50px;
-            letter-spacing: -0.1px;
-          }
-
-          ${mediaQueries.phoneLarge} {
-            padding: 0;
           }
         `}
       >
