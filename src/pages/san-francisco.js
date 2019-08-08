@@ -24,6 +24,7 @@ const Boston = ({ data }) => {
     <Layout
       headerData={{
         title: 'You won’t find a better Drupal agency in the Bay Area.',
+        mobileMinHeight: '93vh',
       }}
     >
       <FullWidthSection

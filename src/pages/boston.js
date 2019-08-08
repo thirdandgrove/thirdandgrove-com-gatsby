@@ -15,7 +15,10 @@ import SplitSection from '../components/SplitSection';
 const Boston = ({ data }) => {
   return (
     <Layout
-      headerData={{ title: 'You won’t find a better Drupal agency in Boston.' }}
+      headerData={{
+        title: 'You won’t find a better Drupal agency in Boston.',
+        mobileMinHeight: '93vh',
+      }}
     >
       <FullWidthSection
         fontWeight={weights.thin}
