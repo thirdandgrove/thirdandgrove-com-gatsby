@@ -53,7 +53,7 @@ export default ({ pageContext }) => {
         <p>
           Cutting-edge doesn’t have to mean risky. We were the first to build a
           headless commerce experience using Drupal, and have pioneered a number
-          of custom integrations to make break through impossible.
+          of custom integrations to make breakthrough impossible.
         </p>
         <h4>Our Site</h4>
         <p>
