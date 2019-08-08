@@ -121,13 +121,13 @@ export default ({ pageContext }) => {
           h2 {
             color: ${colors.reallydarkgray};
             font-family: ${fonts.sans};
-            font-size: 18px;
+            font-size: 21px;
             font-weight: bold;
             margin-bottom: 14px;
           }
           p {
             font-weight: ${weights.light};
-            margin-bottom: 50px;
+            margin-bottom: 83px;
             letter-spacing: -0.1px;
           }
         `}
