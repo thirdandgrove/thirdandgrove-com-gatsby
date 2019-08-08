@@ -1,6 +1,5 @@
 /* eslint-disable prefer-template */
 import React, { useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import Slider from 'react-slick';
@@ -9,18 +8,8 @@ import { mediaQueries, fonts, weights, colors } from '../../styles';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
-const ProjectsSlider = ({ backgroundColor }) => {
+const ProjectsSlider = ({ backgroundColor, data }) => {
   const [count, setCount] = useState('01');
-
-  const data = useStaticQuery(graphql`
-    {
-      allCaseStudy {
-        nodes {
-          ...CaseStudyFragment
-        }
-      }
-    }
-  `);
 
   const settings = {
     arrows: true,
@@ -41,9 +30,7 @@ const ProjectsSlider = ({ backgroundColor }) => {
   };
 
   const totalSlides =
-    data.allCaseStudy.nodes.length < 10
-      ? '0' + data.allCaseStudy.nodes.length
-      : data.allCaseStudy.nodes.length;
+    data.nodes.length < 10 ? '0' + data.nodes.length : data.nodes.length;
 
   const countStyles = css`
     position: absolute;
@@ -137,7 +124,7 @@ const ProjectsSlider = ({ backgroundColor }) => {
           }
         `}
       >
-        {data.allCaseStudy.nodes.map(node => {
+        {data.nodes.map(node => {
           return <ProjectPreview key={node.title} project={node} />;
         })}
       </Slider>
@@ -152,6 +139,7 @@ const ProjectsSlider = ({ backgroundColor }) => {
 
 ProjectsSlider.propTypes = {
   backgroundColor: PropTypes.string,
+  data: PropTypes.object.isRequired,
 };
 
 ProjectsSlider.defaultProps = {

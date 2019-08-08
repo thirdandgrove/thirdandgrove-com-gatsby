@@ -23,10 +23,22 @@ import {
 import Button from '../components/Button';
 
 const About = ({ data }) => {
-  const NameCol = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  const leadersCss = css`
+    padding-top: 20px;
+
+    ${mediaQueries.phoneLarge} {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    div {
+      ${mediaQueries.phoneLarge} {
+        flex: 0 0 calc(50% - 60px);
+        width: calc(50% - 60px);
+      }
+    }
+
     h2 {
       font-size: 21px;
       font-weight: bold;
@@ -37,11 +49,13 @@ const About = ({ data }) => {
         font-size: 27px;
       }
     }
+
     p {
       ${pLight};
       margin-bottom: 64px;
     }
   `;
+
   const Row = styled.section`
     display: flex;
     flex-flow: row wrap;
@@ -157,7 +171,7 @@ const About = ({ data }) => {
   return (
     <Layout
       headerData={{
-        title: 'A relentless pursuit of perfection',
+        title: 'A relentless pursuit of perfection.',
         mobileMinHeight: '93vh',
         height: '400px',
       }}
@@ -241,40 +255,41 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Who We Are</h3>
-        <SplitSection
-          css={css`
-            padding-top: 20px;
 
-            ${mediaQueries.phoneLarge} {
-              grid-column-gap: 100px;
-            }
-
-            ${mediaQueries.desktop} {
-              grid-column-gap: 270px;
-            }
-          `}
-        >
-          <NameCol>
+        <div css={[leadersCss, container.medium]}>
+          <div>
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
-            <h2>Matt Davis</h2>
-            <p>Director of Engineering</p>
-            <h2>Jen Slemp</h2>
-            <p>Director of Strategy</p>
-            <h2>Jen May</h2>
-            <p>Director of Delivery</p>
-          </NameCol>
-          <NameCol>
+          </div>
+          <div>
             <h2>Anthony Severo</h2>
             <p>Co-Founder, Chief Strategy Officer</p>
+          </div>
+          <div>
+            <h2>Matt Davis</h2>
+            <p>Director of Engineering</p>
+          </div>
+          <div>
             <h2>Adam Strom</h2>
             <p>Creative Director</p>
+          </div>
+          <div>
+            <h2>Jen Slemp</h2>
+            <p>Director of Strategy</p>
+          </div>
+          <div>
             <h2>Christina Andrade</h2>
             <p>Director of Operations</p>
+          </div>
+          <div>
+            <h2>Jen May</h2>
+            <p>Director of Delivery</p>
+          </div>
+          <div>
             <h2>Angela Prendergast</h2>
             <p>QA Lead</p>
-          </NameCol>
-        </SplitSection>
+          </div>
+        </div>
       </FullWidthSection>
       <FullWidthSection
         backgroundColor={colors.yellow}
@@ -301,19 +316,19 @@ const About = ({ data }) => {
         <Row>
           <div>
             <h1>01</h1>
-            <h3>drive efficiency</h3>
+            <h3>Drive Efficiency</h3>
           </div>
           <div>
             <h1>02</h1>
-            <h3>boost morale</h3>
+            <h3>Best Talent</h3>
           </div>
           <div>
             <h1>03</h1>
-            <h3>greater diversity</h3>
+            <h3>Greater Diversity</h3>
           </div>
           <div>
             <h1>04</h1>
-            <h3>good for the planet</h3>
+            <h3>Good for the Planet</h3>
           </div>
         </Row>
       </FullWidthSection>

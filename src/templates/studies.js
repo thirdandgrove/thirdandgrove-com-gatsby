@@ -40,13 +40,16 @@ const Studies = ({ data }) => {
           css={css`
             margin-left: 20px;
             margin-right: 20px;
-            margin-top: -100px;
+            margin-top: calc(-37.5% + 15px);
             max-width: 980px;
+
+            ${mediaQueries.xs} {
+              margin-top: -165px;
+            }
 
             ${mediaQueries.phoneLarge} {
               margin-left: auto;
               margin-right: auto;
-              margin-top: -165px;
             }
           `}
         />
