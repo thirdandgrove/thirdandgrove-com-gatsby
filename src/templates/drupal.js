@@ -181,8 +181,8 @@ export default ({ pageContext }) => {
           <p>
             See for yourself what a smooth migration feels like when we fully
             map out your existing setup/integrations, confirm our detailed game
-            plan and execute. We migrated one of the highest-trafficked sites in
-            the world to Drupal 8 in six weeks.
+            plan, and execute. We migrated one of the highest-trafficked sites
+            in the world to Drupal 8 in six weeks.
           </p>
         </article>
         <article>
