@@ -14,6 +14,8 @@ const Image = ({ data }) => (
 
       ${mediaQueries.phoneLarge} {
         ${container.min};
+        padding-left: 0;
+        padding-right: 0;
         margin: 0 auto 70px;
       }
     `}
