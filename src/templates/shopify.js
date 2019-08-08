@@ -27,7 +27,7 @@ export default ({ pageContext }) => {
       headerData={{
         invert: true,
         label: 'End-to-End Agency — Deep Commerce Experience — Growth Focused',
-        title: 'Get Shopify Plus without the limits',
+        title: 'Get Shopify Plus without the limits.',
         color: colors.shopifyGreen,
         mobileMinHeight: '620px',
       }}
