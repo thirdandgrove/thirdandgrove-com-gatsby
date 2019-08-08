@@ -35,6 +35,7 @@ const Header = ({
   color,
   invert,
   marginBottom,
+  titlePadding,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -117,6 +118,7 @@ const Header = ({
 
     ${mediaQueries.phoneLarge} {
       width: 75%;
+      padding: ${titlePadding};
       font-size: 72px;
       line-height: 1.17;
       letter-spacing: -1px;
@@ -185,6 +187,7 @@ export const headerPropTypes = {
   invert: PropTypes.bool,
   color: PropTypes.string,
   marginBottom: PropTypes.string,
+  titlePadding: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -201,6 +204,7 @@ Header.defaultProps = {
   invert: false,
   color: colors.yellow,
   marginBottom: '0',
+  titlePadding: '0 20px',
 };
 
 export default Header;

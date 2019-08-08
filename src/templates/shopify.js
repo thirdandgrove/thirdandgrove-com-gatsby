@@ -20,7 +20,7 @@ export default ({ pageContext }) => {
 
     ${mediaQueries.phoneLarge} {
       padding: 110px 0;
-    }
+    }9
   `;
   return (
     <Layout
@@ -30,6 +30,8 @@ export default ({ pageContext }) => {
         title: 'Get Shopify Plus without the limits.',
         color: colors.shopifyGreen,
         mobileMinHeight: '620px',
+        width: '480px',
+        titlePadding: '0 100px',
       }}
     >
       <FullWidthSection
