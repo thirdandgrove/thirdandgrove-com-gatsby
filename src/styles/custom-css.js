@@ -102,7 +102,7 @@ export const dropCap = css`
     line-height: 1;
 
     ${mediaQueries.phoneLarge} {
-      padding: 6px 20px 0;
+      padding: 6px 20px 20px;
     }
   }
 `;
