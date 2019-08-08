@@ -112,19 +112,22 @@ export default ({ pageContext }) => {
       >
         <h3>Team up with a partner who is tight with Acquia</h3>
         <p>
-          Fewer conversations about development and more about how to improve
+          We’ve invested over 130,000 hours on the Acquia platform (we’re good
+          friends with the team by now but feel free to ask around). This means
+          fewer conversations about development and more about how to improve
           visitor engagement.
         </p>
         <div>
           <ul>
             <li>Migration</li>
+            <li>Replatform/redesign</li>
             <li>Personalization</li>
             <li>Ongoing support</li>
           </ul>
           <ul>
             <li>Infrastructure Audit</li>
             <li>Resource Augmentation</li>
-            <li>Training</li>
+            <li>Training and resource augmentation</li>
           </ul>
         </div>
       </FullWidthSection>
@@ -148,7 +151,7 @@ export default ({ pageContext }) => {
           <p>Acquia Certified</p>
         </Tripple>
         <Tripple>
-          <h1>X</h1>
+          <h1>26+</h1>
           <p>Projects Launched on Acquia</p>
         </Tripple>
         <Tripple>
@@ -165,8 +168,12 @@ export default ({ pageContext }) => {
           ${mediaQueries.phoneLarge} {
             padding: 70px 0;
           }
+
           article:first-child {
             padding-right: 20px;
+          }
+          article:last-of-type {
+            width: 460px;
           }
           img {
             width: 100px;
@@ -182,6 +189,10 @@ export default ({ pageContext }) => {
           p {
             font-weight: ${weights.light};
             margin-bottom: 50px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 83px;
+            }
           }
         `}
       >
@@ -199,6 +210,14 @@ export default ({ pageContext }) => {
           <p>
             Improve visitor engagement with an achievable &amp; data-driven
             personalization plan.
+          </p>
+        </article>
+        <article>
+          <img src='/images/mautic.png' alt='mautic' />
+          <h2>Mautic (Marketing Automation)</h2>
+          <p>
+            Own your entire digital experience across every channel and
+            interaction—whether at your desk, on the go, or sound asleep.
           </p>
         </article>
       </SplitSection>
