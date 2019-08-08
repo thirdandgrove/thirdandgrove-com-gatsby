@@ -20,8 +20,9 @@ export default () => {
   `);
 
   const JobList = styled.ul`
-    margin-left: 0;
+    padding-left: 0;
     margin-bottom: 114px;
+    font-family: ${fonts.serif};
 
     ${mediaQueries.phoneLarge} {
       margin-bottom: 120px;
