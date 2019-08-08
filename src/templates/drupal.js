@@ -32,6 +32,10 @@ export default ({ pageContext }) => {
     h1 {
       font-size: 48px;
       margin-bottom: 8px;
+
+      ${mediaQueries.phoneLarge} {
+        margin-bottom: 30px;
+      }
     }
     p {
       ${pLight};
@@ -82,15 +86,17 @@ export default ({ pageContext }) => {
           }
           ul {
             margin: 0;
+            padding: 0;
             font-size: 16px;
             font-family: ${fonts.sans};
             font-weight: ${weights.bold};
             list-style: none;
 
-            &:last-of-type {
-              margin-right: 100px;
+            ${mediaQueries.phoneLarge} {
+              &:last-of-type {
+                margin-right: 100px;
+              }
             }
-
             li {
               margin-bottom: 4px;
 
@@ -109,12 +115,13 @@ export default ({ pageContext }) => {
         <h3>A leader and contributor since inception</h3>
         <p>
           We’re the only agency on Earth with a Drupal 8 core maintainer on our
-          team. (Read: We know what we’re doing.)
+          team. (Read: We know Drupal because we’re writing it.)
         </p>
         <div>
           <ul>
-            <li>Drupal 8 migration</li>
+            <li>Drupal migration</li>
             <li>Replatform/redesign</li>
+            <li>Content Migration</li>
           </ul>
           <ul>
             <li>Ongoing support</li>
@@ -133,19 +140,19 @@ export default ({ pageContext }) => {
         css={css`
           ${mediaQueries.phoneLarge} {
             ${container.textOnly}
-          }
+            padding-top: 30px;
         `}
       >
         <Tripple>
-          <h1>800+</h1>
+          <h1>1200+</h1>
           <p>Open Source Contributions</p>
         </Tripple>
         <Tripple>
-          <h1>Decoupled</h1>
-          <p>Drupal Pioneers</p>
+          <h1>177,000+</h1>
+          <p>Hours on D8</p>
         </Tripple>
         <Tripple>
-          <h1>Drupal9</h1>
+          <h1>Drupal 9</h1>
           <p>Building it as we speak</p>
         </Tripple>
       </SplitSection>
@@ -153,8 +160,13 @@ export default ({ pageContext }) => {
         gridColumnGap='16px'
         css={css`
           ${container.min}
-          img {
-            width: 100px;
+          ${mediaQueries.phoneLarge} {
+            padding: 110px 0;
+          }
+          article {
+            ${mediaQueries.phoneLarge} {
+              padding-bottom: 30px;
+            }
           }
           h2 {
             color: ${colors.reallydarkgray};
@@ -168,10 +180,6 @@ export default ({ pageContext }) => {
             margin-bottom: 50px;
             letter-spacing: -0.1px;
           }
-
-          ${mediaQueries.phoneLarge} {
-            ${sectionPadding}
-          }
         `}
       >
         <article>
@@ -179,17 +187,17 @@ export default ({ pageContext }) => {
           <p>
             See for yourself what a smooth migration feels like when we fully
             map out your existing setup/integrations, confirm our detailed game
-            plan and execute. We migrated one of the highest-trafficked sites in
-            the world to Drupal 8 in six weeks.
+            plan, and execute. We got you covered—we migrated one of the
+            highest-trafficked sites in the world to Drupal in six weeks.
           </p>
         </article>
         <article>
           <h2>Decoupled</h2>
           <p>
-            See for yourself what a smooth migration feels like when we fully
-            map out your existing setup/integrations, confirm our detailed game
-            plan and execute. We migrated one of the highest-trafficked sites in
-            the world to Drupal 8 in six weeks.
+            Build a cutting-edge site that takes the best of Drupal and modern
+            front end tech (like Gatsby). Our engineers have worked on some of
+            the largest decoupled Drupal builds, including the largest decoupled
+            Drupal site ever.
           </p>
         </article>
         <article>
@@ -215,10 +223,14 @@ export default ({ pageContext }) => {
           field_quote:
             'It’s a rare opportunity that an agency like TAG can fit in so well with our in-house team. The support, partnership, and commitment to creating a custom solution for our multi-lingual sites made all the difference in our successful launch.',
           field_footer_text:
-            'Steve Reichgut, Director of Web Engineering & Web Operations',
+            'Steve Reichgut,  Former Director of Web Engineering & Web Operations at Benefit Cosmetics',
         }}
       />
-      <InsightsSlider data={allInsight} showButton={false} />
+      <InsightsSlider
+        data={allInsight}
+        showButton={false}
+        backgroundColor={colors.lightgray}
+      />
     </Layout>
   );
 };
