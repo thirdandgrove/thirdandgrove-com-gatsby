@@ -57,6 +57,7 @@ export default () => {
   const socialList = css`
     list-style-type: none;
     margin: 0;
+    padding: 0;
 
     ${mediaQueries.phoneLarge} {
       margin-top: 11px;
@@ -67,6 +68,7 @@ export default () => {
 
     li {
       margin-bottom: 0;
+      padding: 0;
 
       ${mediaQueries.phoneLarge} {
         padding: 0 30px;
