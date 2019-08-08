@@ -12,7 +12,6 @@ const Hamburger = ({ fill, isOpen }) => (
   >
     <g id='Hamburger'>
       <rect
-        id='Rectangle'
         x='0'
         y='0'
         width='25'
@@ -29,7 +28,6 @@ const Hamburger = ({ fill, isOpen }) => (
         `}
       />
       <rect
-        id='Rectangle'
         x='8'
         y='10'
         width='17'
@@ -44,7 +42,6 @@ const Hamburger = ({ fill, isOpen }) => (
         `}
       />
       <rect
-        id='Rectangle'
         x='0'
         y='20'
         width='25'
