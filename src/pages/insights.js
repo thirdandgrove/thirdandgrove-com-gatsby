@@ -141,7 +141,7 @@ Insights.propTypes = {
 
 export const data = graphql`
   {
-    allInsight {
+    allInsight(sort: { fields: created, order: DESC }) {
       nodes {
         ...InsightFragment
       }
