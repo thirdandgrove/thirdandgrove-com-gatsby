@@ -37,7 +37,7 @@ const Insights = ({ data }) => {
         defaultBackground: false,
         color: backgroundColor || colors.yellow,
         mobileMinHeight: '470px',
-        marginBottom: '70px',
+        titleMarginBottom: '70px',
       }}
     >
       <div
