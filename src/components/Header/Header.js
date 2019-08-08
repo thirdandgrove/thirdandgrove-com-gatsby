@@ -149,7 +149,7 @@ const Header = ({
   `;
   return (
     <>
-      <SEO title={metaTitle || title} description={description} />
+      <SEO title={metaTitle || title} description={description} color={color} />
       <TopNav fill={fontColor} />
       <FullWidthSection
         css={sectionCSS}

@@ -10,7 +10,9 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const SEO = ({ description, lang, meta, keywords, title, image }) => {
+import { colors } from '../styles';
+
+const SEO = ({ description, lang, meta, keywords, title, image, color }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -77,6 +79,10 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `theme-color`,
+          content: color,
+        },
       ]
         .concat(
           keywords.length > 0
@@ -98,6 +104,7 @@ SEO.defaultProps = {
   description: ``,
   title: null,
   image: null,
+  color: colors.yellow,
 };
 
 SEO.propTypes = {
@@ -107,6 +114,7 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string,
   image: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export default SEO;
