@@ -10,6 +10,7 @@ import { colors, mediaQueries, fonts, weights, container } from '../styles';
 import SplitSection from '../components/SplitSection';
 import InsightsSlider from '../components/InsightsSlider';
 import Quote from '../components/ContentBody/Quote';
+import { partnersProjects } from '../styles/custom-css';
 
 // eslint-disable-next-line react/prop-types
 export default ({ pageContext }) => {
@@ -106,32 +107,7 @@ export default ({ pageContext }) => {
         title='Some of Our Shopify Clients'
         backgroundColor={colors.white}
       />
-      <SplitSection
-        gridColumnGap='16px'
-        css={css`
-          ${container.min}
-          padding-bottom: 16px;
-
-          ${mediaQueries.phoneLarge} {
-            padding: 110px 0 150px;
-          }
-          img {
-            width: 100px;
-          }
-          h2 {
-            color: ${colors.reallydarkgray};
-            font-family: ${fonts.sans};
-            font-size: 21px;
-            font-weight: bold;
-            margin-bottom: 14px;
-          }
-          p {
-            font-weight: ${weights.light};
-            margin-bottom: 83px;
-            letter-spacing: -0.1px;
-          }
-        `}
-      >
+      <SplitSection gridColumnGap='16px' css={partnersProjects}>
         <article>
           <h2>Conquer complexity</h2>
           <p>

@@ -16,4 +16,5 @@ export {
   contentHeadings,
   dropCap,
   pLight,
+  partnersProjects,
 } from './custom-css';

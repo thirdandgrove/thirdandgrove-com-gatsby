@@ -118,3 +118,27 @@ export const pLight = css`
     text-align: center;
   }
 `;
+
+export const partnersProjects = css`
+  ${container.min}
+  padding-bottom: 16px;
+
+  ${mediaQueries.phoneLarge} {
+    padding: 110px 0 150px;
+  }
+  img {
+    width: 100px;
+  }
+  h2 {
+    color: ${colors.reallydarkgray};
+    font-family: ${fonts.sans};
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 14px;
+  }
+  p {
+    font-weight: ${weights.light};
+    margin-bottom: 83px;
+    letter-spacing: -0.1px;
+  }
+`;
