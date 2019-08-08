@@ -160,8 +160,13 @@ export default ({ pageContext }) => {
         gridColumnGap='16px'
         css={css`
           ${container.min}
-          img {
-            width: 100px;
+          ${mediaQueries.phoneLarge} {
+            padding: 110px 0;
+          }
+          article {
+            ${mediaQueries.phoneLarge} {
+              padding-bottom: 30px;
+            }
           }
           h2 {
             color: ${colors.reallydarkgray};
@@ -174,10 +179,6 @@ export default ({ pageContext }) => {
             font-weight: ${weights.light};
             margin-bottom: 50px;
             letter-spacing: -0.1px;
-          }
-
-          ${mediaQueries.phoneLarge} {
-            padding: 110px 0;
           }
         `}
       >
