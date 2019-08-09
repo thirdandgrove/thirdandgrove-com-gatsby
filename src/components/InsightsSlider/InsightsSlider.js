@@ -11,7 +11,7 @@ import Button from '../Button';
 
 const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
   const settings = {
-    arrows: true,
+    arrows: false,
     autoplay: true,
     autoplaySpeed: 7500,
     cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
@@ -21,7 +21,7 @@ const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
     centerMode: true,
     responsive: [
       {
-        breakpoint: 900,
+        breakpoint: 1220,
         settings: {
           centerPadding: 10,
         },
@@ -53,71 +53,15 @@ const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
           margin-bottom: 65px;
 
           .slick-list {
-            ${mediaQueries.phoneLarge} {
+            ${mediaQueries.desktop} {
               padding: 0 90px;
-            }
-          }
-
-          .slick-arrow {
-            top: auto;
-            bottom: -50px;
-            width: 20px;
-            height: 16px;
-            z-index: 999;
-            opacity: 0.7;
-            transition: 0.3s ease opacity;
-
-            &:hover,
-            &:focus {
-              opacity: 1;
-            }
-
-            &::before {
-              display: none;
-            }
-          }
-
-          .slick-prev {
-            left: auto;
-            right: calc(50% + 7.5px);
-            background: url('/images/arrow-l.svg');
-
-            ${mediaQueries.phoneLarge} {
-              left: 20px;
-              right: auto;
-            }
-
-            ${mediaQueries.desktop} {
-              left: 50%;
-              margin-left: -590px;
-            }
-          }
-
-          .slick-next {
-            left: calc(50% + 7.5px);
-            right: auto;
-            background: url('/images/arrow-r.svg');
-
-            ${mediaQueries.phoneLarge} {
-              left: 50px;
-            }
-
-            ${mediaQueries.desktop} {
-              left: 50%;
-              margin-left: -555px;
             }
           }
         `}
       >
         {data &&
-          data.nodes.map((node, index) => {
-            return (
-              <ArticlePreviewSlide
-                key={node.title}
-                article={node}
-                index={index}
-              />
-            );
+          data.nodes.map(node => {
+            return <ArticlePreviewSlide key={node.title} article={node} />;
           })}
       </Slider>
       {showButton && (
