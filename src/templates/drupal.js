@@ -141,6 +141,7 @@ export default ({ pageContext }) => {
           ${mediaQueries.phoneLarge} {
             ${container.textOnly}
             padding-top: 30px;
+          }
         `}
       >
         <Tripple>

@@ -26,6 +26,8 @@ const TextImage = ({ data }) => {
       padding: 0;
     }
 
+    ${renderDropCap && dropCap}
+
     h2 {
       ${contentH2}
     }
@@ -33,8 +35,6 @@ const TextImage = ({ data }) => {
     h3 {
       ${contentHeadings}
     }
-
-    ${renderDropCap && dropCap}
   `;
 
   return data.field_reversed ? (
