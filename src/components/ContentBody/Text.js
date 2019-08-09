@@ -32,6 +32,8 @@ const Text = ({ data }) => {
           padding: 0;
         }
 
+        ${renderDropCap && dropCap}
+
         h2 {
           ${contentH2}
         }
@@ -39,8 +41,6 @@ const Text = ({ data }) => {
         h3 {
           ${contentHeadings}
         }
-
-        ${renderDropCap && dropCap}
       `}
     />
   );
