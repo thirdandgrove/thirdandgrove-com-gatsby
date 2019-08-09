@@ -21,7 +21,7 @@ const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
     centerMode: true,
     responsive: [
       {
-        breakpoint: 900,
+        breakpoint: 1220,
         settings: {
           centerPadding: 10,
         },
@@ -53,7 +53,7 @@ const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
           margin-bottom: 65px;
 
           .slick-list {
-            ${mediaQueries.phoneLarge} {
+            ${mediaQueries.desktop} {
               padding: 0 90px;
             }
           }

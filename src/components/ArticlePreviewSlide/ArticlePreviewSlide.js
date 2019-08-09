@@ -54,18 +54,29 @@ const ArticlePreviewSlide = ({ article, index }) => {
           container.max,
           css`
             display: block;
-            padding: 0;
+            transition: 1s cubic-bezier(0.86, 0, 0.07, 1) padding-left,
+              1s cubic-bezier(0.86, 0, 0.07, 1) padding-right;
 
             ${mediaQueries.phoneLarge} {
               display: flex;
               align-items: center;
             }
 
+            ${mediaQueries.desktop} {
+              padding: 0;
+              margin-left: calc(50% - 610px);
+              transition: 1s cubic-bezier(0.86, 0, 0.07, 1) margin-left;
+            }
+
             .slick-current + .slick-slide & {
               // Making the next slide peek in from the right.
-              margin-left: 0;
               padding-left: 0;
               padding-right: 40px;
+
+              ${mediaQueries.desktop} {
+                margin-left: 0;
+                padding: 0;
+              }
             }
           `,
         ]}
