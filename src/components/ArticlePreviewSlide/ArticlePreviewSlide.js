@@ -16,8 +16,6 @@ import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreviewSlide = ({ article, index }) => {
   const Card = styled.div`
-    transition-duration: 0.4s;
-    transition-timing-function: ease-out;
     opacity: 1 !important;
     padding: 0;
 
