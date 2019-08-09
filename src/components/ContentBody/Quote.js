@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
-import { container, weights, mediaQueries, colors } from '../../styles';
+import { weights, mediaQueries, colors, contValues } from '../../styles';
 
 const Quote = ({ data, size }) => {
   const quoteText = css`
@@ -16,8 +16,8 @@ const Quote = ({ data, size }) => {
     ${mediaQueries.phoneLarge} {
       font-weight: ${weights.bold};
       text-align: center;
-      letter-spacing: -0.16px;
-      line-height: 1.38;
+      letter-spacing: ${size === 'small' ? '-0.09px' : '-0.16px'};
+      line-height: ${size === 'small' ? '1.48' : '1.38'};
     }
   `;
 
@@ -48,9 +48,21 @@ const Quote = ({ data, size }) => {
       text-align: center;
     }
   `;
+  const containerStyles = css`
+    width: ${contValues.min};
+    max-width: 100%;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    ${mediaQueries.phoneLarge} {
+      ${size === 'small' &&
+        `margin: 0 0 105px;
+        padding: 13px 8px 0;
+      `};
+    }
+  `;
   return (
-    <FullWidthSection height='auto' minHeight='auto' margin='0 0 60px'>
-      <div css={container.min}>
+    <FullWidthSection height='auto' minHeight='auto'>
+      <div css={containerStyles}>
         <div css={quoteText}>
           <span css={quoL}>&ldquo;</span>
           {data.field_quote}
