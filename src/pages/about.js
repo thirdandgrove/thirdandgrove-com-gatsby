@@ -102,11 +102,17 @@ const About = ({ data }) => {
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
+    h1,
+    h3,
+    p {
+      transition: opacity 0.3s ease;
+      opacity: 0.7;
+    }
     &:hover {
       h1,
       h3,
       p {
-        opacity: 0.7;
+        opacity: 1;
       }
     }
     h1 {
