@@ -225,6 +225,12 @@ export default ({ pageContext }) => {
           </p>
         </article>
       </SplitSection>
+      <LogoGrid
+        logoset='acquiaDXP'
+        title='Your DXP Solution'
+        backgroundColor={colors.white}
+        minHeight='0'
+      />
       <Quote
         size='small'
         data={{

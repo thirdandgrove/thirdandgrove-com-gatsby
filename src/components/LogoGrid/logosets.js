@@ -24,6 +24,10 @@ import gaiam from './logos/gaiam-logo.svg';
 import brainiac from './logos/brainiac-logo.svg';
 import equator from './logos/equator-logo.svg';
 import jameson from './logos/jameson-logo.svg';
+import salesforce from './logos/salesforca-logo.svg';
+import marketo from './logos/marketo-logo.svg';
+import gaLogo from './logos/google-analytics-logo.svg';
+import bigcommerce from './logos/bigcommerce-logo.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -317,6 +321,32 @@ export default (logoset, isSmScreen) => {
         alt='dwell'
         width={isSmScreen ? '78' : '94'}
         height={isSmScreen ? '30' : '36'}
+      />,
+    ],
+    acquiaDXP: [
+      <img
+        src={salesforce}
+        alt='Google'
+        width={isSmScreen ? '91' : '120'}
+        height={isSmScreen ? '64' : '84'}
+      />,
+      <img
+        src={bigcommerce}
+        alt='Google'
+        width={isSmScreen ? '131' : '219'}
+        height={isSmScreen ? '30' : '50'}
+      />,
+      <img
+        src={marketo}
+        alt='Google'
+        width={isSmScreen ? '93' : '148'}
+        height={isSmScreen ? '40' : '64'}
+      />,
+      <img
+        src={gaLogo}
+        alt='Google'
+        width={isSmScreen ? '109' : '161'}
+        height={isSmScreen ? '42' : '62'}
       />,
     ],
   };
