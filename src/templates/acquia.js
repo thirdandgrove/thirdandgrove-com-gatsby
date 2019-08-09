@@ -138,6 +138,7 @@ export default ({ pageContext }) => {
         logoset='acquia'
         title='Some of Our Acquia Clients'
         backgroundColor={colors.white}
+        minHeight='0'
       />
       <SplitSection
         gridTemplateColumns='repeat(3, 1fr)'

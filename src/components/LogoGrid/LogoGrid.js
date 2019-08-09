@@ -15,7 +15,7 @@ import {
 
 import logoSets from './logosets';
 
-const LogoGrid = ({ title, logoset, backgroundColor }) => {
+const LogoGrid = ({ title, logoset, backgroundColor, minHeight }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
 
@@ -67,7 +67,6 @@ const LogoGrid = ({ title, logoset, backgroundColor }) => {
   `;
 
   const containerStyles = css`
-    min-height: 100vh;
     padding-top: 50px;
     padding-bottom: 50px;
 
@@ -81,7 +80,7 @@ const LogoGrid = ({ title, logoset, backgroundColor }) => {
   return (
     <FullWidthSection
       backgroundColor={backgroundColor}
-      minHeight='100vh'
+      minHeight={minHeight}
       height='600px'
     >
       <div css={[container.max, containerStyles]}>
@@ -103,11 +102,13 @@ LogoGrid.propTypes = {
   title: PropTypes.string.isRequired,
   logoset: PropTypes.string,
   backgroundColor: PropTypes.string,
+  minHeight: PropTypes.string,
 };
 
 LogoGrid.defaultProps = {
   logoset: 'default',
   backgroundColor: colors.lightgray,
+  minHeight: '100vh',
 };
 
 export default LogoGrid;

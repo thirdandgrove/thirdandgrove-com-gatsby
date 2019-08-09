@@ -134,6 +134,7 @@ export default ({ pageContext }) => {
         logoset='drupal'
         title='Some of Our Drupal Clients'
         backgroundColor={colors.white}
+        minHeight='0'
       />
       <SplitSection
         gridTemplateColumns='repeat(3, 1fr)'
