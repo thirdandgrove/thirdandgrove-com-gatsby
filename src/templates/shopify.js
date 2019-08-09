@@ -103,6 +103,7 @@ export default ({ pageContext }) => {
         logoset='shopify'
         title='Some of Our Shopify Clients'
         backgroundColor={colors.white}
+        minHeight='0'
       />
       <SplitSection
         gridColumnGap='16px'
