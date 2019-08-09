@@ -14,7 +14,7 @@ import {
 } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
-const ArticlePreviewSlide = ({ article, index }) => {
+const ArticlePreviewSlide = ({ article }) => {
   const Card = styled.div`
     opacity: 1 !important;
     padding: 0;
@@ -132,7 +132,6 @@ const ArticlePreviewSlide = ({ article, index }) => {
 
 ArticlePreviewSlide.propTypes = {
   article: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
 };
 
 export default ArticlePreviewSlide;

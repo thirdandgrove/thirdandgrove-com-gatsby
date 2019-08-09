@@ -60,14 +60,8 @@ const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
         `}
       >
         {data &&
-          data.nodes.map((node, index) => {
-            return (
-              <ArticlePreviewSlide
-                key={node.title}
-                article={node}
-                index={index}
-              />
-            );
+          data.nodes.map(node => {
+            return <ArticlePreviewSlide key={node.title} article={node} />;
           })}
       </Slider>
       {showButton && (
