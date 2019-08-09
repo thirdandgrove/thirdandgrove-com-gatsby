@@ -52,7 +52,7 @@ const Quote = ({ data, size }) => {
     width: ${contValues.min};
     max-width: 100%;
     margin: 0 auto 60px;
-    padding: 0 20px;
+    padding: ${size === 'small' ? '0' : '0 20px'};
     ${mediaQueries.phoneLarge} {
       ${size === 'small' &&
         `margin: 0 0 130px;
@@ -61,7 +61,7 @@ const Quote = ({ data, size }) => {
     }
   `;
   return (
-    <FullWidthSection height='auto' minHeight='auto'>
+    <FullWidthSection height='auto' minHeight='auto' padding='0'>
       <div css={containerStyles}>
         <div css={quoteText}>
           <span css={quoL}>&ldquo;</span>
