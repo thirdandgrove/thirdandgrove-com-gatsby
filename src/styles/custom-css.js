@@ -133,7 +133,7 @@ export const partnersProjects = css`
     color: ${colors.reallydarkgray};
     font-family: ${fonts.sans};
     font-size: 21px;
-    font-weight: bold;
+    font-weight: ${weights.bold};
     margin-bottom: 14px;
   }
   p {
