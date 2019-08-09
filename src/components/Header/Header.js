@@ -19,9 +19,10 @@ import FullWidthSection from '../FullWidthSection';
  * @param {string} height - passed to wrapper component
  * @param {string} mobileMinHeight - passed to wrapper component
  * @param {node} children
- * @param {string} color
+ * @param {string} color - passed to background color
  * @param {boolean} invert - passed through to TopNav
- * @param {string} marginBottom
+ * @param {string} titleMarginBottom - passed to title
+ * @param {string} titlePadding - passed to title
  */
 const Header = ({
   title,
@@ -34,7 +35,8 @@ const Header = ({
   children,
   color,
   invert,
-  marginBottom,
+  titleMarginBottom,
+  titlePadding,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -84,7 +86,7 @@ const Header = ({
     }
 
     position: relative;
-    margin-bottom: ${marginBottom};
+    margin-bottom: ${titleMarginBottom};
     padding: 0 20px;
     line-height: 1.23;
     font-size: 39px;
@@ -117,6 +119,7 @@ const Header = ({
 
     ${mediaQueries.phoneLarge} {
       width: 75%;
+      padding: ${titlePadding};
       font-size: 72px;
       line-height: 1.17;
       letter-spacing: -1px;
@@ -184,7 +187,8 @@ export const headerPropTypes = {
   children: PropTypes.node,
   invert: PropTypes.bool,
   color: PropTypes.string,
-  marginBottom: PropTypes.string,
+  titleMarginBottom: PropTypes.string,
+  titlePadding: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -200,7 +204,8 @@ Header.defaultProps = {
   children: null,
   invert: false,
   color: colors.yellow,
-  marginBottom: '0',
+  titleMarginBottom: '0',
+  titlePadding: '0 20px',
 };
 
 export default Header;
