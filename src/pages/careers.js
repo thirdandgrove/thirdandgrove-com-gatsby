@@ -34,7 +34,7 @@ export default () => {
       text-align: center;
 
       a {
-        font-weight: ${weights.light};
+        font-weight: ${weights.thin};
         font-size: 30px;
         text-align: center;
         line-height: 1.3;

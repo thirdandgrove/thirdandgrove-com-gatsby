@@ -10,7 +10,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const studies = await graphql(`
     {
-      allCaseStudy {
+      allCaseStudy(filter: { field_hidden: { eq: false } }) {
         nodes {
           id
           title
@@ -34,7 +34,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const insights = await graphql(`
     {
-      allInsight {
+      allInsight(filter: { field_hidden: { eq: false } }) {
         nodes {
           id
           title
@@ -118,7 +118,11 @@ exports.createPages = async ({ actions, graphql }) => {
   // because page queries only work in root level pages
   const insightSlider = await graphql(`
     {
-      allInsight(sort: { fields: created, order: DESC }, limit: 5) {
+      allInsight(
+        sort: { fields: created, order: DESC }
+        limit: 5
+        filter: { field_hidden: { eq: false } }
+      ) {
         nodes {
           id
           title
@@ -243,7 +247,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const projectSlider = await graphql(`
     {
-      allCaseStudy(limit: 5) {
+      allCaseStudy(limit: 5, filter: { field_hidden: { eq: false } }) {
         nodes {
           id
           title

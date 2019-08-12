@@ -30,9 +30,15 @@ const Project = ({ study, index }) => {
       padding='0'
       textAlign='left'
       css={css`
-        &:nth-child(2) {
+        &:first-child {
           margin-top: 20px;
 
+          ${mediaQueries.phoneLarge} {
+            margin-top: 0;
+          }
+        }
+
+        &:nth-child(2) {
           ${mediaQueries.phoneLarge} {
             margin-top: 175px;
           }
@@ -178,7 +184,7 @@ Project.propTypes = {
 export default () => {
   const { allCaseStudy, allNodeHomePage } = useStaticQuery(graphql`
     {
-      allCaseStudy {
+      allCaseStudy(filter: { field_hidden: { eq: false } }) {
         nodes {
           ...CaseStudyFragment
         }

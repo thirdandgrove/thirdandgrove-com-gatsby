@@ -40,12 +40,20 @@ export default ({ data }) => {
 // define fragments
 export const query = graphql`
   {
-    allCaseStudy(sort: { fields: created, order: DESC }, limit: 5) {
+    allCaseStudy(
+      sort: { fields: created, order: DESC }
+      limit: 5
+      filter: { field_hidden: { eq: false } }
+    ) {
       nodes {
         ...CaseStudyFragment
       }
     }
-    allInsight(sort: { fields: created, order: DESC }, limit: 5) {
+    allInsight(
+      sort: { fields: created, order: DESC }
+      limit: 5
+      filter: { field_hidden: { eq: false } }
+    ) {
       nodes {
         ...InsightFragment
       }
