@@ -6,7 +6,7 @@ const { ensureTrailingSlash } = require('./src/util');
 const partners = ['acquia', 'drupal', 'gatsby', 'shopify'];
 
 exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   const studies = await graphql(`
     {
@@ -468,5 +468,31 @@ exports.createPages = async ({ actions, graphql }) => {
         projectSlider,
       },
     });
+  });
+
+  const redirects = await graphql(`
+    {
+      allRedirectRedirect {
+        edges {
+          node {
+            redirect_source {
+              path
+            }
+            redirect_redirect {
+              uri
+            }
+            status_code
+          }
+        }
+      }
+    }
+  `);
+
+  redirects.data.allRedirectRedirect.edges.map(redirect => {
+    createRedirect({
+      fromPath: "/" + redirect.node.redirect_source.path,
+      toPath: redirect.node.redirect_redirect.uri.replace('internal:', ''),
+      statusCode: redirect.node.status_code,
+    })
   });
 };
