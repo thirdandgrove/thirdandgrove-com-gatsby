@@ -167,7 +167,7 @@ export default ({ pageContext }) => {
         css={css`
           ${container.min}
           ${mediaQueries.phoneLarge} {
-            padding: 70px 0;
+            padding: 70px 0 0;
           }
           article {
             ${mediaQueries.phoneLarge} {
@@ -225,6 +225,13 @@ export default ({ pageContext }) => {
           </p>
         </article>
       </SplitSection>
+      <LogoGrid
+        logoset='acquiaDXP'
+        title='Your DXP Solution'
+        backgroundColor={colors.white}
+        minHeight='0'
+        height='537px'
+      />
       <Quote
         size='small'
         data={{
