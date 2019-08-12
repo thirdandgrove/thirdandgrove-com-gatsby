@@ -99,10 +99,10 @@ export const dropCap = css`
     font-family: ${fonts.serif};
     font-size: 50px;
     font-weight: ${weights.regular};
-    line-height: 1;
+    line-height: 0.75;
 
     ${mediaQueries.phoneLarge} {
-      padding: 6px 20px 20px;
+      padding: 6px 18px 0;
     }
   }
 `;
