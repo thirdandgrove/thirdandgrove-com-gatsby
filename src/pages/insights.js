@@ -143,7 +143,7 @@ export const data = graphql`
   {
     allInsight(
       sort: { fields: created, order: DESC }
-      filter: { id: { ne: "c387814f-365f-570f-940b-d78cbe942418" } }
+      filter: { field_hidden: { eq: false } }
     ) {
       nodes {
         ...InsightFragment

@@ -178,7 +178,7 @@ Project.propTypes = {
 export default () => {
   const { allCaseStudy, allNodeHomePage } = useStaticQuery(graphql`
     {
-      allCaseStudy {
+      allCaseStudy(filter: { field_hidden: { eq: false } }) {
         nodes {
           ...CaseStudyFragment
         }
