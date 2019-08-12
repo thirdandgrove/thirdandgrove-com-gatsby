@@ -87,7 +87,10 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
             : []
         )
         .concat(meta)}
-    />
+    >
+      <link rel='preload' href='/Fonts/Canela/Canela-Regular.woff2' as='font' />
+      <link rel='preload' href='/Fonts/Canela/Canela-Thin.woff2' as='font' />
+    </Helmet>
   );
 };
 
