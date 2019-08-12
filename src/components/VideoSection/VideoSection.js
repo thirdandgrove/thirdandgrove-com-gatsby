@@ -28,6 +28,17 @@ const VideoSection = ({ url, teaser }) => {
     position: relative;
     padding: 0;
     background: ${colors.darkgray};
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
   `;
 
   const playerStyles = css`
@@ -120,23 +131,6 @@ const VideoSection = ({ url, teaser }) => {
     }
   `;
 
-  const detailWrapper = css`
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    right: 20px;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-
-    ${mediaQueries.phoneLarge} {
-      position: static;
-      transform: none;
-    }
-  `;
-
   return (
     <FullWidthSection
       height='0'
@@ -149,23 +143,21 @@ const VideoSection = ({ url, teaser }) => {
         setButtonY(evt.clientY);
       }}
     >
-      <div css={detailWrapper}>
-        <button
-          type='button'
-          css={btnStyles}
-          onClick={() => {
-            if (hasInteracted) {
-              setPlaying(!playing);
-            } else {
-              setHasInteracted(true);
-              setUrl(url);
-              setPlaying(true);
-            }
-          }}
-        >
-          {hasInteracted && playing ? 'Pause' : 'Play'}
-        </button>
-      </div>
+      <button
+        type='button'
+        css={btnStyles}
+        onClick={() => {
+          if (hasInteracted) {
+            setPlaying(!playing);
+          } else {
+            setHasInteracted(true);
+            setUrl(url);
+            setPlaying(true);
+          }
+        }}
+      >
+        {hasInteracted && playing ? 'Pause' : 'Play'}
+      </button>
       <ReactPlayer
         // see: https://www.npmjs.com/package/react-player for props
         width='100%'
