@@ -20,6 +20,7 @@
     "gatsby-plugin-netlify": "^2.1.1",
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-offline": "^2.0.25",
+    "gatsby-plugin-react-axe": "^0.2.2",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.2.3",
     "gatsby-plugin-svgr": "^2.0.2",
