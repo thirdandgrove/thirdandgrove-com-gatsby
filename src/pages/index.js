@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
+import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -9,6 +10,7 @@ import InsightsSlider from '../components/InsightsSlider';
 import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
+import { mediaQueries } from '../styles';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
@@ -18,8 +20,36 @@ export default ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            We are an <span className='underline'>obsessive</span> digital
-            innovation company.
+            We are an{' '}
+            <span
+              css={css`
+                position: relative;
+
+                &::after {
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  height: 4px;
+                  left: -10px;
+                  width: calc(100% + 20px);
+                  top: 100%;
+                  background-image: url('/images/underline.png');
+                  background-size: contain;
+                  background-repeat: no-repeat;
+
+                  ${mediaQueries.phoneLarge} {
+                    top: auto;
+                    bottom: 0;
+                    height: 7px;
+                    left: -20px;
+                    width: calc(100% + 40px);
+                  }
+                }
+              `}
+            >
+              obsessive
+            </span>{' '}
+            digital innovation company.
           </>
         ),
         mobileMinHeight: '93vh',
