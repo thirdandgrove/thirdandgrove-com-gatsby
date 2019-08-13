@@ -88,67 +88,108 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
         )
         .concat(meta)}
     >
-      <link rel='preload' href='/Fonts/Canela/Canela-Medium.woff2' as='font' />
+      <link
+        rel='preload'
+        href='/Fonts/Canela/Canela-Medium.woff2'
+        as='font'
+        crossOrigin='anonymous'
+      />
       <link
         rel='preload'
         href='/Fonts/Canela/Canela-MediumItalic.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='/Fonts/Canela/Canela-ThinItalic.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
-      <link rel='preload' href='/Fonts/Canela/Canela-Light.woff2' as='font' />
+      <link
+        rel='preload'
+        href='/Fonts/Canela/Canela-Light.woff2'
+        as='font'
+        crossOrigin='anonymous'
+      />
       <link
         rel='preload'
         href='/Fonts/Canela/Canela-LightItalic.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
-      <link rel='preload' href='/Fonts/Canela/Canela-Regular.woff2' as='font' />
+      <link
+        rel='preload'
+        href='/Fonts/Canela/Canela-Regular.woff2'
+        as='font'
+        crossOrigin='anonymous'
+      />
       <link
         rel='preload'
         href='/Fonts/Canela/Canela-RegularItalic.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
 
-      <link rel='preload' href='/Fonts/Canela/Canela-Thin.woff2' as='font' />
-      <link rel='preload' href='/Fonts/Canela/Canela-Bold.woff2' as='font' />
+      <link
+        rel='preload'
+        href='/Fonts/Canela/Canela-Thin.woff2'
+        as='font'
+        crossOrigin='anonymous'
+      />
+      <link
+        rel='preload'
+        href='/Fonts/Canela/Canela-Bold.woff2'
+        as='font'
+        crossOrigin='anonymous'
+      />
       <link
         rel='preload'
         href='/Fonts/Canela/Canela-BoldItalic.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
-      <link rel='preload' href='/Fonts/Canela/Canela-Black.woff2' as='font' />
+      <link
+        rel='preload'
+        href='/Fonts/Canela/Canela-Black.woff2'
+        as='font'
+        crossOrigin='anonymous'
+      />
       <link
         rel='preload'
         href='/Fonts/Canela/Canela-BlackItalic.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='/Fonts/NBInternationalPro/NBInternationalProRegular.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='/Fonts/NBInternationalPro/NBInternationalProItalic.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='/Fonts/NBInternationalPro/NBInternationalProBold.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='/Fonts/NBInternationalPro/NBInternationalProBoldItalic.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
       <link
         rel='preload'
         href='/Fonts/NBInternationalPro/NBInternationalProMono.woff2'
         as='font'
+        crossOrigin='anonymous'
       />
     </Helmet>
   );

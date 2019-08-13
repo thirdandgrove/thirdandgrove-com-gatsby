@@ -8,6 +8,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-react-axe',
+      options: {
+        // Options to pass to axe-core.
+        // See: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure
+      },
+    },
+    {
       resolve: `gatsby-plugin-netlify`,
       options: {
         headers: {
