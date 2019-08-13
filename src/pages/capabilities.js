@@ -161,7 +161,7 @@ const CapabilitiesPage = ({ data }) => {
         imageAlt='Laptop on desk with drink'
         content={
           <>
-            <h2>Technology</h2>
+            <h2 id='technology'>Technology</h2>
             <p>
               Work with the best engineers in the room—no matter what room
               you’re in. Our engineers are writing and discovering the future of
@@ -190,7 +190,7 @@ const CapabilitiesPage = ({ data }) => {
         imageAlt='Two office workers looking at a chart on a laptop'
         content={
           <>
-            <h2>Strategy</h2>
+            <h2 id='strategy'>Strategy</h2>
             <p>
               The foundation for great work. Know your customer, your goals, and
               how to reach them.
@@ -218,7 +218,7 @@ const CapabilitiesPage = ({ data }) => {
         imageAlt='Man drawing logos in a notebook'
         content={
           <>
-            <h2>Creative</h2>
+            <h2 id='creative'>Creative</h2>
             <p>
               Where data, culture, and good looks come together. Create the
               strongest connection to the brand experience, and look good doing
