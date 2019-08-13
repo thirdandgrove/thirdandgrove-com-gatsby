@@ -7,18 +7,11 @@ import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import Button from '../components/Button';
-import {
-  weights,
-  mediaQueries,
-  container,
-  fonts,
-  jsBreakpoints,
-} from '../styles';
+import { weights, mediaQueries, container, fonts } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import VideoSection from '../components/VideoSection';
 import { ensureTrailingSlash } from '../util';
-import useWindow from '../hooks/useWindow';
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -30,15 +23,9 @@ const Project = ({ study, index }) => {
       padding='0'
       textAlign='left'
       css={css`
-        &:first-child {
+        &:nth-child(2) {
           margin-top: 20px;
 
-          ${mediaQueries.phoneLarge} {
-            margin-top: 0;
-          }
-        }
-
-        &:nth-child(2) {
           ${mediaQueries.phoneLarge} {
             margin-top: 175px;
           }
@@ -200,8 +187,7 @@ export default () => {
     }
   `);
   const studies = allCaseStudy.nodes;
-  const { width } = useWindow();
-  const isLargeScreen = width >= jsBreakpoints.phoneLarge;
+
   return (
     <Layout
       headerData={{
@@ -210,12 +196,10 @@ export default () => {
         height: '400px',
       }}
     >
-      {isLargeScreen && (
-        <VideoSection
-          url={allNodeHomePage.edges[0].node.field_video}
-          teaser={allNodeHomePage.edges[0].node.field_video_short}
-        />
-      )}
+      <VideoSection
+        url={allNodeHomePage.edges[0].node.field_video}
+        teaser={allNodeHomePage.edges[0].node.field_video_short}
+      />
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}

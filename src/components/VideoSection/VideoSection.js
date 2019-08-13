@@ -16,8 +16,8 @@ import FullWidthSection from '../FullWidthSection';
 
 const VideoSection = ({ url, teaser }) => {
   const { width } = useWindow();
-  const isSmScreen = width < jsBreakpoints.phoneLarge;
-  const [playing, setPlaying] = useState(!isSmScreen);
+  const isLgScreen = width >= jsBreakpoints.phoneLarge;
+  const [playing, setPlaying] = useState(isLgScreen);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [activeUrl, setUrl] = useState(teaser);
   const [buttonX, setButtonX] = useState('50%');
@@ -25,9 +25,14 @@ const VideoSection = ({ url, teaser }) => {
   const [buttonVisible, setButtonVisible] = useState(false);
 
   const sectionStyles = css`
+    display: none;
     position: relative;
     padding: 0;
     background: ${colors.darkgray};
+
+    ${mediaQueries.phoneLarge} {
+      display: block;
+    }
 
     &::before {
       content: '';
@@ -158,25 +163,28 @@ const VideoSection = ({ url, teaser }) => {
       >
         {hasInteracted && playing ? 'Pause' : 'Play'}
       </button>
-      <ReactPlayer
-        // see: https://www.npmjs.com/package/react-player for props
-        width='100%'
-        css={playerStyles}
-        url={activeUrl}
-        playing={playing}
-        volume={hasInteracted ? 1 : 0} // Mute on autoplay
-        config={{
-          vimeo: {
-            // see: https://developer.vimeo.com/api/oembed/videos for options
-            playerOptions: {
-              controls: false,
-              responsive: true,
-              autoplay: !isSmScreen,
-              loop: !isSmScreen,
+
+      {isLgScreen && (
+        <ReactPlayer
+          // see: https://www.npmjs.com/package/react-player for props
+          width='100%'
+          css={playerStyles}
+          url={activeUrl}
+          playing={playing}
+          volume={hasInteracted ? 1 : 0} // Mute on autoplay
+          config={{
+            vimeo: {
+              // see: https://developer.vimeo.com/api/oembed/videos for options
+              playerOptions: {
+                controls: false,
+                responsive: true,
+                autoplay: isLgScreen,
+                loop: isLgScreen,
+              },
             },
-          },
-        }}
-      />
+          }}
+        />
+      )}
     </FullWidthSection>
   );
 };
