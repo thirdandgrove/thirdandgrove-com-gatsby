@@ -195,22 +195,22 @@ export const query = graphql`
             }
           }
           childImageMobile: childImageSharp {
-            fixed(width: 335, height: 260) {
+            fixed(width: 335, height: 260, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 450, height: 320) {
+            fixed(width: 450, height: 320, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 380, height: 420) {
+            fixed(width: 380, height: 420, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 420, height: 340) {
+            fixed(width: 420, height: 340, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -231,17 +231,17 @@ export const query = graphql`
             }
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 250, height: 180) {
+            fixed(width: 250, height: 180, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 340, height: 260) {
+            fixed(width: 340, height: 260, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 270, height: 210) {
+            fixed(width: 270, height: 210, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -262,17 +262,17 @@ export const query = graphql`
             }
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 250, height: 495) {
+            fixed(width: 250, height: 495, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 230, height: 210) {
+            fixed(width: 230, height: 210, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 320, height: 210) {
+            fixed(width: 320, height: 210, cropFocus: CENTER) {
               ...GatsbyImageSharpFixed
             }
           }
