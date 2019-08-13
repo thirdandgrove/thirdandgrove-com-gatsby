@@ -1,4 +1,5 @@
 /* eslint-disable array-callback-return */
+/* eslint-disable prefer-template */
 const path = require('path');
 
 const { ensureTrailingSlash } = require('./src/util');
@@ -490,9 +491,9 @@ exports.createPages = async ({ actions, graphql }) => {
 
   redirects.data.allRedirectRedirect.edges.map(redirect => {
     createRedirect({
-      fromPath: "/" + redirect.node.redirect_source.path,
+      fromPath: '/' + redirect.node.redirect_source.path,
       toPath: redirect.node.redirect_redirect.uri.replace('internal:', ''),
       statusCode: redirect.node.status_code,
-    })
+    });
   });
 };
