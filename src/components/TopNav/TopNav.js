@@ -7,8 +7,8 @@ import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
 
-import { ReactComponent as TAG } from './svg/tagLogo.svg';
-import { ReactComponent as ThirdAndGrove } from './svg/thirdAndGroveLogo.svg';
+import TagLogo from './svg/TagLogo';
+import ThirdAndGrove from './svg/ThirdAndGrove';
 import Hamburger from './svg/hamburger';
 
 const TopNav = ({ fill }) => {
@@ -50,7 +50,7 @@ const TopNav = ({ fill }) => {
                 `}
               />
             ) : (
-              <TAG
+              <TagLogo
                 css={css`
                   fill: ${isOpen ? colors.lightgray : fill};
                   height: 50px;
