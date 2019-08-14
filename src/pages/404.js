@@ -9,16 +9,21 @@ import SEO from '../components/seo';
 const NotFoundPage = () => (
   <Layout
     headerData={{
-      title: `Damn.`,
       height: '85vh',
-      mobileMinHeight: '100vh',
+      mobileMinHeight: '85vh',
       children: (
         <span
           css={css`
-            max-width: 250px;
+            height: 60px;
+            width: 260px;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 27px;
             text-align: center;
+            margin-top: -5rem;
           `}
         >
+          <h1>Damn.</h1>
           <p>
             That page is not available. Head home and we&apos;ll get you sorted.
           </p>
