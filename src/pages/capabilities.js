@@ -16,7 +16,7 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 
-const Capability = ({ imageSrc, imageAlt, content, index }) => {
+const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 
@@ -36,7 +36,7 @@ const Capability = ({ imageSrc, imageAlt, content, index }) => {
         }
       `}
     >
-      <div css={container.medium}>
+      <div id={id} css={container.medium}>
         <div
           css={css`
             display: block;
@@ -139,6 +139,7 @@ Capability.propTypes = {
   imageAlt: PropTypes.string.isRequired,
   content: PropTypes.node.isRequired,
   index: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 const CapabilitiesPage = ({ data }) => {
@@ -151,6 +152,7 @@ const CapabilitiesPage = ({ data }) => {
       }}
     >
       <Capability
+        id='technology'
         imageSrc={[
           data.technologyImageMobile.childImageSharp.fluid,
           {
@@ -180,6 +182,7 @@ const CapabilitiesPage = ({ data }) => {
         index={0}
       />
       <Capability
+        id='strategy'
         imageSrc={[
           data.strategyImageMobile.childImageSharp.fluid,
           {
@@ -208,6 +211,7 @@ const CapabilitiesPage = ({ data }) => {
         index={1}
       />
       <Capability
+        id='creative'
         imageSrc={[
           data.creativeImageMobile.childImageSharp.fluid,
           {

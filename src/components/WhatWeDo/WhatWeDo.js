@@ -51,13 +51,13 @@ const WhatWeDo = () => {
     >
       <h3 css={smSectionHead}>What We Do</h3>
       <h4 css={headingCss}>
-        <a href='/capabilities'>Technology</a>
+        <a href='/capabilities#technology'>Technology</a>
       </h4>
       <h4 css={headingCss}>
-        <a href='/capabilities'>Strategy</a>
+        <a href='/capabilities#strategy'>Strategy</a>
       </h4>
       <h4 css={headingCss}>
-        <a href='/capabilities'>Creative</a>
+        <a href='/capabilities#creative'>Creative</a>
       </h4>
       <Button onClick={() => navigate(`/capabilities/`)}>
         Our Capabilities
