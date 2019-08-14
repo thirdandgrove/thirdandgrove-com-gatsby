@@ -26,7 +26,7 @@ const Quote = ({ data, size }) => {
 
     ${mediaQueries.desktop} {
       position: absolute;
-      margin-left: ${size === 'small' ? '-12px' : '-26px'};
+      margin-left: ${size === 'small' ? '-12px' : '-18px'};
     }
   `;
 
