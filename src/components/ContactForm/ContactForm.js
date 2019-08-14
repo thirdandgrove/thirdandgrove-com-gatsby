@@ -105,16 +105,19 @@ const ContactForm = () => {
       left: 20px;
       font-family: ${fonts.sans};
       font-weight: ${weights.light};
-      letter-spacing: 2px;
       line-height: 1.3;
       transition: 0.3s ease all;
+    }
+
+    input {
+      letter-spacing: 0;
     }
   `;
 
   const inactiveLabel = css`
     span {
       top: 16px;
-      font-size: 15px;
+      font-size: 16px;
     }
   `;
 
