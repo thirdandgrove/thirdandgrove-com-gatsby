@@ -94,7 +94,7 @@ export const contentHeadings = css`
 export const dropCap = css`
   & > p:first-of-type::first-letter {
     float: left;
-    padding: 4px 20px 0;
+    padding: 10px 20px 0;
     color: ${colors.reallydarkgray};
     font-family: ${fonts.serif};
     font-size: 50px;
