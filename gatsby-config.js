@@ -36,7 +36,12 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaultQuality: 100,
+      },
+    },
     `gatsby-plugin-emotion`,
     `gatsby-plugin-svgr`,
     {
