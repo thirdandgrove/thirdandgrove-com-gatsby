@@ -40,7 +40,7 @@ const Studies = ({ data }) => {
           css={css`
             margin-left: 20px;
             margin-right: 20px;
-            margin-top: calc(-37.5% + 15px);
+            margin-top: calc(-25.5% + 15px);
             max-width: 980px;
 
             ${mediaQueries.xs} {
@@ -186,7 +186,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 600, maxHeight: 600) {
+                    fluid(maxWidth: 600, maxHeight: 600, cropFocus: CENTER) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -213,7 +213,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800) {
+                    fluid(maxWidth: 800, cropFocus: CENTER) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -230,7 +230,7 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
+              fluid(maxWidth: 980, maxHeight: 500, cropFocus: CENTER) {
                 ...GatsbyImageSharpFluid
               }
             }
