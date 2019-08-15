@@ -41,7 +41,7 @@ const Boston = ({ data }) => {
             margin: 0;
             li {
               font-family: ${fonts.sans};
-              letter-spacing: 1px;
+              line-height: 1.7;
               list-style: none;
               padding: 0;
             }
