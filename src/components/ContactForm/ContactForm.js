@@ -109,7 +109,8 @@ const ContactForm = () => {
       transition: 0.3s ease all;
     }
 
-    input {
+    input,
+    textarea {
       letter-spacing: 0;
     }
   `;
