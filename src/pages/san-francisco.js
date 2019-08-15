@@ -161,7 +161,7 @@ export const query = graphql`
     file(name: { eq: "san-francisco" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
