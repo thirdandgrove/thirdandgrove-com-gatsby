@@ -326,25 +326,25 @@ export default (logoset, isSmScreen) => {
     acquiaDXP: [
       <img
         src={salesforce}
-        alt='Google'
+        alt='Salesforce'
         width={isSmScreen ? '91' : '120'}
         height={isSmScreen ? '64' : '84'}
       />,
       <img
         src={bigcommerce}
-        alt='Google'
+        alt='Big Commerce'
         width={isSmScreen ? '131' : '219'}
         height={isSmScreen ? '30' : '50'}
       />,
       <img
         src={marketo}
-        alt='Google'
+        alt='Marketo'
         width={isSmScreen ? '93' : '148'}
         height={isSmScreen ? '40' : '64'}
       />,
       <img
         src={gaLogo}
-        alt='Google'
+        alt='Google Analytics'
         width={isSmScreen ? '109' : '161'}
         height={isSmScreen ? '42' : '62'}
       />,

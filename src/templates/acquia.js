@@ -100,6 +100,7 @@ export default ({ pageContext }) => {
 
             li {
               margin-bottom: 4px;
+              padding-left: 0;
 
               &:before {
                 content: '—';
