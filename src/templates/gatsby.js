@@ -63,9 +63,11 @@ export default ({ pageContext }) => {
         </p>
         <h4>Innovation</h4>
         <p>
-          We’re building Live Preview with Drupal + Gatsby for a better content
-          editing experience. This is a turning point for Gatsby adoption in the
-          Drupal community.
+          <a href='https://www.gatsbyjs.org/blog/2019-06-26-live-preview-for-drupal/'>
+            We’re building Live Preview with Drupal + Gatsby
+          </a>{' '}
+          for a better content editing experience. This is a turning point for
+          Gatsby adoption in the Drupal community.
         </p>
       </FullWidthSection>
       <Quote
