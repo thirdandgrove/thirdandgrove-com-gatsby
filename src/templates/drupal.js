@@ -29,7 +29,7 @@ export default ({ pageContext }) => {
     align-items: center;
     justify-content: center;
     margin-bottom: 80px;
-    h1 {
+    h2 {
       font-size: 48px;
       margin-bottom: 8px;
 
@@ -146,15 +146,15 @@ export default ({ pageContext }) => {
         `}
       >
         <Tripple>
-          <h1>1200+</h1>
+          <h2>1200+</h2>
           <p>Open Source Contributions</p>
         </Tripple>
         <Tripple>
-          <h1>177,000+</h1>
+          <h2>177,000+</h2>
           <p>Hours on D8</p>
         </Tripple>
         <Tripple>
-          <h1>Drupal 9</h1>
+          <h2>Drupal 9</h2>
           <p>Building it as we speak</p>
         </Tripple>
       </SplitSection>

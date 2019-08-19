@@ -76,7 +76,7 @@ const About = ({ data }) => {
         padding: 0 2rem;
       }
 
-      h1 {
+      h2 {
         font-weight: ${weights.medium};
         font-size: 48px;
         color: ${colors.darkgray};
@@ -102,20 +102,20 @@ const About = ({ data }) => {
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
-    h1,
+    h2,
     h3,
     p {
       transition: opacity 0.3s ease;
       opacity: 0.7;
     }
     &:hover {
-      h1,
+      h2,
       h3,
       p {
         opacity: 1;
       }
     }
-    h1 {
+    h2 {
       ${h1L};
       padding-top: 10px;
       margin-bottom: 8px;
@@ -204,19 +204,19 @@ const About = ({ data }) => {
         />
         <Row>
           <div>
-            <h1>2014</h1>
+            <h2>2014</h2>
             <h3>Founded</h3>
           </div>
           <div>
-            <h1>17</h1>
+            <h2>17</h2>
             <h3>States</h3>
           </div>
           <div>
-            <h1>2</h1>
+            <h2>2</h2>
             <h3>Offices</h3>
           </div>
           <div>
-            <h1>140+</h1>
+            <h2>140+</h2>
             <h3>Clients</h3>
           </div>
         </Row>
@@ -231,9 +231,9 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Radically Honest</h3>
-        <h1 css={[h1L, container.medium]}>
+        <h2 css={[h1L, container.medium]}>
           If you had a bit of food stuck in your teeth, we’d let you know.
-        </h1>
+        </h2>
         <p
           css={[
             pLight,
@@ -304,7 +304,7 @@ const About = ({ data }) => {
         minHeight='730px'
       >
         <h3 css={smSectionHead}>Remote Control</h3>
-        <h1 css={h1L}>80% distributed, 100% united</h1>
+        <h2 css={h1L}>80% distributed, 100% united</h2>
         <h4
           css={[
             pLight,
@@ -321,19 +321,19 @@ const About = ({ data }) => {
         </h4>
         <Row>
           <div>
-            <h1>01</h1>
+            <h2>01</h2>
             <h3>Drive Efficiency</h3>
           </div>
           <div>
-            <h1>02</h1>
+            <h2>02</h2>
             <h3>Best Talent</h3>
           </div>
           <div>
-            <h1>03</h1>
+            <h2>03</h2>
             <h3>Greater Diversity</h3>
           </div>
           <div>
-            <h1>04</h1>
+            <h2>04</h2>
             <h3>Good for the Planet</h3>
           </div>
         </Row>
@@ -350,7 +350,7 @@ const About = ({ data }) => {
         <h3 css={smSectionHead}>Where We Are</h3>
         <SplitSection css={container.large} gridColumnGap='20px'>
           <Location>
-            <h1 css={h1L}>Boston</h1>
+            <h2 css={h1L}>Boston</h2>
             <Img fluid={bostonSrc} alt='Boston' />
             <h3>1st One’s on Us</h3>
             <div>
@@ -360,7 +360,7 @@ const About = ({ data }) => {
             </div>
           </Location>
           <Location>
-            <h1 css={h1L}>Oakland</h1>
+            <h2 css={h1L}>Oakland</h2>
             <Img fluid={oaklandSrc} alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>

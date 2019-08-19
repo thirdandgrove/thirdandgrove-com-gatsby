@@ -88,7 +88,7 @@ export default () => {
         children: <ContactForm />,
       }}
     >
-      <main css={[container.textOnly, wrapperCss]}>
+      <div css={[container.textOnly, wrapperCss]}>
         <div css={contactItem}>
           <h3 css={headingCss}>General Inquiries</h3>
           <a href='mailto:hello@thirdandgrove.com'>hello@thirdandgrove.com</a>
@@ -156,7 +156,7 @@ export default () => {
             </li>
           </ul>
         </div>
-      </main>
+      </div>
     </Layout>
   );
 };
