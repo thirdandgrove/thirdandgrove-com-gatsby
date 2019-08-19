@@ -92,9 +92,9 @@ const Insights = ({ data }) => {
                 headerArticle.relationships.uid.name
               }`}
             </div>
-            <h3 data-cy='insightTitle' css={[h1L, headerStyles]}>
+            <h1 data-cy='insightTitle' css={[h1L, headerStyles]}>
               {headerArticle.title}
-            </h3>
+            </h1>
 
             <Button
               onClick={() =>
