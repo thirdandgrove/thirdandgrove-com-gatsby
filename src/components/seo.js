@@ -97,49 +97,6 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
       />
       <link
         rel='preload'
-        href='/Fonts/Canela/Canela-MediumItalic.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-ThinItalic.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-Light.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-LightItalic.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-Regular.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-RegularItalic.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-
-      <link
-        rel='preload'
         href='/Fonts/Canela/Canela-Thin.woff2'
         as='font'
         crossOrigin='anonymous'
@@ -148,13 +105,6 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
       <link
         rel='preload'
         href='/Fonts/Canela/Canela-Bold.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-BoldItalic.woff2'
         as='font'
         crossOrigin='anonymous'
         type='font/woff2'
@@ -182,7 +132,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
       />
       <link
         rel='preload'
-        href='/Fonts/NBInternationalPro/NBInternationalProItalic.woff2'
+        href='/Fonts/NBInternationalPro/NBInternationalProLight.woff2'
         as='font'
         crossOrigin='anonymous'
         type='font/woff2'
@@ -190,20 +140,6 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
       <link
         rel='preload'
         href='/Fonts/NBInternationalPro/NBInternationalProBold.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/NBInternationalPro/NBInternationalProBoldItalic.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/NBInternationalPro/NBInternationalProMono.woff2'
         as='font'
         crossOrigin='anonymous'
         type='font/woff2'
