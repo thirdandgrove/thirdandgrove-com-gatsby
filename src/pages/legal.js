@@ -19,7 +19,7 @@ export default () => {
         labelMobileOnly: true,
       }}
     >
-      <main
+      <div
         css={css`
           ${container.min}
           padding-top: 30px;
@@ -246,7 +246,7 @@ export default () => {
           contact us by email at&nbsp;
           <a href={`mailto:${mailto}`}>{mailto}</a>.
         </p>
-      </main>
+      </div>
     </Layout>
   );
 };
