@@ -56,6 +56,7 @@ const Studies = ({ data }) => {
       )}
       <p
         css={css`
+          ${container.min};
           font-family: ${fonts.sans};
           font-size: 21px;
           font-weight: ${weights.bold};
@@ -64,7 +65,6 @@ const Studies = ({ data }) => {
           margin-bottom: 20px;
 
           ${mediaQueries.phoneLarge} {
-            ${container.min};
             letter-spacing: normal;
             padding: 75px 0 0;
             margin-bottom: 60px;
