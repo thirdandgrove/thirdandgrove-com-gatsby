@@ -58,7 +58,7 @@ export default ({ pageContext }) => {
         invert: true,
         label:
           'Battle Tested Processes — Damn Good Engineers — Decoupled Pioneer',
-        title: 'Drupal leader and contributor since inception.',
+        title: 'Building the biggest, most complex Drupal sites.',
         color: colors.drupalBlue,
         mobileMinHeight: '620px',
       }}
