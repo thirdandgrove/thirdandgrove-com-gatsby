@@ -36,6 +36,7 @@ const LegacyInsights = ({ pageContext, data }) => {
   return (
     <Layout
       headerData={{
+        metaTitle: article.title,
         children: (
           <>
             <span
