@@ -34,7 +34,7 @@
     "react-helmet": "^5.2.0",
     "react-html-parser": "^2.0.2",
     "react-player": "^1.11.1",
-    "react-slick": "^0.24.0",
+    "react-slick": "^0.25.2",
     "react-spring": "^8.0.25",
     "slick-carousel": "^1.8.1"
   },
