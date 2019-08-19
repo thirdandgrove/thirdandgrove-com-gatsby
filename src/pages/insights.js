@@ -76,6 +76,7 @@ const Insights = ({ data }) => {
   return (
     <Layout
       headerData={{
+        metaTitle: `Latest Insights on All Things Digital`,
         children: (
           <>
             <div
