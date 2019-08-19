@@ -113,7 +113,7 @@ const Project = ({ study, index }) => {
               }
             `}
           >
-            <h1
+            <h2
               css={css`
                 margin-bottom: 0;
                 font-size: 21px;
@@ -126,7 +126,7 @@ const Project = ({ study, index }) => {
               `}
             >
               {study.title}
-            </h1>
+            </h2>
             <h3
               css={css`
                 width: 75%;
