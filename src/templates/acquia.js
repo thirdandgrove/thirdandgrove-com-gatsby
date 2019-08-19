@@ -156,7 +156,7 @@ export default ({ pageContext }) => {
         </Tripple>
         <Tripple>
           <h1>26+</h1>
-          <p>Projects Launched on Acquia</p>
+          <p>Drupal 8 Projects Launched on Acquia</p>
         </Tripple>
         <Tripple>
           <h1>2014</h1>
@@ -226,13 +226,6 @@ export default ({ pageContext }) => {
           </p>
         </article>
       </SplitSection>
-      <LogoGrid
-        logoset='acquiaDXP'
-        title='Your DXP Solution'
-        backgroundColor={colors.white}
-        minHeight='0'
-        height='537px'
-      />
       <Quote
         size='small'
         data={{
