@@ -6,7 +6,7 @@ import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
-import Button from '../components/Button';
+import { FakeButton } from '../components/Button';
 import { weights, mediaQueries, container, fonts } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
@@ -145,7 +145,7 @@ const Project = ({ study, index }) => {
             >
               {study.field_subtitle}
             </h3>
-            <Button
+            <FakeButton
               css={css`
                 display: none;
 
@@ -155,7 +155,7 @@ const Project = ({ study, index }) => {
               `}
             >
               View Case Study
-            </Button>
+            </FakeButton>
           </div>
         </Link>
       </div>
