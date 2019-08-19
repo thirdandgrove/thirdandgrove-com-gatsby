@@ -183,7 +183,7 @@ const ContactForm = () => {
   };
 
   return (
-    <main
+    <div
       css={css`
         margin: 0 auto;
         padding: 0 20px;
@@ -315,7 +315,7 @@ const ContactForm = () => {
         </div>
         <ErrorToaster errs={errors} />
       </form>
-    </main>
+    </div>
   );
 };
 
