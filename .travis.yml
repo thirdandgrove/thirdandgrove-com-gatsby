@@ -8,8 +8,7 @@ before_install:
   - npm install netlify-cli -g
 
 script:
-  - yarn install
-  - yarn build
+  - ./scripts/build.sh
 
 deploy:
   - provider: script
