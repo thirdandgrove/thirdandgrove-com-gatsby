@@ -12,24 +12,21 @@ import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreview = ({ article }) => {
   const nodeRef = useRef();
-  const isVisible = useHasBeenPartlyVisible(nodeRef, 1);
+  const isVisible = useHasBeenPartlyVisible(nodeRef, 0.4);
 
   const Card = styled.div`
     width: 100%;
     margin-bottom: 116px;
     transition-duration: 0.4s;
     transition-timing-function: ease-out;
-
     ${mediaQueries.phoneLarge} {
       margin-bottom: 90px;
     }
-
     h2 {
       margin: 32px 0 14px;
       font-weight: ${weights.bold};
       font-size: 27px;
       line-height: 1.44;
-
       ${mediaQueries.phoneLarge} {
         width: 80%;
         margin: 50px auto 30px;
@@ -37,13 +34,11 @@ const ArticlePreview = ({ article }) => {
         line-height: 1.58;
       }
     }
-
     footer {
       font-family: ${fonts.sans};
       font-weight: ${weights.light};
       font-size: 15px;
       line-height: 2.4;
-
       ${mediaQueries.phoneLarge} {
         width: 80%;
         margin: 0 auto;
@@ -59,24 +54,22 @@ const ArticlePreview = ({ article }) => {
       }}
     >
       {({ transform, opacity }) => (
-        <Card style={{ transform, opacity }}>
+        <Card ref={nodeRef} style={{ transform, opacity }}>
           <Link
             css={css`
               display: block;
             `}
             to={ensureTrailingSlash(article.path.alias)}
           >
-            <div ref={nodeRef}>
-              {article.relationships.field_image && (
-                <Img
-                  fluid={
-                    article.relationships.field_image.localFile.childImageSharp
-                      .fluid
-                  }
-                  alt={article.field_image.alt}
-                />
-              )}
-            </div>
+            {article.relationships.field_image && (
+              <Img
+                fluid={
+                  article.relationships.field_image.localFile.childImageSharp
+                    .fluid
+                }
+                alt={article.field_image.alt}
+              />
+            )}
             <h2>{article.title}</h2>
             <footer>
               {`${article.created} - ${article.relationships.uid.name}`}
