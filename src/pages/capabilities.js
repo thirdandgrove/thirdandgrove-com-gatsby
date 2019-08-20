@@ -14,11 +14,11 @@ import {
 } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
-import { useHasBeenVisible } from '../hooks/useVisibility';
+import { useHasBeenPartlyVisible } from '../hooks/useVisibility';
 
 const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
   const nodeRef = useRef();
-  const isVisible = useHasBeenVisible(nodeRef);
+  const isVisible = useHasBeenPartlyVisible(nodeRef);
 
   return (
     <FullWidthSection
