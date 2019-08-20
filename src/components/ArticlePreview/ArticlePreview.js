@@ -12,7 +12,7 @@ import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreview = ({ article }) => {
   const nodeRef = useRef();
-  const isVisible = useHasBeenPartlyVisible(nodeRef, 1);
+  const isVisible = useHasBeenPartlyVisible(nodeRef, 0.4);
 
   const Card = styled.div`
     width: 100%;
@@ -59,24 +59,22 @@ const ArticlePreview = ({ article }) => {
       }}
     >
       {({ transform, opacity }) => (
-        <Card style={{ transform, opacity }}>
+        <Card ref={nodeRef} style={{ transform, opacity }}>
           <Link
             css={css`
               display: block;
             `}
             to={ensureTrailingSlash(article.path.alias)}
           >
-            <div ref={nodeRef}>
-              {article.relationships.field_image && (
-                <Img
-                  fluid={
-                    article.relationships.field_image.localFile.childImageSharp
-                      .fluid
-                  }
-                  alt={article.field_image.alt}
-                />
-              )}
-            </div>
+            {article.relationships.field_image && (
+              <Img
+                fluid={
+                  article.relationships.field_image.localFile.childImageSharp
+                    .fluid
+                }
+                alt={article.field_image.alt}
+              />
+            )}
             <h2>{article.title}</h2>
             <footer>
               {`${article.created} - ${article.relationships.uid.name}`}
