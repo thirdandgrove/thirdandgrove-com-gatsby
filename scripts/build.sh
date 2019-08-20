@@ -14,4 +14,7 @@ if [ $exit_status -eq 1 ]; then
 
     yarn run gatsby clean
     travis_wait 45 yarn build
+
+    exit_status=$?
+    return $exit_status;
 fi
