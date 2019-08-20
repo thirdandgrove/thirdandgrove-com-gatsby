@@ -97,7 +97,7 @@ Insights.propTypes = {
 
 export const query = graphql`
   query($PostId: String!) {
-    allInsight {
+    allInsight(filter: { field_hidden: { eq: false } }) {
       nodes {
         ...InsightFragment
       }
