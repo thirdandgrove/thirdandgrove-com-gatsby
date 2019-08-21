@@ -71,13 +71,6 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
                 font-variant-caps: all-small-caps;
                 letter-spacing: 1px;
                 list-style: none;
-                a {
-                  font-family: ${fonts.sans};
-                  font-weight: ${weights.bold};
-                  font-variant-caps: all-small-caps;
-                  letter-spacing: 1px;
-                  list-style: none;
-                }
               }
             }
           `}
