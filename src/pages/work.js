@@ -68,9 +68,7 @@ const Project = ({ study, index }) => {
                   margin-bottom: 20px;
 
                   ${mediaQueries.phoneLarge} {
-                    flex-grow: 0;
-                    flex-shrink: 0;
-                    flex-basis: ${index % 2 ? '64%' : '49%'};
+                    flex: 0 0 ${index % 2 ? '64%' : '49%'};
                     width: ${index % 2 ? '64%' : '49%'};
                     margin-bottom: 0;
 
@@ -91,9 +89,7 @@ const Project = ({ study, index }) => {
               position: relative;
 
               ${mediaQueries.phoneLarge} {
-                flex-grow: 0;
-                flex-shrink: 0;
-                flex-basis: ${index % 2 ? '30%' : '40%'};
+                flex: 0 0 ${index % 2 ? '30%' : '40%'};
                 width: ${index % 2 ? '30%' : '40%'};
               }
 

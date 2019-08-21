@@ -5,7 +5,7 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import ReactHtmlParser from 'react-html-parser';
 
-import { fonts } from '../styles';
+import { fonts, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
@@ -43,7 +43,11 @@ const LegacyInsights = ({ pageContext, data }) => {
               css={css`
                 font-family: ${fonts.sans};
                 font-size: 15px;
-                padding: 2rem;
+                padding: 32px;
+
+                ${mediaQueries.xs} {
+                  padding: 36px;
+                }
               `}
             >
               {`${article.created} - ${article.relationships.uid.name}`}
@@ -61,7 +65,7 @@ const LegacyInsights = ({ pageContext, data }) => {
         ),
       }}
     >
-      <FullWidthSection height='100%' padding='6rem'>
+      <FullWidthSection height='100%' padding='84px'>
         {articleBodyElements}
       </FullWidthSection>
     </Layout>

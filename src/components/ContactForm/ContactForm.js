@@ -146,20 +146,23 @@ const ContactForm = () => {
     return errs ? (
       <div
         css={css`
-          display: flex;
-          justify-content: center;
-          margin-top: 4rem;
-          flex-direction: column;
+          margin-top: 64px;
+
+          ${mediaQueries.xs} {
+            position: relative;
+            margin-top: 72px;
+          }
         `}
       >
-        <span
+        <div
           css={css`
-            align-self: center;
-            width: 100%;
             text-align: center;
 
             ${mediaQueries.phoneLarge} {
               position: absolute;
+              width: 100%;
+              top: 50%;
+              transform: translateY(-50%);
             }
 
             p {
@@ -177,7 +180,7 @@ const ContactForm = () => {
                 )}
               </p>
             ))}
-        </span>
+        </div>
       </div>
     ) : null;
   };
@@ -185,13 +188,14 @@ const ContactForm = () => {
   return (
     <div
       css={css`
-        margin: 0 auto;
+        margin: 32px auto 0;
         padding: 0 20px;
         width: 100%;
         max-width: 920px;
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: column;
+
+        ${mediaQueries.xs} {
+          margin-top: 36px;
+        }
       `}
     >
       <form
@@ -203,12 +207,8 @@ const ContactForm = () => {
         onSubmit={submitContact}
       >
         <input type='hidden' name='contact' value='contact' />
-        <span
+        <div
           css={css`
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
             ${mediaQueries.phoneLarge} {
               display: grid;
               grid-template-columns: repeat(2, calc(50% - 10px));
@@ -296,7 +296,7 @@ const ContactForm = () => {
               `}
             />
           </label>
-        </span>
+        </div>
         <div
           css={css`
             display: flex;

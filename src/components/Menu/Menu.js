@@ -151,7 +151,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
     margin-bottom: 10px;
 
     ${mediaQueries.phoneLarge} {
-      margin-bottom: 1.45rem;
+      margin-bottom: 26px;
       line-height: 81px;
       font-size: 21px;
     }

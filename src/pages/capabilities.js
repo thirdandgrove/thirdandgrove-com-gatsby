@@ -39,7 +39,6 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
       <div id={id} css={container.medium}>
         <div
           css={css`
-            display: block;
             margin-bottom: 90px;
 
             ${mediaQueries.phoneLarge} {
@@ -51,12 +50,8 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
             }
 
             h2 {
-              font-size: 2.0625rem; /* 33px */
+              font-size: 33px;
               font-weight: ${weights.bold};
-
-              ${mediaQueries.phoneLarge} {
-                font-size: 1.83333rem; /* 33px with base 18 (112.5%) */
-              }
             }
 
             p {
@@ -65,19 +60,13 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
 
             ul {
               margin: 0;
+
               li {
                 font-family: ${fonts.sans};
                 font-weight: ${weights.bold};
                 font-variant-caps: all-small-caps;
                 letter-spacing: 1px;
                 list-style: none;
-                a {
-                  font-family: ${fonts.sans};
-                  font-weight: ${weights.bold};
-                  font-variant-caps: all-small-caps;
-                  letter-spacing: 1px;
-                  list-style: none;
-                }
               }
             }
           `}
@@ -103,9 +92,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
                   }
 
                   ${mediaQueries.phoneLarge} {
-                    flex-grow: 0;
-                    flex-shrink: 0;
-                    flex-basis: ${index % 2 ? '64%' : '49%'};
+                    flex: 0 0 ${index % 2 ? '64%' : '49%'};
                     width: ${index % 2 ? '64%' : '49%'};
                     margin-bottom: 0;
 
@@ -126,9 +113,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
               position: relative;
 
               ${mediaQueries.phoneLarge} {
-                flex-grow: 0;
-                flex-shrink: 0;
-                flex-basis: ${index % 2 ? '30%' : '40%'};
+                flex: 0 0 ${index % 2 ? '30%' : '40%'};
                 width: ${index % 2 ? '30%' : '40%'};
               }
             `}
