@@ -420,17 +420,17 @@ export const query = graphql`
         name
         childImageSharp {
           fluid(maxWidth: 980, maxHeight: 480) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
         mobileImage: childImageSharp {
           fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
         desktopImage: childImageSharp {
           fluid(maxWidth: 530, srcSetBreakpoints: [480, 900, 1200]) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }

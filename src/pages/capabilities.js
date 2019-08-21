@@ -249,42 +249,42 @@ export const query = graphql`
     technologyImageMobile: file(relativePath: { eq: "technology-mobile.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     strategyImageMobile: file(relativePath: { eq: "strategy-mobile.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     creativeImageMobile: file(relativePath: { eq: "creative-mobile.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
