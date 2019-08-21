@@ -30,12 +30,14 @@ const About = ({ data }) => {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      padding-left: 40px;
+      padding-right: 40px;
     }
 
     div {
       ${mediaQueries.phoneLarge} {
-        flex: 0 0 calc(50% - 60px);
-        width: calc(50% - 60px);
+        flex: 0 0 calc(50% - 86px);
+        padding-top: 20px;
       }
     }
 
@@ -44,6 +46,7 @@ const About = ({ data }) => {
       font-weight: ${weights.bold};
       text-align: center;
       margin-bottom: 6px;
+      padding-top: 40px;
 
       ${mediaQueries.phoneLarge} {
         font-size: 27px;
