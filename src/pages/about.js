@@ -56,6 +56,17 @@ const About = ({ data }) => {
     p {
       ${pLight};
       margin-bottom: 64px;
+      ${mediaQueries.phoneLarge} {
+        margin-bottom: 90px;
+      }
+    }
+
+    .gatsby-image-wrapper > div {
+      // Forcing correct image aspect ratio, overriding inline
+      // gatsby-image provided styles
+      ${mediaQueries.phoneLarge} {
+        padding-bottom: 68% !important;
+      }
     }
   `;
 
