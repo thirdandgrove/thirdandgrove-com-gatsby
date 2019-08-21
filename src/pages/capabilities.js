@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/core';
@@ -71,6 +71,13 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
                 font-variant-caps: all-small-caps;
                 letter-spacing: 1px;
                 list-style: none;
+                a {
+                  font-family: ${fonts.sans};
+                  font-weight: ${weights.bold};
+                  font-variant-caps: all-small-caps;
+                  letter-spacing: 1px;
+                  list-style: none;
+                }
               }
             }
           `}
@@ -173,9 +180,18 @@ const CapabilitiesPage = ({ data }) => {
               <li>Front-End Development</li>
               <li>Back-End Development</li>
               <li>Content Management</li>
-              <li>Drupal</li>
-              <li>Gatsby</li>
-              <li>Shopify</li>
+              <li>
+                <Link to='/drupal/'>Drupal</Link>
+              </li>
+              <li>
+                <Link to='/acquia/'>Acquia</Link>
+              </li>
+              <li>
+                <Link to='/shopify'>Shopify</Link>
+              </li>
+              <li>
+                <Link to='/gatsby/'>Gatsby</Link>
+              </li>
             </ul>
           </>
         }
@@ -229,9 +245,9 @@ const CapabilitiesPage = ({ data }) => {
               it.
             </p>
             <ul>
+              <li>Campaign Creation</li>
               <li>Art Direction</li>
               <li>UI/UX Design</li>
-              <li>Responsive Design</li>
               <li>Social Content</li>
               <li>Content Development</li>
               <li>Interaction / Motion</li>
