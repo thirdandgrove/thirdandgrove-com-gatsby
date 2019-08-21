@@ -16,5 +16,6 @@ if [ $exit_status -eq 1 ]; then
     travis_wait 45 yarn build
 
     exit_status=$?
-    return $exit_status;
 fi
+
+return $exit_status;
