@@ -126,6 +126,7 @@ export default ({ pageContext }) => {
             <li>Migration</li>
             <li>Replatform/redesign</li>
             <li>Personalization</li>
+            <li>Performance optimization</li>
           </ul>
           <ul>
             <li>Ongoing support</li>

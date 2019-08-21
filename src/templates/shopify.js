@@ -39,10 +39,10 @@ export default ({ pageContext }) => {
           <ul>
             <li>Bespoke Shopify store</li>
             <li>Migration</li>
-            <li>Tech integrations</li>
+            <li>Ongoing support & optimization</li>
           </ul>
           <ul>
-            <li>Custom apps</li>
+            <li>Custom apps & integrations</li>
             <li>CRO</li>
             <li>Custom subscriptions/checkout</li>
           </ul>
