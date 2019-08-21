@@ -41,7 +41,7 @@ const About = ({ data }) => {
 
     h2 {
       font-size: 21px;
-      font-weight: bold;
+      font-weight: ${weights.bold};
       text-align: center;
       margin-bottom: 6px;
 
@@ -73,7 +73,7 @@ const About = ({ data }) => {
 
       ${mediaQueries.phoneLarge} {
         width: auto;
-        padding: 0 2rem;
+        padding: 0 36px;
       }
 
       h2 {
@@ -127,7 +127,7 @@ const About = ({ data }) => {
       color: ${colors.reallydarkgray};
       font-family: ${fonts.sans};
       font-size: 21px;
-      font-weight: bold;
+      font-weight: ${weights.bold};
       letter-spacing: -0.5px;
       padding-top: 20px;
       margin-bottom: 12px;

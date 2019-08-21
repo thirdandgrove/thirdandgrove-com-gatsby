@@ -54,7 +54,11 @@ const Job = ({ pageContext }) => {
           <>
             <Button
               css={css`
-                margin-top: 4rem;
+                margin-top: 64px;
+
+                ${mediaQueries.xs} {
+                  margin-top: 72px;
+                }
               `}
               onClick={() =>
                 window.open(
