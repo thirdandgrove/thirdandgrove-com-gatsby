@@ -166,16 +166,16 @@ const CapabilitiesPage = ({ data }) => {
               <li>Back-End Development</li>
               <li>Content Management</li>
               <li>
-                <Link to='/drupal/'>Drupal</Link>
+                <Link to='/partners/drupal/'>Drupal</Link>
               </li>
               <li>
-                <Link to='/acquia/'>Acquia</Link>
+                <Link to='/partners/acquia/'>Acquia</Link>
               </li>
               <li>
-                <Link to='/shopify'>Shopify</Link>
+                <Link to='/partners/shopify'>Shopify</Link>
               </li>
               <li>
-                <Link to='/gatsby/'>Gatsby</Link>
+                <Link to='/partners/gatsby/'>Gatsby</Link>
               </li>
             </ul>
           </>
