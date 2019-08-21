@@ -172,7 +172,7 @@ const CapabilitiesPage = ({ data }) => {
                 <Link to='/partners/acquia/'>Acquia</Link>
               </li>
               <li>
-                <Link to='/partners/shopify'>Shopify</Link>
+                <Link to='/partners/shopify/'>Shopify</Link>
               </li>
               <li>
                 <Link to='/partners/gatsby/'>Gatsby</Link>
