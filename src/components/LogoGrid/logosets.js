@@ -28,6 +28,10 @@ import salesforce from './logos/salesforca-logo.svg';
 import marketo from './logos/marketo-logo.svg';
 import gaLogo from './logos/google-analytics-logo.svg';
 import bigcommerce from './logos/bigcommerce-logo.svg';
+import umg from './logos/umg-logo.svg';
+import stubhub from './logos/stubhub-logo.svg';
+import reebok from './logos/reebok-logo.svg';
+import dassault from './logos/dassault-systems-logo.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -124,6 +128,24 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '126' : '170'}
         height={isSmScreen ? '122' : '50'}
       />,
+      <img
+        src={stubhub}
+        alt='StubHub'
+        width={isSmScreen ? '166' : '240'}
+        height={isSmScreen ? '142' : '100'}
+      />,
+      <img
+        src={geLogo}
+        alt='General Electric'
+        width={isSmScreen ? '53' : '72'}
+        height={isSmScreen ? '53' : '72'}
+      />,
+      <img
+        src={dassault}
+        alt='Dassaut Systems'
+        width={isSmScreen ? '166' : '240'}
+        height={isSmScreen ? '142' : '80'}
+      />,
     ],
     drupal: [
       <img
@@ -173,6 +195,24 @@ export default (logoset, isSmScreen) => {
         alt='UCLA'
         width={isSmScreen ? '85' : '116'}
         height={isSmScreen ? '40' : '54'}
+      />,
+      <img
+        src={umg}
+        alt='Universal'
+        width={isSmScreen ? '200' : '240'}
+        height={isSmScreen ? '42' : '43'}
+      />,
+      <img
+        src={wsiLogo}
+        alt='Williams-Sonoma Inc.'
+        width={isSmScreen ? '98' : '134'}
+        height={isSmScreen ? '32' : '43'}
+      />,
+      <img
+        src={reebok}
+        alt='Reebok'
+        width={isSmScreen ? '240' : '240'}
+        height={isSmScreen ? '62' : '43'}
       />,
     ],
     default: [
