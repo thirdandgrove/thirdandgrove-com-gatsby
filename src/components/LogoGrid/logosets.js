@@ -142,7 +142,7 @@ export default (logoset, isSmScreen) => {
       />,
       <img
         src={dassault}
-        alt='Dassault Systems'
+        alt='Dassault Systemes'
         width={isSmScreen ? '166' : '240'}
         height={isSmScreen ? '142' : '80'}
       />,
