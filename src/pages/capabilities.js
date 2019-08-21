@@ -39,7 +39,6 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
       <div id={id} css={container.medium}>
         <div
           css={css`
-            display: block;
             margin-bottom: 90px;
 
             ${mediaQueries.phoneLarge} {
@@ -61,6 +60,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
 
             ul {
               margin: 0;
+
               li {
                 font-family: ${fonts.sans};
                 font-weight: ${weights.bold};
@@ -92,9 +92,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
                   }
 
                   ${mediaQueries.phoneLarge} {
-                    flex-grow: 0;
-                    flex-shrink: 0;
-                    flex-basis: ${index % 2 ? '64%' : '49%'};
+                    flex: 0 0 ${index % 2 ? '64%' : '49%'};
                     width: ${index % 2 ? '64%' : '49%'};
                     margin-bottom: 0;
 
@@ -115,9 +113,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
               position: relative;
 
               ${mediaQueries.phoneLarge} {
-                flex-grow: 0;
-                flex-shrink: 0;
-                flex-basis: ${index % 2 ? '30%' : '40%'};
+                flex: 0 0 ${index % 2 ? '30%' : '40%'};
                 width: ${index % 2 ? '30%' : '40%'};
               }
             `}
