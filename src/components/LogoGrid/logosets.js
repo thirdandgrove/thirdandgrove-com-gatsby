@@ -30,6 +30,8 @@ import gaLogo from './logos/google-analytics-logo.svg';
 import bigcommerce from './logos/bigcommerce-logo.svg';
 import stubhub from './logos/stubhub-logo.svg';
 import dessault from './logos/dassault-systems-logo.svg';
+import umg from './logos/umg-logo.svg';
+import reebok from './logos/reebok-logo.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -193,6 +195,24 @@ export default (logoset, isSmScreen) => {
         alt='UCLA'
         width={isSmScreen ? '85' : '116'}
         height={isSmScreen ? '40' : '54'}
+      />,
+      <img
+        src={umg}
+        alt='Universal Music Group'
+        width={isSmScreen ? '126' : '198'}
+        height={isSmScreen ? '48' : '75'}
+      />,
+      <img
+        src={wsiLogo}
+        alt='Williams-Sonoma Inc.'
+        width={isSmScreen ? '98' : '134'}
+        height={isSmScreen ? '32' : '43'}
+      />,
+      <img
+        src={reebok}
+        alt='Reebok'
+        width={isSmScreen ? '98' : '169'}
+        height={isSmScreen ? '32' : '34'}
       />,
     ],
     default: [
