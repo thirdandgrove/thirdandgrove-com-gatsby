@@ -23,7 +23,7 @@ export default ({ pageContext }) => {
       headerData={{
         invert: true,
         label: 'Fast — Secure — Scalable',
-        title: 'The future of Front End.',
+        title: 'Building the future of digital with Gatsby.',
         color: colors.gatsbyPurple,
         mobileMinHeight: '620px',
       }}

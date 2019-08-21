@@ -126,6 +126,7 @@ export default ({ pageContext }) => {
           <ul>
             <li>Ongoing support</li>
             <li>Training and resource augmentation</li>
+            <li>Performance optimization</li>
           </ul>
         </div>
       </FullWidthSection>
