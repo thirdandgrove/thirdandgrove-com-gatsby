@@ -355,7 +355,7 @@ const About = ({ data }) => {
             <h3>1st One’s on Us</h3>
             <div>
               <p>Wink &amp; Nod</p>
-              <p>Lucy&apos; Lounge</p>
+              <p>Lucky&apos;s Lounge</p>
               <p>UpperWest</p>
             </div>
           </Location>
