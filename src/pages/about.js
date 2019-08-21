@@ -30,12 +30,14 @@ const About = ({ data }) => {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      padding-left: 40px;
+      padding-right: 40px;
     }
 
     div {
       ${mediaQueries.phoneLarge} {
-        flex: 0 0 calc(50% - 60px);
-        width: calc(50% - 60px);
+        flex: 0 0 calc(50% - 86px);
+        padding-top: 20px;
       }
     }
 
@@ -44,6 +46,7 @@ const About = ({ data }) => {
       font-weight: ${weights.bold};
       text-align: center;
       margin-bottom: 6px;
+      padding-top: 40px;
 
       ${mediaQueries.phoneLarge} {
         font-size: 27px;
@@ -159,21 +162,29 @@ const About = ({ data }) => {
     }
   `;
   const images = data.allFile.nodes;
-  const bostonSrc = [
-    images.find(img => img.name === 'boston').mobileImage.fluid,
-    {
-      ...images.find(img => img.name === 'boston').desktopImage.fluid,
-      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-    },
-  ];
-  const oaklandSrc = [
-    images.find(img => img.name === 'oakland').mobileImage.fluid,
-    {
-      ...images.find(img => img.name === 'oakland').desktopImage.fluid,
-      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-    },
-  ];
-  const teamSrc = images.find(img => img.name === 'team').childImageSharp.fluid;
+
+  // returns the correct image source needed to render
+  const getSrc = (name, media) => {
+    if (media === 'leader') {
+      return [
+        images.find(img => img.name === name).mobileImage.fluid,
+        {
+          ...images.find(img => img.name === name).leaderDesktop.fluid,
+          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+        },
+      ];
+    }
+    if (media === 'location') {
+      return [
+        images.find(img => img.name === name).mobileImage.fluid,
+        {
+          ...images.find(img => img.name === name).desktopImage.fluid,
+          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+        },
+      ];
+    }
+    return images.find(img => img.name === name).childImageSharp.fluid;
+  };
   return (
     <Layout
       headerData={{
@@ -196,7 +207,7 @@ const About = ({ data }) => {
         `}
       >
         <Img
-          fluid={teamSrc}
+          fluid={getSrc('team')}
           alt='TAG Team'
           css={css`
             width: 100%;
@@ -264,34 +275,42 @@ const About = ({ data }) => {
 
         <div css={[leadersCss, container.medium]}>
           <div>
+            <Img fluid={getSrc('emond', 'leader')} />
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
           </div>
           <div>
+            <Img fluid={getSrc('severo', 'leader')} />
             <h2>Anthony Severo</h2>
             <p>Co-Founder, Chief Strategy Officer</p>
           </div>
           <div>
+            <Img fluid={getSrc('davis', 'leader')} />
             <h2>Matt Davis</h2>
             <p>Director of Engineering</p>
           </div>
           <div>
+            <Img fluid={getSrc('strom', 'leader')} />
             <h2>Adam Strom</h2>
             <p>Creative Director</p>
           </div>
           <div>
+            <Img fluid={getSrc('slemp', 'leader')} />
             <h2>Jen Slemp</h2>
             <p>Director of Strategy</p>
           </div>
           <div>
+            <Img fluid={getSrc('andrade', 'leader')} />
             <h2>Christina Andrade</h2>
             <p>Director of Operations</p>
           </div>
           <div>
+            <Img fluid={getSrc('may', 'leader')} />
             <h2>Jen May</h2>
             <p>Director of Delivery</p>
           </div>
           <div>
+            <Img fluid={getSrc('prendergast', 'leader')} />
             <h2>Angela Prendergast</h2>
             <p>QA Lead</p>
           </div>
@@ -351,7 +370,7 @@ const About = ({ data }) => {
         <SplitSection css={container.large} gridColumnGap='20px'>
           <Location>
             <h2 css={h1L}>Boston</h2>
-            <Img fluid={bostonSrc} alt='Boston' />
+            <Img fluid={getSrc('boston', 'location')} alt='Boston' />
             <h3>1st One’s on Us</h3>
             <div>
               <p>Wink &amp; Nod</p>
@@ -361,7 +380,7 @@ const About = ({ data }) => {
           </Location>
           <Location>
             <h2 css={h1L}>Oakland</h2>
-            <Img fluid={oaklandSrc} alt='Oakland' />
+            <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>
               <p>Cafe Van Kleef</p>
@@ -415,7 +434,13 @@ export default About;
 
 export const query = graphql`
   {
-    allFile(filter: { absolutePath: { regex: "/boston|oakland|team/" } }) {
+    allFile(
+      filter: {
+        absolutePath: {
+          regex: "/boston|oakland|team|severo|emond|davis|strom|slemp|andrade|may|prendergast/"
+        }
+      }
+    ) {
       nodes {
         name
         childImageSharp {
@@ -430,6 +455,11 @@ export const query = graphql`
         }
         desktopImage: childImageSharp {
           fluid(maxWidth: 530, srcSetBreakpoints: [480, 900, 1200]) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+        leaderDesktop: childImageSharp {
+          fluid {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
