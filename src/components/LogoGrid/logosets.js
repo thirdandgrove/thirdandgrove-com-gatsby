@@ -28,6 +28,8 @@ import salesforce from './logos/salesforca-logo.svg';
 import marketo from './logos/marketo-logo.svg';
 import gaLogo from './logos/google-analytics-logo.svg';
 import bigcommerce from './logos/bigcommerce-logo.svg';
+import stubhub from './logos/stubhub-logo.svg';
+import dessault from './logos/dassault-systems-logo.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -123,6 +125,24 @@ export default (logoset, isSmScreen) => {
         alt='Cloud Health'
         width={isSmScreen ? '126' : '170'}
         height={isSmScreen ? '122' : '50'}
+      />,
+      <img
+        src={stubhub}
+        alt='StubHub'
+        width={isSmScreen ? '116' : '136'}
+        height={isSmScreen ? '53' : '62'}
+      />,
+      <img
+        src={geLogo}
+        alt='GE'
+        width={isSmScreen ? '53' : '72'}
+        height={isSmScreen ? '53' : '72'}
+      />,
+      <img
+        src={dessault}
+        alt='Dassault'
+        width={isSmScreen ? '126' : '185'}
+        height={isSmScreen ? '122' : '56'}
       />,
     ],
     drupal: [
