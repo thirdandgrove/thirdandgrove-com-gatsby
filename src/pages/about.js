@@ -41,6 +41,11 @@ const About = ({ data }) => {
       }
     }
 
+    div:last-child {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     h2 {
       font-size: 21px;
       font-weight: ${weights.bold};
@@ -321,6 +326,11 @@ const About = ({ data }) => {
             <p>Director of Delivery</p>
           </div>
           <div>
+            <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
+            <h2>Linda Topp</h2>
+            <p>Director of Shopify</p>
+          </div>
+          <div>
             <Img
               alt='Angela Prendergast'
               fluid={getSrc('prendergast', 'leader')}
@@ -451,7 +461,7 @@ export const query = graphql`
     allFile(
       filter: {
         absolutePath: {
-          regex: "/boston|oakland|team|severo|emond|davis|strom|slemp|andrade|may|prendergast/"
+          regex: "/boston|oakland|team|severo|emond|davis|strom|slemp|andrade|may|topp|prendergast/"
         }
       }
     ) {
