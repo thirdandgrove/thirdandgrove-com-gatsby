@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -11,58 +11,64 @@ import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
 import { mediaQueries } from '../styles';
+import { useHasBeenPartlyVisible } from '../hooks/useVisibility';
+import FullWidthSection from '../components/FullWidthSection';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
+  const halfPage = useRef();
+  const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1);
+  const Underlined = styled.span`
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 4px;
+      left: -10px;
+      width: calc(100% + 20px);
+      top: 100%;
+      background-image: url('/images/underline.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      ${mediaQueries.phoneLarge} {
+        top: auto;
+        bottom: 0;
+        height: 7px;
+        left: -20px;
+        width: calc(100% + 40px);
+      }
+    }
+  `;
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            We are an{' '}
-            <span
-              css={css`
-                position: relative;
-
-                &::after {
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  height: 4px;
-                  left: -10px;
-                  width: calc(100% + 20px);
-                  top: 100%;
-                  background-image: url('/images/underline.png');
-                  background-size: contain;
-                  background-repeat: no-repeat;
-
-                  ${mediaQueries.phoneLarge} {
-                    top: auto;
-                    bottom: 0;
-                    height: 7px;
-                    left: -20px;
-                    width: calc(100% + 40px);
-                  }
-                }
-              `}
-            >
-              obsessive
-            </span>{' '}
-            digital innovation company.
+            We are an <Underlined>obsessive</Underlined> digital innovation
+            company.
           </>
         ),
         mobileMinHeight: '93vh',
       }}
     >
       <ProjectsSlider data={data.allCaseStudy} />
-      <WhatWeDo />
-      <InsightsSlider data={data.allInsight} />
-      <LogoGrid title='A Few of Our Friends' />
-      <SplitSection>
-        <ContactUs />
-        <BeUs />
-      </SplitSection>
+      <WhatWeDo ref={halfPage} />
+      {hasScrolled ? (
+        <>
+          <InsightsSlider data={data.allInsight} />
+          <LogoGrid title='A Few of Our Friends' />
+          <SplitSection>
+            <ContactUs />
+            <BeUs />
+          </SplitSection>
+        </>
+      ) : (
+        <FullWidthSection height='1986px' minHeight='2748px' />
+      )}
     </Layout>
   );
 };
