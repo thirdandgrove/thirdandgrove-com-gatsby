@@ -286,42 +286,45 @@ const About = ({ data }) => {
 
         <div css={[leadersCss, container.medium]}>
           <div>
-            <Img fluid={getSrc('emond', 'leader')} />
+            <Img alt='Justin Emond' fluid={getSrc('emond', 'leader')} />
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
           </div>
           <div>
-            <Img fluid={getSrc('severo', 'leader')} />
+            <Img alt='Anthony Severo' fluid={getSrc('severo', 'leader')} />
             <h2>Anthony Severo</h2>
             <p>Co-Founder, Chief Strategy Officer</p>
           </div>
           <div>
-            <Img fluid={getSrc('davis', 'leader')} />
+            <Img alt='Matt Davis' fluid={getSrc('davis', 'leader')} />
             <h2>Matt Davis</h2>
             <p>Director of Engineering</p>
           </div>
           <div>
-            <Img fluid={getSrc('strom', 'leader')} />
+            <Img alt='Adam Strom' fluid={getSrc('strom', 'leader')} />
             <h2>Adam Strom</h2>
             <p>Creative Director</p>
           </div>
           <div>
-            <Img fluid={getSrc('slemp', 'leader')} />
+            <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
             <h2>Jen Slemp</h2>
             <p>Director of Strategy</p>
           </div>
           <div>
-            <Img fluid={getSrc('andrade', 'leader')} />
+            <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
             <h2>Christina Andrade</h2>
             <p>Director of Operations</p>
           </div>
           <div>
-            <Img fluid={getSrc('may', 'leader')} />
+            <Img alt='Jen May' fluid={getSrc('may', 'leader')} />
             <h2>Jen May</h2>
             <p>Director of Delivery</p>
           </div>
           <div>
-            <Img fluid={getSrc('prendergast', 'leader')} />
+            <Img
+              alt='Angela Prendergast'
+              fluid={getSrc('prendergast', 'leader')}
+            />
             <h2>Angela Prendergast</h2>
             <p>QA Lead</p>
           </div>
