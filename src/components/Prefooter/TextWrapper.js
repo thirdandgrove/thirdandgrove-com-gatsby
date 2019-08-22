@@ -34,7 +34,7 @@ const TextWrapper = styled.span`
   ${mediaQueries.phoneLarge} {
     min-height: 500px;
     padding: 100px 20px 100px;
-    justify-content: space-evenly;
+    justify-content: center;
   }
 
   h3 {
