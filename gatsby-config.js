@@ -5,7 +5,7 @@ module.exports = {
     title: `Third and Grove`,
     description: `We are design-first technologists helping innovative brands make their next move. We work directly with incredible organizations to build complex systems and innovative digital experiences in technologies like Drupal, Shopify Plus, and WordPress, and our emoji game is strong.`,
     author: `@thirdandgrove`,
-    siteUrl: `https://new.thirdandgrove.com`,
+    siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
     `gatsby-plugin-sitemap`,

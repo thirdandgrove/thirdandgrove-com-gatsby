@@ -497,4 +497,18 @@ exports.createPages = async ({ actions, graphql }) => {
       });
     });
   }
+
+  createRedirect({
+    fromPath: "https://thirdandgrove.com/*",
+    toPath: "https://www.thirdandgrove.com/:splat",
+    statusCode: '301',
+    force: true
+  });
+
+  createRedirect({
+    fromPath: "https://tagd8-gatsby.netlify.com/*",
+    toPath: "https://www.thirdandgrove.com/:splat",
+    statusCode: '301',
+    force: true
+  });
 };
