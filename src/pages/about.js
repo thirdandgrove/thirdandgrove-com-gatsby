@@ -84,6 +84,7 @@ const About = ({ data }) => {
 
     ${mediaQueries.phoneLarge} {
       width: ${contValues.medium};
+      justify-content: space-around; // for Edge
     }
 
     div {
