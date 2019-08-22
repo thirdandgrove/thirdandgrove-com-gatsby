@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 
@@ -11,9 +11,13 @@ import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
 import { mediaQueries } from '../styles';
+import { useHasBeenPartlyVisible } from '../hooks/useVisibility';
+import FullWidthSection from '../components/FullWidthSection';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
+  const halfPage = useRef();
+  const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1);
   return (
     <Layout
       headerData={{
@@ -56,13 +60,19 @@ export default ({ data }) => {
       }}
     >
       <ProjectsSlider data={data.allCaseStudy} />
-      <WhatWeDo />
-      <InsightsSlider data={data.allInsight} />
-      <LogoGrid title='A Few of Our Friends' />
-      <SplitSection>
-        <ContactUs />
-        <BeUs />
-      </SplitSection>
+      <WhatWeDo ref={halfPage} />
+      {hasScrolled ? (
+        <>
+          <InsightsSlider data={data.allInsight} />
+          <LogoGrid title='A Few of Our Friends' />
+          <SplitSection>
+            <ContactUs />
+            <BeUs />
+          </SplitSection>
+        </>
+      ) : (
+        <FullWidthSection height='1986px' minHeight='2748px' />
+      )}
     </Layout>
   );
 };

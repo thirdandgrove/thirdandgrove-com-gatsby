@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { css } from '@emotion/core';
 import { navigate } from 'gatsby';
 
@@ -6,7 +6,7 @@ import Button from '../Button';
 import { colors, mediaQueries, smSectionHead } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
-const WhatWeDo = () => {
+const WhatWeDo = forwardRef((props, ref) => {
   const headingCss = css`
     margin-bottom: 5px;
     font-size: 48px;
@@ -37,6 +37,7 @@ const WhatWeDo = () => {
 
   return (
     <FullWidthSection
+      ref={ref}
       backgroundColor={colors.lightblue}
       height='750px'
       minHeight='550px'
@@ -64,6 +65,6 @@ const WhatWeDo = () => {
       </Button>
     </FullWidthSection>
   );
-};
+});
 
 export default WhatWeDo;
