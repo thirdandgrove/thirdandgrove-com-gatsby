@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -18,42 +18,38 @@ import FullWidthSection from '../components/FullWidthSection';
 export default ({ data }) => {
   const halfPage = useRef();
   const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1);
+  const Underlined = styled.span`
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 4px;
+      left: -10px;
+      width: calc(100% + 20px);
+      top: 100%;
+      background-image: url('/images/underline.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      ${mediaQueries.phoneLarge} {
+        top: auto;
+        bottom: 0;
+        height: 7px;
+        left: -20px;
+        width: calc(100% + 40px);
+      }
+    }
+  `;
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            We are an{' '}
-            <span
-              css={css`
-                position: relative;
-
-                &::after {
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  height: 4px;
-                  left: -10px;
-                  width: calc(100% + 20px);
-                  top: 100%;
-                  background-image: url('/images/underline.png');
-                  background-size: contain;
-                  background-repeat: no-repeat;
-
-                  ${mediaQueries.phoneLarge} {
-                    top: auto;
-                    bottom: 0;
-                    height: 7px;
-                    left: -20px;
-                    width: calc(100% + 40px);
-                  }
-                }
-              `}
-            >
-              obsessive
-            </span>{' '}
-            digital innovation company.
+            We are an <Underlined>obsessive</Underlined> digital innovation
+            company.
           </>
         ),
         mobileMinHeight: '93vh',
