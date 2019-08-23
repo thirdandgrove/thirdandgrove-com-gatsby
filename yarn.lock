@@ -5869,7 +5869,7 @@ gatsby-graphiql-explorer@^0.2.8:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-gatsby-image@^2.2.4:
+gatsby-image@^2.2.13:
   version "2.2.13"
   resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.2.13.tgz#36af497f55bc404a2e5c6971ef740d82467b1eed"
   integrity sha512-NHcmuabUh4sNdNSngX8hq0gkNgSyzULq3nrTObIDXd99DzNbr85tjY4rNRS17qPafnbpbL9kv919QzfMnRH9xw==
@@ -5984,7 +5984,7 @@ gatsby-plugin-react-helmet@^3.0.12:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-gatsby-plugin-sharp@^2.2.3:
+gatsby-plugin-sharp@^2.2.17:
   version "2.2.17"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.2.17.tgz#9264c81e2edf1b4fb422a1aaaed40ab7653077b5"
   integrity sha512-jyG8IC4psYsj61M5H5tCs/GJrPHzIEDfoc/fjzZVAZzMNOY5xr6CAb0k24GBRlBSXkLrje9Q3cNrDKLzkRqWNA==
