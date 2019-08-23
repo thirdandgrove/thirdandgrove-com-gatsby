@@ -11,7 +11,7 @@
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.10",
     "@svgr/webpack": "^4.2.0",
-    "dotenv": "^7.0.0",
+    "dotenv": "^8.1.0",
     "gatsby": "^2.13.12",
     "gatsby-image": "^2.2.4",
     "gatsby-plugin-emotion": "^4.0.6",
