@@ -45,7 +45,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-svgr`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
