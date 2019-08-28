@@ -192,7 +192,7 @@ const ContactForm = () => {
           display: none;
         `}
       >
-        {/* // invisible form so netlify doesnt send ugly css in emails */}
+        {/* invisible form so netlify doesnt send ugly css in emails */}
         <form
           name='contact'
           method='POST'
