@@ -193,12 +193,7 @@ const ContactForm = () => {
         `}
       >
         {/* invisible form so netlify doesnt send ugly css in emails */}
-        <form
-          name='contact'
-          method='POST'
-          netlify-honeypot='bot-field'
-          data-netlify='true'
-        >
+        <form name='contact' netlify-honeypot='bot-field' data-netlify='true'>
           <input type='hidden' name='contact' value='contact' />
           <input type='text' name='name' />
           <input type='email' name='email' />
@@ -219,7 +214,7 @@ const ContactForm = () => {
           }
         `}
       >
-        <form data-cy='contactForm' onSubmit={submitContact}>
+        <form data-cy='contactForm' method='POST' onSubmit={submitContact}>
           <div
             css={css`
               ${mediaQueries.phoneLarge} {
