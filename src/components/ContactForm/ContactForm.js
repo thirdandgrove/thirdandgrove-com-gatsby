@@ -186,145 +186,136 @@ const ContactForm = () => {
   };
 
   return (
-    <>
-      <div
-        css={css`
-          display: none;
-        `}
+    <div
+      css={css`
+        margin: 32px auto 0;
+        padding: 0 20px;
+        width: 100%;
+        max-width: 920px;
+
+        ${mediaQueries.xs} {
+          margin-top: 36px;
+        }
+      `}
+    >
+      <form
+        name='contact'
+        method='POST'
+        data-netlify='true'
+        data-cy='contactForm'
+        netlify-honeypot='bot-field'
+        onSubmit={submitContact}
       >
-        {/* invisible form so netlify doesnt send ugly css in emails */}
-        <form name='contact' netlify-honeypot='bot-field' data-netlify='true'>
-          <input type='hidden' name='contact' value='contact' />
-          <input type='text' name='name' />
-          <input type='email' name='email' />
-          <input type='text' name='website' />
-          <input type='phone' name='phone' />
-          <input type='text' name='comments' />
-        </form>
-      </div>
-      <div
-        css={css`
-          margin: 32px auto 0;
-          padding: 0 20px;
-          width: 100%;
-          max-width: 920px;
-
-          ${mediaQueries.xs} {
-            margin-top: 36px;
-          }
-        `}
-      >
-        <form data-cy='contactForm' method='POST' onSubmit={submitContact}>
-          <div
-            css={css`
-              ${mediaQueries.phoneLarge} {
-                display: grid;
-                grid-template-columns: repeat(2, calc(50% - 10px));
-                grid-column-gap: 20px;
-                align-items: stretch;
-              }
-            `}
+        <input type='hidden' name='contact' value='contact' />
+        <div
+          css={css`
+            ${mediaQueries.phoneLarge} {
+              display: grid;
+              grid-template-columns: repeat(2, calc(50% - 10px));
+              grid-column-gap: 20px;
+              align-items: stretch;
+            }
+          `}
+        >
+          <label
+            htmlFor='cf-name'
+            css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
           >
-            <label
-              htmlFor='cf-name'
-              css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
-            >
-              <span>Name</span>
-              <Input
-                value={formState.name}
-                onChange={updateInput}
-                type='text'
-                name='name'
-                id='cf-name'
-              />
-            </label>
+            <span>Name</span>
+            <Input
+              value={formState.name}
+              onChange={updateInput}
+              type='text'
+              name='name'
+              id='cf-name'
+            />
+          </label>
 
-            <label
-              htmlFor='cf-email'
-              css={[labelCss, formState.email ? activeLabel : inactiveLabel]}
-            >
-              <span>Email</span>
-              <Input
-                value={formState.email}
-                onChange={updateInput}
-                type='email'
-                name='email'
-                id='cf-email'
-              />
-            </label>
-
-            <label
-              htmlFor='cf-website'
-              css={[labelCss, formState.website ? activeLabel : inactiveLabel]}
-            >
-              <span>Website</span>
-              <Input
-                value={formState.website}
-                onChange={updateInput}
-                name='website'
-                id='cf-website'
-              />
-            </label>
-
-            <label
-              htmlFor='cf-phone'
-              css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}
-            >
-              <span>Phone [optional]</span>
-              <Input
-                value={formState.phone}
-                onChange={updateInput}
-                type='tel'
-                name='phone'
-                id='cf-phone'
-              />
-            </label>
-
-            <label
-              htmlFor='cf-message'
-              css={[
-                labelCss,
-                fullWidth,
-                formState.comments ? activeLabel : inactiveLabel,
-              ]}
-            >
-              <span>Leave a Message</span>
-              <TextArea
-                value={formState.comments}
-                onChange={updateInput}
-                data-cy='messageField'
-                name='comments'
-                id='cf-message'
-                css={css`
-                  height: 130px;
-
-                  ${mediaQueries.phoneLarge} {
-                    height: 200px;
-                  }
-                `}
-              />
-            </label>
-          </div>
-          <div
-            css={css`
-              display: flex;
-              justify-content: center;
-              margin-top: 35px;
-              margin-bottom: -50px;
-
-              ${mediaQueries.phoneLarge} {
-                margin-bottom: 0;
-              }
-            `}
+          <label
+            htmlFor='cf-email'
+            css={[labelCss, formState.email ? activeLabel : inactiveLabel]}
           >
-            <Button data-cy='contactSubmit' type='submit'>
-              send
-            </Button>
-          </div>
-          <ErrorToaster errs={errors} />
-        </form>
-      </div>
-    </>
+            <span>Email</span>
+            <Input
+              value={formState.email}
+              onChange={updateInput}
+              type='email'
+              name='email'
+              id='cf-email'
+            />
+          </label>
+
+          <label
+            htmlFor='cf-website'
+            css={[labelCss, formState.website ? activeLabel : inactiveLabel]}
+          >
+            <span>Website</span>
+            <Input
+              value={formState.website}
+              onChange={updateInput}
+              name='website'
+              id='cf-website'
+            />
+          </label>
+
+          <label
+            htmlFor='cf-phone'
+            css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}
+          >
+            <span>Phone [optional]</span>
+            <Input
+              value={formState.phone}
+              onChange={updateInput}
+              type='tel'
+              name='phone'
+              id='cf-phone'
+            />
+          </label>
+
+          <label
+            htmlFor='cf-message'
+            css={[
+              labelCss,
+              fullWidth,
+              formState.comments ? activeLabel : inactiveLabel,
+            ]}
+          >
+            <span>Leave a Message</span>
+            <TextArea
+              value={formState.comments}
+              onChange={updateInput}
+              data-cy='messageField'
+              name='comments'
+              id='cf-message'
+              css={css`
+                height: 130px;
+
+                ${mediaQueries.phoneLarge} {
+                  height: 200px;
+                }
+              `}
+            />
+          </label>
+        </div>
+        <div
+          css={css`
+            display: flex;
+            justify-content: center;
+            margin-top: 35px;
+            margin-bottom: -50px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
+          `}
+        >
+          <Button data-cy='contactSubmit' type='submit'>
+            send
+          </Button>
+        </div>
+        <ErrorToaster errs={errors} />
+      </form>
+    </div>
   );
 };
 
