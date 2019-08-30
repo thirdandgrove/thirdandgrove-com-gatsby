@@ -15,6 +15,11 @@ const Components = {
   Prefooter,
 };
 
+/**
+ * ContentBody maps content body components
+ * @param {array!} comps Components from Drupal
+ * @param {string!} type Content type from Drupal
+ */
 const ContentBody = ({ comps, type }) => {
   if (!Array.isArray(comps)) {
     throw new Error(
