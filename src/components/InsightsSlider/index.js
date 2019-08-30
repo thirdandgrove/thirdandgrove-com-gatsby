@@ -1,3 +1,1 @@
-import InsightsSlider from './InsightsSlider';
-
-export default InsightsSlider;
+export { default } from './InsightsSlider';

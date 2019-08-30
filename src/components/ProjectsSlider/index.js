@@ -1,3 +1,1 @@
-import ProjectsSlider from './ProjectsSlider';
-
-export default ProjectsSlider;
+export { default } from './ProjectsSlider';

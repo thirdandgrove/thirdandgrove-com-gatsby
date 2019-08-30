@@ -7,17 +7,18 @@ import FullWidthSection from '../FullWidthSection';
 import { weights, mediaQueries, colors, contValues } from '../../styles';
 
 const Quote = ({ data, size }) => {
+  const isSmall = size === 'small';
   const quoteText = css`
-    font-size: ${size === 'small' ? '21px' : '39px'};
-    font-weight: ${size === 'small' ? weights.bold : weights.medium};
-    line-height: ${size === 'small' ? '1.48' : '1.15'};
-    text-align: ${size === 'small' ? 'center' : 'left'};
+    font-size: ${isSmall ? '21px' : '39px'};
+    font-weight: ${isSmall ? weights.bold : weights.medium};
+    line-height: ${isSmall ? '1.48' : '1.15'};
+    text-align: ${isSmall ? 'center' : 'left'};
 
     ${mediaQueries.phoneLarge} {
       font-weight: ${weights.bold};
       text-align: center;
-      letter-spacing: ${size === 'small' ? '-0.09px' : '-0.16px'};
-      line-height: ${size === 'small' ? '1.48' : '1.38'};
+      letter-spacing: ${isSmall ? '-0.09px' : '-0.16px'};
+      line-height: ${isSmall ? '1.48' : '1.38'};
     }
   `;
 
@@ -26,7 +27,7 @@ const Quote = ({ data, size }) => {
 
     ${mediaQueries.desktop} {
       position: absolute;
-      margin-left: ${size === 'small' ? '-12px' : '-18px'};
+      margin-left: ${isSmall ? '-12px' : '-18px'};
     }
   `;
 
@@ -36,8 +37,8 @@ const Quote = ({ data, size }) => {
 
   const quoteAttr = css`
     margin-bottom: 0;
-    font-size: ${size === 'small' ? '16px' : '12px'};
-    text-align: ${size === 'small' ? 'center' : 'left'};
+    font-size: ${isSmall ? '16px' : '12px'};
+    text-align: ${isSmall ? 'center' : 'left'};
     padding-top: 10px;
     font-weight: ${weights.light};
 
@@ -52,9 +53,9 @@ const Quote = ({ data, size }) => {
     width: ${contValues.min};
     max-width: 100%;
     margin: 0 auto 60px;
-    padding: ${size === 'small' ? '0 10px' : '0 20px'};
+    padding: ${isSmall ? '0 10px' : '0 20px'};
     ${mediaQueries.phoneLarge} {
-      ${size === 'small' &&
+      ${isSmall &&
         `margin: 0 0 130px;
         padding: 13px 8px 0;
       `};

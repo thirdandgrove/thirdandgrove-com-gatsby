@@ -1,3 +1,1 @@
-import ContentBody from './ContentBody';
-
-export default ContentBody;
+export { default } from './ContentBody';

@@ -1,3 +1,1 @@
-import ArticlePreview from './ArticlePreview';
-
-export default ArticlePreview;
+export { default } from './ArticlePreview';
