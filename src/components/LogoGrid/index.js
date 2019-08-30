@@ -1,3 +1,1 @@
-import LogoGrid from './LogoGrid';
-
-export default LogoGrid;
+export { default } from './LogoGrid';

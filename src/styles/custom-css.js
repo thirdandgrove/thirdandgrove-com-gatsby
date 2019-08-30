@@ -8,7 +8,6 @@ import { css } from '@emotion/core';
 import { fonts, colors, weights, mediaQueries } from './css-utils';
 
 // Containers
-// (There are going to be more widths as the project progresses)
 const contWidths = [680, 820, 1020, 1120, 1220];
 const contLabels = [`min`, `textOnly`, `medium`, `large`, `max`];
 

@@ -1,3 +1,1 @@
-import FullWidthSection from './FullWidthSection';
-
-export default FullWidthSection;
+export { default } from './FullWidthSection';

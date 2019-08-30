@@ -1,3 +1,1 @@
-import ProjectPreview from './ProjectPreview';
-
-export default ProjectPreview;
+export { default } from './ProjectPreview';

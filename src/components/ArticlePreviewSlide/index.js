@@ -1,3 +1,1 @@
-import ArticlePreviewSlide from './ArticlePreviewSlide';
-
-export default ArticlePreviewSlide;
+export { default } from './ArticlePreviewSlide';

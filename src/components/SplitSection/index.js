@@ -1,3 +1,1 @@
-import SplitSection from './SplitSection';
-
-export default SplitSection;
+export { default } from './SplitSection';

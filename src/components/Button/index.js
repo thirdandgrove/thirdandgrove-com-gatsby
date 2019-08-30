@@ -1,4 +1,3 @@
-import Button from './Button';
+export { default } from './Button';
 
-export { FakeButton } from './FakeButton';
-export default Button;
+export { default as FakeButton } from './FakeButton';
