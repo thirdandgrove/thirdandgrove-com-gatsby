@@ -1,14 +1,32 @@
-/* eslint-disable import/prefer-default-export */
-import './src/styles/layout.css';
+let offsetY = 20;
 
-const scrollTo = id => () => {
-  const el = document.querySelector(id);
-  if (el) return window.scrollTo(0, el.offsetTop - 20);
-  return false;
+// this handles an issue with reach router where navigation does not allow for auto scrolling to hash IDs
+const getTargetOffset = hash => {
+  const id = window.decodeURI(hash.replace(`#`, ``));
+  if (id !== ``) {
+    const element = document.getElementById(id);
+    if (element) {
+      return element.offsetTop - offsetY;
+    }
+  }
+  return null;
 };
 
-export const onRouteUpdate = ({ location: { hash } }) => {
-  if (hash) {
-    window.setTimeout(scrollTo(hash), 10);
+exports.onInitialClientRender = (_, pluginOptions) => {
+  if (pluginOptions.offsetY) {
+    // eslint-disable-next-line prefer-destructuring
+    offsetY = pluginOptions.offsetY;
   }
+
+  requestAnimationFrame(() => {
+    const offset = getTargetOffset(window.location.hash);
+    if (offset !== null) {
+      window.scrollTo(0, offset);
+    }
+  });
+};
+
+exports.shouldUpdateScroll = ({ routerProps: { location } }) => {
+  const offset = getTargetOffset(location.hash);
+  return offset !== null ? [0, offset] : true;
 };
