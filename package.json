@@ -72,10 +72,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/thirdandgrove/tagd8_gatsby/"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/thirdandgrove/tagd8_gatsby/issues"
   },
   "husky": {
     "hooks": {
