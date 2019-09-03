@@ -5909,6 +5909,11 @@ gatsby-plugin-emotion@^4.0.6:
     "@babel/runtime" "^7.5.5"
     "@emotion/babel-preset-css-prop" "^10.0.14"
 
+gatsby-plugin-fixhash@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-fixhash/-/gatsby-plugin-fixhash-0.0.2.tgz#3bb3373a004215c7818c274f13231a6f25d1364f"
+  integrity sha512-DTxtINOoyEV0hXgkHWa0QA8WkG2UVEDG2n+zT+BPwP9L1/1MzL1GzPsU/qHLGvX1MHfpeDHlZKxDQxt8W64RIg==
+
 gatsby-plugin-google-analytics@^2.1.11:
   version "2.1.11"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.1.11.tgz#c7b3ed6db9f4b79b3763f73ff03d9b8e1e7a9f03"
