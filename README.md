@@ -1,7 +1,5 @@
 # TAG V5
 
-[![Build Status](https://travis-ci.com/thirdandgrove/tagd8_gatsby.svg?token=8cRB8zRRadyPAS6R4Cji&branch=master)](https://travis-ci.com/thirdandgrove/tagd8_gatsby)
-
 ![Twitter Follow](https://img.shields.io/twitter/follow/thirdandgrove.svg?label=Third%20%26%20Grove&style=social)
 
 Gatsby front end for Third and Grove's Drupal backend.
