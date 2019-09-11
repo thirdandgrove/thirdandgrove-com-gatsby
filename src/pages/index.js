@@ -48,7 +48,7 @@ export default ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            A digital agency <Underlined>slaying</Underlined> the mundane one
+            A digital agency <Underlined>slaying</Underlined> the mundane, one
             pixel at a time.
           </>
         ),
