@@ -9,7 +9,10 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sitemap`,
-    { resolve: `gatsby-plugin-fixhash`, options: { offsetY: 20 } },
+    {
+      resolve: `gatsby-plugin-fixhash`,
+      options: { offsetY: 20 },
+    },
     {
       resolve: 'gatsby-plugin-react-axe',
       options: {
