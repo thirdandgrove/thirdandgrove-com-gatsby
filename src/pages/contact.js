@@ -110,7 +110,7 @@ export default () => {
 
         <div css={contactItem}>
           <h3 css={headingCss}>Oakland</h3>
-          555 12th St 5th Floor,
+          555 12th St (5th Floor),
           <br />
           Oakland, CA 94607
         </div>
