@@ -26,7 +26,7 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
-      jobs: allResumatorJob {
+      jobs: allResumatorJob(filter: { status: { eq: "Open" } }) {
         nodes {
           title
           description
@@ -106,19 +106,17 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  jobs.nodes
-    .filter(j => j.status === 'Open')
-    .map(job =>
-      createPage({
-        path: `/careers/${job.title.toLowerCase().replace(/ /g, '-')}/`,
-        component: path.resolve(`src/templates/job.js`),
-        context: {
-          title: job.title,
-          boardCode: job.board_code,
-          description: job.description,
-        },
-      })
-    );
+  jobs.nodes.map(job =>
+    createPage({
+      path: `/careers/${job.title.toLowerCase().replace(/ /g, '-')}/`,
+      component: path.resolve(`src/templates/job.js`),
+      context: {
+        title: job.title,
+        boardCode: job.board_code,
+        description: job.description,
+      },
+    })
+  );
 
   redirects.edges.map(redirect => {
     createRedirect({
