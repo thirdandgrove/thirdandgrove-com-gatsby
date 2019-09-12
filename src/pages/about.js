@@ -38,13 +38,13 @@ const About = ({ data }) => {
       ${mediaQueries.phoneLarge} {
         flex: 0 0 calc(50% - 86px);
         padding-top: 20px;
+
+        &:nth-child(odd):last-child {
+          margin-left: auto;
+          margin-right: auto;
+        }
       }
     }
-
-    /* div:last-child {
-      margin-left: auto;
-      margin-right: auto;
-    } */
 
     h2 {
       font-size: 21px;
