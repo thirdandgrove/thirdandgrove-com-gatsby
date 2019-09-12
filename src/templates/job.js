@@ -8,9 +8,7 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import Button from '../components/Button';
 
-const Job = ({ pageContext }) => {
-  const { job } = pageContext;
-
+const Job = ({ pageContext: { title, boardCode, description } }) => {
   const wrapperStyles = css`
     padding-top: 30px;
     padding-bottom: 30px;
@@ -48,7 +46,7 @@ const Job = ({ pageContext }) => {
   return (
     <Layout
       headerData={{
-        title: job.title,
+        title,
         mobileMinHeight: '93vh',
         children: (
           <>
@@ -62,9 +60,7 @@ const Job = ({ pageContext }) => {
               `}
               onClick={() =>
                 window.open(
-                  `https://thirdandgrove.applytojob.com/apply/${
-                    job.board_code
-                  }`,
+                  `https://thirdandgrove.applytojob.com/apply/${boardCode}`,
                   '_blank'
                 )
               }
@@ -77,7 +73,7 @@ const Job = ({ pageContext }) => {
     >
       <FullWidthSection height='100%' padding='0'>
         <div css={[container.min, wrapperStyles]}>
-          <div dangerouslySetInnerHTML={{ __html: job.description }} />
+          <div dangerouslySetInnerHTML={{ __html: description }} />
         </div>
       </FullWidthSection>
     </Layout>

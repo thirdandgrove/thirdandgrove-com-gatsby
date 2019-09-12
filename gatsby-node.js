@@ -109,7 +109,9 @@ exports.createPages = async ({ actions, graphql }) => {
         path: `/careers/${job.title.toLowerCase().replace(/ /g, '-')}/`,
         component: JobTemplate,
         context: {
-          job,
+          title: job.title,
+          boardCode: job.board_code,
+          description: job.description,
         },
       })
     );
