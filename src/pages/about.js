@@ -41,10 +41,10 @@ const About = ({ data }) => {
       }
     }
 
-    div:last-child {
+    /* div:last-child {
       margin-left: auto;
       margin-right: auto;
-    }
+    } */
 
     h2 {
       font-size: 21px;
@@ -295,11 +295,6 @@ const About = ({ data }) => {
             <Img alt='Justin Emond' fluid={getSrc('emond', 'leader')} />
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
-          </div>
-          <div>
-            <Img alt='Anthony Severo' fluid={getSrc('severo', 'leader')} />
-            <h2>Anthony Severo</h2>
-            <p>Co-Founder, Chief Strategy Officer</p>
           </div>
           <div>
             <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
