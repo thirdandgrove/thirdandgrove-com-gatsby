@@ -48,8 +48,8 @@ export default ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            We are an <Underlined>obsessive</Underlined> digital innovation
-            company.
+            A digital agency <Underlined>slaying</Underlined> the mundane, one
+            pixel at a time.
           </>
         ),
         mobileMinHeight: '93vh',
