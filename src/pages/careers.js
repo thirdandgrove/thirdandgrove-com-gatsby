@@ -10,7 +10,7 @@ import FullWidthSection from '../components/FullWidthSection';
 export default () => {
   const data = useStaticQuery(graphql`
     query {
-      allResumatorJob {
+      allResumatorJob(filter: { status: { eq: "Open" } }) {
         nodes {
           title
           status
@@ -48,9 +48,8 @@ export default () => {
   `;
   const jobs = data.allResumatorJob.nodes;
 
-  // eliminate duplicate and closed job listings
+  // eliminate duplicate job listings
   const uniqueJobs = jobs
-    .filter(j => j.status === 'Open')
     .map(e => e.title)
     .map((e, i, final) => final.indexOf(e) === i && i)
     .filter(e => jobs[e])
