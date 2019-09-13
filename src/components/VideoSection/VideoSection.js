@@ -166,7 +166,7 @@ const VideoSection = ({ url, teaser }) => {
 
       {isLgScreen && (
         <ReactPlayer
-          // see: https://www.npmjs.com/package/react-player for props
+          // @see: https://www.npmjs.com/package/react-player
           width='100%'
           css={playerStyles}
           url={activeUrl}
@@ -174,7 +174,7 @@ const VideoSection = ({ url, teaser }) => {
           volume={hasInteracted ? 1 : 0} // Mute on autoplay
           config={{
             vimeo: {
-              // see: https://developer.vimeo.com/api/oembed/videos for options
+              // @see: https://developer.vimeo.com/api/oembed/videos
               playerOptions: {
                 controls: false,
                 responsive: true,
