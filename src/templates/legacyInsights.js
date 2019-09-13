@@ -14,13 +14,13 @@ const LegacyInsights = ({ pageContext, data }) => {
 
   const articleBodyElements = new ReactHtmlParser(article.body.value, {
     transform: function transform(node) {
-      // html parser finds an image
+      // HTML parser finds an image.
       if (node.type === 'tag' && node.name === 'img') {
         const uuid = node.attribs['data-entity-uuid'];
         const foundFile = data.allFileFile.nodes.find(
           file => file.drupal_id === uuid
         );
-        // guard against bad data, so much bad data.
+        // Guard against bad data, so much bad data.
         const src =
           foundFile &&
           foundFile.localFile &&
