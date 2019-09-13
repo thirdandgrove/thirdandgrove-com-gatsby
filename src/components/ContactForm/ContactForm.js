@@ -34,13 +34,13 @@ const ContactForm = () => {
     event.preventDefault();
     const { name, email, website, comments } = formState;
     if (hasSubmitted) {
-      // deter multiple submissions
+      // Deter multiple submissions.
       updateErrors({ error: 'The form has already been submitted.' });
       return;
     }
-    // validate inputs
+    // Validate inputs.
     if (!name || !email || !website || !comments) {
-      // notify user of required fields
+      // Notify user of required fields.
       const currentErrs = {};
       if (!name) {
         currentErrs.name = 'Name is required';
@@ -58,12 +58,12 @@ const ContactForm = () => {
       return;
     }
     if (!website.includes('.') && website.length > 3) {
-      // currently we only validate that a dot is present
-      // a more strict validation could exclude valid edgecases
+      // Currently we only validate that a dot is present
+      // a more strict validation could exclude valid edgecases.
       updateErrors({ website: 'Website must be valid' });
       return;
     }
-    // the form has not been submitted
+    // The form has not been submitted.
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
