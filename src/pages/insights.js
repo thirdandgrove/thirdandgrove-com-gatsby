@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, navigate } from 'gatsby';
+import { graphql, navigate, Link } from 'gatsby';
 import { css } from '@emotion/core';
 
 import {
@@ -93,10 +93,20 @@ const Insights = ({ data }) => {
                 headerArticle.relationships.uid.name
               }`}
             </div>
-            <h1 data-cy='insightTitle' css={[h1L, headerStyles]}>
-              {headerArticle.title}
-            </h1>
-
+            <Link to={ensureTrailingSlash(headerArticle.path.alias)}>
+              <h1
+                data-cy='insightTitle'
+                css={[
+                  h1L,
+                  headerStyles,
+                  css`
+                    color: ${colors.darkgray};
+                  `,
+                ]}
+              >
+                {headerArticle.title}
+              </h1>
+            </Link>
             <Button
               onClick={() =>
                 navigate(ensureTrailingSlash(headerArticle.path.alias))
