@@ -102,8 +102,8 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`src/templates/legacyInsights.js`),
       context: {
         title: legacyInsight.title,
-        created: legacyInsight.relationships.uid.name,
-        author: legacyInsight.created,
+        author: legacyInsight.relationships.uid.name,
+        created: legacyInsight.created,
         body: legacyInsight.body.processed,
       },
     })
