@@ -40,7 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
           title
           created(formatString: "MMM D, YYYY")
           body {
-            value
+            processed
           }
           path {
             alias
@@ -101,7 +101,10 @@ exports.createPages = async ({ actions, graphql }) => {
       path: ensureTrailingSlash(legacyInsight.path.alias),
       component: path.resolve(`src/templates/legacyInsights.js`),
       context: {
-        legacyInsight,
+        title: legacyInsight.title,
+        created: legacyInsight.relationships.uid.name,
+        author: legacyInsight.created,
+        body: legacyInsight.body.processed,
       },
     })
   );
