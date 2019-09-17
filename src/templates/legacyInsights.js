@@ -12,7 +12,7 @@ const LegacyInsights = ({ pageContext }) => {
 
   const bodyWithImages = body.replace(
     /\/sites\/default\/files/gi,
-    'http://cms.thirdandgrove.com/sites/default/files'
+    'https://cms.thirdandgrove.com/sites/default/files'
   );
 
   return (
