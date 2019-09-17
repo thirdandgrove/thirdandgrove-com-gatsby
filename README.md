@@ -6,9 +6,9 @@ Gatsby front end for Third and Grove's Drupal 8 backend.
 
 ## Requirements
 
-* Node (10.x LTS at time of writing)
-* Yarn
-* CMS and Resumator Access
+- Node (10.x LTS at time of writing)
+- Yarn
+- CMS and Resumator Access
 
 ## Installation
 
@@ -19,7 +19,7 @@ Gatsby front end for Third and Grove's Drupal 8 backend.
 ## Development
 
 1. In the root of the project, run `yarn start`.
-2. This will perform the initial build then launch your browser to your local site. 
+2. This will perform the initial build then launch your browser to your local site.
 3. Changing files in this state will also hot reload the files
 
 ## Build

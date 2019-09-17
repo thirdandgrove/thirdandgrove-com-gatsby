@@ -10,7 +10,7 @@ import FullWidthSection from '../FullWidthSection';
 
 /**
  * Header used on every page.
- * 
+ *
  * @param {string} title - passed through to SEO
  * @param {string} label
  * @param {bool} labelMobileOnly
@@ -49,7 +49,7 @@ const Header = ({
         /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
       );
     } else {
-      // If RGB, convert it to HEX 
+      // If RGB, convert it to HEX
       // @see: http://gist.github.com/983661
       const rgbVal = +`0x${value
         .slice(1)
