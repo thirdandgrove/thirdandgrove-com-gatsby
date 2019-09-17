@@ -20,10 +20,9 @@ export default ({ data }) => {
   const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1);
 
   // silly holiday treats
-  const isHalloween =
-    new Date().getMonth() === 9 && new Date().getDate() === 31;
-  const isChristmas =
-    new Date().getMonth() === 11 && new Date().getDate() === 25;
+  const today = new Date();
+  const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
+  const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
 
   const Underlined = styled.span`
     position: relative;
