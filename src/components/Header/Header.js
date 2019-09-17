@@ -9,8 +9,8 @@ import { colors, fonts, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
 /**
- * Header for every page
- * note which props are passed through
+ * Header used on every page.
+ *
  * @param {string} title - passed through to SEO
  * @param {string} label
  * @param {bool} labelMobileOnly
@@ -44,12 +44,13 @@ const Header = ({
     let b;
 
     if (value.match(/^rgb/)) {
-      // If HEX --> store the red, green, blue values in separate variables
+      // If HEX, store the red, green, blue values in separate variables.
       [r, g, b] = value.match(
         /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
       );
     } else {
-      // If RGB --> Convert it to HEX: http://gist.github.com/983661
+      // If RGB, convert it to HEX
+      // @see: http://gist.github.com/983661
       const rgbVal = +`0x${value
         .slice(1)
         .replace(value.length < 5 && /./g, '$&$&')}`;
@@ -175,7 +176,7 @@ const Header = ({
   );
 };
 
-// this is exported for use in layout.js
+// This is exported for use in layout.js.
 export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,

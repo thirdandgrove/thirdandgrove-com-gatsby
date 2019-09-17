@@ -5,7 +5,11 @@
   "version": "0.1.0",
   "author": "Third and Grove <https://www.thirdandgrove.com>",
   "contributors": [
-    "Grant Glidewell <grant@thirdandgrove.com>"
+    "Claire Annan <cannan@thirdandgrove.com>",
+    "Grant Glidewell <grant@thirdandgrove.com>",
+    "Wes Jones <wes@thirdandgrove.com>",
+    "Marie Kiryanova <marie@thirdandgrove.com> (https://marie.kiryanova.io)",
+    "Abby Milberg <amilberg@thirdandgrove.com>"
   ],
   "dependencies": {
     "@emotion/core": "^10.0.10",

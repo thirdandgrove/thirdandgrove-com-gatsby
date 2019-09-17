@@ -40,7 +40,7 @@ const TopNav = ({ fill }) => {
         ]}
       >
         <Link to='/' aria-label='return to homepage' data-cy='homeButton'>
-          {/* this guard keeps the Gatsby build from breaking */}
+          {/* This guard keeps the Gatsby build from breaking by ensuring this code isn't run at build time. */}
           {typeof window !== 'undefined' &&
             (width > jsBreakpoints.phoneLarge ? (
               <ThirdAndGrove
@@ -79,7 +79,6 @@ const TopNav = ({ fill }) => {
           <Hamburger fill={isOpen ? colors.lightgray : fill} isOpen={isOpen} />
         </button>
       </div>
-      {/* // some transition in/out? */}
       <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />
     </>
   );

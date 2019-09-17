@@ -18,6 +18,12 @@ import FullWidthSection from '../components/FullWidthSection';
 export default ({ data }) => {
   const halfPage = useRef();
   const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1);
+
+  // silly holiday treats
+  const today = new Date();
+  const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
+  const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
+
   const Underlined = styled.span`
     position: relative;
 
@@ -29,8 +35,10 @@ export default ({ data }) => {
       left: -10px;
       width: calc(100% + 20px);
       top: 100%;
-      background-image: url('/images/underline.png');
-      background-size: contain;
+      background-image: ${isHalloween
+        ? `url('/images/dripping_blood.gif')`
+        : `url('/images/underline.png')`};
+      background-size: ${isHalloween ? `cover` : `contain`};
       background-repeat: no-repeat;
 
       ${mediaQueries.phoneLarge} {
@@ -48,8 +56,9 @@ export default ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            A digital agency <Underlined>slaying</Underlined> the mundane, one
-            pixel at a time.
+            A digital agency{' '}
+            <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
+            mundane, one pixel at a time.
           </>
         ),
         mobileMinHeight: '93vh',
