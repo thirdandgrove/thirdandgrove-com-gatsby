@@ -93,5 +93,72 @@ module.exports = {
         head: false,
       },
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              siteUrl
+              site_url: siteUrl
+            }
+          }
+        }
+      `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allInsight } }) => {
+              return allInsight.nodes.map(node => {
+                return {
+                  title: node.title,
+                  link: site.siteMetadata.siteUrl + node.path.alias,
+                  description: node.description,
+                  pubDate: node.created,
+                  'dc:creator': node.relationships.uid.name,
+                  guid: site.siteMetadata.siteUrl + node.path.alias,
+                };
+              });
+            },
+            query: `
+            {
+              allInsight(
+                sort: { order: DESC, fields: created },
+                filter: {field_hidden: {eq: false}}
+              ) {
+                nodes {
+                  title
+                  description
+                  created(formatString: "ddd, DD MMM YYYY hh:mm:ss +0000")
+                  relationships {
+                    uid {
+                      name
+                    }
+                  }
+                  path {
+                    alias
+                  }
+                }
+              }
+              site {
+                siteMetadata {
+                  siteUrl
+                }
+              }
+            }
+          `,
+            output: '/feed.xml',
+            title: "Your Site's RSS Feed",
+            // optional configuration to insert feed reference in pages:
+            // if `string` is used, it will be used to create RegExp and then test if pathname of
+            // current page satisfied this regular expression;
+            // if not provided or `undefined`, all pages will have feed reference inserted
+            match: '^/insights/',
+          },
+        ],
+      },
+    },
   ],
 };
