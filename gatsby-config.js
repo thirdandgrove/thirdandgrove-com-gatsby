@@ -101,9 +101,7 @@ module.exports = {
           site {
             siteMetadata {
               title
-              description
               siteUrl
-              site_url: siteUrl
             }
           }
         }
@@ -115,7 +113,7 @@ module.exports = {
                 return {
                   title: node.title,
                   link: site.siteMetadata.siteUrl + node.path.alias,
-                  description: node.description,
+                  description: node.field_description,
                   pubDate: node.created,
                   'dc:creator': node.relationships.uid.name,
                   guid: site.siteMetadata.siteUrl + node.path.alias,
@@ -130,7 +128,7 @@ module.exports = {
               ) {
                 nodes {
                   title
-                  description
+                  field_description
                   created(formatString: "ddd, DD MMM YYYY hh:mm:ss +0000")
                   relationships {
                     uid {
@@ -140,11 +138,6 @@ module.exports = {
                   path {
                     alias
                   }
-                }
-              }
-              site {
-                siteMetadata {
-                  siteUrl
                 }
               }
             }
