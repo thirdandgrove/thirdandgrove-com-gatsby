@@ -93,5 +93,74 @@ module.exports = {
         head: false,
       },
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+        }
+      `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allInsight } }) => {
+              return allInsight.nodes.map(node => {
+                return {
+                  title: node.title,
+                  description:
+                    node.field_summary && node.field_summary.processed,
+                  guid: site.siteMetadata.siteUrl + node.path.alias,
+                  custom_elements: [
+                    {
+                      'dc:creator': node.relationships.uid.name,
+                    },
+                    {
+                      pubDate: node.created,
+                    },
+                    {
+                      link: site.siteMetadata.siteUrl + node.path.alias,
+                    },
+                  ],
+                };
+              });
+            },
+            query: `
+            {
+              allInsight(
+                sort: { order: DESC, fields: created },
+                filter: {field_hidden: {eq: false}},
+                limit: 10
+              ) {
+                nodes {
+                  title
+                  field_summary {
+                    processed
+                  }
+                  created(formatString: "ddd, DD MMM YYYY hh:mm:ss +0000")
+                  relationships {
+                    uid {
+                      name
+                    }
+                  }
+                  path {
+                    alias
+                  }
+                }
+              }
+            }
+          `,
+            output: '/drupal-planet-rss.xml',
+            title: 'Drupal Planet RSS Feed',
+            link: 'https://www.thirdandgrove.com/drupal-planet-rss.xml',
+            language: 'en',
+            match: '^/insights/',
+          },
+        ],
+      },
+    },
   ],
 };
