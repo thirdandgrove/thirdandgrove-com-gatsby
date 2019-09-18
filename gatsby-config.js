@@ -128,7 +128,9 @@ module.exports = {
               ) {
                 nodes {
                   title
-                  field_summary
+                  field_summary {
+                    processed
+                  }
                   created(formatString: "ddd, DD MMM YYYY hh:mm:ss +0000")
                   relationships {
                     uid {
