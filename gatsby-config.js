@@ -111,12 +111,20 @@ module.exports = {
               return allInsight.nodes.map(node => {
                 return {
                   title: node.title,
-                  url: site.siteMetadata.siteUrl + node.path.alias,
                   description:
                     node.field_summary && node.field_summary.processed,
-                  date: node.created,
-                  author: node.relationships.uid.name,
                   guid: site.siteMetadata.siteUrl + node.path.alias,
+                  custom_elements: [
+                    {
+                      'dc:creator': node.relationships.uid.name,
+                    },
+                    {
+                      pubDate: node.created,
+                    },
+                    {
+                      link: site.siteMetadata.siteUrl + node.path.alias,
+                    },
+                  ],
                 };
               });
             },
