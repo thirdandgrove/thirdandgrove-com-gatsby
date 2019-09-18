@@ -100,7 +100,6 @@ module.exports = {
         {
           site {
             siteMetadata {
-              title
               siteUrl
             }
           }
@@ -124,7 +123,8 @@ module.exports = {
             {
               allInsight(
                 sort: { order: DESC, fields: created },
-                filter: {field_hidden: {eq: false}}
+                filter: {field_hidden: {eq: false}},
+                limit: 10
               ) {
                 nodes {
                   title
@@ -142,9 +142,9 @@ module.exports = {
               }
             }
           `,
-            output: '/feed.xml',
+            output: '/drupal-planet-rss.xml',
             title: 'Drupal Planet RSS Feed',
-            link: 'https://www.thirdandgrove.com/feed.xml',
+            link: 'https://www.thirdandgrove.com/drupal-planet-rss.xml',
             language: 'en',
             match: '^/insights/',
           },
