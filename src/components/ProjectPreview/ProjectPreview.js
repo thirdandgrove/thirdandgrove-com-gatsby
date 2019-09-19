@@ -29,6 +29,7 @@ const slideTitleWrapper = css`
   min-height: 120px;
   margin-bottom: 10px;
   align-items: center;
+  word-wrap: initial;
   ${mediaQueries.phoneLarge} {
     max-width: 550px;
     min-height: 194px;
