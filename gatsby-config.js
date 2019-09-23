@@ -100,11 +100,23 @@ module.exports = {
         {
           site {
             siteMetadata {
+              title
               siteUrl
             }
           }
         }
       `,
+        setup: ({
+          query: {
+            site: { siteMetadata },
+          },
+        }) => {
+          return {
+            ...siteMetadata,
+            site_url: 'https://www.thirdandgrove.com/drupal-planet-rss.xml',
+            language: 'en',
+          };
+        },
         feeds: [
           {
             serialize: ({ query: { site, allInsight } }) => {
@@ -122,7 +134,7 @@ module.exports = {
                       pubDate: node.created,
                     },
                     {
-                      link: site.siteMetadata.siteUrl + node.path.alias,
+                      link: site.siteMetadata.siteMetadata + node.path.alias,
                     },
                   ],
                 };
@@ -151,7 +163,6 @@ module.exports = {
           `,
             output: '/drupal-planet-rss.xml',
             title: 'Drupal Planet RSS Feed',
-            link: 'https://www.thirdandgrove.com/drupal-planet-rss.xml',
             language: 'en',
             match: '^/insights/',
           },
