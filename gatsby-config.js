@@ -101,6 +101,7 @@ module.exports = {
           site {
             siteMetadata {
               title
+              description
               siteUrl
             }
           }
@@ -115,7 +116,6 @@ module.exports = {
             ...siteMetadata,
             site_url: 'https://www.thirdandgrove.com/drupal-planet-rss.xml',
             language: 'en',
-            description: '',
           };
         },
         feeds: [
