@@ -115,6 +115,7 @@ module.exports = {
             ...siteMetadata,
             site_url: 'https://www.thirdandgrove.com/drupal-planet-rss.xml',
             language: 'en',
+            description: '',
           };
         },
         feeds: [
