@@ -130,11 +130,7 @@ module.exports = {
             },
             query: `
             {
-              allInsight(
-                sort: { order: DESC, fields: created },
-                filter: {field_hidden: {eq: false}},
-                limit: 10
-              ) {
+              allInsight(sort: {order: DESC, fields: created}, filter: {field_hidden: {eq: false}, relationships: {field_tags: {elemMatch: {name: {eq: "Drupal"}}}}}, limit: 10) {
                 nodes {
                   title
                   field_summary {
