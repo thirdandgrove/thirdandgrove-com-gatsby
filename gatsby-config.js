@@ -135,7 +135,7 @@ module.exports = {
                       pubDate: node.created,
                     },
                     {
-                      link: site.siteMetadata.siteMetadata + node.path.alias,
+                      link: site.siteMetadata.siteUrl + node.path.alias,
                     },
                   ],
                 };
