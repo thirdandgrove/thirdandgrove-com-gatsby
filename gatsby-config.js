@@ -14,9 +14,6 @@ module.exports = {
       options: { offsetY: 20 },
     },
     {
-      resolve: `gatsby-plugin-polyfill-io`,
-    },
-    {
       resolve: 'gatsby-plugin-react-axe',
       options: {
         // Options to pass to axe-core.
