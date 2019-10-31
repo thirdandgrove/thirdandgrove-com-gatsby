@@ -8,18 +8,18 @@ Gatsby front end for Third and Grove's Drupal 8 backend.
 
 - Node (10.x LTS at time of writing)
 - Yarn
-- CMS and Resumator Access
 
 ## Installation
 
-1. Clone the repository and navigate to it in your terminal.
-2. Run `yarn` in the project root.
-3. Run `cp sample.env .env` and then modify the `.env` file with the appropriate credentials.
+1. Clone this repository: `git clone git@github.com:thirdandgrove/thirdandgrove-com-gatsby.git`
+2. Change directories into the project root: `cd thirdandgrove-com-gatsby`
+3. Run `yarn` in the project root.
+4. Run `cp sample.env .env` and then modify your new `.env` file with the appropriate credentials from the `TAGv5 Gatsby/CMS` entry in 1Password.
 
 ## Development
 
 1. In the root of the project, run `yarn start`.
-2. This will perform the initial build then launch your browser to your local site.
+2. This will perform the initial build and then launch your browser to your local site (the first time you do this, it may take a few minutes).
 3. Changing files in this state will also hot reload the files
 
 ## Build
