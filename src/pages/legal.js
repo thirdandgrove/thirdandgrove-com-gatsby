@@ -56,14 +56,14 @@ export default () => {
           {date}
         </h2>
         <p>
-          Third & Grove LLC. (“Third & Grove,” “we,” “us,” “our”) is committed
-          to letting you know how we will collect and use your personally
-          identifiable information. This Privacy Statement is applicable to your
-          use of the Instrument’s websites (the “Website”). We have established
-          this Privacy Statement to let you know the kinds of information we may
-          gather when you use the Website, why we gather your information, what
-          we use your information for, when we might disclose your information,
-          and how you can manage your information.
+          Third and Grove LLC. (“Third and Grove,” “we,” “us,” “our”) is
+          committed to letting you know how we will collect and use your
+          personally identifiable information. This Privacy Statement is
+          applicable to your use of the Instrument’s websites (the “Website”).
+          We have established this Privacy Statement to let you know the kinds
+          of information we may gather when you use the Website, why we gather
+          your information, what we use your information for, when we might
+          disclose your information, and how you can manage your information.
         </p>
         <p>
           This Privacy Statement does not apply to information that users may
@@ -208,10 +208,10 @@ export default () => {
         </p>
         <p>
           You may always opt-out of receiving future e-mail marketing messages
-          from Third & Grove. We provide you with the opportunity to opt-out of
-          such communications from us by clicking the “unsubscribe” link at the
-          bottom of each marketing e-mail. Please note that you may not opt-out
-          of our service-related communications.
+          from Third and Grove. We provide you with the opportunity to opt-out
+          of such communications from us by clicking the “unsubscribe” link at
+          the bottom of each marketing e-mail. Please note that you may not
+          opt-out of our service-related communications.
         </p>
         <p>
           <strong>Other Important Information</strong>
