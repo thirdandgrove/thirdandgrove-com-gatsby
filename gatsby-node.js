@@ -24,6 +24,11 @@ exports.createPages = async ({ actions, graphql }) => {
           path {
             alias
           }
+          relationships {
+            field_tags {
+              name
+            }
+          }
         }
       }
       jobs: allResumatorJob(filter: { status: { eq: "Open" } }) {
@@ -92,6 +97,7 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`src/templates/insights.js`),
       context: {
         PostId: insightData.id,
+        PostTags: insightData.relationships.field_tags.map(tag => tag.name),
       },
     })
   );

@@ -96,8 +96,18 @@ Insights.propTypes = {
 };
 
 export const query = graphql`
-  query($PostId: String!) {
-    allInsight(limit: 5, filter: { field_hidden: { eq: false } }) {
+  query($PostId: String!, $PostTags: [String]) {
+    allInsight(
+      limit: 5
+      filter: {
+        field_hidden: { eq: false }
+        relationships: {
+          field_tags: { elemMatch: { name: { in: $PostTags } } }
+        }
+        id: { ne: $PostId }
+      }
+      sort: { fields: created, order: DESC }
+    ) {
       nodes {
         ...InsightFragment
       }
