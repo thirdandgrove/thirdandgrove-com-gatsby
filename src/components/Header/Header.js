@@ -23,6 +23,7 @@ import FullWidthSection from '../FullWidthSection';
  * @param {boolean} invert - passed through to TopNav
  * @param {string} titleMarginBottom - passed to title
  * @param {string} titlePadding - passed to title
+ * @param {string} image - passed to SEO
  */
 const Header = ({
   title,
@@ -37,6 +38,7 @@ const Header = ({
   invert,
   titleMarginBottom,
   titlePadding,
+  image,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -153,7 +155,7 @@ const Header = ({
   `;
   return (
     <>
-      <SEO title={metaTitle || title} description={description} />
+      <SEO title={metaTitle || title} description={description} image={image} />
       <TopNav fill={fontColor} />
       <FullWidthSection
         css={sectionCSS}
@@ -190,6 +192,7 @@ export const headerPropTypes = {
   color: PropTypes.string,
   titleMarginBottom: PropTypes.string,
   titlePadding: PropTypes.string,
+  image: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -207,6 +210,7 @@ Header.defaultProps = {
   color: colors.yellow,
   titleMarginBottom: '0',
   titlePadding: '0 20px',
+  image: null,
 };
 
 export default Header;
