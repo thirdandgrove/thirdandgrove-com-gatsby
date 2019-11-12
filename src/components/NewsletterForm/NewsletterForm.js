@@ -5,7 +5,6 @@ import { css } from '@emotion/core';
 
 import Input from '../Input';
 import Button from '../Button';
-
 import { encode } from '../../util';
 
 export default () => {
