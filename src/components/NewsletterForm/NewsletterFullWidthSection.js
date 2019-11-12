@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
-import { mediaQueries } from '../../styles';
+import { mediaQueries, colors, fonts } from '../../styles';
 
 import NewsletterForm from './NewsletterForm';
 
@@ -13,8 +13,8 @@ export default () => (
         ${mediaQueries.phoneLarge} {
           height: 84px;
           width: 840px;
-          color: #282829;
-          font-family: Canela;
+          color: ${colors.reallydarkgray};
+          font-family: ${fonts.serif};
           font-size: 72px;
           font-weight: 500;
           letter-spacing: -0.83px;
@@ -23,8 +23,8 @@ export default () => (
         }
         height: 48px;
         width: 335px;
-        color: #282829;
-        font-family: Canela;
+        color: ${colors.reallydarkgray};
+        font-family: ${fonts.serif};
         font-size: 39px;
         font-weight: 500;
         letter-spacing: -0.45px;
@@ -47,8 +47,8 @@ export default () => (
           ${mediaQueries.phoneLarge} {
             height: 90px;
             width: 335px;
-            color: #282829;
-            font-family: 'NB International Pro';
+            color: ${colors.reallydarkgray};
+            font-family: ${fonts.sans};
             font-size: 16px;
             font-weight: 300;
             letter-spacing: 0.2px;
@@ -57,8 +57,8 @@ export default () => (
           }
           height: 90px;
           width: 335px;
-          color: #282829;
-          font-family: 'NB International Pro';
+          color: ${colors.reallydarkgray};
+          font-family: ${fonts.sans};
           font-size: 16px;
           font-weight: 300;
           letter-spacing: 0.2px;

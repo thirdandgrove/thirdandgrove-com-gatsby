@@ -19,14 +19,7 @@ export default () => {
         value={email}
         onChange={evt => updateEmail(evt.target.value)}
       />
-      <Button
-        css={css`
-          opacity: 70%;
-        `}
-        onClick={onSubmit}
-      >
-        Sign Me Up
-      </Button>
+      <Button onClick={onSubmit}>Sign Me Up</Button>
     </>
   );
 };
