@@ -2,7 +2,7 @@ require('dotenv').config();
 const axios = require('axios');
 
 const apiKey = process.env.KLAVIYO_API_KEY;
-const listId = process.env.KLAVIYO_LIST_ID;
+const listId = process.env.KLAVIYO_LIST_ID; // update to not-suport@tag
 
 exports.handler = async (event, context, callback) => {
   // ENDPOINT:
