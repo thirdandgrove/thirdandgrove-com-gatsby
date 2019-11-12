@@ -20,6 +20,8 @@ exports.handler = async (event, context, callback) => {
   //   statusCode: 200,
   //   body: "Hello, World"
   //   });
-  console.log(JSON.stringify(event));
+  console.log('EVENT', JSON.stringify(event));
+  console.log('PAYLOAD', JSON.stringify(event.payload));
+  console.log('CONTEXT', JSON.stringify(context));
   callback(null, { statusCode: 200 });
 };
