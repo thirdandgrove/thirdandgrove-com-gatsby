@@ -20,9 +20,8 @@ exports.handler = async (event, context, callback) => {
   //   statusCode: 200,
   //   body: "Hello, World"
   //   });
-  console.log('EVENT', JSON.stringify(event));
   const data = JSON.parse(event.body);
-  console.log('PAYLOAD', data);
-  console.log('CONTEXT', JSON.stringify(context));
+  console.log('DATA', JSON.stringify(data));
+  console.log('EMAIL', data.email);
   callback(null, { statusCode: 200 });
 };
