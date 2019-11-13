@@ -20,7 +20,8 @@ exports.handler = async (event, context, callback) => {
   //   statusCode: 200,
   //   body: "Hello, World"
   //   });
-  const data = JSON.parse(event.body);
+  // parse event and handle contact form?
+  const data = JSON.parse(event.body).payload;
   console.log('DATA', JSON.stringify(data));
   console.log('EMAIL', data.email);
   callback(null, { statusCode: 200 });
