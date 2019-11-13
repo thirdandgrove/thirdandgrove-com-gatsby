@@ -19,7 +19,7 @@ export default () => {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', email }),
+      body: encode({ 'form-name': 'newsletter', email }),
     }).then(() => {
       updateEmail('');
       hasSubmitted(true);
