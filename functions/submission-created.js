@@ -99,7 +99,7 @@ exports.handler = async (event, _context, callback) => {
     const created = await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
       data: formData,
-    }).then(res => res.json());
+    });
     console.log('Klaviyo entry created', created);
   }
 
