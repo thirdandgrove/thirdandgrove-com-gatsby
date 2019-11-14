@@ -3,12 +3,11 @@
 /* eslint-disable camelcase */
 require('dotenv').config();
 const axios = require('axios');
+const FormData = require('form-data');
 
 exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
   const { form_name } = data;
-  console.log(data);
-  console.log(form_name);
   // if (form_name === 'contact') {
   //   // handle form contact
   //   const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
@@ -94,7 +93,6 @@ exports.handler = async (event, _context, callback) => {
   if (form_name === 'newsletter') {
     // handle form newsletter
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
-    console.log(KLAVIYO_API_KEY, KLAVIYO_LIST_ID, process.env);
     const { email } = data;
     const formData = new FormData();
     formData.append('api_key', KLAVIYO_API_KEY);
