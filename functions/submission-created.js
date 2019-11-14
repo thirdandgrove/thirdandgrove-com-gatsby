@@ -96,10 +96,11 @@ exports.handler = async (event, _context, callback) => {
     const formData = new FormData();
     formData.append('api_key', KLAVIYO_API_KEY);
     formData.append('email', email);
-    await axios({
+    const created = await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
       data: formData,
-    });
+    }).then(res => res.json());
+    console.log('Klaviyo entry created', created);
   }
 
   callback(null, { statusCode: 200 });
