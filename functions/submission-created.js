@@ -25,11 +25,16 @@ exports.handler = async (event, _context, callback) => {
       first_name,
       last_name,
     } = data;
+    console.log(data);
     let person;
     let deal;
     // check for required fields
-    if (!name || !email) {
-      console.error('error, no name or email sent');
+    if (!name || !email || !website) {
+      console.error('error, no name, email or website sent.', {
+        name,
+        email,
+        website,
+      });
       return;
     }
 
