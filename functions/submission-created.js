@@ -3,7 +3,6 @@
 /* eslint-disable camelcase */
 require('dotenv').config();
 const axios = require('axios');
-const FormData = require('form-data');
 
 exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
@@ -94,12 +93,14 @@ exports.handler = async (event, _context, callback) => {
     // handle form newsletter
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
     const { email } = data;
-    const formData = new FormData();
-    formData.append('api_key', KLAVIYO_API_KEY);
-    formData.append('email', email);
     const created = await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
-      data: formData,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [{ email }],
+      }),
     });
     console.log('Klaviyo entry created', created);
   }
