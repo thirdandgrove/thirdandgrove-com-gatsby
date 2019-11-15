@@ -78,6 +78,7 @@ exports.handler = async (event, _context, callback) => {
     }
 
     const deal_id = deal.data && deal.data.data.id;
+    console.log('DEAL CREATED, ADDING NOTE:', website, data, deal.data.data);
     try {
       await axios({
         url: `https://api.pipedrive.com/v1/notes?api_token=${PIPEDRIVE_KEY}`,
