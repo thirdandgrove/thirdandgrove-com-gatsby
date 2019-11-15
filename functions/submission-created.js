@@ -10,6 +10,7 @@ exports.handler = async (event, _context, callback) => {
   if (form_name === 'contact') {
     // handle form contact
     const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
+
     // pipedrive custom fields
     const fields = {
       dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
@@ -21,77 +22,74 @@ exports.handler = async (event, _context, callback) => {
       return acc;
     }, {});
     const { name, email, phone, website, comments } = humanFields;
-    const first_name = name.split(' ')[0];
-    const last_name = name.split(' ')[name.split(' ').length - 1];
-    console.log(humanFields, data.first_name, data.last_name);
-    return; // for now lets not pollute a bunch of deals
-    // let person;
-    // let deal;
-    // // check for required fields
-    // if (!name || !email || !website) {
-    //   console.error('error, no name, email or website sent.', {
-    //     name,
-    //     email,
-    //     website,
-    //   });
-    //   return;
-    // }
+    const { first_name, last_name } = data;
 
-    // try {
-    //   person = await axios({
-    //     url: `https://api.pipedrive.com/v1/persons?api_token=${PIPEDRIVE_KEY}`,
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     data: JSON.stringify({
-    //       name,
-    //       first_name,
-    //       last_name,
-    //       email,
-    //       phone,
-    //       [fields.personWebsite]: website,
-    //       owner_id: PIPEDRIVE_USER_ID,
-    //     }),
-    //   });
-    // } catch (err) {
-    //   console.log('error creating person', err);
-    //   callback(null, { statusCode: 200 });
-    // }
+    let person;
+    let deal;
+    // check for required fields
+    if (!name || !email || !website) {
+      console.error('error, no name, email or website sent.', {
+        name,
+        email,
+        website,
+      });
+      return;
+    }
 
-    // const person_id = person.data && person.data.data.id;
-    // try {
-    //   deal = await axios({
-    //     url: `https://api.pipedrive.com/v1/deals?api_token=${PIPEDRIVE_KEY}`,
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     data: JSON.stringify({
-    //       title: `[Webform] Deal for ${name} <${email}>`,
-    //       [fields.dealLeadSource]: '34',
-    //       person_id,
-    //       [fields.dealDetails]: comments,
-    //       user_id: PIPEDRIVE_USER_ID,
-    //     }),
-    //   });
-    // } catch (err) {
-    //   console.error('error creating deal', err);
-    //   callback(null, { statusCode: 200 });
-    // }
+    try {
+      person = await axios({
+        url: `https://api.pipedrive.com/v1/persons?api_token=${PIPEDRIVE_KEY}`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          name,
+          first_name,
+          last_name,
+          email,
+          phone,
+          [fields.personWebsite]: website,
+          owner_id: PIPEDRIVE_USER_ID,
+        }),
+      });
+    } catch (err) {
+      console.log('error creating person', err);
+      callback(null, { statusCode: 200 });
+    }
 
-    // const deal_id = deal.data && deal.data.data.id;
-    // console.log('DEAL CREATED, ADDING NOTE:', website, data, deal.data.data);
-    // try {
-    //   await axios({
-    //     url: `https://api.pipedrive.com/v1/notes?api_token=${PIPEDRIVE_KEY}`,
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     data: JSON.stringify({
-    //       content: website,
-    //       deal_id,
-    //     }),
-    //   });
-    // } catch (err) {
-    //   console.error('error creating note', err);
-    //   callback(null, { statusCode: 200 });
-    // }
+    const person_id = person.data && person.data.data.id;
+    try {
+      deal = await axios({
+        url: `https://api.pipedrive.com/v1/deals?api_token=${PIPEDRIVE_KEY}`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          title: `[Webform] Deal for ${name} <${email}>`,
+          [fields.dealLeadSource]: '34',
+          person_id,
+          [fields.dealDetails]: comments,
+          user_id: PIPEDRIVE_USER_ID,
+        }),
+      });
+    } catch (err) {
+      console.error('error creating deal', err);
+      callback(null, { statusCode: 200 });
+    }
+
+    const deal_id = deal.data && deal.data.data.id;
+    try {
+      await axios({
+        url: `https://api.pipedrive.com/v1/notes?api_token=${PIPEDRIVE_KEY}`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          content: website,
+          deal_id,
+        }),
+      });
+    } catch (err) {
+      console.error('error creating note', err);
+      callback(null, { statusCode: 200 });
+    }
   }
 
   if (form_name === 'newsletter') {
