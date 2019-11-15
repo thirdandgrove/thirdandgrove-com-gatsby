@@ -17,7 +17,7 @@ exports.handler = async (event, _context, callback) => {
       personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
     };
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
-      acc.name = item.value;
+      acc[item.name] = item.value;
       return acc;
     }, {});
     const { name, email, phone, website, comments } = humanFields;
