@@ -13,6 +13,7 @@ import { ContactUs, BeUs } from '../components/Prefooter';
 import { mediaQueries } from '../styles';
 import { useHasBeenPartlyVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
+import { NewsletterFullWidthSection } from '../components/NewsletterForm';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
@@ -70,13 +71,14 @@ export default ({ data }) => {
         <>
           <InsightsSlider data={data.allInsight} />
           <LogoGrid title='A Few of Our Friends' />
+          <NewsletterFullWidthSection />
           <SplitSection>
             <ContactUs />
             <BeUs />
           </SplitSection>
         </>
       ) : (
-        <FullWidthSection height='1986px' minHeight='2748px' />
+        <FullWidthSection height='2286px' minHeight='3448px' />
       )}
     </Layout>
   );

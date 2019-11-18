@@ -8,6 +8,7 @@ import Input from '../Input';
 import Button from '../Button';
 import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
+import { encode } from '../../util';
 
 const ContactForm = () => {
   const [formState, updateForm] = useState({
@@ -22,12 +23,6 @@ const ContactForm = () => {
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
-  };
-
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-      .join('&');
   };
 
   const submitContact = event => {
