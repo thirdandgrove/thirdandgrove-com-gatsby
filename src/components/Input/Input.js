@@ -12,7 +12,7 @@ export default styled.input`
   font-weight: ${weights.light};
   font-size: 16px;
   letter-spacing: 2px;
-  line-height: 50px;
+  line-height: 1.3;
   padding: 0 20px;
   margin-bottom: 20px;
   width: 100%;
