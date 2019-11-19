@@ -37,14 +37,16 @@ export default () => {
       `}
     >
       <label htmlFor='nws-email'>
-        <Input
-          type='email'
-          name='email'
-          id='nws-email'
-          placeholder='Email'
-          value={email}
-          onChange={evt => updateEmail(evt.target.value)}
-        />
+        {!submitted && (
+          <Input
+            type='email'
+            name='email'
+            id='nws-email'
+            placeholder='Email'
+            value={email}
+            onChange={evt => updateEmail(evt.target.value)}
+          />
+        )}
       </label>
       <Button onClick={onSubmit} disabled={submitted}>
         {submitted ? 'Thank You' : 'Sign Me Up'}
