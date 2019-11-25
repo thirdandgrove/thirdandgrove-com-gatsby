@@ -27,6 +27,10 @@ const TextImage = ({ data }) => {
     }
 
     ${renderDropCap && dropCap}
+    
+    a {
+      text-decoration: underline;
+    }
 
     h2 {
       ${contentH2}
