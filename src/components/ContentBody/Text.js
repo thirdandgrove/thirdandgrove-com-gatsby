@@ -26,13 +26,15 @@ const Text = ({ data }) => {
       height='auto'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
-        ${container.min}
-
-        ${mediaQueries.phoneLarge} {
+        ${container.min} ${mediaQueries.phoneLarge} {
           padding: 0;
         }
 
         ${renderDropCap && dropCap}
+
+        a {
+          text-decoration: underline;
+        }
 
         h2 {
           ${contentH2}
