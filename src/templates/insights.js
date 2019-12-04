@@ -39,7 +39,7 @@ const Insights = ({ data }) => {
         color: backgroundColor || colors.yellow,
         mobileMinHeight: '470px',
         titleMarginBottom: '70px',
-        image: `${window.location.origin}${imageSrc.src}`,
+        image: imageSrc.src,
       }}
     >
       <div

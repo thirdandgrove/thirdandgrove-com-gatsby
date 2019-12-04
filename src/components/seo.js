@@ -24,7 +24,13 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
     typeof window !== 'undefined'
       ? `${window.location.origin}/images/icon.png`
       : '';
+
   const metaImage = image || defaultImage;
+
+  const imageWithFullpath =
+    typeof window !== 'undefined'
+      ? `${window.location.origin}${metaImage}`
+      : '';
 
   return (
     <Helmet
@@ -52,7 +58,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
         },
         {
           property: `og:image`,
-          content: metaImage,
+          content: imageWithFullpath,
         },
         {
           name: `twitter:card`,
@@ -68,7 +74,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
         },
         {
           name: `twitter:image`,
-          content: metaImage,
+          content: imageWithFullpath,
         },
         {
           name: `twitter:description`,
