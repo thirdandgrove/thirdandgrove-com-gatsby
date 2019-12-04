@@ -29,7 +29,7 @@ const Boston = ({ data }) => {
     flex-flow: row wrap;
     justify-content: space-evenly;
     margin-bottom: 12px;
-    width: 90%;
+    width: 100%;
 
     ${mediaQueries.phoneLarge} {
       width: ${contValues.min};
@@ -190,7 +190,11 @@ export const query = graphql`
     }
     slider: allFile(filter: { absolutePath: { regex: "/boston-page/" } }) {
       nodes {
-        publicURL
+        childImageSharp {
+          fluid(maxWidth: 363, maxHeight: 363) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
       }
     }
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
 import { mediaQueries } from '../../styles';
@@ -62,14 +63,18 @@ const ImageSlider = ({ data }) => {
           }
 
           .slick-list .slick-slide {
-            padding-left: 15px;
+            padding-right: 15px;
           }
         `}
       >
         {data &&
           data.nodes.map(node => {
             return (
-              <img src={node.publicURL} key={node.publicURL} alt='Boston' />
+              <Img
+                fluid={node.childImageSharp.fluid}
+                key={node.publicURL}
+                alt='Boston'
+              />
             );
           })}
       </Slider>
