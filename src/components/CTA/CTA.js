@@ -44,7 +44,7 @@ CTA.propTypes = {
 
 CTA.defaultProps = {
   backgroundColor: colors.lightblue,
-  headline: `Want to catch up over coffee?`,
+  headline: `Want to chat more?`,
   cta: `GET IN TOUCH`,
   link: `/contact/`,
 };
