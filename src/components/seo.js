@@ -20,10 +20,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
 
   const metaDescription = description || site.siteMetadata.description;
 
-  const defaultImage =
-    typeof window !== 'undefined'
-      ? `${window.location.origin}/images/icon.png`
-      : '';
+  const defaultImage = `/images/icon.png`;
 
   const metaImage = image || defaultImage;
 
