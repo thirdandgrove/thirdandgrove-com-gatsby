@@ -1,11 +1,11 @@
 import React from 'react';
-import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { Link } from 'gatsby';
 
 import { colors } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
-import Button from '../Button';
+import { FakeButton } from '../Button';
 
 const CTA = ({ backgroundColor, headline, cta, link }) => {
   return (
@@ -28,7 +28,9 @@ const CTA = ({ backgroundColor, headline, cta, link }) => {
       >
         {headline}
       </h1>
-      <Button onClick={() => navigate(link)}>{cta}</Button>
+      <Link to={link}>
+        <FakeButton>{cta}</FakeButton>
+      </Link>
     </FullWidthSection>
   );
 };
