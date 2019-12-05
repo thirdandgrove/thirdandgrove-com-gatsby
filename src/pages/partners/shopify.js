@@ -11,6 +11,7 @@ import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import { partnersProjects, partnersSub } from '../../styles/custom-css';
+import CTA from '../../components/CTA';
 
 // eslint-disable-next-line react/prop-types
 export default query => {
@@ -98,6 +99,7 @@ export default query => {
         showButton={false}
         backgroundColor={colors.lightgray}
       />
+      <CTA />
     </Layout>
   );
 };

@@ -15,6 +15,7 @@ import {
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
+import CTA from '../components/CTA';
 
 const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
   const nodeRef = useRef();
@@ -241,6 +242,7 @@ const CapabilitiesPage = ({ data }) => {
         }
         index={2}
       />
+      <CTA />
     </Layout>
   );
 };
