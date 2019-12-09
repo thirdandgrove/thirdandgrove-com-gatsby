@@ -78,7 +78,7 @@ export default ({ data }) => {
           </SplitSection>
         </>
       ) : (
-        <FullWidthSection height='2286px' minHeight='3448px' />
+        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
       )}
     </Layout>
   );
