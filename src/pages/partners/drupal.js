@@ -264,7 +264,12 @@ export const query = graphql`
     insights: allInsight(
       sort: { fields: created, order: DESC }
       limit: 5
-      filter: { field_hidden: { eq: false } }
+      filter: {
+        field_hidden: { eq: false }
+        relationships: {
+          field_tags: { elemMatch: { name: { regex: "/drupal/i" } } }
+        }
+      }
     ) {
       nodes {
         id
