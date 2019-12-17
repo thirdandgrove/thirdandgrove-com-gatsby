@@ -12,6 +12,7 @@ import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import VideoSection from '../components/VideoSection';
 import { ensureTrailingSlash } from '../util';
+import CTA from '../components/CTA';
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -199,6 +200,7 @@ export default () => {
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}
+      <CTA />
     </Layout>
   );
 };
