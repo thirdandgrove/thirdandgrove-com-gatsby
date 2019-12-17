@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
@@ -202,8 +202,11 @@ export default query => {
             enabling us to better prepare for D9 too. Our team is comfortable
             running the day-to-day needs while preparing for the eventual move
             to D9. We’re going to continue leading the future of Drupal and if
-            you need to level up your gameplan, check out our definitive guide
-            to Drupal 9.
+            you need to level up your gameplan, check out our{' '}
+            <Link to='/insights/drupal-9-readiness-guide/'>
+              definitive guide to Drupal 9
+            </Link>
+            .
           </p>
         </article>
         <article>
@@ -231,7 +234,7 @@ export default query => {
         <article>
           <h2>Ongoing Support</h2>
           <p>
-            Our support and optimization practice is a well-oiled machine —- we
+            Our support and optimization practice is a well-oiled machine — we
             find a security issue on 99% of the Drupal sites we take over. We
             start with a 65-point audit of your site, looking at the Drupal
             configuration, database, source code, security, performance, SEO,
