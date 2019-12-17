@@ -69,18 +69,18 @@ const Boston = ({ data }) => {
     }
   `;
 
-  const heroImage = data.hero.nodes[0].publicURL;
-  const heroImageMobile = data.hero.nodes[1].publicURL;
+  const heroImageMobile = data.hero.nodes[0].publicURL;
+  const heroImage = data.hero.nodes[1].publicURL;
 
   return (
     <Layout
       headerData={{
         title: "You won't find a better Drupal agency in Boston.",
-        mobileMinHeight: '90vh',
         height: '700px',
+        mobileMinHeight: '90vh',
+        color: colors.darkgray,
         heroImage,
         heroImageMobile,
-        color: colors.darkgray,
       }}
     >
       <FullWidthSection textAlign='center' height='750px' minHeight='730px'>
