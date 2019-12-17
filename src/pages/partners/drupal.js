@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
@@ -59,8 +59,8 @@ export default query => {
       headerData={{
         invert: true,
         label:
-          'Battle Tested Processes — Damn Good Engineers — Decoupled Pioneer',
-        title: 'Building the biggest, most complex Drupal sites.',
+          'Stress-Tested Processes — Damn Good Engineers — Drupal 9 Leader',
+        title: 'The best Drupal engineers in the room',
         color: colors.drupalBlue,
         mobileMinHeight: '620px',
       }}
@@ -114,10 +114,20 @@ export default query => {
           }
         `}
       >
-        <h3>A leader and contributor since inception</h3>
+        <h3>Go from bottlenecked to bottoms up</h3>
         <p>
-          We’re the only agency on Earth with a Drupal 8 core maintainer on our
-          team. (Read: We know Drupal because we’re writing it.)
+          We partner with brands that give a damn about their Drupal
+          implementation. Your team can’t win if you constantly struggle with
+          slow developer velocity and a hamstrung marketing team. And your
+          content surely won’t shine if you’re missing a backend that empowers
+          your team to do your best work.
+        </p>
+        <p>
+          We’re confident that we’re the best team out there to solve your
+          problems because we can dream big with you and have the experience to
+          back it up. We’re also the only agency on Earth with a Drupal 8 core
+          maintainer that allows us to stay on the cutting-edge of all things
+          Drupal.
         </p>
         <div>
           <ul>
@@ -128,7 +138,6 @@ export default query => {
           <ul>
             <li>Ongoing support</li>
             <li>Training and resource augmentation</li>
-            <li>Performance optimization</li>
           </ul>
         </div>
       </FullWidthSection>
@@ -188,37 +197,51 @@ export default query => {
         `}
       >
         <article>
+          <h2>Drupal 9</h2>
+          <p>
+            Our Drupal 8 core maintainer is also on the front lines of D9,
+            enabling us to better prepare for D9 too. Our team is comfortable
+            running the day-to-day needs while preparing for the eventual move
+            to D9. We’re going to continue leading the future of Drupal and if
+            you need to level up your gameplan, check out our{' '}
+            <Link to='/insights/drupal-9-readiness-guide/'>
+              definitive guide to Drupal 9
+            </Link>
+            .
+          </p>
+        </article>
+        <article>
           <h2>Drupal 8</h2>
           <p>
-            See for yourself what a smooth migration feels like when we fully
-            map out your existing setup/integrations, confirm our detailed game
-            plan, and execute. We got you covered—we migrated one of the
-            highest-trafficked sites in the world to Drupal in six weeks.
+            We know D8 inside and out and we work collaboratively with our
+            clients to fully map out their brand vision before we migrate from
+            Drupal 7 (or any other platform.) The end result is a beautiful
+            experience on the outside and a powerful backend that maximizes the
+            capabilities of what D8 has to offer. We go fast too — we migrated
+            one of the highest-trafficked sites in the world to Drupal in six
+            weeks.
           </p>
         </article>
         <article>
-          <h2>Decoupled</h2>
+          <h2>Integrations</h2>
           <p>
-            Build a cutting-edge site that takes the best of Drupal and modern
-            front end tech (like Gatsby). Our engineers have worked on some of
-            the largest decoupled Drupal builds, including the largest decoupled
-            Drupal site ever.
+            Your integration may be complex but you won’t know it. We have
+            experienced architects and engineers who have worked on some of the
+            biggest, most complex integrations with Salesforce, Pardot, Magento,
+            BigCommerce and more. (This is where we can truly say you won’t find
+            better Drupal engineers out there.)
           </p>
         </article>
         <article>
-          <h2>Digital Experience Platform</h2>
+          <h2>Ongoing Support</h2>
           <p>
-            Empower your team with Drupal will as the foundation of your Digital
-            Experience Platform, enabling more personalized marketing, better
-            customer analytics, and higher developer velocity.
-          </p>
-        </article>
-        <article>
-          <h2>Commerce</h2>
-          <p>
-            Redefine your digital experience with the right blend of content +
-            commerce. You&apos;ll work with a team that understands commerce
-            just as much as the tech.
+            Our support and optimization practice is a well-oiled machine — we
+            find a security issue on 99% of the Drupal sites we take over. We
+            start with a 65-point audit of your site, looking at the Drupal
+            configuration, database, source code, security, performance, SEO,
+            and best practices. Once we’re moving full steam ahead, your
+            dedicated support engineers and project manager help make progress
+            on real priorities while keeping everything else running smoothly.
           </p>
         </article>
       </SplitSection>
@@ -246,7 +269,12 @@ export const query = graphql`
     insights: allInsight(
       sort: { fields: created, order: DESC }
       limit: 5
-      filter: { field_hidden: { eq: false } }
+      filter: {
+        field_hidden: { eq: false }
+        relationships: {
+          field_tags: { elemMatch: { name: { regex: "/drupal/i" } } }
+        }
+      }
     ) {
       nodes {
         id
