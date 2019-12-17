@@ -24,6 +24,8 @@ import FullWidthSection from '../FullWidthSection';
  * @param {string} titleMarginBottom - passed to title
  * @param {string} titlePadding - passed to title
  * @param {string} image - passed to SEO
+ * @param {string} heroImage - used as background on desktop
+ * @param {string} heroImageMobile - used as background on mobile
  */
 const Header = ({
   title,
@@ -39,6 +41,8 @@ const Header = ({
   titleMarginBottom,
   titlePadding,
   image,
+  heroImage,
+  heroImageMobile,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -135,6 +139,13 @@ const Header = ({
   const sectionCSS = css`
     padding: 88px 0;
     background-color: ${color};
+    background-image: url(${heroImageMobile});
+    ${mediaQueries.desktop} {
+      background-image: url(${heroImage});
+    }
+    ${mediaQueries.phoneLarge} {
+      background-image: url(${heroImage});
+    }
   `;
   const headerlabel = css`
     margin-bottom: 32px;
@@ -193,6 +204,8 @@ export const headerPropTypes = {
   titleMarginBottom: PropTypes.string,
   titlePadding: PropTypes.string,
   image: PropTypes.string,
+  heroImage: PropTypes.string,
+  heroImageMobile: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -211,6 +224,8 @@ Header.defaultProps = {
   titleMarginBottom: '0',
   titlePadding: '0 20px',
   image: null,
+  heroImage: null,
+  heroImageMobile: null,
 };
 
 export default Header;
