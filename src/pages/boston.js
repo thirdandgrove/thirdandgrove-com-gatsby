@@ -76,6 +76,8 @@ const Boston = ({ data }) => {
     <Layout
       headerData={{
         title: "You won't find a better Drupal agency in Boston.",
+        metaTitle:
+          'You won’t find a better Drupal Development Agency in Boston',
         height: '700px',
         mobileMinHeight: '90vh',
         color: colors.darkgray,
@@ -96,8 +98,8 @@ const Boston = ({ data }) => {
           ]}
         >
           We’re a full service Boston-based agency with the best engingeers in
-          the city – any city really. We are the only company to employ a Drupal
-          8 core maintainer and consistently rank in the{' '}
+          the city – any city really. We are the only Drupal development agency
+          to employ a Drupal 8 core maintainer and consistently rank in the{' '}
           <a
             href='https://www.drupal.org/drupal-services'
             rel='noopener noreferrer'
@@ -105,7 +107,9 @@ const Boston = ({ data }) => {
           >
             top 10 Drupal agencies in the world
           </a>
-          .
+          . We’ve helped leading brands in Boston (and around the country)
+          maximize their Drupal investment and optimize performance with
+          reliable, stress-tested ongoing support.
         </h4>
         <Row>
           <div>
@@ -162,9 +166,9 @@ const Boston = ({ data }) => {
           ]}
         >
           Two heads are better than one but a unified team is better than two.
-          We deliver knowledge and horsepower but you bring the experience that
-          is needed for a thoughtful, reliable migration. It’s a partnership and
-          we like it that way.
+          We deliver the Drupal knowledge and digital horsepower but you bring
+          the experience that is needed for a thoughtful, reliable migration.
+          It’s a partnership and we like it that way.
         </p>
       </FullWidthSection>
 
