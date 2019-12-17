@@ -97,8 +97,15 @@ const Boston = ({ data }) => {
         >
           We’re a full service Boston-based agency with the best engingeers in
           the city – any city really. We are the only company to employ a Drupal
-          8 core maintainer and consistently rank in the top 10 Drupal agencies
-          in the world.
+          8 core maintainer and consistently rank in the{' '}
+          <a
+            href='https://www.drupal.org/drupal-services'
+            rel='noopener noreferrer'
+            target='_blank'
+          >
+            top 10 Drupal agencies in the world
+          </a>
+          .
         </h4>
         <Row>
           <div>
