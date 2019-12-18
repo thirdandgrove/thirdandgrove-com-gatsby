@@ -189,7 +189,7 @@ export default () => {
       }
     }
   `);
-  const studies = allEntitySubqueueCaseStudies.nodes.relationships.items;
+  const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
 
   return (
     <Layout
