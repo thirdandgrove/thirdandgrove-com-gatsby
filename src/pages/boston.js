@@ -99,7 +99,8 @@ const Boston = ({ data }) => {
         >
           We’re a full service Boston-based agency with the best engingeers in
           the city – any city really. We are the only Drupal development agency
-          to employ a Drupal 8 core maintainer and consistently rank in the{' '}
+          to employ a Drupal 8 core maintainer and consistently rank in
+          the&nbsp;
           <a
             href='https://www.drupal.org/drupal-services'
             rel='noopener noreferrer'
