@@ -17,7 +17,6 @@ const Job = ({ pageContext: { title, boardCode, description } }) => {
     letter-spacing: 0.2px;
 
     strong:only-child {
-      display: block;
       margin-top: 60px;
       margin-bottom: -7px;
       font-family: inherit;
