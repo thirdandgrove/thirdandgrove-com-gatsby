@@ -158,7 +158,7 @@ export default query => {
         `}
       >
         <Tripple>
-          <h2>1200+</h2>
+          <h2>1,200+</h2>
           <p>Open Source Contributions</p>
         </Tripple>
         <Tripple>
