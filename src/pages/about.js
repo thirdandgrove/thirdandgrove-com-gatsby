@@ -232,7 +232,7 @@ const About = ({ data }) => {
         />
         <Row>
           <div>
-            <h2>2014</h2>
+            <h2>2013</h2>
             <h3>Founded</h3>
           </div>
           <div>
@@ -354,7 +354,7 @@ const About = ({ data }) => {
             `,
           ]}
         >
-          While we have offices in Boston and Oakland, we embrace a remote
+          While we have offices in Boston and San Francisco, we embrace a remote
           culture, allowing our staff the freedom to do their best, wherever
           that might be.
         </h4>
@@ -399,7 +399,7 @@ const About = ({ data }) => {
             </div>
           </Location>
           <Location>
-            <h2 css={h1L}>Oakland</h2>
+            <h2 css={h1L}>San Francisco</h2>
             <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>
