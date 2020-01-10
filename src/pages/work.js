@@ -58,6 +58,7 @@ const Project = ({ study, index }) => {
           >
             {({ transform, opacity }) => (
               <Img
+                backgroundColor
                 fluid={
                   study.relationships.field_image.localFile.childImageSharp
                     .fluid

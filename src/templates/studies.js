@@ -35,6 +35,7 @@ const Studies = ({ data }) => {
     >
       {imageSrc && (
         <Img
+          backgroundColor
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
           alt={post.field_image.alt}
           css={css`

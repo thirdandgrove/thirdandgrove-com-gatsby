@@ -224,6 +224,7 @@ const About = ({ data }) => {
         `}
       >
         <Img
+          backgroundColor
           fluid={getSrc('team')}
           alt='TAG Team'
           css={css`
@@ -292,42 +293,71 @@ const About = ({ data }) => {
 
         <div css={[leadersCss, container.medium]}>
           <div>
-            <Img alt='Justin Emond' fluid={getSrc('emond', 'leader')} />
+            <Img
+              backgroundColor
+              alt='Justin Emond'
+              fluid={getSrc('emond', 'leader')}
+            />
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
           </div>
           <div>
-            <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
+            <Img
+              backgroundColor
+              alt='Jen Slemp'
+              fluid={getSrc('slemp', 'leader')}
+            />
             <h2>Jen Slemp</h2>
             <p>Director of Strategy</p>
           </div>
           <div>
-            <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
+            <Img
+              backgroundColor
+              alt='Christina Andrade'
+              fluid={getSrc('andrade', 'leader')}
+            />
             <h2>Christina Andrade</h2>
             <p>Director of Operations</p>
           </div>
           <div>
-            <Img alt='Matt Davis' fluid={getSrc('davis', 'leader')} />
+            <Img
+              backgroundColor
+              alt='Matt Davis'
+              fluid={getSrc('davis', 'leader')}
+            />
             <h2>Matt Davis</h2>
             <p>Director of Engineering</p>
           </div>
           <div>
-            <Img alt='Adam Strom' fluid={getSrc('strom', 'leader')} />
+            <Img
+              backgroundColor
+              alt='Adam Strom'
+              fluid={getSrc('strom', 'leader')}
+            />
             <h2>Adam Strom</h2>
             <p>Creative Director</p>
           </div>
           <div>
-            <Img alt='Jen May' fluid={getSrc('may', 'leader')} />
+            <Img
+              backgroundColor
+              alt='Jen May'
+              fluid={getSrc('may', 'leader')}
+            />
             <h2>Jen May</h2>
             <p>Director of Delivery</p>
           </div>
           <div>
-            <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
+            <Img
+              backgroundColor
+              alt='Linda Topp'
+              fluid={getSrc('topp', 'leader')}
+            />
             <h2>Linda Topp</h2>
             <p>Director of Shopify</p>
           </div>
           <div>
             <Img
+              backgroundColor
               alt='Angela Prendergast'
               fluid={getSrc('prendergast', 'leader')}
             />
@@ -390,7 +420,11 @@ const About = ({ data }) => {
         <SplitSection css={container.large} gridColumnGap='20px'>
           <Location>
             <h2 css={h1L}>Boston</h2>
-            <Img fluid={getSrc('boston', 'location')} alt='Boston' />
+            <Img
+              backgroundColor
+              fluid={getSrc('boston', 'location')}
+              alt='Boston'
+            />
             <h3>1st One’s on Us</h3>
             <div>
               <p>Wink &amp; Nod</p>
@@ -400,7 +434,11 @@ const About = ({ data }) => {
           </Location>
           <Location>
             <h2 css={h1L}>San Francisco</h2>
-            <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
+            <Img
+              backgroundColor
+              fluid={getSrc('oakland', 'location')}
+              alt='Oakland'
+            />
             <h3>If it’s Done, We’re Probably Here</h3>
             <div>
               <p>Cafe Van Kleef</p>

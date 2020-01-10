@@ -165,6 +165,7 @@ const ImageCollage = ({ images, type }) => {
       <div className='collage-board' css={collageBoardBase}>
         <div css={primaryWrapperBase} className='primary-wrapper'>
           <Img
+            backgroundColor
             fixed={[
               images.primary.mobile.fixed,
               {
@@ -179,6 +180,7 @@ const ImageCollage = ({ images, type }) => {
         </div>
         <div css={secTertWrapperBase} className='secondary-wrapper'>
           <Img
+            backgroundColor
             fixed={[
               images.secondary.mobile.fixed,
               {
@@ -193,6 +195,7 @@ const ImageCollage = ({ images, type }) => {
         </div>
         <div css={secTertWrapperBase} className='tertiary-wrapper'>
           <Img
+            backgroundColor
             fixed={[
               images.tertiary.mobile.fixed,
               {

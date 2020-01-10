@@ -7,6 +7,7 @@ import { container, mediaQueries } from '../../styles';
 
 const Image = ({ data }) => (
   <Img
+    backgroundColor
     fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
     alt={data.field_image.alt}
     css={css`

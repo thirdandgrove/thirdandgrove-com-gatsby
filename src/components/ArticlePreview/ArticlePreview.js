@@ -63,6 +63,7 @@ const ArticlePreview = ({ article }) => {
           >
             {article.relationships.field_image && (
               <Img
+                backgroundColor
                 fluid={
                   article.relationships.field_image.localFile.childImageSharp
                     .fluid

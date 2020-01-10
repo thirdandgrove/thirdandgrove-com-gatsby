@@ -81,6 +81,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
           >
             {({ transform, opacity }) => (
               <Img
+                backgroundColor
                 fluid={imageSrc}
                 alt={imageAlt}
                 style={{ transform, opacity }}

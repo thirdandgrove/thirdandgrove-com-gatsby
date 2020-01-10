@@ -54,6 +54,7 @@ const Insights = ({ data }) => {
       >
         {imageSrc && (
           <Img
+            backgroundColor
             fluid={[
               post.relationships.field_image.localFile.mobileImage.fluid,
               {

@@ -45,6 +45,7 @@ const TextImage = ({ data }) => {
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
         <Img
+          backgroundColor
           fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
           alt={data.field_image.alt}
           css={css`
@@ -64,6 +65,7 @@ const TextImage = ({ data }) => {
       />
       <section>
         <Img
+          backgroundColor
           fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
           alt={data.field_image.alt}
           css={css`
