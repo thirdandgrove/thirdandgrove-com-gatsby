@@ -140,12 +140,12 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_noBase64
               }
             }
             mobileImage: childImageSharp {
               fluid(maxHeight: 250) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_noBase64
               }
             }
             desktopImage: childImageSharp {
@@ -154,7 +154,7 @@ export const query = graphql`
                 maxHeight: 500
                 srcSetBreakpoints: [480, 900, 1200]
               ) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_noBase64
               }
             }
           }
@@ -186,7 +186,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_noBase64
                     }
                   }
                 }
@@ -237,7 +237,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 600, maxHeight: 600) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_noBase64
                     }
                   }
                 }
@@ -264,7 +264,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_noBase64
                     }
                   }
                 }
