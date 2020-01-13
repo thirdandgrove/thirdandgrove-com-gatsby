@@ -8,6 +8,7 @@ module.exports = {
     siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
+    `gatsby-plugin-preact`,
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-fixhash`,
