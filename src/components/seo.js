@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const SEO = ({ description, lang, meta, keywords, title, image }) => {
+const SEO = ({
+  description,
+  lang,
+  meta,
+  keywords,
+  title,
+  image,
+  doNotIndex,
+}) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -144,6 +152,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
         crossOrigin='anonymous'
         type='font/woff2'
       />
+      {doNotIndex ? <meta name='robots' content='noindex,nofollow' /> : ''}
     </Helmet>
   );
 };

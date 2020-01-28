@@ -40,6 +40,7 @@ const Insights = ({ data }) => {
         mobileMinHeight: '470px',
         titleMarginBottom: '70px',
         image: imageSrc.src,
+        doNotIndex: post.field_do_not_index,
       }}
     >
       <div
@@ -83,7 +84,7 @@ const Insights = ({ data }) => {
           type='insight'
         />
       </div>
-      <NewsletterFullWidthSection />
+      <NewsletterFullWidthSection type={post.field_contact_form} />
       <InsightsSlider
         data={data.allInsight}
         showButton={false}
@@ -119,6 +120,8 @@ export const query = graphql`
       id
       title
       field_inverse_header
+      field_do_not_index
+      field_contact_form
       field_color {
         color
       }
