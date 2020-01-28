@@ -164,6 +164,7 @@ SEO.defaultProps = {
   description: ``,
   title: null,
   image: null,
+  doNotIndex: false,
 };
 
 SEO.propTypes = {
@@ -173,6 +174,7 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string,
   image: PropTypes.string,
+  doNotIndex: PropTypes.bool,
 };
 
 export default SEO;
