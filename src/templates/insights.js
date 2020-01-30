@@ -84,7 +84,7 @@ const Insights = ({ data }) => {
           type='insight'
         />
       </div>
-      <NewsletterFullWidthSection type={post.field_contact_form} />
+      <NewsletterFullWidthSection source={post.field_contact_form} />
       <InsightsSlider
         data={data.allInsight}
         showButton={false}
