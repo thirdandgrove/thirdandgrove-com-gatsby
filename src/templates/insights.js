@@ -105,6 +105,7 @@ export const query = graphql`
       limit: 5
       filter: {
         field_hidden: { eq: false }
+        field_do_not_index: { ne: true }
         relationships: {
           field_tags: { elemMatch: { name: { in: $PostTags } } }
         }
