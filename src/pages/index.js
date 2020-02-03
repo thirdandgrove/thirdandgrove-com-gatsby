@@ -11,14 +11,16 @@ import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
 import { mediaQueries } from '../styles';
-import { useHasBeenPartlyVisible } from '../hooks/useVisibility';
+import { useHasBeenVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
 import { NewsletterFullWidthSection } from '../components/NewsletterForm';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
   const halfPage = useRef();
-  const hasScrolled = useHasBeenPartlyVisible(halfPage, 0.1);
+  const preload = useRef();
+  const hasScrolled = useHasBeenVisible(halfPage);
+  const isScrolling = useHasBeenVisible(preload);
 
   // silly holiday treats
   const today = new Date();
@@ -66,8 +68,8 @@ export default ({ data }) => {
       }}
     >
       <ProjectsSlider data={data.allCaseStudy} />
-      <WhatWeDo ref={halfPage} />
-      {hasScrolled ? (
+      <WhatWeDo ref={preload} />
+      {hasScrolled || isScrolling ? (
         <>
           <InsightsSlider data={data.allInsight} />
           <LogoGrid title='A Few of Our Friends' />
