@@ -2,6 +2,7 @@
 import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -63,8 +64,9 @@ export default ({ data }) => {
             {/* A digital agency{' '}
             <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
             mundane, one pixel at a time. */}
-            <h1>Holy S%#*! that was fast.</h1>
-            <h1>(With Gatsby its all fire, no waiting)</h1>
+            Holy S%#*! that was fast.
+            <br />
+            (With Gatsby it&apos;s all fire, no waiting)
           </>
         ),
         mobileMinHeight: '93vh',
