@@ -52,40 +52,14 @@ const WhatWeDo = forwardRef((props, ref) => {
     >
       <h3 css={smSectionHead}>What We Do</h3>
       <h4 css={headingCss}>
+        <a href='/capabilities#technology'>Technology</a>
+      </h4>
+      <h4 css={headingCss}>
         <a href='/capabilities#strategy'>Strategy</a>
       </h4>
       <h4 css={headingCss}>
         <a href='/capabilities#creative'>Creative</a>
       </h4>
-      <h4
-        css={[
-          headingCss,
-          css`
-            text-align: center;
-          `,
-        ]}
-      >
-        <a href='/capabilities#technology'>
-          Technology
-          <h3
-            css={css`
-              text-align: center;
-              margin-bottom: 5px;
-              margin-top: -5px;
-            `}
-          >
-            Holy S%#*! that was fast.
-          </h3>
-          <h3
-            css={css`
-              text-align: center;
-            `}
-          >
-            (With Gatsby its all fire, no waiting)
-          </h3>
-        </a>
-      </h4>
-
       <Button onClick={() => navigate(`/capabilities/`)}>
         Our Capabilities
       </Button>
