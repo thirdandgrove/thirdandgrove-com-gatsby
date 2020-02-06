@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useRef } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import { css } from '@emotion/core';
 // import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
@@ -14,6 +15,7 @@ import { ContactUs, BeUs } from '../components/Prefooter';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
 import { NewsletterFullWidthSection } from '../components/NewsletterForm';
+import { colors } from '../styles';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
@@ -65,7 +67,17 @@ export default ({ data }) => {
             mundane, one pixel at a time. */}
             Holy S%#*! that was fast.
             <br />
-            (With Gatsby it&apos;s all fire, no waiting)
+            (With{' '}
+            <Link
+              css={css`
+                color: ${colors.darkgray};
+                text-decoration: underline;
+              `}
+              to='/partners/gatsby'
+            >
+              Gatsby
+            </Link>{' '}
+            it&apos;s all fire, no waiting)
           </>
         ),
         mobileMinHeight: '93vh',
