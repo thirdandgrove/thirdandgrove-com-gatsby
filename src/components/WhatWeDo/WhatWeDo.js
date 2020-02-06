@@ -63,6 +63,7 @@ const WhatWeDo = forwardRef((props, ref) => {
           <h4
             css={css`
               text-align: center;
+              margin-bottom: 5px;
             `}
           >
             Holy S%#*! that was fast.
