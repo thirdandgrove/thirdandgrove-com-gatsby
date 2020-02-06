@@ -52,13 +52,13 @@ const WhatWeDo = forwardRef((props, ref) => {
     >
       <h3 css={smSectionHead}>What We Do</h3>
       <h4 css={headingCss}>
-        <a href='/capabilities#technology'>Technology</a>
-      </h4>
-      <h4 css={headingCss}>
         <a href='/capabilities#strategy'>Strategy</a>
       </h4>
       <h4 css={headingCss}>
         <a href='/capabilities#creative'>Creative</a>
+      </h4>
+      <h4 css={headingCss}>
+        <a href='/capabilities#technology'>Technology</a>
       </h4>
       <h4>Holy S%#*! that was fast.</h4>
       <h4>(With Gatsby its all fire, no waiting)</h4>
