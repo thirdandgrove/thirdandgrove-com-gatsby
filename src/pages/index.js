@@ -73,7 +73,7 @@ export default ({ data }) => {
                 color: ${colors.darkgray};
                 text-decoration: underline;
               `}
-              to='/partners/gatsby'
+              to='/partners/gatsby/'
             >
               Gatsby
             </Link>{' '}
