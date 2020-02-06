@@ -60,6 +60,8 @@ const WhatWeDo = forwardRef((props, ref) => {
       <h4 css={headingCss}>
         <a href='/capabilities#creative'>Creative</a>
       </h4>
+      <h4>Holy S%#*! that was fast.</h4>
+      <h4>(With Gatsby its all fire, no waiting)</h4>
       <Button onClick={() => navigate(`/capabilities/`)}>
         Our Capabilities
       </Button>
