@@ -59,9 +59,12 @@ export default ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            A digital agency{' '}
+            {/* This is going to re-implemented after a couple weeks */}
+            {/* A digital agency{' '}
             <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
-            mundane, one pixel at a time.
+            mundane, one pixel at a time. */}
+            <h1>Holy S%#*! that was fast.</h1>
+            <h1>(With Gatsby its all fire, no waiting)</h1>
           </>
         ),
         mobileMinHeight: '93vh',
