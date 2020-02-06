@@ -57,24 +57,32 @@ const WhatWeDo = forwardRef((props, ref) => {
       <h4 css={headingCss}>
         <a href='/capabilities#creative'>Creative</a>
       </h4>
-      <h4 css={headingCss}>
+      <h4
+        css={[
+          headingCss,
+          css`
+            text-align: center;
+          `,
+        ]}
+      >
         <a href='/capabilities#technology'>
           Technology
-          <h4
+          <h3
             css={css`
               text-align: center;
               margin-bottom: 5px;
+              margin-top: -5px;
             `}
           >
             Holy S%#*! that was fast.
-          </h4>
-          <h4
+          </h3>
+          <h3
             css={css`
               text-align: center;
             `}
           >
             (With Gatsby its all fire, no waiting)
-          </h4>
+          </h3>
         </a>
       </h4>
 
