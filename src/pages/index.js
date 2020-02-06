@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+// import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -11,7 +10,7 @@ import InsightsSlider from '../components/InsightsSlider';
 import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
-import { mediaQueries } from '../styles';
+// import { mediaQueries } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
 import { NewsletterFullWidthSection } from '../components/NewsletterForm';
@@ -24,36 +23,36 @@ export default ({ data }) => {
   const isScrolling = useHasBeenVisible(preload);
 
   // silly holiday treats
-  const today = new Date();
-  const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
+  // const today = new Date();
+  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
+  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
 
-  const Underlined = styled.span`
-    position: relative;
+  // const Underlined = styled.span`
+  //   position: relative;
 
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      height: 4px;
-      left: -10px;
-      width: calc(100% + 20px);
-      top: 100%;
-      background-image: ${isHalloween
-        ? `url('/images/dripping_blood.gif')`
-        : `url('/images/underline.png')`};
-      background-size: ${isHalloween ? `cover` : `contain`};
-      background-repeat: no-repeat;
+  //   &::after {
+  //     content: '';
+  //     display: block;
+  //     position: absolute;
+  //     height: 4px;
+  //     left: -10px;
+  //     width: calc(100% + 20px);
+  //     top: 100%;
+  //     background-image: ${isHalloween
+  //       ? `url('/images/dripping_blood.gif')`
+  //       : `url('/images/underline.png')`};
+  //     background-size: ${isHalloween ? `cover` : `contain`};
+  //     background-repeat: no-repeat;
 
-      ${mediaQueries.phoneLarge} {
-        top: auto;
-        bottom: 0;
-        height: 7px;
-        left: -20px;
-        width: calc(100% + 40px);
-      }
-    }
-  `;
+  //     ${mediaQueries.phoneLarge} {
+  //       top: auto;
+  //       bottom: 0;
+  //       height: 7px;
+  //       left: -20px;
+  //       width: calc(100% + 40px);
+  //     }
+  //   }
+  // `;
   return (
     <Layout
       headerData={{
