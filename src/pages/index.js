@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useRef } from 'react';
-import { graphql } from 'gatsby';
-import styled from '@emotion/styled';
+import { graphql, Link } from 'gatsby';
+import { css } from '@emotion/core';
+// import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -10,10 +11,11 @@ import InsightsSlider from '../components/InsightsSlider';
 import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
-import { mediaQueries } from '../styles';
+// import { mediaQueries } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
 import { NewsletterFullWidthSection } from '../components/NewsletterForm';
+import { colors } from '../styles';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
@@ -23,45 +25,59 @@ export default ({ data }) => {
   const isScrolling = useHasBeenVisible(preload);
 
   // silly holiday treats
-  const today = new Date();
-  const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
+  // const today = new Date();
+  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
+  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
 
-  const Underlined = styled.span`
-    position: relative;
+  // const Underlined = styled.span`
+  //   position: relative;
 
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      height: 4px;
-      left: -10px;
-      width: calc(100% + 20px);
-      top: 100%;
-      background-image: ${isHalloween
-        ? `url('/images/dripping_blood.gif')`
-        : `url('/images/underline.png')`};
-      background-size: ${isHalloween ? `cover` : `contain`};
-      background-repeat: no-repeat;
+  //   &::after {
+  //     content: '';
+  //     display: block;
+  //     position: absolute;
+  //     height: 4px;
+  //     left: -10px;
+  //     width: calc(100% + 20px);
+  //     top: 100%;
+  //     background-image: ${isHalloween
+  //       ? `url('/images/dripping_blood.gif')`
+  //       : `url('/images/underline.png')`};
+  //     background-size: ${isHalloween ? `cover` : `contain`};
+  //     background-repeat: no-repeat;
 
-      ${mediaQueries.phoneLarge} {
-        top: auto;
-        bottom: 0;
-        height: 7px;
-        left: -20px;
-        width: calc(100% + 40px);
-      }
-    }
-  `;
+  //     ${mediaQueries.phoneLarge} {
+  //       top: auto;
+  //       bottom: 0;
+  //       height: 7px;
+  //       left: -20px;
+  //       width: calc(100% + 40px);
+  //     }
+  //   }
+  // `;
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            A digital agency{' '}
+            {/* This is going to re-implemented after a couple weeks */}
+            {/* A digital agency{' '}
             <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
-            mundane, one pixel at a time.
+            mundane, one pixel at a time. */}
+            Holy S%#*! that was fast.
+            <br />
+            (With{' '}
+            <Link
+              css={css`
+                color: ${colors.darkgray};
+                text-decoration: underline;
+              `}
+              to='/partners/gatsby/'
+            >
+              Gatsby
+            </Link>{' '}
+            it&apos;s all fire, no waiting)
           </>
         ),
         mobileMinHeight: '93vh',
