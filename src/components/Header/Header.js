@@ -13,6 +13,7 @@ import FullWidthSection from '../FullWidthSection';
  *
  * @param {string} title - passed through to SEO
  * @param {string} label
+ * @param {string} subLabel
  * @param {bool} labelMobileOnly
  * @param {string} metaTitle - passed through to SEO
  * @param {string} description - passed through to SEO
@@ -30,6 +31,7 @@ import FullWidthSection from '../FullWidthSection';
 const Header = ({
   title,
   label,
+  subLabel,
   labelMobileOnly,
   metaTitle,
   description,
@@ -164,6 +166,21 @@ const Header = ({
       ${labelMobileOnly && `display: none`};
     }
   `;
+  const headersublabel = css`
+    font-family: ${fonts.serif};
+    font-size: 36px;
+    font-weight: ${weights.thin};
+    line-height: 2.4;
+    text-transform: capitalize;
+    color: ${fontColor};
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    ${mediaQueries.desktop} {
+      margin-bottom: 42px;
+      ${labelMobileOnly && `display: none`};
+    }
+  `;
   return (
     <>
       <SEO title={metaTitle || title} description={description} image={image} />
@@ -182,6 +199,11 @@ const Header = ({
           <h1 data-cy='titleText' css={headerTitle}>
             {title}
           </h1>
+        )}
+        {subLabel && (
+          <span data-cy='labelText' css={headersublabel}>
+            {subLabel}
+          </span>
         )}
         {children && children}
       </FullWidthSection>
