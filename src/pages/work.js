@@ -170,7 +170,7 @@ export default () => {
     allNodeHomePage,
   } = useStaticQuery(graphql`
     {
-      allEntitySubqueueCaseStudies {
+      allEntitySubqueueCaseStudies(limit: 1) {
         nodes {
           relationships {
             items {
