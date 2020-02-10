@@ -112,6 +112,19 @@ export const h1L = css`
   }
 `;
 
+export const h3L = css`
+  font-size: 24px;
+  font-weight: ${weights.medium};
+  line-height: 1.23;
+  letter-spacing: -0.45px;
+
+  ${mediaQueries.phoneLarge} {
+    font-size: 58px;
+    line-height: 1.16;
+    letter-spacing: 0;
+  }
+`;
+
 export const smSectionHead = css`
   margin-bottom: 0;
   font-size: 21px;

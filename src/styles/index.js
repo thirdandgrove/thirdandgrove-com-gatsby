@@ -12,6 +12,7 @@ export {
   btnStyles,
   h1Xl,
   h1L,
+  h3L,
   smSectionHead,
   contentH2,
   contentHeadings,
