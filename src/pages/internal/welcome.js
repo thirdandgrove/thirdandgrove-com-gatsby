@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { navigate, graphql } from 'gatsby';
@@ -24,15 +25,17 @@ const Checkbox = styled.div`
   border-radius: 6px;
   transition: all 150ms;
   border: ${colors.darkgrayFaded} solid 1px;
-  &::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &::after {
     content: ' ';
     display: inline-block;
-    margin-top: 8px;
     border-radius: 4px;
     height: ${props => (props.checked ? '18px' : '0px')};
     width: ${props => (props.checked ? '18px' : '0px')};
     background-color: ${colors.yellow};
-    transition: width ease 0.8s;
+    transition: all linear 0.2s;
   }
 `;
 
@@ -41,7 +44,14 @@ const WelcomeList = styled.ul`
   width: 60vw;
 `;
 
-const ListItem = ({ number, title, subtitle, showSubtitle, checked }) => (
+const ListItem = ({
+  number,
+  title,
+  subtitle,
+  showSubtitle,
+  checked,
+  onClick,
+}) => (
   <li
     css={css`
       display: flex;
@@ -60,6 +70,7 @@ const ListItem = ({ number, title, subtitle, showSubtitle, checked }) => (
       {number}
     </small>
     <div
+      onClick={onClick}
       css={css`
         text-align: left;
         flex-grow: 1;
@@ -73,13 +84,37 @@ const ListItem = ({ number, title, subtitle, showSubtitle, checked }) => (
         flex-grow: 0.5;
       `}
     >
-      <Checkbox checked={checked} />
+      <Checkbox onClick={onClick} checked={checked} />
     </div>
   </li>
 );
 
+const initialItems = [
+  {
+    title: 'Get your email',
+    subtitle: (
+      <>
+        <a href='mail.google.com'>Click here</a> to get the link to set up your
+        Third & Grove gmail account.
+      </>
+    ),
+    number: 1,
+  },
+  {
+    title: 'Set up calendar',
+    subtitle: (
+      <>
+        <a href='mail.google.com'>Click here</a> to get the link to set up your
+        Third & Grove gmail account.
+      </>
+    ),
+    number: 2,
+  },
+];
+
 const Welcome = () => {
-  const [checked, setChecked] = useState(true);
+  const [currentItem, updateCurrentItem] = useState(1);
+
   return (
     <Layout
       headerData={{
@@ -102,13 +137,15 @@ const Welcome = () => {
         `}
       >
         <WelcomeList>
-          <ListItem
-            title='Get your email'
-            subtitle='test subtitle'
-            showSubtitle
-            number={1}
-            checked={checked}
-          />
+          {initialItems.map(item => (
+            <ListItem
+              key={item.number}
+              {...item}
+              checked={currentItem > item.number}
+              showSubtitle={currentItem === item.number}
+              onClick={() => updateCurrentItem(currentItem + 1)}
+            />
+          ))}
         </WelcomeList>
       </FullWidthSection>
     </Layout>
