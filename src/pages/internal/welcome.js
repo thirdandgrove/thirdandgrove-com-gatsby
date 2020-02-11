@@ -69,6 +69,7 @@ const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
           active
             ? css`
                 color: ${colors.black};
+                margin: 0;
               `
             : css`
                 color: ${colors.darkgrayFaded};
