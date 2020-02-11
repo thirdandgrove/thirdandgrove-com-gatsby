@@ -215,6 +215,7 @@ const Header = ({
 export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
+  subLabel: PropTypes.string,
   labelMobileOnly: PropTypes.bool,
   metaTitle: PropTypes.string,
   description: PropTypes.string,
@@ -235,6 +236,7 @@ Header.propTypes = headerPropTypes;
 Header.defaultProps = {
   title: null,
   label: null,
+  subLabel: null,
   labelMobileOnly: false,
   metaTitle: null,
   description: null,

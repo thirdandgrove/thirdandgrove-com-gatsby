@@ -1,23 +1,16 @@
 /* eslint-disable */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { navigate, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import Layout from '../../components/layout';
 import FullWidthSection from '../../components/FullWidthSection';
-import SplitSection from '../../components/SplitSection';
-import {
-  container,
-  mediaQueries,
-  colors,
-  h3L,
-  contentH2,
-  fonts,
-} from '../../styles';
-import Button from '../../components/Button';
+import { container, mediaQueries, colors, h3L, fonts } from '../../styles';
+
+/**
+ * The content for this component lives in an array at the bottom of this file
+ * for reasons.
+ */
 
 const Checkbox = styled.div`
   width: 36px;
@@ -44,14 +37,7 @@ const WelcomeList = styled.ul`
   width: 60vw;
 `;
 
-const ListItem = ({
-  number,
-  title,
-  subtitle,
-  showSubtitle,
-  checked,
-  onClick,
-}) => (
+const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
   <li
     css={css`
       display: flex;
@@ -74,10 +60,36 @@ const ListItem = ({
       css={css`
         text-align: left;
         flex-grow: 1;
+        width: 38vw;
       `}
     >
-      <h3 css={h3L}>{title}</h3>
-      <p>{showSubtitle ? subtitle : ''}</p>
+      <h3
+        css={[
+          h3L,
+          active
+            ? css`
+                color: ${colors.black};
+              `
+            : css`
+                color: ${colors.darkgrayFaded};
+              `,
+        ]}
+      >
+        {title}
+      </h3>
+      <p
+        css={css`
+          color: ${colors.darkgrayFaded};
+          width: 350px;
+          font-size: 1.1em;
+          a {
+            color: ${colors.black};
+            text-decoration: underline;
+          }
+        `}
+      >
+        {active && subtitle}
+      </p>
     </div>
     <div
       css={css`
@@ -89,29 +101,6 @@ const ListItem = ({
   </li>
 );
 
-const initialItems = [
-  {
-    title: 'Get your email',
-    subtitle: (
-      <>
-        <a href='mail.google.com'>Click here</a> to get the link to set up your
-        Third & Grove gmail account.
-      </>
-    ),
-    number: 1,
-  },
-  {
-    title: 'Set up calendar',
-    subtitle: (
-      <>
-        <a href='mail.google.com'>Click here</a> to get the link to set up your
-        Third & Grove gmail account.
-      </>
-    ),
-    number: 2,
-  },
-];
-
 const Welcome = () => {
   const [currentItem, updateCurrentItem] = useState(1);
 
@@ -121,6 +110,7 @@ const Welcome = () => {
         title: `Let's get you all set up.`,
         subLabel: `Here's your checklist for getting started at TAG.`,
         mobileMinHeight: '93vh',
+        doNotIndex: true,
       }}
     >
       <FullWidthSection
@@ -137,13 +127,18 @@ const Welcome = () => {
         `}
       >
         <WelcomeList>
-          {initialItems.map(item => (
+          {checklistItems.map(item => (
             <ListItem
               key={item.number}
               {...item}
               checked={currentItem > item.number}
-              showSubtitle={currentItem === item.number}
-              onClick={() => updateCurrentItem(currentItem + 1)}
+              active={currentItem === item.number}
+              onClick={() =>
+                updateCurrentItem(
+                  // allow forward and back behavior based on item clicked
+                  item.number >= currentItem ? currentItem + 1 : currentItem - 1
+                )
+              }
             />
           ))}
         </WelcomeList>
@@ -153,3 +148,150 @@ const Welcome = () => {
 };
 
 export default Welcome;
+
+const checklistItems = [
+  {
+    title: 'Get your email',
+    subtitle: (
+      <>
+        <a href='mail.google.com'>Click here</a> to get the link to set up your
+        Third & Grove gmail account.
+      </>
+    ),
+    number: 1,
+  },
+  {
+    title: 'Set up calendar',
+    subtitle: (
+      <>
+        Confirm you can see the <a href='mail.google.com'>Calendar</a>{' '}
+        associated with you TAG email.
+      </>
+    ),
+    number: 2,
+  },
+  {
+    title: 'Read the handbook',
+    subtitle: (
+      <>
+        Disconver our company policies and the standards we hold ourselves to{' '}
+        <a href='mail.google.com'>here</a>
+      </>
+    ),
+    number: 3,
+  },
+  {
+    title: 'Sign some stuff',
+    subtitle: (
+      <>
+        Taxes, deposit forms, and all the other fun stuff. We need your{' '}
+        <a href='mail.google.com'>autograph.</a>
+      </>
+    ),
+    number: 4,
+  },
+  {
+    title: 'Get a laptop',
+    subtitle: (
+      <>
+        Once you get your laptop, there&apos;s a few things we need you to{' '}
+        <a href='mail.google.com'>set up.</a>
+      </>
+    ),
+    number: 5,
+  },
+  {
+    title: 'Set up Slack',
+    subtitle: `It's the main way we communicate. Check your email for the setup link.`,
+    number: 6,
+  },
+  {
+    title: 'Track your time',
+    subtitle: (
+      <>
+        Harvest is a huge part of our day to day. Take a few minutes to{' '}
+        <a href='mail.google.com'>check it out.</a>
+      </>
+    ),
+    number: 7,
+  },
+  {
+    title: 'Predict your time',
+    subtitle: (
+      <>
+        Not actually, but we need you to set up{' '}
+        <a href='mail.google.com'>forcast.</a> It&apos;s how we manage projects.
+      </>
+    ),
+    number: 8,
+  },
+
+  {
+    title: 'Log into Jira',
+    subtitle: `Please confirm you received the set up email and have an account with TAG`,
+    number: 9,
+  },
+  {
+    title: 'The wiki',
+    subtitle: (
+      <>
+        Read through it and make sure to sign our{' '}
+        <a href='mail.google.com'>Security Policy.</a>
+      </>
+    ),
+    number: 10,
+  },
+  {
+    title: 'Inventory form',
+    subtitle: (
+      <>
+        Read it, <a href='mail.google.com'>sign it.</a>
+      </>
+    ),
+    number: 11,
+  },
+  {
+    title: 'Work from home policy',
+    subtitle: (
+      <>
+        It&apos;s like work, only better. Need your John Hancock on{' '}
+        <a href='mail.google.com'>this form.</a>
+      </>
+    ),
+    number: 12,
+  },
+  {
+    title: 'Join JustWorks',
+    subtitle: (
+      <>
+        All of our employment paperwork and records, allin one place.{' '}
+        <a href='mail.google.com'>Check it.</a>
+      </>
+    ),
+    number: 13,
+  },
+  {
+    title: 'Know Your Team',
+    subtitle: `Company wide questions and discussion. Big online water cooler.`,
+    number: 14,
+  },
+  {
+    title: 'Zoom',
+    subtitle: (
+      <>
+        Sign up <a href='mail.google.com'>here</a> with your TAG email.
+      </>
+    ),
+    number: 15,
+  },
+  {
+    title: 'Schedule your review',
+    subtitle: `Connect with your manager, make sure this is set up in your calendar.`,
+    number: 16,
+  },
+  {
+    title: 'Trello there',
+    subtitle: `We use this as a kick starter to help you stay organized as you get started.`,
+    number: 17,
+  },
+];
