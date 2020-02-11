@@ -51,6 +51,10 @@ const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
         text-align: left;
         flex-grow: 0.3;
         font-family: ${fonts.serif};
+        ${active
+          ? `color: ${colors.black};
+                margin: 0;`
+          : `color: ${colors.darkgrayFaded};`}
       `}
     >
       {number}
