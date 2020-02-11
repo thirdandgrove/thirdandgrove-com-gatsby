@@ -20,6 +20,7 @@ const Checkbox = styled.div`
   border: ${colors.darkgrayFaded} solid 1px;
   display: flex;
   align-items: center;
+  cursor: pointer;
   justify-content: center;
   &::after {
     content: ' ';
@@ -65,6 +66,7 @@ const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
         text-align: left;
         flex-grow: 1;
         width: 38vw;
+        cursor: pointer;
       `}
     >
       <h3
