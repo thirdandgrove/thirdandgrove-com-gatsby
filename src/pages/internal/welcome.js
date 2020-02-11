@@ -265,7 +265,7 @@ const checklistItems = [
     title: 'Join JustWorks',
     subtitle: (
       <>
-        All of our employment paperwork and records, allin one place.{' '}
+        All of our employment paperwork and records, all in one place.{' '}
         <a href='mail.google.com'>Check it.</a>
       </>
     ),
