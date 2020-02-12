@@ -161,8 +161,10 @@ const checklistItems = [
     title: 'Get your email',
     subtitle: (
       <>
-        <a href='mail.google.com'>Click here</a> to get the link to set up your
-        Third & Grove gmail account.
+        <a target='_blank' href='#'>
+          Click here
+        </a>{' '}
+        to get the link to set up your Third & Grove gmail account.
       </>
     ),
     number: 1,
@@ -171,7 +173,10 @@ const checklistItems = [
     title: 'Set up calendar',
     subtitle: (
       <>
-        Confirm you can see the <a href='mail.google.com'>Calendar</a>{' '}
+        Confirm you can see the{' '}
+        <a target='_blank' href='#'>
+          Calendar
+        </a>{' '}
         associated with you TAG email.
       </>
     ),
@@ -182,7 +187,9 @@ const checklistItems = [
     subtitle: (
       <>
         Disconver our company policies and the standards we hold ourselves to{' '}
-        <a href='mail.google.com'>here</a>
+        <a target='_blank' href='#'>
+          here
+        </a>
       </>
     ),
     number: 3,
@@ -192,7 +199,9 @@ const checklistItems = [
     subtitle: (
       <>
         Taxes, deposit forms, and all the other fun stuff. We need your{' '}
-        <a href='mail.google.com'>autograph.</a>
+        <a target='_blank' href='#'>
+          autograph.
+        </a>
       </>
     ),
     number: 4,
@@ -202,7 +211,9 @@ const checklistItems = [
     subtitle: (
       <>
         Once you get your laptop, there&apos;s a few things we need you to{' '}
-        <a href='mail.google.com'>set up.</a>
+        <a target='_blank' href='#'>
+          set up.
+        </a>
       </>
     ),
     number: 5,
@@ -217,7 +228,9 @@ const checklistItems = [
     subtitle: (
       <>
         Harvest is a huge part of our day to day. Take a few minutes to{' '}
-        <a href='mail.google.com'>check it out.</a>
+        <a target='_blank' href='#'>
+          check it out.
+        </a>
       </>
     ),
     number: 7,
@@ -227,7 +240,10 @@ const checklistItems = [
     subtitle: (
       <>
         Not actually, but we need you to set up{' '}
-        <a href='mail.google.com'>forcast.</a> It&apos;s how we manage projects.
+        <a target='_blank' href='#'>
+          forcast.
+        </a>{' '}
+        It&apos;s how we manage projects.
       </>
     ),
     number: 8,
@@ -243,7 +259,9 @@ const checklistItems = [
     subtitle: (
       <>
         Read through it and make sure to sign our{' '}
-        <a href='mail.google.com'>Security Policy.</a>
+        <a target='_blank' href='#'>
+          Security Policy.
+        </a>
       </>
     ),
     number: 10,
@@ -252,7 +270,10 @@ const checklistItems = [
     title: 'Inventory form',
     subtitle: (
       <>
-        Read it, <a href='mail.google.com'>sign it.</a>
+        Read it,{' '}
+        <a target='_blank' href='#'>
+          sign it.
+        </a>
       </>
     ),
     number: 11,
@@ -262,7 +283,9 @@ const checklistItems = [
     subtitle: (
       <>
         It&apos;s like work, only better. Need your John Hancock on{' '}
-        <a href='mail.google.com'>this form.</a>
+        <a target='_blank' href='#'>
+          this form.
+        </a>
       </>
     ),
     number: 12,
@@ -272,7 +295,9 @@ const checklistItems = [
     subtitle: (
       <>
         All of our employment paperwork and records, all in one place.{' '}
-        <a href='mail.google.com'>Check it.</a>
+        <a target='_blank' href='#'>
+          Check it.
+        </a>
       </>
     ),
     number: 13,
@@ -286,7 +311,11 @@ const checklistItems = [
     title: 'Zoom',
     subtitle: (
       <>
-        Sign up <a href='mail.google.com'>here</a> with your TAG email.
+        Sign up{' '}
+        <a target='_blank' href='#'>
+          here
+        </a>{' '}
+        with your TAG email.
       </>
     ),
     number: 15,
