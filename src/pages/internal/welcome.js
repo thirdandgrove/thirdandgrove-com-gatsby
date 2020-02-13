@@ -114,7 +114,7 @@ const ListItem = ({
         flex-grow: 0.5;
       `}
     >
-      <Checkbox onClick={onClick} checked={checked} />
+      <Checkbox onClick={handleClick} checked={checked} />
     </div>
   </li>
 );
