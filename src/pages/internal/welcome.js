@@ -191,7 +191,7 @@ const checklistItems = [
     title: 'Read the handbook',
     subtitle: (
       <>
-        Disconver our company policies and the standards we hold ourselves to{' '}
+        Discover our company policies and the standards we hold ourselves to{' '}
         <a target='_blank' href='#'>
           here
         </a>
