@@ -72,7 +72,6 @@ const ListItem = ({
         text-align: left;
         flex-grow: 1;
         width: 38vw;
-        cursor: pointer;
       `}
     >
       <h3
@@ -82,9 +81,11 @@ const ListItem = ({
           active
             ? css`
                 color: ${colors.black};
+                cursor: pointer;
                 margin: 0;
               `
             : css`
+                cursor: pointer;
                 color: ${colors.darkgrayFaded};
               `,
         ]}
