@@ -29,7 +29,7 @@ const Checkbox = styled.div`
     height: ${props => (props.checked ? '18px' : '0px')};
     width: ${props => (props.checked ? '18px' : '0px')};
     background-color: ${colors.yellow};
-    transition: all linear 0.2s;
+    transition: all cubic-bezier(0.175, 0.985, 0.32, 1.275) 0.25s;
   }
 `;
 
@@ -90,8 +90,9 @@ const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
           width: 350px;
           font-size: 1.1em;
           height: ${active ? '80px' : '0px'};
+          opacity: ${active ? '100' : '0'};
           overflow: hidden;
-          transition: all linear 0.2s;
+          transition: opacity linear 0.4s;
           a {
             color: ${colors.black};
             text-decoration: underline;
