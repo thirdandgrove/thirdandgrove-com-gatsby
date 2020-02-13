@@ -174,7 +174,6 @@ const checklistItems = [
         to get the link to set up your Third & Grove gmail account.
       </>
     ),
-    number: 1,
   },
   {
     title: 'Set up calendar',
