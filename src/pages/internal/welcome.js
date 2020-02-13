@@ -89,13 +89,16 @@ const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
           color: ${colors.darkgrayFaded};
           width: 350px;
           font-size: 1.1em;
+          height: ${active ? '80px' : '0px'};
+          overflow: hidden;
+          transition: all linear 0.2s;
           a {
             color: ${colors.black};
             text-decoration: underline;
           }
         `}
       >
-        {active && subtitle}
+        {subtitle}
       </p>
     </div>
     <div
@@ -134,20 +137,24 @@ const Welcome = () => {
         `}
       >
         <WelcomeList>
-          {checklistItems.map(item => (
-            <ListItem
-              key={item.number}
-              {...item}
-              checked={currentItem > item.number}
-              active={currentItem === item.number}
-              onClick={() =>
-                updateCurrentItem(
-                  // allow forward and back behavior based on item clicked
-                  item.number >= currentItem ? currentItem + 1 : currentItem - 1
-                )
-              }
-            />
-          ))}
+          {checklistItems
+            .map((item, i) => ({ ...item, number: i + 1 }))
+            .map(item => (
+              <ListItem
+                key={item.number}
+                {...item}
+                checked={currentItem > item.number}
+                active={currentItem === item.number}
+                onClick={() =>
+                  updateCurrentItem(
+                    // allow forward and back behavior based on item clicked
+                    item.number >= currentItem
+                      ? currentItem + 1
+                      : currentItem - 1
+                  )
+                }
+              />
+            ))}
         </WelcomeList>
       </FullWidthSection>
     </Layout>
@@ -180,7 +187,6 @@ const checklistItems = [
         associated with you TAG email.
       </>
     ),
-    number: 2,
   },
   {
     title: 'Read the handbook',
@@ -192,7 +198,6 @@ const checklistItems = [
         </a>
       </>
     ),
-    number: 3,
   },
   {
     title: 'Sign some stuff',
@@ -204,7 +209,6 @@ const checklistItems = [
         </a>
       </>
     ),
-    number: 4,
   },
   {
     title: 'Get a laptop',
@@ -216,12 +220,10 @@ const checklistItems = [
         </a>
       </>
     ),
-    number: 5,
   },
   {
     title: 'Set up Slack',
     subtitle: `It's the main way we communicate. Check your email for the setup link.`,
-    number: 6,
   },
   {
     title: 'Track your time',
@@ -233,7 +235,6 @@ const checklistItems = [
         </a>
       </>
     ),
-    number: 7,
   },
   {
     title: 'Predict your time',
@@ -246,13 +247,11 @@ const checklistItems = [
         It&apos;s how we manage projects.
       </>
     ),
-    number: 8,
   },
 
   {
     title: 'Log into Jira',
     subtitle: `Please confirm you received the set up email and have an account with TAG`,
-    number: 9,
   },
   {
     title: 'The wiki',
@@ -264,7 +263,6 @@ const checklistItems = [
         </a>
       </>
     ),
-    number: 10,
   },
   {
     title: 'Inventory form',
@@ -276,7 +274,6 @@ const checklistItems = [
         </a>
       </>
     ),
-    number: 11,
   },
   {
     title: 'Work from home policy',
@@ -288,7 +285,6 @@ const checklistItems = [
         </a>
       </>
     ),
-    number: 12,
   },
   {
     title: 'Join JustWorks',
@@ -300,12 +296,10 @@ const checklistItems = [
         </a>
       </>
     ),
-    number: 13,
   },
   {
     title: 'Know Your Team',
     subtitle: `Company wide questions and discussion. Big online water cooler.`,
-    number: 14,
   },
   {
     title: 'Zoom',
@@ -318,16 +312,13 @@ const checklistItems = [
         with your TAG email.
       </>
     ),
-    number: 15,
   },
   {
     title: 'Schedule your review',
     subtitle: `Connect with your manager, make sure this is set up in your calendar.`,
-    number: 16,
   },
   {
     title: 'Trello there',
     subtitle: `We use this as a kick starter to help you stay organized as you get started.`,
-    number: 17,
   },
 ];
