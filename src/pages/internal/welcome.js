@@ -38,7 +38,14 @@ const WelcomeList = styled.ul`
   width: 60vw;
 `;
 
-const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
+const ListItem = ({
+  number,
+  title,
+  subtitle,
+  active,
+  checked,
+  handleClick,
+}) => (
   <li
     css={css`
       display: flex;
@@ -61,7 +68,6 @@ const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
       {number}
     </small>
     <div
-      onClick={onClick}
       css={css`
         text-align: left;
         flex-grow: 1;
@@ -70,6 +76,7 @@ const ListItem = ({ number, title, subtitle, active, checked, onClick }) => (
       `}
     >
       <h3
+        onClick={handleClick}
         css={[
           h3L,
           active
@@ -146,7 +153,7 @@ const Welcome = () => {
                 {...item}
                 checked={currentItem > item.number}
                 active={currentItem === item.number}
-                onClick={() =>
+                handleClick={() =>
                   updateCurrentItem(
                     // allow forward and back behavior based on item clicked
                     item.number >= currentItem
