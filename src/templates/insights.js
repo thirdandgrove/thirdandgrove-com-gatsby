@@ -39,7 +39,7 @@ const Insights = ({ data }) => {
         color: backgroundColor || colors.yellow,
         mobileMinHeight: '470px',
         titleMarginBottom: '70px',
-        image: imageSrc.src,
+        image: imageSrc ? imageSrc.src : '',
         doNotIndex: post.field_do_not_index,
       }}
     >

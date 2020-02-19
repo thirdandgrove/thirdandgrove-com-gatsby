@@ -166,11 +166,18 @@ Project.propTypes = {
 };
 
 export default () => {
-  const { allCaseStudy, allNodeHomePage } = useStaticQuery(graphql`
+  const {
+    allEntitySubqueueCaseStudies,
+    allNodeHomePage,
+  } = useStaticQuery(graphql`
     {
-      allCaseStudy(filter: { field_hidden: { eq: false } }) {
+      allEntitySubqueueCaseStudies(limit: 1) {
         nodes {
-          ...CaseStudyFragment
+          relationships {
+            items {
+              ...CaseStudyFragment
+            }
+          }
         }
       }
       allNodeHomePage(limit: 1) {
@@ -183,7 +190,7 @@ export default () => {
       }
     }
   `);
-  const studies = allCaseStudy.nodes;
+  const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
 
   return (
     <Layout
