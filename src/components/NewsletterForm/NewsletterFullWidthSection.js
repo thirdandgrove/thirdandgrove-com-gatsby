@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
@@ -6,7 +7,7 @@ import { mediaQueries, colors, fonts } from '../../styles';
 
 import NewsletterForm from './NewsletterForm';
 
-export default () => (
+const FullWidthNewsletter = ({ source }) => (
   <FullWidthSection padding='60px 20px'>
     <h1
       css={css`
@@ -69,7 +70,17 @@ export default () => (
         Keep up to date by signing up for our newsletter. It’ll be fun, we
         promise.
       </p>
-      <NewsletterForm />
+      <NewsletterForm source={source} />
     </div>
   </FullWidthSection>
 );
+
+FullWidthNewsletter.propTypes = {
+  source: PropTypes.string,
+};
+
+FullWidthNewsletter.defaultProps = {
+  source: '',
+};
+
+export default FullWidthNewsletter;

@@ -26,6 +26,7 @@ import FullWidthSection from '../FullWidthSection';
  * @param {string} image - passed to SEO
  * @param {string} heroImage - used as background on desktop
  * @param {string} heroImageMobile - used as background on mobile
+ * @param {boolean} doNotIndex - adds noindex to header
  */
 const Header = ({
   title,
@@ -43,6 +44,7 @@ const Header = ({
   image,
   heroImage,
   heroImageMobile,
+  doNotIndex,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -166,7 +168,12 @@ const Header = ({
   `;
   return (
     <>
-      <SEO title={metaTitle || title} description={description} image={image} />
+      <SEO
+        doNotIndex={doNotIndex}
+        title={metaTitle || title}
+        description={description}
+        image={image}
+      />
       <TopNav fill={fontColor} />
       <FullWidthSection
         css={sectionCSS}
@@ -206,6 +213,7 @@ export const headerPropTypes = {
   image: PropTypes.string,
   heroImage: PropTypes.string,
   heroImageMobile: PropTypes.string,
+  doNotIndex: PropTypes.bool,
 };
 
 Header.propTypes = headerPropTypes;
@@ -226,6 +234,7 @@ Header.defaultProps = {
   image: null,
   heroImage: null,
   heroImageMobile: null,
+  doNotIndex: false,
 };
 
 export default Header;

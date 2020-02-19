@@ -40,6 +40,7 @@ const Insights = ({ data }) => {
         mobileMinHeight: '470px',
         titleMarginBottom: '70px',
         image: imageSrc ? imageSrc.src : '',
+        doNotIndex: post.field_do_not_index,
       }}
     >
       <div
@@ -83,7 +84,7 @@ const Insights = ({ data }) => {
           type='insight'
         />
       </div>
-      <NewsletterFullWidthSection />
+      <NewsletterFullWidthSection source={post.field_contact_form} />
       <InsightsSlider
         data={data.allInsight}
         showButton={false}
@@ -104,6 +105,7 @@ export const query = graphql`
       limit: 5
       filter: {
         field_hidden: { eq: false }
+        field_do_not_index: { ne: true }
         relationships: {
           field_tags: { elemMatch: { name: { in: $PostTags } } }
         }
@@ -119,6 +121,8 @@ export const query = graphql`
       id
       title
       field_inverse_header
+      field_do_not_index
+      field_contact_form
       field_color {
         color
       }

@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import Input from '../Input';
 import Button from '../Button';
 import { encode } from '../../util';
 
-export default () => {
+const NewsletterForm = ({ source }) => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
 
@@ -19,7 +20,7 @@ export default () => {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'newsletter', email }),
+      body: encode({ 'form-name': 'newsletter', email, source }),
     }).then(() => {
       updateEmail('');
       hasSubmitted(true);
@@ -54,3 +55,13 @@ export default () => {
     </form>
   );
 };
+
+NewsletterForm.propTypes = {
+  source: PropTypes.string,
+};
+
+NewsletterForm.defaultProps = {
+  source: '',
+};
+
+export default NewsletterForm;
