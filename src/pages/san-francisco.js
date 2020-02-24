@@ -108,9 +108,9 @@ const SF = ({ data }) => {
           >
             top 10 Drupal agencies in the world
           </a>
-          . We’ve helped leading brands in Boston (and around the country)
-          maximize their Drupal investment and optimize performance with
-          reliable, stress-tested ongoing support.
+          . We’ve helped leading brands in San Francisco (and around the
+          country) maximize their Drupal investment and optimize performance
+          with reliable, stress-tested ongoing support.
         </h4>
         <Row>
           <div>
@@ -179,7 +179,7 @@ const SF = ({ data }) => {
           <Button onClick={() => navigate(`/contact/`)}>Get in Touch</Button>
         </TextWrapper>
         <TextWrapper backgroundColor={colors.lightblue}>
-          <h3>Join the best in Boston.</h3>
+          <h3>Join the best in San Francisco.</h3>
           <Button onClick={() => navigate(`/careers/`)}>Work at TAG</Button>
         </TextWrapper>
       </SplitSection>
