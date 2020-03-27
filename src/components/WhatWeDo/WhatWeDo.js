@@ -54,6 +54,7 @@ const WhatWeDo = forwardRef((props, ref) => {
       <div>
         {props.data.map((capabilities, index) => (
           <div>
+            <div>{index + 1}</div>
             <h4>{capabilities.title}</h4>
             <p>{capabilities.field_description}</p>
             <a href={capabilities.field_cta.uri}>
