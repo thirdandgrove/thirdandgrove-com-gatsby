@@ -84,7 +84,7 @@ export default ({ data }) => {
       }}
     >
       <ProjectsSlider data={data.allCaseStudy} />
-      <WhatWeDo ref={preload} />
+      <WhatWeDo data={data.allWhatWeDo} ref={preload} />
       {hasScrolled || isScrolling ? (
         <>
           <InsightsSlider data={data.allInsight} />
@@ -114,6 +114,15 @@ export const query = graphql`
         ...CaseStudyFragment
       }
     }
+    allEntitySubqueueWhatWeDoSection(limit: 1) {
+      nodes {
+        relationships {
+          items {
+            ...WhatWeDoFragment
+          }
+        }
+      }
+    }
     allInsight(
       sort: { fields: created, order: DESC }
       limit: 5
@@ -121,6 +130,46 @@ export const query = graphql`
     ) {
       nodes {
         ...InsightFragment
+      }
+    }
+  }
+  fragment WhatWeDoFragment on what_we_do {
+    id
+    title
+    field_description
+    field_image {
+      alt
+    }
+    field_cta {
+      title
+      uri
+    }
+    relationships {
+      node_type {
+        name
+      }
+      uid {
+        name
+      }
+      field_image {
+        id
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 530, maxHeight: 400) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+          childImageSlideMobile: childImageSharp {
+            fluid(maxWidth: 325, maxHeight: 250) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+          childImageSlideDesktop: childImageSharp {
+            fluid(maxWidth: 450, maxHeight: 400) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
     }
   }
