@@ -84,7 +84,12 @@ export default ({ data }) => {
       }}
     >
       <ProjectsSlider data={data.allCaseStudy} />
-      <WhatWeDo data={data.allWhatWeDo} ref={preload} />
+      <WhatWeDo
+        data={
+          data.allEntitySubqueueWhatWeDoSection.nodes[0].relationships.items
+        }
+        ref={preload}
+      />
       {hasScrolled || isScrolling ? (
         <>
           <InsightsSlider data={data.allInsight} />
@@ -133,7 +138,7 @@ export const query = graphql`
       }
     }
   }
-  fragment WhatWeDoFragment on what_we_do {
+  fragment WhatWeDoFragment on node__what_we_do {
     id
     title
     field_description

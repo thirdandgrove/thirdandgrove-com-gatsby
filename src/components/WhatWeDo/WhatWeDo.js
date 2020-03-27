@@ -5,6 +5,7 @@ import { navigate } from 'gatsby';
 import Button from '../Button';
 import { colors, mediaQueries, smSectionHead } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
+import Layout from '../layout';
 
 const WhatWeDo = forwardRef((props, ref) => {
   const headingCss = css`
@@ -38,7 +39,6 @@ const WhatWeDo = forwardRef((props, ref) => {
   return (
     <FullWidthSection
       ref={ref}
-      backgroundColor={colors.lightblue}
       height='750px'
       minHeight='550px'
       css={css`
@@ -51,18 +51,17 @@ const WhatWeDo = forwardRef((props, ref) => {
       `}
     >
       <h3 css={smSectionHead}>What We Do</h3>
-      <h4 css={headingCss}>
-        <a href='/capabilities#technology'>Technology</a>
-      </h4>
-      <h4 css={headingCss}>
-        <a href='/capabilities#strategy'>Strategy</a>
-      </h4>
-      <h4 css={headingCss}>
-        <a href='/capabilities#creative'>Creative</a>
-      </h4>
-      <Button onClick={() => navigate(`/capabilities/`)}>
-        Our Capabilities
-      </Button>
+      <div>
+        {props.data.map((capabilities, index) => (
+          <div>
+            <h4>{capabilities.title}</h4>
+            <p>{capabilities.field_description}</p>
+            <a href={capabilities.field_cta.uri}>
+              {capabilities.field_cta.title}
+            </a>
+          </div>
+        ))}
+      </div>
     </FullWidthSection>
   );
 });
