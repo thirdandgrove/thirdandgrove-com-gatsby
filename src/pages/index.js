@@ -159,16 +159,6 @@ export const query = graphql`
               ...GatsbyImageSharpFluid_withWebp
             }
           }
-          childImageSlideMobile: childImageSharp {
-            fluid(maxWidth: 325, maxHeight: 250) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-          childImageSlideDesktop: childImageSharp {
-            fluid(maxWidth: 450, maxHeight: 400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
         }
       }
     }
