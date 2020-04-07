@@ -24,10 +24,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
 
   const metaImage = image || defaultImage;
 
-  const imageWithFullpath =
-    typeof window !== 'undefined'
-      ? `${window.location.origin}${metaImage}`
-      : '';
+  const imageWithFullpath = `https://www.thirdandgrove.com${metaImage}`;
 
   return (
     <Helmet
