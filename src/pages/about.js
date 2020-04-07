@@ -326,14 +326,6 @@ const About = ({ data }) => {
             <h2>Linda Topp</h2>
             <p>Director of Shopify</p>
           </div>
-          <div>
-            <Img
-              alt='Angela Prendergast'
-              fluid={getSrc('prendergast', 'leader')}
-            />
-            <h2>Angela Prendergast</h2>
-            <p>QA Lead</p>
-          </div>
         </div>
       </FullWidthSection>
       <FullWidthSection
