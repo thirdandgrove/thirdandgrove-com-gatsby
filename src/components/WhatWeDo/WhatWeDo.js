@@ -53,8 +53,8 @@ const WhatWeDo = forwardRef((props, ref) => {
       <h3 css={smSectionHead}>What We Do</h3>
       <div>
         {props.data.map((capabilities, index) => (
-          <div>
-            <div>{index + 1}</div>
+          <div id={`capability-${index}`}>
+            <div>0{index + 1}</div>
             <h4>{capabilities.title}</h4>
             <p>{capabilities.field_description}</p>
             <a href={capabilities.field_cta.uri}>
