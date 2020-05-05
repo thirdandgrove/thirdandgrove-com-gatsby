@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
+import LogoGrid from '../components/LogoGrid';
 import {
   colors,
   fonts,
@@ -328,47 +329,13 @@ const About = ({ data }) => {
           </div>
         </div>
       </FullWidthSection>
-      <FullWidthSection
+      <LogoGrid
+        logoset='awards'
+        title='Trophy Case'
+        subtitle='We’ve won a few awards'
         backgroundColor={colors.yellow}
-        textAlign='center'
-        height='750px'
-        minHeight='730px'
-      >
-        <h3 css={smSectionHead}>Remote Control</h3>
-        <h2 css={h1L}>80% distributed, 100% united</h2>
-        <h4
-          css={[
-            pLight,
-            css`
-              ${mediaQueries.phoneLarge} {
-                width: ${contValues.min};
-              }
-            `,
-          ]}
-        >
-          While we have offices in Boston and San Francisco, we embrace a remote
-          culture, allowing our staff the freedom to do their best, wherever
-          that might be.
-        </h4>
-        <Row>
-          <div>
-            <h2>01</h2>
-            <h3>Drive Efficiency</h3>
-          </div>
-          <div>
-            <h2>02</h2>
-            <h3>Best Talent</h3>
-          </div>
-          <div>
-            <h2>03</h2>
-            <h3>Greater Diversity</h3>
-          </div>
-          <div>
-            <h2>04</h2>
-            <h3>Good for the Planet</h3>
-          </div>
-        </Row>
-      </FullWidthSection>
+        minHeight='0'
+      />
       <FullWidthSection
         css={css`
           padding: 44px 0 0;
