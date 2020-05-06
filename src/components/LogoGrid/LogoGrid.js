@@ -98,6 +98,20 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     }
   `;
 
+  const subTitleStyles = css`
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1;
+    font-size: 24px;
+    font-weight: 400;
+
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 20px;
+      font-size: 48px;
+      font-weight: 400;
+    }
+  `;
+
   const containerStyles = css`
     padding-top: 50px;
     padding-bottom: 50px;
@@ -119,7 +133,7 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
         {subtitle !== '' ? (
           <>
             <h2 css={[smSectionHead, multiLineStyles]}>{title}</h2>
-            <h2 css={[smSectionHead, multiLineStyles]}>{subtitle}</h2>
+            <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>
           </>
         ) : (
           <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
