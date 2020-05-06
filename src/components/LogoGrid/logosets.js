@@ -2,8 +2,8 @@ import React from 'react';
 
 import boyScoutLogo from './logos/boyscout.svg';
 import museLogo from './logos/muse-logo.svg';
-import acquiaEngageLogo from './logos/acquia-engage-logo.svg';
-import awwwLogo from './logos/awwwards-logo.svg';
+import acquiaEngageLogo from './logos/acquia-engage-logo.png';
+import awwwLogo from './logos/awwwards-logo.png';
 import harvardLogo from './logos/harvard.svg';
 import stubhubLogo from './logos/stubhub.svg';
 import googleLogo from './logos/google.svg';
@@ -405,19 +405,19 @@ export default (logoset, isSmScreen) => {
       <img
         src={acquiaEngageLogo}
         alt='Acquia Engage'
-        width={isSmScreen ? '131' : '150'}
+        width={isSmScreen ? '131' : '155'}
         height={isSmScreen ? '30' : '50'}
       />,
       <img
         src={awwwLogo}
         alt='Awww Awards'
-        width={isSmScreen ? '109' : '150'}
+        width={isSmScreen ? '109' : '135'}
         height={isSmScreen ? '42' : '62'}
       />,
       <img
         src={boyScoutLogo}
         alt='Boy Scouts of America'
-        width={isSmScreen ? '80' : '80'}
+        width={isSmScreen ? '80' : '75'}
         height={isSmScreen ? '42' : '62'}
       />,
     ],
