@@ -403,16 +403,16 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '64' : '84'}
       />,
       <img
-        src={acquiaEngageLogo}
-        alt='Acquia Engage'
-        width={isSmScreen ? '131' : '155'}
-        height={isSmScreen ? '30' : '50'}
-      />,
-      <img
         src={awwwLogo}
         alt='Awww Awards'
         width={isSmScreen ? '109' : '135'}
         height={isSmScreen ? '42' : '62'}
+      />,
+      <img
+        src={acquiaEngageLogo}
+        alt='Acquia Engage'
+        width={isSmScreen ? '131' : '155'}
+        height={isSmScreen ? '30' : '50'}
       />,
       <img
         src={boyScoutLogo}

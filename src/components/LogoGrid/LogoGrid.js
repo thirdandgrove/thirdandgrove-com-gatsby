@@ -67,10 +67,10 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     margin-bottom: 25px;
 
     ${mediaQueries.phoneLarge} {
-      flex: 0 0 ${logoCount === 5 ? '10%' : '15%'};
-      width: ${logoCount === 5 ? '10%' : '15%'};
-      max-width: ${logoCount === 5 ? '10%' : '15%'};
-      margin-bottom: 110px;
+      flex: 0 0 ${logoCount === 5 ? '15%' : '20%'};
+      width: ${logoCount === 5 ? '15%' : '20%'};
+      max-width: ${logoCount === 5 ? '15%' : '20%'};
+      margin-bottom: 50px;
     }
 
     img {
@@ -90,23 +90,23 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
 
   const multiLineStyles = css`
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     line-height: 1;
 
     ${mediaQueries.phoneLarge} {
-      margin-bottom: 20px;
+      margin-bottom: 0;
     }
   `;
 
   const subTitleStyles = css`
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     line-height: 1;
     font-size: 24px;
     font-weight: 400;
 
     ${mediaQueries.phoneLarge} {
-      margin-bottom: 20px;
+      margin-bottom: 0;
       font-size: 48px;
       font-weight: 400;
     }
