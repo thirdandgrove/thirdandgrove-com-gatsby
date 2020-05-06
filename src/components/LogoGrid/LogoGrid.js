@@ -103,12 +103,12 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     margin-bottom: 20px;
     line-height: 1;
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 700;
 
     ${mediaQueries.phoneLarge} {
       margin-bottom: 0;
       font-size: 48px;
-      font-weight: 400;
+      font-weight: 700;
     }
   `;
 
