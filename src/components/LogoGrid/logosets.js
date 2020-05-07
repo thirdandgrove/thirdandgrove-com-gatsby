@@ -1,5 +1,11 @@
 import React from 'react';
 
+import boyScoutLogo from './logos/boyscout.svg';
+import museLogo from './logos/muse-logo.svg';
+import acquiaEngageLogo from './logos/acquia-engage-logo.png';
+import awwwLogo from './logos/awwwards-logo.png';
+import harvardLogo from './logos/harvard.svg';
+import stubhubLogo from './logos/stubhub.svg';
 import googleLogo from './logos/google.svg';
 import foxLogo from './logos/fox.svg';
 import geLogo from './logos/ge.svg';
@@ -217,10 +223,10 @@ export default (logoset, isSmScreen) => {
     ],
     default: [
       <img
-        src={uclaLogo}
-        alt='UCLA'
-        width={isSmScreen ? '85' : '116'}
-        height={isSmScreen ? '40' : '54'}
+        src={harvardLogo}
+        alt='Harvard'
+        width={isSmScreen ? '100' : '129'}
+        height={isSmScreen ? '40' : '34'}
       />,
       <img
         src={googleLogo}
@@ -253,10 +259,10 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '32' : '43'}
       />,
       <img
-        src={sunpowerLogo}
-        alt='Sunpower'
-        width={isSmScreen ? '134' : '183'}
-        height={isSmScreen ? '17' : '24'}
+        src={stubhubLogo}
+        alt='Stubhub'
+        width={isSmScreen ? '100' : '130'}
+        height={isSmScreen ? '17' : '50'}
       />,
       <img
         src={pernodLogo}
@@ -386,6 +392,32 @@ export default (logoset, isSmScreen) => {
         src={gaLogo}
         alt='Google Analytics'
         width={isSmScreen ? '109' : '161'}
+        height={isSmScreen ? '42' : '62'}
+      />,
+    ],
+    awards: [
+      <img
+        src={museLogo}
+        alt='Muse Awards'
+        width={isSmScreen ? '140' : '200'}
+        height={isSmScreen ? '64' : '84'}
+      />,
+      <img
+        src={awwwLogo}
+        alt='Awww Awards'
+        width={isSmScreen ? '109' : '135'}
+        height={isSmScreen ? '42' : '62'}
+      />,
+      <img
+        src={acquiaEngageLogo}
+        alt='Acquia Engage'
+        width={isSmScreen ? '131' : '155'}
+        height={isSmScreen ? '30' : '50'}
+      />,
+      <img
+        src={boyScoutLogo}
+        alt='Boy Scouts of America'
+        width={isSmScreen ? '80' : '75'}
         height={isSmScreen ? '42' : '62'}
       />,
     ],
