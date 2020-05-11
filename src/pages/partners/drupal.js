@@ -60,7 +60,7 @@ export default query => {
         invert: true,
         label:
           'Stress-Tested Processes — Damn Good Engineers — Drupal 9 Leader',
-        title: 'The best Drupal engineers in the room',
+        title: 'The #1 Drupal agency in the world',
         color: colors.drupalBlue,
         mobileMinHeight: '620px',
       }}
@@ -69,8 +69,7 @@ export default query => {
         height='400px'
         align='left'
         css={css`
-          ${sectionPadding}
-          h3 {
+          ${sectionPadding} h3 {
             font-family: ${fonts.sans};
             font-size: 18px;
             font-weight: ${weights.bold};
@@ -110,7 +109,7 @@ export default query => {
           }
 
           ${mediaQueries.phoneLarge} {
-            ${container.min}
+            ${container.min};
           }
         `}
       >
@@ -152,8 +151,7 @@ export default query => {
         gridTemplateColumns='repeat(3, 1fr)'
         css={css`
           ${mediaQueries.phoneLarge} {
-            ${container.textOnly}
-            padding-top: 30px;
+            ${container.textOnly} padding-top: 30px;
           }
         `}
       >
@@ -173,8 +171,7 @@ export default query => {
       <SplitSection
         gridColumnGap='16px'
         css={css`
-          ${container.min}
-          ${mediaQueries.phoneLarge} {
+          ${container.min} ${mediaQueries.phoneLarge} {
             padding: 110px 0;
           }
           article {
