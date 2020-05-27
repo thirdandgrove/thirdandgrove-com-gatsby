@@ -21,12 +21,8 @@ export default () => {
 
   const JobList = styled.ul`
     padding-left: 0;
-    margin-bottom: 114px;
+    margin-bottom: 75px;
     font-family: ${fonts.serif};
-
-    ${mediaQueries.phoneLarge} {
-      margin-bottom: 120px;
-    }
 
     li {
       list-style: none;
@@ -46,6 +42,50 @@ export default () => {
       }
     }
   `;
+
+  const CalltoAction = styled.div`
+    padding-left: 0;
+    margin-bottom: 114px;
+    width: 100%;
+    margin: auto;
+
+    ${mediaQueries.phoneLarge} {
+      margin-bottom: 120px;
+      width: 75%;
+    }
+
+    div {
+      list-style: none;
+      margin: 73px 0;
+      text-align: center;
+
+      span {
+        font-weight: ${weights.thin};
+        font-size: 32px;
+        text-align: center;
+        line-height: 1.3;
+        font-family: ${fonts.serif};
+
+        ${mediaQueries.phoneLarge} {
+          font-size: 48px;
+          line-height: 1.5;
+        }
+      }
+    }
+  `;
+
+  const SubCalltoAction = styled.div`
+    font-weight: ${weights.thin};
+    font-size: 17px;
+    text-align: center;
+    line-height: 1.75;
+    font-family: ${fonts.sans};
+
+    ${mediaQueries.phoneLarge} {
+      font-size: 20px;
+    }
+  `;
+
   const jobs = data.allResumatorJob.nodes;
 
   // eliminate duplicate job listings
@@ -99,6 +139,21 @@ export default () => {
               </li>
             ))}
           </JobList>
+          <CalltoAction>
+            <div>
+              <span>
+                {`Who's got upwards of 110 thumbs and is always on the lookout for
+                top talent?`}
+              </span>
+            </div>
+            <SubCalltoAction>
+              {`You know it. We are. Got the hustle? Got the Drive? Send you resume to `}
+              <a href='mailto:careers@thirdandgrove.com'>
+                careers@thirdandgrove.com
+              </a>
+              {` and lets see what happens.`}
+            </SubCalltoAction>
+          </CalltoAction>
         </div>
       </FullWidthSection>
     </Layout>
