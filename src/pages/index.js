@@ -65,7 +65,9 @@ export default ({ data }) => {
             {/* A digital agency{' '}
             <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
             mundane, one pixel at a time. */}
-            Holy S%#*! that was fast.
+            Just your typical facemask-wearing, pixel-blaring, brand-daring,
+            human-caring, data-squaring digital agency.
+            {/* Holy S%#*! that was fast.
             <br />
             (With{' '}
             <Link
@@ -77,7 +79,7 @@ export default ({ data }) => {
             >
               Gatsby
             </Link>{' '}
-            it&apos;s all fire, no waiting)
+            it&apos;s all fire, no waiting) */}
           </>
         ),
         mobileMinHeight: '93vh',
