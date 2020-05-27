@@ -5,7 +5,7 @@ import useScrollPosition from '../../hooks/useScrollPosition';
 import FullWidthSection from '../FullWidthSection';
 import { mediaQueries, colors, fonts } from '../../styles';
 
-import NewsletterForm from './NewsletterForm';
+import NewsletterOverlayForm from './NewsletterOverlayForm';
 
 export default () => {
   const [isActive, setIsActive] = useState(false);
@@ -14,7 +14,7 @@ export default () => {
 
   useScrollPosition(
     ({ currPos }) => {
-      const isShow = currPos.y * -1 > document.body.scrollHeight / 2;
+      const isShow = currPos.y * -1 > document.body.scrollHeight / 4;
       if (isShow && !openedOnce) {
         openedOnce = true;
         setIsActive(!isActive);
@@ -58,20 +58,35 @@ export default () => {
         <div
           css={css`
             ${mediaQueries.phoneLarge} {
+              background-image: url('/images/illuminating.png');
               background-position: 345px -140px;
               background-size: 1100px;
               background-repeat: no-repeat;
               width: 700px;
-              padding: 115px 24px 24px 24px;
+              padding: 115px 48px 24px 48px;
             }
-            background-image: url('/images/illuminating.png');
-            background-position: 72px -114px;
-            background-size: 600px;
+
+            @media (min-width: 900px) and (orientation: landscape) {
+              padding: 115px 48px 24px 48px;
+            }
+
+            @media (max-width: 900px) and (orientation: landscape) {
+              padding: 4% 24px 24px 24px;
+            }
+
+            background-image: url('/images/illuminating-crop.png');
+            background-position: 100%;
+            background-size: contain;
             background-repeat: no-repeat;
-            width: 335px;
+            width: calc(100% - 60px);
             background-color: ${colors.white};
             padding: 200px 24px 24px 24px;
             position: relative;
+
+            @media (max-width: 420px) {
+              background-position: 218% -16px;
+              background-size: 91%;
+            }
           `}
         >
           <button
@@ -79,8 +94,9 @@ export default () => {
             onClick={toggle}
             css={css`
               ${mediaQueries.phoneLarge} {
-                top: -33px;
-                right: -33px;
+                top: -30px;
+                right: -30px;
+                padding: 20px;
               }
               position: absolute;
               top: 12px;
@@ -93,7 +109,7 @@ export default () => {
               cursor: pointer;
               user-select: none;
               background-color: ${colors.black};
-              padding: 20px;
+              padding: 15px;
               transition: none;
               border-radius: 5px;
             `}
@@ -137,21 +153,19 @@ export default () => {
                 font-size: 40px;
                 font-weight: 700;
                 line-height: 45px;
-                letter-spacing: -0.83px;
               }
               width: 100%;
               color: ${colors.reallydarkgray};
               font-family: ${fonts.serif};
               font-size: 30px;
               font-weight: 700;
-              letter-spacing: -0.45px;
               line-height: 36px;
-              margin-bottom: 0;
+              margin-bottom: 12px;
             `}
           >
             Illuminating
             <br />
-            Stuff, right?
+            stuff, right?
           </h1>
           <div
             css={css`
@@ -182,7 +196,7 @@ export default () => {
             >
               Join our mailing list and you can stay this informed all the time.
             </p>
-            <NewsletterForm
+            <NewsletterOverlayForm
               css={css`
                 max-with: 335px;
                 display: flex;
