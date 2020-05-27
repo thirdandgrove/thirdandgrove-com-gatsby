@@ -50,7 +50,7 @@ export default () => {
           flex-flow: column nowrap;
           justify-content: center;
           align-items: center;
-          background-color: ${colors.darkgrayFaded};
+          background-color: ${colors.darkergrayFaded};
           z-index: 9999;
           }
         `}
