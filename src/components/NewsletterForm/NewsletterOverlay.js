@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Global, css } from '@emotion/core';
 
-import useScrollPosition from '../../hooks/useScrollPosition';
 import FullWidthSection from '../FullWidthSection';
 import { mediaQueries, colors, fonts } from '../../styles';
 
@@ -12,18 +11,15 @@ export default () => {
   const toggle = () => setIsActive(!isActive);
   let openedOnce = false;
 
-  useScrollPosition(
-    ({ currPos }) => {
-      const isShow = currPos.y * -1 > document.body.scrollHeight / 4;
-      if (isShow && !openedOnce) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!openedOnce) {
+        toggle();
         openedOnce = true;
-        setIsActive(!isActive);
       }
-    },
-    [setIsActive],
-    null,
-    false
-  );
+    }, 1000 * 30);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -63,15 +59,11 @@ export default () => {
               background-size: 1100px;
               background-repeat: no-repeat;
               width: 700px;
-              padding: 115px 48px 24px 48px;
-            }
-
-            @media (min-width: 900px) and (orientation: landscape) {
-              padding: 115px 48px 24px 48px;
+              padding: 115px 24px;
             }
 
             @media (max-width: 900px) and (orientation: landscape) {
-              padding: 4% 24px 24px 24px;
+              padding: 4% 24px;
             }
 
             background-image: url('/images/illuminating-crop.png');
@@ -80,12 +72,13 @@ export default () => {
             background-repeat: no-repeat;
             width: calc(100% - 60px);
             background-color: ${colors.white};
-            padding: 200px 24px 24px 24px;
+            padding: 72px 24px;
             position: relative;
 
-            @media (max-width: 420px) {
-              background-position: 218% -16px;
-              background-size: 91%;
+            @media (max-width: 475px) {
+              padding: 125px 24px;
+              background-position: 119% -13px;
+              background-size: 70%;
             }
           `}
         >
@@ -108,10 +101,10 @@ export default () => {
               touch-action: manipulation;
               cursor: pointer;
               user-select: none;
-              background-color: ${colors.black};
+              background-color: ${colors.tagGray};
               padding: 15px;
               transition: none;
-              border-radius: 5px;
+              border-radius: 9px;
             `}
           >
             <span
@@ -121,9 +114,11 @@ export default () => {
                 ${mediaQueries.phoneLarge} {
                 }
                 color: ${colors.white};
-                background-color: ${colors.black};
                 height: 30px;
                 width: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 &:before {
                   content: ' before ';
                   transform: rotate(45deg);
@@ -196,14 +191,7 @@ export default () => {
             >
               Join our mailing list and you can stay this informed all the time.
             </p>
-            <NewsletterOverlayForm
-              css={css`
-                max-with: 335px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-              `}
-            />
+            <NewsletterOverlayForm />
           </div>
         </div>
       </FullWidthSection>
