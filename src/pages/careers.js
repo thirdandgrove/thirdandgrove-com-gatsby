@@ -76,14 +76,10 @@ export default () => {
 
   const SubCalltoAction = styled.div`
     font-weight: ${weights.thin};
-    font-size: 17px;
+    font-size: 16px;
     text-align: center;
     line-height: 1.75;
     font-family: ${fonts.sans};
-
-    ${mediaQueries.phoneLarge} {
-      font-size: 20px;
-    }
   `;
 
   const jobs = data.allResumatorJob.nodes;
@@ -117,7 +113,7 @@ export default () => {
             css={css`
               margin-bottom: 0;
               text-align: center;
-              font-size: 15px;
+              font-size: 16px;
               font-family: ${fonts.sans};
               font-weight: ${weights.light};
 
