@@ -147,8 +147,11 @@ export default () => {
               </span>
             </div>
             <SubCalltoAction>
-              {`You know it. We are. Got the hustle? Got the Drive? Send you resume to `}
-              <a href='mailto:careers@thirdandgrove.com'>
+              {`You know it. We are. Got the hustle? Got the Drive? Send your resume to `}
+              <a
+                href='mailto:careers@thirdandgrove.com'
+                title='careers@thirdandgrove.com'
+              >
                 careers@thirdandgrove.com
               </a>
               {` and lets see what happens.`}
