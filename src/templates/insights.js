@@ -8,7 +8,10 @@ import { colors, mediaQueries, jsBreakpoints } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 import InsightsSlider from '../components/InsightsSlider';
-import { NewsletterFullWidthSection } from '../components/NewsletterForm';
+import {
+  NewsletterFullWidthSection,
+  NewsletterOverlay,
+} from '../components/NewsletterForm';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -83,6 +86,7 @@ const Insights = ({ data }) => {
           type='insight'
         />
       </div>
+      <NewsletterOverlay />
       <NewsletterFullWidthSection />
       <InsightsSlider
         data={data.allInsight}
