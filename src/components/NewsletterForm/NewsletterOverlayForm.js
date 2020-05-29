@@ -42,6 +42,7 @@ export default () => {
           <Input
             css={css`
               background-color: ${colors.white};
+              letter-spacing: 0;
             `}
             type='email'
             name='email'
