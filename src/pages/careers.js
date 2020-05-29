@@ -49,9 +49,14 @@ export default () => {
     width: 100%;
     margin: auto;
 
+    ${mediaQueries.xs} {
+      margin-bottom: 114px;
+      width: 70%;
+    }
+
     ${mediaQueries.phoneLarge} {
       margin-bottom: 120px;
-      width: 75%;
+      width: 745px;
     }
 
     div {
