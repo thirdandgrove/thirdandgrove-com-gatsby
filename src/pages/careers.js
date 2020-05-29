@@ -61,7 +61,7 @@ export default () => {
 
     div {
       list-style: none;
-      margin: 73px 0;
+      margin: 73px auto;
       text-align: center;
 
       span {
@@ -85,6 +85,15 @@ export default () => {
     text-align: center;
     line-height: 1.75;
     font-family: ${fonts.sans};
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    ${mediaQueries.phoneLarge} {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+    }
   `;
 
   const jobs = data.allResumatorJob.nodes;
