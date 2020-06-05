@@ -39,10 +39,13 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    justify-content: center;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: auto;
     margin-bottom: -40px;
 
     ${mediaQueries.phoneLarge} {
+      max-width: 700px;
       flex-wrap: ${logoCount >= 6 ? 'wrap' : 'nowrap'};
     }
   `;
@@ -112,13 +115,12 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
 
   const subTitleStyles = css`
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 36px;
     line-height: 1;
     font-size: 24px;
     font-weight: 700;
 
     ${mediaQueries.phoneLarge} {
-      margin-bottom: 0;
       font-size: 48px;
       font-weight: 700;
     }
