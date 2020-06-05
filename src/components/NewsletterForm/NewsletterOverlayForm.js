@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import Input from '../Input';
@@ -8,7 +9,7 @@ import Button from '../Button';
 import { encode } from '../../util';
 import { colors } from '../../styles';
 
-export default () => {
+const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
 
@@ -24,6 +25,9 @@ export default () => {
     }).then(() => {
       updateEmail('');
       hasSubmitted(true);
+      setTimeout(() => {
+        setIsActive(!isActive);
+      }, 1000);
     });
   };
   return (
@@ -67,3 +71,10 @@ export default () => {
     </form>
   );
 };
+
+NewsletterOverlayForm.propTypes = {
+  setIsActive: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
+};
+
+export default NewsletterOverlayForm;
