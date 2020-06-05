@@ -35,6 +35,18 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     }
   `;
 
+  const LogosTight = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: -40px;
+
+    ${mediaQueries.phoneLarge} {
+      flex-wrap: ${logoCount >= 6 ? 'wrap' : 'nowrap'};
+    }
+  `;
+
   const logoItem = css`
     display: flex;
     align-items: center;
@@ -67,9 +79,9 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     margin-bottom: 25px;
 
     ${mediaQueries.phoneLarge} {
-      flex: 0 0 ${logoCount === 5 ? '15%' : '20%'};
-      width: ${logoCount === 5 ? '15%' : '20%'};
-      max-width: ${logoCount === 5 ? '15%' : '20%'};
+      flex: 0 0 ${logoCount === 5 ? '15%' : '18.75%'};
+      width: ${logoCount === 5 ? '15%' : '18.75%'};
+      max-width: ${logoCount === 5 ? '15%' : '18.75%'};
       margin-bottom: 50px;
     }
 
@@ -134,18 +146,28 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
           <>
             <h2 css={[smSectionHead, multiLineStyles]}>{title}</h2>
             <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>
+            <LogosTight>
+              {renderSet.map((logo, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <div key={i} css={logoItemTight}>
+                  {logo}
+                </div>
+              ))}
+            </LogosTight>
           </>
         ) : (
-          <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
+          <>
+            <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
+            <Logos>
+              {renderSet.map((logo, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <div key={i} css={logoItem}>
+                  {logo}
+                </div>
+              ))}
+            </Logos>
+          </>
         )}
-        <Logos>
-          {renderSet.map((logo, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={i} css={subtitle !== '' ? logoItemTight : logoItem}>
-              {logo}
-            </div>
-          ))}
-        </Logos>
       </div>
     </FullWidthSection>
   );
