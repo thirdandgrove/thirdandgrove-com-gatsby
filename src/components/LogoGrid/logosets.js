@@ -1,7 +1,7 @@
 import React from 'react';
 
 import addyAward from './logos/addy-award.svg';
-import museLogo from './logos/muse-logo.svg';
+import museLogo from './logos/muse-logo.png';
 import acquiaEngageLogo from './logos/acquia-engage-logo.png';
 import awwwLogo from './logos/awwwards-logo.png';
 import harvardLogo from './logos/harvard.svg';
@@ -399,13 +399,13 @@ export default (logoset, isSmScreen) => {
       <img
         src={addyAward}
         alt='Addy Awards'
-        width={isSmScreen ? '65' : '70'}
+        width={isSmScreen ? '65' : '90'}
         height={isSmScreen ? '42' : '62'}
       />,
       <img
         src={museLogo}
         alt='Muse Awards'
-        width={isSmScreen ? '140' : '200'}
+        width={isSmScreen ? '140' : '125'}
         height={isSmScreen ? '64' : '84'}
       />,
       <img
