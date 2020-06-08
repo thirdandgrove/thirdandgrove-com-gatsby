@@ -399,7 +399,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={addyAward}
         alt='Addy Awards'
-        width={isSmScreen ? '65' : '90'}
+        width={isSmScreen ? '80' : '90'}
         height={isSmScreen ? '42' : '62'}
       />,
       <img

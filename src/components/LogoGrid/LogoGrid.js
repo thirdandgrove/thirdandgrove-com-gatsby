@@ -86,6 +86,13 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
       width: ${logoCount === 5 ? '15%' : '18.75%'};
       max-width: ${logoCount === 5 ? '15%' : '18.75%'};
       margin-bottom: 50px;
+
+      &:last-of-type {
+        flex: 0 0 ${logoCount === 5 ? '15%' : '22%'};
+        width: ${logoCount === 5 ? '15%' : '22%'};
+        max-width: ${logoCount === 5 ? '15%' : '22%'};
+        margin-bottom: 50px;
+      }
     }
 
     img {
@@ -121,7 +128,7 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     font-weight: 700;
 
     ${mediaQueries.phoneLarge} {
-      font-size: 48px;
+      font-size: 44px;
       font-weight: 700;
     }
   `;
