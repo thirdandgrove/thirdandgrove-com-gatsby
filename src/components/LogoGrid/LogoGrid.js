@@ -81,6 +81,10 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     max-width: 50%;
     margin-bottom: 25px;
 
+    &:last-of-type {
+      margin-top: 6px;
+    }
+
     ${mediaQueries.phoneLarge} {
       flex: 0 0 ${logoCount === 5 ? '15%' : '18.75%'};
       width: ${logoCount === 5 ? '15%' : '18.75%'};
@@ -92,6 +96,7 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
         width: ${logoCount === 5 ? '15%' : '22%'};
         max-width: ${logoCount === 5 ? '15%' : '22%'};
         margin-bottom: 50px;
+        margin-top: 9px;
       }
     }
 

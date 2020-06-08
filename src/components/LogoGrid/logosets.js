@@ -2,7 +2,7 @@ import React from 'react';
 
 import addyAward from './logos/addy-award.svg';
 import museLogo from './logos/muse-logo.png';
-import acquiaEngageLogo from './logos/acquia-engage-logo.png';
+import acquiaEngageLogo from './logos/acquia-engage-logo.svg';
 import awwwLogo from './logos/awwwards-logo.png';
 import harvardLogo from './logos/harvard.svg';
 import stubhubLogo from './logos/stubhub.svg';
