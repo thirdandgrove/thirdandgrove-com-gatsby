@@ -405,7 +405,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={museLogo}
         alt='Muse Awards'
-        width={isSmScreen ? '140' : '125'}
+        width={isSmScreen ? '140' : '200'}
         height={isSmScreen ? '64' : '84'}
       />,
       <img

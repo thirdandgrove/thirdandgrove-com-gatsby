@@ -86,15 +86,22 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     }
 
     ${mediaQueries.phoneLarge} {
-      flex: 0 0 ${logoCount === 5 ? '15%' : '18.75%'};
-      width: ${logoCount === 5 ? '15%' : '18.75%'};
-      max-width: ${logoCount === 5 ? '15%' : '18.75%'};
+      flex: 0 0 ${logoCount === 5 ? '15%' : '18%'};
+      width: ${logoCount === 5 ? '15%' : '18%'};
+      max-width: ${logoCount === 5 ? '15%' : '18%'};
       margin-bottom: 50px;
 
+      &:nth-child(2) {
+        flex: 0 0 ${logoCount === 5 ? '15%' : '20%'};
+        width: ${logoCount === 5 ? '15%' : '20%'};
+        max-width: ${logoCount === 5 ? '15%' : '20%'};
+        margin-right: 7px;
+      }
+
       &:last-of-type {
-        flex: 0 0 ${logoCount === 5 ? '15%' : '22%'};
-        width: ${logoCount === 5 ? '15%' : '22%'};
-        max-width: ${logoCount === 5 ? '15%' : '22%'};
+        flex: 0 0 ${logoCount === 5 ? '15%' : '22.75%'};
+        width: ${logoCount === 5 ? '15%' : '22.75%'};
+        max-width: ${logoCount === 5 ? '15%' : '22.75%'};
         margin-bottom: 50px;
         margin-top: 9px;
       }
