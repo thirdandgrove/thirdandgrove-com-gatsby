@@ -92,9 +92,9 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
       margin-bottom: 50px;
 
       &:nth-child(2) {
-        flex: 0 0 ${logoCount === 5 ? '15%' : '20%'};
-        width: ${logoCount === 5 ? '15%' : '20%'};
-        max-width: ${logoCount === 5 ? '15%' : '20%'};
+        flex: 0 0 ${logoCount === 5 ? '15%' : '20.5%'};
+        width: ${logoCount === 5 ? '15%' : '20.5%'};
+        max-width: ${logoCount === 5 ? '15%' : '20.5%'};
         margin-right: 7px;
       }
 
