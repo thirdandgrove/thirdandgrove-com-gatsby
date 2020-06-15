@@ -35,6 +35,21 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     }
   `;
 
+  const LogosTight = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: auto;
+    margin-bottom: -40px;
+
+    ${mediaQueries.phoneLarge} {
+      max-width: 700px;
+      flex-wrap: ${logoCount >= 6 ? 'wrap' : 'nowrap'};
+    }
+  `;
+
   const logoItem = css`
     display: flex;
     align-items: center;
@@ -66,11 +81,36 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     max-width: 50%;
     margin-bottom: 25px;
 
+    &:last-of-type {
+      margin-top: 6px;
+    }
+
     ${mediaQueries.phoneLarge} {
-      flex: 0 0 ${logoCount === 5 ? '15%' : '20%'};
-      width: ${logoCount === 5 ? '15%' : '20%'};
-      max-width: ${logoCount === 5 ? '15%' : '20%'};
+      flex: 0 0 ${logoCount === 5 ? '15%' : '18%'};
+      width: ${logoCount === 5 ? '15%' : '18%'};
+      max-width: ${logoCount === 5 ? '15%' : '18%'};
       margin-bottom: 50px;
+
+      &:nth-child(2) {
+        flex: 0 0 ${logoCount === 5 ? '15%' : '20.5%'};
+        width: ${logoCount === 5 ? '15%' : '20.5%'};
+        max-width: ${logoCount === 5 ? '15%' : '20.5%'};
+        margin-right: 7px;
+      }
+
+      &:nth-child(3) {
+        flex: 0 0 ${logoCount === 5 ? '15%' : '20.5%'};
+        width: ${logoCount === 5 ? '15%' : '20.5%'};
+        max-width: ${logoCount === 5 ? '15%' : '20.5%'};
+        padding-bottom: 5px;
+      }
+
+      &:last-of-type {
+        flex: 0 0 ${logoCount === 5 ? '15%' : '22.75%'};
+        width: ${logoCount === 5 ? '15%' : '22.75%'};
+        max-width: ${logoCount === 5 ? '15%' : '22.75%'};
+        padding-bottom: 1px;
+      }
     }
 
     img {
@@ -100,14 +140,13 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
 
   const subTitleStyles = css`
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 36px;
     line-height: 1;
     font-size: 24px;
     font-weight: 700;
 
     ${mediaQueries.phoneLarge} {
-      margin-bottom: 0;
-      font-size: 48px;
+      font-size: 44px;
       font-weight: 700;
     }
   `;
@@ -134,18 +173,28 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
           <>
             <h2 css={[smSectionHead, multiLineStyles]}>{title}</h2>
             <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>
+            <LogosTight>
+              {renderSet.map((logo, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <div key={i} css={logoItemTight}>
+                  {logo}
+                </div>
+              ))}
+            </LogosTight>
           </>
         ) : (
-          <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
+          <>
+            <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
+            <Logos>
+              {renderSet.map((logo, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <div key={i} css={logoItem}>
+                  {logo}
+                </div>
+              ))}
+            </Logos>
+          </>
         )}
-        <Logos>
-          {renderSet.map((logo, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={i} css={subtitle !== '' ? logoItemTight : logoItem}>
-              {logo}
-            </div>
-          ))}
-        </Logos>
       </div>
     </FullWidthSection>
   );

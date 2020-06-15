@@ -1,8 +1,8 @@
 import React from 'react';
 
-import boyScoutLogo from './logos/boyscout.svg';
-import museLogo from './logos/muse-logo.svg';
-import acquiaEngageLogo from './logos/acquia-engage-logo.png';
+import addyAward from './logos/addy-award.svg';
+import museLogo from './logos/muse-logo.png';
+import acquiaEngageLogo from './logos/acquia-engage-logo.svg';
 import awwwLogo from './logos/awwwards-logo.png';
 import harvardLogo from './logos/harvard.svg';
 import stubhubLogo from './logos/stubhub.svg';
@@ -397,6 +397,12 @@ export default (logoset, isSmScreen) => {
     ],
     awards: [
       <img
+        src={addyAward}
+        alt='Addy Awards'
+        width={isSmScreen ? '80' : '90'}
+        height={isSmScreen ? '42' : '62'}
+      />,
+      <img
         src={museLogo}
         alt='Muse Awards'
         width={isSmScreen ? '140' : '200'}
@@ -411,14 +417,8 @@ export default (logoset, isSmScreen) => {
       <img
         src={acquiaEngageLogo}
         alt='Acquia Engage'
-        width={isSmScreen ? '131' : '155'}
+        width={isSmScreen ? '131' : '170'}
         height={isSmScreen ? '30' : '50'}
-      />,
-      <img
-        src={boyScoutLogo}
-        alt='Boy Scouts of America'
-        width={isSmScreen ? '80' : '75'}
-        height={isSmScreen ? '42' : '62'}
       />,
     ],
   };

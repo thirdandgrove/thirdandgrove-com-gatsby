@@ -191,7 +191,10 @@ export default () => {
             >
               Join our mailing list and you can stay this informed all the time.
             </p>
-            <NewsletterOverlayForm />
+            <NewsletterOverlayForm
+              setIsActive={setIsActive}
+              isActive={isActive}
+            />
           </div>
         </div>
       </FullWidthSection>
