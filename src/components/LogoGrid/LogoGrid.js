@@ -98,12 +98,18 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
         margin-right: 7px;
       }
 
+      &:nth-child(3) {
+        flex: 0 0 ${logoCount === 5 ? '15%' : '20.5%'};
+        width: ${logoCount === 5 ? '15%' : '20.5%'};
+        max-width: ${logoCount === 5 ? '15%' : '20.5%'};
+        padding-bottom: 5px;
+      }
+
       &:last-of-type {
         flex: 0 0 ${logoCount === 5 ? '15%' : '22.75%'};
         width: ${logoCount === 5 ? '15%' : '22.75%'};
         max-width: ${logoCount === 5 ? '15%' : '22.75%'};
-        margin-bottom: 50px;
-        margin-top: 9px;
+        padding-bottom: 1px;
       }
     }
 
