@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React from 'react';
 import { css } from '@emotion/core';
-import { colors } from '../../styles';
-import phoneSVG from './phone.svg';
+
 import FullWidthSection from '../FullWidthSection';
+
+import phoneSVG from './phone.svg';
 
 export default ({ src, title }) => {
   return (
