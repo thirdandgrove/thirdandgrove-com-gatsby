@@ -4,7 +4,7 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import Mp4 from '../../static/phone-1_2.mp4';
+import Mp4 from '../../static/phoneNoPhrame.mp4';
 import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';

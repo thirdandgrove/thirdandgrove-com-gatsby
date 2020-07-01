@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 
 import FullWidthSection from '../FullWidthSection';
 
-import phoneSVG from './phone.svg';
+import phoneSVG from './phone.png';
 
 export default ({ src, title }) => {
   return (
@@ -22,7 +22,7 @@ export default ({ src, title }) => {
           <div
             className='video--outer-container'
             css={css`
-              width: 300px;
+              width: 400px;
               position: relative;
               :before {
                 display: block;
@@ -55,6 +55,7 @@ export default ({ src, title }) => {
                   top: 0;
                   background-image: url(${phoneSVG});
                   background-repeat: no-repeat;
+                  background-size: contain;
                 }
               `}
             >
@@ -84,11 +85,11 @@ export default ({ src, title }) => {
                     top: 0;
                     left: 0;
                     overflow: hidden;
-                    width: 137%;
-                    height: 120%;
+                    width: 65%;
+                    height: 100%;
                     position: absolute;
-                    left: -55px;
-                    top: -49px;
+                    left: 66px;
+                    top: 0px;
                   `}
                 >
                   <source src={src} type='video/mp4' />
