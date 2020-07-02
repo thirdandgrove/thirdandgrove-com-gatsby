@@ -1,4 +1,8 @@
 /* eslint-disable react/no-danger */
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
