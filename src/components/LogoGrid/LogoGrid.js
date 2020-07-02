@@ -57,13 +57,13 @@ const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight }) => {
     flex: 0 0 50%;
     width: 50%;
     max-width: 50%;
-    margin-bottom: 90px;
+    margin-bottom: 70px;
 
     ${mediaQueries.phoneLarge} {
       flex: 0 0 ${logoCount === 5 ? '20%' : '25%'};
       width: ${logoCount === 5 ? '20%' : '25%'};
       max-width: ${logoCount === 5 ? '20%' : '25%'};
-      margin-bottom: 110px;
+      margin-bottom: 70px;
     }
 
     img {

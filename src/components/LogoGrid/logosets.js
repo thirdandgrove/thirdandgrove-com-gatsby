@@ -38,6 +38,9 @@ import umg from './logos/umg-logo.svg';
 import stubhub from './logos/stubhub-logo.svg';
 import reebok from './logos/reebok-logo.svg';
 import dassault from './logos/dassault-systems-logo.svg';
+import vmware from './logos/vmware-logo.svg';
+import draper from './logos/draper-logo.png';
+import alvinAiley from './logos/alvinailey-logo.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -241,8 +244,8 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '35' : '46'}
       />,
       <img
-        src={ccLogo}
-        alt='California Closets'
+        src={vmware}
+        alt='VMWare'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
@@ -259,16 +262,40 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '32' : '43'}
       />,
       <img
-        src={stubhubLogo}
-        alt='Stubhub'
-        width={isSmScreen ? '100' : '130'}
-        height={isSmScreen ? '17' : '50'}
+        src={draper}
+        alt='Draper'
+        width={isSmScreen ? '140' : '171'}
+        height={isSmScreen ? '49' : '63'}
+      />,
+      <img
+        src={kingArthur}
+        alt='King Arthur'
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
       />,
       <img
         src={pernodLogo}
         alt='Pernod Ricard'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
+      />,
+      <img
+        src={alvinAiley}
+        alt='King Arthur'
+        width={isSmScreen ? '125' : '171'}
+        height={isSmScreen ? '49' : '63'}
+      />,
+      <img
+        src={ccLogo}
+        alt='California Closets'
+        width={isSmScreen ? '99' : '136'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={stubhub}
+        alt='StubHub'
+        width={isSmScreen ? '166' : '240'}
+        height={isSmScreen ? '142' : '100'}
       />,
     ],
     about: [
