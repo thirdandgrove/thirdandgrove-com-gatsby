@@ -4,11 +4,9 @@ import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import Mp4 from '../../static/phoneNoPhrame.mp4';
 import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
-import PhoneVideo from '../components/PhoneVideo';
 
 const Studies = ({ data }) => {
   const post = data.caseStudy;
@@ -75,7 +73,6 @@ const Studies = ({ data }) => {
       >
         {post.field_subtitle}
       </p>
-      <PhoneVideo src={Mp4} title={post.title} />
       <ContentBody comps={post.relationships.field_components} type='study' />
     </Layout>
   );
@@ -113,6 +110,19 @@ export const query = graphql`
           name
         }
         field_components {
+          ... on component__text_split_with_video_phone {
+            id
+            field_video_file_name
+            field_reversed
+            field_body {
+              processed
+            }
+            relationships {
+              component_type {
+                name
+              }
+            }
+          }
           ... on component__text {
             id
             relationships {

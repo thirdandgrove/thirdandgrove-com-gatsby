@@ -5,6 +5,7 @@ import Image from './Image';
 import Quote from './Quote';
 import Text from './Text';
 import TextSplitwithImage from './TextImage';
+import TextSplitwithVideoPhone from './TextVideoPhone';
 import Prefooter from './Prefooter';
 
 const Components = {
@@ -12,6 +13,7 @@ const Components = {
   Quote,
   Text,
   TextSplitwithImage,
+  TextSplitwithVideoPhone,
   Prefooter,
 };
 
