@@ -109,10 +109,10 @@ export default () => {
         </div>
 
         <div css={contactItem}>
-          <h3 css={headingCss}>Oakland</h3>
-          555 12th St (5th Floor)
+          <h3 css={headingCss}>San Francisco</h3>
+          981 Mission St @ 6th Street
           <br />
-          Oakland, CA 94607
+          San Francisco, CA 94103
         </div>
 
         <div css={[contactItem, contactItemWide]}>
