@@ -11,11 +11,11 @@ import InsightsSlider from '../components/InsightsSlider';
 import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
-// import { mediaQueries } from '../styles';
+import { mediaQueries, colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
 import { NewsletterFullWidthSection } from '../components/NewsletterForm';
-import { colors } from '../styles';
+import line from '../../static/images/line.png';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
@@ -68,8 +68,22 @@ export default ({ data }) => {
             Doing our{' '}
             <span
               css={css`
+                position: relative;
+
                 &::after {
                   content: '';
+                  background-image: url(${line});
+                  background-repeat: no-repeat;
+                  background-size: contain;
+                  position: absolute;
+                  bottom: -3px;
+                  left: 0;
+                  width: 100%;
+                  height: 8px;
+
+                  ${mediaQueries.phoneLarge} {
+                    bottom: 0;
+                  }
                 }
               `}
             >
