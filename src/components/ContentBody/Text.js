@@ -26,7 +26,50 @@ const Text = ({ data }) => {
       height='auto'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
+        .stats-container,
+        .stat-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        }
+
+        .stats-container {
+          flex-direction: column;
+        }
+
+        .stat-container {
+          flex: auto;
+          flex-direction: column;
+          margin-bottom: 24px;
+
+          :last-of-type {
+            margin-bottom: 0;
+          }
+
+          h4 {
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: -0.2px;
+            line-height: 54px;
+            margin-bottom: 0;
+          }
+
+          p {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.21px;
+            line-height: 27px;
+          }
+        }
+
         ${container.min} ${mediaQueries.phoneLarge} {
+          .stats-container {
+            flex-direction: row;
+          }
+          .stat-container {
+            margin-bottom: 0;
+          }
           padding: 0;
         }
 

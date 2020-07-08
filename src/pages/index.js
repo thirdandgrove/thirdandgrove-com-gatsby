@@ -65,8 +65,17 @@ export default ({ data }) => {
             {/* A digital agency{' '}
             <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
             mundane, one pixel at a time. */}
-            Just your typical facemask-wearing, pixel-blaring, brand-daring,
-            human-caring, data-squaring digital agency.
+            Doing our{' '}
+            <span
+              css={css`
+                &::after {
+                  content: '';
+                }
+              `}
+            >
+              damndest
+            </span>{' '}
+            to make a difference, pixel by pixel.
             {/* Holy S%#*! that was fast.
             <br />
             (With{' '}

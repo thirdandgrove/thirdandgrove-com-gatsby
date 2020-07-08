@@ -110,6 +110,19 @@ export const query = graphql`
           name
         }
         field_components {
+          ... on component__text_split_with_video_phone {
+            id
+            field_video_file_name
+            field_reversed
+            field_body {
+              processed
+            }
+            relationships {
+              component_type {
+                name
+              }
+            }
+          }
           ... on component__text {
             id
             relationships {
