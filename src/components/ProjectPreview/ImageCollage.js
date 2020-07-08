@@ -111,6 +111,37 @@ const ImageCollage = ({ images, type }) => {
           height: 46.67%;
         }
       }
+
+      &.type-d {
+        left: 405px;
+        right: 20px;
+
+        .collage-board {
+          padding-top: 66.67%;
+        }
+
+        .primary-wrapper {
+          top: 8%;
+          right: 0;
+          width: 80%;
+          height: 84%;
+        }
+
+        .secondary-wrapper {
+          bottom: 0;
+          left: 0;
+          width: 45.33%;
+          height: 47%;
+        }
+
+        .tertiary-wrapper {
+          top: 0;
+          right: 54.67%;
+          width: 30.67%;
+          height: 42%;
+          display: none;
+        }
+      }
     }
   `;
 
