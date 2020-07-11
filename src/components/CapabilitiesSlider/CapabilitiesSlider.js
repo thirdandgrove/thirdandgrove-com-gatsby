@@ -51,15 +51,19 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
     };
   }
 
+  function handleResize() {
+    setWidth(window.innerWidth / 2);
+  }
+
   useEffect(() => {
-    const debouncedHandleResize = debounce(function handleResize() {
-      setWidth(window.innerWidth / 2);
-    }, 100);
+    const debouncedHandleResize = debounce(handleResize, 100);
 
     window.addEventListener('resize', debouncedHandleResize);
 
+    handleResize();
     setNav1(slider1.current);
     setNav2(slider2.current);
+
     return () => {
       window.removeEventListener('resize', debouncedHandleResize);
     };
