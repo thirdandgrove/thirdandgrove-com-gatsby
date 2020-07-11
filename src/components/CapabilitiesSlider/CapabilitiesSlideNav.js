@@ -14,7 +14,7 @@ import {
 
 export default function CapabilitiesSlideNav({ title }) {
   const NavItem = styled.p`
-    color: #282829;
+    color: ${colors.tagGray};
     font-family: 'NB International Pro';
     font-size: 15px;
     font-weight: bold;
@@ -22,6 +22,13 @@ export default function CapabilitiesSlideNav({ title }) {
     line-height: 36px;
     text-align: center;
     text-transform: uppercase;
+
+    span {
+      display: none;
+      ${mediaQueries.phoneLarge} {
+        display: flex;
+      }
+    }
   `;
 
   return (
