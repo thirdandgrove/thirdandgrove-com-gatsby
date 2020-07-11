@@ -18,7 +18,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
   const slider1 = useRef();
   const slider2 = useRef();
 
-  const [width, setWidth] = useState(window.innerWidth / 2);
+  const [width, setWidth] = useState(0);
 
   const settingsNav = {
     arrows: false,
