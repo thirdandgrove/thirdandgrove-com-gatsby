@@ -6,7 +6,6 @@ import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
-import WhatWeDo from '../components/WhatWeDo';
 import InsightsSlider from '../components/InsightsSlider';
 import CapabilitiesSlider from '../components/CapabilitiesSlider';
 import LogoGrid from '../components/LogoGrid';
@@ -19,43 +18,12 @@ import { NewsletterFullWidthSection } from '../components/NewsletterForm';
 import line from '../../static/images/line.png';
 
 // eslint-disable-next-line react/prop-types
-export default ({ data }) => {
+export default function Test({ data }) {
   const halfPage = useRef();
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
 
-  // silly holiday treats
-  // const today = new Date();
-  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
-
-  // const Underlined = styled.span`
-  //   position: relative;
-
-  //   &::after {
-  //     content: '';
-  //     display: block;
-  //     position: absolute;
-  //     height: 4px;
-  //     left: -10px;
-  //     width: calc(100% + 20px);
-  //     top: 100%;
-  //     background-image: ${isHalloween
-  //       ? `url('/images/dripping_blood.gif')`
-  //       : `url('/images/underline.png')`};
-  //     background-size: ${isHalloween ? `cover` : `contain`};
-  //     background-repeat: no-repeat;
-
-  //     ${mediaQueries.phoneLarge} {
-  //       top: auto;
-  //       bottom: 0;
-  //       height: 7px;
-  //       left: -20px;
-  //       width: calc(100% + 40px);
-  //     }
-  //   }
-  // `;
   return (
     <Layout
       headerData={{
@@ -91,32 +59,18 @@ export default ({ data }) => {
               damndest
             </span>{' '}
             to make a difference, pixel by pixel.
-            {/* Holy S%#*! that was fast.
-            <br />
-            (With{' '}
-            <Link
-              css={css`
-                color: ${colors.darkgray};
-                text-decoration: underline;
-              `}
-              to='/partners/gatsby/'
-            >
-              Gatsby
-            </Link>{' '}
-            it&apos;s all fire, no waiting) */}
           </>
         ),
         mobileMinHeight: '93vh',
       }}
     >
-      <ProjectsSlider data={data.allCaseStudy} />
+      {' '}
       <CapabilitiesSlider
         title='What we do'
         backgroundColor={colors.lightblue}
       />
       {hasScrolled || isScrolling ? (
         <>
-          <InsightsSlider data={data.allInsight} />
           <LogoGrid title='A Few of Our Friends' />
           <NewsletterFullWidthSection />
           <SplitSection>
@@ -129,7 +83,7 @@ export default ({ data }) => {
       )}
     </Layout>
   );
-};
+}
 
 // define fragments
 export const query = graphql`
