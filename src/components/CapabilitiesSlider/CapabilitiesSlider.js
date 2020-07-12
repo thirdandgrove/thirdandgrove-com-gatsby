@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { navigate } from 'gatsby';
+import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
@@ -12,8 +11,6 @@ import CapabilitiesSlideNav from './CapabilitiesSlideNav';
 import slides from './CapabilitiesSlide.json';
 
 const CapabilitiesSlider = ({ backgroundColor, title }) => {
-  const [width, setWidth] = useState(0);
-
   const settingsMain = {
     customPaging(i) {
       return (
@@ -23,7 +20,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       );
     },
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2500,
     cssEase: 'ease',
     infinite: true,
@@ -34,61 +31,9 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
     slidesToScroll: 1,
     variableWidth: true,
     dots: true,
+    focusOnSelect: true,
     dotsClass: 'slick-pager slick-dots',
   };
-
-  function debounce(fn, ms) {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(_ => {
-        timer = null;
-        fn.apply(this, args);
-      }, ms);
-    };
-  }
-
-  function handleResize() {
-    const getWidth =
-      window.innerWidth >= 900 ? window.innerWidth / 2 : window.innerWidth;
-    setWidth(getWidth);
-  }
-
-  useEffect(() => {
-    const debouncedHandleResize = debounce(handleResize, 50);
-
-    window.addEventListener('resize', debouncedHandleResize);
-    window.addEventListener('orientationchange', debouncedHandleResize);
-
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', debouncedHandleResize);
-      window.addEventListener('orientationchange', debouncedHandleResize);
-    };
-  }, []);
-
-  const NavStyles = css`
-    width: 600px;
-    margin-bottom: 48px;
-
-    .slider-nav {
-      cursor: pointer;
-    }
-
-    .slick-current .slider-nav span {
-      position: relative;
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: -20px;
-        left: 0;
-        background-color: ${colors.black};
-        height: 1px;
-        width: 100%;
-      }
-    }
-  `;
 
   return (
     <FullWidthSection
@@ -104,10 +49,13 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
           display: flex;
           flex-direction: column;
           margin-top: 24px;
+          width: 100%;
+
           ${mediaQueries.phoneLarge} {
             margin-top: 0;
             display: flex;
             flex-direction: column-reverse;
+            width: 100%;
           }
         }
 
@@ -223,8 +171,10 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
           }
 
           .slick-list {
+            width: 100%;
             ${mediaQueries.desktop} {
               padding: 0 90px;
+              width: 100%;
             }
           }
 
@@ -265,7 +215,7 @@ CapabilitiesSlider.propTypes = {
 
 CapabilitiesSlider.defaultProps = {
   backgroundColor: colors.white,
-  title: `Insights`,
+  title: `What we do`,
 };
 
 export default CapabilitiesSlider;
