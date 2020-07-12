@@ -19,6 +19,7 @@
     "no-use-before-define": 1,
     "prettier/prettier": "warn",
     "import/order": ["warn", { "newlines-between": "always" }],
+    "react/jsx-props-no-spreading": 0,
     "react/forbid-prop-types": 0,
     "react/prop-types": 1,
     "react/require-default-props": 1,

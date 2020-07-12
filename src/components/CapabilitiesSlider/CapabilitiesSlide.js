@@ -1,3 +1,5 @@
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
 import React, { useRef } from 'react';
 import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -16,6 +18,7 @@ import {
 
 function CapabilitiesSlide({ title, key, description, icon, link }) {
   const ref = useRef('');
+
   const imageSrc = require(`${icon}`);
   const Card = styled.div`
     opacity: 1 !important;
@@ -94,6 +97,11 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
+            img {
+              width: 50px;
+              height: 50px;
+            }
 
             .slider-button {
               opacity: 0;

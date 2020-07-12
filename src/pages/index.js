@@ -109,6 +109,7 @@ export default ({ data }) => {
         mobileMinHeight: '93vh',
       }}
     >
+      {' '}
       <ProjectsSlider data={data.allCaseStudy} />
       <CapabilitiesSlider
         title='What we do'

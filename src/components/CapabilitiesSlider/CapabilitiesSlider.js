@@ -23,7 +23,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       );
     },
     arrows: false,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 2500,
     cssEase: 'ease',
     infinite: true,
@@ -31,8 +31,8 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
     centerMode: true,
     centerPadding: '0',
     slidesToShow: 1,
+    slidesToScroll: 1,
     variableWidth: true,
-    focusOnSelect: true,
     dots: true,
     dotsClass: 'slick-pager slick-dots',
   };
@@ -198,8 +198,11 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
         {...settingsMain}
         css={css`
           .slick-slide {
-            width: ${width};
-            transition: width 0.2s ease;
+            width: 100vw;
+            ${mediaQueries.phoneLarge} {
+              width: calc(100vw / 2);
+              transition: width 0.2s ease;
+            }
           }
 
           .slick-center h3 {
@@ -227,8 +230,6 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
 
           .slick-dots li {
             ${mediaQueries.phoneLarge} {
-              width: 100%;
-              height: 100%;
               margin: 0;
             }
           }
@@ -244,7 +245,6 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
         {slides.map(node => {
           return (
             <CapabilitiesSlide
-              style={{ width }}
               key={node.title}
               title={node.title}
               description={node.description}
