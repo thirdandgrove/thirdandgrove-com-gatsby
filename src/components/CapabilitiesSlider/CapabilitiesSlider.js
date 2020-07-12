@@ -46,16 +46,14 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
         background-color: ${backgroundColor};
 
         .slick-slider {
-          display: flex;
-          flex-direction: column;
           margin-top: 24px;
-          width: 100%;
+          width: 100vw;
 
           ${mediaQueries.phoneLarge} {
             margin-top: 0;
             display: flex;
             flex-direction: column-reverse;
-            width: 100%;
+            width: 100vw;
           }
         }
 
@@ -89,16 +87,15 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
           border-bottom: 1px solid;
         }
 
-        .slick-dots li.slick-active button:before,
-        .slick-dots li button:before {
-        }
-
         .slick-dots li {
           width: 20px;
           height: 20px;
           display: flex;
           justify-content: center;
           align-items: center;
+          ${mediaQueries.phoneLarge} {
+            width: initial;
+          }
         }
 
         .slick-dots li button {
@@ -171,10 +168,8 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
           }
 
           .slick-list {
-            width: 100%;
             ${mediaQueries.desktop} {
               padding: 0 90px;
-              width: 100%;
             }
           }
 

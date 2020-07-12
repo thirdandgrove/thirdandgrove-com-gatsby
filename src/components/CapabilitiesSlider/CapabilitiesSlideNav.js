@@ -22,6 +22,7 @@ export default function CapabilitiesSlideNav({ title }) {
     line-height: 36px;
     text-align: center;
     text-transform: uppercase;
+    padding-bottom: 10px;
 
     span {
       display: none;
