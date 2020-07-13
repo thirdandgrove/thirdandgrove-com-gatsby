@@ -20,8 +20,8 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       );
     },
     arrows: false,
-    autoplay: false,
-    autoplaySpeed: 2500,
+    autoplay: true,
+    autoplaySpeed: 3000,
     cssEase: 'ease',
     infinite: true,
     speed: 1000,
