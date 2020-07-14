@@ -72,7 +72,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       width: calc(100% - 24px);
       margin: auto;
       padding: 0;
-      margin-bottom: 48px;
+      margin-bottom: 12px;
       position: relative;
 
       ${mediaQueries.phoneLarge} {
@@ -144,10 +144,11 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
 
     .slick-center h3 {
       color: ${colors.tagGray};
-      text-shadow: 1px 1px 0 ${colors.tagGray}, -1px 1px 0 ${colors.tagGray},
-        1px -1px 0 ${colors.tagGray}, -1px -1px 0 ${colors.tagGray},
-        1px 0 0 ${colors.tagGray}, 0 1px 0 ${colors.tagGray},
-        -1px 0 0 ${colors.tagGray}, -1px 0 0 ${colors.tagGray};
+      text-stroke: ${colors.tagGray};
+      -webkit-text-stroke: ${colors.tagGray};
+      text-stroke-width: 1px;
+      -webkit-text-stroke-width: 1px;
+      -webkit-font-smoothing: antialiased;
       transition: color 1s ease;
     }
 
@@ -159,10 +160,10 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       transition-delay: 1s;
     }
 
-    // .slick-slide:not(.slick-center):hover h3 {
-    //   color: rgba(40, 40, 41, 0.1);
-    //  transition: color 1s ease;
-    // }
+    .slick-slide:not(.slick-center):hover h3 {
+      color: rgba(40, 40, 41, 0.1);
+      transition: color 1s ease;
+    }
 
     .slick-list {
       ${mediaQueries.desktop} {
@@ -173,7 +174,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
 
   return (
     <FullWidthSection height='0' css={SliderSectionStyles}>
-      <h2 css={smSectionHead}>{title}</h2>
+      <h2 css={smSectionHead}>What We Do</h2>
 
       <Slider {...settingsMain}>
         {slides.map(node => {
@@ -199,7 +200,7 @@ CapabilitiesSlider.propTypes = {
 
 CapabilitiesSlider.defaultProps = {
   backgroundColor: colors.white,
-  title: `What we do`,
+  title: `What We Do`,
 };
 
 export default CapabilitiesSlider;

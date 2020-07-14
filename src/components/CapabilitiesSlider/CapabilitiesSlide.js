@@ -75,8 +75,8 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
     }
 
     h3 {
-      margin: 15px 20px 20px;
       line-height: 1.57;
+      letter-spacing: 1.5px;
 
       ${mediaQueries.desktop} {
         margin: 0;
@@ -111,10 +111,11 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
     text-align: center;
     color: ${colors.lightblue};
     transition: color 1s ease;
-    text-shadow: 1px 1px 0 ${colors.tagGray}, -1px 1px 0 ${colors.tagGray},
-      1px -1px 0 ${colors.tagGray}, -1px -1px 0 ${colors.tagGray},
-      1px 0 0 ${colors.tagGray}, 0 1px 0 ${colors.tagGray},
-      -1px 0 0 ${colors.tagGray}, -1px 0 0 ${colors.tagGray};
+    text-stroke: ${colors.tagGray};
+    -webkit-text-stroke: ${colors.tagGray};
+    text-stroke-width: 1px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-font-smoothing: antialiased;
 
     ${mediaQueries.phoneLarge} {
       color: ${colors.tagGray};
@@ -126,10 +127,11 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
       text-align: center;
       color: ${colors.lightblue};
       transition: color 1s ease;
-      text-shadow: 1px 1px 0 ${colors.tagGray}, -1px 1px 0 ${colors.tagGray},
-        1px -1px 0 ${colors.tagGray}, -1px -1px 0 ${colors.tagGray},
-        1px 0 0 ${colors.tagGray}, 0 1px 0 ${colors.tagGray},
-        -1px 0 0 ${colors.tagGray}, -1px 0 0 ${colors.tagGray};
+      text-stroke: ${colors.tagGray};
+      -webkit-text-stroke: ${colors.tagGray};
+      text-stroke-width: 1px;
+      -webkit-text-stroke-width: 1px;
+      -webkit-font-smoothing: antialiased;
     }
   `;
 
