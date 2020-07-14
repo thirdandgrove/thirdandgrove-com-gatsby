@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
@@ -20,9 +20,9 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       );
     },
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
-    cssEase: 'ease',
+    cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
     infinite: true,
     speed: 1000,
     centerMode: true,
@@ -142,14 +142,6 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       cursor: pointer;
     }
 
-    .slick-slide {
-      width: 100vw;
-      ${mediaQueries.phoneLarge} {
-        width: calc(100vw / 2);
-        transition: width 0.2s ease;
-      }
-    }
-
     .slick-center h3 {
       color: ${colors.tagGray};
       text-shadow: 1px 1px 0 ${colors.tagGray}, -1px 1px 0 ${colors.tagGray},
@@ -164,7 +156,13 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
     .slick-center .animate-opacity {
       opacity: 1;
       transition: opacity 1s ease;
+      transition-delay: 1s;
     }
+
+    // .slick-slide:not(.slick-center):hover h3 {
+    //   color: rgba(40, 40, 41, 0.1);
+    //  transition: color 1s ease;
+    // }
 
     .slick-list {
       ${mediaQueries.desktop} {

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
@@ -17,7 +17,53 @@ import {
 } from '../../styles';
 
 function CapabilitiesSlide({ title, key, description, icon, link }) {
-  const ref = useRef('');
+  const ref = useRef();
+  const [width, setWidth] = useState(0);
+  function debounce(fn, ms) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(_ => {
+        timer = null;
+        fn.apply(this, args);
+      }, ms);
+    };
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      let getWidth = 0;
+      const w = window.innerWidth;
+      switch (true) {
+        case w >= 1025:
+          getWidth =
+            ref.current.children[0].children[1].clientWidth +
+            window.innerWidth * 0.2;
+          break;
+        case w >= 900:
+          getWidth =
+            ref.current.children[0].children[1].clientWidth +
+            window.innerWidth * 0.1;
+          break;
+        default:
+          getWidth = '100vw';
+          break;
+      }
+      setWidth(getWidth);
+    }
+
+    const debouncedHandleResize = debounce(handleResize, 100);
+
+    window.addEventListener('resize', debouncedHandleResize);
+    window.addEventListener('orientationchange', debouncedHandleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', debouncedHandleResize);
+      window.addEventListener('orientationchange', debouncedHandleResize);
+    };
+  }, []);
 
   const imageSrc = require(`${icon}`);
   const Card = styled.div`
@@ -70,7 +116,7 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
       1px 0 0 ${colors.tagGray}, 0 1px 0 ${colors.tagGray},
       -1px 0 0 ${colors.tagGray}, -1px 0 0 ${colors.tagGray};
 
-    ${mediaQueries.desktop} {
+    ${mediaQueries.phoneLarge} {
       color: ${colors.tagGray};
       font-family: Canela;
       font-size: 115px !important;
@@ -88,7 +134,7 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
   `;
 
   return (
-    <Card ref={ref}>
+    <Card ref={ref} style={{ width }}>
       <span
         css={[
           container.max,
