@@ -2,23 +2,16 @@
 /* eslint-disable global-require */
 import React, { useRef, useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import Button from '../Button';
-import {
-  colors,
-  mediaQueries,
-  smSectionHead,
-  fonts,
-  weights,
-  container,
-} from '../../styles';
+import { colors, mediaQueries, container } from '../../styles';
 
 function CapabilitiesSlide({ title, key, description, icon, link }) {
   const ref = useRef();
   const [width, setWidth] = useState(0);
+
   function debounce(fn, ms) {
     let timer;
     return (...args) => {
@@ -79,7 +72,6 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
       letter-spacing: 1.5px;
 
       ${mediaQueries.desktop} {
-        margin: 0;
         line-height: 1.375;
       }
     }
@@ -87,7 +79,6 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
 
   const P = styled.p`
     color: ${colors.tagGray};
-    font-family: 'NB International Pro';
     font-size: 16px;
     font-weight: 300;
     letter-spacing: 0.2px;
@@ -95,6 +86,7 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
     text-align: center;
     max-width: 420px;
     width: calc(100% - 24px);
+    min-height: 81px;
 
     ${mediaQueries.phoneLarge} {
       margin-top: 24px;
@@ -103,7 +95,6 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
   `;
 
   const H3 = styled.h3`
-    color: ${colors.tagGray};
     font-size: 60px !important;
     font-weight: 500;
     letter-spacing: -0.7px;
@@ -118,20 +109,10 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
     -webkit-font-smoothing: antialiased;
 
     ${mediaQueries.phoneLarge} {
-      color: ${colors.tagGray};
-      font-family: Canela;
       font-size: 115px !important;
       font-weight: 500;
       letter-spacing: 1.53px;
       line-height: 76px;
-      text-align: center;
-      color: ${colors.lightblue};
-      transition: color 1s ease;
-      text-stroke: ${colors.tagGray};
-      -webkit-text-stroke: ${colors.tagGray};
-      text-stroke-width: 1px;
-      -webkit-text-stroke-width: 1px;
-      -webkit-font-smoothing: antialiased;
     }
   `;
 
