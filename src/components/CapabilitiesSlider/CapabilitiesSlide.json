@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Strategy",
+    "description": "The foundation for great work. Know your customer, your goals, and how to reach them.",
+    "icon": "./icons/strategy.png",
+    "link": "/capabilities#strategy",
+    "index": "1"
+  },
+  {
+    "title": "Creative",
+    "description": "Where data, culture, and good looks come together. Create the strongest connection to the brand experience, and look good doing it.",
+    "icon": "./icons/creative.png",
+    "link": "/capabilities#creative",
+    "index": "2"
+  },
+  {
+    "title": "Technology",
+    "description": "Work with the best engineers in the room—no matter what room you’re in. Our engineers are writing and discovering the future of digital excellence.",
+    "icon": "./icons/technology.png",
+    "link": "/capabilities#technology",
+    "index": "0"
+  },
+  {
+    "title": "Data",
+    "description": "More than points on a graph. Data tells us how connect, and how we can make those connections more meaningful.",
+    "icon": "./icons/data.png",
+    "link": "/capabilities#strategy",
+    "index": "3"
+  }
+]
