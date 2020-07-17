@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
@@ -49,6 +49,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
 
     .slick-list {
       cursor: pointer;
+      width: 100vw;
     }
 
     .slick-slider {
@@ -76,16 +77,8 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       position: relative;
 
       ${mediaQueries.phoneLarge} {
-        display: flex !important;
-        justify-content: space-between;
-        flex-direction: row;
-        list-style: none;
         max-width: 450px;
-        width: calc(100% - 24px);
-        margin: auto;
-        padding: 0;
         margin-bottom: 136px;
-        position: relative;
       }
     }
 
@@ -174,7 +167,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
 
   return (
     <FullWidthSection height='0' css={SliderSectionStyles}>
-      <h2 css={smSectionHead}>What We Do</h2>
+      <h2 css={smSectionHead}>{title}</h2>
 
       <Slider {...settingsMain}>
         {slides.map(node => {

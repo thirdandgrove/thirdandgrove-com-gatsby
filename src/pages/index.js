@@ -112,7 +112,7 @@ export default ({ data }) => {
       {' '}
       <ProjectsSlider data={data.allCaseStudy} />
       <CapabilitiesSlider
-        title='What we do'
+        title='What We Do'
         backgroundColor={colors.lightblue}
       />
       {hasScrolled || isScrolling ? (

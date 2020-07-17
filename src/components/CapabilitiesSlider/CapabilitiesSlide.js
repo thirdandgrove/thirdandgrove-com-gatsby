@@ -1,6 +1,7 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import React, { useRef, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
@@ -8,7 +9,9 @@ import styled from '@emotion/styled';
 import Button from '../Button';
 import { colors, mediaQueries, container } from '../../styles';
 
-function CapabilitiesSlide({ title, key, description, icon, link }) {
+import img from './icons/data.png';
+
+function CapabilitiesSlide({ title, description, icon, link }) {
   const ref = useRef();
   const [width, setWidth] = useState(0);
 
@@ -39,7 +42,7 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
             window.innerWidth * 0.1;
           break;
         default:
-          getWidth = '100vw';
+          getWidth = window.innerWidth;
           break;
       }
       setWidth(getWidth);
@@ -157,5 +160,19 @@ function CapabilitiesSlide({ title, key, description, icon, link }) {
     </Card>
   );
 }
+
+CapabilitiesSlide.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  icon: PropTypes.string,
+  link: PropTypes.string,
+};
+
+CapabilitiesSlide.defaultProps = {
+  title: 'Title',
+  description: 'Description',
+  icon: img,
+  link: 'Link',
+};
 
 export default CapabilitiesSlide;
