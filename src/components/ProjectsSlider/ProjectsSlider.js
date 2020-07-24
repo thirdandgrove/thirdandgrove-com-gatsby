@@ -8,7 +8,7 @@ import { mediaQueries, fonts, weights, colors } from '../../styles';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
-const ProjectsSlider = ({ backgroundColor, data }) => {
+const ProjectsSlider = ({ backgroundColor, data, tech }) => {
   const [count, setCount] = useState('01');
 
   const settings = {
@@ -29,8 +29,19 @@ const ProjectsSlider = ({ backgroundColor, data }) => {
     },
   };
 
+  let projects = [];
+  if (tech) {
+    projects = data.nodes.filter(({ relationships }) =>
+      relationships.field_tags.some(({ name }) => name === tech)
+    );
+
+    projects = projects.length === 0 ? data.nodes : projects;
+  } else {
+    projects = data.nodes;
+  }
+
   const totalSlides =
-    data.nodes.length < 10 ? '0' + data.nodes.length : data.nodes.length;
+    projects.length < 10 ? '0' + projects.length : projects.length;
 
   const countStyles = css`
     position: absolute;
@@ -124,14 +135,12 @@ const ProjectsSlider = ({ backgroundColor, data }) => {
           }
         `}
       >
-        {data.nodes.map(node => {
+        {projects.map(node => {
           return <ProjectPreview key={node.title} project={node} />;
         })}
       </Slider>
       <footer css={countStyles}>
-        {count}
-        &nbsp;-&nbsp;
-        {totalSlides}
+        {totalSlides !== '01' ? `${count} - ${totalSlides}` : ''}
       </footer>
     </FullWidthSection>
   );
@@ -140,10 +149,12 @@ const ProjectsSlider = ({ backgroundColor, data }) => {
 ProjectsSlider.propTypes = {
   backgroundColor: PropTypes.string,
   data: PropTypes.object.isRequired,
+  tech: PropTypes.string,
 };
 
 ProjectsSlider.defaultProps = {
   backgroundColor: colors.white,
+  tech: '',
 };
 
 export default ProjectsSlider;
