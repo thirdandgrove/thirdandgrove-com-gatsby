@@ -50,5 +50,6 @@ export const colors = {
   gatsbyPurple: '#663399',
   drupalBlue: '#29A8DF',
   shopifyGreen: '#80AB42',
+  bigCommerceBlue: '#0D52FF',
   red: 'red',
 };

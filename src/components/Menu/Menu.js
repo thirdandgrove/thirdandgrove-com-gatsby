@@ -101,6 +101,19 @@ const Menu = ({ menuOpen, toggleOpen }) => {
     }
   `;
 
+  const linkGroupStyles = css`
+    display: inline-block;
+    color: ${colors.whiteFaded};
+    font-weight: ${weights.medium};
+    letter-spacing: -0.2px;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      color: ${colors.white};
+    }
+  `;
+
   const linkPrimaryStyle = css`
     font-size: 36px;
     line-height: 57px;
@@ -113,10 +126,10 @@ const Menu = ({ menuOpen, toggleOpen }) => {
 
   const linkSecondaryStyle = css`
     line-height: 42px;
-    font-size: 24px;
+    font-size: 20px;
 
     ${mediaQueries.phoneLarge} {
-      font-size: 36px;
+      font-size: 30px;
       line-height: 60px;
     }
   `;
@@ -159,11 +172,9 @@ const Menu = ({ menuOpen, toggleOpen }) => {
 
   const linksWrapper = css`
     columns: 2;
-    max-height: 90px;
 
     ${mediaQueries.phoneLarge} {
       columns: unset;
-      max-height: none;
     }
   `;
 
@@ -300,32 +311,46 @@ const Menu = ({ menuOpen, toggleOpen }) => {
             Partners
           </h5>
           <div css={linksWrapper}>
-            <Link
-              css={[
-                linkSecondaryStyle,
-                textFadeIn,
-                linkBaseStyles,
-                mobileDelay8,
-                desktopDelay1,
-              ]}
-              onClick={() => toggleOpen()}
-              to='/partners/drupal/'
-            >
-              Drupal
-            </Link>
-            <Link
-              css={[
-                linkSecondaryStyle,
-                textFadeIn,
-                linkBaseStyles,
-                mobileDelay9,
-                desktopDelay2,
-              ]}
-              onClick={() => toggleOpen()}
-              to='/partners/acquia/'
-            >
-              Acquia
-            </Link>
+            <span css={[linkSecondaryStyle, linkBaseStyles]}>
+              <Link
+                css={[
+                  textFadeIn,
+                  mobileDelay8,
+                  desktopDelay1,
+                  linkSecondaryStyle,
+                  linkGroupStyles,
+                ]}
+                onClick={() => toggleOpen()}
+                to='/partners/drupal/'
+              >
+                Drupal
+              </Link>
+              <span
+                css={[
+                  textFadeIn,
+                  mobileDelay8,
+                  desktopDelay1,
+                  linkSecondaryStyle,
+                  linkGroupStyles,
+                ]}
+              >
+                &nbsp;
+              </span>
+              <Link
+                css={[
+                  textFadeIn,
+                  mobileDelay8,
+                  desktopDelay1,
+                  linkSecondaryStyle,
+                  linkGroupStyles,
+                ]}
+                onClick={() => toggleOpen()}
+                to='/partners/acquia/'
+              >
+                Acquia
+              </Link>
+            </span>
+
             <Link
               css={[
                 linkSecondaryStyle,
@@ -351,6 +376,19 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               to='/partners/gatsby/'
             >
               Gatsby
+            </Link>
+            <Link
+              css={[
+                linkSecondaryStyle,
+                textFadeIn,
+                linkBaseStyles,
+                mobileDelay8,
+                desktopDelay1,
+              ]}
+              onClick={() => toggleOpen()}
+              to='/partners/big-commerce/'
+            >
+              BigCommerce
             </Link>
           </div>
         </section>
