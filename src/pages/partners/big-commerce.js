@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
+import { css } from '@emotion/core';
 
 import Layout from '../../components/layout';
 import FullWidthSection from '../../components/FullWidthSection';
@@ -12,6 +13,7 @@ import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import { partnersProjects, list } from '../../styles/custom-css';
 import CTA from '../../components/CTA';
+import EliteSRC from '../../../static/images/Partner_Wordmark-Elite_1col.svg';
 
 // eslint-disable-next-line react/prop-types
 export default query => {
@@ -24,7 +26,7 @@ export default query => {
         label:
           'eCommerce Pioneers — Online Store Creationists — Platform Solution Prowess',
         title: 'BigCommerce Things Come in Small Packages',
-        color: colors.shopifyGreen,
+        color: colors.black,
         mobileMinHeight: '620px',
         width: '480px',
         titlePadding: '0 100px',
@@ -54,6 +56,22 @@ export default query => {
               implementation.
             </li>
           </ul>
+        </div>
+        <div
+          css={css`
+            display: flex;
+            justify-content: center;
+          `}
+        >
+          <img
+            src={EliteSRC}
+            alt='BigCommerce Elite Partner'
+            css={css`
+              width: 100%;
+              max-width: 200px;
+              margin: 15px auto;
+            `}
+          />
         </div>
       </FullWidthSection>
       <ProjectsSlider data={caseStudies} backgroundColor={colors.lightgray} />
