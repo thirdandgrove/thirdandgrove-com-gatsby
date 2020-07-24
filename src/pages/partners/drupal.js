@@ -140,7 +140,11 @@ export default query => {
           </ul>
         </div>
       </FullWidthSection>
-      <ProjectsSlider data={caseStudies} backgroundColor={colors.lightgray} />
+      <ProjectsSlider
+        data={caseStudies}
+        backgroundColor={colors.lightgray}
+        tech='Drupal'
+      />
       <LogoGrid
         logoset='drupal'
         title='Some of Our Drupal Clients'

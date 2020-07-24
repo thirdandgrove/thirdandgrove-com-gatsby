@@ -74,7 +74,11 @@ export default query => {
           />
         </div>
       </FullWidthSection>
-      <ProjectsSlider data={caseStudies} backgroundColor={colors.lightgray} />
+      <ProjectsSlider
+        data={caseStudies}
+        backgroundColor={colors.lightgray}
+        tech='BigCommerce'
+      />
       <SplitSection gridColumnGap='16px' css={partnersProjects}>
         <article>
           <h2>Conquer complexity</h2>
