@@ -101,6 +101,13 @@ const Menu = ({ menuOpen, toggleOpen }) => {
     }
   `;
 
+  const noHover = css`
+    &:hover,
+    &:focus {
+      color: ${colors.whiteFaded};
+    }
+  `;
+
   const linkGroupStyles = css`
     display: inline-block;
     color: ${colors.whiteFaded};
@@ -332,9 +339,10 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                   desktopDelay1,
                   linkSecondaryStyle,
                   linkGroupStyles,
+                  noHover,
                 ]}
               >
-                &nbsp;
+                &nbsp;&&nbsp;
               </span>
               <Link
                 css={[
@@ -357,7 +365,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                 textFadeIn,
                 linkBaseStyles,
                 mobileDelay8,
-                desktopDelay3,
+                desktopDelay2,
               ]}
               onClick={() => toggleOpen()}
               to='/partners/shopify/'
@@ -370,7 +378,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                 textFadeIn,
                 linkBaseStyles,
                 mobileDelay9,
-                desktopDelay4,
+                desktopDelay3,
               ]}
               onClick={() => toggleOpen()}
               to='/partners/gatsby/'
@@ -383,7 +391,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                 textFadeIn,
                 linkBaseStyles,
                 mobileDelay8,
-                desktopDelay1,
+                desktopDelay4,
               ]}
               onClick={() => toggleOpen()}
               to='/partners/big-commerce/'

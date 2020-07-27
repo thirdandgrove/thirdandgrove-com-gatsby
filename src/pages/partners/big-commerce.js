@@ -63,15 +63,17 @@ export default query => {
             justify-content: center;
           `}
         >
-          <img
-            src={EliteSRC}
-            alt='BigCommerce Elite Partner'
+          <a
+            href='https://partners.bigcommerce.com/directory/partner/501032/third-grove'
+            title='BigCommerce Elite Partner'
             css={css`
               width: 100%;
               max-width: 200px;
-              margin: 15px auto;
+              margin: 30px auto 0 auto;
             `}
-          />
+          >
+            <img src={EliteSRC} alt='BigCommerce Elite Partner' />
+          </a>
         </div>
       </FullWidthSection>
       <ProjectsSlider
