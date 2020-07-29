@@ -103,8 +103,8 @@ export default query => {
         <article>
           <h2>Automate with flow</h2>
           <p>
-            Automation is about more than just saving time. We leverage Shopify
-            Flow to create automated processes that create raving fans and big
+            Automation is about more than just saving time. We leverage
+            automation to create processes that create raving fans and big
             spenders.
           </p>
         </article>
