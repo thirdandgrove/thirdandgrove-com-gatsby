@@ -17,6 +17,7 @@
     "no-confusing-arrow": "off",
     "no-unused-vars": 1,
     "no-use-before-define": 1,
+    "no-param-reassign": ["error", { "props": false }],
     "prettier/prettier": "warn",
     "import/order": ["warn", { "newlines-between": "always" }],
     "react/jsx-props-no-spreading": 0,
