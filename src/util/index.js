@@ -15,13 +15,13 @@ module.exports = {
             throw error;
           }
 
-          const caseStudyNodeId = caseStudies.nodes;
-          const insightsNodeId = insights.nodes;
-          const legacyInsightsNodeId = legacyInsights.nodes;
+          const caseStudyNodes = caseStudies.nodes;
+          const insightsNodes = insights.nodes;
+          const legacyInsightsNodes = legacyInsights.nodes;
           const updatedRedirects = [];
-          const nodeArray = caseStudyNodeId.concat(
-            insightsNodeId,
-            legacyInsightsNodeId
+          const nodeArray = caseStudyNodes.concat(
+            insightsNodes,
+            legacyInsightsNodes
           );
 
           redirects.edges.forEach(({ node }) => {
