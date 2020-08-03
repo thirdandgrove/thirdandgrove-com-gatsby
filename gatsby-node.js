@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 const path = require('path');
 
-const { ensureTrailingSlash } = require('./src/util');
+const { ensureTrailingSlash, updatePaths } = require('./src/util');
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
@@ -12,6 +12,7 @@ exports.createPages = async ({ actions, graphql }) => {
         nodes {
           id
           title
+          drupal_internal__nid
           path {
             alias
           }
@@ -21,6 +22,7 @@ exports.createPages = async ({ actions, graphql }) => {
         nodes {
           id
           title
+          drupal_internal__nid
           path {
             alias
           }
@@ -43,6 +45,7 @@ exports.createPages = async ({ actions, graphql }) => {
         nodes {
           id
           title
+          drupal_internal__nid
           created(formatString: "MMM D, YYYY")
           body {
             processed
@@ -80,6 +83,10 @@ exports.createPages = async ({ actions, graphql }) => {
     legacyInsights,
     redirects,
   } = queries.data;
+
+  const data = { data: { caseStudies, insights, legacyInsights, redirects } };
+
+  const updatedRedirects = await updatePaths(data);
 
   caseStudies.nodes.map(studyData =>
     createPage({
@@ -127,7 +134,7 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  redirects.edges.map(redirect => {
+  updatedRedirects.edges.map(redirect => {
     createRedirect({
       fromPath: `/${redirect.node.redirect_source.path}`,
       toPath: redirect.node.redirect_redirect.uri.replace('internal:', ''),
