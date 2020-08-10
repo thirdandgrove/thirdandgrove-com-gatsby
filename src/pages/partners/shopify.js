@@ -49,7 +49,11 @@ export default query => {
           </ul>
         </div>
       </FullWidthSection>
-      <ProjectsSlider data={caseStudies} backgroundColor={colors.lightgray} />
+      <ProjectsSlider
+        data={caseStudies}
+        backgroundColor={colors.lightgray}
+        tech='Shopify'
+      />
       <LogoGrid
         logoset='shopify'
         title='Some of Our Shopify Clients'

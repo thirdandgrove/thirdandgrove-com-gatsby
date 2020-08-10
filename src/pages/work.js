@@ -1,3 +1,4 @@
+/* eslint-disable eslint no-nested-ternary */
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
@@ -43,7 +44,7 @@ const Project = ({ study, index }) => {
             ${mediaQueries.phoneLarge} {
               display: flex;
               justify-content: space-between;
-              flex-direction: ${index % 2 ? 'row-reverse' : 'row'};
+              flex-direction: ${index % 2 ? 'row' : 'row-reverse'};
               align-items: center;
               margin-bottom: 170px;
             }
@@ -69,8 +70,8 @@ const Project = ({ study, index }) => {
                   margin-bottom: 20px;
 
                   ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '64%' : '49%'};
-                    width: ${index % 2 ? '64%' : '49%'};
+                    flex: 0 0 ${index % 2 ? '64%' : index === 0 ? '64%' : '49%'};
+                    width: ${index % 2 ? '64%' : index === 0 ? '64%' : '49%'};
                     margin-bottom: 0;
 
                     > div {
@@ -171,11 +172,11 @@ export default () => {
     allNodeHomePage,
   } = useStaticQuery(graphql`
     {
-      allEntitySubqueueCaseStudies(limit: 1) {
+      allEntitySubqueueCaseStudies(limit: 6) {
         nodes {
           relationships {
             items {
-              ...CaseStudyFragment
+              ...CaseStudyFragmentHere
             }
           }
         }
@@ -185,6 +186,123 @@ export default () => {
           node {
             field_video
             field_video_short
+          }
+        }
+      }
+    }
+    fragment CaseStudyFragmentHere on case_study {
+      id
+      title
+      field_subtitle
+      field_inverse_header
+      field_image_arrangement
+      field_image {
+        alt
+      }
+      field_secondary_image {
+        alt
+      }
+      field_tertiary_image {
+        alt
+      }
+      path {
+        alias
+      }
+      relationships {
+        field_tags {
+          name
+        }
+        field_image {
+          id
+          localFile {
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 1250, maxHeight: 850, cropFocus: NORTH) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+            childImageMobile: childImageSharp {
+              fixed(width: 335, height: 260, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeA: childImageSharp {
+              fixed(width: 450, height: 320, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeB: childImageSharp {
+              fixed(width: 380, height: 420, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeC: childImageSharp {
+              fixed(width: 420, height: 340, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+          }
+        }
+        field_secondary_image {
+          id
+          localFile {
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 850, maxHeight: 850) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+            childImageMobile: childImageSharp {
+              fixed(width: 1, height: 1) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeA: childImageSharp {
+              fixed(width: 250, height: 180, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeB: childImageSharp {
+              fixed(width: 340, height: 260, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeC: childImageSharp {
+              fixed(width: 270, height: 210, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+          }
+        }
+        field_tertiary_image {
+          id
+          localFile {
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 850, maxHeight: 850) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+            childImageMobile: childImageSharp {
+              fixed(width: 1, height: 1) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeA: childImageSharp {
+              fixed(width: 250, height: 495, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeB: childImageSharp {
+              fixed(width: 230, height: 210, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeC: childImageSharp {
+              fixed(width: 320, height: 210, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
           }
         }
       }

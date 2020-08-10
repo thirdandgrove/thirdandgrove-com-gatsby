@@ -113,7 +113,7 @@ const ImageCollage = ({ images, type }) => {
       }
 
       &.type-d {
-        left: 405px;
+        left: 360px;
         right: 20px;
 
         .collage-board {
@@ -130,8 +130,8 @@ const ImageCollage = ({ images, type }) => {
         .secondary-wrapper {
           bottom: 0;
           left: 0;
-          width: 45.33%;
-          height: 47%;
+          width: 52.33%;
+          height: 54%;
         }
 
         .tertiary-wrapper {

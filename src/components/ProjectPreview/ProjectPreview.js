@@ -53,7 +53,7 @@ const h1Styles = css`
 
   ${mediaQueries.phoneLarge} {
     margin-bottom: 0;
-    font-size: 104px;
+    font-size: 90px;
     line-height: 0.94;
     letter-spacing: 1.4px;
     transform: translateX(200px);
