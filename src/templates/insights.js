@@ -36,7 +36,7 @@ const Insights = ({ data }) => {
     <Layout
       headerData={{
         title: post.title,
-        label: `${post.created}`,
+        label: `${post.created} - ${post.relationships.uid.name}`,
         invert: post.field_inverse_header,
         defaultBackground: false,
         color: backgroundColor || colors.yellow,
