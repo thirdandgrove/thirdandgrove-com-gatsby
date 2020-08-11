@@ -89,7 +89,7 @@ const Insights = ({ data }) => {
                 line-height: 2.4;
               `}
             >
-              {`${headerArticle.created} - ${headerArticle.relationships.uid.name}`}
+              {`${headerArticle.created}`}
             </div>
             <h1 data-cy='insightTitle' css={[h1L, headerStyles]}>
               {headerArticle.title}
