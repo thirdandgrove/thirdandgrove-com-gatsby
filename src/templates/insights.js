@@ -206,7 +206,6 @@ export const query = graphql`
             field_quote
             field_footer_text
           }
-
           ... on component__prefooter {
             id
             field_primary_lead_in_text
@@ -247,7 +246,6 @@ export const query = graphql`
               }
             }
           }
-
           ... on component__text_image_split {
             id
             field_body {

@@ -71,9 +71,7 @@ const ArticlePreview = ({ article }) => {
               />
             )}
             <h2>{article.title}</h2>
-            <footer>
-              {`${article.created} - ${article.relationships.uid.name}`}
-            </footer>
+            <footer>{`${article.created}`}</footer>
           </Link>
         </Card>
       )}
