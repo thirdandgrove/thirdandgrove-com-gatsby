@@ -235,7 +235,7 @@ export const query = graphql`
       }
     }
     caseStudies: allCaseStudy(
-      limit: 5
+      limit: 10
       filter: { field_hidden: { eq: false } }
     ) {
       nodes {
