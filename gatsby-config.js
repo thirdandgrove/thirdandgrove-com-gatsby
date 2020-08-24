@@ -152,7 +152,7 @@ module.exports = {
                   created(formatString: "ddd, DD MMM YYYY hh:mm:ss +0000")
                   relationships {
                     uid {
-                      name
+                      name:display_name
                     }
                   }
                   path {

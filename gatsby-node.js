@@ -55,7 +55,7 @@ exports.createPages = async ({ actions, graphql }) => {
           }
           relationships {
             uid {
-              name
+              name: display_name
             }
           }
         }

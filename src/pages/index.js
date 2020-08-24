@@ -137,7 +137,7 @@ export const query = graphql`
   {
     allCaseStudy(
       sort: { fields: created, order: DESC }
-      limit: 5
+      limit: 1
       filter: { field_hidden: { eq: false } }
     ) {
       nodes {
@@ -170,7 +170,7 @@ export const query = graphql`
         name
       }
       uid {
-        name
+        name: display_name
       }
       field_image {
         id

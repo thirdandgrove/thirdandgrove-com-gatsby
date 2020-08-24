@@ -135,7 +135,7 @@ export const query = graphql`
           name
         }
         uid {
-          name
+          name: display_name
         }
         field_image {
           id
