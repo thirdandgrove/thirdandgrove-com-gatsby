@@ -1,22 +1,18 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useRef } from 'react';
 import { graphql, Link } from 'gatsby';
-import { css } from '@emotion/core';
-// import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
-import WhatWeDo from '../components/WhatWeDo';
 import InsightsSlider from '../components/InsightsSlider';
 import CapabilitiesSlider from '../components/CapabilitiesSlider';
 import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
-import { mediaQueries, colors } from '../styles';
+import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
 import { NewsletterFullWidthSection } from '../components/NewsletterForm';
-import line from '../../static/images/line.png';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
@@ -66,31 +62,7 @@ export default ({ data }) => {
             {/* A digital agency{' '}
             <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
             mundane, one pixel at a time. */}
-            Doing our{' '}
-            <span
-              css={css`
-                position: relative;
-
-                &::after {
-                  content: '';
-                  background-image: url(${line});
-                  background-repeat: no-repeat;
-                  background-size: contain;
-                  position: absolute;
-                  bottom: -3px;
-                  left: 0;
-                  width: 100%;
-                  height: 8px;
-
-                  ${mediaQueries.phoneLarge} {
-                    bottom: 0;
-                  }
-                }
-              `}
-            >
-              damndest
-            </span>{' '}
-            to make a difference, pixel by pixel.
+            {`You might want to plug your ears, we're blowing the doors off ecomm.`}
             {/* Holy S%#*! that was fast.
             <br />
             (With{' '}
