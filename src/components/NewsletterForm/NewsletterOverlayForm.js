@@ -18,10 +18,11 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
     if (!email) {
       return;
     }
+    const url = window.location.pathname;
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'newsletter', email }),
+      body: encode({ 'form-name': 'newsletter', email, url }),
     }).then(() => {
       updateEmail('');
       hasSubmitted(true);
