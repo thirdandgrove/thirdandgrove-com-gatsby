@@ -107,7 +107,7 @@ export const query = graphql`
           name
         }
         uid {
-          name
+          name: display_name
         }
         field_components {
           ... on component__text_split_with_video_phone {

@@ -169,9 +169,6 @@ export const query = graphql`
       node_type {
         name
       }
-      uid {
-        name
-      }
       field_image {
         id
         localFile {
