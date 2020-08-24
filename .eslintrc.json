@@ -12,6 +12,7 @@
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
   "rules": {
     "arrow-parens": "off",
+    "no-nested-ternary": 0,
     "implicit-arrow-linebreak": "off",
     "no-console": 1,
     "no-confusing-arrow": "off",
