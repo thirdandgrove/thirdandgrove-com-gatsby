@@ -6,7 +6,6 @@ const axios = require('axios');
 
 exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
-  console.log(data);
   const { form_name } = data;
   if (form_name === 'contact') {
     // handle form contact
@@ -95,16 +94,18 @@ exports.handler = async (event, _context, callback) => {
 
   if (form_name === 'newsletter') {
     // handle form newsletter
+    console.log(data);
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
-    const { email, url } = data;
+    const { email, referrer } = data;
 
+    console.log(email, referrer);
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url }],
+        profiles: [{ email, url: referrer }],
       }),
     }).catch(console.error);
   }
