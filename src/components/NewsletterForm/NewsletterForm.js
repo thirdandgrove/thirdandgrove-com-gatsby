@@ -16,11 +16,11 @@ export default () => {
     if (!email) {
       return;
     }
-    const url = window.location.pathname;
-    fetch('/', {
+
+    fetch('http://localhost:8888/.netlify/functions/submission-created', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'newsletter', email, url }),
+      body: encode({ 'form-name': 'newsletter', email }),
     }).then(() => {
       updateEmail('');
       hasSubmitted(true);
