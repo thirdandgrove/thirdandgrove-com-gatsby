@@ -6,6 +6,7 @@ const axios = require('axios');
 
 exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
+  console.log(data);
   const { form_name } = data;
   if (form_name === 'contact') {
     // handle form contact
