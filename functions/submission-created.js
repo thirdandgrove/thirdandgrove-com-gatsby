@@ -94,14 +94,10 @@ exports.handler = async (event, _context, callback) => {
 
   if (form_name === 'newsletter') {
     // handle form newsletter
-    console.log(data);
-    console.log(data.data.referrer);
-
     const { referrer } = data.data;
     const { email } = data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
 
-    console.log(email, referrer);
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
       method: 'POST',
