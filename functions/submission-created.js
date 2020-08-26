@@ -94,15 +94,17 @@ exports.handler = async (event, _context, callback) => {
 
   if (form_name === 'newsletter') {
     // handle form newsletter
-    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
+    const { referrer } = data.data;
     const { email } = data;
+    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
+
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [{ email }],
+        profiles: [{ email, url: referrer }],
       }),
     }).catch(console.error);
   }

@@ -18,6 +18,7 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
     if (!email) {
       return;
     }
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
