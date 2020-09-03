@@ -184,7 +184,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
   `;
 
   const linksWrapper = css`
-    columns: 3;
+    columns: 2;
 
     ${mediaQueries.phoneLarge} {
       columns: unset;
