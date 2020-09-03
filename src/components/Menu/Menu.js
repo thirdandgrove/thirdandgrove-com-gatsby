@@ -185,10 +185,18 @@ const Menu = ({ menuOpen, toggleOpen }) => {
 
   const linksWrapper = css`
     columns: 2;
+    max-width: 155px;
+    margin: 0 auto;
 
     ${mediaQueries.phoneLarge} {
       columns: unset;
+      max-width: none;
+      margin: 0 auto;
     }
+  `;
+
+  const linksWrapperNoColumn = css`
+    columns: unset;
   `;
 
   return (
@@ -376,6 +384,8 @@ const Menu = ({ menuOpen, toggleOpen }) => {
             >
               Gatsby
             </Link>
+          </div>
+          <div css={linksWrapperNoColumn}>
             <Link
               css={[
                 linkSecondaryStyle,
