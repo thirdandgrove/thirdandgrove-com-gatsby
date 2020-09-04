@@ -43,6 +43,7 @@ const Header = ({
   image,
   heroImage,
   heroImageMobile,
+  subTitle,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -147,6 +148,25 @@ const Header = ({
       background-image: url(${heroImage});
     }
   `;
+  const headerSubTitle = css`
+    margin-top: 32px;
+    font-family: ${fonts.sans};
+    font-size: 15px;
+    font-weight: ${weights.regular};
+    line-height: 2.4;
+    text-transform: capitalize;
+    color: ${fontColor};
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 600px;
+    width: 100%;
+
+    ${mediaQueries.desktop} {
+      margin-bottom: 42px;
+      ${labelMobileOnly && `display: none`};
+    }
+  `;
   const headerlabel = css`
     margin-bottom: 32px;
     font-family: ${fonts.sans};
@@ -183,6 +203,11 @@ const Header = ({
             {title}
           </h1>
         )}
+        {subTitle && (
+          <span data-cy='labelText' css={headerSubTitle}>
+            {subTitle}
+          </span>
+        )}
         {children && children}
       </FullWidthSection>
     </>
@@ -192,6 +217,7 @@ const Header = ({
 // This is exported for use in layout.js.
 export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  subTitle: PropTypes.string,
   label: PropTypes.string,
   labelMobileOnly: PropTypes.bool,
   metaTitle: PropTypes.string,
@@ -212,6 +238,7 @@ Header.propTypes = headerPropTypes;
 
 Header.defaultProps = {
   title: null,
+  subTitle: null,
   label: null,
   labelMobileOnly: false,
   metaTitle: null,
