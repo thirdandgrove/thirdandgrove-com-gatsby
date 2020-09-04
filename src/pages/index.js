@@ -109,7 +109,7 @@ export const query = graphql`
   {
     allCaseStudy(
       sort: { fields: created, order: DESC }
-      limit: 1
+      limit: 7
       filter: { field_hidden: { eq: false } }
     ) {
       nodes {
