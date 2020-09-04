@@ -185,7 +185,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
 
   const linksWrapper = css`
     columns: 2;
-    max-width: 155px;
+    max-width: 170px;
     margin: 0 auto;
 
     ${mediaQueries.phoneLarge} {
