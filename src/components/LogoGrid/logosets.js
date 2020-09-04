@@ -38,8 +38,12 @@ import stubhub from './logos/stubhub-logo.svg';
 import reebok from './logos/reebok-logo.svg';
 import dassault from './logos/dassault-systems-logo.svg';
 import vmware from './logos/vmware-logo.svg';
+import akamai from './logos/akamai_logo.svg';
 import draper from './logos/draper-logo.png';
 import alvinAiley from './logos/alvinailey-logo.png';
+import isgm from './logos/isgm_logo.svg';
+import prudential from './logos/prudential_logo.svg';
+import universal from './logos/universal_music_logo.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -445,6 +449,56 @@ export default (logoset, isSmScreen) => {
         alt='Acquia Engage'
         width={isSmScreen ? '131' : '170'}
         height={isSmScreen ? '30' : '50'}
+      />,
+    ],
+    drupalSupport: [
+      <img
+        src={stubhub}
+        alt='StubHub'
+        width={isSmScreen ? '166' : '240'}
+        height={isSmScreen ? '142' : '100'}
+      />,
+      <img
+        src={vmware}
+        alt='VMWare'
+        width={isSmScreen ? '99' : '136'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={akamai}
+        alt='Akamai'
+        width={isSmScreen ? '99' : '136'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={harvardLogo}
+        alt='Harvard'
+        width={isSmScreen ? '100' : '129'}
+        height={isSmScreen ? '40' : '34'}
+      />,
+      <img
+        src={kingArthur}
+        alt='King Arthur'
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
+      />,
+      <img
+        src={isgm}
+        alt='ISGM'
+        width={isSmScreen ? '99' : '136'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={prudential}
+        alt='Prudential Insurance'
+        width={isSmScreen ? '99' : '136'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={universal}
+        alt='Universal Music'
+        width={isSmScreen ? '98' : '134'}
+        height={isSmScreen ? '32' : '43'}
       />,
     ],
   };
