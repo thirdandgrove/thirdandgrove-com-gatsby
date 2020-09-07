@@ -187,11 +187,13 @@ const Menu = ({ menuOpen, toggleOpen }) => {
     columns: 2;
     max-width: 155px;
     margin: 0 auto;
+    height: 85px;
 
     ${mediaQueries.phoneLarge} {
       columns: unset;
       max-width: none;
       margin: 0 auto;
+      height: auto;
     }
   `;
 
