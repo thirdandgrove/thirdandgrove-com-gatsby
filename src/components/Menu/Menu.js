@@ -184,21 +184,17 @@ const Menu = ({ menuOpen, toggleOpen }) => {
   `;
 
   const linksWrapper = css`
-    columns: 2;
-    max-width: 170px;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    max-width: 195px;
     margin: 0 auto;
-    height: 85px;
 
     ${mediaQueries.phoneLarge} {
-      columns: unset;
+      display: block;
       max-width: none;
       margin: 0 auto;
-      height: auto;
     }
-  `;
-
-  const linksWrapperNoColumn = css`
-    columns: unset;
   `;
 
   return (
@@ -387,7 +383,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               Gatsby
             </Link>
           </div>
-          <div css={linksWrapperNoColumn}>
+          <div>
             <Link
               css={[
                 linkSecondaryStyle,
