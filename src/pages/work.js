@@ -6,6 +6,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
+import mp4 from '../../static/thirdgrove-work.mp4';
 import Layout from '../components/layout';
 import { FakeButton } from '../components/Button';
 import { weights, mediaQueries, container, fonts } from '../styles';
@@ -318,10 +319,7 @@ export default () => {
         height: '400px',
       }}
     >
-      <VideoSection
-        url={allNodeHomePage.edges[0].node.field_video}
-        teaser={allNodeHomePage.edges[0].node.field_video_short}
-      />
+      <VideoSection url={allNodeHomePage.edges[0].node.field_video} mp4={mp4} />
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}

@@ -1,5 +1,5 @@
 /* eslint-disable prefer-template */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import ReactPlayer from 'react-player';
@@ -14,12 +14,13 @@ import {
 } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
-const VideoSection = ({ url, teaser }) => {
+const VideoSection = ({ url, mp4 }) => {
   const { width } = useWindow();
+  const refMovie = useRef();
+  const refVimeo = useRef();
   const isLgScreen = width >= jsBreakpoints.phoneLarge;
-  const [playing, setPlaying] = useState(isLgScreen);
+  const [playing, setPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [activeUrl, setUrl] = useState(teaser);
   const [buttonX, setButtonX] = useState('50%');
   const [buttonY, setButtonY] = useState('50%');
   const [buttonVisible, setButtonVisible] = useState(false);
@@ -46,11 +47,19 @@ const VideoSection = ({ url, teaser }) => {
     }
   `;
 
+  const videoPlayer = css`
+    width: 100% !important;
+    height: auto !important;
+    display: ${hasInteracted && playing ? 'none' : 'block'};
+    opacity: ${hasInteracted && playing ? '1' : '0.65'};
+  `;
+
   const playerStyles = css`
     position: relative;
     height: 0 !important;
     padding-top: 550px;
     overflow: hidden;
+    display: ${hasInteracted && playing ? 'block' : 'none'};
     opacity: ${hasInteracted && playing ? '1' : '0.65'};
 
     > div {
@@ -156,7 +165,6 @@ const VideoSection = ({ url, teaser }) => {
             setPlaying(!playing);
           } else {
             setHasInteracted(true);
-            setUrl(url);
             setPlaying(true);
           }
         }}
@@ -165,33 +173,50 @@ const VideoSection = ({ url, teaser }) => {
       </button>
 
       {isLgScreen && (
-        <ReactPlayer
-          // @see: https://www.npmjs.com/package/react-player
-          width='100%'
-          css={playerStyles}
-          url={activeUrl}
-          playing={playing}
-          volume={hasInteracted ? 1 : 0} // Mute on autoplay
-          config={{
-            vimeo: {
-              // @see: https://developer.vimeo.com/api/oembed/videos
-              playerOptions: {
-                controls: false,
-                responsive: true,
-                autoplay: isLgScreen,
-                loop: isLgScreen,
+        <>
+          <ReactPlayer
+            // @see: https://www.npmjs.com/package/react-player
+            width='100%'
+            css={playerStyles}
+            url={url}
+            playing={playing}
+            ref={refVimeo}
+            volume={hasInteracted ? 1 : 0} // Mute on autoplay
+            config={{
+              vimeo: {
+                // @see: https://developer.vimeo.com/api/oembed/videos
+                playerOptions: {
+                  controls: false,
+                  responsive: true,
+                  autoplay: false,
+                  loop: isLgScreen,
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+
+          <video
+            alt=''
+            playsInline
+            muted
+            loop={isLgScreen}
+            preload='metadata'
+            autoPlay={isLgScreen}
+            ref={refMovie}
+            css={videoPlayer}
+          >
+            {`Sorry, your browser doesn't support embedded videos.`}
+            <source src={mp4} type='video/mp4' />
+          </video>
+        </>
       )}
     </FullWidthSection>
   );
 };
 
 VideoSection.propTypes = {
+  mp4: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  teaser: PropTypes.string.isRequired,
 };
 
 export default VideoSection;
