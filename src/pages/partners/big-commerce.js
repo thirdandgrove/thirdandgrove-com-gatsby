@@ -206,6 +206,7 @@ export const query = graphql`
                   presentationHeight
                 }
               }
+              publicURL
             }
           }
           field_components {

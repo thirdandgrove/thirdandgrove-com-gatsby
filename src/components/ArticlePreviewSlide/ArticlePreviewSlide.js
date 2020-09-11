@@ -94,7 +94,14 @@ const ArticlePreviewSlide = ({ article }) => {
             }
           `}
         >
-          {article.relationships.field_image && (
+          {article.relationships.field_image.localFile.publicURL.indexOf(
+            '.gif'
+          ) !== -1 ? (
+            <img
+              src={article.relationships.field_image.localFile.publicURL}
+              alt={article.field_image.alt}
+            />
+          ) : (
             <Img
               fluid={[
                 article.relationships.field_image.localFile
