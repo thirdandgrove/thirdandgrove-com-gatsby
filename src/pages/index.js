@@ -118,7 +118,7 @@ export const query = graphql`
     }
     allInsight(
       sort: { fields: created, order: DESC }
-      limit: 5
+      limit: 4
       filter: { field_hidden: { eq: false } }
     ) {
       nodes {
