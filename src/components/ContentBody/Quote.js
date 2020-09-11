@@ -6,13 +6,14 @@ import { css } from '@emotion/core';
 import FullWidthSection from '../FullWidthSection';
 import { weights, mediaQueries, colors, contValues } from '../../styles';
 
-const Quote = ({ data, size, padding }) => {
+const Quote = ({ data, size, padding, color, backgroundColor, quoteColor }) => {
   const isSmall = size === 'small';
   const quoteText = css`
     font-size: ${isSmall ? '21px' : '39px'};
     font-weight: ${isSmall ? weights.bold : weights.medium};
     line-height: ${isSmall ? '1.48' : '1.15'};
     text-align: ${isSmall ? 'center' : 'left'};
+    color: ${color};
 
     ${mediaQueries.phoneLarge} {
       font-weight: ${weights.bold};
@@ -23,7 +24,7 @@ const Quote = ({ data, size, padding }) => {
   `;
 
   const quoL = css`
-    color: ${colors.yellow};
+    color: ${quoteColor};
 
     ${mediaQueries.desktop} {
       position: absolute;
@@ -32,7 +33,7 @@ const Quote = ({ data, size, padding }) => {
   `;
 
   const quoR = css`
-    color: ${colors.yellow};
+    color: ${quoteColor};
   `;
 
   const quoteAttr = css`
@@ -62,7 +63,12 @@ const Quote = ({ data, size, padding }) => {
     }
   `;
   return (
-    <FullWidthSection height='auto' minHeight='auto' padding={padding}>
+    <FullWidthSection
+      height='auto'
+      minHeight='auto'
+      padding={padding}
+      backgroundColor={backgroundColor}
+    >
       <div css={containerStyles}>
         <div css={quoteText}>
           <span css={quoL}>&ldquo;</span>
@@ -81,11 +87,17 @@ Quote.propTypes = {
   data: PropTypes.object.isRequired,
   size: PropTypes.string,
   padding: PropTypes.string,
+  color: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  quoteColor: PropTypes.string,
 };
 
 Quote.defaultProps = {
   size: 'large',
   padding: '0',
+  color: colors.black,
+  backgroundColor: colors.white,
+  quoteColor: colors.yellow,
 };
 
 export default Quote;
