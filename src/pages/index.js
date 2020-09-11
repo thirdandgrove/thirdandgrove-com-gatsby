@@ -147,6 +147,7 @@ export const query = graphql`
       field_image {
         id
         localFile {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 530, maxHeight: 400) {
               ...GatsbyImageSharpFluid_withWebp
