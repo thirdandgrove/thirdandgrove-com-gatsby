@@ -10,6 +10,11 @@ import FullWidthSection from '../components/FullWidthSection';
 import Layout from '../components/layout';
 import { container, mediaQueries, weights, fonts, colors } from '../styles';
 import ContactForm from '../components/ContactForm';
+import CTA from '../components/CTA';
+import drupalLogo from '../../static/images/drupal-logo.png';
+import preserver from '../../static/images/preserver.png';
+import alphaPreserver from '../../static/images/alpha-preserver.png';
+import SplitSection from '../components/SplitSection';
 
 const DrupalSupport = ({ data }) => {
   const height = `100px`;
@@ -69,40 +74,108 @@ const DrupalSupport = ({ data }) => {
     }
   `;
 
+  const sectionStylesWithImage = css`
+    ${sectionPadding}
+    h3 {
+      font-family: ${fonts.sans};
+      font-size: 32px;
+      font-weight: ${weights.bold};
+      line-height: 1.39;
+      margin-bottom: 24px;
+    }
+    p {
+      font-weight: ${weights.light};
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      font-family: ${fonts.sans};
+      font-weight: ${weights.light};
+      list-style: none;
+
+      ${mediaQueries.phoneLarge} {
+        &:last-of-type {
+          margin-right: 100px;
+        }
+      }
+
+      li {
+        margin-bottom: 4px;
+        padding-left: 0;
+
+        &:before {
+          content: '—';
+          padding-right: 2px;
+        }
+      }
+    }
+
+    position: relative;
+
+    &:after {
+      content: '';
+      background-image: url(${preserver});
+      position: absolute;
+      top: 15%;
+      right: 0;
+      width: 425px;
+      height: 500px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .basic-block--container {
+    }
+
+    .basic-block--right {
+      float: right;
+      shape-outside: circle(32% at 47% 77%);
+      width: 500px;
+      height: 500px;
+      margin-top: 0;
+      shape-margin: 56px;
+      margin-bottom: 0;
+    }
+
+    .basic-block--left {
+      ${container.min}
+    }
+
+    ${mediaQueries.phoneLarge} {
+    }
+  `;
+
   return (
     <Layout
       headerData={{
         metaTitle: `24/7 Drupal Support, Maintenance, & Optimization`,
         title: <>24/7 Drupal Support, Maintenance, & Optimization</>,
-        subTitle: (
-          <>
-            Third and Grove’s Managed Services offers leading 24x7 support,
-            maintenance, and optimization services to mid-market organizations,
-            catering specifically to those with complex and integrated Drupal
-            environments.
-          </>
-        ),
         mobileMinHeight: '93vh',
         hideNav: true,
+        color: colors.drupalBlue,
+        invert: true,
       }}
     >
-      <FullWidthSection height={height} align='left' css={sectionStyles}>
-        <h3>Get Support Now</h3>
-        <p>
-          Third and Grove’s Managed Services offers leading 24x7 support,
-          maintenance, and optimization services to mid-market organizations,
-          catering specifically to those with complex and integrated Drupal
-          environments.
-        </p>
-      </FullWidthSection>
+      <CTA
+        backgroundColor={colors.lightgray}
+        headline='Catering to complex and integrated Drupal environments.'
+        subTitle='Managed Services offering leading 24x7 support, maintenance, and optimization to mid-market organizations'
+        cta='GET SUPPORT NOW'
+        icon={drupalLogo}
+        iconAlt='Drupal'
+        altStyle
+      />
       <ProjectsSlider
         data={data.allCaseStudy}
-        backgroundColor={colors.lightgray}
-        minHeight='600'
+        backgroundColor={colors.white}
+        minHeight='750'
       />{' '}
       <Quote
         size='large'
-        padding='75px 0 20px 0'
+        padding='100px 0 100px 0'
+        backgroundColor={colors.yellow}
+        quoteColor={colors.white}
         data={{
           field_quote:
             'I wanted to let you know how much I have enjoyed working with the amazing team at Third and Grove. You guys go above and beyond!',
@@ -110,32 +183,40 @@ const DrupalSupport = ({ data }) => {
             'Brittany Juliano, Digital Content Specialist, Draper Labs',
         }}
       />
+      <section css={sectionStylesWithImage}>
+        <div className='basic-block--container'>
+          <div className='basic-block--right' />
+          <div className='basic-block--left'>
+            <h2>
+              We offer a full suite of support options for Drupal 7, 8, and 9,
+              handling all of your complex front end, back end, integration, and
+              compliance needs.{' '}
+            </h2>
+
+            <p>
+              Support services include proactive Drupal patching, migrations and
+              upgrades to Drupal 8 and 9, content migrations, new features, bug
+              fixes, resource augmentation, training, optimization, digital
+              strategy, UX/UI improvements, and Google Analytics
+              industrialization.{' '}
+            </p>
+
+            <p>
+              Our support packages are fully customizable for each organization,
+              and can be changed or cancelled for any reason (or no reason) with
+              30thirty days’ notice. We aren’t a cell phone company;, if you
+              don’t like us, you shouldn’t have we don’t want you to have to
+              work with us.{' '}
+            </p>
+
+            <p>
+              We are experts on the Acquia and Platform, Pantheon platforms, as
+              well asnd custom hosting platforms in use by our clients.{' '}
+            </p>
+          </div>
+        </div>
+      </section>
       <FullWidthSection height={height} align='left' css={sectionStyles}>
-        <p>
-          We offer a full suite of support options for Drupal 7, 8, and 9,
-          handling all of your complex front end, back end, integration, and
-          compliance needs.{' '}
-        </p>
-
-        <p>
-          Support services include proactive Drupal patching, migrations and
-          upgrades to Drupal 8 and 9, content migrations, new features, bug
-          fixes, resource augmentation, training, optimization, digital
-          strategy, UX/UI improvements, and Google Analytics industrialization.{' '}
-        </p>
-
-        <p>
-          Our support packages are fully customizable for each organization, and
-          can be changed or cancelled for any reason (or no reason) with
-          30thirty days’ notice. We aren’t a cell phone company;, if you don’t
-          like us, you shouldn’t have we don’t want you to have to work with us.{' '}
-        </p>
-
-        <p>
-          We are experts on the Acquia and Platform, Pantheon platforms, as well
-          asnd custom hosting platforms in use by our clients.{' '}
-        </p>
-
         <h3>Features</h3>
 
         <div>
