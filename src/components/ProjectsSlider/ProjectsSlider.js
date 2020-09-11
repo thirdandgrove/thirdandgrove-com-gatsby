@@ -40,8 +40,6 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
     projects = data.nodes;
   }
 
-  console.log(projects);
-
   const totalSlides =
     projects.length < 10 ? '0' + projects.length : projects.length;
 
@@ -76,6 +74,7 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
         css={css`
           max-width: 100%;
           max-height: 100%;
+          width: 100%;
           padding-bottom: 120px;
 
           ${mediaQueries.phoneLarge} {
