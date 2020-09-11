@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 
@@ -7,15 +8,16 @@ import LogoGrid from '../components/LogoGrid';
 import ProjectsSlider from '../components/ProjectsSlider';
 import FullWidthSection from '../components/FullWidthSection';
 import Layout from '../components/layout';
-import { container, mediaQueries, weights, fonts } from '../styles';
+import { container, mediaQueries, weights, fonts, colors } from '../styles';
+import ContactForm from '../components/ContactForm';
 
-export default ({ data }) => {
+const DrupalSupport = ({ data }) => {
   const height = `100px`;
   const sectionPadding = css`
     padding: 50px 20px;
 
     ${mediaQueries.phoneLarge} {
-      padding: 110px 0;
+      padding: 50px 0;
     }
   `;
 
@@ -81,11 +83,9 @@ export default ({ data }) => {
           </>
         ),
         mobileMinHeight: '93vh',
+        hideNav: true,
       }}
     >
-      {' '}
-      <FullWidthSection height='100px' align='left' css={sectionStyles} />
-      <ProjectsSlider data={data.allCaseStudy} minHeight='500' />
       <FullWidthSection height={height} align='left' css={sectionStyles}>
         <h3>Get Support Now</h3>
         <p>
@@ -95,8 +95,14 @@ export default ({ data }) => {
           environments.
         </p>
       </FullWidthSection>
+      <ProjectsSlider
+        data={data.allCaseStudy}
+        backgroundColor={colors.lightgray}
+        minHeight='600'
+      />{' '}
       <Quote
         size='large'
+        padding='75px 0 20px 0'
         data={{
           field_quote:
             'I wanted to let you know how much I have enjoyed working with the amazing team at Third and Grove. You guys go above and beyond!',
@@ -200,9 +206,29 @@ export default ({ data }) => {
           </ul>
         </div>
       </FullWidthSection>
+      <FullWidthSection
+        backgroundColor={colors.yellow}
+        padding='75px 0 100px 0'
+        minHeight='100%'
+      >
+        <h3
+          css={css`
+            font-family: ${fonts.sans};
+          `}
+        >
+          Get In Touch
+        </h3>
+        <ContactForm />
+      </FullWidthSection>
     </Layout>
   );
 };
+
+DrupalSupport.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default DrupalSupport;
 
 export const query = graphql`
   {
