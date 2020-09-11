@@ -12,6 +12,7 @@ import FullWidthSection from '../FullWidthSection';
  * Header used on every page.
  *
  * @param {string} title - passed through to SEO
+ * @param {object} subTitle
  * @param {string} label
  * @param {bool} labelMobileOnly
  * @param {string} metaTitle - passed through to SEO
@@ -44,6 +45,7 @@ const Header = ({
   heroImage,
   heroImageMobile,
   subTitle,
+  hideNav,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -161,6 +163,12 @@ const Header = ({
     padding-right: 20px;
     max-width: 600px;
     width: 100%;
+    transform: translateY(50%);
+    animation-name: headerSlide;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 
     ${mediaQueries.desktop} {
       margin-bottom: 42px;
@@ -187,7 +195,7 @@ const Header = ({
   return (
     <>
       <SEO title={metaTitle || title} description={description} image={image} />
-      <TopNav fill={fontColor} />
+      <TopNav fill={fontColor} hideNav={hideNav} />
       <FullWidthSection
         css={sectionCSS}
         height={height}
@@ -217,7 +225,7 @@ const Header = ({
 // This is exported for use in layout.js.
 export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  subTitle: PropTypes.string,
+  subTitle: PropTypes.object,
   label: PropTypes.string,
   labelMobileOnly: PropTypes.bool,
   metaTitle: PropTypes.string,
@@ -232,6 +240,7 @@ export const headerPropTypes = {
   image: PropTypes.string,
   heroImage: PropTypes.string,
   heroImageMobile: PropTypes.string,
+  hideNav: PropTypes.bool,
 };
 
 Header.propTypes = headerPropTypes;
@@ -253,6 +262,7 @@ Header.defaultProps = {
   image: null,
   heroImage: null,
   heroImageMobile: null,
+  hideNav: false,
 };
 
 export default Header;
