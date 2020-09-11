@@ -13,8 +13,6 @@ import ContactForm from '../components/ContactForm';
 import CTA from '../components/CTA';
 import drupalLogo from '../../static/images/drupal-logo.png';
 import preserver from '../../static/images/preserver.png';
-import alphaPreserver from '../../static/images/alpha-preserver.png';
-import SplitSection from '../components/SplitSection';
 
 const DrupalSupport = ({ data }) => {
   const height = `100px`;
