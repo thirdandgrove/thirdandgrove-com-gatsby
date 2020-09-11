@@ -6,7 +6,7 @@ import { css } from '@emotion/core';
 import FullWidthSection from '../FullWidthSection';
 import { weights, mediaQueries, colors, contValues } from '../../styles';
 
-const Quote = ({ data, size }) => {
+const Quote = ({ data, size, padding }) => {
   const isSmall = size === 'small';
   const quoteText = css`
     font-size: ${isSmall ? '21px' : '39px'};
@@ -52,7 +52,7 @@ const Quote = ({ data, size }) => {
   const containerStyles = css`
     width: ${contValues.min};
     max-width: 100%;
-    margin: 0 auto 60px;
+    margin: ${padding === '0' ? '0 auto 60px' : '0 auto'};
     padding: ${isSmall ? '0 10px' : '0 20px'};
     ${mediaQueries.phoneLarge} {
       ${isSmall &&
@@ -62,7 +62,7 @@ const Quote = ({ data, size }) => {
     }
   `;
   return (
-    <FullWidthSection height='auto' minHeight='auto' padding='0'>
+    <FullWidthSection height='auto' minHeight='auto' padding={padding}>
       <div css={containerStyles}>
         <div css={quoteText}>
           <span css={quoL}>&ldquo;</span>
@@ -80,10 +80,12 @@ const Quote = ({ data, size }) => {
 Quote.propTypes = {
   data: PropTypes.object.isRequired,
   size: PropTypes.string,
+  padding: PropTypes.string,
 };
 
 Quote.defaultProps = {
   size: 'large',
+  padding: '0',
 };
 
 export default Quote;
