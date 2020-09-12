@@ -18,6 +18,7 @@ const Insights = ({ data }) => {
   const imageSrc =
     post.relationships.field_image &&
     post.relationships.field_image.localFile &&
+    post.relationships.field_image.localFile.publicURL &&
     post.relationships.field_image.localFile.childImageSharp &&
     post.relationships.field_image.localFile.childImageSharp.fluid;
 
@@ -55,7 +56,7 @@ const Insights = ({ data }) => {
           imageSrc === undefined && wrapperStyle,
         ]}
       >
-        {imageSrc && (
+        {imageSrc ? (
           <Img
             fluid={[
               post.relationships.field_image.localFile.mobileImage.fluid,
@@ -80,6 +81,31 @@ const Insights = ({ data }) => {
               }
             `}
           />
+        ) : (
+          <div
+            css={css`
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-top: -100px;
+              margin-bottom: 60px;
+              max-width: 980px;
+
+              ${mediaQueries.phoneLarge} {
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: -165px;
+                margin-bottom: 80px;
+              }
+            `}
+          >
+            <img
+              src={post.relationships.field_image.localFile.publicURL}
+              alt={imageAlt}
+              css={css`
+                margin-bottom: 0;
+              `}
+            />
+          </div>
         )}
         <ContentBody
           comps={post.relationships.field_components}
