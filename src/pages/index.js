@@ -118,7 +118,7 @@ export const query = graphql`
     }
     allInsight(
       sort: { fields: created, order: DESC }
-      limit: 5
+      limit: 4
       filter: { field_hidden: { eq: false } }
     ) {
       nodes {
@@ -147,6 +147,7 @@ export const query = graphql`
       field_image {
         id
         localFile {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 530, maxHeight: 400) {
               ...GatsbyImageSharpFluid_withWebp
