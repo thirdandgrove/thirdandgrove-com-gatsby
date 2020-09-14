@@ -11,8 +11,8 @@ import Layout from '../components/layout';
 import { container, mediaQueries, weights, fonts, colors } from '../styles';
 import ContactForm from '../components/ContactForm';
 import CTA from '../components/CTA';
-import drupalLogo from '../../static/images/drupal-logo.png';
-import preserver from '../../static/images/preserver.png';
+import drupalLogo from '../../static/images/drupal-support/drupal-logo.png';
+import preserver from '../../static/images/drupal-support/preserver.png';
 
 const DrupalSupport = ({ data }) => {
   const height = `100px`;

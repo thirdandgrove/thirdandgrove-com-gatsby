@@ -34,6 +34,7 @@
     "gatsby-plugin-sitemap": "^2.2.25",
     "gatsby-source-drupal": "^3.3.16",
     "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-transformer-json": "^2.4.11",
     "gatsby-transformer-sharp": "^2.3.12",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
