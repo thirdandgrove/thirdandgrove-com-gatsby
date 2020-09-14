@@ -13,8 +13,6 @@ import ContactForm from '../components/ContactForm';
 import CTA from '../components/CTA';
 import drupalLogo from '../../static/images/drupal-logo.png';
 import preserver from '../../static/images/preserver.png';
-import alphaPreserver from '../../static/images/alpha-preserver.png';
-import SplitSection from '../components/SplitSection';
 
 const DrupalSupport = ({ data }) => {
   const height = `100px`;
@@ -130,12 +128,12 @@ const DrupalSupport = ({ data }) => {
 
     .basic-block--right {
       float: right;
-      shape-outside: circle(32% at 47% 77%);
+      shape-outside: circle(44% at 47% 68%);
       width: 500px;
-      height: 500px;
-      margin-top: 0;
-      shape-margin: 56px;
-      margin-bottom: 0;
+      height: 580px;
+      margin-top: 0px;
+      shape-margin: 2%;
+      margin-bottom: 0px;
     }
 
     .basic-block--left {

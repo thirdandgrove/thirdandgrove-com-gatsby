@@ -205,7 +205,6 @@ const VideoSection = ({ url, mp4 }) => {
             ref={refMovie}
             css={videoPlayer}
           >
-            {`Sorry, your browser doesn't support embedded videos.`}
             <source src={mp4} type='video/mp4' />
           </video>
         </>
