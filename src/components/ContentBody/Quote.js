@@ -6,13 +6,21 @@ import { css } from '@emotion/core';
 import FullWidthSection from '../FullWidthSection';
 import { weights, mediaQueries, colors, contValues } from '../../styles';
 
-const Quote = ({ data, size, padding, color, backgroundColor, quoteColor }) => {
+const Quote = ({
+  data,
+  size,
+  padding,
+  color,
+  backgroundColor,
+  quoteColor,
+  center,
+}) => {
   const isSmall = size === 'small';
   const quoteText = css`
     font-size: ${isSmall ? '21px' : '39px'};
     font-weight: ${isSmall ? weights.bold : weights.medium};
     line-height: ${isSmall ? '1.48' : '1.15'};
-    text-align: ${isSmall ? 'center' : 'left'};
+    text-align: ${isSmall || center ? 'center' : 'left'};
     color: ${color};
 
     ${mediaQueries.phoneLarge} {
@@ -39,7 +47,7 @@ const Quote = ({ data, size, padding, color, backgroundColor, quoteColor }) => {
   const quoteAttr = css`
     margin-bottom: 0;
     font-size: ${isSmall ? '16px' : '12px'};
-    text-align: ${isSmall ? 'center' : 'left'};
+    text-align: ${isSmall || center ? 'center' : 'left'};
     padding-top: 10px;
     font-weight: ${weights.light};
 
@@ -90,6 +98,7 @@ Quote.propTypes = {
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
   quoteColor: PropTypes.string,
+  center: PropTypes.bool,
 };
 
 Quote.defaultProps = {
@@ -98,6 +107,7 @@ Quote.defaultProps = {
   color: colors.black,
   backgroundColor: colors.white,
   quoteColor: colors.yellow,
+  center: false,
 };
 
 export default Quote;
