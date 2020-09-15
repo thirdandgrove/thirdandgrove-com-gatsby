@@ -16,102 +16,13 @@ import drupalLogo from '../images/drupal-support/drupal-logo.png';
 import preserver from '../images/drupal-support/preserver.png';
 
 const DrupalSupport = ({ data }) => {
-  console.log(data);
-  const height = `100px`;
-  const sectionPadding = css`
+  const sectionStylesWithImage = css`
     padding: 50px 20px;
+    position: relative;
 
     ${mediaQueries.phoneLarge} {
       padding: 50px 0;
     }
-  `;
-
-  const sectionStyles = css`
-    ${sectionPadding}
-    h3 {
-      font-family: ${fonts.sans};
-      font-size: 32px;
-      font-weight: ${weights.bold};
-      line-height: 1.39;
-      margin-bottom: 24px;
-    }
-    p {
-      font-weight: ${weights.light};
-    }
-    div {
-      ${mediaQueries.phoneLarge} {
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-    ul {
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-      font-family: ${fonts.sans};
-      font-weight: ${weights.light};
-      list-style: none;
-
-      ${mediaQueries.phoneLarge} {
-        &:last-of-type {
-          margin-right: 100px;
-        }
-      }
-
-      li {
-        margin-bottom: 4px;
-        padding-left: 0;
-
-        &:before {
-          content: '—';
-          padding-right: 2px;
-        }
-      }
-    }
-
-    ${mediaQueries.phoneLarge} {
-      ${container.min}
-    }
-  `;
-
-  const sectionStylesWithImage = css`
-    ${sectionPadding}
-    h3 {
-      font-family: ${fonts.sans};
-      font-size: 32px;
-      font-weight: ${weights.bold};
-      line-height: 1.39;
-      margin-bottom: 24px;
-    }
-    p {
-      font-weight: ${weights.light};
-    }
-    ul {
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-      font-family: ${fonts.sans};
-      font-weight: ${weights.light};
-      list-style: none;
-
-      ${mediaQueries.phoneLarge} {
-        &:last-of-type {
-          margin-right: 100px;
-        }
-      }
-
-      li {
-        margin-bottom: 4px;
-        padding-left: 0;
-
-        &:before {
-          content: '—';
-          padding-right: 2px;
-        }
-      }
-    }
-
-    position: relative;
 
     &:after {
       content: '';
@@ -137,6 +48,17 @@ const DrupalSupport = ({ data }) => {
       }
     }
 
+    h3 {
+      font-family: ${fonts.sans};
+      font-size: 32px;
+      font-weight: ${weights.bold};
+      line-height: 1.39;
+      margin-bottom: 24px;
+    }
+    p {
+      font-weight: ${weights.light};
+    }
+
     .basic-block--container {
       display: flex;
       flex-direction: column-reverse;
@@ -160,9 +82,6 @@ const DrupalSupport = ({ data }) => {
 
     .basic-block--left {
       ${container.min}
-    }
-
-    ${mediaQueries.phoneLarge} {
     }
   `;
 
@@ -190,8 +109,9 @@ const DrupalSupport = ({ data }) => {
         data={data.allCaseStudy}
         backgroundColor={colors.white}
         minHeight='750'
-      />{' '}
+      />
       <Quote
+        center
         size='large'
         padding='100px 0 100px 0'
         backgroundColor={colors.yellow}
@@ -210,7 +130,7 @@ const DrupalSupport = ({ data }) => {
             <h2>
               We offer a full suite of support options for Drupal 7, 8, and 9,
               handling all of your complex front end, back end, integration, and
-              compliance needs.{' '}
+              compliance needs.
             </h2>
 
             <p>
@@ -218,7 +138,7 @@ const DrupalSupport = ({ data }) => {
               upgrades to Drupal 8 and 9, content migrations, new features, bug
               fixes, resource augmentation, training, optimization, digital
               strategy, UX/UI improvements, and Google Analytics
-              industrialization.{' '}
+              industrialization.
             </p>
 
             <p>
@@ -226,12 +146,12 @@ const DrupalSupport = ({ data }) => {
               and can be changed or cancelled for any reason (or no reason) with
               30thirty days’ notice. We aren’t a cell phone company;, if you
               don’t like us, you shouldn’t have we don’t want you to have to
-              work with us.{' '}
+              work with us.
             </p>
 
             <p>
               We are experts on the Acquia and Platform, Pantheon platforms, as
-              well asnd custom hosting platforms in use by our clients.{' '}
+              well asnd custom hosting platforms in use by our clients.
             </p>
           </div>
         </div>
@@ -255,7 +175,7 @@ const DrupalSupport = ({ data }) => {
         minHeight='100%'
       >
         <h3>Contact Us</h3>
-        <ContactForm />
+        <ContactForm formName='drupal-support' />
       </FullWidthSection>
     </Layout>
   );
