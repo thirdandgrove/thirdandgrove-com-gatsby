@@ -4,7 +4,11 @@ import { colors, fonts, weights } from '../../styles';
 
 export default styled.textarea`
   background: transparent;
-  outline: 1px solid ${colors.darkgray};
+  outline: ${props =>
+    !props.altStyle
+      ? `1px solid ${colors.darkgray}`
+      : `1px solid ${colors.tagGray}`};
+  text-transform: ${props => (!props.altStyle ? 'none' : 'uppercase')};
   border: none;
   width: 100%;
   color: ${colors.darkgray};
