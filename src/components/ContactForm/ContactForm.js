@@ -11,7 +11,7 @@ import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
 import { encode } from '../../util';
 
-const ContactForm = ({ formName }) => {
+const ContactForm = ({ formName, altStyle }) => {
   const [formState, updateForm] = useState({
     comments: '',
     email: '',
@@ -100,9 +100,11 @@ const ContactForm = ({ formName }) => {
       position: absolute;
       left: 20px;
       font-family: ${fonts.sans};
-      font-weight: ${weights.light};
+      font-weight: ${!altStyle ? weights.light : weights.bold};
+      text-transform: ${!altStyle ? 'none' : 'uppercase'};
       line-height: 1.3;
       transition: 0.3s ease all;
+      color: ${!altStyle ? 'inherit' : colors.tagGray};
     }
 
     input,
@@ -114,7 +116,7 @@ const ContactForm = ({ formName }) => {
   const inactiveLabel = css`
     span {
       top: 16px;
-      font-size: 16px;
+      font-size: ${!altStyle ? '16px' : '15px'};
     }
   `;
 
@@ -224,6 +226,7 @@ const ContactForm = ({ formName }) => {
               type='text'
               name='name'
               id='cf-name'
+              altStyle={altStyle}
             />
           </label>
 
@@ -238,6 +241,7 @@ const ContactForm = ({ formName }) => {
               type='email'
               name='email'
               id='cf-email'
+              altStyle={altStyle}
             />
           </label>
 
@@ -251,6 +255,7 @@ const ContactForm = ({ formName }) => {
               onChange={updateInput}
               name='website'
               id='cf-website'
+              altStyle={altStyle}
             />
           </label>
 
@@ -265,6 +270,7 @@ const ContactForm = ({ formName }) => {
               type='tel'
               name='phone'
               id='cf-phone'
+              altStyle={altStyle}
             />
           </label>
 
@@ -283,6 +289,7 @@ const ContactForm = ({ formName }) => {
               data-cy='messageField'
               name='comments'
               id='cf-message'
+              altStyle={altStyle}
               css={css`
                 height: 130px;
 
@@ -317,10 +324,12 @@ const ContactForm = ({ formName }) => {
 
 ContactForm.propTypes = {
   formName: PropTypes.string,
+  altStyle: PropTypes.bool,
 };
 
 ContactForm.defaultProps = {
   formName: 'contact',
+  altStyle: false,
 };
 
 export default ContactForm;
