@@ -11,10 +11,12 @@ import Layout from '../components/layout';
 import { container, mediaQueries, weights, fonts, colors } from '../styles';
 import ContactForm from '../components/ContactForm';
 import CTA from '../components/CTA';
-import drupalLogo from '../../static/images/drupal-support/drupal-logo.png';
-import preserver from '../../static/images/drupal-support/preserver.png';
+import CTAGrid from '../components/CTAGrid';
+import drupalLogo from '../images/drupal-support/drupal-logo.png';
+import preserver from '../images/drupal-support/preserver.png';
 
 const DrupalSupport = ({ data }) => {
+  console.log(data);
   const height = `100px`;
   const sectionPadding = css`
     padding: 50px 20px;
@@ -115,25 +117,45 @@ const DrupalSupport = ({ data }) => {
       content: '';
       background-image: url(${preserver});
       position: absolute;
-      top: 15%;
+      bottom: 0;
       right: 0;
-      width: 425px;
-      height: 500px;
+      width: calc(425px / 2);
+      height: calc(500px / 2);
       background-size: contain;
       background-repeat: no-repeat;
+
+      ${mediaQueries.phoneLarge} {
+        content: '';
+        background-image: url(${preserver});
+        position: absolute;
+        top: 15%;
+        right: 0;
+        width: 425px;
+        height: 500px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
 
     .basic-block--container {
+      display: flex;
+      flex-direction: column-reverse;
+      ${mediaQueries.phoneLarge} {
+        display: block;
+      }
     }
 
     .basic-block--right {
-      float: right;
-      shape-outside: circle(44% at 47% 68%);
-      width: 500px;
-      height: 580px;
-      margin-top: 0px;
-      shape-margin: 2%;
-      margin-bottom: 0px;
+      height: 150px;
+      ${mediaQueries.phoneLarge} {
+        float: right;
+        shape-outside: circle(44% at 47% 68%);
+        width: 500px;
+        height: 580px;
+        margin-top: 0px;
+        shape-margin: 2%;
+        margin-bottom: 0px;
+      }
     }
 
     .basic-block--left {
@@ -214,89 +236,25 @@ const DrupalSupport = ({ data }) => {
           </div>
         </div>
       </section>
-      <FullWidthSection height={height} align='left' css={sectionStyles}>
-        <h3>Features</h3>
-
-        <div>
-          <ul>
-            <li>
-              Dedicated team - A single point of contact, the same project
-              manager, and the same technical architect work on your account.
-            </li>
-            <li>
-              24/7/365 support - Call our dedicated emergency hotline number at
-              any time on any day of the year and there will be a TAG engineer
-              working on your issue immediately.
-            </li>
-            <li>
-              Proactive peace of mind - Each Wednesday, when security patches
-              are announced, we determine if there is any impact to your site.
-              If there is, we hotfix your site immediately, proactively, without
-              you even asking.
-            </li>
-            <li>
-              Work with the best - We are the leading contributor to Drupal
-              itself, so we are helping to write the version of Drupal every
-              Drupal site uses.
-            </li>
-            <li>
-              Migration planning - We plan for upgrades from Drupal 7 to 8 or 9,
-              and make sure the entire process is seamless.
-            </li>
-            <li>
-              Tire-fire compatible - We didn’t build most of our support clients
-              sites. We use a unique audit process to surface risks, get
-              up-to-speed, and put a plan in place to deal with the technical
-              debt of sites that weren’t following best practices.{' '}
-            </li>
-          </ul>
-        </div>
-      </FullWidthSection>
-      <LogoGrid logoset='drupalSupport' />
-      <FullWidthSection height={height} align='left' css={sectionStyles}>
-        <h3>Get Support Now</h3>
-        <p>
-          Why Brands Work with TAG for Drupal support, maintenance, and
-          optimization:{' '}
-        </p>
-
-        <div>
-          <ul>
-            <li>
-              We are the top ranked Drupal agency by the Drupal organization
-              itself
-            </li>
-            <li>We are Drupal- certified developers</li>
-            <li>
-              Our 65-point checklist for onboarding support sites we didn’t
-              build
-            </li>
-            <li>Our Drupal 8 & 9 thought leadership</li>
-            <li>Our 24/7/365 engineering on-call team with guaranteed SLA</li>
-            <li>
-              Development, digital strategy, and creative services are included
-            </li>
-            <li>We have a single point of contact and dedicated team</li>
-            <li>Our entire team works on North American time zones </li>
-            <li>We’re an Acquia Partner </li>
-            <li>
-              We are a collection of happy people you will enjoy working with
-            </li>
-          </ul>
-        </div>
-      </FullWidthSection>
+      <CTAGrid
+        items={data.allDrupalSupportCtaGridOneJson.edges}
+        images={data.allFile.edges}
+        altStyle={false}
+      />
+      <LogoGrid logoset='drupalSupport' title='A few of our friends' />
+      <CTAGrid
+        header='Why brands work with Third and Grove for Drupal support, maintenance, and optimization:'
+        items={data.allDrupalSupportCtaGridTwoJson.edges}
+        images={data.allFile.edges}
+        backgroundColor={colors.lightblue}
+        altStyle
+      />
       <FullWidthSection
         backgroundColor={colors.yellow}
         padding='75px 0 100px 0'
         minHeight='100%'
       >
-        <h3
-          css={css`
-            font-family: ${fonts.sans};
-          `}
-        >
-          Get In Touch
-        </h3>
+        <h3>Contact Us</h3>
         <ContactForm />
       </FullWidthSection>
     </Layout>
@@ -311,6 +269,33 @@ export default DrupalSupport;
 
 export const query = graphql`
   {
+    allFile(filter: { absolutePath: { regex: "/drupal-support/" } }) {
+      edges {
+        node {
+          name
+          publicURL
+          absolutePath
+        }
+      }
+    }
+    allDrupalSupportCtaGridOneJson {
+      edges {
+        node {
+          icon
+          title
+          description
+        }
+      }
+    }
+    allDrupalSupportCtaGridTwoJson {
+      edges {
+        node {
+          icon
+          title
+          description
+        }
+      }
+    }
     allCaseStudy(
       sort: { fields: created, order: DESC }
       limit: 1
