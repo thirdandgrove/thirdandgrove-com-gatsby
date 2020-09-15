@@ -31,6 +31,7 @@ const CTA = ({
       max-width: 73px;
     }
   `;
+
   const ctaStyle2 = css`
     padding-top: 100px;
     padding-bottom: 100px;
@@ -51,6 +52,8 @@ const CTA = ({
     h2 {
       color: ${colors.reallydarkgray};
       font-weight: ${weights.thin};
+      font-size: 36px;
+      line-height: 54px;
       text-align: center;
     }
 
@@ -59,6 +62,7 @@ const CTA = ({
       text-align: center;
     }
   `;
+
   return (
     <FullWidthSection
       backgroundColor={backgroundColor}
