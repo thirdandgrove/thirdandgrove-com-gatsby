@@ -33,7 +33,7 @@ const CTAGrid = ({
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 70px;
       grid-row-gap: 70px;
-      padding-bottom: 24px;
+      padding-bottom: 72px;
     }
   `;
 
