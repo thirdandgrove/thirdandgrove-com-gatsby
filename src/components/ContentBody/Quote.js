@@ -14,8 +14,10 @@ const Quote = ({
   backgroundColor,
   quoteColor,
   center,
+  altStyle,
 }) => {
   const isSmall = size === 'small';
+
   const quoteText = css`
     font-size: ${isSmall ? '21px' : '39px'};
     font-weight: ${isSmall ? weights.bold : weights.medium};
@@ -28,6 +30,22 @@ const Quote = ({
       text-align: center;
       letter-spacing: ${isSmall ? '-0.09px' : '-0.16px'};
       line-height: ${isSmall ? '1.48' : '1.38'};
+    }
+  `;
+
+  const quoteTextAlt = css`
+    font-size: 39px;
+    font-weight: ${weights.medium};
+    line-height: 48px;
+    text-align: center;
+    color: ${color};
+
+    ${mediaQueries.phoneLarge} {
+      font-size: 48px;
+      font-weight: ${weights.medium};
+      line-height: 48px;
+      text-align: center;
+      color: ${color};
     }
   `;
 
@@ -58,6 +76,7 @@ const Quote = ({
       text-align: center;
     }
   `;
+
   const containerStyles = css`
     width: ${contValues.min};
     max-width: 100%;
@@ -70,6 +89,7 @@ const Quote = ({
       `};
     }
   `;
+
   return (
     <FullWidthSection
       height='auto'
@@ -78,7 +98,7 @@ const Quote = ({
       backgroundColor={backgroundColor}
     >
       <div css={containerStyles}>
-        <div css={quoteText}>
+        <div css={!altStyle ? quoteText : quoteTextAlt}>
           <span css={quoL}>&ldquo;</span>
           {data.field_quote}
           <span css={quoR}>&rdquo;</span>
@@ -99,6 +119,7 @@ Quote.propTypes = {
   backgroundColor: PropTypes.string,
   quoteColor: PropTypes.string,
   center: PropTypes.bool,
+  altStyle: PropTypes.bool,
 };
 
 Quote.defaultProps = {
@@ -108,6 +129,7 @@ Quote.defaultProps = {
   backgroundColor: colors.white,
   quoteColor: colors.yellow,
   center: false,
+  altStyle: false,
 };
 
 export default Quote;
