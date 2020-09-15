@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
-import { container, mediaQueries, weights, fonts, colors } from '../../styles';
+import { mediaQueries, weights, fonts } from '../../styles';
 
 const CTAGridItem = ({ icon, title, description, altStyle }) => {
   const ctaContainer = css`
@@ -55,7 +55,7 @@ const CTAGridItem = ({ icon, title, description, altStyle }) => {
     p {
     }
 
-    &:nth-last-child(2),
+    &:nth-last-of-type(2),
     &:last-of-type {
       border-bottom: none;
     }
@@ -70,14 +70,14 @@ const CTAGridItem = ({ icon, title, description, altStyle }) => {
 };
 
 CTAGridItem.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.array,
   title: PropTypes.string,
   description: PropTypes.string,
   altStyle: PropTypes.bool,
 };
 
 CTAGridItem.defaultProps = {
-  icon: '',
+  icon: [],
   title: '',
   description: '',
   altStyle: false,

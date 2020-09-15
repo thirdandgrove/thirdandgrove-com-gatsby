@@ -3,18 +3,25 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 
-import { container, mediaQueries, weights, fonts, colors } from '../../styles';
+import { container, mediaQueries } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 import { FakeButton } from '../Button';
 
 import CTAGridItem from './CTAGridItem';
 
-const CTAGrid = ({ items, images, header, backgroundColor, altStyle }) => {
+const CTAGrid = ({
+  items,
+  images,
+  header,
+  backgroundColor,
+  link,
+  altStyle,
+}) => {
   const ctaGridContainer = css`
     display: grid;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 5%;
+    grid-column-gap: 7%;
     grid-row-gap: 70px;
     width: 100%;
     padding-bottom: 36px;
@@ -76,6 +83,7 @@ const CTAGrid = ({ items, images, header, backgroundColor, altStyle }) => {
       <div css={!altStyle ? ctaGridContainer : ctaGridContainerAlt}>
         {items.map(({ node }) => (
           <CTAGridItem
+            key={node.title}
             icon={getImageSrc(node.icon)}
             title={node.title}
             description={node.description}
@@ -84,7 +92,7 @@ const CTAGrid = ({ items, images, header, backgroundColor, altStyle }) => {
         ))}
       </div>
       {!altStyle && (
-        <Link to='http://google.com'>
+        <Link to={link}>
           <FakeButton>Get Support Now</FakeButton>
         </Link>
       )}
@@ -98,6 +106,7 @@ CTAGrid.propTypes = {
   altStyle: PropTypes.bool,
   header: PropTypes.string,
   backgroundColor: PropTypes.string,
+  link: PropTypes.string,
 };
 
 CTAGrid.defaultProps = {
@@ -106,6 +115,7 @@ CTAGrid.defaultProps = {
   altStyle: false,
   header: '',
   backgroundColor: '#FFF',
+  link: '/',
 };
 
 export default CTAGrid;
