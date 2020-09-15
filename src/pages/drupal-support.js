@@ -21,7 +21,7 @@ const DrupalSupport = ({ data }) => {
     position: relative;
 
     ${mediaQueries.phoneLarge} {
-      padding: 50px 0;
+      padding: 100px 0 100px 0;
     }
 
     &:after {
@@ -48,13 +48,17 @@ const DrupalSupport = ({ data }) => {
       }
     }
 
-    h3 {
-      font-family: ${fonts.sans};
-      font-size: 32px;
-      font-weight: ${weights.bold};
-      line-height: 1.39;
-      margin-bottom: 24px;
+    h2 {
+      font-size: 27px;
+      line-height: 39px;
+      ${mediaQueries.phoneLarge} {
+        font-size: 39px;
+        font-weight: ${weights.medium};
+        line-height: 48px;
+        margin-bottom: 24px;
+      }
     }
+
     p {
       font-weight: ${weights.light};
     }
@@ -81,7 +85,7 @@ const DrupalSupport = ({ data }) => {
     }
 
     .basic-block--left {
-      ${container.min}
+      ${container.textOnly}
     }
   `;
 
@@ -92,7 +96,7 @@ const DrupalSupport = ({ data }) => {
         title: <>24/7 Drupal Support, Maintenance, & Optimization</>,
         mobileMinHeight: '93vh',
         hideNav: true,
-        color: colors.drupalBlue,
+        color: colors.drupal9Blue,
         invert: true,
       }}
     >
@@ -113,6 +117,7 @@ const DrupalSupport = ({ data }) => {
       />
       <Quote
         center
+        altStyle
         size='large'
         padding='100px 0 100px 0'
         backgroundColor={colors.yellow}
@@ -172,12 +177,22 @@ const DrupalSupport = ({ data }) => {
         altStyle
       />
       <FullWidthSection
-        backgroundColor={colors.yellow}
+        backgroundColor={colors.white}
         padding='75px 0 100px 0'
         minHeight='100%'
       >
-        <h3 id='contact'>Contact Us</h3>
-        <ContactForm formName='drupal-support' />
+        <h3
+          id='contact'
+          css={css`
+            font-size: 39px;
+            ${mediaQueries.phoneLarge} {
+              font-size: 72px;
+            }
+          `}
+        >
+          Contact Us
+        </h3>
+        <ContactForm formName='drupal-support' altStyle />
       </FullWidthSection>
     </Layout>
   );
