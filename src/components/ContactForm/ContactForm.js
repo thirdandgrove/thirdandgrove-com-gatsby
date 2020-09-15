@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 
 import Input from '../Input';
@@ -10,7 +11,7 @@ import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
 import { encode } from '../../util';
 
-const ContactForm = () => {
+const ContactForm = ({ formName }) => {
   const [formState, updateForm] = useState({
     comments: '',
     email: '',
@@ -62,7 +63,7 @@ const ContactForm = () => {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...formState }),
+      body: encode({ 'form-name': formName, ...formState }),
     }).then(() => {
       updateForm({
         comments: 'Thank you for your inquiry.',
@@ -194,7 +195,7 @@ const ContactForm = () => {
       `}
     >
       <form
-        name='contact'
+        name={formName}
         method='POST'
         data-netlify='true'
         data-cy='contactForm'
@@ -312,6 +313,14 @@ const ContactForm = () => {
       </form>
     </div>
   );
+};
+
+ContactForm.propTypes = {
+  formName: PropTypes.string,
+};
+
+ContactForm.defaultProps = {
+  formName: 'contact',
 };
 
 export default ContactForm;
