@@ -8,6 +8,8 @@ exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
   const { form_name } = data;
 
+  console.log(event, _context, callback);
+
   /** Contact Form */
   if (form_name === 'contact') {
     // handle form contact
@@ -152,8 +154,8 @@ exports.handler = async (event, _context, callback) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify({
-          title: `[Drupal Support] Deal for ${name} <${email}>`,
-          [fields.dealLeadSource]: '34',
+          title: `[Drupal Support ] Deal for ${name} <${email}>`,
+          [fields.dealLeadSource]: '98',
           person_id,
           [fields.dealDetails]: comments,
           user_id: PIPEDRIVE_USER_ID,
