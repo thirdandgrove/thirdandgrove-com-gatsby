@@ -8,7 +8,7 @@ exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
   const { form_name } = data;
 
-  console.log(event, _context, callback);
+  console.log(event, _context, callback, data);
 
   /** Contact Form */
   if (form_name === 'contact') {

@@ -76,6 +76,40 @@ const ContactForm = ({ formName, altStyle }) => {
     });
   };
 
+  const inputStyles = css`
+    background: transparent;
+    outline: ${!altStyle
+      ? `1px solid ${colors.darkgray}`
+      : `1px solid ${colors.tagGray}`};
+    border: none;
+    height: 50px;
+    color: ${colors.darkgray};
+    font-family: ${fonts.sans};
+    font-weight: ${weights.light};
+    font-size: 16px;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    width: 100%;
+
+    &::placeholder {
+      color: ${colors.darkgray};
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      /* this hack allows the background color of autocomplete to stay transparent */
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    &:invalid {
+      border: ${colors.red} 1px solid;
+    }
+  `;
+
   const labelCss = css`
     @keyframes fadein {
       from {
@@ -137,6 +171,23 @@ const ContactForm = ({ formName, altStyle }) => {
   const fullWidth = css`
     grid-column-start: 1;
     grid-column-end: 3;
+  `;
+
+  const fieldSetStyles = css`
+    border: none;
+    margin: 0;
+    padding: 0;
+  `;
+
+  const fieldSetTextAreaStyles = css`
+    border: none;
+    margin: 0;
+    padding: 0;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    textarea {
+      height: 200px;
+    }
   `;
 
   // eslint-disable-next-line react/prop-types
@@ -215,12 +266,15 @@ const ContactForm = ({ formName, altStyle }) => {
             }
           `}
         >
-          <label
-            htmlFor='cf-name'
-            css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
-          >
-            <span>Name</span>
+          <fieldset css={fieldSetStyles}>
+            <label
+              htmlFor='cf-name'
+              css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
+            >
+              <span>Name</span>
+            </label>
             <Input
+              css={inputStyles}
               value={formState.name}
               onChange={updateInput}
               type='text'
@@ -228,14 +282,17 @@ const ContactForm = ({ formName, altStyle }) => {
               id='cf-name'
               altStyle={altStyle}
             />
-          </label>
+          </fieldset>
 
-          <label
-            htmlFor='cf-email'
-            css={[labelCss, formState.email ? activeLabel : inactiveLabel]}
-          >
-            <span>Email</span>
+          <fieldset css={fieldSetStyles}>
+            <label
+              htmlFor='cf-email'
+              css={[labelCss, formState.email ? activeLabel : inactiveLabel]}
+            >
+              <span>Email</span>
+            </label>
             <Input
+              css={inputStyles}
               value={formState.email}
               onChange={updateInput}
               type='email'
@@ -243,28 +300,33 @@ const ContactForm = ({ formName, altStyle }) => {
               id='cf-email'
               altStyle={altStyle}
             />
-          </label>
+          </fieldset>
 
-          <label
-            htmlFor='cf-website'
-            css={[labelCss, formState.website ? activeLabel : inactiveLabel]}
-          >
-            <span>Website</span>
+          <fieldset css={fieldSetStyles}>
+            <label
+              htmlFor='cf-website'
+              css={[labelCss, formState.website ? activeLabel : inactiveLabel]}
+            >
+              <span>Website</span>{' '}
+            </label>
             <Input
+              css={inputStyles}
               value={formState.website}
               onChange={updateInput}
               name='website'
               id='cf-website'
               altStyle={altStyle}
             />
-          </label>
-
-          <label
-            htmlFor='cf-phone'
-            css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}
-          >
-            <span>Phone [optional]</span>
+          </fieldset>
+          <fieldset css={fieldSetStyles}>
+            <label
+              htmlFor='cf-phone'
+              css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}
+            >
+              <span>Phone [optional]</span>{' '}
+            </label>
             <Input
+              css={inputStyles}
               value={formState.phone}
               onChange={updateInput}
               type='tel'
@@ -272,17 +334,18 @@ const ContactForm = ({ formName, altStyle }) => {
               id='cf-phone'
               altStyle={altStyle}
             />
-          </label>
-
-          <label
-            htmlFor='cf-message'
-            css={[
-              labelCss,
-              fullWidth,
-              formState.comments ? activeLabel : inactiveLabel,
-            ]}
-          >
-            <span>Leave a Message</span>
+          </fieldset>
+          <fieldset css={fieldSetTextAreaStyles}>
+            <label
+              htmlFor='cf-message'
+              css={[
+                labelCss,
+                fullWidth,
+                formState.comments ? activeLabel : inactiveLabel,
+              ]}
+            >
+              <span>Leave a Message</span>{' '}
+            </label>
             <TextArea
               value={formState.comments}
               onChange={updateInput}
@@ -290,15 +353,8 @@ const ContactForm = ({ formName, altStyle }) => {
               name='comments'
               id='cf-message'
               altStyle={altStyle}
-              css={css`
-                height: 130px;
-
-                ${mediaQueries.phoneLarge} {
-                  height: 200px;
-                }
-              `}
             />
-          </label>
+          </fieldset>
         </div>
         <div
           css={css`
