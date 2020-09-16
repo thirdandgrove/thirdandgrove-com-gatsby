@@ -86,6 +86,13 @@ const DrupalSupport = ({ data }) => {
 
     .basic-block--left {
       ${container.textOnly}
+      padding-left: 0;
+      padding-right: 0;
+
+      ${mediaQueries.phoneLarge} {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
   `;
 
@@ -185,8 +192,10 @@ const DrupalSupport = ({ data }) => {
           id='contact'
           css={css`
             font-size: 39px;
+            margin-bottom: 0;
             ${mediaQueries.phoneLarge} {
               font-size: 72px;
+              margin: 0 0 1.45rem;
             }
           `}
         >

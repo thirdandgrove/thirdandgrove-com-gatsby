@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 
-import { container, mediaQueries } from '../../styles';
+import { container, mediaQueries, weights } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 import { FakeButton } from '../Button';
 
@@ -24,7 +24,7 @@ const CTAGrid = ({
     grid-column-gap: 7%;
     grid-row-gap: 70px;
     width: 100%;
-    padding-bottom: 36px;
+    padding-bottom: 0;
 
     ${mediaQueries.phoneLarge} {
       ${container.textOnly}
@@ -53,7 +53,7 @@ const CTAGrid = ({
     padding: 100px 20px;
 
     ${mediaQueries.phoneLarge} {
-      padding: 125px 0;
+      padding: 100px 0;
     }
   `;
 
@@ -65,18 +65,29 @@ const CTAGrid = ({
     h3 {
       font-size: 27px;
       text-align: center;
-      padding-bottom: 24px;
+      padding-bottom: 0;
+      line-height: 39px;
 
       ${mediaQueries.phoneLarge} {
         width: 820px;
         max-width: 100%;
         margin: 0 auto;
         font-size: 39px;
+        line-height: 48px;
         padding-bottom: 48px;
       }
     }
   `;
+
+  const buttonStyle = css`
+    display: none;
+    ${mediaQueries.phoneLarge} {
+      display: block;
+    }
+  `;
+
   const getImageSrc = name => images.filter(({ node }) => name === node.name);
+
   return (
     <FullWidthSection css={sectionStyles} backgroundColor={backgroundColor}>
       {header !== '' && <h3>{header}</h3>}
@@ -92,9 +103,11 @@ const CTAGrid = ({
         ))}
       </div>
       {!altStyle && (
-        <Link to={link}>
-          <FakeButton>Get Support Now</FakeButton>
-        </Link>
+        <div css={buttonStyle}>
+          <Link to={link}>
+            <FakeButton>Get Support Now</FakeButton>
+          </Link>
+        </div>
       )}
     </FullWidthSection>
   );

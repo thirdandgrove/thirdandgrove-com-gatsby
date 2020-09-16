@@ -33,11 +33,12 @@ const CTAGridItem = ({ icon, title, description, altStyle }) => {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 24px 0;
+    padding-top: 24px;
     border-bottom: none;
 
     ${mediaQueries.phoneLarge} {
       border-bottom: 0.25px solid rgba(41, 41, 42, 0.2);
+      padding: 24px 0;
     }
 
     img {
@@ -50,9 +51,11 @@ const CTAGridItem = ({ icon, title, description, altStyle }) => {
       font-size: 16px;
       font-weight: ${weights.bold};
       margin: 0;
+      line-height: 27px;
     }
 
     p {
+      line-height: 27px;
     }
 
     &:nth-last-of-type(2),

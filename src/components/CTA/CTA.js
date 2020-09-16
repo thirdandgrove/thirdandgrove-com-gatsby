@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 
-import { colors, weights, fonts } from '../../styles';
+import { colors, weights, mediaQueries } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 import { FakeButton } from '../Button';
 
@@ -35,6 +35,13 @@ const CTA = ({
   const ctaStyle2 = css`
     padding-top: 100px;
     padding-bottom: 100px;
+    padding-left: 48px;
+    padding-right: 48px;
+
+    ${mediaQueries.phoneLarge} {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
 
     div {
       width: 100%;
@@ -52,14 +59,21 @@ const CTA = ({
     h2 {
       color: ${colors.reallydarkgray};
       font-weight: ${weights.thin};
-      font-size: 36px;
-      line-height: 54px;
+      font-size: 30px;
+      line-height: 39px;
       text-align: center;
+
+      ${mediaQueries.phoneLarge} {
+        font-size: 36px;
+        line-height: 54px;
+      }
     }
 
     p {
       font-weight: ${weights.thin};
+      line-height: 27px;
       text-align: center;
+      margin-bottom: 48px;
     }
   `;
 
