@@ -31,6 +31,13 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
       }, 1000);
     });
   };
+
+  const fieldsetStyles = css`
+    border: none;
+    margin: 0;
+    padding: 0;
+  `;
+
   return (
     <form
       name='newsletter'
@@ -42,7 +49,8 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
         flex-direction: column;
       `}
     >
-      <label htmlFor='nws-email'>
+      <fieldset css={fieldsetStyles}>
+        <label htmlFor='nws-email' />
         {!submitted && (
           <Input
             css={css`
@@ -57,7 +65,7 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
             onChange={evt => updateEmail(evt.target.value)}
           />
         )}
-      </label>
+      </fieldset>
       <Button
         onClick={onSubmit}
         disabled={submitted}

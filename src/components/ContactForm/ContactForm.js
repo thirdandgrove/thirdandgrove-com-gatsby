@@ -92,6 +92,7 @@ const ContactForm = ({ formName, altStyle }) => {
     padding: 0 20px;
     margin-bottom: 20px;
     width: 100%;
+    padding-top: 10px;
 
     &::placeholder {
       color: ${colors.darkgray};
@@ -174,12 +175,44 @@ const ContactForm = ({ formName, altStyle }) => {
   `;
 
   const fieldSetStyles = css`
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 0.7;
+      }
+    }
+
+    animation: fadein 3s 1 forwards;
+
+    &:focus-within {
+      opacity: 1 !important;
+    }
+
     border: none;
     margin: 0;
     padding: 0;
   `;
 
   const fieldSetTextAreaStyles = css`
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 0.7;
+      }
+    }
+
+    animation: fadein 3s 1 forwards;
+
+    &:focus-within {
+      opacity: 1 !important;
+    }
+
     border: none;
     margin: 0;
     padding: 0;

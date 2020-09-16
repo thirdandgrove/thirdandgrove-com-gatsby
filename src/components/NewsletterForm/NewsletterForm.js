@@ -17,7 +17,7 @@ export default () => {
       return;
     }
 
-    fetch('http://localhost:8888/.netlify/functions/submission-created', {
+    fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'newsletter', email }),
@@ -26,6 +26,13 @@ export default () => {
       hasSubmitted(true);
     });
   };
+
+  const fieldsetStyles = css`
+    border: none;
+    margin: 0;
+    padding: 0;
+  `;
+
   return (
     <form
       name='newsletter'
@@ -37,7 +44,8 @@ export default () => {
         flex-direction: column;
       `}
     >
-      <label htmlFor='nws-email'>
+      <fieldset css={fieldsetStyles}>
+        <label htmlFor='nws-email' />
         {!submitted && (
           <Input
             type='email'
@@ -48,7 +56,7 @@ export default () => {
             onChange={evt => updateEmail(evt.target.value)}
           />
         )}
-      </label>
+      </fieldset>
       <Button onClick={onSubmit} disabled={submitted}>
         {submitted ? 'Thank You' : 'Sign Me Up'}
       </Button>
