@@ -141,9 +141,8 @@ const DrupalSupport = ({ data }) => {
           <div className='basic-block--right' />
           <div className='basic-block--left'>
             <h2>
-              We offer a full suite of support options for Drupal 7, 8, and 9,
-              handling all of your complex front end, back end, integration, and
-              compliance needs.
+              A full suite of support options for Drupal 7, 8, and 9, handling
+              complex front end, back end, integration, and compliance needs.
             </h2>
 
             <p>
