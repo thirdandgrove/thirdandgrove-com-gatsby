@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 
-import { container, mediaQueries, weights } from '../../styles';
+import { container, mediaQueries } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 import { FakeButton } from '../Button';
 
@@ -50,7 +50,7 @@ const CTAGrid = ({
   `;
 
   const sectionPadding = css`
-    padding: 125px 20px 100px 20px;
+    padding: 80px 20px 70px 20px;
 
     ${mediaQueries.phoneLarge} {
       padding: 100px 0;
@@ -58,7 +58,7 @@ const CTAGrid = ({
   `;
 
   const sectionPaddingAlt = css`
-    padding: 100px 20px 100px 20px;
+    padding: 70px 20px 70px 20px;
 
     ${mediaQueries.phoneLarge} {
       padding: 100px 0;

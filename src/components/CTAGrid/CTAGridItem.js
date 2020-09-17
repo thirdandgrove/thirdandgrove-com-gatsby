@@ -19,10 +19,10 @@ const CTAGridItem = ({ icon, title, description, altStyle }) => {
       height: 75px;
       justify-content: center;
       align-items: center;
+      margin-bottom: 30px;
     }
 
     img {
-      margin-bottom: 48px;
       text-align: center;
     }
 
