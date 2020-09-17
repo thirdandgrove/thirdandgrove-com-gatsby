@@ -7,7 +7,7 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
-import { fonts, weights, mediaQueries } from '../../styles';
+import { fonts, weights, mediaQueries, jsBreakpoints } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreview = ({ article }) => {
@@ -45,6 +45,7 @@ const ArticlePreview = ({ article }) => {
       }
     }
   `;
+
   return (
     <Spring
       delay={0}
@@ -61,15 +62,29 @@ const ArticlePreview = ({ article }) => {
             `}
             to={ensureTrailingSlash(article.path.alias)}
           >
-            {article.relationships.field_image && (
-              <Img
-                fluid={
-                  article.relationships.field_image.localFile.childImageSharp
-                    .fluid
-                }
-                alt={article.field_image.alt}
-              />
-            )}
+            {article.relationships.field_image &&
+              (article.relationships.field_image.localFile.publicURL.indexOf(
+                '.gif'
+              ) !== -1 ? (
+                <img
+                  src={article.relationships.field_image.localFile.publicURL}
+                  alt={article.field_image.alt}
+                />
+              ) : (
+                <Img
+                  fluid={[
+                    article.relationships.field_image.localFile
+                      .childImageSlideMobile.fluid,
+                    {
+                      ...article.relationships.field_image.localFile
+                        .childImageSlideDesktop.fluid,
+                      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+                    },
+                  ]}
+                  alt={article.field_image.alt}
+                />
+              ))}
+
             <h2>{article.title}</h2>
             <footer>{`${article.created}`}</footer>
           </Link>
