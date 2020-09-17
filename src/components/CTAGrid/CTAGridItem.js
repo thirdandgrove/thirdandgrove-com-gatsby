@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { Spring } from 'react-spring/renderprops';
 
+import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { mediaQueries, weights, fonts } from '../../styles';
 
 const CTAGridItem = ({ icon, title, description, altStyle }) => {
+  const nodeRef = useRef();
+  const isVisible = useHasBeenVisible(nodeRef);
   const ctaContainer = css`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
+    .cta-grid-item--image-wrapper {
+      display: flex;
+      height: 75px;
+      justify-content: center;
+      align-items: center;
+    }
+
     img {
       margin-bottom: 48px;
-      max-height: 57px;
+      text-align: center;
     }
 
     h4 {
       font-size: 27px;
+      line-height: 39px;
       ${mediaQueries.phoneLarge} {
         margin-bottom: 36px;
         font-size: 39px;
@@ -35,6 +47,12 @@ const CTAGridItem = ({ icon, title, description, altStyle }) => {
     align-items: center;
     padding-top: 24px;
     border-bottom: none;
+
+    .cta-grid-item--inner-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
 
     ${mediaQueries.phoneLarge} {
       border-bottom: 0.25px solid rgba(41, 41, 42, 0.2);
@@ -64,11 +82,53 @@ const CTAGridItem = ({ icon, title, description, altStyle }) => {
     }
   `;
   return (
-    <div css={!altStyle ? ctaContainer : ctaContainerAlt}>
-      <img src={icon[0].node.publicURL} alt={description} />
-      <h4>{title}</h4>
-      <p>{description}</p>
-    </div>
+    <>
+      {!altStyle ? (
+        <div css={ctaContainer} ref={nodeRef}>
+          <Spring
+            delay={0.2}
+            to={{
+              transform: isVisible ? 'translateY(0)' : 'translateY(-25px)',
+            }}
+          >
+            {({ transform }) => (
+              <div
+                style={{ transform }}
+                className='cta-grid-item--image-wrapper'
+              >
+                <img src={icon[0].node.publicURL} alt={description} />
+              </div>
+            )}
+          </Spring>
+
+          <h4>{title}</h4>
+          <p>{description}</p>
+        </div>
+      ) : (
+        <Spring
+          delay={0.2}
+          to={{
+            transform: isVisible ? 'translateY(0)' : 'translateY(100px)',
+            opacity: isVisible ? '1' : '0',
+          }}
+        >
+          {({ transform, opacity }) => (
+            <div
+              style={{ transform, opacity }}
+              css={ctaContainerAlt}
+              ref={nodeRef}
+            >
+              <div className='cta-grid-item--inner-wrapper'>
+                <img src={icon[0].node.publicURL} alt={description} />
+
+                <h4>{title}</h4>
+                <p>{description}</p>
+              </div>
+            </div>
+          )}
+        </Spring>
+      )}
+    </>
   );
 };
 
