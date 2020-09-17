@@ -21,7 +21,7 @@ const CTAGrid = ({
     display: grid;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 7%;
+    grid-column-gap: 10%;
     grid-row-gap: 70px;
     width: 100%;
     padding-bottom: 0;
@@ -50,7 +50,15 @@ const CTAGrid = ({
   `;
 
   const sectionPadding = css`
-    padding: 100px 20px;
+    padding: 125px 20px 100px 20px;
+
+    ${mediaQueries.phoneLarge} {
+      padding: 100px 0;
+    }
+  `;
+
+  const sectionPaddingAlt = css`
+    padding: 100px 20px 100px 20px;
 
     ${mediaQueries.phoneLarge} {
       padding: 100px 0;
@@ -58,7 +66,7 @@ const CTAGrid = ({
   `;
 
   const sectionStyles = css`
-    ${sectionPadding}
+    ${!altStyle ? sectionPadding : sectionPaddingAlt}
 
     clear: both;
 
