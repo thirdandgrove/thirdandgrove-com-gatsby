@@ -7,6 +7,12 @@ const axios = require('axios');
 exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
   const { form_name } = data;
+  const { BRANCH } = process.env;
+
+  if (BRANCH !== 'master') {
+    callback(null, { statusCode: 200 });
+    return;
+  }
 
   /** Contact Form */
   if (form_name === 'contact') {
