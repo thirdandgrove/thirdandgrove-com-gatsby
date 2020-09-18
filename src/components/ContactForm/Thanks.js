@@ -43,7 +43,7 @@ Thanks.propTypes = {
 };
 
 Thanks.defaultProps = {
-  message: 'Thank you for your inquiry.',
+  message: 'Thank you for your inquiry. We will be in touch soon.',
 };
 
 export default Thanks;
