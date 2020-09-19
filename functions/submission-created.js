@@ -10,6 +10,8 @@ exports.handler = async (event, _context, callback) => {
   const { BRANCH } = process.env;
 
   if (BRANCH !== 'master') {
+    console.log(event, _context, callback);
+    console.log(process.env);
     callback(null, { statusCode: 200 });
     return;
   }
