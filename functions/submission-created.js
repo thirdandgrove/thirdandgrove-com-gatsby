@@ -10,7 +10,10 @@ exports.handler = async (event, _context, callback) => {
   const { BRANCH } = process.env;
   const { PROCESS_FORM } = process.env;
 
-  if (process.env.BRANCH !== 'master') {
+  console.log(BRANCH);
+  console.log(PROCESS_FORM);
+
+  if (PROCESS_FORM !== 'true') {
     console.log(event, _context, callback);
     console.log(process.env);
     console.log(BRANCH);
