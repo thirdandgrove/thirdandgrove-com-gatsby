@@ -8,10 +8,13 @@ exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
   const { form_name } = data;
   const { BRANCH } = process.env;
+  const { PROCESS_FORM } = process.env;
 
-  if (BRANCH !== 'master') {
+  if (process.env.BRANCH !== 'master') {
     console.log(event, _context, callback);
     console.log(process.env);
+    console.log(BRANCH);
+    console.log(PROCESS_FORM);
     callback(null, { statusCode: 200 });
     return;
   }
