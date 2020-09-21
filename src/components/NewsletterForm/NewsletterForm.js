@@ -17,7 +17,7 @@ export default () => {
       return;
     }
 
-    fetch('http://localhost:8888/.netlify/functions/submission-created', {
+    fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'newsletter', email }),

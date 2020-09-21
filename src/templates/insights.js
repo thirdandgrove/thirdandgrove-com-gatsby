@@ -16,6 +16,7 @@ import {
 const Insights = ({ data }) => {
   const post = data.insight;
   const imageSrc =
+    post.relationships.field_image !== null &&
     post.relationships.field_image &&
     post.relationships.field_image.localFile &&
     post.relationships.field_image.localFile.publicURL &&
@@ -56,57 +57,61 @@ const Insights = ({ data }) => {
           imageSrc === undefined && wrapperStyle,
         ]}
       >
-        {imageSrc ? (
-          <Img
-            fluid={[
-              post.relationships.field_image.localFile.mobileImage.fluid,
-              {
-                ...post.relationships.field_image.localFile.desktopImage.fluid,
-                media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-              },
-            ]}
-            alt={imageAlt}
-            css={css`
-              margin-left: 20px;
-              margin-right: 20px;
-              margin-top: -100px;
-              margin-bottom: 60px;
-              max-width: 980px;
-
-              ${mediaQueries.phoneLarge} {
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: -165px;
-                margin-bottom: 80px;
-              }
-            `}
-          />
-        ) : (
-          <div
-            css={css`
-              margin-left: 20px;
-              margin-right: 20px;
-              margin-top: -100px;
-              margin-bottom: 60px;
-              max-width: 980px;
-
-              ${mediaQueries.phoneLarge} {
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: -165px;
-                margin-bottom: 80px;
-              }
-            `}
-          >
-            <img
-              src={post.relationships.field_image.localFile.publicURL}
+        {post.relationships.field_image &&
+          (imageSrc &&
+          post.relationships.field_image.localFile.publicURL.indexOf('.gif') !==
+            -1 ? (
+            <Img
+              fluid={[
+                post.relationships.field_image.localFile.mobileImage.fluid,
+                {
+                  ...post.relationships.field_image.localFile.desktopImage
+                    .fluid,
+                  media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+                },
+              ]}
               alt={imageAlt}
               css={css`
-                margin-bottom: 0;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: -100px;
+                margin-bottom: 60px;
+                max-width: 980px;
+
+                ${mediaQueries.phoneLarge} {
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-top: -165px;
+                  margin-bottom: 80px;
+                }
               `}
             />
-          </div>
-        )}
+          ) : (
+            <div
+              css={css`
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: -100px;
+                margin-bottom: 60px;
+                max-width: 980px;
+
+                ${mediaQueries.phoneLarge} {
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-top: -165px;
+                  margin-bottom: 80px;
+                }
+              `}
+            >
+              <img
+                src={post.relationships.field_image.localFile.publicURL}
+                alt={imageAlt}
+                css={css`
+                  margin-bottom: 0;
+                `}
+              />
+            </div>
+          ))}
         <ContentBody
           comps={post.relationships.field_components}
           type='insight'
