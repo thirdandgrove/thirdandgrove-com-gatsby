@@ -4,10 +4,10 @@
   # Nothing for now
 
 [context.production]
-  environment = { PROCESS_FORM = true }
+  environment = { PROCESS_FORM = "true" }
 
 # Deploy Preview context: all deploys generated from a pull/merge request will
 # inherit these settings.
 [context.deploy-preview]
-  environment = { PROCESS_FORM = false }
-  
+  environment = { PROCESS_FORM = "false" }
+
