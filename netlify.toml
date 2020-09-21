@@ -1,13 +1,13 @@
+# Settings in the [build] context are global and are applied to all contexts
+# unless otherwise overridden by more specific contexts.
+[build]
+  # Nothing for now
 
 [context.production]
   environment = { PROCESS_FORM = true }
 
-[context.deploy-preview.environment]
+# Deploy Preview context: all deploys generated from a pull/merge request will
+# inherit these settings.
+[context.deploy-preview]
   environment = { PROCESS_FORM = false }
-
-
-
-
-
-
-
+  
