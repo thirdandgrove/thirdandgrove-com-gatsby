@@ -12,6 +12,12 @@ const Thanks = ({ message }) => {
     align-items: center;
     justify-content: center;
     min-height: 450px;
+    text-align: center;
+
+    h5 {
+      text-align: center;
+      line-height: 2;
+    }
   `;
 
   useEffect(() => {
@@ -29,9 +35,11 @@ const Thanks = ({ message }) => {
         }}
       >
         {({ transform, opacity }) => (
-          <h5 style={{ transform, opacity }} css={smSectionHead}>
-            {message}
-          </h5>
+          <h5
+            style={{ transform, opacity }}
+            css={smSectionHead}
+            dangerouslySetInnerHTML={{ __html: message }}
+          />
         )}
       </Spring>
     </div>

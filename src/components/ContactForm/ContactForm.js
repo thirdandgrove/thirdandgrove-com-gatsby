@@ -417,7 +417,7 @@ const ContactForm = ({ formName, altStyle }) => {
           <ErrorToaster errs={errors} />
         </form>
       ) : (
-        <Thanks message='Thank you for your inquiry. We will be in touch soon.' />
+        <Thanks message='Thank you for your inquiry. <br/> We will be in touch soon.' />
       )}
     </div>
   );
