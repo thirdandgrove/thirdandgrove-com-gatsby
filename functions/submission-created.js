@@ -7,17 +7,11 @@ const axios = require('axios');
 exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
   const { form_name } = data;
-  const { BRANCH } = process.env;
-  const { PROCESS_FORM } = process.env;
+  const { referrer } = data.data;
 
-  console.log(BRANCH);
-  console.log(PROCESS_FORM);
-
-  if (PROCESS_FORM !== 'true') {
+  if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
     console.log(event, _context, callback);
     console.log(process.env);
-    console.log(BRANCH);
-    console.log(PROCESS_FORM);
     callback(null, { statusCode: 200 });
     return;
   }
@@ -199,7 +193,6 @@ exports.handler = async (event, _context, callback) => {
   /** Newsletter Form */
   if (form_name === 'newsletter') {
     // handle form newsletter
-    const { referrer } = data.data;
     const { email } = data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
 
