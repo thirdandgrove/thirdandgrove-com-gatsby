@@ -424,12 +424,11 @@ const ContactForm = ({ formName, altStyle }) => {
 };
 
 ContactForm.propTypes = {
-  formName: PropTypes.string,
+  formName: PropTypes.string.isRequired,
   altStyle: PropTypes.bool,
 };
 
 ContactForm.defaultProps = {
-  formName: 'contact',
   altStyle: false,
 };
 

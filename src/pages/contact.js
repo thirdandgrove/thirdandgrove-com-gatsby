@@ -85,7 +85,7 @@ export default () => {
       headerData={{
         title: 'Contact us:',
         height: '850px',
-        children: <ContactForm />,
+        children: <ContactForm formName='contact' />,
       }}
     >
       <div css={[container.textOnly, wrapperCss]}>
