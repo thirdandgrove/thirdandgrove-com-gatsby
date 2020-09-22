@@ -49,6 +49,7 @@ export const colors = {
   lightgreen: `#cef5e2`,
   gatsbyPurple: '#663399',
   drupalBlue: '#29A8DF',
+  drupal9Blue: '#009DE4',
   shopifyGreen: '#80AB42',
   bigCommerceBlue: '#0D52FF',
   red: 'red',

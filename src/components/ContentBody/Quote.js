@@ -6,13 +6,24 @@ import { css } from '@emotion/core';
 import FullWidthSection from '../FullWidthSection';
 import { weights, mediaQueries, colors, contValues } from '../../styles';
 
-const Quote = ({ data, size }) => {
+const Quote = ({
+  data,
+  size,
+  padding,
+  color,
+  backgroundColor,
+  quoteColor,
+  center,
+  altStyle,
+}) => {
   const isSmall = size === 'small';
+
   const quoteText = css`
     font-size: ${isSmall ? '21px' : '39px'};
     font-weight: ${isSmall ? weights.bold : weights.medium};
     line-height: ${isSmall ? '1.48' : '1.15'};
-    text-align: ${isSmall ? 'center' : 'left'};
+    text-align: ${isSmall || center ? 'center' : 'left'};
+    color: ${color};
 
     ${mediaQueries.phoneLarge} {
       font-weight: ${weights.bold};
@@ -22,8 +33,24 @@ const Quote = ({ data, size }) => {
     }
   `;
 
+  const quoteTextAlt = css`
+    font-size: 39px;
+    font-weight: ${weights.medium};
+    line-height: 48px;
+    text-align: center;
+    color: ${color};
+
+    ${mediaQueries.phoneLarge} {
+      font-size: 48px;
+      font-weight: ${weights.medium};
+      line-height: 48px;
+      text-align: center;
+      color: ${color};
+    }
+  `;
+
   const quoL = css`
-    color: ${colors.yellow};
+    color: ${quoteColor};
 
     ${mediaQueries.desktop} {
       position: absolute;
@@ -32,13 +59,13 @@ const Quote = ({ data, size }) => {
   `;
 
   const quoR = css`
-    color: ${colors.yellow};
+    color: ${quoteColor};
   `;
 
   const quoteAttr = css`
     margin-bottom: 0;
     font-size: ${isSmall ? '16px' : '12px'};
-    text-align: ${isSmall ? 'center' : 'left'};
+    text-align: ${isSmall || center ? 'center' : 'left'};
     padding-top: 10px;
     font-weight: ${weights.light};
 
@@ -49,10 +76,11 @@ const Quote = ({ data, size }) => {
       text-align: center;
     }
   `;
+
   const containerStyles = css`
     width: ${contValues.min};
     max-width: 100%;
-    margin: 0 auto 60px;
+    margin: ${padding === '0' ? '0 auto 60px' : '0 auto'};
     padding: ${isSmall ? '0 10px' : '0 20px'};
     ${mediaQueries.phoneLarge} {
       ${isSmall &&
@@ -61,10 +89,16 @@ const Quote = ({ data, size }) => {
       `};
     }
   `;
+
   return (
-    <FullWidthSection height='auto' minHeight='auto' padding='0'>
+    <FullWidthSection
+      height='auto'
+      minHeight='auto'
+      padding={padding}
+      backgroundColor={backgroundColor}
+    >
       <div css={containerStyles}>
-        <div css={quoteText}>
+        <div css={!altStyle ? quoteText : quoteTextAlt}>
           <span css={quoL}>&ldquo;</span>
           {data.field_quote}
           <span css={quoR}>&rdquo;</span>
@@ -80,10 +114,22 @@ const Quote = ({ data, size }) => {
 Quote.propTypes = {
   data: PropTypes.object.isRequired,
   size: PropTypes.string,
+  padding: PropTypes.string,
+  color: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  quoteColor: PropTypes.string,
+  center: PropTypes.bool,
+  altStyle: PropTypes.bool,
 };
 
 Quote.defaultProps = {
   size: 'large',
+  padding: '0',
+  color: colors.black,
+  backgroundColor: colors.white,
+  quoteColor: colors.yellow,
+  center: false,
+  altStyle: false,
 };
 
 export default Quote;

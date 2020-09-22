@@ -8,7 +8,7 @@ import { mediaQueries, fonts, weights, colors } from '../../styles';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
-const ProjectsSlider = ({ backgroundColor, data, tech }) => {
+const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
   const [count, setCount] = useState('01');
 
   const settings = {
@@ -63,7 +63,7 @@ const ProjectsSlider = ({ backgroundColor, data, tech }) => {
 
   return (
     <FullWidthSection
-      height='750px'
+      height={`${minHeight}px`}
       backgroundColor={backgroundColor}
       css={css`
         position: relative;
@@ -74,6 +74,7 @@ const ProjectsSlider = ({ backgroundColor, data, tech }) => {
         css={css`
           max-width: 100%;
           max-height: 100%;
+          width: 100%;
           padding-bottom: 120px;
 
           ${mediaQueries.phoneLarge} {
@@ -136,7 +137,13 @@ const ProjectsSlider = ({ backgroundColor, data, tech }) => {
         `}
       >
         {projects.map(node => {
-          return <ProjectPreview key={node.title} project={node} />;
+          return (
+            <ProjectPreview
+              key={node.title}
+              project={node}
+              minHeight={minHeight}
+            />
+          );
         })}
       </Slider>
       <footer css={countStyles}>
@@ -150,11 +157,13 @@ ProjectsSlider.propTypes = {
   backgroundColor: PropTypes.string,
   data: PropTypes.object.isRequired,
   tech: PropTypes.string,
+  minHeight: PropTypes.string,
 };
 
 ProjectsSlider.defaultProps = {
   backgroundColor: colors.white,
   tech: '',
+  minHeight: '750',
 };
 
 export default ProjectsSlider;

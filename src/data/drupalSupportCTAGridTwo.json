@@ -1,0 +1,52 @@
+[
+  {
+    "icon": "ranked",
+    "title": "We are the top ranked Drupal agency by the Drupal organization itself",
+    "description": ""
+  },
+  {
+    "icon": "certified",
+    "title": "We are Drupal-certified developers",
+    "description": ""
+  },
+  {
+    "icon": "checkmark",
+    "title": "Our 65-point checklist for onboarding support sites we didn’t build",
+    "description": ""
+  },
+  {
+    "icon": "flag",
+    "title": "Our Drupal 8 & 9 thought leadership",
+    "description": ""
+  },
+  {
+    "icon": "chat",
+    "title": "Our 24/7/365 engineering on-call team with guaranteed SLA",
+    "description": ""
+  },
+  {
+    "icon": "wrench",
+    "title": "Development, digital strategy, and creative services are included",
+    "description": ""
+  },
+  {
+    "icon": "point",
+    "title": "We have a single point of contact and dedicated team",
+    "description": ""
+  },
+  {
+    "icon": "clock",
+    "title": "Our entire team works on North American time zones",
+    "description": ""
+  },
+  {
+    "icon": "drupal-drop",
+    "title": "We’re an Acquia Partner",
+    "description": ""
+  },
+  {
+    "icon": "smiley",
+    "title": "We are a collection of happy people you will enjoy working with",
+    "description": ""
+  }
+]

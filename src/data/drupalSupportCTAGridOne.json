@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "dedicated-team",
+    "title": "Dedicated Team",
+    "description": "A single point of contact, the same project manager, and the same technical architect work on your account."
+  },
+  {
+    "icon": "24-7-support",
+    "title": "24/7/365 support",
+    "description": "Call our dedicated emergency hotline number at any time there will be a TAG engineer working on your issue immediately."
+  },
+  {
+    "icon": "peace-of-mind",
+    "title": "Peace of Mind",
+    "description": "When weekly security patches are announced, we determine if there is any impact to your site. If there is, we hotfix your site proactively, without you even asking."
+  },
+  {
+    "icon": "get-the-best",
+    "title": "Get the best",
+    "description": "We are the leading contributor to Drupal itself, helping to write the version of Drupal every Drupal site uses."
+  },
+  {
+    "icon": "migration-planning",
+    "title": "Migration Planning",
+    "description": "We plan for upgrades from Drupal 7 to 8 or 9, and make sure the entire process is seamless."
+  },
+  {
+    "icon": "tire-fire",
+    "title": "Tire-fire compatible",
+    "description": "We didn’t build most of our support clients sites. We use a unique audit process to surface risks, get up-to-speed, and deal with the technical debt of sites that weren’t following best practices. "
+  }
+]

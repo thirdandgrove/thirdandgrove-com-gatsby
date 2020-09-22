@@ -9,20 +9,6 @@ import { ensureTrailingSlash } from '../../util';
 
 import ImageCollage from './ImageCollage';
 
-const slideStyles = css`
-  text-align: center;
-  ${mediaQueries.phoneLarge} {
-    position: relative;
-    min-height: 750px;
-    padding-bottom: 20px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-  }
-`;
-
 const slideTitleWrapper = css`
   display: flex;
   width: 100%;
@@ -74,7 +60,20 @@ const h3Styles = css`
   }
 `;
 
-const ProjectPreview = ({ project }) => {
+const ProjectPreview = ({ project, minHeight }) => {
+  const slideStyles = css`
+    text-align: center;
+    ${mediaQueries.phoneLarge} {
+      position: relative;
+      min-height: ${minHeight}px;
+      padding-bottom: 20px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  `;
   // Prepare image srcset based on Type (A, B, or C).
   const primaryImageData = project.relationships.field_image.localFile;
   const secondaryImageData =
@@ -131,6 +130,11 @@ const ProjectPreview = ({ project }) => {
 
 ProjectPreview.propTypes = {
   project: PropTypes.object.isRequired,
+  minHeight: PropTypes.string,
+};
+
+ProjectPreview.defaultProps = {
+  minHeight: '750',
 };
 
 export default ProjectPreview;
