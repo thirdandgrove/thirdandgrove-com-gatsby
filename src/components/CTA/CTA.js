@@ -21,6 +21,14 @@ const CTA = ({
     padding-top: 40px;
     padding-bottom: 40px;
 
+    div {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
     h2 {
       color: ${colors.reallydarkgray};
       font-weight: ${weights.bold};
