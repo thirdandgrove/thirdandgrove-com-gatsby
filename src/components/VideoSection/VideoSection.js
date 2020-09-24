@@ -47,20 +47,11 @@ const VideoSection = ({ url, mp4 }) => {
     }
   `;
 
-  const videoPlayer = css`
-    width: 100% !important;
-    height: auto !important;
-    display: ${hasInteracted && playing ? 'none' : 'block'};
-    opacity: ${hasInteracted && playing ? '1' : '0.65'};
-  `;
-
   const playerStyles = css`
     position: relative;
     height: 0 !important;
     padding-top: 550px;
     overflow: hidden;
-    display: ${hasInteracted && playing ? 'block' : 'none'};
-    opacity: ${hasInteracted && playing ? '1' : '0.65'};
 
     > div {
       position: absolute;
@@ -90,6 +81,13 @@ const VideoSection = ({ url, mp4 }) => {
         margin: 0;
       }
     }
+  `;
+
+  const videoPlayer = css`
+    width: 100% !important;
+    height: auto !important;
+    display: ${hasInteracted && playing ? 'none' : 'block'};
+    opacity: ${hasInteracted && playing ? '1' : '0.65'};
   `;
 
   const btnStyles = css`
@@ -175,16 +173,18 @@ const VideoSection = ({ url, mp4 }) => {
       {isLgScreen && (
         <>
           <ReactPlayer
-            // @see: https://www.npmjs.com/package/react-player
-            width='100%'
             css={playerStyles}
             url={url}
             playing={playing}
             ref={refVimeo}
-            volume={hasInteracted ? 1 : 0} // Mute on autoplay
+            volume={hasInteracted ? 1 : 0}
+            width='100%'
+            style={{
+              display: `${hasInteracted && playing ? 'block' : 'none'}`,
+              opacity: `${hasInteracted && playing ? '1' : '0.65'}`,
+            }}
             config={{
               vimeo: {
-                // @see: https://developer.vimeo.com/api/oembed/videos
                 playerOptions: {
                   controls: false,
                   responsive: true,

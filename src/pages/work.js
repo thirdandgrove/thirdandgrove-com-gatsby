@@ -91,8 +91,8 @@ const Project = ({ study, index }) => {
               position: relative;
 
               ${mediaQueries.phoneLarge} {
-                flex: 0 0 ${index % 2 ? '30%' : '40%'};
-                width: ${index % 2 ? '30%' : '40%'};
+                flex: 0 0 ${index % 2 ? '30%' : '35%'};
+                width: ${index % 2 ? '30%' : '35%'};
               }
 
               &::after {
