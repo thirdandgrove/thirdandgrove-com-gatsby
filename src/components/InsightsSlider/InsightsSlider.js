@@ -12,7 +12,7 @@ import Button from '../Button';
 const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
   const settings = {
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 7500,
     cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
     centerPadding: 90,

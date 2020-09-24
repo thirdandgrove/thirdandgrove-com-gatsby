@@ -79,43 +79,45 @@ const ArticlePreviewSlide = ({ article }) => {
           `,
         ]}
       >
-        <div
-          css={css`
-            flex: 0 0 38%;
+        {article.relationships.field_image && (
+          <div
+            css={css`
+              flex: 0 0 38%;
 
-            .gatsby-image-wrapper > div {
-              // Forcing correct image aspect ratio, overriding inline
-              // gatsby-image provided styles
-              padding-bottom: 77% !important;
+              .gatsby-image-wrapper > div {
+                // Forcing correct image aspect ratio, overriding inline
+                // gatsby-image provided styles
+                padding-bottom: 77% !important;
 
-              ${mediaQueries.phoneLarge} {
-                padding-bottom: 88.9% !important;
+                ${mediaQueries.phoneLarge} {
+                  padding-bottom: 88.9% !important;
+                }
               }
-            }
-          `}
-        >
-          {article.relationships.field_image.localFile.publicURL.indexOf(
-            '.gif'
-          ) !== -1 ? (
-            <img
-              src={article.relationships.field_image.localFile.publicURL}
-              alt={article.field_image.alt}
-            />
-          ) : (
-            <Img
-              fluid={[
-                article.relationships.field_image.localFile
-                  .childImageSlideMobile.fluid,
-                {
-                  ...article.relationships.field_image.localFile
-                    .childImageSlideDesktop.fluid,
-                  media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-                },
-              ]}
-              alt={article.field_image.alt}
-            />
-          )}
-        </div>
+            `}
+          >
+            {article.relationships.field_image.localFile.publicURL.indexOf(
+              '.gif'
+            ) !== -1 ? (
+              <img
+                src={article.relationships.field_image.localFile.publicURL}
+                alt={article.field_image.alt}
+              />
+            ) : (
+              <Img
+                fluid={[
+                  article.relationships.field_image.localFile
+                    .childImageSlideMobile.fluid,
+                  {
+                    ...article.relationships.field_image.localFile
+                      .childImageSlideDesktop.fluid,
+                    media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+                  },
+                ]}
+                alt={article.field_image.alt}
+              />
+            )}
+          </div>
+        )}
         <div
           css={css`
             flex: 0 0 43%;

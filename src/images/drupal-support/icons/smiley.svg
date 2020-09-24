@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>smiley</title>
+    <g id="Drupal-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-Home" transform="translate(-781.000000, -5919.000000)">
+            <g id="Why-Brands-work-with-TAG" transform="translate(300.000000, 5400.000000)">
+                <g id="smiley" transform="translate(481.000000, 519.000000)">
+                    <circle id="Oval" stroke="#282829" cx="9.5" cy="9.5" r="9"></circle>
+                    <circle id="Oval" fill="#282829" cx="7" cy="8" r="1"></circle>
+                    <circle id="Oval-Copy-6" fill="#282829" cx="12" cy="8" r="1"></circle>
+                    <path d="M6,11.4939613 C6.64880903,12.680784 7.97489634,13.4939613 9.50533976,13.4939613 C11.0274335,13.4939613 12.3473949,12.6896327 13,11.5133527" id="Path" stroke="#282829"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

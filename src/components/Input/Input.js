@@ -4,7 +4,10 @@ import { colors, fonts, weights } from '../../styles';
 
 export default styled.input`
   background: transparent;
-  outline: 1px solid ${colors.darkgray};
+  outline: ${props =>
+    !props.altStyle
+      ? `1px solid ${colors.darkgray}`
+      : `1px solid ${colors.tagGray}`};
   border: none;
   height: 50px;
   color: ${colors.darkgray};

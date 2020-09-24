@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="83px" height="59px" viewBox="0 0 83 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>rectangles copy</title>
+    <g id="Drupal-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-Home" transform="translate(-630.000000, -3969.000000)">
+            <g id="Large-Icon-Module" transform="translate(327.000000, 3437.000000)">
+                <g id="rectangles-copy" transform="translate(304.000000, 533.000000)">
+                    <rect id="yellow" fill="#EBC900" x="27" y="16" width="27" height="25"></rect>
+                    <path d="M34.5150784,41 C31.233633,41 19.7286069,41 0,41 L0,0 L54,0 L54,41 C50.3186665,41 46.9790638,41 43.9811917,41" id="Path" stroke="#000000"></path>
+                    <rect id="Rectangle-Copy-2" stroke="#282829" x="27" y="16" width="54" height="41"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="81px" viewBox="0 0 62 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Ribbon</title>
+    <g id="Drupal-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-Home" transform="translate(-327.000000, -3955.000000)" stroke="#000000">
+            <g id="Large-Icon-Module" transform="translate(327.000000, 3437.000000)">
+                <g id="Ribbon" transform="translate(0.000000, 519.000000)">
+                    <polyline id="Path-4" fill="#EBC900" points="17 54 17 79 31.5 71.8946236 46 79 46 53"></polyline>
+                    <polygon id="Polygon" fill="#FFFFFF" points="31 0 57.8467875 15.5 57.8467875 46.5 31 62 4.15321248 46.5 4.15321248 15.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

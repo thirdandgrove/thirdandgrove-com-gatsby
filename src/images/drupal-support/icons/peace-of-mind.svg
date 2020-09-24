@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="19px" viewBox="0 0 100 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Wave</title>
+    <g id="Drupal-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-Home" transform="translate(-930.000000, -3450.000000)" stroke="#000000">
+            <g id="Large-Icon-Module" transform="translate(327.000000, 3437.000000)">
+                <g id="Group-3" transform="translate(3.000000, 0.000000)">
+                    <g id="Wave" transform="translate(600.000000, 14.000000)">
+                        <path d="M0,0 C8.33106576,0 8.33106576,17 16.6666667,17 C24.9977324,17 24.9977324,0 33.3333333,0 C41.6643991,0 41.6643991,17 50,17 C58.3310658,17 58.3310658,0 66.6666667,0 C75.0022676,0 75.0022676,17 83.3333333,17 C91.6643991,17 91.6689342,0 100,0" id="Path" transform="translate(50.000000, 8.500000) scale(-1, -1) translate(-50.000000, -8.500000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
