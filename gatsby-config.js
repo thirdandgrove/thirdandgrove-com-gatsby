@@ -87,17 +87,23 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     {
-      resolve: `gatsby-plugin-google-tagmanager`,
+      resolve: 'gatsby-plugin-google-marketing-platform',
       options: {
-        id: 'GTM-MKBKRBC',
-        includeInDevelopment: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingId: 'UA-46758288-8',
-        head: false,
+        dataLayer: {
+          gaPropertyId: 'UA-46758288-8',
+        },
+        tagmanager: {
+          id: 'GTM-MKBKRBC',
+          params: {
+            gtm_cookies_win: 'x',
+          },
+        },
+        analytics: {
+          id: 'UA-46758288-8',
+        },
+        optimize: {
+          id: 'GTM-K5C7XC9',
+        },
       },
     },
     {
