@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useRef } from 'react';
-import { graphql, Link } from 'gatsby';
+import React, { useRef, useEffect, useState } from 'react';
+import { graphql } from 'gatsby';
+import { useTransition, animated } from 'react-spring';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -16,67 +17,81 @@ import { NewsletterFullWidthSection } from '../components/NewsletterForm';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
+  const [index, setIndex] = useState(0);
   const halfPage = useRef();
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
 
-  // silly holiday treats
-  // const today = new Date();
-  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
+  const [wordArrayOne] = useState([
+    { id: 0, text: 'tireless' },
+    { id: 1, text: 'handsome' },
+    { id: 2, text: 'poised' },
+    { id: 3, text: 'bold' },
+    { id: 4, text: 'fearless' },
+    { id: 5, text: 'robust' },
+  ]);
 
-  // const Underlined = styled.span`
-  //   position: relative;
+  const [wordArrayTwo] = useState([
+    { id: 0, text: 'technologists' },
+    { id: 1, text: 'creatives' },
+    { id: 2, text: 'listeners' },
+    { id: 3, text: 'brand builders' },
+    { id: 4, text: 'innovators' },
+    { id: 5, text: 'storytellers' },
+  ]);
 
-  //   &::after {
-  //     content: '';
-  //     display: block;
-  //     position: absolute;
-  //     height: 4px;
-  //     left: -10px;
-  //     width: calc(100% + 20px);
-  //     top: 100%;
-  //     background-image: ${isHalloween
-  //       ? `url('/images/dripping_blood.gif')`
-  //       : `url('/images/underline.png')`};
-  //     background-size: ${isHalloween ? `cover` : `contain`};
-  //     background-repeat: no-repeat;
+  const transitionsOne = useTransition(wordArrayOne[index], item => item.id, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { tension: 220, friction: 120 },
+  });
 
-  //     ${mediaQueries.phoneLarge} {
-  //       top: auto;
-  //       bottom: 0;
-  //       height: 7px;
-  //       left: -20px;
-  //       width: calc(100% + 40px);
-  //     }
-  //   }
-  // `;
+  const transitionsTwo = useTransition(wordArrayTwo[index], item => item.id, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { tension: 220, friction: 120 },
+  });
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIndex(state => (state + 1) % 5);
+    }, 4000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
-          <>
-            {/* This is going to re-implemented after a couple weeks */}
-            {/* A digital agency{' '}
-            <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
-            mundane, one pixel at a time. */}
-            {`You might want to plug your ears, we're blowing the doors off ecomm.`}
-            {/* Holy S%#*! that was fast.
-            <br />
-            (With{' '}
-            <Link
-              css={css`
-                color: ${colors.darkgray};
-                text-decoration: underline;
-              `}
-              to='/partners/gatsby/'
-            >
-              Gatsby
-            </Link>{' '}
-            it&apos;s all fire, no waiting) */}
-          </>
+          <span style={{ display: 'flex' }}>
+            <span style={{ position: 'relative' }}>We are a </span>
+            {transitionsOne.map(({ item, props, key }) => (
+              <span style={{ position: 'relative' }}>
+                <animated.div
+                  key={key}
+                  style={{ ...props, position: 'absolute' }}
+                >
+                  {item.text}
+                </animated.div>
+              </span>
+            ))}
+            <span style={{ position: 'relative' }}>collection of</span>
+            {transitionsTwo.map(({ item, props, key }) => (
+              <span style={{ position: 'relative' }}>
+                <animated.div
+                  key={key}
+                  style={{ ...props, position: 'absolute' }}
+                >
+                  {item.text}
+                </animated.div>
+              </span>
+            ))}
+          </span>
         ),
         mobileMinHeight: '93vh',
       }}
