@@ -28,8 +28,11 @@ export default ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <span>
-            <span>We are a &nbsp;</span>
-            <TextLoop adjustingSpeed={500}>
+            <span>We are a</span>{' '}
+            <TextLoop
+              springConfig={{ stiffness: 170, damping: 26 }}
+              adjustingSpeed={250}
+            >
               <span>tireless</span>
               <span>handsome</span>
               <span>poised</span>
@@ -37,8 +40,11 @@ export default ({ data }) => {
               <span>fearless</span>
               <span>robust</span>
             </TextLoop>{' '}
-            <span style={{ position: 'relative' }}>collection of &nbsp;</span>
-            <TextLoop adjustingSpeed={500}>
+            <span style={{ position: 'relative' }}>collection of</span>{' '}
+            <TextLoop
+              springConfig={{ stiffness: 170, damping: 26 }}
+              adjustingSpeed={250}
+            >
               <span>technologists</span>
               <span>creatives</span>
               <span>listeners</span>
