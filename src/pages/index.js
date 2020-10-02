@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useRef, useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import { useTransition, animated } from 'react-spring';
+import TextLoop from 'react-text-loop';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -17,80 +17,35 @@ import { NewsletterFullWidthSection } from '../components/NewsletterForm';
 
 // eslint-disable-next-line react/prop-types
 export default ({ data }) => {
-  const [index, setIndex] = useState(0);
   const halfPage = useRef();
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
-
-  const [wordArrayOne] = useState([
-    { id: 0, text: 'tireless' },
-    { id: 1, text: 'handsome' },
-    { id: 2, text: 'poised' },
-    { id: 3, text: 'bold' },
-    { id: 4, text: 'fearless' },
-    { id: 5, text: 'robust' },
-  ]);
-
-  const [wordArrayTwo] = useState([
-    { id: 0, text: 'technologists' },
-    { id: 1, text: 'creatives' },
-    { id: 2, text: 'listeners' },
-    { id: 3, text: 'brand builders' },
-    { id: 4, text: 'innovators' },
-    { id: 5, text: 'storytellers' },
-  ]);
-
-  const transitionsOne = useTransition(wordArrayOne[index], item => item.id, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: { tension: 220, friction: 120 },
-  });
-
-  const transitionsTwo = useTransition(wordArrayTwo[index], item => item.id, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: { tension: 220, friction: 120 },
-  });
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setIndex(state => (state + 1) % 5);
-    }, 4000);
-
-    return () => clearInterval(intervalId);
-  }, []);
 
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
-          <span style={{ display: 'flex' }}>
-            <span style={{ position: 'relative' }}>We are a </span>
-            {transitionsOne.map(({ item, props, key }) => (
-              <span style={{ position: 'relative' }}>
-                <animated.div
-                  key={key}
-                  style={{ ...props, position: 'absolute' }}
-                >
-                  {item.text}
-                </animated.div>
-              </span>
-            ))}
-            <span style={{ position: 'relative' }}>collection of</span>
-            {transitionsTwo.map(({ item, props, key }) => (
-              <span style={{ position: 'relative' }}>
-                <animated.div
-                  key={key}
-                  style={{ ...props, position: 'absolute' }}
-                >
-                  {item.text}
-                </animated.div>
-              </span>
-            ))}
+          <span>
+            <span>We are a &nbsp;</span>
+            <TextLoop adjustingSpeed={500}>
+              <span>tireless</span>
+              <span>handsome</span>
+              <span>poised</span>
+              <span>bold</span>
+              <span>fearless</span>
+              <span>robust</span>
+            </TextLoop>{' '}
+            <span style={{ position: 'relative' }}>collection of &nbsp;</span>
+            <TextLoop adjustingSpeed={500}>
+              <span>technologists</span>
+              <span>creatives</span>
+              <span>listeners</span>
+              <span>brand builders</span>
+              <span>innovators</span>
+              <span>storytellers</span>
+            </TextLoop>{' '}
           </span>
         ),
         mobileMinHeight: '93vh',
