@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
 import TextLoop from 'react-text-loop';
+import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -22,12 +23,26 @@ export default ({ data }) => {
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
 
+  const fontStyles = css`
+    @media screen and (min-width: 25em) {
+      font-size: calc(29px + (72 - 29) * (100vw - 500px) / (1440 - 500));
+    }
+
+    @media screen and (min-width: 25em) {
+      font-size: calc(29px + (72 - 29) * (100vw - 500px) / (1440 - 500));
+    }
+
+    @media screen and (min-width: 50em) {
+      font-size: calc(29px + (72 - 29) * (100vw - 500px) / (1440 - 500));
+    }
+  `;
+
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
-          <span>
+          <span css={fontStyles}>
             <span>We are a</span>{' '}
             <TextLoop
               springConfig={{ stiffness: 170, damping: 26 }}
@@ -40,9 +55,10 @@ export default ({ data }) => {
               <span>fearless</span>
               <span>robust</span>
             </TextLoop>{' '}
+            <br />
             <span style={{ position: 'relative' }}>collection of</span>{' '}
             <TextLoop
-              springConfig={{ stiffness: 170, damping: 26 }}
+              springConfig={{ stiffness: 180, damping: 8 }}
               adjustingSpeed={250}
             >
               <span>technologists</span>
