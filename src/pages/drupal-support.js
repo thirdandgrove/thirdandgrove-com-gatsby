@@ -8,7 +8,7 @@ import LogoGrid from '../components/LogoGrid';
 import ProjectsSlider from '../components/ProjectsSlider';
 import FullWidthSection from '../components/FullWidthSection';
 import Layout from '../components/layout';
-import { container, mediaQueries, weights, fonts, colors } from '../styles';
+import { container, mediaQueries, weights, colors } from '../styles';
 import ContactForm from '../components/ContactForm';
 import CTA from '../components/CTA';
 import CTAGrid from '../components/CTAGrid';
@@ -141,29 +141,28 @@ const DrupalSupport = ({ data }) => {
           <div className='basic-block--right' />
           <div className='basic-block--left'>
             <h2>
-              A full suite of support options for Drupal 7, 8, and 9, handling
-              complex front end, back end, integration, and compliance needs.
+              {`A full suite of support options for Drupal 7, 8, and 9, handling
+              complex front end, back end, integration, and compliance needs.`}
             </h2>
 
             <p>
-              Support services include proactive Drupal patching, migrations and
+              {`Support services include proactive Drupal patching, migrations and
               upgrades to Drupal 8 and 9, content migrations, new features, bug
               fixes, resource augmentation, training, optimization, digital
               strategy, UX/UI improvements, and Google Analytics
-              industrialization.
+              industrialization.`}
             </p>
 
             <p>
-              Our support packages are fully customizable for each organization,
+              {`Our support packages are fully customizable for each organization,
               and can be changed or cancelled for any reason (or no reason) with
-              30thirty days’ notice. We aren’t a cell phone company;, if you
-              don’t like us, you shouldn’t have we don’t want you to have to
-              work with us.
+              thirty days' notice. We aren't a cell phone company: you're free
+              to walk away any time.`}
             </p>
 
             <p>
-              We are experts on the Acquia and Platform, Pantheon platforms, as
-              well asnd custom hosting platforms in use by our clients.
+              {`We are experts on the Acquia and Pantheon platforms, as well and
+              custom hosting platforms in use by our clients.`}
             </p>
           </div>
         </div>
