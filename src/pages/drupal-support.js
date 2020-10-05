@@ -161,7 +161,7 @@ const DrupalSupport = ({ data }) => {
             </p>
 
             <p>
-              {`We are experts on the Acquia and Pantheon platforms, as well as
+              {`We are experts on Acquia and Pantheon, as well as
               custom hosting platforms in use by our clients.`}
             </p>
           </div>
