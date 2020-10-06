@@ -1,0 +1,93 @@
+[
+  {
+    "header": [
+      {
+        "title": "Meet the Team at Acquia Engage 2020",
+        "date": "Oct 20-21",
+        "subtitle": "Join us virtually for Acquia Engage this year.  As a partner of Acquia, Third and Grove proudly sponsor Engage 2020. Drop by our booth and let us shower you in swag (who doesn’t love a good card caddy?) ",
+        "links": [
+          {
+            "text": "LinkedIn",
+            "url": "https://www.linkedin.com/company/third-and-grove/"
+          },
+          {
+            "text": "Instagram",
+            "url": "https://www.instagram.com/thirdandgrove/"
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/thirdandgrove"
+          },
+          {
+            "text": "Twitter",
+            "url": "https://twitter.com/thirdandgrove"
+          }
+        ]
+      }
+    ],
+    "cta": [
+      {
+        "one": [
+          {
+            "before": "Explore Event",
+            "during": "Join us live",
+            "url": "/"
+          }
+        ],
+        "two": [
+          {
+            "text": "Grab That Swag",
+            "url": "/"
+          }
+        ]
+      }
+    ],
+    "who": [
+      {
+        "header": "Who Will Be There?",
+        "justin": {
+          "img": "justin",
+          "name": "Justin Emond",
+          "email": "justin@thirdandgrove.com",
+          "title": "Founder, Chief Executive Officer"
+        },
+        "ashley": {
+          "img": "ashley",
+          "name": "Ashley Remington",
+          "email": "aremington@thirdandgrove.com",
+          "title": "Senior Account Manager"
+        }
+      }
+    ],
+    "drumroll": [
+      {
+        "header": "Drumroll Please",
+        "subhead": "... the nominees are (to be honest, they’re all winners in our books)",
+        "sites": [
+          {
+            "name": "CATIC",
+            "category": ""
+          },
+          {
+            "name": "ISGM",
+            "category": ""
+          },
+          {
+            "name": "Cloudhealth",
+            "category": ""
+          },
+          {
+            "name": "Carlye",
+            "category": ""
+          }
+        ]
+      }
+    ],
+    "talk": [
+      {
+        "header": "We Have A Lot To Talk About",
+        "subhead": "We’ve crafted the most compelling, engaging content to throw at you.  That’s why our breakout sessions are a must-see.  Don’t believe us? I guess you’ll have to see for yourself."
+      }
+    ]
+  }
+]
