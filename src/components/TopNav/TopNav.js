@@ -6,6 +6,7 @@ import { css } from '@emotion/core';
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
+import AcquiaEngage from '../../../static/images/acquia-engage-logo.svg';
 
 import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
@@ -131,8 +132,7 @@ const TopNav = ({ fill, hideNav, banner }) => {
               padding-top: 20px;
               padding-bottom: 20px;
               display: flex;
-              justify-content: center;
-              align-items: center;
+
               z-index: 4;
               width: 100%;
               background-color: ${colors.tagGray};
@@ -140,11 +140,52 @@ const TopNav = ({ fill, hideNav, banner }) => {
 
               p {
                 margin-bottom: 0;
+                justify-content: center;
+                align-items: center;
+              }
+
+              img {
+                margin: 0;
+                max-width: 200px;
+              }
+
+              .top-bar--container {
+                display: flex;
+                width: 100%;
+              }
+
+              .left {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex: 1;
+              }
+
+              .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
+              }
+
+              .right {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                flex: 1;
               }
             `,
           ]}
         >
-          <p>Join Live Event Now!</p>
+          <div className='top-bar--container'>
+            <div className='left'>
+              <img src={AcquiaEngage} alt='Acquia Engage 2020' />
+            </div>
+            <div className='center'>
+              <p>Join Live Event Now!</p>
+            </div>
+            <div className='right' />
+          </div>
         </div>
       )}
     </>

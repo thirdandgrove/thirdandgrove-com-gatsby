@@ -47,8 +47,10 @@ const Header = ({
   subTitle,
   hideNav,
   styles,
-  links,
+  linksA,
+  linksB,
   banner,
+  images,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -195,7 +197,7 @@ const Header = ({
     }
   `;
 
-  const linkStyles = css`
+  const linkStylesA = css`
     display: flex;
     a {
       font-family: ${fonts.sans};
@@ -204,8 +206,46 @@ const Header = ({
       line-height: 2.4;
       color: ${fontColor};
       padding: 0 10px;
+      position: relative;
+
+      &::after {
+        content: '|';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+      }
+    }
+
+    a:last-of-type {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+      }
     }
   `;
+
+  const linkStylesB = css`
+    display: flex;
+    margin-top: 12px;
+    a {
+      font-family: ${fonts.sans};
+      font-size: 15px;
+      font-weight: ${weights.light};
+      line-height: 2.4;
+      color: ${fontColor};
+      padding: 0 10px;
+      position: relative;
+    }
+  `;
+
+  const getImageSrc = name =>
+    images.filter(({ node }) => name === node.name)[0].node.publicURL;
 
   return (
     <>
@@ -231,10 +271,19 @@ const Header = ({
             {subTitle}
           </span>
         )}
-        {links && (
-          <div css={linkStyles}>
-            {links.map(l => (
+        {linksA && (
+          <div css={linkStylesA}>
+            {linksA.map(l => (
               <a href={l.url}>{l.text}</a>
+            ))}
+          </div>
+        )}
+        {linksB && (
+          <div css={linkStylesB}>
+            {linksB.map(l => (
+              <a href={l.url}>
+                <img src={getImageSrc(l.text.toLowerCase())} alt={l.text} />
+              </a>
             ))}
           </div>
         )}
@@ -264,8 +313,10 @@ export const headerPropTypes = {
   heroImageMobile: PropTypes.string,
   hideNav: PropTypes.bool,
   styles: PropTypes.object,
-  links: PropTypes.array,
+  linksA: PropTypes.array,
+  linksB: PropTypes.array,
   banner: PropTypes.bool,
+  images: PropTypes.array,
 };
 
 Header.propTypes = headerPropTypes;
@@ -289,8 +340,10 @@ Header.defaultProps = {
   heroImageMobile: null,
   hideNav: false,
   styles: {},
-  links: [],
+  linksA: [],
+  linksB: [],
   banner: false,
+  images: [],
 };
 
 export default Header;
