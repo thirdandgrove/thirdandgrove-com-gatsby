@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import FullWidthSection from '../FullWidthSection';
 import { mediaQueries, colors, fonts } from '../../styles';
 
-import NewsletterSimpleOverlayForm from './NewsletterOverlayForm';
+import NewsletterSimpleOverlayForm from './NewsletterSimpleOverlayForm';
 
 const NewsletterSimpleOverlay = ({
   buttonText,
@@ -15,6 +15,7 @@ const NewsletterSimpleOverlay = ({
   image,
   isActive,
   setIsActive,
+  formName,
 }) => {
   const toggle = () => setIsActive(!isActive);
 
@@ -51,10 +52,6 @@ const NewsletterSimpleOverlay = ({
         <div
           css={css`
             ${mediaQueries.phoneLarge} {
-              background-image: url('/images/illuminating.png');
-              background-position: 345px -140px;
-              background-size: 1100px;
-              background-repeat: no-repeat;
               width: 700px;
               padding: 115px 24px;
             }
@@ -63,10 +60,6 @@ const NewsletterSimpleOverlay = ({
               padding: 4% 24px;
             }
 
-            background-image: url('/images/illuminating-crop.png');
-            background-position: 100%;
-            background-size: contain;
-            background-repeat: no-repeat;
             width: calc(100% - 60px);
             background-color: ${colors.white};
             padding: 72px 24px;
@@ -74,8 +67,6 @@ const NewsletterSimpleOverlay = ({
 
             @media (max-width: 475px) {
               padding: 125px 24px;
-              background-position: 119% -13px;
-              background-size: 70%;
             }
           `}
         >
@@ -155,9 +146,7 @@ const NewsletterSimpleOverlay = ({
               margin-bottom: 12px;
             `}
           >
-            Illuminating
-            <br />
-            stuff, right?
+            {header}
           </h1>
           <div
             css={css`
@@ -186,11 +175,17 @@ const NewsletterSimpleOverlay = ({
                 line-height: 27px;
               `}
             >
-              Join our mailing list and you can stay this informed all the time.
+              {subheader}
             </p>
             <NewsletterSimpleOverlayForm
               setIsActive={setIsActive}
               isActive={isActive}
+              buttonText={buttonText}
+              confirmMessage={confirmMessage}
+              header={header}
+              subheader={subheader}
+              image={image}
+              formName={formName}
             />
           </div>
         </div>
@@ -207,6 +202,7 @@ NewsletterSimpleOverlay.propTypes = {
   header: PropTypes.string,
   subheader: PropTypes.string,
   image: PropTypes.object,
+  formName: PropTypes.string,
 };
 
 NewsletterSimpleOverlay.defaultProps = {
@@ -216,6 +212,7 @@ NewsletterSimpleOverlay.defaultProps = {
   subheader:
     'Join our mailing list and you can stay this informed all the time.',
   image: {},
+  formName: 'newsletter',
 };
 
 export default NewsletterSimpleOverlay;

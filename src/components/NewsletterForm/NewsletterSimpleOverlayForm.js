@@ -14,6 +14,10 @@ const NewsletterSimpleOverlayForm = ({
   isActive,
   buttonText,
   confirmMessage,
+  header,
+  subheader,
+  image,
+  formName,
 }) => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
@@ -27,7 +31,7 @@ const NewsletterSimpleOverlayForm = ({
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'newsletter', email }),
+      body: encode({ 'form-name': formName, email }),
     }).then(() => {
       updateEmail('');
       hasSubmitted(true);
@@ -45,7 +49,7 @@ const NewsletterSimpleOverlayForm = ({
 
   return (
     <form
-      name='newsletter'
+      name={formName}
       data-netlify='true'
       netlify-honeypot='bot-field'
       css={css`
