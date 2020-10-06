@@ -65,7 +65,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={isgm}
         alt='ISGM'
-        width={isSmScreen ? '99' : '136'}
+        width={isSmScreen ? '99' : '180'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
