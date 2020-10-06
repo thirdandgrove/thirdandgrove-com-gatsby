@@ -25,8 +25,6 @@ const AcquiaEngage = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
   const { node } = data.allAcquiaEngageJson.edges[0];
 
-  console.log(data);
-
   const layoutStyles = css`
     span {
       font-size: 25px;
@@ -118,6 +116,7 @@ const AcquiaEngage = ({ data }) => {
         display: block;
       }
       button {
+        margin: 0 auto;
         display: block;
       }
     }
