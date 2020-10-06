@@ -95,8 +95,8 @@ const CTA = ({
     >
       <div>
         {icon && <img src={icon} alt={iconAlt} />}
-        <h2>{headline}</h2>
-        <p>{subTitle}</p>
+        {headline && <h2>{headline}</h2>}
+        {subTitle && <p>{subTitle}</p>}
         <Link to={link}>
           <FakeButton>{cta}</FakeButton>
         </Link>
