@@ -7,7 +7,7 @@
   {
     "icon": "24-7-support",
     "title": "24/7/365 support",
-    "description": "Call our dedicated emergency hotline number at any time there will be a TAG engineer working on your issue immediately."
+    "description": "Call our dedicated emergency hotline number at any time. There will be a staff engineer working on your issue immediately."
   },
   {
     "icon": "peace-of-mind",
@@ -27,6 +27,6 @@
   {
     "icon": "tire-fire",
     "title": "Tire-fire compatible",
-    "description": "We didn’t build most of our support clients sites. We use a unique audit process to surface risks, get up-to-speed, and deal with the technical debt of sites that weren’t following best practices. "
+    "description": "We didn’t build most of our support clients' sites. We use a unique audit process to surface risks, get up-to-speed, and deal with the technical debt of sites that weren’t following best practices."
   }
 ]
