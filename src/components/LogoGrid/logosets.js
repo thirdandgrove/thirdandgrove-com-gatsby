@@ -44,9 +44,37 @@ import alvinAiley from './logos/alvinailey-logo.png';
 import isgm from './logos/isgm_logo.svg';
 import prudential from './logos/prudential_logo.svg';
 import universal from './logos/universal_music_logo.png';
+import catic from './logos/catic.svg';
+import carlyle from './logos/carlyle.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
+    acquiaEngage: [
+      <img
+        src={catic}
+        alt='Catic'
+        width={isSmScreen ? '100' : '200'}
+        height={isSmScreen ? '32' : '50'}
+      />,
+      <img
+        src={cloudHealth}
+        alt='Cloud Health'
+        width={isSmScreen ? '126' : '170'}
+        height={isSmScreen ? '122' : '50'}
+      />,
+      <img
+        src={isgm}
+        alt='ISGM'
+        width={isSmScreen ? '99' : '136'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={carlyle}
+        alt='Carlyle'
+        width={isSmScreen ? '126' : '200'}
+        height={isSmScreen ? '122' : '50'}
+      />,
+    ],
     shopify: [
       <img
         src={memebox}
