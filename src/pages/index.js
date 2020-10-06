@@ -45,7 +45,7 @@ export default ({ data }) => {
           <span css={fontStyles}>
             <span>We are a</span>{' '}
             <TextLoop
-              springConfig={{ stiffness: 170, damping: 26 }}
+              springConfig={{ stiffness: 155, damping: 15 }}
               adjustingSpeed={250}
             >
               <span>tireless</span>
@@ -58,8 +58,8 @@ export default ({ data }) => {
             <br />
             <span style={{ position: 'relative' }}>collection of</span>{' '}
             <TextLoop
-              springConfig={{ stiffness: 180, damping: 8 }}
-              adjustingSpeed={250}
+              springConfig={{ stiffness: 155, damping: 15 }}
+              adjustingSpeed={255}
             >
               <span>technologists</span>
               <span>creatives</span>
