@@ -11,14 +11,14 @@ import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
 import Hamburger from './svg/hamburger';
 
-const TopNav = ({ fill, hideNav }) => {
+const TopNav = ({ fill, hideNav, banner }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
   const { width } = useWindow();
   return (
     <>
-      {hideNav ? (
+      {hideNav && !banner && (
         <div
           css={[
             container.max,
@@ -47,7 +47,9 @@ const TopNav = ({ fill, hideNav }) => {
             `}
           />
         </div>
-      ) : (
+      )}
+
+      {!hideNav && !banner && (
         <>
           {' '}
           <div
@@ -118,6 +120,33 @@ const TopNav = ({ fill, hideNav }) => {
           <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />{' '}
         </>
       )}
+
+      {hideNav && banner && (
+        <div
+          css={[
+            container.max,
+            css`
+              position: absolute;
+              top: 0;
+              padding-top: 20px;
+              padding-bottom: 20px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              z-index: 4;
+              width: 100%;
+              background-color: ${colors.tagGray};
+              color: ${colors.white};
+
+              p {
+                margin-bottom: 0;
+              }
+            `,
+          ]}
+        >
+          <p>Join Live Event Now!</p>
+        </div>
+      )}
     </>
   );
 };
@@ -125,11 +154,13 @@ const TopNav = ({ fill, hideNav }) => {
 TopNav.propTypes = {
   fill: PropTypes.string,
   hideNav: PropTypes.bool,
+  banner: PropTypes.bool,
 };
 
 TopNav.defaultProps = {
   fill: colors.lightgray,
   hideNav: false,
+  banner: false,
 };
 
 export default TopNav;

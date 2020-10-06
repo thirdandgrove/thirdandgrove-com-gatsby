@@ -46,6 +46,9 @@ const Header = ({
   heroImageMobile,
   subTitle,
   hideNav,
+  styles,
+  links,
+  banner,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -154,7 +157,6 @@ const Header = ({
     margin-top: 32px;
     font-family: ${fonts.sans};
     font-size: 15px;
-    font-weight: ${weights.regular};
     line-height: 2.4;
     text-transform: capitalize;
     color: ${fontColor};
@@ -192,12 +194,25 @@ const Header = ({
       ${labelMobileOnly && `display: none`};
     }
   `;
+
+  const linkStyles = css`
+    display: flex;
+    a {
+      font-family: ${fonts.sans};
+      font-size: 15px;
+      font-weight: ${weights.light};
+      line-height: 2.4;
+      color: ${fontColor};
+      padding: 0 10px;
+    }
+  `;
+
   return (
     <>
       <SEO title={metaTitle || title} description={description} image={image} />
-      <TopNav fill={fontColor} hideNav={hideNav} />
+      <TopNav fill={fontColor} hideNav={hideNav} banner={banner} />
       <FullWidthSection
-        css={sectionCSS}
+        css={[sectionCSS, styles]}
         height={height}
         minHeight={mobileMinHeight}
       >
@@ -215,6 +230,13 @@ const Header = ({
           <span data-cy='labelText' css={headerSubTitle}>
             {subTitle}
           </span>
+        )}
+        {links && (
+          <div css={linkStyles}>
+            {links.map(l => (
+              <a href={l.url}>{l.text}</a>
+            ))}
+          </div>
         )}
         {children && children}
       </FullWidthSection>
@@ -241,6 +263,9 @@ export const headerPropTypes = {
   heroImage: PropTypes.string,
   heroImageMobile: PropTypes.string,
   hideNav: PropTypes.bool,
+  styles: PropTypes.object,
+  links: PropTypes.array,
+  banner: PropTypes.bool,
 };
 
 Header.propTypes = headerPropTypes;
@@ -263,6 +288,9 @@ Header.defaultProps = {
   heroImage: null,
   heroImageMobile: null,
   hideNav: false,
+  styles: {},
+  links: [],
+  banner: false,
 };
 
 export default Header;
