@@ -53,7 +53,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={catic}
         alt='Catic'
-        width={isSmScreen ? '100' : '200'}
+        width={isSmScreen ? '150' : '200'}
         height={isSmScreen ? '32' : '50'}
       />,
       <img
@@ -65,7 +65,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={isgm}
         alt='ISGM'
-        width={isSmScreen ? '99' : '180'}
+        width={isSmScreen ? '150' : '180'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
@@ -79,7 +79,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={memebox}
         alt='memebox'
-        width={isSmScreen ? '116' : '166'}
+        width={isSmScreen ? '135' : '170'}
         height={isSmScreen ? '16' : '24'}
       />,
       <img
