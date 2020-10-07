@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
@@ -17,13 +16,78 @@ import {
   jsBreakpoints,
   fonts,
 } from '../styles';
-import CTA from '../components/CTA';
 import Button from '../components/Button';
 import { GetInTouch, SeeInsights } from '../components/Prefooter';
 
 const AcquiaEngage = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
+  const [exploreLink, setExploreLink] = useState(
+    'https://engage.acquia.com/agenda'
+  );
+  const [joinLink, setJoinLink] = useState('https://engage.acquia.com/agenda');
+  const getImageSrc = name =>
+    data.allFile.edges.filter(({ node }) => name === node.name)[0].node
+      .publicURL;
+
   const { node } = data.allAcquiaEngageJson.edges[0];
+
+  const images = data.allFile.nodes;
+
+  const getSrc = (name, media) => {
+    if (media === 'leader') {
+      return [
+        images.find(img => img.name === name).mobileImage.fluid,
+        {
+          ...images.find(img => img.name === name).leaderDesktop.fluid,
+          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+        },
+      ];
+    }
+    if (media === 'location') {
+      return [
+        images.find(img => img.name === name).mobileImage.fluid,
+        {
+          ...images.find(img => img.name === name).desktopImage.fluid,
+          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+        },
+      ];
+    }
+    return images.find(img => img.name === name).childImageSharp.fluid;
+  };
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
+
+  const onKeypress = e => {
+    if (e.keyCode === 13) {
+      setIsActive(!isActive);
+    }
+  };
+
+  useEffect(() => {
+    async function getLinks() {
+      const URL =
+        'https://spreadsheets.google.com/feeds/cells/18dA1bKdXZo3ecZFyjLhtY1CXFwZDsCpwxpnZQqB8Y8s/1/public/full?alt=json';
+
+      try {
+        const response = await fetch(URL);
+        const json = await response.json();
+        json.feed.entry.forEach(item => {
+          console.log(item.content.$t);
+          if (item.title.$t.indexOf('B1') !== -1) {
+            setExploreLink(item.content.$t);
+          }
+          if (item.title.$t.indexOf('B2') !== -1) {
+            setJoinLink(item.content.$t);
+          }
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getLinks();
+  }, []);
 
   const layoutStyles = css`
     span {
@@ -185,44 +249,6 @@ const AcquiaEngage = ({ data }) => {
     }
   `;
 
-  const images = data.allFile.nodes;
-
-  const getSrc = (name, media) => {
-    if (media === 'leader') {
-      return [
-        images.find(img => img.name === name).mobileImage.fluid,
-        {
-          ...images.find(img => img.name === name).leaderDesktop.fluid,
-          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-        },
-      ];
-    }
-    if (media === 'location') {
-      return [
-        images.find(img => img.name === name).mobileImage.fluid,
-        {
-          ...images.find(img => img.name === name).desktopImage.fluid,
-          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-        },
-      ];
-    }
-    return images.find(img => img.name === name).childImageSharp.fluid;
-  };
-
-  const getImageSrc = name =>
-    data.allFile.edges.filter(({ node }) => name === node.name)[0].node
-      .publicURL;
-
-  const handleClick = () => {
-    setIsActive(!isActive);
-  };
-
-  const onKeypress = e => {
-    if (e.keyCode === 13) {
-      setIsActive(!isActive);
-    }
-  };
-
   return (
     <Layout
       css={layoutStyles}
@@ -246,7 +272,7 @@ const AcquiaEngage = ({ data }) => {
         invert: false,
         banner: true,
         styles: layoutStyles,
-        images: data.allFile.edges,
+        navLink: joinLink,
       }}
     >
       <FullWidthSection
@@ -278,7 +304,9 @@ const AcquiaEngage = ({ data }) => {
                   }
                 `}
               >
-                Explore Event
+                <a href={exploreLink} target='_blank' rel='noreferrer'>
+                  Explore Event
+                </a>
               </Button>
             </div>
             <div className='button--container'>
@@ -322,28 +350,17 @@ const AcquiaEngage = ({ data }) => {
         <h3>{node.who[0].header}</h3>
 
         <div css={[splitWithImageCss, container.medium]}>
-          <div>
-            <Img
-              alt={node.who[0].justin.name}
-              fluid={getSrc('emond', 'leader')}
-            />
-            <h4>{node.who[0].justin.name}</h4>
-            <p>
-              <a href={`mailto:${node.who[0].justin.email}`}>Say Hi</a>
-            </p>
-            <p>{node.who[0].justin.title}</p>
-          </div>
-          <div>
-            <Img
-              alt={node.who[0].ashley.name}
-              fluid={getSrc('ashley', 'leader')}
-            />
-            <h4>{node.who[0].ashley.name}</h4>
-            <p>
-              <a href={`mailto:${node.who[0].ashley.email}`}>Say Hi</a>
-            </p>
-            <p>{node.who[0].ashley.title}</p>
-          </div>
+          {node.who[0].people &&
+            node.who[0].people.map(({ img, name, email, title }) => (
+              <div key={name}>
+                <Img alt={name} fluid={getSrc(img, 'leader')} />
+                <h4>{name}</h4>
+                <p>
+                  <a href={`mailto:${email}`}>Say Hi</a>
+                </p>
+                <p>{title}</p>
+              </div>
+            ))}
         </div>
       </FullWidthSection>
       <LogoGrid
@@ -352,46 +369,6 @@ const AcquiaEngage = ({ data }) => {
         subtitle={node.drumroll[0].subhead}
         styles={logogridStyles}
       />
-      <FullWidthSection
-        align='flex-start'
-        height='500px'
-        css={css`
-          padding: 50px 20px;
-          position: relative;
-          ${container.textOnly}
-
-          ${mediaQueries.phoneLarge} {
-            padding: 50px 0 50px 0;
-          }
-
-          p {
-            text-align: left;
-            margin-bottom: 0;
-          }
-        `}
-      >
-        <h3>{node.talk[0].header}</h3>
-
-        <p>
-          {`We’ve crafted the most compelling, engaging content to throw at you.
-          That’s why our breakout sessions are a must-see. Don’t believe us? I
-          guess you’ll have to see for yourself.`}{' '}
-        </p>
-        <br />
-        <p>
-          Using Drupal 8 and Acquia to boost B2B lead generation and marketing
-          velocity
-        </p>
-
-        <p>
-          Learn how VMware’s CloudHealth, a powerful cloud management platform
-          trusted by organizations around the world, used an upgrade to Drupal
-          8, a redesign, and the Acquia platform to boost B2B lead generation
-          and improve the velocity of their marketing and development efforts.
-          You will also learn tips and tricks on how to combine your team
-          members with an agency team to form an excellent single delivery team.
-        </p>
-      </FullWidthSection>
       <FullWidthSection
         align='flex-start'
         height='500px'
@@ -410,6 +387,30 @@ const AcquiaEngage = ({ data }) => {
           }
         `}
       >
+        <h3>{node.talk[0].header}</h3>
+
+        <p>
+          {`We’ve crafted the most compelling, engaging content to throw at you.
+  That’s why our breakout sessions are a must-see. Don’t believe us? I
+  guess you’ll have to see for yourself.`}{' '}
+        </p>
+        <br />
+        <p>
+          Using Drupal 8 and Acquia to boost B2B lead generation and marketing
+          velocity
+        </p>
+
+        <p>
+          Learn how VMware’s CloudHealth, a powerful cloud management platform
+          trusted by organizations around the world, used an upgrade to Drupal
+          8, a redesign, and the Acquia platform to boost B2B lead generation
+          and improve the velocity of their marketing and development efforts.
+          You will also learn tips and tricks on how to combine your team
+          members with an agency team to form an excellent single delivery team.
+        </p>
+        <br />
+        <br />
+        <br />
         <h3>Our Friends</h3>
 
         <p>
@@ -462,11 +463,11 @@ const AcquiaEngage = ({ data }) => {
           into the future of Acquia Marketing Cloud and learn what’s next.
         </p>
       </FullWidthSection>
-      <FullWidthSection height='100%'>
+      <FullWidthSection height='100%' minHeight='100%'>
         {node.header[0].links && (
           <div css={linkStyles}>
             {node.header[0].links.map(l => (
-              <a href={l.url}>
+              <a key={l.text} href={l.url}>
                 <img src={getImageSrc(l.text.toLowerCase())} alt={l.text} />
               </a>
             ))}
@@ -507,6 +508,7 @@ export const query = graphql`
       }
       nodes {
         name
+        publicURL
         childImageSharp {
           fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
             ...GatsbyImageSharpFluid_withWebp
@@ -546,14 +548,8 @@ export const query = graphql`
             subhead
           }
           who {
-            ashley {
-              email
-              img
-              name
-              title
-            }
             header
-            justin {
+            people {
               email
               img
               name

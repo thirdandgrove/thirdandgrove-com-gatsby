@@ -51,6 +51,7 @@ const Header = ({
   linksB,
   banner,
   images,
+  navLink,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -250,7 +251,12 @@ const Header = ({
   return (
     <>
       <SEO title={metaTitle || title} description={description} image={image} />
-      <TopNav fill={fontColor} hideNav={hideNav} banner={banner} />
+      <TopNav
+        fill={fontColor}
+        hideNav={hideNav}
+        banner={banner}
+        navLink={navLink}
+      />
       <FullWidthSection
         css={[sectionCSS, styles]}
         height={height}
@@ -317,6 +323,7 @@ export const headerPropTypes = {
   linksB: PropTypes.array,
   banner: PropTypes.bool,
   images: PropTypes.array,
+  navLink: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -344,6 +351,7 @@ Header.defaultProps = {
   linksB: [],
   banner: false,
   images: [],
+  navLink: 'https://engage.acquia.com',
 };
 
 export default Header;

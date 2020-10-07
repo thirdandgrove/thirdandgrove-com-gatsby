@@ -12,7 +12,7 @@ import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
 import Hamburger from './svg/hamburger';
 
-const TopNav = ({ fill, hideNav, banner }) => {
+const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
 
@@ -149,6 +149,10 @@ const TopNav = ({ fill, hideNav, banner }) => {
                 max-width: 200px;
               }
 
+              a {
+                color: ${colors.white};
+              }
+
               .top-bar--container {
                 display: flex;
                 width: 100%;
@@ -156,7 +160,7 @@ const TopNav = ({ fill, hideNav, banner }) => {
 
               .left {
                 display: none;
-                ${mediaQueries.phoneLarge} {
+                ${mediaQueries.tablet} {
                   flex: 1;
                   display: flex;
                   justify-content: flex-start;
@@ -174,7 +178,7 @@ const TopNav = ({ fill, hideNav, banner }) => {
 
               .right {
                 display: none;
-                ${mediaQueries.phoneLarge} {
+                ${mediaQueries.tablet} {
                   flex: 1;
                   display: flex;
                   justify-content: flex-end;
@@ -189,7 +193,11 @@ const TopNav = ({ fill, hideNav, banner }) => {
               <img src={AcquiaEngage} alt='Acquia Engage 2020' />
             </div>
             <div className='center'>
-              <p>Join Live Event Now!</p>
+              <p>
+                <a href={navLink} target='_blank' rel='noreferrer'>
+                  Join Live Event Now!
+                </a>
+              </p>
             </div>
             <div className='right' />
           </div>
@@ -203,6 +211,7 @@ TopNav.propTypes = {
   fill: PropTypes.string,
   hideNav: PropTypes.bool,
   banner: PropTypes.bool,
+  navLink: PropTypes.string.isRequired,
 };
 
 TopNav.defaultProps = {
