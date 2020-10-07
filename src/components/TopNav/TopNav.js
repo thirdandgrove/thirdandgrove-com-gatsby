@@ -155,10 +155,13 @@ const TopNav = ({ fill, hideNav, banner }) => {
               }
 
               .left {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                flex: 1;
+                display: none;
+                ${mediaQueries.min} {
+                  flex: 1;
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                }
               }
 
               .center {
@@ -166,13 +169,18 @@ const TopNav = ({ fill, hideNav, banner }) => {
                 justify-content: center;
                 align-items: center;
                 flex: 1;
+                text-align: center;
               }
 
               .right {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                flex: 1;
+                display: none;
+
+                ${mediaQueries.min} {
+                  flex: 1;
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: center;
+                }
               }
             `,
           ]}
