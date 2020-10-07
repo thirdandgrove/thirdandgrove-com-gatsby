@@ -45,18 +45,20 @@
     "who": [
       {
         "header": "Who Will Be There?",
-        "justin": {
-          "img": "justin",
-          "name": "Justin Emond",
-          "email": "justin@thirdandgrove.com",
-          "title": "Founder, Chief Executive Officer"
-        },
-        "ashley": {
-          "img": "ashley",
-          "name": "Ashley Remington",
-          "email": "aremington@thirdandgrove.com",
-          "title": "Senior Account Manager"
-        }
+        "people": [
+          {
+            "img": "emond",
+            "name": "Justin Emond",
+            "email": "justin@thirdandgrove.com",
+            "title": "Founder, Chief Executive Officer"
+          },
+          {
+            "img": "ashley",
+            "name": "Ashley Remington",
+            "email": "aremington@thirdandgrove.com",
+            "title": "Senior Account Manager"
+          }
+        ]
       }
     ],
     "drumroll": [
