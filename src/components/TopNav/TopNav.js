@@ -156,7 +156,7 @@ const TopNav = ({ fill, hideNav, banner }) => {
 
               .left {
                 display: none;
-                ${mediaQueries.min} {
+                ${mediaQueries.phoneLarge} {
                   flex: 1;
                   display: flex;
                   justify-content: flex-start;
@@ -174,8 +174,7 @@ const TopNav = ({ fill, hideNav, banner }) => {
 
               .right {
                 display: none;
-
-                ${mediaQueries.min} {
+                ${mediaQueries.phoneLarge} {
                   flex: 1;
                   display: flex;
                   justify-content: flex-end;
