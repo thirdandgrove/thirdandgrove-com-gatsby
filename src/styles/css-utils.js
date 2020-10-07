@@ -2,8 +2,8 @@
 /* Variables and functions specifically for CSS-in-JS use */
 
 /* Media queries */
-const breakpoints = [480, 900, 1220];
-const names = [`xs`, `phoneLarge`, `desktop`];
+const breakpoints = [480, 767, 900, 1220];
+const names = [`xs`, `tablet`, `phoneLarge`, `desktop`];
 
 export const mediaQueries = breakpoints.reduce((acc, bp, i) => {
   acc[names[i]] = `@media (min-width: ${bp}px)`;
