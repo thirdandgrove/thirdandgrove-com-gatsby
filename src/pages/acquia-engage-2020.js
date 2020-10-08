@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
@@ -74,7 +75,6 @@ const AcquiaEngage = ({ data }) => {
         const response = await fetch(URL);
         const json = await response.json();
         json.feed.entry.forEach(item => {
-          console.log(item.content.$t);
           if (item.title.$t.indexOf('B1') !== -1) {
             setExploreLink(item.content.$t);
           }
@@ -165,8 +165,6 @@ const AcquiaEngage = ({ data }) => {
     }
 
     .gatsby-image-wrapper > div {
-      // Forcing correct image aspect ratio, overriding inline
-      // gatsby-image provided styles
       ${mediaQueries.phoneLarge} {
         padding-bottom: 100% !important;
       }
@@ -228,8 +226,6 @@ const AcquiaEngage = ({ data }) => {
     }
 
     .gatsby-image-wrapper > div {
-      // Forcing correct image aspect ratio, overriding inline
-      // gatsby-image provided styles
       ${mediaQueries.phoneLarge} {
         padding-bottom: 100% !important;
       }
@@ -280,10 +276,9 @@ const AcquiaEngage = ({ data }) => {
         backgroundColor={colors.white}
         css={css`
           > div {
+            ${container.textOnly}
             padding: 50px 20px 0;
             position: relative;
-            ${container.textOnly}
-
             ${mediaQueries.phoneLarge} {
               padding: 100px 0 0 0;
             }
@@ -373,10 +368,9 @@ const AcquiaEngage = ({ data }) => {
         align='flex-start'
         height='500px'
         css={css`
+          ${container.textOnly}
           padding: 50px 20px;
           position: relative;
-          ${container.textOnly}
-
           ${mediaQueries.phoneLarge} {
             padding: 50px 0 120px 0;
           }
@@ -388,80 +382,38 @@ const AcquiaEngage = ({ data }) => {
         `}
       >
         <h3>{node.talk[0].header}</h3>
-
-        <p>
-          {`We’ve crafted the most compelling, engaging content to throw at you.
-  That’s why our breakout sessions are a must-see. Don’t believe us? I
-  guess you’ll have to see for yourself.`}{' '}
-        </p>
-        <br />
-        <p>
-          Using Drupal 8 and Acquia to boost B2B lead generation and marketing
-          velocity
-        </p>
-
-        <p>
-          Learn how VMware’s CloudHealth, a powerful cloud management platform
-          trusted by organizations around the world, used an upgrade to Drupal
-          8, a redesign, and the Acquia platform to boost B2B lead generation
-          and improve the velocity of their marketing and development efforts.
-          You will also learn tips and tricks on how to combine your team
-          members with an agency team to form an excellent single delivery team.
-        </p>
+        <p>{node.talk[0].header}</p>
+        {node.talk[0].tagTalks &&
+          node.talk[0].tagTalks.map(({ title, date, time, description }) => (
+            <>
+              <br />
+              <p>
+                <b>{title}</b>
+              </p>
+              <p>{date}</p>
+              <p>{time}</p>
+              <p>{description}</p>
+            </>
+          ))}
         <br />
         <br />
         <br />
         <h3>Our Friends</h3>
-
         <p>
           {`After you visit with us, we have some other suggestions for you. Here’s a breakdown of what to do and who to meet.`}{' '}
         </p>
-        <br />
-        <p>
-          <b>Why Predictive Marketing? Why Now?</b>
-        </p>
-        <p>Tuesday, October 20th</p>
-        <p>1:35PM - 1:55PM</p>
-        <p>
-          {`Most marketers strive to be data-driven. But many find themselves
-          stuck in old ruts. Running batch-and-blast email campaigns, letting
-          creative ideas trample data, and allowing broad segmentation and
-          targeting to stand in for real personalization. In this session,
-          you’ll hear from Omer Artun, Acquia’s Chief Science Officer and former
-          CEO of AgilOne. He’ll share Acquia’s vision for Artificial
-          Intelligence, along with practical tips for leveraging predictive
-          analytics to boost customer acquisition and growth, and identify and
-          lure in lapsed or at-risk customers. Omer will go beyond theory, and
-          focus on concrete steps you can take now to help navigate these
-          unprecedented times.`}
-        </p>
-        <br />
-        <p>
-          <b>Our Vision for Drupal Cloud: What’s Next?</b>
-        </p>
-        <p>Wednesday, October 21st</p>
-        <p>12:10PM - 12:30PM</p>
-        <p>
-          Want a peek into the future? Spend twenty minutes with the Head of
-          Product (Drupal Cloud) to learn about the long-term vision, key
-          priorities, and plans to help customers conquer.
-        </p>
-        <br />
-        <p>
-          <b>The Future of Customer Experience with Acquia Marketing Clou</b>d
-        </p>
-        <p>Wednesday, October 21st</p>
-        <p>12:10PM - 12:30PM</p>
-        <p>
-          To meet shifting customer expectations in an uncertain environment,
-          organizations must be able to respond to changes quickly and scale new
-          tactics efficiently. But delivering a seamless experience with
-          relevant and timely touchpoints at every step of the customer journey
-          is no small task. Acquia Marketing Cloud is constantly adapting and
-          innovating to help marketers keep up with customers, and orchestrate
-          and analyze their experiences at scale. In this session, we’ll look
-          into the future of Acquia Marketing Cloud and learn what’s next.
-        </p>
+        {node.talk[0].talks &&
+          node.talk[0].talks.map(({ title, date, time, description }) => (
+            <>
+              <br />
+              <p>
+                <b>{title}</b>
+              </p>
+              <p>{date}</p>
+              <p>{time}</p>
+              <p>{description}</p>
+            </>
+          ))}
       </FullWidthSection>
       <FullWidthSection height='100%' minHeight='100%'>
         {node.header[0].links && (
@@ -490,6 +442,10 @@ const AcquiaEngage = ({ data }) => {
       )}
     </Layout>
   );
+};
+
+AcquiaEngage.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 export default AcquiaEngage;

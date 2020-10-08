@@ -88,7 +88,41 @@
     "talk": [
       {
         "header": "We Have A Lot To Talk About",
-        "subhead": "We’ve crafted the most compelling, engaging content to throw at you.  That’s why our breakout sessions are a must-see.  Don’t believe us? I guess you’ll have to see for yourself."
+        "subhead": "We’ve crafted the most compelling, engaging content to throw at you. That’s why our breakout sessions are a must-see. Don’t believe us? I guess you’ll have to see for yourself.",
+        "tagTalks": [
+          {
+            "title": "Leveraging Drupal 8 and Acquia to boost B2B lead generation and marketing velocity",
+            "date": "Tuesday, October 20th",
+            "time": "11:50AM - 12:10PM EDT",
+            "description": "CloudHealth, a division of VMware, is a powerful cloud management platform trusted by organizations around the world. In this session, you’ll learn how they utilized an upgrade to Drupal 8, a redesign, and the Acquia platform to boost B2B lead generation and improve the velocity of their marketing and development efforts. You’ll also pick up tips and tricks on how to combine your own team members with an agency team to form a unified, exceptional delivery force."
+          }
+        ],
+        "talks": [
+          {
+            "title": "General Session",
+            "date": "Wednesday, October 21st",
+            "time": "10:00AM - 10:50AM EDT",
+            "description": "Acquia CMO, Lynne Capozzi, will unveil the results of our third annual global report on customer experience from the perspective of both consumers and marketers followed by a special keynote from Robert Smith, Founder, Chairman, and CEO of Vista Equity Partners and a fireside chat with Lynne Capozzi, Mike Hoefer and Bill Tine, King Arthur Flour."
+          },
+          {
+            "title": "Why Predictive Marketing? Why Now?",
+            "date": "Tuesday, October 20th",
+            "time": " 1:35PM - 1:55PM",
+            "description": "Most marketers strive to be data-driven. But many find themselves stuck in old ruts. Running batch-and-blast email campaigns, letting creative ideas trample data, and allowing broad segmentation and targeting to stand in for real personalization. In this session, you’ll hear from Omer Artun, Acquia’s Chief Science Officer and former CEO of AgilOne. He’ll share Acquia’s vision for Artificial Intelligence, along with practical tips for leveraging predictive analytics to boost customer acquisition and growth, and identify and lure in lapsed or at-risk customers. Omer will go beyond theory, and focus on concrete steps you can take now to help navigate these unprecedented times."
+          },
+          {
+            "title": "Our Vision for Drupal Cloud: What’s Next?",
+            "date": "Wednesday, October 21st",
+            "time": "12:10PM - 12:30PM",
+            "description": "Want a peek into the future? Spend twenty minutes with the Head of Product (Drupal Cloud) to learn about long-term vision, key priorities, and plans to help customers conquer."
+          },
+          {
+            "title": "The Future of Customer Experience with Acquia Marketing Cloud",
+            "date": "Wednesday, October 21st",
+            "time": "12:10PM - 12:30PM",
+            "description": "To meet shifting customer expectations in an uncertain environment, organizations must be able to respond to changes quickly and scale new tactics efficiently. But delivering a seamless experience with relevant and timely touchpoints at every step of the customer journey is no small task. Acquia Marketing Cloud is constantly adapting and innovating to help marketers keep up with customers, and orchestrate and analyze their experiences at scale. In this session, we’ll look into the future of Acquia Marketing Cloud and learn what’s next."
+          }
+        ]
       }
     ]
   }
