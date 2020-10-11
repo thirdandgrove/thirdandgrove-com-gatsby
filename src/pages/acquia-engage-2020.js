@@ -26,6 +26,7 @@ const AcquiaEngage = ({ data }) => {
     'https://engage.acquia.com/agenda'
   );
   const [joinLink, setJoinLink] = useState('https://engage.acquia.com/agenda');
+
   const getImageSrc = name =>
     data.allFile.edges.filter(({ node }) => name === node.name)[0].node
       .publicURL;
@@ -83,6 +84,8 @@ const AcquiaEngage = ({ data }) => {
           }
         });
       } catch (error) {
+        setJoinLink('https://engage.acquia.com/agenda');
+        setExploreLink('https://engage.acquia.com/agenda');
         console.error(error);
       }
     }
