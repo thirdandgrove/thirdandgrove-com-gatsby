@@ -15,7 +15,6 @@ const NewsletterSimpleOverlay = ({
   image,
   isActive,
   setIsActive,
-  formName,
 }) => {
   const toggle = () => setIsActive(!isActive);
 
@@ -185,7 +184,6 @@ const NewsletterSimpleOverlay = ({
               header={header}
               subheader={subheader}
               image={image}
-              formName={formName}
             />
           </div>
         </div>
@@ -202,7 +200,6 @@ NewsletterSimpleOverlay.propTypes = {
   header: PropTypes.string,
   subheader: PropTypes.string,
   image: PropTypes.object,
-  formName: PropTypes.string,
 };
 
 NewsletterSimpleOverlay.defaultProps = {
@@ -212,7 +209,6 @@ NewsletterSimpleOverlay.defaultProps = {
   subheader:
     'Join our mailing list and you can stay this informed all the time.',
   image: {},
-  formName: 'newsletter',
 };
 
 export default NewsletterSimpleOverlay;
