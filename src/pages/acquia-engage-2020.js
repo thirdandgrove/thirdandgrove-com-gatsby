@@ -119,6 +119,32 @@ const AcquiaEngage = ({ data }) => {
     div {
       max-width: 850px;
     }
+
+    .logo-grid-container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 75px;
+
+      ${mediaQueries.phoneLarge} {
+        margin-top: 0;
+        justify-content: space-between;
+        flex-direction: row;
+      }
+    }
+
+    .logo-grid-item {
+      ${mediaQueries.phoneLarge} {
+        flex: 0 0 25%;
+        width: 25%;
+        max-width: 25%;
+        margin-bottom: 50px;
+      }
+    }
+
+    .logo-grid-item img {
+      width: 100%;
+    }
   `;
 
   const splitWithButtonsCss = css`
