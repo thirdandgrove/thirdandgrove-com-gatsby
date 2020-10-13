@@ -46,6 +46,12 @@ const Header = ({
   heroImageMobile,
   subTitle,
   hideNav,
+  styles,
+  linksA,
+  linksB,
+  banner,
+  images,
+  navLink,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -154,7 +160,6 @@ const Header = ({
     margin-top: 32px;
     font-family: ${fonts.sans};
     font-size: 15px;
-    font-weight: ${weights.regular};
     line-height: 2.4;
     text-transform: capitalize;
     color: ${fontColor};
@@ -192,12 +197,68 @@ const Header = ({
       ${labelMobileOnly && `display: none`};
     }
   `;
+
+  const linkStylesA = css`
+    display: flex;
+    a {
+      font-family: ${fonts.sans};
+      font-size: 15px;
+      font-weight: ${weights.light};
+      line-height: 2.4;
+      color: ${fontColor};
+      padding: 0 10px;
+      position: relative;
+
+      &::after {
+        content: '|';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+      }
+    }
+
+    a:last-of-type {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+      }
+    }
+  `;
+
+  const linkStylesB = css`
+    display: flex;
+    margin-top: 12px;
+    a {
+      font-family: ${fonts.sans};
+      font-size: 15px;
+      font-weight: ${weights.light};
+      line-height: 2.4;
+      color: ${fontColor};
+      padding: 0 10px;
+      position: relative;
+    }
+  `;
+
+  const getImageSrc = name =>
+    images.filter(({ node }) => name === node.name)[0].node.publicURL;
+
   return (
     <>
       <SEO title={metaTitle || title} description={description} image={image} />
-      <TopNav fill={fontColor} hideNav={hideNav} />
+      <TopNav
+        fill={fontColor}
+        hideNav={hideNav}
+        banner={banner}
+        navLink={navLink}
+      />
       <FullWidthSection
-        css={sectionCSS}
+        css={[sectionCSS, styles]}
         height={height}
         minHeight={mobileMinHeight}
       >
@@ -215,6 +276,22 @@ const Header = ({
           <span data-cy='labelText' css={headerSubTitle}>
             {subTitle}
           </span>
+        )}
+        {linksA && (
+          <div css={linkStylesA}>
+            {linksA.map(l => (
+              <a href={l.url}>{l.text}</a>
+            ))}
+          </div>
+        )}
+        {linksB && (
+          <div css={linkStylesB}>
+            {linksB.map(l => (
+              <a href={l.url}>
+                <img src={getImageSrc(l.text.toLowerCase())} alt={l.text} />
+              </a>
+            ))}
+          </div>
         )}
         {children && children}
       </FullWidthSection>
@@ -241,6 +318,12 @@ export const headerPropTypes = {
   heroImage: PropTypes.string,
   heroImageMobile: PropTypes.string,
   hideNav: PropTypes.bool,
+  styles: PropTypes.object,
+  linksA: PropTypes.array,
+  linksB: PropTypes.array,
+  banner: PropTypes.bool,
+  images: PropTypes.array,
+  navLink: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -263,6 +346,12 @@ Header.defaultProps = {
   heroImage: null,
   heroImageMobile: null,
   hideNav: false,
+  styles: {},
+  linksA: [],
+  linksB: [],
+  banner: false,
+  images: [],
+  navLink: 'https://engage.acquia.com',
 };
 
 export default Header;

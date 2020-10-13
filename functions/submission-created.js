@@ -208,5 +208,23 @@ exports.handler = async (event, _context, callback) => {
   }
   /** Newsletter Form */
 
+  /** Newsletter Form */
+  if (form_name === 'acquia-engage') {
+    // handle form newsletter
+    const { email } = data;
+    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_ACQUIA_ENGAGE } = process.env;
+
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [{ email, url: referrer, event: 'acquia-engage' }],
+      }),
+    }).catch(console.error);
+  }
+  /** Newsletter Form */
+
   callback(null, { statusCode: 200 });
 };

@@ -1,7 +1,13 @@
 /* eslint-disable array-callback-return */
 const path = require('path');
 
+const express = require('express');
+
 const { ensureTrailingSlash, updatePaths } = require('./src/util');
+
+exports.onCreateDevServer = ({ app }) => {
+  app.use(express.static('static'));
+};
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;

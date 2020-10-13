@@ -6,19 +6,22 @@ import { css } from '@emotion/core';
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
+import AcquiaEngage from '../../../static/images/acquia-engage-logo.svg';
 
 import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
 import Hamburger from './svg/hamburger';
 
-const TopNav = ({ fill, hideNav }) => {
+const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
+  const [acquiaOpen, setAcquiaOpen] = useState(false);
+  const toggleAcquiaOpen = () => setAcquiaOpen(!acquiaOpen);
 
   const { width } = useWindow();
   return (
     <>
-      {hideNav ? (
+      {hideNav && !banner && (
         <div
           css={[
             container.max,
@@ -47,7 +50,9 @@ const TopNav = ({ fill, hideNav }) => {
             `}
           />
         </div>
-      ) : (
+      )}
+
+      {!hideNav && !banner && (
         <>
           {' '}
           <div
@@ -118,6 +123,114 @@ const TopNav = ({ fill, hideNav }) => {
           <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />{' '}
         </>
       )}
+
+      {hideNav && banner && (
+        <div
+          css={[
+            container.max,
+            css`
+              position: absolute;
+              top: 0;
+              padding-top: 20px;
+              padding-bottom: 20px;
+              display: ${acquiaOpen ? `none` : `flex`};
+
+              z-index: 4;
+              width: 100%;
+              background-color: ${colors.tagGray};
+              color: ${colors.white};
+
+              p {
+                margin-bottom: 0;
+                justify-content: center;
+                align-items: center;
+              }
+
+              img {
+                margin: 0;
+                max-width: 200px;
+              }
+
+              a {
+                color: ${colors.white};
+              }
+
+              .top-bar--container {
+                display: flex;
+                width: 100%;
+              }
+
+              .left {
+                img {
+                  display: none;
+                }
+
+                ${mediaQueries.tablet} {
+                  flex: 1;
+                  display: flex;
+                  justify-content: flex-start;
+                  align-items: center;
+                  img {
+                    display: block;
+                  }
+                }
+              }
+
+              .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
+                text-align: center;
+              }
+
+              .right {
+                ${mediaQueries.tablet} {
+                  flex: 1;
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: center;
+                }
+              }
+            `,
+          ]}
+        >
+          <div className='top-bar--container'>
+            <div className='left'>
+              <img src={AcquiaEngage} alt='Acquia Engage 2020' />
+            </div>
+            <div className='center'>
+              <p>
+                <a href={navLink} target='_blank' rel='noreferrer'>
+                  Join the Live Event Now!
+                </a>
+              </p>
+            </div>
+            <div className='right'>
+              <button
+                css={css`
+                  background-color: transparent;
+                  padding: 0;
+                  margin: 0;
+                  border: none;
+                  min-height: 25px;
+                  cursor: pointer;
+                  :focus {
+                    outline: none;
+                  }
+                  color: #fff;
+                `}
+                type='button'
+                onClick={() => toggleAcquiaOpen()}
+                data-cy='menuButton'
+                aria-label='open site menu'
+              >
+                &#10006;
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
@@ -125,11 +238,14 @@ const TopNav = ({ fill, hideNav }) => {
 TopNav.propTypes = {
   fill: PropTypes.string,
   hideNav: PropTypes.bool,
+  banner: PropTypes.bool,
+  navLink: PropTypes.string.isRequired,
 };
 
 TopNav.defaultProps = {
   fill: colors.lightgray,
   hideNav: false,
+  banner: false,
 };
 
 export default TopNav;
