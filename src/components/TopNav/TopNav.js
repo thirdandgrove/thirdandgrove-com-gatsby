@@ -15,6 +15,8 @@ import Hamburger from './svg/hamburger';
 const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
+  const [acquiaOpen, setAcquiaOpen] = useState(false);
+  const toggleAcquiaOpen = () => setAcquiaOpen(!acquiaOpen);
 
   const { width } = useWindow();
   return (
@@ -131,7 +133,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
               top: 0;
               padding-top: 20px;
               padding-bottom: 20px;
-              display: flex;
+              display: ${acquiaOpen ? `none` : `flex`};
 
               z-index: 4;
               width: 100%;
@@ -159,12 +161,18 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
               }
 
               .left {
-                display: none;
+                img {
+                  display: none;
+                }
+
                 ${mediaQueries.tablet} {
                   flex: 1;
                   display: flex;
                   justify-content: flex-start;
                   align-items: center;
+                  img {
+                    display: block;
+                  }
                 }
               }
 
@@ -177,7 +185,6 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
               }
 
               .right {
-                display: none;
                 ${mediaQueries.tablet} {
                   flex: 1;
                   display: flex;
@@ -195,11 +202,32 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
             <div className='center'>
               <p>
                 <a href={navLink} target='_blank' rel='noreferrer'>
-                  Join Live Event Now!
+                  Join the Live Event Now!
                 </a>
               </p>
             </div>
-            <div className='right' />
+            <div className='right'>
+              <button
+                css={css`
+                  background-color: transparent;
+                  padding: 0;
+                  margin: 0;
+                  border: none;
+                  min-height: 25px;
+                  cursor: pointer;
+                  :focus {
+                    outline: none;
+                  }
+                  color: #fff;
+                `}
+                type='button'
+                onClick={() => toggleAcquiaOpen()}
+                data-cy='menuButton'
+                aria-label='open site menu'
+              >
+                &#10006;
+              </button>
+            </div>
           </div>
         </div>
       )}
