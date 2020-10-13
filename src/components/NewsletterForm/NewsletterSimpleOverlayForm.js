@@ -17,7 +17,6 @@ const NewsletterSimpleOverlayForm = ({
   header,
   subheader,
   image,
-  formName,
 }) => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
@@ -31,7 +30,7 @@ const NewsletterSimpleOverlayForm = ({
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': formName, email }),
+      body: encode({ 'form-name': 'acquia-engage', email }),
     }).then(() => {
       updateEmail('');
       hasSubmitted(true);
@@ -49,7 +48,7 @@ const NewsletterSimpleOverlayForm = ({
 
   return (
     <form
-      name={formName}
+      name='acquia-engage'
       data-netlify='true'
       netlify-honeypot='bot-field'
       css={css`
