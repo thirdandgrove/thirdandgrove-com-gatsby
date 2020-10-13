@@ -212,10 +212,10 @@ exports.handler = async (event, _context, callback) => {
   if (form_name === 'acquia-engage') {
     // handle form newsletter
     const { email } = data;
-    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
+    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_ACQUIA_ENGAGE } = process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/subscribe`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
