@@ -348,17 +348,16 @@ const AcquiaEngage = ({ data }) => {
         <h3>{node.who[0].header}</h3>
 
         <div css={[splitWithImageCss, container.medium]}>
-          {node.who[0].people &&
-            node.who[0].people.map(({ img, name, email, title }) => (
-              <div key={name}>
-                <Img alt={name} fluid={getSrc(img, 'leader')} />
-                <h4>{name}</h4>
-                <p>
-                  <a href={`mailto:${email}`}>Say Hi</a>
-                </p>
-                <p>{title}</p>
-              </div>
-            ))}
+          {node.who[0].people.map(({ img, name, email, title }) => (
+            <div key={name}>
+              <Img alt={name} fluid={getSrc(img, 'leader')} />
+              <h4>{name}</h4>
+              <p>
+                <a href={`mailto:${email}`}>Say Hi</a>
+              </p>
+              <p>{title}</p>
+            </div>
+          ))}
         </div>
       </FullWidthSection>
       <LogoGrid
@@ -385,19 +384,20 @@ const AcquiaEngage = ({ data }) => {
         `}
       >
         <h3>{node.talk[0].header}</h3>
-        <p>{node.talk[0].header}</p>
-        {node.talk[0].tagTalks &&
-          node.talk[0].tagTalks.map(({ title, date, time, description }) => (
-            <>
-              <br />
+        <p>{node.talk[0].subhead}</p>
+        {node.talk[0].tagTalks.map(({ title, date, time, description }) => (
+          <span key={title}>
+            <br />
+            <div style={{ marginBottom: '10px' }}>
               <p>
                 <b>{title}</b>
               </p>
               <p>{date}</p>
               <p>{time}</p>
-              <p>{description}</p>
-            </>
-          ))}
+            </div>
+            <p>{description}</p>
+          </span>
+        ))}
         <br />
         <br />
         <br />
@@ -405,18 +405,19 @@ const AcquiaEngage = ({ data }) => {
         <p>
           {`After you visit with us, we have some other suggestions for you. Here’s a breakdown of what to do and who to meet.`}{' '}
         </p>
-        {node.talk[0].talks &&
-          node.talk[0].talks.map(({ title, date, time, description }) => (
-            <>
-              <br />
+        {node.talk[0].talks.map(({ title, date, time, description }) => (
+          <span key={title}>
+            <br />
+            <div style={{ marginBottom: '10px' }}>
               <p>
                 <b>{title}</b>
               </p>
               <p>{date}</p>
               <p>{time}</p>
-              <p>{description}</p>
-            </>
-          ))}
+            </div>
+            <p>{description}</p>
+          </span>
+        ))}
       </FullWidthSection>
       <FullWidthSection height='100%' minHeight='100%'>
         {node.header[0].links && (
@@ -505,6 +506,18 @@ export const query = graphql`
           talk {
             header
             subhead
+            tagTalks {
+              date
+              description
+              time
+              title
+            }
+            talks {
+              date
+              description
+              time
+              title
+            }
           }
           who {
             header
