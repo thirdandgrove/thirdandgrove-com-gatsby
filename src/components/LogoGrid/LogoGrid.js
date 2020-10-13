@@ -180,10 +180,10 @@ const LogoGrid = ({
           <>
             <h2 css={[smSectionHead, multiLineStyles]}>{title}</h2>
             <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>
-            <LogosTight>
+            <LogosTight className='logo-grid-container'>
               {renderSet.map((logo, i) => (
                 // eslint-disable-next-line react/no-array-index-key
-                <div key={i} css={logoItemTight}>
+                <div className='logo-grid-item' key={i} css={logoItemTight}>
                   {logo}
                 </div>
               ))}

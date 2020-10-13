@@ -51,12 +51,6 @@ export default (logoset, isSmScreen) => {
   const sets = {
     acquiaEngage: [
       <img
-        src={catic}
-        alt='Catic'
-        width={isSmScreen ? '150' : '200'}
-        height={isSmScreen ? '32' : '50'}
-      />,
-      <img
         src={cloudHealth}
         alt='Cloud Health'
         width={isSmScreen ? '126' : '170'}
