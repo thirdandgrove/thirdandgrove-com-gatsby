@@ -62,7 +62,7 @@ export default ({ data }) => {
             {/* A digital agency{' '}
             <Underlined>{isChristmas ? `sleighing` : `slaying`}</Underlined> the
             mundane, one pixel at a time. */}
-            {`We create goal-shattering digital`}
+            {`Goal-shattering digital`}
             <br />
             {`platforms on a global scale`}
             {/* Holy S%#*! that was fast.
