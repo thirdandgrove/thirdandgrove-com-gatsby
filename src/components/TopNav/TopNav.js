@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
@@ -17,8 +17,13 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const toggleOpen = () => setOpen(!isOpen);
   const [acquiaOpen, setAcquiaOpen] = useState(false);
   const toggleAcquiaOpen = () => setAcquiaOpen(!acquiaOpen);
-
+  const [isDate, setDate] = useState(false);
   const { width } = useWindow();
+
+  useEffect(() => {
+    setDate(new Date() > new Date('2020-10-20'));
+  }, []);
+
   return (
     <>
       {hideNav && !banner && (
@@ -124,7 +129,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
         </>
       )}
 
-      {hideNav && banner && (
+      {hideNav && banner && isDate && (
         <div
           css={[
             container.max,

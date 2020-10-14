@@ -27,35 +27,22 @@ const AcquiaEngage = ({ data }) => {
   );
   const [joinLink, setJoinLink] = useState('https://engage.acquia.com/agenda');
 
-  const getImageSrc = name =>
-    data.allFile.edges.filter(({ node }) => name === node.name)[0].node
-      .publicURL;
-
   const { node } = data.allAcquiaEngageJson.edges[0];
 
   const images = data.allFile.nodes;
 
-  const getSrc = (name, media) => {
-    if (media === 'leader') {
-      return [
-        images.find(img => img.name === name).mobileImage.fluid,
-        {
-          ...images.find(img => img.name === name).leaderDesktop.fluid,
-          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-        },
-      ];
-    }
-    if (media === 'location') {
-      return [
-        images.find(img => img.name === name).mobileImage.fluid,
-        {
-          ...images.find(img => img.name === name).desktopImage.fluid,
-          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-        },
-      ];
-    }
-    return images.find(img => img.name === name).childImageSharp.fluid;
+  const getSrc = name => {
+    return [
+      images.find(img => img.name === name).mobileImage.fluid,
+      {
+        ...images.find(img => img.name === name).leaderDesktop.fluid,
+        media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+      },
+    ];
   };
+
+  const getImageSrc = imgName =>
+    images.filter(({ name }) => name === imgName)[0].publicURL;
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -86,7 +73,6 @@ const AcquiaEngage = ({ data }) => {
       } catch (error) {
         setJoinLink('https://engage.acquia.com/agenda');
         setExploreLink('https://engage.acquia.com/agenda');
-        console.error(error);
       }
     }
     getLinks();
@@ -486,13 +472,6 @@ export const query = graphql`
     allFile(
       filter: { absolutePath: { regex: "/acquia-engage/|/headshots/" } }
     ) {
-      edges {
-        node {
-          name
-          publicURL
-          absolutePath
-        }
-      }
       nodes {
         name
         publicURL
