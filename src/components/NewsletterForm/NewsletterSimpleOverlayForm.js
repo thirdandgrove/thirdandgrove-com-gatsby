@@ -57,6 +57,7 @@ const NewsletterSimpleOverlayForm = ({
         flex-direction: column;
       `}
     >
+    <input type='hidden' name='form-name' value='acquia-engage' />
       <fieldset css={fieldsetStyles}>
         <label htmlFor='nws-email' />
         {!submitted && (
