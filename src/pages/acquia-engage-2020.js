@@ -460,15 +460,17 @@ const AcquiaEngage = ({ data }) => {
         <SeeInsights />
         <GetInTouch />
       </SplitSection>
-      {isActive && (
-        <NewsletterSimpleOverlay
-          setIsActive={setIsActive}
-          isActive={isActive}
-          header='Enter your email for your free card caddy.'
-          confirmMessage='Thanks! We’ll be in touch.'
-          subheader=''
-        />
-      )}
+
+      <NewsletterSimpleOverlay
+        setIsActive={setIsActive}
+        isActive={isActive}
+        header='Enter your email for your free card caddy.'
+        confirmMessage='Thanks! We’ll be in touch.'
+        subheader=''
+        css={css`
+          display: ${isActive ? `flex` : `none`};
+        `}
+      />
     </Layout>
   );
 };
