@@ -170,7 +170,7 @@ const AcquiaEngage = ({ data }) => {
       line-height: 1.2;
 
       ${mediaQueries.phoneLarge} {
-        font-size: 25px;
+        font-size: 23px;
       }
     }
 
@@ -297,10 +297,20 @@ const AcquiaEngage = ({ data }) => {
             ${mediaQueries.phoneLarge} {
               padding: 100px 0 0 0;
             }
+            .cc-image {
+              max-width: 300px;
+              width: 100%;
+              margin: 0 auto;
+            }
           }
         `}
       >
         <div css={[splitWithButtonsCss, container.medium]}>
+          <Img
+            alt='Third and Grove Card Caddy'
+            fluid={getSrc('cc-transparent')}
+            className='cc-image'
+          />
           <h3>{node.header[0].subtitle}</h3>
 
           <div>
