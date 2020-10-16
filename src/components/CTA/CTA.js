@@ -97,9 +97,16 @@ const CTA = ({
         {icon && <img src={icon} alt={iconAlt} />}
         {headline && <h2>{headline}</h2>}
         {subTitle && <p>{subTitle}</p>}
-        <Link to={link}>
-          <FakeButton>{cta}</FakeButton>
-        </Link>
+        {link.indexOf('#') !== -1 ? (
+          <a href={link} className='anchor'>
+            {' '}
+            <FakeButton>{cta}</FakeButton>
+          </a>
+        ) : (
+          <Link to={link}>
+            <FakeButton>{cta}</FakeButton>
+          </Link>
+        )}
       </div>
     </FullWidthSection>
   );

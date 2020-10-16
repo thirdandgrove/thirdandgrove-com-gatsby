@@ -15,6 +15,7 @@ const CTAGrid = ({
   header,
   backgroundColor,
   link,
+  cta,
   altStyle,
 }) => {
   const ctaGridContainer = css`
@@ -112,9 +113,16 @@ const CTAGrid = ({
       </div>
       {!altStyle && (
         <div css={buttonStyle}>
-          <Link to={link}>
-            <FakeButton>Get Support Now</FakeButton>
-          </Link>
+          {link.indexOf('#') !== -1 ? (
+            <a href={link} className='anchor'>
+              {' '}
+              <FakeButton>{cta}</FakeButton>
+            </a>
+          ) : (
+            <Link to={link}>
+              <FakeButton>{cta}</FakeButton>
+            </Link>
+          )}
         </div>
       )}
     </FullWidthSection>
@@ -128,6 +136,7 @@ CTAGrid.propTypes = {
   header: PropTypes.string,
   backgroundColor: PropTypes.string,
   link: PropTypes.string,
+  cta: PropTypes.string,
 };
 
 CTAGrid.defaultProps = {
@@ -137,6 +146,7 @@ CTAGrid.defaultProps = {
   header: '',
   backgroundColor: '#FFF',
   link: '/',
+  cta: 'Get Support Now',
 };
 
 export default CTAGrid;

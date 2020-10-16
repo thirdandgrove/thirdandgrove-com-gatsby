@@ -112,7 +112,7 @@ const DrupalSupport = ({ data }) => {
         headline='Catering to complex and integrated Drupal environments.'
         subTitle='Managed Services offering leading 24x7 support, maintenance, and optimization to mid-market organizations'
         cta='GET SUPPORT NOW'
-        link='#contact'
+        link='/drupal-support#contact'
         icon={drupalLogo}
         iconAlt='Drupal'
         altStyle
@@ -170,7 +170,8 @@ const DrupalSupport = ({ data }) => {
       <CTAGrid
         items={data.allDrupalSupportCtaGridOneJson.edges}
         images={data.allFile.edges}
-        link='#contact'
+        link='/drupal-support#contact'
+        cta='Get Support Now'
         altStyle={false}
       />
       <LogoGrid logoset='drupalSupport' title='A few of our friends' />
