@@ -22,6 +22,7 @@ import { GetInTouch, SeeInsights } from '../components/Prefooter';
 
 const AcquiaEngage = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
+
   const [exploreLink, setExploreLink] = useState(
     'https://acquiaengage2020.eventfinity.co/libraries/105548'
   );
@@ -329,7 +330,7 @@ const AcquiaEngage = ({ data }) => {
                 `}
               >
                 <a href={exploreLink} target='_blank' rel='noreferrer'>
-                  Explore Event
+                  Visit Our Booth
                 </a>
               </Button>
             </div>
