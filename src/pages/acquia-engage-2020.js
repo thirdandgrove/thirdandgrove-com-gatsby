@@ -23,9 +23,11 @@ import { GetInTouch, SeeInsights } from '../components/Prefooter';
 const AcquiaEngage = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
   const [exploreLink, setExploreLink] = useState(
-    'https://engage.acquia.com/agenda'
+    'https://acquiaengage2020.eventfinity.co/libraries/105548'
   );
-  const [joinLink, setJoinLink] = useState('https://engage.acquia.com/agenda');
+  const [joinLink, setJoinLink] = useState(
+    'https://acquiaengage2020.eventfinity.co/libraries/105548'
+  );
 
   const { node } = data.allAcquiaEngageJson.edges[0];
 
@@ -71,8 +73,10 @@ const AcquiaEngage = ({ data }) => {
           }
         });
       } catch (error) {
-        setJoinLink('https://engage.acquia.com/agenda');
-        setExploreLink('https://engage.acquia.com/agenda');
+        setJoinLink('https://acquiaengage2020.eventfinity.co/libraries/105548');
+        setExploreLink(
+          'https://acquiaengage2020.eventfinity.co/libraries/105548'
+        );
       }
     }
     getLinks();
