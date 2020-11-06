@@ -61,29 +61,11 @@ const Insights = ({ data }) => {
           (imageSrc &&
           post.relationships.field_image.localFile.publicURL.indexOf('.gif') !==
             -1 ? (
-            <Img
-              fluid={[
-                post.relationships.field_image.localFile.mobileImage.fluid,
-                {
-                  ...post.relationships.field_image.localFile.desktopImage
-                    .fluid,
-                  media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-                },
-              ]}
+            <img
+              src={post.relationships.field_image.localFile.publicURL}
               alt={imageAlt}
               css={css`
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-top: -100px;
-                margin-bottom: 60px;
-                max-width: 980px;
-
-                ${mediaQueries.phoneLarge} {
-                  margin-left: auto;
-                  margin-right: auto;
-                  margin-top: -165px;
-                  margin-bottom: 80px;
-                }
+                margin-bottom: 0;
               `}
             />
           ) : (
@@ -103,11 +85,29 @@ const Insights = ({ data }) => {
                 }
               `}
             >
-              <img
-                src={post.relationships.field_image.localFile.publicURL}
+              <Img
+                fluid={[
+                  post.relationships.field_image.localFile.mobileImage.fluid,
+                  {
+                    ...post.relationships.field_image.localFile.desktopImage
+                      .fluid,
+                    media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+                  },
+                ]}
                 alt={imageAlt}
                 css={css`
-                  margin-bottom: 0;
+                  margin-left: 20px;
+                  margin-right: 20px;
+                  margin-top: -100px;
+                  margin-bottom: 60px;
+                  max-width: 980px;
+
+                  ${mediaQueries.phoneLarge} {
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: -165px;
+                    margin-bottom: 80px;
+                  }
                 `}
               />
             </div>
