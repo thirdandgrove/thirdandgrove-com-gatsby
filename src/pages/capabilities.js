@@ -242,6 +242,35 @@ const CapabilitiesPage = ({ data }) => {
         }
         index={2}
       />
+      <Capability
+        id='data'
+        imageSrc={[
+          data.creativeImageMobile.childImageSharp.fluid,
+          {
+            ...data.creativeImageDesktop.childImageSharp.fluid,
+            media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+          },
+        ]}
+        imageAlt='Man drawing logos in a notebook'
+        content={
+          <>
+            <h2>Data</h2>
+            <p>
+              More than points on a graph. Data tells us how connect, and how we
+              can make those connections more meaningful.
+            </p>
+            <ul>
+              <li>-- 1 --</li>
+              <li>-- 2 --</li>
+              <li>-- 3 --</li>
+              <li>-- 4 --</li>
+              <li>-- 5 --</li>
+              <li>-- 6 --</li>
+            </ul>
+          </>
+        }
+        index={3}
+      />
       <CTA />
     </Layout>
   );
