@@ -146,13 +146,7 @@ const CapabilitiesPage = ({ data }) => {
     >
       <Capability
         id='technology'
-        imageSrc={[
-          data.technologyImageMobile.childImageSharp.fluid,
-          {
-            ...data.technologyImageDesktop.childImageSharp.fluid,
-            media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-          },
-        ]}
+        imageSrc={data.technologyImageDesktop.childImageSharp.fluid}
         imageAlt='Laptop on desk with drink'
         content={
           <>
@@ -185,13 +179,7 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='strategy'
-        imageSrc={[
-          data.strategyImageMobile.childImageSharp.fluid,
-          {
-            ...data.strategyImageDesktop.childImageSharp.fluid,
-            media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-          },
-        ]}
+        imageSrc={data.strategyImageDesktop.childImageSharp.fluid}
         imageAlt='Two office workers looking at a chart on a laptop'
         content={
           <>
@@ -214,13 +202,7 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='creative'
-        imageSrc={[
-          data.creativeImageMobile.childImageSharp.fluid,
-          {
-            ...data.creativeImageDesktop.childImageSharp.fluid,
-            media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-          },
-        ]}
+        imageSrc={data.creativeImageDesktop.childImageSharp.fluid}
         imageAlt='Man drawing logos in a notebook'
         content={
           <>

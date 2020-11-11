@@ -10,11 +10,6 @@ import ContentBody from '../components/ContentBody';
 
 const Studies = ({ data }) => {
   const post = data.caseStudy;
-  const imageSrc =
-    post.relationships.field_image &&
-    post.relationships.field_image.localFile &&
-    post.relationships.field_image.localFile.childImageSharp &&
-    post.relationships.field_image.localFile.childImageSharp.fluid;
 
   const backgroundColor = post.field_color && post.field_color.color;
 
@@ -33,7 +28,7 @@ const Studies = ({ data }) => {
         labelMobileOnly: true,
       }}
     >
-      {imageSrc && (
+      {post.relationships.field_image && (
         <Img
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
           alt={post.field_image.alt}
@@ -237,39 +232,6 @@ export const query = graphql`
         }
         field_tags {
           name
-        }
-        field_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 980, maxHeight: 500, cropFocus: CENTER) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-        field_secondary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-        field_tertiary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
         }
       }
     }

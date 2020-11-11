@@ -15,13 +15,6 @@ import {
 
 const Insights = ({ data }) => {
   const post = data.insight;
-  const imageSrc =
-    post.relationships.field_image !== null &&
-    post.relationships.field_image &&
-    post.relationships.field_image.localFile &&
-    post.relationships.field_image.localFile.publicURL &&
-    post.relationships.field_image.localFile.childImageSharp &&
-    post.relationships.field_image.localFile.childImageSharp.fluid;
 
   const imageAlt = post.field_image && post.field_image.alt;
 
@@ -44,7 +37,6 @@ const Insights = ({ data }) => {
         color: backgroundColor || colors.yellow,
         mobileMinHeight: '470px',
         titleMarginBottom: '70px',
-        image: imageSrc ? imageSrc.src : '',
       }}
     >
       <div
@@ -54,64 +46,31 @@ const Insights = ({ data }) => {
               margin-bottom: 90px;
             }
           `,
-          imageSrc === undefined && wrapperStyle,
+          wrapperStyle,
         ]}
       >
-        {post.relationships.field_image &&
-          (imageSrc &&
-          post.relationships.field_image.localFile.publicURL.indexOf('.gif') !==
-            -1 ? (
-            <Img
-              fluid={[
-                post.relationships.field_image.localFile.mobileImage.fluid,
-                {
-                  ...post.relationships.field_image.localFile.desktopImage
-                    .fluid,
-                  media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-                },
-              ]}
-              alt={imageAlt}
-              css={css`
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-top: -100px;
-                margin-bottom: 60px;
-                max-width: 980px;
+        {post.relationships.field_image && (
+          <Img
+            fluid={
+              post.relationships.field_image.localFile.childImageSharp.fluid
+            }
+            alt={imageAlt}
+            css={css`
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-top: -100px;
+              margin-bottom: 60px;
+              max-width: 980px;
 
-                ${mediaQueries.phoneLarge} {
-                  margin-left: auto;
-                  margin-right: auto;
-                  margin-top: -165px;
-                  margin-bottom: 80px;
-                }
-              `}
-            />
-          ) : (
-            <div
-              css={css`
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-top: -100px;
-                margin-bottom: 60px;
-                max-width: 980px;
-
-                ${mediaQueries.phoneLarge} {
-                  margin-left: auto;
-                  margin-right: auto;
-                  margin-top: -165px;
-                  margin-bottom: 80px;
-                }
-              `}
-            >
-              <img
-                src={post.relationships.field_image.localFile.publicURL}
-                alt={imageAlt}
-                css={css`
-                  margin-bottom: 0;
-                `}
-              />
-            </div>
-          ))}
+              ${mediaQueries.phoneLarge} {
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: -165px;
+                margin-bottom: 80px;
+              }
+            `}
+          />
+        )}
         <ContentBody
           comps={post.relationships.field_components}
           type='insight'
@@ -174,20 +133,6 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-            mobileImage: childImageSharp {
-              fluid(maxHeight: 250) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-            desktopImage: childImageSharp {
-              fluid(
-                maxWidth: 980
-                maxHeight: 500
-                srcSetBreakpoints: [480, 900, 1200]
-              ) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
