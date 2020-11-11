@@ -23,7 +23,7 @@ const Insights = ({ data }) => {
     padding-top: 40px;
 
     ${mediaQueries.phoneLarge} {
-      padding-top: 110px;
+      padding-top: 90px;
     }
   `;
 
