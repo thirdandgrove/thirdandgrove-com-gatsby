@@ -119,55 +119,12 @@ export const query = graphql`
           field_image {
             id
             localFile {
-              childImageSharp {
-                fluid(maxWidth: 530, maxHeight: 400) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                  originalImg
-                  originalName
-                  presentationWidth
-                  presentationHeight
-                }
-              }
-              childImageSlideMobile: childImageSharp {
-                fluid(maxWidth: 325, maxHeight: 250) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                  originalImg
-                  originalName
-                  presentationWidth
-                  presentationHeight
-                }
-              }
-              childImageSlideDesktop: childImageSharp {
-                fluid(maxWidth: 450, maxHeight: 400) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                  originalImg
-                  originalName
-                  presentationWidth
-                  presentationHeight
-                }
-              }
               publicURL
+              childImageSharp {
+                fluid(maxWidth: 450, maxHeight: 400) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
           }
           field_components {
@@ -196,18 +153,7 @@ export const query = graphql`
                     publicURL
                     childImageSharp {
                       fluid(maxWidth: 630, maxHeight: 630) {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        srcWebp
-                        srcSetWebp
-                        sizes
-                        originalImg
-                        originalName
-                        presentationWidth
-                        presentationHeight
+                        ...GatsbyImageSharpFluid_withWebp
                       }
                     }
                   }

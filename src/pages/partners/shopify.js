@@ -136,55 +136,12 @@ export const query = graphql`
           field_image {
             id
             localFile {
-              childImageSharp {
-                fluid(maxWidth: 530, maxHeight: 400) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                  originalImg
-                  originalName
-                  presentationWidth
-                  presentationHeight
-                }
-              }
-              childImageSlideMobile: childImageSharp {
-                fluid(maxWidth: 325, maxHeight: 250) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                  originalImg
-                  originalName
-                  presentationWidth
-                  presentationHeight
-                }
-              }
-              childImageSlideDesktop: childImageSharp {
-                fluid(maxWidth: 450, maxHeight: 400) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                  originalImg
-                  originalName
-                  presentationWidth
-                  presentationHeight
-                }
-              }
               publicURL
+              childImageSharp {
+                fluid(maxWidth: 450, maxHeight: 400) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
           }
           field_components {
@@ -213,18 +170,7 @@ export const query = graphql`
                     publicURL
                     childImageSharp {
                       fluid(maxWidth: 630, maxHeight: 630) {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        srcWebp
-                        srcSetWebp
-                        sizes
-                        originalImg
-                        originalName
-                        presentationWidth
-                        presentationHeight
+                        ...GatsbyImageSharpFluid_withWebp
                       }
                     }
                   }
@@ -266,58 +212,28 @@ export const query = graphql`
             localFile {
               publicURL
               childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
               childImageMobile: childImageSharp {
-                fixed(width: 335, height: 260) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 335, height: 260, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeA: childImageSharp {
-                fixed(width: 450, height: 320) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 450, height: 320, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeB: childImageSharp {
-                fixed(width: 380, height: 420) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 380, height: 420, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeC: childImageSharp {
-                fixed(width: 420, height: 340) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 420, height: 340, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
             }
@@ -328,57 +244,27 @@ export const query = graphql`
               publicURL
               childImageSharp {
                 fluid(maxWidth: 850, maxHeight: 850) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
               childImageMobile: childImageSharp {
                 fixed(width: 1, height: 1) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 180) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 250, height: 180, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeB: childImageSharp {
-                fixed(width: 340, height: 260) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 340, height: 260, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeC: childImageSharp {
-                fixed(width: 270, height: 210) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 270, height: 210, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
             }
@@ -389,57 +275,27 @@ export const query = graphql`
               publicURL
               childImageSharp {
                 fluid(maxWidth: 850, maxHeight: 850) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
               childImageMobile: childImageSharp {
                 fixed(width: 1, height: 1) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 495) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 250, height: 495, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeB: childImageSharp {
-                fixed(width: 230, height: 210) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 230, height: 210, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
               childImageTypeC: childImageSharp {
-                fixed(width: 320, height: 210) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
+                fixed(width: 320, height: 210, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
             }
