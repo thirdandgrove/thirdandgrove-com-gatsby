@@ -24,6 +24,21 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
+      insights: allInsight(filter: { field_hidden: { eq: false } }) {
+        nodes {
+          id
+          title
+          drupal_internal__nid
+          path {
+            alias
+          }
+          relationships {
+            field_tags {
+              name
+            }
+          }
+        }
+      }
       jobs: allResumatorJob(filter: { status: { eq: "Open" } }) {
         nodes {
           title
@@ -67,9 +82,15 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
 
-  const { jobs, caseStudies, legacyInsights, redirects } = queries.data;
+  const {
+    jobs,
+    caseStudies,
+    insights,
+    legacyInsights,
+    redirects,
+  } = queries.data;
 
-  const data = { data: { caseStudies, legacyInsights, redirects } };
+  const data = { data: { caseStudies, insights, legacyInsights, redirects } };
 
   const updatedRedirects = await updatePaths(data);
 
@@ -79,6 +100,17 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`src/templates/studies.js`),
       context: {
         StudyId: studyData.id,
+      },
+    })
+  );
+
+  insights.nodes.map(insightData =>
+    createPage({
+      path: ensureTrailingSlash(insightData.path.alias),
+      component: path.resolve(`src/templates/insights.js`),
+      context: {
+        PostId: insightData.id,
+        PostTags: insightData.relationships.field_tags.map(tag => tag.name),
       },
     })
   );
