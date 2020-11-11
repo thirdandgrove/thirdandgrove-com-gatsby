@@ -183,26 +183,9 @@ const About = ({ data }) => {
 
   // returns the correct image source needed to render
   const getSrc = (name, media) => {
-    if (media === 'leader') {
-      return [
-        images.find(img => img.name === name).mobileImage.fluid,
-        {
-          ...images.find(img => img.name === name).leaderDesktop.fluid,
-          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-        },
-      ];
-    }
-    if (media === 'location') {
-      return [
-        images.find(img => img.name === name).mobileImage.fluid,
-        {
-          ...images.find(img => img.name === name).desktopImage.fluid,
-          media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-        },
-      ];
-    }
     return images.find(img => img.name === name).childImageSharp.fluid;
   };
+
   return (
     <Layout
       headerData={{
@@ -418,22 +401,7 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(maxWidth: 980, maxHeight: 480) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-        mobileImage: childImageSharp {
           fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-        desktopImage: childImageSharp {
-          fluid(maxWidth: 530, srcSetBreakpoints: [480, 900, 1200]) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-        leaderDesktop: childImageSharp {
-          fluid {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
