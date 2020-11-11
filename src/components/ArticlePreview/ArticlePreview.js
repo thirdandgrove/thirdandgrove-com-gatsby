@@ -62,28 +62,15 @@ const ArticlePreview = ({ article }) => {
             `}
             to={ensureTrailingSlash(article.path.alias)}
           >
-            {article.relationships.field_image &&
-              (article.relationships.field_image.localFile.publicURL.indexOf(
-                '.gif'
-              ) !== -1 ? (
-                <img
-                  src={article.relationships.field_image.localFile.publicURL}
-                  alt={article.field_image.alt}
-                />
-              ) : (
-                <Img
-                  fluid={[
-                    article.relationships.field_image.localFile
-                      .childImageSlideMobile.fluid,
-                    {
-                      ...article.relationships.field_image.localFile
-                        .childImageSlideDesktop.fluid,
-                      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-                    },
-                  ]}
-                  alt={article.field_image.alt}
-                />
-              ))}
+            {article.relationships.field_image && (
+              <Img
+                fluid={
+                  article.relationships.field_image.localFile.childImageSharp
+                    .fluid
+                }
+                alt={article.field_image.alt}
+              />
+            )}
 
             <h2>{article.title}</h2>
             <footer>{`${article.created}`}</footer>

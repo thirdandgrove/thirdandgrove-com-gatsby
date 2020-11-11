@@ -35,13 +35,7 @@ const AcquiaEngage = ({ data }) => {
   const images = data.allFile.nodes;
 
   const getSrc = name => {
-    return [
-      images.find(img => img.name === name).mobileImage.fluid,
-      {
-        ...images.find(img => img.name === name).leaderDesktop.fluid,
-        media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-      },
-    ];
+    return images.find(img => img.name === name).childImageSharp.fluid;
   };
 
   const getImageSrc = imgName =>
@@ -491,21 +485,6 @@ export const query = graphql`
         name
         publicURL
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-        mobileImage: childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-        desktopImage: childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-        leaderDesktop: childImageSharp {
           fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
             ...GatsbyImageSharpFluid_withWebp
           }

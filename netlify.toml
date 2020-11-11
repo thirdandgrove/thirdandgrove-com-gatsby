@@ -8,7 +8,7 @@
   publish = "public/"
 
   # Default build command.
-  command = "gatsby build"
+  command = "cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages"
 
 [context.production]
   environment = { PROCESS_FORM = "true" }
@@ -18,3 +18,5 @@
 [context.deploy-preview]
   environment = { PROCESS_FORM = "false" }
 
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
