@@ -13,8 +13,8 @@
     "Abby Milberg <amilberg@thirdandgrove.com>"
   ],
   "dependencies": {
-    "@emotion/core": "^11.0.0",
-    "@emotion/styled": "^11.0.0",
+    "@emotion/core": "^10.1.1",
+    "@emotion/styled": "^10.0.27",
     "axios": "^0.21.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
