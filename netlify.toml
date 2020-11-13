@@ -8,7 +8,7 @@
   publish = "public/"
 
   # Default build command.
-  command = "yarn run build"
+  command = "gatsby build"
 
 [context.production]
   environment = { PROCESS_FORM = "true" }
