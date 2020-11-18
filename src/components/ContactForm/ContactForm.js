@@ -297,7 +297,7 @@ const ContactForm = ({ formName, altStyle }) => {
           onSubmit={submitContact}
         >
           <input type='hidden' name={formName} value={formName} />
-          <fieldset className={hidden}>
+          <fieldset css={hidden}>
             <label>
               Don’t fill this out if you&apos;re human:{' '}
               <input name='bot-field' />
