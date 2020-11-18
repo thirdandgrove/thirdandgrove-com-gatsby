@@ -60,7 +60,8 @@ const Index = ({ data }) => {
           <>
             {/* This is going to re-implemented after a couple weeks */}
             {/* A digital agency{' '} */}
-            <Underlined>slaying</Underlined> the mundane, pixel by pixel.
+            <Underlined>slaying</Underlined> the mundane,
+            <br /> pixel by pixel.
             {/* Holy S%#*! that was fast.
             <br />
             (With{' '}
