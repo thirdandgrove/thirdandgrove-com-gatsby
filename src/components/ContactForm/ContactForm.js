@@ -225,6 +225,10 @@ const ContactForm = ({ formName, altStyle }) => {
     }
   `;
 
+  const hidden = css`
+    display: none;
+  `;
+
   // eslint-disable-next-line react/prop-types
   const ErrorToaster = ({ errs }) => {
     return errs ? (
@@ -293,6 +297,12 @@ const ContactForm = ({ formName, altStyle }) => {
           onSubmit={submitContact}
         >
           <input type='hidden' name={formName} value={formName} />
+          <fieldset className={hidden}>
+            <label>
+              Don’t fill this out if you&apos;re human:{' '}
+              <input name='bot-field' />
+            </label>
+          </fieldset>
           <div
             css={css`
               ${mediaQueries.phoneLarge} {
