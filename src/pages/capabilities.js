@@ -231,21 +231,21 @@ const CapabilitiesPage = ({ data }) => {
 
 export const query = graphql`
   query CapabilitiesQuery {
-    technologyImageDesktop: file(relativePath: { eq: "technology.jpg" }) {
+    technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
-    strategyImageDesktop: file(relativePath: { eq: "strategy.jpg" }) {
+    strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
-    creativeImageDesktop: file(relativePath: { eq: "creative.jpg" }) {
+    creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
