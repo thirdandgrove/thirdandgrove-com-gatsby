@@ -296,7 +296,7 @@ const ContactForm = ({ formName, altStyle }) => {
           netlify-honeypot='bot-field'
           onSubmit={submitContact}
         >
-          <input type='hidden' name={formName} value={formName} />
+          <input type='hidden' name='form-name' value={formName} />
           <fieldset css={hidden}>
             <label>
               Don’t fill this out if you&apos;re human:{' '}
