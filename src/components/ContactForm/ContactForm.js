@@ -294,14 +294,14 @@ const ContactForm = ({ formName, altStyle }) => {
           method='POST'
           data-netlify='true'
           data-cy='contactForm'
-          netlify-honeypot='bot-field'
+          netlify-honeypot='botField'
           onSubmit={submitContact}
         >
           <input type='hidden' name='form-name' value={formName} />
           <fieldset css={hidden}>
             <label>
               Don’t fill this out if you&apos;re human:{' '}
-              <input name='bot-field' value={formState.botField} onChange={updateInput}/>
+              <input name='botField' value={formState.botField} onChange={updateInput}/>
             </label>
           </fieldset>
           <div
