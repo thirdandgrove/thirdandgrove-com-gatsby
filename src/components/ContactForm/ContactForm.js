@@ -20,6 +20,7 @@ const ContactForm = ({ formName, altStyle }) => {
     name: '',
     phone: '',
     website: '',
+    botField: '',
   });
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -30,7 +31,7 @@ const ContactForm = ({ formName, altStyle }) => {
 
   const submitContact = event => {
     event.preventDefault();
-    const { name, email, website, comments } = formState;
+    const { name, email, website, comments, botField } = formState;
     if (hasSubmitted) {
       // Deter multiple submissions.
       updateErrors({ error: 'The form has already been submitted.' });
@@ -300,7 +301,7 @@ const ContactForm = ({ formName, altStyle }) => {
           <fieldset css={hidden}>
             <label>
               Don’t fill this out if you&apos;re human:{' '}
-              <input name='bot-field' />
+              <input name='bot-field' value={formState.botField} onChange={updateInput}/>
             </label>
           </fieldset>
           <div
