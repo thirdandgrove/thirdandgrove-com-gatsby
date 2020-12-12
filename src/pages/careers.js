@@ -59,9 +59,9 @@ export default () => {
       width: 745px;
     }
 
-    div {
+    div.callToActionText {
       list-style: none;
-      margin: 73px auto;
+      margin: 73px auto 25px;
       text-align: center;
 
       span {
@@ -88,6 +88,10 @@ export default () => {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 73px;
+    margin-top: 0;
+    list-style: none;
+    text-align: center;
 
     ${mediaQueries.phoneLarge} {
       width: 70%;
@@ -150,7 +154,7 @@ export default () => {
             ))}
           </JobList>
           <CalltoAction>
-            <div>
+            <div className='callToActionText'>
               <span>
                 {`Who's got upwards of 110 thumbs and is always on the lookout for
                 top talent?`}
