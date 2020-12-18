@@ -46,7 +46,6 @@
     "react-slick": "^0.27.13",
     "react-spring": "^8.0.27",
     "slick-carousel": "^1.8.1",
-    "snowpack": "^2.18.4"
   },
   "devDependencies": {
     "babel-eslint": "~10.1.0",
