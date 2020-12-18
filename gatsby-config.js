@@ -32,7 +32,6 @@ module.exports = {
         mergeCachingHeaders: true,
       },
     },
-    `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
