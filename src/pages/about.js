@@ -184,6 +184,10 @@ const About = ({ data }) => {
 
   // returns the correct image source needed to render
   const getSrc = (name, media) => {
+    if (name === 'team') {
+      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
+        .fluid;
+    }
     return images.find(img => img.name === name).childImageSharp.fluid;
   };
 
@@ -382,17 +386,27 @@ export default About;
 
 export const query = graphql`
   {
+    teamPhoto: allFile(filter: { name: { in: "team" } }) {
+      nodes {
+        name
+        childImageSharp {
+          fluid(cropFocus: NORTH, maxHeight: 480, maxWidth: 980) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
     allFile(
       filter: {
         absolutePath: {
-          regex: "/boston|oakland|team|severo|emond|davis|strom|slemp|andrade|may|topp|prendergast/"
+          regex: "/boston|oakland|emond|strom|slemp|andrade|may|topp/"
         }
       }
     ) {
       nodes {
         name
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 480, maxWidth: 980) {
+          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
