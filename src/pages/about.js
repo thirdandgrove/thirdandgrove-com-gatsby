@@ -130,6 +130,7 @@ const About = ({ data }) => {
       opacity: 0.7;
     }
     &:hover {
+      cursor: pointer;
       h2,
       h3,
       p {
@@ -325,7 +326,7 @@ const About = ({ data }) => {
       >
         <h3 css={smSectionHead}>Where We Are</h3>
         <SplitSection css={container.large} gridColumnGap='20px'>
-          <Location>
+          <Location onClick={() => navigate(`/boston/`)}>
             <h2 css={h1L}>Boston</h2>
             <Img fluid={getSrc('boston', 'location')} alt='Boston' />
             <h3>1st One’s on Us</h3>
