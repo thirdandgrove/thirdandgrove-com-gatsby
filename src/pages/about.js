@@ -328,22 +328,12 @@ const About = ({ data }) => {
           <Location>
             <h2 css={h1L}>Boston</h2>
             <Img fluid={getSrc('boston', 'location')} alt='Boston' />
-            <h3>1st One’s on Us</h3>
-            <div>
-              <p>Wink &amp; Nod</p>
-              <p>Lucky&apos;s Lounge</p>
-              <p>UpperWest</p>
-            </div>
+            <h3>Howdya Like Them Apples?</h3>
           </Location>
           <Location>
             <h2 css={h1L}>San Francisco</h2>
             <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
-            <h3>If it’s Done, We’re Probably Here</h3>
-            <div>
-              <p>Cafe Van Kleef</p>
-              <p>The Ruby Room</p>
-              <p>The Alley</p>
-            </div>
+            <h3>Watch Out for the Seagulls</h3>
           </Location>
         </SplitSection>
       </FullWidthSection>
