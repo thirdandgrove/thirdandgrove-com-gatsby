@@ -392,7 +392,7 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
+          fluid(cropFocus: NORTH, maxHeight: 480, maxWidth: 980) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
