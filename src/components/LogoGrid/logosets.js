@@ -20,7 +20,7 @@ import pernodLogo from './logos/pernodricard.svg';
 import mintLogo from './logos/intuit-mint.svg';
 import glanbia from './logos/glanbia.svg';
 import wvi from './logos/world-vision.svg';
-import kingArthur from './logos/KAB-logo-K.png';
+import kingArthur from './logos/KAB-logo-K.svg';
 import cloudHealth from './logos/cloudhealth.svg';
 import cooperVision from './logos/cooper-vision.svg';
 import memebox from './logos/memebox-logo.svg';
@@ -46,6 +46,10 @@ import prudential from './logos/prudential_logo.svg';
 import universal from './logos/universal_music_logo.png';
 import catic from './logos/catic.svg';
 import carlyle from './logos/carlyle.png';
+import boissance from './logos/boissance.svg';
+import hawaiianHost from './logos/hawaiian-host.svg';
+import wcBradley from './logos/wc-bradley.svg';
+import gLogo from './logos/g-logo.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -521,6 +525,56 @@ export default (logoset, isSmScreen) => {
         alt='Universal Music'
         width={isSmScreen ? '98' : '134'}
         height={isSmScreen ? '32' : '43'}
+      />,
+    ],
+    shopifyPlus: [
+      <img
+        src={hawaiianHost}
+        alt='Hawaiian Host'
+        width={isSmScreen ? '126' : '182'}
+        height={isSmScreen ? '62' : '93'}
+      />,
+      <img
+        src={benefitLogo}
+        alt='benefit'
+        width={isSmScreen ? '150' : '180'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={boissance}
+        alt='BOISSANCE'
+        width={isSmScreen ? '126' : '150'}
+        height={isSmScreen ? '61' : '80'}
+      />,
+      <img
+        src={goldwin}
+        alt='Goldwin'
+        width={isSmScreen ? '125' : '180'}
+        height={isSmScreen ? '36' : '52'}
+      />,
+      <img
+        src={pernodLogo}
+        alt='Pernod Ricard'
+        width={isSmScreen ? '125' : '171'}
+        height={isSmScreen ? '49' : '63'}
+      />,
+      <img
+        src={gLogo}
+        alt='G'
+        width={isSmScreen ? '55' : '66'}
+        height={isSmScreen ? '55' : '66'}
+      />,
+      <img
+        src={wcBradley}
+        alt='WC | BRADLEY'
+        width={isSmScreen ? '150' : '180'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={kingArthur}
+        alt='King Arthur'
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
       />,
     ],
   };
