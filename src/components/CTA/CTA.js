@@ -121,6 +121,8 @@ CTA.propTypes = {
   icon: PropTypes.string,
   iconAlt: PropTypes.string,
   altStyle: PropTypes.bool,
+  headlineStyle: PropTypes.string,
+  subTitleStyle: PropTypes.string,
   padding: PropTypes.string,
 };
 

@@ -7,11 +7,12 @@ import FullWidthSection from '../../components/FullWidthSection';
 import LogoGrid from '../../components/LogoGrid';
 import ProjectsSlider from '../../components/ProjectsSlider';
 import CTA from '../../components/CTA';
+import CTAGrid from '../../components/CTAGrid';
 import { colors } from '../../styles';
 import { partnersSub } from '../../styles/custom-css';
 
 export default query => {
-  const { caseStudies } = query.data;
+  const { caseStudies, allShopifyPlusCtaGridFourJson, allFile } = query.data;
 
   return (
     <Layout
@@ -48,7 +49,14 @@ export default query => {
         subTitleStyle={css`
           text-align: center;
         `}
-        padding='238px 0px'
+        padding='238px 20px'
+      />
+      <CTAGrid
+        items={allShopifyPlusCtaGridFourJson.edges}
+        images={allFile.edges}
+        gridColumns='1fr 1fr 1fr 1fr'
+        altStyle={false}
+        maxWidth
       />
       <LogoGrid
         logoset='shopifyPlus'
@@ -61,13 +69,31 @@ export default query => {
         backgroundColor={colors.white}
         tech='Shopify Plus'
       />
-      <CTA headline="Now let's get you promoted" padding='127px 0px' />
+      <CTA headline="Now let's get you promoted" padding='127px 20px' />
     </Layout>
   );
 };
 
 export const query = graphql`
   {
+    allShopifyPlusCtaGridFourJson {
+      edges {
+        node {
+          icon
+          title
+          description
+        }
+      }
+    }
+    allFile(filter: { absolutePath: { regex: "/shopify-plus/" } }) {
+      edges {
+        node {
+          name
+          publicURL
+          absolutePath
+        }
+      }
+    }
     caseStudies: allCaseStudy(
       limit: 10
       filter: { field_hidden: { eq: false } }

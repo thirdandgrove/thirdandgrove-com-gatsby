@@ -16,6 +16,8 @@ const CTAGrid = ({
   backgroundColor,
   link,
   cta,
+  maxWidth,
+  gridColumns,
   altStyle,
 }) => {
   const ctaGridContainer = css`
@@ -28,10 +30,10 @@ const CTAGrid = ({
     padding-bottom: 0;
 
     ${mediaQueries.phoneLarge} {
-      ${container.textOnly}
+      ${maxWidth ? container.max : container.textOnly}
       display: grid;
-      -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+      -ms-grid-columns: ${gridColumns};
+      grid-template-columns: ${gridColumns};
       grid-column-gap: 70px;
       grid-row-gap: 70px;
       padding-bottom: 72px;
@@ -78,7 +80,7 @@ const CTAGrid = ({
       line-height: 39px;
 
       ${mediaQueries.phoneLarge} {
-        width: 820px;
+        width: ${maxWidth}px;
         max-width: 100%;
         margin: 0 auto;
         font-size: 39px;
@@ -137,6 +139,8 @@ CTAGrid.propTypes = {
   backgroundColor: PropTypes.string,
   link: PropTypes.string,
   cta: PropTypes.string,
+  maxWidth: PropTypes.bool,
+  gridColumns: PropTypes.string,
 };
 
 CTAGrid.defaultProps = {
@@ -147,6 +151,8 @@ CTAGrid.defaultProps = {
   backgroundColor: '#FFF',
   link: '/',
   cta: 'Get Support Now',
+  maxWidth: false,
+  gridColumns: '1fr 1fr 1fr',
 };
 
 export default CTAGrid;
