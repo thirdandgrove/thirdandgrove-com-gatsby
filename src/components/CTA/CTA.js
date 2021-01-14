@@ -16,10 +16,12 @@ const CTA = ({
   icon,
   iconAlt,
   altStyle,
+  headlineStyle,
+  subTitleStyle,
+  padding,
 }) => {
   const ctaStyle1 = css`
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: ${padding || '40px 0'};
 
     div {
       width: 100%;
@@ -41,10 +43,7 @@ const CTA = ({
   `;
 
   const ctaStyle2 = css`
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-left: 48px;
-    padding-right: 48px;
+    padding: ${padding || '100px 48px'};
 
     ${mediaQueries.phoneLarge} {
       padding-left: 20px;
@@ -91,12 +90,13 @@ const CTA = ({
       minHeight='300px'
       height='300px'
       align-items='center'
+      padding={padding}
       css={altStyle ? ctaStyle2 : ctaStyle1}
     >
       <div>
         {icon && <img src={icon} alt={iconAlt} />}
-        {headline && <h2>{headline}</h2>}
-        {subTitle && <p>{subTitle}</p>}
+        {headline && <h2 css={headlineStyle}>{headline}</h2>}
+        {subTitle && <p css={subTitleStyle}>{subTitle}</p>}
         {link.indexOf('#') !== -1 ? (
           <a href={link} className='anchor'>
             {' '}
@@ -121,6 +121,7 @@ CTA.propTypes = {
   icon: PropTypes.string,
   iconAlt: PropTypes.string,
   altStyle: PropTypes.bool,
+  padding: PropTypes.string,
 };
 
 CTA.defaultProps = {
@@ -132,6 +133,9 @@ CTA.defaultProps = {
   icon: '',
   iconAlt: '',
   altStyle: false,
+  headlineStyle: '',
+  subTitleStyle: '',
+  padding: '',
 };
 
 export default CTA;
