@@ -130,6 +130,7 @@ const About = ({ data }) => {
       opacity: 0.7;
     }
     &:hover {
+      cursor: pointer;
       h2,
       h3,
       p {
@@ -183,6 +184,10 @@ const About = ({ data }) => {
 
   // returns the correct image source needed to render
   const getSrc = (name, media) => {
+    if (name === 'team') {
+      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
+        .fluid;
+    }
     return images.find(img => img.name === name).childImageSharp.fluid;
   };
 
@@ -325,25 +330,15 @@ const About = ({ data }) => {
       >
         <h3 css={smSectionHead}>Where We Are</h3>
         <SplitSection css={container.large} gridColumnGap='20px'>
-          <Location>
+          <Location onClick={() => navigate(`/boston/`)}>
             <h2 css={h1L}>Boston</h2>
             <Img fluid={getSrc('boston', 'location')} alt='Boston' />
-            <h3>1st One’s on Us</h3>
-            <div>
-              <p>Wink &amp; Nod</p>
-              <p>Lucky&apos;s Lounge</p>
-              <p>UpperWest</p>
-            </div>
+            <h3>Howdya Like Them Apples?</h3>
           </Location>
           <Location>
             <h2 css={h1L}>San Francisco</h2>
             <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
-            <h3>If it’s Done, We’re Probably Here</h3>
-            <div>
-              <p>Cafe Van Kleef</p>
-              <p>The Ruby Room</p>
-              <p>The Alley</p>
-            </div>
+            <h3>Watch Out for the Seagulls</h3>
           </Location>
         </SplitSection>
       </FullWidthSection>
@@ -391,10 +386,20 @@ export default About;
 
 export const query = graphql`
   {
+    teamPhoto: allFile(filter: { name: { in: "team" } }) {
+      nodes {
+        name
+        childImageSharp {
+          fluid(cropFocus: NORTH, maxHeight: 480, maxWidth: 980) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
     allFile(
       filter: {
         absolutePath: {
-          regex: "/boston|oakland|team|severo|emond|davis|strom|slemp|andrade|may|topp|prendergast/"
+          regex: "/boston|oakland|emond|strom|slemp|andrade|may|topp/"
         }
       }
     ) {
