@@ -9,8 +9,8 @@ import ProjectsSlider from '../../components/ProjectsSlider';
 import CTA from '../../components/CTA';
 import CTAGrid from '../../components/CTAGrid';
 import Capability from '../../components/Capability';
-import { colors } from '../../styles';
-import { partnersSub } from '../../styles/custom-css';
+import Improvement from '../../components/Improvement';
+import { colors, container, mediaQueries } from '../../styles';
 
 export default query => {
   const { caseStudies, allShopifyPlusCtaGridFourJson, allFile } = query.data;
@@ -25,8 +25,63 @@ export default query => {
         titlePadding: '0 100px',
       }}
     >
-      <FullWidthSection height='400px' align='left' css={partnersSub}>
-        <h4>Shopify Plus</h4>
+      <FullWidthSection
+        align='left'
+        css={css`
+          ${container.max}
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding-top: 106px;
+          padding-bottom: 121px;
+
+          ${mediaQueries.phoneLarge} {
+            flex-direction: row;
+          }
+        `}
+      >
+        <div
+          css={css`
+            margin-bottom: 90px;
+            flex: 0 0 100%;
+            width: 100%;
+
+            ${mediaQueries.phoneLarge} {
+              flex: 0 0 64%;
+              width: 64%;
+            }
+          `}
+        >
+          <Improvement
+            id='hawaiian-host'
+            brand='hawaiian-host'
+            imageSrc={query.data.landscapeImageDesktop.childImageSharp.fluid}
+            imageAlt='Landscape'
+            stats={[
+              { description: 'Increase in traffic', percent: '61%' },
+              { description: 'Increase in Order Value', percent: '37%' },
+            ]}
+          />
+        </div>
+        <div
+          css={css`
+            ${mediaQueries.phoneLarge} {
+              padding-top: 50px;
+              flex: 0 0 30%;
+              width: 30%;
+            }
+          `}
+        >
+          <Improvement
+            id='badlands'
+            brand='badlands'
+            imageSrc={query.data.thirdmanImageDesktop.childImageSharp.fluid}
+            imageAlt='thirdman'
+            stats={[
+              { description: 'Increase in Conversion Rate', percent: '364%' },
+            ]}
+          />
+        </div>
       </FullWidthSection>
       <CTA
         headline={
@@ -158,6 +213,20 @@ export const query = graphql`
           name
           publicURL
           absolutePath
+        }
+      }
+    }
+    landscapeImageDesktop: file(relativePath: { eq: "landscape.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    thirdmanImageDesktop: file(relativePath: { eq: "pexels-thirdman.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
