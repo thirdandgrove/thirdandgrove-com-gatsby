@@ -44,11 +44,15 @@ const Improvement = ({ imageSrc, imageAlt, stats, id, brand }) => {
           flex-direction: column;
 
           h4 {
-            font-size: 100px;
+            font-size: 80px;
             font-weight: bold;
             letter-spacing: -0.2px;
             line-height: 1.05;
             margin-bottom: 0;
+
+            ${mediaQueries.tablet} {
+              font-size: 100px;
+            }
           }
 
           p {

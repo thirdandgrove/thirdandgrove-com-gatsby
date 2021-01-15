@@ -134,15 +134,10 @@ const Header = ({
     }
 
     ${mediaQueries.phoneLarge} {
-      width: 75%;
       padding: ${titlePadding};
       font-size: 72px;
       line-height: 1.17;
       letter-spacing: -1px;
-    }
-
-    ${mediaQueries.desktop} {
-      width: 60%;
     }
   `;
   const sectionCSS = css`
