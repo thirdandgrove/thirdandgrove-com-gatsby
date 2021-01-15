@@ -47,8 +47,8 @@ export default query => {
             width: 100%;
 
             ${mediaQueries.phoneLarge} {
-              flex: 0 0 64%;
-              width: 64%;
+              flex: 0 0 58%;
+              width: 58%;
             }
           `}
         >
@@ -67,8 +67,8 @@ export default query => {
           css={css`
             ${mediaQueries.phoneLarge} {
               padding-top: 50px;
-              flex: 0 0 30%;
-              width: 30%;
+              flex: 0 0 42%;
+              width: 42%;
             }
           `}
         >
@@ -114,6 +114,7 @@ export default query => {
         altStyle={false}
         maxWidth
         invisibleCta
+        noPaddingImg
       />
       <Capability
         id='weknow'

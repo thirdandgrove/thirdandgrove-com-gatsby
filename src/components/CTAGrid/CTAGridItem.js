@@ -6,7 +6,7 @@ import { Spring } from 'react-spring/renderprops';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { mediaQueries, weights, fonts } from '../../styles';
 
-const CTAGridItem = ({ icon, title, description, altStyle }) => {
+const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
   const ctaContainer = css`
@@ -19,7 +19,7 @@ const CTAGridItem = ({ icon, title, description, altStyle }) => {
       height: 75px;
       justify-content: center;
       align-items: center;
-      margin-bottom: 30px;
+      margin-bottom: ${noPaddingImg ? '0' : '30px'};
     }
 
     img {
@@ -137,6 +137,7 @@ CTAGridItem.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   altStyle: PropTypes.bool,
+  noPaddingImg: PropTypes.bool,
 };
 
 CTAGridItem.defaultProps = {
@@ -144,6 +145,7 @@ CTAGridItem.defaultProps = {
   title: '',
   description: '',
   altStyle: false,
+  noPaddingImg: false,
 };
 
 export default CTAGridItem;

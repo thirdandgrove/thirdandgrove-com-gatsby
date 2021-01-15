@@ -63,6 +63,7 @@ const Improvement = ({ imageSrc, imageAlt, stats, id, brand }) => {
         }
 
         ${container.min} ${mediaQueries.phoneLarge} {
+          margin: 0;
           .stats-container {
             flex-direction: row;
           }

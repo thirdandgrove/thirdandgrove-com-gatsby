@@ -19,6 +19,7 @@ const CTAGrid = ({
   maxWidth,
   gridColumns,
   invisibleCta,
+  noPaddingImg,
   altStyle,
 }) => {
   const ctaGridContainer = css`
@@ -111,6 +112,7 @@ const CTAGrid = ({
             title={node.title}
             description={node.description}
             altStyle={altStyle}
+            noPaddingImg
           />
         ))}
       </div>
@@ -143,6 +145,7 @@ CTAGrid.propTypes = {
   maxWidth: PropTypes.bool,
   gridColumns: PropTypes.string,
   invisibleCta: PropTypes.bool,
+  noPaddingImg: PropTypes.bool,
 };
 
 CTAGrid.defaultProps = {
@@ -156,6 +159,7 @@ CTAGrid.defaultProps = {
   maxWidth: false,
   gridColumns: '1fr 1fr 1fr',
   invisibleCta: false,
+  noPaddingImg: false,
 };
 
 export default CTAGrid;
