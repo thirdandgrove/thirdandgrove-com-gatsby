@@ -1,9 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
-import PropTypes from 'prop-types';
-import { Spring } from 'react-spring/renderprops';
-import Img from 'gatsby-image';
 
 import Layout from '../../components/layout';
 import FullWidthSection from '../../components/FullWidthSection';
@@ -11,126 +8,9 @@ import LogoGrid from '../../components/LogoGrid';
 import ProjectsSlider from '../../components/ProjectsSlider';
 import CTA from '../../components/CTA';
 import CTAGrid from '../../components/CTAGrid';
-import { useHasBeenVisible } from '../../hooks/useVisibility';
-import { colors, container, fonts, mediaQueries, weights } from '../../styles';
+import Capability from '../../components/Capability';
+import { colors } from '../../styles';
 import { partnersSub } from '../../styles/custom-css';
-
-const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
-  const nodeRef = useRef();
-  const isVisible = useHasBeenVisible(nodeRef);
-
-  return (
-    <FullWidthSection
-      ref={nodeRef}
-      height='0'
-      padding='0'
-      textAlign='left'
-      css={css`
-        ${container.max}
-        &:first-of-type {
-          margin-top: 20px;
-
-          ${mediaQueries.phoneLarge} {
-            margin-top: 175px;
-          }
-        }
-      `}
-    >
-      <div id={id} css={container.max}>
-        <div
-          css={css`
-            margin-bottom: 90px;
-
-            ${mediaQueries.phoneLarge} {
-              display: flex;
-              justify-content: space-between;
-              flex-direction: ${index % 2 ? 'row-reverse' : 'row'};
-              align-items: center;
-              margin-bottom: 170px;
-            }
-
-            h2 {
-              font-size: 33px;
-              font-weight: ${weights.bold};
-            }
-
-            ul {
-              margin: 0;
-
-              li {
-                font-size: 15px;
-                font-family: ${fonts.sans};
-                font-weight: ${weights.medium};
-                font-variant-caps: all-small-caps;
-                letter-spacing: 1px;
-                list-style: none;
-                margin-bottom: 6px;
-              }
-            }
-          `}
-        >
-          <Spring
-            delay={0}
-            to={{
-              transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-              opacity: isVisible ? '1' : '0',
-            }}
-          >
-            {({ transform, opacity }) => (
-              <Img
-                fluid={imageSrc}
-                alt={imageAlt}
-                style={{ transform, opacity }}
-                css={css`
-                  width: 100%;
-                  margin-bottom: 20px;
-
-                  > div {
-                    padding-bottom: 100% !important;
-                  }
-
-                  ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '64%' : '49%'};
-                    width: ${index % 2 ? '64%' : '49%'};
-                    margin-bottom: 0;
-
-                    > div {
-                      padding-bottom: ${index % 2 ? '76% !important' : '100%'};
-                      padding-bottom: ${index % 4 === 2
-                        ? '131% !important'
-                        : '100%'};
-                    }
-                  }
-                `}
-              />
-            )}
-          </Spring>
-
-          <div
-            css={css`
-              position: relative;
-
-              ${mediaQueries.phoneLarge} {
-                flex: 0 0 ${index % 2 ? '30%' : '40%'};
-                width: ${index % 2 ? '30%' : '40%'};
-              }
-            `}
-          >
-            {content}
-          </div>
-        </div>
-      </div>
-    </FullWidthSection>
-  );
-};
-
-Capability.propTypes = {
-  imageSrc: PropTypes.object.isRequired,
-  imageAlt: PropTypes.string.isRequired,
-  content: PropTypes.node.isRequired,
-  index: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-};
 
 export default query => {
   const { caseStudies, allShopifyPlusCtaGridFourJson, allFile } = query.data;
@@ -222,6 +102,7 @@ export default query => {
           </>
         }
         index={0}
+        maxWidth
       />
       <Capability
         id='migration'
@@ -242,6 +123,7 @@ export default query => {
           </>
         }
         index={1}
+        maxWidth
       />
       <LogoGrid
         logoset='shopifyPlus'
