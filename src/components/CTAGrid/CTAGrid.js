@@ -18,6 +18,7 @@ const CTAGrid = ({
   cta,
   maxWidth,
   gridColumns,
+  invisibleCta,
   altStyle,
 }) => {
   const ctaGridContainer = css`
@@ -113,7 +114,7 @@ const CTAGrid = ({
           />
         ))}
       </div>
-      {!altStyle && (
+      {!altStyle && !invisibleCta && (
         <div css={buttonStyle}>
           {link.indexOf('#') !== -1 ? (
             <a href={link} className='anchor'>
@@ -141,6 +142,7 @@ CTAGrid.propTypes = {
   cta: PropTypes.string,
   maxWidth: PropTypes.bool,
   gridColumns: PropTypes.string,
+  invisibleCta: PropTypes.bool,
 };
 
 CTAGrid.defaultProps = {
@@ -153,6 +155,7 @@ CTAGrid.defaultProps = {
   cta: 'Get Support Now',
   maxWidth: false,
   gridColumns: '1fr 1fr 1fr',
+  invisibleCta: false,
 };
 
 export default CTAGrid;
