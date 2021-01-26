@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 

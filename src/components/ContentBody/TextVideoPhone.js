@@ -31,7 +31,7 @@ const TextVideoPhone = ({ data }) => {
     }
 
     ${renderDropCap && dropCap}
-    
+
     a {
       text-decoration: underline;
     }

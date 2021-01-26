@@ -17,7 +17,6 @@ import {
   h1L,
   container,
   mediaQueries,
-  jsBreakpoints,
   contValues,
   pLight,
 } from '../styles';
@@ -183,7 +182,7 @@ const About = ({ data }) => {
   const images = data.allFile.nodes;
 
   // returns the correct image source needed to render
-  const getSrc = (name, media) => {
+  const getSrc = name => {
     if (name === 'team') {
       return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
         .fluid;

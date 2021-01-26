@@ -27,7 +27,7 @@ const TextImage = ({ data }) => {
     }
 
     ${renderDropCap && dropCap}
-    
+
     a {
       text-decoration: underline;
     }

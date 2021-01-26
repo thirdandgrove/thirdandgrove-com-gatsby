@@ -5,13 +5,7 @@ import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/core';
 import Img from 'gatsby-image';
 
-import {
-  fonts,
-  mediaQueries,
-  jsBreakpoints,
-  container,
-  weights,
-} from '../styles';
+import { fonts, mediaQueries, container, weights } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';

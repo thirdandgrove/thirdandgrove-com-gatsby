@@ -6,7 +6,6 @@ import { css } from '@emotion/core';
 import Layout from '../../components/layout';
 import FullWidthSection from '../../components/FullWidthSection';
 import ProjectsSlider from '../../components/ProjectsSlider';
-import LogoGrid from '../../components/LogoGrid';
 import { colors } from '../../styles';
 import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';

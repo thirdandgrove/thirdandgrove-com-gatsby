@@ -7,7 +7,7 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
-import { fonts, weights, mediaQueries, jsBreakpoints } from '../../styles';
+import { fonts, weights, mediaQueries } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreview = ({ article }) => {

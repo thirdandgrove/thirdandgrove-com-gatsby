@@ -107,26 +107,6 @@ const Menu = ({ menuOpen, toggleOpen }) => {
     }
   `;
 
-  const noHover = css`
-    &:hover,
-    &:focus {
-      color: ${colors.whiteFaded};
-    }
-  `;
-
-  const linkGroupStyles = css`
-    display: inline-block;
-    color: ${colors.whiteFaded};
-    font-weight: ${weights.medium};
-    letter-spacing: -0.2px;
-    text-align: center;
-
-    &:hover,
-    &:focus {
-      color: ${colors.white};
-    }
-  `;
-
   const linkPrimaryStyle = css`
     font-size: 36px;
     line-height: 57px;

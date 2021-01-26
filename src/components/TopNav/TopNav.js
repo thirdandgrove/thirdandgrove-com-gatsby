@@ -125,7 +125,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
               />
             </button>
           </div>
-          <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />{' '}
+          <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />
         </>
       )}
 

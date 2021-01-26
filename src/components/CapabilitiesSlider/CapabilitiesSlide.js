@@ -19,7 +19,7 @@ function CapabilitiesSlide({ title, description, icon, link }) {
     let timer;
     return (...args) => {
       clearTimeout(timer);
-      timer = setTimeout(_ => {
+      timer = setTimeout(() => {
         timer = null;
         fn.apply(this, args);
       }, ms);

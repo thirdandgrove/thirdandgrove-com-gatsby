@@ -14,9 +14,6 @@ const NewsletterSimpleOverlayForm = ({
   isActive,
   buttonText,
   confirmMessage,
-  header,
-  subheader,
-  image,
 }) => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
@@ -57,7 +54,7 @@ const NewsletterSimpleOverlayForm = ({
         flex-direction: column;
       `}
     >
-    <input type='hidden' name='form-name' value='acquia-engage' />
+      <input type='hidden' name='form-name' value='acquia-engage' />
       <fieldset css={fieldsetStyles}>
         <label htmlFor='nws-email' />
         {!submitted && (
@@ -93,6 +90,8 @@ const NewsletterSimpleOverlayForm = ({
 NewsletterSimpleOverlayForm.propTypes = {
   setIsActive: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
+  confirmMessage: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
 };
 
 export default NewsletterSimpleOverlayForm;

@@ -84,7 +84,7 @@ const Quote = ({
     padding: ${isSmall ? '0 10px' : '0 20px'};
     ${mediaQueries.phoneLarge} {
       ${isSmall &&
-        `margin: 0 0 130px;
+      `margin: 0 0 130px;
         padding: 13px 8px 0;
       `};
     }

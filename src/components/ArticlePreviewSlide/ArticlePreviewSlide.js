@@ -5,13 +5,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-import {
-  fonts,
-  weights,
-  mediaQueries,
-  jsBreakpoints,
-  container,
-} from '../../styles';
+import { fonts, weights, mediaQueries, container } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreviewSlide = ({ article }) => {
