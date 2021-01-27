@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { navigate } from 'gatsby';
 
 import { weights, h1L } from '../styles';

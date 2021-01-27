@@ -3,7 +3,7 @@ import { Spring } from 'react-spring/renderprops';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
 import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
