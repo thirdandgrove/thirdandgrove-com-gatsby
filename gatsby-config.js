@@ -51,7 +51,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
-        defaultQuality: 50,
+        defaultQuality: 80,
       },
     },
     `gatsby-plugin-emotion`,
