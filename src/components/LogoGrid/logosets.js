@@ -47,6 +47,7 @@ import universal from './logos/universal_music_logo.png';
 import catic from './logos/catic.svg';
 import carlyle from './logos/carlyle.png';
 import hawaiianHost from './logos/hawaiian-host.svg';
+import rubios from './logos/rubios-logo.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -552,6 +553,12 @@ export default (logoset, isSmScreen) => {
       <img
         src={hawaiianHost}
         alt='Hawaiian Host'
+        width={isSmScreen ? '126' : '182'}
+        height={isSmScreen ? '62' : '93'}
+      />,
+      <img
+        src={rubios}
+        alt="Rubio's"
         width={isSmScreen ? '126' : '182'}
         height={isSmScreen ? '62' : '93'}
       />,
