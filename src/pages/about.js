@@ -318,6 +318,7 @@ const About = ({ data }) => {
         subtitle='We’ve won a few awards'
         backgroundColor={colors.yellow}
         minHeight='0'
+        defaultItemWidth='33%'
       />
       <FullWidthSection
         css={css`

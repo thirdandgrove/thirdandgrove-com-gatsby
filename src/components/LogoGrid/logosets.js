@@ -472,10 +472,22 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '42' : '62'}
       />,
       <img
-        src={acquiaEngageLogo}
-        alt='Acquia Engage'
-        width={isSmScreen ? '131' : '170'}
-        height={isSmScreen ? '30' : '50'}
+        src={w3Awards}
+        alt='W3 Awards'
+        width={isSmScreen ? '128' : '142'}
+        height={isSmScreen ? '60' : '70'}
+      />,
+      <img
+        src={cssAwards}
+        alt='CSS awards'
+        width={isSmScreen ? '168' : '210'}
+        height={isSmScreen ? '40' : '60'}
+      />,
+      <img
+        src={dadiAwards}
+        alt='Dadi awards'
+        width={isSmScreen ? '140' : '180'}
+        height={isSmScreen ? '90' : '110'}
       />,
     ],
     drupalSupport: [
@@ -570,44 +582,6 @@ export default (logoset, isSmScreen) => {
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '98' : '134'}
         height={isSmScreen ? '32' : '43'}
-      />,
-    ],
-    shopifyPlusAwards: [
-      <img
-        src={addyAward}
-        alt='Addy Awards'
-        width={isSmScreen ? '80' : '90'}
-        height={isSmScreen ? '42' : '62'}
-      />,
-      <img
-        src={museLogo}
-        alt='Muse Awards'
-        width={isSmScreen ? '140' : '200'}
-        height={isSmScreen ? '64' : '84'}
-      />,
-      <img
-        src={awwwLogo}
-        alt='Awww Awards'
-        width={isSmScreen ? '109' : '135'}
-        height={isSmScreen ? '42' : '62'}
-      />,
-      <img
-        src={w3Awards}
-        alt='W3 Awards'
-        width={isSmScreen ? '128' : '142'}
-        height={isSmScreen ? '60' : '70'}
-      />,
-      <img
-        src={cssAwards}
-        alt='CSS awards'
-        width={isSmScreen ? '168' : '210'}
-        height={isSmScreen ? '40' : '60'}
-      />,
-      <img
-        src={dadiAwards}
-        alt='Dadi awards'
-        width={isSmScreen ? '140' : '180'}
-        height={isSmScreen ? '90' : '110'}
       />,
     ],
   };

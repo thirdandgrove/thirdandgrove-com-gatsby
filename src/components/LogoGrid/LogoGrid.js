@@ -177,32 +177,18 @@ const LogoGrid = ({
       height='600px'
     >
       <div css={[container.max, containerStyles, styles]}>
-        {subtitle !== '' ? (
-          <>
-            <h2 css={[smSectionHead, multiLineStyles]}>{title}</h2>
-            <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>
-            <LogosTight className='logo-grid-container'>
-              {renderSet.map((logo, i) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <div className='logo-grid-item' key={i} css={logoItemTight}>
-                  {logo}
-                </div>
-              ))}
-            </LogosTight>
-          </>
-        ) : (
-          <>
-            <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
-            <Logos>
-              {renderSet.map((logo, i) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <div key={i} css={logoItem}>
-                  {logo}
-                </div>
-              ))}
-            </Logos>
-          </>
-        )}
+        <h2 css={[smSectionHead, subtitle ? multiLineStyles : titleStyles]}>
+          {title}
+        </h2>
+        {subtitle && <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>}
+        <Logos>
+          {renderSet.map((logo, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={i} css={logoItem}>
+              {logo}
+            </div>
+          ))}
+        </Logos>
       </div>
     </FullWidthSection>
   );
