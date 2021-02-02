@@ -48,6 +48,7 @@ import catic from './logos/catic.svg';
 import carlyle from './logos/carlyle.png';
 import hawaiianHost from './logos/hawaiian-host.svg';
 import rubios from './logos/rubios-logo.svg';
+import w3Awards from './logos/w3-awards.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -587,6 +588,12 @@ export default (logoset, isSmScreen) => {
         alt='Awww Awards'
         width={isSmScreen ? '109' : '135'}
         height={isSmScreen ? '42' : '62'}
+      />,
+      <img
+        src={w3Awards}
+        alt='W3 Awards'
+        width={isSmScreen ? '128' : '142'}
+        height={isSmScreen ? '60' : '70'}
       />,
     ],
   };
