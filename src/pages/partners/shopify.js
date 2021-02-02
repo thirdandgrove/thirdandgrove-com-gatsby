@@ -52,7 +52,7 @@ export default query => {
       <ProjectsSlider
         data={caseStudies}
         backgroundColor={colors.lightgray}
-        tech='Shopify'
+        tech={['Shopify', 'ecommerce']}
       />
       <LogoGrid
         logoset='shopify'

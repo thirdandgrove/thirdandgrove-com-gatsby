@@ -32,7 +32,11 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
   let projects = [];
   if (tech) {
     projects = data.nodes.filter(({ relationships }) =>
-      relationships.field_tags.some(({ name }) => name === tech)
+      relationships.field_tags.some(({ name }) => {
+        if (typeof tech === 'string' && name === tech) return true;
+        if (Array.isArray(tech) && tech.includes(name)) return true;
+        return false;
+      })
     );
 
     projects = projects.length === 0 ? data.nodes : projects;
@@ -156,7 +160,7 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
 ProjectsSlider.propTypes = {
   backgroundColor: PropTypes.string,
   data: PropTypes.object.isRequired,
-  tech: PropTypes.string,
+  tech: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   minHeight: PropTypes.string,
 };
 
