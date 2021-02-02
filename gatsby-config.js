@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const { NODE_ENV, CONTEXT: NETLIFY_ENV = NODE_ENV } = process.env;
+
 module.exports = {
   siteMetadata: {
     title: `Third and Grove`,
@@ -181,7 +183,28 @@ module.exports = {
       options: {
         host: 'https://www.thirdandgrove.com/',
         sitemap: 'https://www.thirdandgrove.com/sitemap.xml',
-        policy: [{ userAgent: '*', disallow: ['/careers/project-manager'] }],
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [
+              { userAgent: '*', disallow: ['/careers/project-manager'] },
+            ],
+          },
+          'branch-deploy': {
+            policy: [
+              { userAgent: '*', disallow: ['/careers/project-manager'] },
+            ],
+            sitemap: null,
+            host: null,
+          },
+          'deploy-preview': {
+            policy: [
+              { userAgent: '*', disallow: ['/careers/project-manager'] },
+            ],
+            sitemap: null,
+            host: null,
+          },
+        },
       },
     },
   ],
