@@ -159,7 +159,7 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
         }}
       />
       <LogoGrid
-        logoset='awards'
+        logoset='shopifyPlusAwards'
         title='Award Wall'
         backgroundColor={colors.white}
         minHeight='0'

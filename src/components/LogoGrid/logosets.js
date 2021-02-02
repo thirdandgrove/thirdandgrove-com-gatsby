@@ -569,6 +569,26 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '32' : '43'}
       />,
     ],
+    shopifyPlusAwards: [
+      <img
+        src={addyAward}
+        alt='Addy Awards'
+        width={isSmScreen ? '80' : '90'}
+        height={isSmScreen ? '42' : '62'}
+      />,
+      <img
+        src={museLogo}
+        alt='Muse Awards'
+        width={isSmScreen ? '140' : '200'}
+        height={isSmScreen ? '64' : '84'}
+      />,
+      <img
+        src={awwwLogo}
+        alt='Awww Awards'
+        width={isSmScreen ? '109' : '135'}
+        height={isSmScreen ? '42' : '62'}
+      />,
+    ],
   };
   return sets[logoset];
 };
