@@ -59,8 +59,8 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
   return (
     <Layout
       headerData={{
-        metaTitle: `Fully baked D2C food and beverage ecommerce`,
-        title: <>Fully baked D2C food and beverage ecommerce</>,
+        metaTitle: `Fully-baked D2C food and beverage ecommerce`,
+        title: <>Fully-baked D2C food and beverage ecommerce</>,
         mobileMinHeight: '93vh',
         hideNav: true,
         color: colors.drupal9Blue,
@@ -70,7 +70,7 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
       <CTA
         backgroundColor={colors.lightgray}
         headline='Building food and beverage D2C ecommerce experiences that delight and convert'
-        subTitle='We have deep expertise working with iconic food and beverage brands to craft direct to consumer digital buying experiences that blow our client’s KPIs out of the water. Reach out to learn how we can help your brand.'
+        subTitle="We have deep expertise working with iconic food and beverage brands to craft direct-to-consumer digital buying experiences that blow our clients' KPIs out of the water. Reach out to learn how we can help your brand."
         cta='Contact Us'
         altStyle
       />
@@ -118,16 +118,16 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
             </p>
 
             <p>
-              We are fluent in the most crucial regulatory requirements for US
+              We are fluent in the most crucial regulatory requirements for U.S.
               food brands, including website accessibility ADA guidelines (WCAG
               AA) and the California Consumer Privacy Act (CCPA).
             </p>
 
             <p>
-              We have extensive experience with the highly regulated alcohol
+              We have extensive experience with the highly-regulated alcohol
               industry, including shipping, tax, and marketing. We have built
-              deep integrations with ShipCompliant and WineShipping.com for
-              alcohol brands to fulfill orders, as well as custom needs.
+              deep integrations with ShipCompliant and WineShipping.com to
+              fulfill orders, as well as custom needs.
             </p>
           </div>
         </div>
