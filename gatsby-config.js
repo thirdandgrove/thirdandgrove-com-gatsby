@@ -191,16 +191,12 @@ module.exports = {
             ],
           },
           'branch-deploy': {
-            policy: [
-              { userAgent: '*', disallow: ['/careers/project-manager'] },
-            ],
+            policy: [{ userAgent: '*', disallow: ['/'] }],
             sitemap: null,
             host: null,
           },
           'deploy-preview': {
-            policy: [
-              { userAgent: '*', disallow: ['/careers/project-manager'] },
-            ],
+            policy: [{ userAgent: '*', disallow: ['/'] }],
             sitemap: null,
             host: null,
           },
