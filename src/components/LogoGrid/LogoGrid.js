@@ -22,6 +22,7 @@ const LogoGrid = ({
   backgroundColor,
   minHeight,
   styles,
+  defaultItemWidth,
 }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
@@ -67,9 +68,9 @@ const LogoGrid = ({
     margin-bottom: 70px;
 
     ${mediaQueries.phoneLarge} {
-      flex: 0 0 ${logoCount === 5 ? '20%' : '25%'};
-      width: ${logoCount === 5 ? '20%' : '25%'};
-      max-width: ${logoCount === 5 ? '20%' : '25%'};
+      flex: 0 0 ${logoCount === 5 ? '20%' : defaultItemWidth};
+      width: ${logoCount === 5 ? '20%' : defaultItemWidth};
+      max-width: ${logoCount === 5 ? '20%' : defaultItemWidth};
       margin-bottom: 70px;
     }
 
@@ -214,6 +215,7 @@ LogoGrid.propTypes = {
   backgroundColor: PropTypes.string,
   minHeight: PropTypes.string,
   styles: PropTypes.object,
+  defaultItemWidth: PropTypes.string,
 };
 
 LogoGrid.defaultProps = {
@@ -222,6 +224,7 @@ LogoGrid.defaultProps = {
   minHeight: '100vh',
   subtitle: '',
   styles: {},
+  defaultItemWidth: '25%',
 };
 
 export default LogoGrid;

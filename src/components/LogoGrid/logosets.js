@@ -49,6 +49,8 @@ import carlyle from './logos/carlyle.png';
 import hawaiianHost from './logos/hawaiian-host.svg';
 import rubios from './logos/rubios-logo.svg';
 import w3Awards from './logos/w3-awards.png';
+import cssAwards from './logos/css-awards.png';
+import dadiAwards from './logos/dadi-awards.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -594,6 +596,18 @@ export default (logoset, isSmScreen) => {
         alt='W3 Awards'
         width={isSmScreen ? '128' : '142'}
         height={isSmScreen ? '60' : '70'}
+      />,
+      <img
+        src={cssAwards}
+        alt='CSS awards'
+        width={isSmScreen ? '168' : '210'}
+        height={isSmScreen ? '40' : '60'}
+      />,
+      <img
+        src={dadiAwards}
+        alt='Dadi awards'
+        width={isSmScreen ? '140' : '180'}
+        height={isSmScreen ? '90' : '110'}
       />,
     ],
   };

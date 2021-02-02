@@ -163,6 +163,7 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
         title='Award Wall'
         backgroundColor={colors.white}
         minHeight='0'
+        defaultItemWidth='33%'
       />
       <CTA
         backgroundColor={colors.lightgray}
