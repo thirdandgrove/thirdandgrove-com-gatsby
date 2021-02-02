@@ -1,7 +1,8 @@
 /* eslint-disable react/no-danger */
+/* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import { fonts, mediaQueries } from '../styles';
 import Layout from '../components/layout';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 
 import { NewsletterSimpleOverlay } from '../components/NewsletterForm';
@@ -9,14 +9,7 @@ import LogoGrid from '../components/LogoGrid';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
 import Layout from '../components/layout';
-import {
-  container,
-  mediaQueries,
-  weights,
-  colors,
-  jsBreakpoints,
-  fonts,
-} from '../styles';
+import { container, mediaQueries, weights, colors, fonts } from '../styles';
 import Button from '../components/Button';
 import { GetInTouch, SeeInsights } from '../components/Prefooter';
 
@@ -424,7 +417,8 @@ const AcquiaEngage = ({ data }) => {
         <br />
         <h3>Our Friends</h3>
         <p>
-          {`After you visit with us, we have some other suggestions for you. Here’s a breakdown of what to do and who to meet.`}{' '}
+          After you visit with us, we have some other suggestions for you.
+          Here’s a breakdown of what to do and who to meet.
         </p>
         {node.talk[0].talks.map(({ title, date, time, description }) => (
           <span key={title}>

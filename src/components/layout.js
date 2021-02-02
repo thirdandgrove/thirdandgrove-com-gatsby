@@ -1,5 +1,5 @@
 import React from 'react';
-import { Global } from '@emotion/core';
+import { Global } from '@emotion/react';
 import PropTypes from 'prop-types';
 
 import { globalStyles } from '../styles';

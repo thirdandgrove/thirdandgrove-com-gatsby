@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import Button from '../Button';
@@ -19,7 +19,7 @@ function CapabilitiesSlide({ title, description, icon, link }) {
     let timer;
     return (...args) => {
       clearTimeout(timer);
-      timer = setTimeout(_ => {
+      timer = setTimeout(() => {
         timer = null;
         fn.apply(this, args);
       }, ms);

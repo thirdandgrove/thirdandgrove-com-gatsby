@@ -2,16 +2,10 @@ import React, { useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 
-import {
-  fonts,
-  mediaQueries,
-  jsBreakpoints,
-  container,
-  weights,
-} from '../styles';
+import { fonts, mediaQueries, container, weights } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';

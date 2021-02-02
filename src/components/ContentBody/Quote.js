@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import FullWidthSection from '../FullWidthSection';
 import { weights, mediaQueries, colors, contValues } from '../../styles';
@@ -84,7 +84,7 @@ const Quote = ({
     padding: ${isSmall ? '0 10px' : '0 20px'};
     ${mediaQueries.phoneLarge} {
       ${isSmall &&
-        `margin: 0 0 130px;
+      `margin: 0 0 130px;
         padding: 13px 8px 0;
       `};
     }

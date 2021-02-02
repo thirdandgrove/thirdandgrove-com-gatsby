@@ -3,11 +3,11 @@ import { Spring } from 'react-spring/renderprops';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
 import { useHasBeenPartlyVisible } from '../../hooks/useVisibility';
-import { fonts, weights, mediaQueries, jsBreakpoints } from '../../styles';
+import { fonts, weights, mediaQueries } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreview = ({ article }) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import { colors, mediaQueries, smSectionHead } from '../../styles';
 import ArticlePreviewSlide from '../ArticlePreviewSlide';

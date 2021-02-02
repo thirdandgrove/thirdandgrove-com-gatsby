@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template */
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
 
 import useWindow from '../../hooks/useWindow';

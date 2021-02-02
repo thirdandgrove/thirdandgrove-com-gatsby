@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 import { btnStyles } from '../../styles';
 
 // A fake button for use within a link (a tag)
 // eslint-disable-next-line react/prop-types
-export default ({ children, ...props }) => {
+const FakeButton = ({ children, ...props }) => {
   const StyledButton = styled.div`
     ${btnStyles};
   `;
@@ -15,3 +16,13 @@ export default ({ children, ...props }) => {
     </StyledButton>
   );
 };
+
+FakeButton.propTypes = {
+  children: PropTypes.node,
+};
+
+FakeButton.defaultProps = {
+  children: null,
+};
+
+export default FakeButton;

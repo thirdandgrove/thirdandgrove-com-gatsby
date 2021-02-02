@@ -2,16 +2,10 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
-import {
-  fonts,
-  weights,
-  mediaQueries,
-  jsBreakpoints,
-  container,
-} from '../../styles';
+import { fonts, weights, mediaQueries, container } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreviewSlide = ({ article }) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import { mediaQueries } from '../../styles';
 import FullWidthSection from '../FullWidthSection';

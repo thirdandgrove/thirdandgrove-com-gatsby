@@ -1,6 +1,7 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Spring } from 'react-spring/renderprops';
 
 import { smSectionHead } from '../../styles';
