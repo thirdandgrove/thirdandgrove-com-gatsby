@@ -182,7 +182,7 @@ const LogoGrid = ({
             <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>
             <LogosTight className='logo-grid-container'>
               {renderSet.map((logo, i) => (
-                // eslint-disable-next-line react/no-array-index-key
+                // eslint-disable-next-line
                 <div className='logo-grid-item' key={i} css={logoItemTight}>
                   {logo}
                 </div>
@@ -194,7 +194,7 @@ const LogoGrid = ({
             <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
             <Logos>
               {renderSet.map((logo, i) => (
-                // eslint-disable-next-line react/no-array-index-key
+                // eslint-disable-next-line
                 <div key={i} css={logoItem}>
                   {logo}
                 </div>

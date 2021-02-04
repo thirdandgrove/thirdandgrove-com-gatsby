@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
@@ -10,8 +9,7 @@ import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
 
-// eslint-disable-next-line react/prop-types
-export default query => {
+const Gatsby = query => {
   const { insights } = query.data;
 
   const sectionPadding = css`
@@ -166,3 +164,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Gatsby;

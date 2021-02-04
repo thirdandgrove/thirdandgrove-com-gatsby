@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 /* Variables and functions specifically for CSS-in-JS use */
 
 /* Media queries */

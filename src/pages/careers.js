@@ -7,7 +7,7 @@ import { fonts, weights, container, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
-export default () => {
+const Careers = () => {
   const data = useStaticQuery(graphql`
     query {
       allResumatorJob(filter: { status: { eq: "Open" } }) {
@@ -176,3 +176,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default Careers;

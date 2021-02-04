@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
@@ -230,7 +227,6 @@ const ContactForm = ({ formName, altStyle }) => {
     display: none;
   `;
 
-  // eslint-disable-next-line react/prop-types
   const ErrorToaster = ({ errs }) => {
     return errs ? (
       <div
@@ -299,6 +295,7 @@ const ContactForm = ({ formName, altStyle }) => {
         >
           <input type='hidden' name='form-name' value={formName} />
           <fieldset css={hidden}>
+            {/* eslint-disable-next-line */}
             <label>
               Don’t fill this out if you&apos;re human:{' '}
               <input
@@ -319,6 +316,7 @@ const ContactForm = ({ formName, altStyle }) => {
             `}
           >
             <fieldset css={fieldSetStyles}>
+              {/* eslint-disable-next-line */}
               <label
                 htmlFor='cf-name'
                 css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
@@ -337,6 +335,7 @@ const ContactForm = ({ formName, altStyle }) => {
             </fieldset>
 
             <fieldset css={fieldSetStyles}>
+              {/* eslint-disable-next-line */}
               <label
                 htmlFor='cf-email'
                 css={[labelCss, formState.email ? activeLabel : inactiveLabel]}

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
@@ -14,8 +13,7 @@ import { partnersProjects, list } from '../../styles/custom-css';
 import CTA from '../../components/CTA';
 import EliteSRC from '../../../static/images/Partner_Wordmark-Elite_1col.svg';
 
-// eslint-disable-next-line react/prop-types
-export default query => {
+const BigCommerce = query => {
   const { insights, caseStudies } = query.data;
 
   return (
@@ -326,3 +324,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default BigCommerce;

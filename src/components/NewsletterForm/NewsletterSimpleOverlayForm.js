@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
@@ -56,6 +54,7 @@ const NewsletterSimpleOverlayForm = ({
     >
       <input type='hidden' name='form-name' value='acquia-engage' />
       <fieldset css={fieldsetStyles}>
+        {/* eslint-disable-next-line */}
         <label htmlFor='nws-email' />
         {!submitted && (
           <Input
