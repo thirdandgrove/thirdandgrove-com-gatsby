@@ -218,6 +218,28 @@ const CapabilitiesPage = ({ data }) => {
         }
         index={2}
       />
+      <Capability
+        id='data'
+        imageSrc={data.dataImageDesktop.childImageSharp.fluid}
+        imageAlt='Black and Red'
+        content={
+          <>
+            <h2>Data</h2>
+            <p>
+              More than points on a graph. Data tells us how connect, and how we
+              can make those connections more meaningful.
+            </p>
+            <ul>
+              <li>Insights audit</li>
+              <li>KPI definition</li>
+              <li>Account configuration</li>
+              <li>Monthly reports</li>
+              <li>User testing</li>
+            </ul>
+          </>
+        }
+        index={3}
+      />
       <CTA />
     </Layout>
   );
@@ -240,6 +262,13 @@ export const query = graphql`
       }
     }
     creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    dataImageDesktop: file(relativePath: { eq: "data.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
