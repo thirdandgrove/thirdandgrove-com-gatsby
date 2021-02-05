@@ -79,7 +79,7 @@ export default query => {
       <ProjectsSlider
         data={caseStudies}
         backgroundColor={colors.lightgray}
-        tech={['BigCommerce', 'ecommerce']}
+        tech={['Big Commerce', 'ecommerce']}
       />
       <SplitSection gridColumnGap='16px' css={partnersProjects}>
         <article>
