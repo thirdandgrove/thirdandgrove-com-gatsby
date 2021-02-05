@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
@@ -15,7 +14,6 @@ import { useHasBeenVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
 import { NewsletterFullWidthSection } from '../components/NewsletterForm';
 
-// eslint-disable-next-line react/prop-types
 const Index = ({ data }) => {
   const halfPage = useRef();
   const preload = useRef();

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
@@ -21,8 +20,7 @@ import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
 
-// eslint-disable-next-line react/prop-types
-export default query => {
+const Acquia = query => {
   const { insights, caseStudies } = query.data;
 
   const Tripple = styled.article`
@@ -450,3 +448,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Acquia;

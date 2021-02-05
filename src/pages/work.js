@@ -166,7 +166,7 @@ Project.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
-export default () => {
+const Work = () => {
   const {
     allEntitySubqueueCaseStudies,
     allNodeHomePage,
@@ -326,3 +326,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default Work;

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { btnStyles } from '../../styles';
 
 // A fake button for use within a link (a tag)
-// eslint-disable-next-line react/prop-types
 const FakeButton = ({ children, ...props }) => {
   const StyledButton = styled.div`
     ${btnStyles};

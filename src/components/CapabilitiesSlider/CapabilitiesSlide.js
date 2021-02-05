@@ -1,5 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
@@ -61,6 +59,7 @@ function CapabilitiesSlide({ title, description, icon, link }) {
     };
   }, []);
 
+  // eslint-disable-next-line
   const imageSrc = require(`${icon}`);
   const Card = styled.div`
     opacity: 1 !important;

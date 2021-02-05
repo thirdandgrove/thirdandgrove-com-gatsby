@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
@@ -104,7 +103,7 @@ const Quote = ({
           <span css={quoR}>&rdquo;</span>
         </div>
         {data.field_footer_text && (
-          <p css={quoteAttr}>— {data.field_footer_text}</p>
+          <p css={quoteAttr}>—{data.field_footer_text}</p>
         )}
       </div>
     </FullWidthSection>

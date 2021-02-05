@@ -24,7 +24,7 @@
     "title": "Data",
     "description": "More than points on a graph. Data tells us how connect, and how we can make those connections more meaningful.",
     "icon": "./icons/data.png",
-    "link": "/capabilities#strategy",
+    "link": "/capabilities#data",
     "index": "3"
   }
 ]

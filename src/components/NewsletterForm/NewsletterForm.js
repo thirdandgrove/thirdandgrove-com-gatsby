@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
 
@@ -45,6 +43,7 @@ export default () => {
       `}
     >
       <fieldset css={fieldsetStyles}>
+        {/* eslint-disable-next-line */}
         <label htmlFor='nws-email' />
         {!submitted && (
           <Input

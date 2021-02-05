@@ -1,11 +1,10 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { css } from '@emotion/react';
 
 import Layout from '../components/layout';
 import { container, mediaQueries, weights, contentHeadings } from '../styles';
 
-export default () => {
+const Legal = () => {
   const date = 'Effective: Apr 1, 2019';
   const mailto = 'hello@thirdandgrove.com';
 
@@ -250,3 +249,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default Legal;
