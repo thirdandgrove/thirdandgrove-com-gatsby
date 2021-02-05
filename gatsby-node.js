@@ -162,3 +162,11 @@ exports.createPages = async ({ actions, graphql }) => {
     force: true,
   });
 };
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    node: {
+      fs: 'empty'
+    }
+  });
+};
