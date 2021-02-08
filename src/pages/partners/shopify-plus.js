@@ -1,19 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import Layout from '../../components/layout';
+import Button from '../../components/Button';
 import FullWidthSection from '../../components/FullWidthSection';
 import LogoGrid from '../../components/LogoGrid';
-import ProjectsSlider from '../../components/ProjectsSlider';
-import CTA from '../../components/CTA';
+import InsightsSlider from '../../components/InsightsSlider';
 import CTAGrid from '../../components/CTAGrid';
 import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
 import { colors, container, mediaQueries } from '../../styles';
 
 const ShopifyPlus = query => {
-  const { caseStudies, allShopifyPlusCtaGridFourJson, allFile } = query.data;
+  const { allShopifyPlusCtaGridFourJson, allFile, insights } = query.data;
 
   return (
     <Layout
@@ -23,6 +23,15 @@ const ShopifyPlus = query => {
         mobileMinHeight: '707px',
         width: '480px',
         titlePadding: '0 100px',
+        children: (
+          <Button
+            css={css`
+              margin-top: 50px;
+            `}
+          >
+            Contact Us
+          </Button>
+        ),
       }}
     >
       <FullWidthSection
@@ -83,30 +92,6 @@ const ShopifyPlus = query => {
           />
         </div>
       </FullWidthSection>
-      <CTA
-        headline={
-          <>
-            The premier Shopify
-            <br />
-            Plus-Certified Agency
-          </>
-        }
-        subTitle={
-          <>
-            We build brands through goal-busting experiences.
-            <br />
-            Ready to get started?
-          </>
-        }
-        cta="LET'S Talk"
-        headlineStyle={css`
-          font-size: 3rem;
-        `}
-        subTitleStyle={css`
-          text-align: center;
-        `}
-        padding='238px 20px'
-      />
       <CTAGrid
         items={allShopifyPlusCtaGridFourJson.edges}
         images={allFile.edges}
@@ -187,12 +172,12 @@ const ShopifyPlus = query => {
         backgroundColor={colors.lightgray}
         minHeight='0'
       />
-      <ProjectsSlider
-        data={caseStudies}
-        backgroundColor={colors.white}
-        tech='Shopify Plus'
+      <InsightsSlider
+        data={insights}
+        showButton={false}
+        showTitle={false}
+        backgroundColor={colors.lightgray}
       />
-      <CTA headline="Now let's get you promoted" padding='127px 20px' />
     </Layout>
   );
 };
@@ -247,121 +232,75 @@ export const query = graphql`
         }
       }
     }
-    caseStudies: allCaseStudy(
-      limit: 10
-      filter: { field_hidden: { eq: false } }
+    insights: allInsight(
+      sort: { fields: created, order: DESC }
+      limit: 5
+      filter: {
+        field_hidden: { eq: false }
+        relationships: {
+          field_tags: { elemMatch: { name: { regex: "/shopify plus/i" } } }
+        }
+      }
     ) {
       nodes {
         id
         title
-        field_subtitle
         field_inverse_header
-        field_image_arrangement
         field_image {
           alt
         }
-        field_secondary_image {
-          alt
-        }
-        field_tertiary_image {
-          alt
-        }
+        created(formatString: "MMM D, YYYY")
         path {
           alias
         }
         relationships {
-          field_tags {
+          node_type {
             name
+          }
+          uid {
+            name: display_name
           }
           field_image {
             id
             localFile {
               publicURL
               childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
+                fluid(maxWidth: 450, maxHeight: 400) {
                   ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 335, height: 260, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 450, height: 320, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 380, height: 420, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 420, height: 340, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
             }
           }
-          field_secondary_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  ...GatsbyImageSharpFluid_withWebp
+          field_components {
+            ... on component__text {
+              relationships {
+                component_type {
+                  name
                 }
               }
-              childImageMobile: childImageSharp {
-                fixed(width: 1, height: 1) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 180, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 340, height: 260, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 270, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
+              field_body {
+                processed
               }
             }
-          }
-          field_tertiary_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+            ... on component__image {
+              id
+              field_image {
+                alt
               }
-              childImageMobile: childImageSharp {
-                fixed(width: 1, height: 1) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
+              relationships {
+                component_type {
+                  name
                 }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 495, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 230, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 320, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
+                field_image {
+                  id
+                  localFile {
+                    publicURL
+                    childImageSharp {
+                      fluid(maxWidth: 630, maxHeight: 630) {
+                        ...GatsbyImageSharpFluid_withWebp
+                      }
+                    }
+                  }
                 }
               }
             }

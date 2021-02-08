@@ -114,15 +114,15 @@ const CTA = ({
 
 CTA.propTypes = {
   backgroundColor: PropTypes.string,
-  headline: PropTypes.string,
-  subTitle: PropTypes.string,
+  headline: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  subTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   cta: PropTypes.string,
   link: PropTypes.string,
   icon: PropTypes.string,
   iconAlt: PropTypes.string,
   altStyle: PropTypes.bool,
-  headlineStyle: PropTypes.string,
-  subTitleStyle: PropTypes.string,
+  headlineStyle: PropTypes.object,
+  subTitleStyle: PropTypes.object,
   padding: PropTypes.string,
 };
 
@@ -135,8 +135,8 @@ CTA.defaultProps = {
   icon: '',
   iconAlt: '',
   altStyle: false,
-  headlineStyle: '',
-  subTitleStyle: '',
+  headlineStyle: null,
+  subTitleStyle: null,
   padding: '',
 };
 
