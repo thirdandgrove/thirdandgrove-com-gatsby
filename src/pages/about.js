@@ -61,6 +61,7 @@ const About = ({ data }) => {
     p {
       ${pLight};
       margin-bottom: 64px;
+      text-align: center;
       ${mediaQueries.phoneLarge} {
         margin-bottom: 90px;
       }
