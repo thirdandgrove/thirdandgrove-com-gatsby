@@ -63,7 +63,7 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
         title: <>Fully-baked D2C food and beverage ecommerce</>,
         mobileMinHeight: '93vh',
         hideNav: true,
-        color: colors.drupal9Blue,
+        color: colors.shopifyGreen,
         invert: true,
       }}
     >
