@@ -45,6 +45,11 @@ import isgm from './logos/isgm_logo.svg';
 import prudential from './logos/prudential_logo.svg';
 import universal from './logos/universal_music_logo.png';
 import carlyle from './logos/carlyle.png';
+import hawaiianHost from './logos/hawaiian-host.svg';
+import rubios from './logos/rubios-logo.svg';
+import w3Awards from './logos/w3-awards.png';
+import cssAwards from './logos/css-awards.png';
+import dadiAwards from './logos/dadi-awards.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -466,10 +471,22 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '42' : '62'}
       />,
       <img
-        src={acquiaEngageLogo}
-        alt='Acquia Engage'
-        width={isSmScreen ? '131' : '170'}
-        height={isSmScreen ? '30' : '50'}
+        src={w3Awards}
+        alt='W3 Awards'
+        width={isSmScreen ? '128' : '142'}
+        height={isSmScreen ? '60' : '70'}
+      />,
+      <img
+        src={cssAwards}
+        alt='CSS awards'
+        width={isSmScreen ? '168' : '210'}
+        height={isSmScreen ? '40' : '60'}
+      />,
+      <img
+        src={dadiAwards}
+        alt='Dadi awards'
+        width={isSmScreen ? '140' : '180'}
+        height={isSmScreen ? '90' : '110'}
       />,
     ],
     drupalSupport: [
@@ -518,6 +535,50 @@ export default (logoset, isSmScreen) => {
       <img
         src={universal}
         alt='Universal Music'
+        width={isSmScreen ? '98' : '134'}
+        height={isSmScreen ? '32' : '43'}
+      />,
+    ],
+    shopifyPlusFoodAndBeverage: [
+      <img
+        src={brainiac}
+        alt='brainiac'
+        width={isSmScreen ? '93' : '150'}
+        height={isSmScreen ? '31' : '51'}
+      />,
+      <img
+        src={equator}
+        alt='equator'
+        width={isSmScreen ? '99' : '150'}
+        height={isSmScreen ? '34' : '52'}
+      />,
+      <img
+        src={pernodLogo}
+        alt='Pernod Ricard'
+        width={isSmScreen ? '125' : '171'}
+        height={isSmScreen ? '49' : '63'}
+      />,
+      <img
+        src={kingArthur}
+        alt='King Arthur'
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
+      />,
+      <img
+        src={hawaiianHost}
+        alt='Hawaiian Host'
+        width={isSmScreen ? '126' : '182'}
+        height={isSmScreen ? '62' : '93'}
+      />,
+      <img
+        src={rubios}
+        alt="Rubio's"
+        width={isSmScreen ? '126' : '182'}
+        height={isSmScreen ? '62' : '93'}
+      />,
+      <img
+        src={wsiLogo}
+        alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '98' : '134'}
         height={isSmScreen ? '32' : '43'}
       />,

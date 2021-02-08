@@ -16,6 +16,7 @@ const CTAGrid = ({
   backgroundColor,
   link,
   cta,
+  gridColumns,
   altStyle,
 }) => {
   const ctaGridContainer = css`
@@ -30,8 +31,8 @@ const CTAGrid = ({
     ${mediaQueries.phoneLarge} {
       ${container.textOnly}
       display: grid;
-      -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+      -ms-grid-columns: ${gridColumns};
+      grid-template-columns: ${gridColumns};
       grid-column-gap: 70px;
       grid-row-gap: 70px;
       padding-bottom: 72px;
@@ -137,6 +138,7 @@ CTAGrid.propTypes = {
   backgroundColor: PropTypes.string,
   link: PropTypes.string,
   cta: PropTypes.string,
+  gridColumns: PropTypes.string,
 };
 
 CTAGrid.defaultProps = {
@@ -147,6 +149,7 @@ CTAGrid.defaultProps = {
   backgroundColor: '#FFF',
   link: '/',
   cta: 'Get Support Now',
+  gridColumns: '1fr 1fr 1fr',
 };
 
 export default CTAGrid;
