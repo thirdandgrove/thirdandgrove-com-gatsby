@@ -14,6 +14,16 @@ const LegacyInsights = ({ pageContext }) => {
     'https://cms.thirdandgrove.com/sites/default/files'
   );
 
+  const SectionStyle = css`
+    width: 100%;
+    padding: 32px;
+
+    ${mediaQueries.phoneLarge} {
+      max-width: 848px;
+      padding: 36px;
+    }
+  `;
+
   return (
     <Layout
       headerData={{
@@ -46,7 +56,7 @@ const LegacyInsights = ({ pageContext }) => {
         ),
       }}
     >
-      <FullWidthSection height='100%' padding='84px'>
+      <FullWidthSection css={SectionStyle} height='100%'>
         <div dangerouslySetInnerHTML={{ __html: bodyWithImages }} />
       </FullWidthSection>
     </Layout>
