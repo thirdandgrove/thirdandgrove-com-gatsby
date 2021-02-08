@@ -4,8 +4,9 @@ import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 
+import Button from '../Button';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
-import { container, mediaQueries } from '../../styles';
+import { mediaQueries } from '../../styles';
 import hawaiianHost from '../LogoGrid/logos/hawaiian-host--black.png';
 import badlands from '../LogoGrid/logos/badlands.png';
 
@@ -14,7 +15,16 @@ const logos = {
   'hawaiian-host': hawaiianHost,
 };
 
-const Improvement = ({ imageSrc, imageAlt, stats, id, brand }) => {
+const Improvement = ({
+  index,
+  imageSrc,
+  imageAlt,
+  stats,
+  id,
+  brand,
+  brandWidth,
+  showButton,
+}) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 
@@ -26,65 +36,59 @@ const Improvement = ({ imageSrc, imageAlt, stats, id, brand }) => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 100px;
+
+        .stats-wrapper {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          ${mediaQueries.phoneLarge} {
+            align-items: flex-start;
+          }
+        }
 
         .stats-container {
           display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-        .stats-container,
-        .stat-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          justify-content: space-between;
           width: 100%;
         }
 
         .stat-container {
+          display: flex;
+          justify-content: center;
           flex-direction: column;
 
           h4 {
-            font-size: 80px;
+            font-size: 45px;
             font-weight: bold;
             letter-spacing: -0.2px;
-            line-height: 1.05;
             margin-bottom: 0;
 
             ${mediaQueries.tablet} {
-              font-size: 100px;
+              font-size: 55px;
             }
           }
 
           p {
-            font-size: 20px;
-            letter-spacing: 0.21px;
-            line-height: 27px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 25px;
           }
         }
 
-        ${container.min} ${mediaQueries.phoneLarge} {
-          margin: 0;
-          .stats-container {
-            flex-direction: row;
-          }
+        ${mediaQueries.phoneLarge} {
+          margin: 0 0 300px 0;
+          flex-direction: ${index % 2 === 0 ? 'row-reverse' : 'row'};
+          padding-left: ${index % 2 === 0 ? '140px' : '0px'};
+          padding-right: ${index % 2 === 1 ? '140px' : '0px'};
+        }
+        :last-child {
+          margin-bottom: 0px;
         }
       `}
     >
-      <img
-        src={logos[brand]}
-        alt={brand}
-        css={css`
-          margin-bottom: 50px;
-        `}
-      />
-      <div className='stats-container'>
-        {stats.map(stat => (
-          <div key={stat.description} className='stat-container'>
-            <h4>{stat.percent}</h4>
-            <p>{stat.description}</p>
-          </div>
-        ))}
-      </div>
       <Spring
         delay={0}
         to={{
@@ -99,32 +103,57 @@ const Improvement = ({ imageSrc, imageAlt, stats, id, brand }) => {
             style={{ transform, opacity }}
             css={css`
               width: 100%;
-              max-height: 353px;
-              margin-bottom: 0;
-
-              > div {
-                padding-bottom: 100% !important;
-              }
+              margin-bottom: 50px;
 
               ${mediaQueries.phoneLarge} {
-                flex: 0 0 100%;
-                width: 100%;
-                margin-bottom: 0;
+                flex: 0 0 60%;
               }
             `}
           />
         )}
       </Spring>
+      <div className='stats-wrapper'>
+        <img
+          src={logos[brand]}
+          alt={brand}
+          css={css`
+            width: ${brandWidth};
+            margin-bottom: 50px;
+          `}
+        />
+        <div className='stats-container'>
+          {stats.map(stat => (
+            <div key={stat.description} className='stat-container'>
+              <h4>{stat.percent}</h4>
+              <p>{stat.description}</p>
+            </div>
+          ))}
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </p>
+        {showButton && <Button>VIEW CASE STUDY</Button>}
+      </div>
     </div>
   );
 };
 
-Improvement.prototype = {
+Improvement.propTypes = {
   imageSrc: PropTypes.object.isRequired,
   imageAlt: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   brand: PropTypes.node.isRequired,
   stats: PropTypes.array.isRequired,
+  brandWidth: PropTypes.string,
+  index: PropTypes.number.isRequired,
+  showButton: PropTypes.bool,
+};
+
+Improvement.defaultProps = {
+  brandWidth: '100%',
+  showButton: false,
 };
 
 export default Improvement;

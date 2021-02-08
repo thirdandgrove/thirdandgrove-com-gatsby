@@ -10,7 +10,7 @@ import InsightsSlider from '../../components/InsightsSlider';
 import CTAGrid from '../../components/CTAGrid';
 import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
-import { colors, container, mediaQueries } from '../../styles';
+import { colors, mediaQueries } from '../../styles';
 
 const ShopifyPlus = query => {
   const { allShopifyPlusCtaGridFourJson, allFile, insights } = query.data;
@@ -37,60 +37,40 @@ const ShopifyPlus = query => {
       <FullWidthSection
         align='left'
         css={css`
-          ${container.max}
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding-top: 106px;
-          padding-bottom: 121px;
+          padding: 106px 20px 121px;
 
           ${mediaQueries.phoneLarge} {
-            flex-direction: row;
+            padding: 76px 0 80px;
           }
         `}
       >
-        <div
-          css={css`
-            margin-bottom: 90px;
-            flex: 0 0 100%;
-            width: 100%;
-
-            ${mediaQueries.phoneLarge} {
-              flex: 0 0 58%;
-              width: 58%;
-            }
-          `}
-        >
-          <Improvement
-            id='hawaiian-host'
-            brand='hawaiian-host'
-            imageSrc={query.data.landscapeImageDesktop.childImageSharp.fluid}
-            imageAlt='Landscape'
-            stats={[
-              { description: 'Increase in traffic', percent: '61%' },
-              { description: 'Increase in Order Value', percent: '37%' },
-            ]}
-          />
-        </div>
-        <div
-          css={css`
-            ${mediaQueries.phoneLarge} {
-              padding-top: 50px;
-              flex: 0 0 42%;
-              width: 42%;
-            }
-          `}
-        >
-          <Improvement
-            id='badlands'
-            brand='badlands'
-            imageSrc={query.data.thirdmanImageDesktop.childImageSharp.fluid}
-            imageAlt='thirdman'
-            stats={[
-              { description: 'Increase in Conversion Rate', percent: '364%' },
-            ]}
-          />
-        </div>
+        <Improvement
+          id='hawaiian-host'
+          brand='hawaiian-host'
+          brandWidth='200px'
+          imageSrc={query.data.hawaiianHostMac.childImageSharp.fluid}
+          imageAlt='Hawaiian Host'
+          stats={[
+            { description: 'Increase in traffic', percent: '61%' },
+            { description: 'Increase in Order Value', percent: '37%' },
+          ]}
+          index={0}
+          showButton
+        />
+        <Improvement
+          id='badlands'
+          brand='badlands'
+          brandWidth='250px'
+          imageSrc={query.data.badlandsMac.childImageSharp.fluid}
+          imageAlt='Badlands'
+          stats={[
+            { description: 'Increase in Conversion Rate', percent: '364%' },
+          ]}
+          index={1}
+        />
       </FullWidthSection>
       <CTAGrid
         items={allShopifyPlusCtaGridFourJson.edges}
@@ -202,14 +182,14 @@ export const query = graphql`
         }
       }
     }
-    landscapeImageDesktop: file(relativePath: { eq: "landscape.png" }) {
+    hawaiianHostMac: file(relativePath: { eq: "hawaiian-host-macbook.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
-    thirdmanImageDesktop: file(relativePath: { eq: "pexels-thirdman.png" }) {
+    badlandsMac: file(relativePath: { eq: "badlands-macbook.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
