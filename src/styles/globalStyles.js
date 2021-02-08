@@ -501,6 +501,7 @@ export const globalStyles = css`
     overflow: auto;
     word-wrap: normal;
     padding: 1.45rem;
+    white-space: pre-wrap;
   }
 
   tt,
