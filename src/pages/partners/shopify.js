@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
 
@@ -13,8 +12,7 @@ import Quote from '../../components/ContentBody/Quote';
 import { partnersProjects, partnersSub } from '../../styles/custom-css';
 import CTA from '../../components/CTA';
 
-// eslint-disable-next-line react/prop-types
-export default query => {
+const Shopify = query => {
   const { insights, caseStudies } = query.data;
 
   return (
@@ -305,3 +303,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Shopify;

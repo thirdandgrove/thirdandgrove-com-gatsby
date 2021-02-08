@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import Input from '../Input';
 import Button from '../Button';
@@ -50,6 +48,7 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
       `}
     >
       <fieldset css={fieldsetStyles}>
+        {/* eslint-disable-next-line */}
         <label htmlFor='nws-email' />
         {!submitted && (
           <Input

@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { navigate } from 'gatsby';
 
 import Button from '../Button';

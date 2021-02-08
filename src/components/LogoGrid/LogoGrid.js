@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import FullWidthSection from '../FullWidthSection';
 import useWindow from '../../hooks/useWindow';
@@ -43,21 +43,6 @@ const LogoGrid = ({
     }
   `;
 
-  const LogosTight = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: space-between;
-    max-width: 400px;
-    margin: auto;
-    margin-bottom: -40px;
-
-    ${mediaQueries.phoneLarge} {
-      max-width: 700px;
-      flex-wrap: ${logoCount >= 6 ? 'wrap' : 'nowrap'};
-    }
-  `;
-
   const logoItem = css`
     display: flex;
     align-items: center;
@@ -72,53 +57,6 @@ const LogoGrid = ({
       width: ${logoCount === 5 ? '20%' : defaultItemWidth};
       max-width: ${logoCount === 5 ? '20%' : defaultItemWidth};
       margin-bottom: 70px;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  `;
-
-  const logoItemTight = css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 50%;
-    width: 50%;
-    max-width: 50%;
-    margin-bottom: 25px;
-
-    &:last-of-type {
-      margin-top: 6px;
-    }
-
-    ${mediaQueries.phoneLarge} {
-      flex: 0 0 ${logoCount === 5 ? '15%' : '18%'};
-      width: ${logoCount === 5 ? '15%' : '18%'};
-      max-width: ${logoCount === 5 ? '15%' : '18%'};
-      margin-bottom: 50px;
-
-      &:nth-child(2) {
-        flex: 0 0 ${logoCount === 5 ? '15%' : '20.5%'};
-        width: ${logoCount === 5 ? '15%' : '20.5%'};
-        max-width: ${logoCount === 5 ? '15%' : '20.5%'};
-        margin-right: 7px;
-      }
-
-      &:nth-child(3) {
-        flex: 0 0 ${logoCount === 5 ? '15%' : '20.5%'};
-        width: ${logoCount === 5 ? '15%' : '20.5%'};
-        max-width: ${logoCount === 5 ? '15%' : '20.5%'};
-        padding-bottom: 5px;
-      }
-
-      &:last-of-type {
-        flex: 0 0 ${logoCount === 5 ? '15%' : '22.75%'};
-        width: ${logoCount === 5 ? '15%' : '22.75%'};
-        max-width: ${logoCount === 5 ? '15%' : '22.75%'};
-        padding-bottom: 1px;
-      }
     }
 
     img {
@@ -183,7 +121,7 @@ const LogoGrid = ({
         {subtitle && <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>}
         <Logos>
           {renderSet.map((logo, i) => (
-            // eslint-disable-next-line react/no-array-index-key
+            // eslint-disable-next-line
             <div key={i} css={logoItem}>
               {logo}
             </div>

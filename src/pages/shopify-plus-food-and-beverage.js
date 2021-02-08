@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { graphql, Link } from 'gatsby';
 
 import { FakeButton } from '../components/Button';

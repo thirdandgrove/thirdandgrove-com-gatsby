@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import mp4 from '../../static/thirdgrove-work.mp4';
 import Layout from '../components/layout';
@@ -166,7 +166,7 @@ Project.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
-export default () => {
+const Work = () => {
   const {
     allEntitySubqueueCaseStudies,
     allNodeHomePage,
@@ -326,3 +326,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default Work;

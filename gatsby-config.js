@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const { NODE_ENV, CONTEXT: NETLIFY_ENV = NODE_ENV } = process.env;
+
 module.exports = {
   siteMetadata: {
     title: `Third and Grove`,
@@ -51,7 +53,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
-        defaultQuality: 50,
+        defaultQuality: 80,
       },
     },
     `gatsby-plugin-emotion`,
@@ -174,6 +176,31 @@ module.exports = {
             match: '^/insights/',
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.thirdandgrove.com/',
+        sitemap: 'https://www.thirdandgrove.com/sitemap.xml',
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [
+              { userAgent: '*', disallow: ['/careers/project-manager'] },
+            ],
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null,
+          },
+          'deploy-preview': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null,
+          },
+        },
       },
     },
   ],
