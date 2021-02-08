@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 require('dotenv').config();
