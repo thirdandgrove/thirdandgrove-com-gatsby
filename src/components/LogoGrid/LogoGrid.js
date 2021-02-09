@@ -22,6 +22,7 @@ const LogoGrid = ({
   backgroundColor,
   minHeight,
   styles,
+  defaultItemWidth,
 }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
@@ -42,21 +43,6 @@ const LogoGrid = ({
     }
   `;
 
-  const LogosTight = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: space-between;
-    max-width: 400px;
-    margin: auto;
-    margin-bottom: -40px;
-
-    ${mediaQueries.phoneLarge} {
-      max-width: 700px;
-      flex-wrap: ${logoCount >= 6 ? 'wrap' : 'nowrap'};
-    }
-  `;
-
   const logoItem = css`
     display: flex;
     align-items: center;
@@ -67,57 +53,10 @@ const LogoGrid = ({
     margin-bottom: 70px;
 
     ${mediaQueries.phoneLarge} {
-      flex: 0 0 ${logoCount === 5 ? '20%' : '25%'};
-      width: ${logoCount === 5 ? '20%' : '25%'};
-      max-width: ${logoCount === 5 ? '20%' : '25%'};
+      flex: 0 0 ${logoCount === 5 ? '20%' : defaultItemWidth};
+      width: ${logoCount === 5 ? '20%' : defaultItemWidth};
+      max-width: ${logoCount === 5 ? '20%' : defaultItemWidth};
       margin-bottom: 70px;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  `;
-
-  const logoItemTight = css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 50%;
-    width: 50%;
-    max-width: 50%;
-    margin-bottom: 25px;
-
-    &:last-of-type {
-      margin-top: 6px;
-    }
-
-    ${mediaQueries.phoneLarge} {
-      flex: 0 0 ${logoCount === 5 ? '15%' : '18%'};
-      width: ${logoCount === 5 ? '15%' : '18%'};
-      max-width: ${logoCount === 5 ? '15%' : '18%'};
-      margin-bottom: 50px;
-
-      &:nth-child(2) {
-        flex: 0 0 ${logoCount === 5 ? '15%' : '20.5%'};
-        width: ${logoCount === 5 ? '15%' : '20.5%'};
-        max-width: ${logoCount === 5 ? '15%' : '20.5%'};
-        margin-right: 7px;
-      }
-
-      &:nth-child(3) {
-        flex: 0 0 ${logoCount === 5 ? '15%' : '20.5%'};
-        width: ${logoCount === 5 ? '15%' : '20.5%'};
-        max-width: ${logoCount === 5 ? '15%' : '20.5%'};
-        padding-bottom: 5px;
-      }
-
-      &:last-of-type {
-        flex: 0 0 ${logoCount === 5 ? '15%' : '22.75%'};
-        width: ${logoCount === 5 ? '15%' : '22.75%'};
-        max-width: ${logoCount === 5 ? '15%' : '22.75%'};
-        padding-bottom: 1px;
-      }
     }
 
     img {
@@ -176,32 +115,18 @@ const LogoGrid = ({
       height='600px'
     >
       <div css={[container.max, containerStyles, styles]}>
-        {subtitle !== '' ? (
-          <>
-            <h2 css={[smSectionHead, multiLineStyles]}>{title}</h2>
-            <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>
-            <LogosTight className='logo-grid-container'>
-              {renderSet.map((logo, i) => (
-                // eslint-disable-next-line
-                <div className='logo-grid-item' key={i} css={logoItemTight}>
-                  {logo}
-                </div>
-              ))}
-            </LogosTight>
-          </>
-        ) : (
-          <>
-            <h2 css={[smSectionHead, titleStyles]}>{title}</h2>
-            <Logos>
-              {renderSet.map((logo, i) => (
-                // eslint-disable-next-line
-                <div key={i} css={logoItem}>
-                  {logo}
-                </div>
-              ))}
-            </Logos>
-          </>
-        )}
+        <h2 css={[smSectionHead, subtitle ? multiLineStyles : titleStyles]}>
+          {title}
+        </h2>
+        {subtitle && <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>}
+        <Logos>
+          {renderSet.map((logo, i) => (
+            // eslint-disable-next-line
+            <div key={i} css={logoItem}>
+              {logo}
+            </div>
+          ))}
+        </Logos>
       </div>
     </FullWidthSection>
   );
@@ -214,6 +139,7 @@ LogoGrid.propTypes = {
   backgroundColor: PropTypes.string,
   minHeight: PropTypes.string,
   styles: PropTypes.object,
+  defaultItemWidth: PropTypes.string,
 };
 
 LogoGrid.defaultProps = {
@@ -222,6 +148,7 @@ LogoGrid.defaultProps = {
   minHeight: '100vh',
   subtitle: '',
   styles: {},
+  defaultItemWidth: '25%',
 };
 
 export default LogoGrid;

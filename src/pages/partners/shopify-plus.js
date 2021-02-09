@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/react';
 
 import Layout from '../../components/layout';
@@ -10,6 +10,7 @@ import InsightsSlider from '../../components/InsightsSlider';
 import CTAGrid from '../../components/CTAGrid';
 import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
+import ContactForm from '../../components/ContactForm';
 import { colors, mediaQueries } from '../../styles';
 
 const ShopifyPlus = query => {
@@ -24,13 +25,15 @@ const ShopifyPlus = query => {
         width: '480px',
         titlePadding: '0 100px',
         children: (
-          <Button
-            css={css`
-              margin-top: 50px;
-            `}
-          >
-            Contact Us
-          </Button>
+          <Link to='/partners/shopify-plus/#contact'>
+            <Button
+              css={css`
+                margin-top: 50px;
+              `}
+            >
+              Contact Us
+            </Button>
+          </Link>
         ),
       }}
     >
@@ -158,6 +161,40 @@ const ShopifyPlus = query => {
         showTitle={false}
         backgroundColor={colors.lightgray}
       />
+      <FullWidthSection
+        backgroundColor={colors.lightblue}
+        padding='110px 0'
+        minHeight='100%'
+      >
+        <h3
+          id='contact'
+          css={css`
+            font-size: 36px;
+            margin-bottom: 20px;
+            ${mediaQueries.phoneLarge} {
+              font-size: 48px;
+              margin: 0 0 1.45rem;
+            }
+          `}
+        >
+          The premier Shopify
+          <br />
+          Plus-Certified Agency
+        </h3>
+        <p
+          css={css`
+            font-size: 16px;
+            line-height: 27px;
+            font-weight: lighter;
+            text-align: center;
+          `}
+        >
+          We build brands through goal-busting experiences.
+          <br />
+          Ready to get started?
+        </p>
+        <ContactForm formName='drupal-support' />
+      </FullWidthSection>
     </Layout>
   );
 };
