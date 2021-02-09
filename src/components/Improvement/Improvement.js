@@ -21,6 +21,7 @@ const Improvement = ({
   imageAlt,
   stats,
   id,
+  content,
   brand,
   brandWidth,
   showButton,
@@ -136,11 +137,7 @@ const Improvement = ({
             </div>
           ))}
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
-        </p>
+        <p>{content}</p>
         {showButton && <Button>VIEW CASE STUDY</Button>}
       </div>
     </div>
@@ -156,6 +153,7 @@ Improvement.propTypes = {
   brandWidth: PropTypes.string,
   index: PropTypes.number.isRequired,
   showButton: PropTypes.bool,
+  content: PropTypes.string.isRequired,
 };
 
 Improvement.defaultProps = {
