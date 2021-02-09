@@ -1,117 +1,265 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import { css } from '@emotion/react';
 
 import Layout from '../../components/layout';
+import Button from '../../components/Button';
 import FullWidthSection from '../../components/FullWidthSection';
-import ProjectsSlider from '../../components/ProjectsSlider';
 import LogoGrid from '../../components/LogoGrid';
-import { colors } from '../../styles';
-import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
-import Quote from '../../components/ContentBody/Quote';
-import { partnersProjects, partnersSub } from '../../styles/custom-css';
-import CTA from '../../components/CTA';
+import CTAGrid from '../../components/CTAGrid';
+import Capability from '../../components/Capability';
+import Improvement from '../../components/Improvement';
+import ContactForm from '../../components/ContactForm';
+import { colors, mediaQueries } from '../../styles';
 
 const Shopify = query => {
-  const { insights, caseStudies } = query.data;
+  const { allShopifyPlusCtaGridFourJson, allFile, insights } = query.data;
 
   return (
     <Layout
       headerData={{
-        invert: true,
-        label: 'End-to-End Agency — Deep Commerce Experience — Growth Focused',
-        title: 'Get Shopify Plus without the limits.',
-        color: colors.shopifyGreen,
-        mobileMinHeight: '620px',
+        title: 'Ecommerce that converts',
+        color: colors.yellow,
+        mobileMinHeight: '707px',
         width: '480px',
         titlePadding: '0 100px',
+        children: (
+          <Link to='/partners/shopify/#contact'>
+            <Button
+              css={css`
+                margin-top: 50px;
+              `}
+            >
+              Contact Us
+            </Button>
+          </Link>
+        ),
       }}
     >
-      <FullWidthSection height='400px' align='left' css={partnersSub}>
-        <h4>Scalable, commerce-first experiences</h4>
-        <p>
-          Commerce is increasingly less about selling and more about inspiring
-          customers. We take the throttle off Shopify Plus to build experiences
-          that you didn’t think were possible.
-        </p>
-        <div>
-          <ul>
-            <li>Bespoke Shopify store</li>
-            <li>Migration</li>
-            <li>Ongoing support &amp; optimization</li>
-          </ul>
-          <ul>
-            <li>Custom apps &amp; integrations</li>
-            <li>CRO</li>
-            <li>Custom subscriptions/checkout</li>
-          </ul>
-        </div>
+      <FullWidthSection
+        align='left'
+        css={css`
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 106px 20px 121px;
+
+          ${mediaQueries.phoneLarge} {
+            padding: 76px 0 80px;
+          }
+        `}
+      >
+        <Improvement
+          id='hawaiian-host'
+          brand='hawaiian-host'
+          brandWidth='200px'
+          content='At a time when a Pacific getaway is out of reach, we helped Hawaiian Host send the taste of the islands to your front door'
+          imageSrc={query.data.hawaiianHostMac.childImageSharp.fluid}
+          imageAlt='Hawaiian Host'
+          stats={[
+            { description: 'Increase in traffic', percent: '61%' },
+            { description: 'Increase in Order Value', percent: '37%' },
+          ]}
+          index={0}
+          showButton
+        />
+        <Improvement
+          id='badlands'
+          brand='badlands'
+          brandWidth='250px'
+          content='We helped Badlands pivot their D2C strategy to bring the best outdoor gear in the world directly to diehards all across America'
+          imageSrc={query.data.badlandsMac.childImageSharp.fluid}
+          imageAlt='Badlands'
+          stats={[
+            { description: 'Increase in Conversion Rate', percent: '364%' },
+          ]}
+          index={1}
+        />
       </FullWidthSection>
-      <ProjectsSlider
-        data={caseStudies}
-        backgroundColor={colors.lightgray}
-        tech='Shopify'
+      <CTAGrid
+        items={allShopifyPlusCtaGridFourJson.edges}
+        images={allFile.edges}
+        gridColumns='1fr 1fr 1fr 1fr'
+        altStyle={false}
+        maxWidth
+        invisibleCta
+        noPaddingImg
+      />
+      <Capability
+        id='weknow'
+        imageSrc={query.data.weKnowImageDesktop.childImageSharp.fluid}
+        imageAlt='We know that one'
+        content={
+          <>
+            <h2>Yeah. we know that one</h2>
+            <div
+              css={css`
+                display: flex;
+              `}
+            >
+              <ul>
+                <li>SAP</li>
+                <li>Net Suite</li>
+                <li>Salesforce Marketing Cloud</li>
+                <li>Salesforce CRM</li>
+                <li>ReCharge</li>
+                <li>Bold Apps</li>
+                <li>Klaviyo</li>
+                <li>Yotpo</li>
+                <li>PowerReviews</li>
+                <li>Shipstation</li>
+                <li>AS/400</li>
+              </ul>
+              <ul>
+                <li>ShipWorks</li>
+                <li>Nosto</li>
+                <li>Shogun</li>
+                <li>Swell</li>
+                <li>Loyalty Lion</li>
+                <li>Smile.io</li>
+                <li>Shippo</li>
+                <li>Gorgias</li>
+                <li>ZenDesk</li>
+                <li>Drupal</li>
+                <li>Wordpress</li>
+              </ul>
+            </div>
+          </>
+        }
+        index={0}
+        maxWidth
+      />
+      <Capability
+        id='migration'
+        imageSrc={
+          query.data.platformMigrationImageDesktop.childImageSharp.fluid
+        }
+        imageAlt='White shoe'
+        content={
+          <>
+            <h2>Platform Migrations</h2>
+            <ul>
+              <li>Woo Commerce</li>
+              <li>SAP Hybris</li>
+              <li>Magento 1&2</li>
+              <li>Oracle Commerce Cloud</li>
+              <li>Salesforce Commerce Cloud</li>
+            </ul>
+          </>
+        }
+        index={1}
+        maxWidth
       />
       <LogoGrid
-        logoset='shopify'
-        title='Some of Our Shopify Clients'
-        backgroundColor={colors.white}
+        logoset='shopifyPlus'
+        title='Taking Names'
+        backgroundColor={colors.lightgray}
         minHeight='0'
-      />
-      <SplitSection gridColumnGap='16px' css={partnersProjects}>
-        <article>
-          <h2>Conquer complexity</h2>
-          <p>
-            Shopify is not complex, but your integration may be. We’ve pioneered
-            robust integrations for both back and front-end experiences.
-          </p>
-        </article>
-        <article>
-          <h2>Maximize your budget</h2>
-          <p>
-            Minimize your build investment and reinvest into initiatives that
-            move the needle. (We can help with that too).
-          </p>
-        </article>
-        <article>
-          <h2>Global first</h2>
-          <p>
-            Companies need to think globally to compete. We’ll help you lay the
-            foundation from day one.
-          </p>
-        </article>
-        <article>
-          <h2>Automate with flow</h2>
-          <p>
-            Automation is about more than just saving time. We leverage Shopify
-            Flow to create automated processes that create raving fans and big
-            spenders.
-          </p>
-        </article>
-      </SplitSection>
-      <Quote
-        size='small'
-        data={{
-          field_quote: `Working with Third and Grove has been nothing short of phenomenal. They've successfully built solutions and delivered experiences that help merchants win.`,
-          field_footer_text: 'Rob Barr, Agency Partnerships, ReCharge Payments',
-        }}
       />
       <InsightsSlider
         data={insights}
         showButton={false}
+        showTitle={false}
         backgroundColor={colors.lightgray}
       />
-      <CTA />
+      <FullWidthSection
+        backgroundColor={colors.lightblue}
+        padding='110px 0'
+        minHeight='100%'
+      >
+        <h3
+          id='contact'
+          css={css`
+            font-size: 36px;
+            margin-bottom: 20px;
+            ${mediaQueries.phoneLarge} {
+              font-size: 48px;
+              margin: 0 0 1.45rem;
+            }
+          `}
+        >
+          The premier Shopify
+          <br />
+          Plus-Certified Agency
+        </h3>
+        <p
+          css={css`
+            font-size: 16px;
+            line-height: 27px;
+            font-weight: lighter;
+            text-align: center;
+          `}
+        >
+          We build brands through goal-busting experiences.
+          <br />
+          Ready to get started?
+        </p>
+        <ContactForm formName='drupal-support' />
+      </FullWidthSection>
     </Layout>
   );
 };
 
 export const query = graphql`
   {
+    allShopifyPlusCtaGridFourJson {
+      edges {
+        node {
+          icon
+          title
+          description
+        }
+      }
+    }
+    allFile(filter: { absolutePath: { regex: "/shopify-plus/" } }) {
+      edges {
+        node {
+          name
+          publicURL
+          absolutePath
+        }
+      }
+    }
+    hawaiianHostMac: file(relativePath: { eq: "hawaiian-host-macbook.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    badlandsMac: file(relativePath: { eq: "badlands-macbook.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    weKnowImageDesktop: file(relativePath: { eq: "we-know.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    platformMigrationImageDesktop: file(
+      relativePath: { eq: "platform-migration.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
     insights: allInsight(
       sort: { fields: created, order: DESC }
       limit: 5
-      filter: { field_hidden: { eq: false } }
+      filter: {
+        field_hidden: { eq: false }
+        relationships: {
+          field_tags: { elemMatch: { name: { regex: "/shopify plus/i" } } }
+        }
+      }
     ) {
       nodes {
         id
@@ -172,128 +320,6 @@ export const query = graphql`
                       }
                     }
                   }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    caseStudies: allCaseStudy(
-      limit: 10
-      filter: { field_hidden: { eq: false } }
-    ) {
-      nodes {
-        id
-        title
-        field_subtitle
-        field_inverse_header
-        field_image_arrangement
-        field_image {
-          alt
-        }
-        field_secondary_image {
-          alt
-        }
-        field_tertiary_image {
-          alt
-        }
-        path {
-          alias
-        }
-        relationships {
-          field_tags {
-            name
-          }
-          field_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 335, height: 260, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 450, height: 320, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 380, height: 420, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 420, height: 340, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-            }
-          }
-          field_secondary_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 1, height: 1) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 180, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 340, height: 260, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 270, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-            }
-          }
-          field_tertiary_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 1, height: 1) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 495, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 230, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 320, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
                 }
               }
             }
