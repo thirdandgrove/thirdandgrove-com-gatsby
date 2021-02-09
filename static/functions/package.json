@@ -1,6 +1,14 @@
 {
+  "name": "third-and-grove-functions",
+  "description": "Netlify functions for thirdandgrove.com",
+  "version": "0.1.0",
+  "author": "Third and Grove <https://www.thirdandgrove.com>",
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^8.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thirdandgrove/tagd8_gatsby/"
   }
 }
