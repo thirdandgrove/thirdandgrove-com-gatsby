@@ -1,18 +1,10 @@
 import React from 'react';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
-import Button from '../Button';
-import {
-  colors,
-  mediaQueries,
-  smSectionHead,
-  fonts,
-  weights,
-  container,
-} from '../../styles';
+import { colors, mediaQueries } from '../../styles';
 
-export default function CapabilitiesSlideNav({ title }) {
+function CapabilitiesSlideNav({ title }) {
   const NavItem = styled.p`
     color: ${colors.tagGray};
     font-family: 'NB International Pro';
@@ -38,3 +30,9 @@ export default function CapabilitiesSlideNav({ title }) {
     </NavItem>
   );
 }
+
+CapabilitiesSlideNav.propTypes = {
+  title: PropTypes.string.isRequired,
+};
+
+export default CapabilitiesSlideNav;

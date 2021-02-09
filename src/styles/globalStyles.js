@@ -1,9 +1,9 @@
-/* eslint-disable import/prefer-default-export */
 // Global CSS Styles
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import { colors, fonts, weights, mediaQueries } from './css-utils';
 
+// eslint-disable-next-line
 export const globalStyles = css`
   /*
    * Font face declarations

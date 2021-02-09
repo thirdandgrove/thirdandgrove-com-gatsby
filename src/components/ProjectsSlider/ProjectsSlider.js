@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import Slider from 'react-slick';
 
 import { mediaQueries, fonts, weights, colors } from '../../styles';

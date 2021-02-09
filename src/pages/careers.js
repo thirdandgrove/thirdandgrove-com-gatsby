@@ -1,13 +1,13 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import { fonts, weights, container, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
-export default () => {
+const Careers = () => {
   const data = useStaticQuery(graphql`
     query {
       allResumatorJob(filter: { status: { eq: "Open" } }) {
@@ -176,3 +176,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default Careers;

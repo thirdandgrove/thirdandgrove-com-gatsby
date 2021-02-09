@@ -1,11 +1,11 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import Layout from '../components/layout';
 import ContactForm from '../components/ContactForm';
 import { mediaQueries, fonts, weights, container } from '../styles';
 
-export default () => {
+const Contact = () => {
   const wrapperCss = css`
     padding-top: 80px;
     padding-bottom: 80px;
@@ -160,3 +160,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default Contact;

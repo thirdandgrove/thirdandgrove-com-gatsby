@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import { colors, mediaQueries, weights, container } from '../../styles';
 
@@ -96,26 +96,6 @@ const Menu = ({ menuOpen, toggleOpen }) => {
 
   const linkBaseStyles = css`
     display: block;
-    color: ${colors.whiteFaded};
-    font-weight: ${weights.medium};
-    letter-spacing: -0.2px;
-    text-align: center;
-
-    &:hover,
-    &:focus {
-      color: ${colors.white};
-    }
-  `;
-
-  const noHover = css`
-    &:hover,
-    &:focus {
-      color: ${colors.whiteFaded};
-    }
-  `;
-
-  const linkGroupStyles = css`
-    display: inline-block;
     color: ${colors.whiteFaded};
     font-weight: ${weights.medium};
     letter-spacing: -0.2px;

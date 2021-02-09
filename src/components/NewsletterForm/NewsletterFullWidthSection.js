@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import FullWidthSection from '../FullWidthSection';
 import { mediaQueries, colors, fonts } from '../../styles';

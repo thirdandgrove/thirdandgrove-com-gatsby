@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import Input from '../Input';
 import Button from '../Button';
@@ -14,9 +12,6 @@ const NewsletterSimpleOverlayForm = ({
   isActive,
   buttonText,
   confirmMessage,
-  header,
-  subheader,
-  image,
 }) => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
@@ -57,8 +52,9 @@ const NewsletterSimpleOverlayForm = ({
         flex-direction: column;
       `}
     >
-    <input type='hidden' name='form-name' value='acquia-engage' />
+      <input type='hidden' name='form-name' value='acquia-engage' />
       <fieldset css={fieldsetStyles}>
+        {/* eslint-disable-next-line */}
         <label htmlFor='nws-email' />
         {!submitted && (
           <Input
@@ -93,6 +89,8 @@ const NewsletterSimpleOverlayForm = ({
 NewsletterSimpleOverlayForm.propTypes = {
   setIsActive: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
+  confirmMessage: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
 };
 
 export default NewsletterSimpleOverlayForm;

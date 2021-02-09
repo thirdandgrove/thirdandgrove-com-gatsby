@@ -1,9 +1,11 @@
 /* eslint-disable array-callback-return */
 const path = require('path');
-
+const util = require('util');
+const childProcess = require('child_process');
 const express = require('express');
-
 const { ensureTrailingSlash, updatePaths } = require('./src/util');
+
+const exec = util.promisify(childProcess.exec);
 
 exports.onCreateDevServer = ({ app }) => {
   app.use(express.static('static'));
@@ -161,4 +163,25 @@ exports.createPages = async ({ actions, graphql }) => {
     statusCode: '301',
     force: true,
   });
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    node: {
+      fs: 'empty',
+    },
+  });
+};
+
+exports.onPostBuild = async gatsbyNodeHelpers => {
+  const { reporter } = gatsbyNodeHelpers;
+
+  const reportOut = report => {
+    const { stderr, stdout } = report;
+    if (stderr) reporter.error(stderr);
+    if (stdout) reporter.info(stdout);
+  };
+
+  // NOTE: the gatsby build process automatically copies /static/functions to /public/functions
+  reportOut(await exec('cd ./public/functions && npm install'));
 };

@@ -1,12 +1,10 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { graphql } from 'gatsby';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import Layout from '../../components/layout';
 import FullWidthSection from '../../components/FullWidthSection';
 import ProjectsSlider from '../../components/ProjectsSlider';
-import LogoGrid from '../../components/LogoGrid';
 import { colors } from '../../styles';
 import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
@@ -15,8 +13,7 @@ import { partnersProjects, list } from '../../styles/custom-css';
 import CTA from '../../components/CTA';
 import EliteSRC from '../../../static/images/Partner_Wordmark-Elite_1col.svg';
 
-// eslint-disable-next-line react/prop-types
-export default query => {
+const BigCommerce = query => {
   const { insights, caseStudies } = query.data;
 
   return (
@@ -327,3 +324,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default BigCommerce;

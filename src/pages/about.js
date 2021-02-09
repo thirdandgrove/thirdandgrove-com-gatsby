@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
@@ -17,7 +17,6 @@ import {
   h1L,
   container,
   mediaQueries,
-  jsBreakpoints,
   contValues,
   pLight,
 } from '../styles';
@@ -183,7 +182,7 @@ const About = ({ data }) => {
   const images = data.allFile.nodes;
 
   // returns the correct image source needed to render
-  const getSrc = (name, media) => {
+  const getSrc = name => {
     if (name === 'team') {
       return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
         .fluid;
@@ -296,9 +295,9 @@ const About = ({ data }) => {
             <p>Director of Operations</p>
           </div>
           <div>
-            <Img alt='Adam Strom' fluid={getSrc('strom', 'leader')} />
-            <h2>Adam Strom</h2>
-            <p>Creative Director</p>
+            <Img alt='Thomas Bolte' fluid={getSrc('thomas', 'leader')} />
+            <h2>Thomas Bolte</h2>
+            <p>Art Director</p>
           </div>
           <div>
             <Img alt='Jen May' fluid={getSrc('may', 'leader')} />
@@ -308,7 +307,7 @@ const About = ({ data }) => {
           <div>
             <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
             <h2>Linda Topp</h2>
-            <p>Director of Ecommerce Solutions</p>
+            <p>Director of Ecommerce</p>
           </div>
         </div>
       </FullWidthSection>
@@ -399,7 +398,7 @@ export const query = graphql`
     allFile(
       filter: {
         absolutePath: {
-          regex: "/boston|oakland|emond|strom|slemp|andrade|may|topp/"
+          regex: "/boston|oakland|emond|slemp|andrade|may|topp|thomas/"
         }
       }
     ) {

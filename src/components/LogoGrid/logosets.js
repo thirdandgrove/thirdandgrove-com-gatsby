@@ -44,7 +44,6 @@ import alvinAiley from './logos/alvinailey-logo.png';
 import isgm from './logos/isgm_logo.svg';
 import prudential from './logos/prudential_logo.svg';
 import universal from './logos/universal_music_logo.png';
-import catic from './logos/catic.svg';
 import carlyle from './logos/carlyle.png';
 import boissance from './logos/boissance.svg';
 import hawaiianHost from './logos/hawaiian-host.svg';

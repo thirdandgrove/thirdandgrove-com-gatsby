@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { Spring } from 'react-spring/renderprops';
 
 import { useHasBeenVisible } from '../../hooks/useVisibility';

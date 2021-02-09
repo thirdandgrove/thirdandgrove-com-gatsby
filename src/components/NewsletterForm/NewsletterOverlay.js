@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 
 import FullWidthSection from '../FullWidthSection';
 import { mediaQueries, colors, fonts } from '../../styles';
