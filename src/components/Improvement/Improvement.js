@@ -50,9 +50,14 @@ const Improvement = ({
         }
 
         .stats-container {
-          display: flex;
-          justify-content: space-between;
           width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-right: 30px;
+
+          ${mediaQueries.phoneLarge} {
+            justify-content: space-between;
+          }
         }
 
         .stat-container {
@@ -106,7 +111,9 @@ const Improvement = ({
               margin-bottom: 50px;
 
               ${mediaQueries.phoneLarge} {
-                flex: 0 0 60%;
+                flex: 0 0 80%;
+                margin-left: ${index % 2 === 1 ? '-200px' : 0};
+                margin-right: ${index % 2 === 0 ? '-200px' : 0};
               }
             `}
           />
