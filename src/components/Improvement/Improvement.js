@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
@@ -24,6 +25,7 @@ const Improvement = ({
   content,
   brand,
   brandWidth,
+  link,
   showButton,
 }) => {
   const nodeRef = useRef();
@@ -138,7 +140,11 @@ const Improvement = ({
           ))}
         </div>
         <p>{content}</p>
-        {showButton && <Button>VIEW CASE STUDY</Button>}
+        {showButton && (
+          <Link to={link}>
+            <Button>VIEW CASE STUDY</Button>
+          </Link>
+        )}
       </div>
     </div>
   );
@@ -152,6 +158,7 @@ Improvement.propTypes = {
   stats: PropTypes.array.isRequired,
   brandWidth: PropTypes.string,
   index: PropTypes.number.isRequired,
+  link: PropTypes.string,
   showButton: PropTypes.bool,
   content: PropTypes.string.isRequired,
 };
@@ -159,6 +166,7 @@ Improvement.propTypes = {
 Improvement.defaultProps = {
   brandWidth: '100%',
   showButton: false,
+  link: '/',
 };
 
 export default Improvement;

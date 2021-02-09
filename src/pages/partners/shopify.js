@@ -62,6 +62,7 @@ const Shopify = query => {
             { description: 'Increase in Order Value', percent: '37%' },
           ]}
           index={0}
+          link='/work/hawaiian-host'
           showButton
         />
         <Improvement
