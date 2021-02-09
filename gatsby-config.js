@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const { NODE_ENV, CONTEXT: NETLIFY_ENV = NODE_ENV } = process.env;
 
+console.log(process.env);
+
 module.exports = {
   siteMetadata: {
     title: `Third and Grove`,
