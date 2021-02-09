@@ -12,7 +12,7 @@ import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
 import { colors, container, mediaQueries } from '../../styles';
 
-export default query => {
+const ShopifyPlus = query => {
   const { caseStudies, allShopifyPlusCtaGridFourJson, allFile } = query.data;
 
   return (
@@ -371,3 +371,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default ShopifyPlus;
