@@ -90,10 +90,10 @@ const Shopify = query => {
       <Capability
         id='weknow'
         imageSrc={query.data.weKnowImageDesktop.childImageSharp.fluid}
-        imageAlt='We know that one'
+        imageAlt='We know that app'
         content={
           <>
-            <h2>Yeah. we know that one</h2>
+            <h2>Yeah. we know that app</h2>
             <div
               css={css`
                 display: flex;

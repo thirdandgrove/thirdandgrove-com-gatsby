@@ -1,13 +1,18 @@
 [
   {
+    "icon": "",
+    "title": "Shopify Plus",
+    "description": "We are certified Shopify Plus partners. Our obsession is best practices and maintainability."
+  },
+  {
     "icon": "design",
     "title": "Design",
-    "description": "data driven commerce experiences that make rival brands jealous."
+    "description": "Data driven commerce experiences that make rival brands jealous."
   },
   {
     "icon": "migration",
     "title": "Migration",
-    "description": "migrating brands from platforms like Magento 1 and Salesforce Commerce Cloud to Shopify Plus."
+    "description": "Migrating brands from platforms like Magento 1 and Salesforce Commerce Cloud to Shopify Plus."
   },
   {
     "icon": "optimization",
@@ -17,17 +22,12 @@
   {
     "icon": "marketing",
     "title": "Marketing",
-    "description": "Focusing on acquisition and paid channels. And no, we don’t take a cut of your ad spend."
+    "description": "Focusing on acquisition, paid channels, and content. And no, we don’t take a cut of your ad spend."
   },
   {
     "icon": "seo",
     "title": "SEO",
     "description": "Your search ranking is going to get better."
-  },
-  {
-    "icon": "creators",
-    "title": "Creators",
-    "description": "Photography. Video. Copy. Building out stunning content"
   },
   {
     "icon": "payment",

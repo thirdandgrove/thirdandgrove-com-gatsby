@@ -96,7 +96,9 @@ const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg }) => {
                 style={{ transform }}
                 className='cta-grid-item--image-wrapper'
               >
-                <img src={icon[0].node.publicURL} alt={description} />
+                {icon[0] && icon[0].node && icon[0].node.publicURL && (
+                  <img src={icon[0].node.publicURL} alt={description} />
+                )}
               </div>
             )}
           </Spring>
@@ -119,7 +121,9 @@ const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg }) => {
               ref={nodeRef}
             >
               <div className='cta-grid-item--inner-wrapper'>
-                <img src={icon[0].node.publicURL} alt={description} />
+                {icon[0] && icon[0].node && icon[0].node.publicURL && (
+                  <img src={icon[0].node.publicURL} alt={description} />
+                )}
 
                 <h4>{title}</h4>
                 <p>{description}</p>
