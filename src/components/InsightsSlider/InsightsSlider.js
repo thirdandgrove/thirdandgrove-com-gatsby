@@ -11,11 +11,12 @@ import Button from '../Button';
 
 const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
   const settings = {
-    arrows: false,
+    arrows: true,
     autoplay: false,
     autoplaySpeed: 7500,
     cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
     centerPadding: 90,
+    dots: true,
     infinite: true,
     speed: 1000,
     centerMode: true,
@@ -48,7 +49,7 @@ const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
       <Slider
         {...settings}
         css={css`
-          max-width: 100%;
+          width: 85%;
           max-height: 100%;
           margin-bottom: 65px;
 
