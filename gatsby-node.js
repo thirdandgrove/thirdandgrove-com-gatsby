@@ -4,7 +4,6 @@ const util = require('util');
 const childProcess = require('child_process');
 const express = require('express');
 const { ensureTrailingSlash, updatePaths } = require('./src/util');
-
 const exec = util.promisify(childProcess.exec);
 
 exports.onCreateDevServer = ({ app }) => {
@@ -182,6 +181,5 @@ exports.onPostBuild = async gatsbyNodeHelpers => {
     if (stdout) reporter.info(stdout);
   };
 
-  // NOTE: the gatsby build process automatically copies /static/functions to /public/functions
-  reportOut(await exec('cd ./public/functions && npm install'));
+  reportOut(await exec('npm run lambda'));
 };
