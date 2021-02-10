@@ -40,6 +40,7 @@
     "gatsby-source-filesystem": "^2.10.0",
     "gatsby-transformer-json": "^2.10.0",
     "gatsby-transformer-sharp": "^2.11.0",
+    "netlify-lambda": "^2.0.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -78,7 +79,8 @@
     "serve": "gatsby serve",
     "cypress": "cypress open",
     "test": "cypress run",
-    "lint": "node ./node_modules/eslint/bin/eslint . --ignore-path .gitignore"
+    "lint": "node ./node_modules/eslint/bin/eslint . --ignore-path .gitignore",
+    "lambda": "netlify-lambda build ./static/functions"
   },
   "repository": {
     "type": "git",

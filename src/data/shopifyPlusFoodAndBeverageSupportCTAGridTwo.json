@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "dedicated-team",
+    "title": "Dedicated Team",
+    "description": "A single point of contact, the same project manager, and the same technical architect work on your account."
+  },
+  {
+    "icon": "24-7-support",
+    "title": "24/7/365 support",
+    "description": "Call our dedicated emergency hotline number any time. There will be a staff engineer working on your issue immediately."
+  },
+  {
+    "icon": "get-the-best",
+    "title": "Get the best",
+    "description": "We are the leading contributor to Drupal itself, helping to write the version of Drupal every Drupal site uses."
+  },
+  {
+    "icon": "migration-planning",
+    "title": "Migration Planning",
+    "description": "We plan for upgrades from Drupal 7 to 8 or 9, and make sure the entire process is seamless."
+  }
+]
