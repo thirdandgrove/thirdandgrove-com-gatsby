@@ -46,7 +46,7 @@ import prudential from './logos/prudential_logo.svg';
 import universal from './logos/universal_music_logo.png';
 import carlyle from './logos/carlyle.png';
 import boissance from './logos/boissance.svg';
-import hawaiianHost from './logos/hawaiian-host.svg';
+import hawaiianHost from './logos/hawaiian-host.png';
 import wcBradley from './logos/wc-bradley.svg';
 import gLogo from './logos/g-logo.svg';
 import rubios from './logos/rubios-logo.svg';

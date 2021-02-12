@@ -54,7 +54,7 @@ const Shopify = query => {
           id='hawaiian-host'
           brand='hawaiian-host'
           brandWidth='200px'
-          content='At a time when a Pacific getaway is out of reach, we helped Hawaiian Host send the taste of the islands to your front door'
+          content='At a time when a Pacific getaway was out of reach, we helped Hawaiian Host send the taste of the islands to your front door.'
           imageSrc={query.data.hawaiianHostMac.childImageSharp.fluid}
           imageAlt='Hawaiian Host'
           stats={[
@@ -69,7 +69,7 @@ const Shopify = query => {
           id='badlands'
           brand='badlands'
           brandWidth='250px'
-          content='We helped Badlands pivot their D2C strategy to bring the best outdoor gear in the world directly to diehards all across America'
+          content='We helped Badlands pivot their D2C strategy to bring the best outdoor gear in the world directly to diehards all across America.'
           imageSrc={query.data.badlandsMac.childImageSharp.fluid}
           imageAlt='Badlands'
           stats={[

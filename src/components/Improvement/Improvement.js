@@ -8,7 +8,7 @@ import Img from 'gatsby-image';
 import Button from '../Button';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { mediaQueries } from '../../styles';
-import hawaiianHost from '../LogoGrid/logos/hawaiian-host--black.png';
+import hawaiianHost from '../LogoGrid/logos/hawiian-host-logo--black.png';
 import badlands from '../LogoGrid/logos/badlands.png';
 
 const logos = {
