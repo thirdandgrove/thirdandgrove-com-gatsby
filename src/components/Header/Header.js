@@ -268,7 +268,7 @@ const Header = ({
           </span>
         )}
         {title && (
-          <h1 data-cy='titleText' css={headerTitle}>
+          <h1 data-cy='titleText' className='balance-text' css={headerTitle}>
             {title}
           </h1>
         )}
