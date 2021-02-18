@@ -2,8 +2,11 @@
 const path = require('path');
 const util = require('util');
 const childProcess = require('child_process');
+
 const express = require('express');
+
 const { ensureTrailingSlash, updatePaths } = require('./src/util');
+
 const exec = util.promisify(childProcess.exec);
 
 exports.onCreateDevServer = ({ app }) => {
