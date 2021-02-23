@@ -336,7 +336,7 @@ const About = ({ data }) => {
             <Img fluid={getSrc('boston', 'location')} alt='Boston' />
             <h3>Howdya Like Them Apples?</h3>
           </Location>
-          <Location>
+          <Location onClick={() => navigate(`/san-francisco/`)}>
             <h2 css={h1L}>San Francisco</h2>
             <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
             <h3>Watch Out for the Seagulls</h3>
