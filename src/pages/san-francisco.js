@@ -200,7 +200,7 @@ export const query = graphql`
         publicURL
       }
     }
-    slider: allFile(filter: { absolutePath: { regex: "/boston-page/" } }) {
+    slider: allFile(filter: { absolutePath: { regex: "/sanfrancisco/" } }) {
       nodes {
         childImageSharp {
           fluid(maxWidth: 363, maxHeight: 363) {
