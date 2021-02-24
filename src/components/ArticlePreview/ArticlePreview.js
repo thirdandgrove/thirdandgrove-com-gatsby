@@ -16,12 +16,21 @@ const ArticlePreview = ({ article }) => {
 
   const Card = styled.div`
     width: 100%;
-    margin-bottom: 116px;
+    margin-bottom: 116px
     transition-duration: 0.4s;
     transition-timing-function: ease-out;
     @media all and (-ms-high-contrast: none) {
-      height: 1px;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      flex: 100%;
+      margin: 0;
     }
+
+    @media all and (-ms-high-contrast: none) and (min-width: 900px) {
+      flex: 45%;
+      margin: 0 25px;
+    }
+
     ${mediaQueries.phoneLarge} {
       margin-bottom: 90px;
     }
