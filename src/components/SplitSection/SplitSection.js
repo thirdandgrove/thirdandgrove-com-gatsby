@@ -19,6 +19,15 @@ const SplitSection = ({
         grid-column-gap: ${gridColumnGap};
         justify-content: space-between;
       }
+
+      @media all and (-ms-high-contrast: none) {
+        display: flex;
+        flex-flow: column nowrap;
+
+        ${mediaQueries.phoneLarge} {
+          flex-flow: row nowrap;
+        }
+      }
     `}
   >
     {children}
