@@ -165,7 +165,22 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  // Adds hot module reload functionality when running
+  // gatsby develop in ie11.
+  if (stage === 'develop-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /react-hot-loader/,
+            use: [loaders.js()],
+          },
+        ],
+      },
+    });
+  }
+
   actions.setWebpackConfig({
     node: {
       fs: 'empty',
