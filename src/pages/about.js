@@ -35,8 +35,6 @@ const About = ({ data }) => {
 
     div {
       ${mediaQueries.phoneLarge} {
-        width: calc(50% - 86px);
-        max-width: calc(50% - 86px);
         flex-basis: calc(50% - 86px);
         flex-grow: 0;
         flex-shrink: 0;
@@ -79,9 +77,7 @@ const About = ({ data }) => {
       }
 
       @media all and (-ms-high-contrast: none) {
-        ${mediaQueries.phoneLarge} {
-          padding-bottom: 95% !important;
-        }
+        padding-bottom: 95% !important;
       }
     }
   `;
@@ -130,9 +126,15 @@ const About = ({ data }) => {
     }
   `;
   const Location = styled.section`
+    @media all and (-ms-high-contrast: none) {
+      flex: 1;
+      margin: 0 25px;
+    }
+
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
+
     h2,
     h3,
     p {
