@@ -19,6 +19,9 @@ const ArticlePreview = ({ article }) => {
     margin-bottom: 116px;
     transition-duration: 0.4s;
     transition-timing-function: ease-out;
+    @media all and (-ms-high-contrast: none) {
+      height: 1px;
+    }
     ${mediaQueries.phoneLarge} {
       margin-bottom: 90px;
     }
