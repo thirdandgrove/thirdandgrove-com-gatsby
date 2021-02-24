@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { css } from '@emotion/react';
 
 import Layout from '../../components/layout';
 import FullWidthSection from '../../components/FullWidthSection';
@@ -9,11 +10,19 @@ import { colors } from '../../styles';
 import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
-import { partnersProjects, partnersSub } from '../../styles/custom-css';
 import CTA from '../../components/CTA';
+import ShopifyBadge from '../../../static/images/shopify-badge.svg';
+import { partnersProjects, partnersSub } from '../../styles/custom-css';
 
 const Shopify = query => {
   const { insights, caseStudies } = query.data;
+
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
+  `;
 
   return (
     <Layout
@@ -28,6 +37,14 @@ const Shopify = query => {
       }}
     >
       <FullWidthSection height='400px' align='left' css={partnersSub}>
+        <div css={badgeStyle}>
+          <img
+            src={ShopifyBadge}
+            alt='Shopify Badge'
+            width='180'
+            height='180'
+          />
+        </div>
         <h4>Scalable, commerce-first experiences</h4>
         <p>
           Commerce is increasingly less about selling and more about inspiring
