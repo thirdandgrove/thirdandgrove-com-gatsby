@@ -67,6 +67,16 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
       backgroundColor={backgroundColor}
       customStyles={css`
         position: relative;
+
+        @media all and (-ms-high-contrast: none) {
+          padding: 100px 0;
+        }
+
+        ${mediaQueries.phoneLarge} {
+          @media all and (-ms-high-contrast: none) {
+            padding: 125px 0;
+          }
+        }
       `}
     >
       <Slider
