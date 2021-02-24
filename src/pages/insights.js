@@ -114,6 +114,11 @@ const Insights = ({ data }) => {
               padding-top: 20px;
               margin-bottom: 30px;
 
+              @media all and (-ms-high-contrast: none) {
+                display: flex;
+                flex-flow: column nowrap;
+              }
+
               ${mediaQueries.phoneLarge} {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -121,13 +126,9 @@ const Insights = ({ data }) => {
                 place-items: center top;
                 padding-top: 143px;
                 margin-bottom: 0;
-              }
 
-              @media all and (-ms-high-contrast: none) {
-                display: flex;
-                flex-flow: column nowrap;
-
-                ${mediaQueries.phoneLarge} {
+                @media all and (-ms-high-contrast: none) {
+                  display: flex;
                   flex-flow: row nowrap;
                 }
               }

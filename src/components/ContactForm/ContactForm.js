@@ -307,18 +307,19 @@ const ContactForm = ({ formName, altStyle }) => {
           </fieldset>
           <div
             css={css`
+              @media all and (-ms-high-contrast: none) {
+                display: flex;
+                flex-flow: column nowrap;
+              }
+
               ${mediaQueries.phoneLarge} {
                 display: grid;
                 grid-template-columns: repeat(2, calc(50% - 10px));
                 grid-column-gap: 20px;
                 align-items: stretch;
-              }
 
-              @media all and (-ms-high-contrast: none) {
-                display: flex;
-                flex-flow: column nowrap;
-
-                ${mediaQueries.phoneLarge} {
+                @media all and (-ms-high-contrast: none) {
+                  display: flex;
                   flex-flow: row nowrap;
                 }
               }

@@ -27,6 +27,10 @@ const CTAGrid = ({
     grid-row-gap: 70px;
     width: 100%;
     padding-bottom: 0;
+    @media all and (-ms-high-contrast: none) {
+      display: flex;
+      flex-flow: row nowrap;
+    }
 
     ${mediaQueries.phoneLarge} {
       ${container.textOnly}
@@ -36,6 +40,10 @@ const CTAGrid = ({
       grid-column-gap: 70px;
       grid-row-gap: 70px;
       padding-bottom: 72px;
+      @media all and (-ms-high-contrast: none) {
+        display: flex;
+        flex-flow: row nowrap;
+      }
     }
   `;
 
@@ -48,6 +56,10 @@ const CTAGrid = ({
       -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
       grid-column-gap: 100px;
+      @media all and (-ms-high-contrast: none) {
+        display: flex;
+        flex-flow: row nowrap;
+      }
     }
   `;
 
