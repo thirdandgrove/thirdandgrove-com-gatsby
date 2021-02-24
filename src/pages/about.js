@@ -127,6 +127,12 @@ const About = ({ data }) => {
   `;
   const Location = styled.section`
     @media all and (-ms-high-contrast: none) {
+      flex: none;
+      margin: 0;
+      text-align: center;
+    }
+
+    @media all and (-ms-high-contrast: none) and (min-width: 900px) {
       flex: 1;
       margin: 0 25px;
     }
