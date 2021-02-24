@@ -4,7 +4,6 @@ import { navigate, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
@@ -36,7 +35,11 @@ const About = ({ data }) => {
 
     div {
       ${mediaQueries.phoneLarge} {
-        flex: 0 0 calc(50% - 86px);
+        width: calc(50% - 86px);
+        max-width: calc(50% - 86px);
+        flex-basis: calc(50% - 86px);
+        flex-grow: 0;
+        flex-shrink: 0;
         padding-top: 20px;
 
         &:nth-child(odd):last-child {
@@ -62,6 +65,7 @@ const About = ({ data }) => {
       ${pLight};
       margin-bottom: 64px;
       text-align: center;
+
       ${mediaQueries.phoneLarge} {
         margin-bottom: 90px;
       }
@@ -72,6 +76,12 @@ const About = ({ data }) => {
       // gatsby-image provided styles
       ${mediaQueries.phoneLarge} {
         padding-bottom: 68% !important;
+      }
+
+      @media all and (-ms-high-contrast: none) {
+        ${mediaQueries.phoneLarge} {
+          padding-bottom: 95% !important;
+        }
       }
     }
   `;
