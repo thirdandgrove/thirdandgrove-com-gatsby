@@ -202,7 +202,7 @@ const About = ({ data }) => {
       <FullWidthSection
         textAlign='center'
         height='100%'
-        css={css`
+        customStyles={css`
           ${container.medium};
           padding-top: 20px;
 
@@ -240,7 +240,7 @@ const About = ({ data }) => {
       </FullWidthSection>
       <FullWidthSection
         height='550px'
-        css={css`
+        customStyles={css`
           background-color: ${colors.lightblue};
           z-index: 1;
           height: 600px;
@@ -269,7 +269,7 @@ const About = ({ data }) => {
         </p>
       </FullWidthSection>
       <FullWidthSection
-        css={css`
+        customStyles={css`
           padding: 44px 0 0;
 
           ${mediaQueries.desktop} {
@@ -321,7 +321,7 @@ const About = ({ data }) => {
         defaultItemWidth='33%'
       />
       <FullWidthSection
-        css={css`
+        customStyles={css`
           padding: 44px 0 0;
 
           ${mediaQueries.desktop} {
@@ -348,7 +348,7 @@ const About = ({ data }) => {
         height='400px'
         backgroundColor={colors.lightblue}
         padding='0 0 30px'
-        css={css`
+        customStyles={css`
           z-index: 1;
         `}
       >

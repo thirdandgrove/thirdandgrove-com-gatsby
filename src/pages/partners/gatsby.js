@@ -31,7 +31,7 @@ const Gatsby = query => {
     >
       <FullWidthSection
         align='left'
-        css={css`
+        customStyles={css`
           ${sectionPadding}
           ${container.min}
           h4 {

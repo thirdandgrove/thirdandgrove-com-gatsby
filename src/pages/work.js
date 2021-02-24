@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Spring } from 'react-spring/renderprops';
+import { Spring } from 'react-spring/renderprops.cjs';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
@@ -24,7 +24,7 @@ const Project = ({ study, index }) => {
       height='0'
       padding='0'
       textAlign='left'
-      css={css`
+      customStyles={css`
         &:nth-child(2) {
           margin-top: 20px;
 

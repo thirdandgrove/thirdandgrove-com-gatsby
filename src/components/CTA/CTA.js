@@ -91,7 +91,7 @@ const CTA = ({
       minHeight='300px'
       height='300px'
       align-items='center'
-      css={altStyle ? ctaStyle2 : ctaStyle1}
+      customStyles={altStyle ? ctaStyle2 : ctaStyle1}
     >
       <div>
         {icon && <img src={icon} alt={iconAlt} />}

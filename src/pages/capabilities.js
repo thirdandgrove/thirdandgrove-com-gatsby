@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Spring } from 'react-spring/renderprops';
+import { Spring } from 'react-spring/renderprops.cjs';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 
@@ -21,7 +21,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
       height='0'
       padding='0'
       textAlign='left'
-      css={css`
+      customStyles={css`
         &:first-of-type {
           margin-top: 20px;
 

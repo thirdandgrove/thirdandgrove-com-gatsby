@@ -66,7 +66,7 @@ const Drupal = query => {
       <FullWidthSection
         height='400px'
         align='left'
-        css={css`
+        customStyles={css`
           ${sectionPadding} h3 {
             font-family: ${fonts.sans};
             font-size: 18px;

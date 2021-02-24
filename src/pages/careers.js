@@ -118,7 +118,7 @@ const Careers = () => {
       }}
     >
       <FullWidthSection
-        css={css`
+        customStyles={css`
           padding-top: 30px;
 
           ${mediaQueries.phoneLarge} {

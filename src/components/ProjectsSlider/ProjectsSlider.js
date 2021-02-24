@@ -65,7 +65,7 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
     <FullWidthSection
       height={`${minHeight}px`}
       backgroundColor={backgroundColor}
-      css={css`
+      customStyles={css`
         position: relative;
       `}
     >

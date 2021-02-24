@@ -24,7 +24,7 @@ const Text = ({ data }) => {
       justify='start'
       height='auto'
       dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      css={css`
+      customStyles={css`
         .stats-container,
         .stat-container {
           display: flex;

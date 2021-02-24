@@ -281,7 +281,7 @@ const AcquiaEngage = ({ data }) => {
       <FullWidthSection
         height='200px'
         backgroundColor={colors.white}
-        css={css`
+        customStyles={css`
           > div {
             ${container.textOnly}
             padding: 50px 20px 0;
@@ -342,7 +342,7 @@ const AcquiaEngage = ({ data }) => {
       <FullWidthSection
         backgroundColor={colors.white}
         height='100%'
-        css={css`
+        customStyles={css`
           padding: 40px 0 20px;
 
           ${mediaQueries.desktop} {
@@ -383,7 +383,7 @@ const AcquiaEngage = ({ data }) => {
       <FullWidthSection
         align='flex-start'
         height='500px'
-        css={css`
+        customStyles={css`
           ${container.textOnly}
           padding: 50px 20px;
           position: relative;

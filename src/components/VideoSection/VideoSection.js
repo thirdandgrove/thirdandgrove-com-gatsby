@@ -147,7 +147,7 @@ const VideoSection = ({ url, mp4 }) => {
     <FullWidthSection
       height='0'
       minHeight='0'
-      css={sectionStyles}
+      customStyles={sectionStyles}
       onMouseEnter={() => setButtonVisible(true)}
       onMouseLeave={() => setButtonVisible(false)}
       onMouseMove={evt => {

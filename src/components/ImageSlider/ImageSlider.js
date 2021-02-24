@@ -34,7 +34,7 @@ const ImageSlider = ({ data }) => {
   return (
     <FullWidthSection
       height='0'
-      css={css`
+      customStyles={css`
         padding-top: 25px;
         padding-bottom: 60px;
         padding-left: 0;

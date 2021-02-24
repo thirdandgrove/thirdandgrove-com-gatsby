@@ -41,7 +41,7 @@ const WhatWeDo = forwardRef((props, ref) => {
       backgroundColor={colors.lightblue}
       height='750px'
       minHeight='550px'
-      css={css`
+      customStyles={css`
         padding-top: 40px;
         padding-bottom: 60px;
         ${mediaQueries.phoneLarge} {

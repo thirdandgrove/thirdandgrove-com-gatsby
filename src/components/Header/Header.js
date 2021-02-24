@@ -258,7 +258,7 @@ const Header = ({
         navLink={navLink}
       />
       <FullWidthSection
-        css={[sectionCSS, styles]}
+        customStyles={[sectionCSS, styles]}
         height={height}
         minHeight={mobileMinHeight}
       >
