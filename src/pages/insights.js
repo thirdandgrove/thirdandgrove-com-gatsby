@@ -122,6 +122,15 @@ const Insights = ({ data }) => {
                 padding-top: 143px;
                 margin-bottom: 0;
               }
+
+              @media all and (-ms-high-contrast: none) {
+                display: flex;
+                flex-flow: column nowrap;
+
+                ${mediaQueries.phoneLarge} {
+                  flex-flow: row nowrap;
+                }
+              }
             `,
           ]}
         >
