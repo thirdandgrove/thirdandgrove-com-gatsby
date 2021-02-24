@@ -18,16 +18,16 @@ const SplitSection = ({
         flex-flow: column nowrap;
       }
 
+      @media all and (-ms-high-contrast: none) and (min-width: 900px) {
+        display: flex;
+        flex-flow: row nowrap;
+      }
+
       ${mediaQueries.phoneLarge} {
         display: grid;
         grid-template-columns: ${gridTemplateColumns};
         grid-column-gap: ${gridColumnGap};
         justify-content: space-between;
-
-        @media all and (-ms-high-contrast: none) {
-          display: flex;
-          flex-flow: row nowrap;
-        }
       }
     `}
   >
