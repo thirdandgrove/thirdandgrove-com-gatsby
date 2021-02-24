@@ -207,11 +207,16 @@ const Menu = ({ menuOpen, toggleOpen }) => {
           css`
             padding-top: 80px;
             padding-bottom: 60px;
+
             ${mediaQueries.phoneLarge} {
               display: flex;
               justify-content: space-between;
               padding-top: 0;
               padding-bottom: 0;
+            }
+
+            @media all and (-ms-high-contrast: none) {
+              margin: 0;
             }
           `,
         ]}
