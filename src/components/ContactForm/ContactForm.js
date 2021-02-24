@@ -313,6 +313,15 @@ const ContactForm = ({ formName, altStyle }) => {
                 grid-column-gap: 20px;
                 align-items: stretch;
               }
+
+              @media all and (-ms-high-contrast: none) {
+                display: flex;
+                flex-flow: column nowrap;
+
+                ${mediaQueries.phoneLarge} {
+                  flex-flow: row nowrap;
+                }
+              }
             `}
           >
             <fieldset css={fieldSetStyles}>
