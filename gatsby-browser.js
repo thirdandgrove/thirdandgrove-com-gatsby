@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 // Check if production branch
 // We don't need to add these to production bundle
-const isProduction =
+const branchENV =
   process.env.BRANCH !== undefined
     ? process.env.BRANCH !== 'master'
       ? 'development'
@@ -9,11 +9,13 @@ const isProduction =
     : 'development';
 
 // Set polyfills for ie11 development
-if (!isProduction) {
+if (branchENV === 'development') {
   // Sets babel-polyfill for ie11
   require('babel-polyfill');
+
   // Sets shadow dom polyfill for ie11
   require('@webcomponents/shadydom');
+
   // Sets EventSource polyfill for ie11
   const {
     NativeEventSource,
