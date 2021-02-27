@@ -312,11 +312,6 @@ const ContactForm = ({ formName, altStyle }) => {
                 flex-flow: column nowrap;
               }
 
-              @media all and (-ms-high-contrast: none) and (min-width: 900px) {
-                display: flex;
-                flex-flow: row nowrap;
-              }
-
               ${mediaQueries.phoneLarge} {
                 display: grid;
                 grid-template-columns: repeat(2, calc(50% - 10px));
