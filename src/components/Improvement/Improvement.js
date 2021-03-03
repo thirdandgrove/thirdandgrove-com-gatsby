@@ -57,8 +57,10 @@ const Improvement = ({
           display: flex;
           justify-content: center;
           margin-right: 30px;
+          margin-left: 30px;
 
           ${mediaQueries.phoneLarge} {
+            margin-left: 0px;
             justify-content: space-between;
           }
         }
