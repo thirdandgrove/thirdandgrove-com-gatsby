@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import mp4 from '../../static/thirdgrove-work.mp4';
@@ -58,10 +58,10 @@ const Project = ({ study, index }) => {
             }}
           >
             {({ transform, opacity }) => (
-              <Img
-                fluid={
+              <GatsbyImage
+                image={
                   study.relationships.field_image.localFile.childImageSharp
-                    .fluid
+                    .gatsbyImageData
                 }
                 alt={study.field_image.alt}
                 style={{ transform, opacity }}
@@ -190,6 +190,7 @@ const Work = () => {
         }
       }
     }
+
     fragment CaseStudyFragmentHere on case_study {
       id
       title
@@ -217,9 +218,10 @@ const Work = () => {
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 1250, maxHeight: 850, cropFocus: NORTH) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(
+                transformOptions: { cropFocus: NORTH }
+                layout: FULL_WIDTH
+              )
             }
             childImageMobile: childImageSharp {
               fixed(width: 335, height: 260, cropFocus: CENTER) {
@@ -248,9 +250,7 @@ const Work = () => {
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
             }
             childImageMobile: childImageSharp {
               fixed(width: 1, height: 1) {
@@ -279,9 +279,7 @@ const Work = () => {
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
             }
             childImageMobile: childImageSharp {
               fixed(width: 1, height: 1) {

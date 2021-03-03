@@ -251,6 +251,7 @@ export const query = graphql`
       }
     }
   }
+
   fragment CaseStudyFragment on case_study {
     id
     title
@@ -278,9 +279,12 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(
+              width: 850
+              height: 850
+              transformOptions: { cropFocus: NORTH }
+              layout: CONSTRAINED
+            )
           }
           childImageMobile: childImageSharp {
             fixed(width: 335, height: 260, cropFocus: CENTER) {
@@ -309,9 +313,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
           }
           childImageMobile: childImageSharp {
             fixed(width: 1, height: 1) {
@@ -340,9 +342,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
           }
           childImageMobile: childImageSharp {
             fixed(width: 1, height: 1) {

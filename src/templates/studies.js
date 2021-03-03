@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
@@ -14,7 +14,7 @@ const Studies = ({ data }) => {
     post.relationships.field_image &&
     post.relationships.field_image.localFile &&
     post.relationships.field_image.localFile.childImageSharp &&
-    post.relationships.field_image.localFile.childImageSharp.fluid;
+    post.relationships.field_image.localFile.childImageSharp.gatsbyImageData;
 
   const backgroundColor = post.field_color && post.field_color.color;
 
@@ -34,8 +34,11 @@ const Studies = ({ data }) => {
       }}
     >
       {imageSrc && (
-        <Img
-          fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+        <GatsbyImage
+          image={
+            post.relationships.field_image.localFile.childImageSharp
+              .gatsbyImageData
+          }
           alt={post.field_image.alt}
           css={css`
             margin-left: 20px;
@@ -148,9 +151,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(width: 800, layout: CONSTRAINED)
                   }
                 }
               }
@@ -166,7 +167,6 @@ export const query = graphql`
             field_quote
             field_footer_text
           }
-
           ... on component__prefooter {
             id
             field_primary_lead_in_text
@@ -199,15 +199,17 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 600, maxHeight: 600, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(
+                      width: 600
+                      height: 600
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
                   }
                 }
               }
             }
           }
-
           ... on component__text_image_split {
             id
             field_body {
@@ -226,9 +228,11 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(
+                      width: 800
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
                   }
                 }
               }
@@ -243,9 +247,12 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 980, maxHeight: 500, cropFocus: CENTER) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(
+                width: 980
+                height: 500
+                transformOptions: { cropFocus: CENTER }
+                layout: CONSTRAINED
+              )
             }
           }
         }
@@ -254,9 +261,7 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(width: 800, height: 600, layout: CONSTRAINED)
             }
           }
         }
@@ -265,9 +270,7 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(width: 800, height: 600, layout: CONSTRAINED)
             }
           }
         }

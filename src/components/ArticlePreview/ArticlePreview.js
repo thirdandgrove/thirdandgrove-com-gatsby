@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
@@ -63,10 +63,10 @@ const ArticlePreview = ({ article }) => {
             to={ensureTrailingSlash(article.path.alias)}
           >
             {article.relationships.field_image && (
-              <Img
-                fluid={
+              <GatsbyImage
+                image={
                   article.relationships.field_image.localFile.childImageSharp
-                    .fluid
+                    .gatsbyImageData
                 }
                 alt={article.field_image.alt}
               />

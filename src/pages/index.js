@@ -103,6 +103,7 @@ export const query = graphql`
       }
     }
   }
+
   fragment InsightFragment on insight {
     id
     title
@@ -126,9 +127,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 530, maxHeight: 400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 530, height: 400, layout: CONSTRAINED)
           }
           childImageSlideMobile: childImageSharp {
             fluid(maxWidth: 325, maxHeight: 250) {
@@ -167,9 +166,7 @@ export const query = graphql`
               localFile {
                 publicURL
                 childImageSharp {
-                  fluid(maxWidth: 630, maxHeight: 630) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
+                  gatsbyImageData(width: 630, height: 630, layout: CONSTRAINED)
                 }
               }
             }
@@ -178,6 +175,7 @@ export const query = graphql`
       }
     }
   }
+
   fragment CaseStudyFragment on case_study {
     id
     title
@@ -205,9 +203,12 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(
+              width: 850
+              height: 850
+              transformOptions: { cropFocus: NORTH }
+              layout: CONSTRAINED
+            )
           }
           childImageMobile: childImageSharp {
             fixed(width: 335, height: 260, cropFocus: CENTER) {
@@ -236,9 +237,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
           }
           childImageMobile: childImageSharp {
             fixed(width: 1, height: 1) {
@@ -267,9 +266,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
           }
           childImageMobile: childImageSharp {
             fixed(width: 1, height: 1) {

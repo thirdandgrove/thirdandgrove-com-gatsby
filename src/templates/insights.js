@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { colors, mediaQueries } from '../styles';
 import Layout from '../components/layout';
@@ -50,9 +50,10 @@ const Insights = ({ data }) => {
         ]}
       >
         {post.relationships.field_image && (
-          <Img
-            fluid={
-              post.relationships.field_image.localFile.childImageSharp.fluid
+          <GatsbyImage
+            image={
+              post.relationships.field_image.localFile.childImageSharp
+                .gatsbyImageData
             }
             alt={imageAlt}
             css={css`
@@ -132,9 +133,7 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 980, maxHeight: 500) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(width: 980, height: 500, layout: CONSTRAINED)
             }
           }
         }
@@ -164,9 +163,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(width: 800, layout: CONSTRAINED)
                   }
                 }
               }
@@ -214,9 +211,11 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 600, maxHeight: 600) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(
+                      width: 600
+                      height: 600
+                      layout: CONSTRAINED
+                    )
                   }
                 }
               }
@@ -240,9 +239,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(width: 800, layout: CONSTRAINED)
                   }
                 }
               }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import { mediaQueries, jsBreakpoints } from '../../styles';
@@ -195,8 +195,8 @@ const ImageCollage = ({ images, type }) => {
     <div className={type} css={collageWrapper}>
       <div className='collage-board' css={collageBoardBase}>
         <div css={primaryWrapperBase} className='primary-wrapper'>
-          <Img
-            fixed={[
+          <GatsbyImage
+            image={[
               images.primary.mobile.fixed,
               {
                 ...images.primary.phoneLarge.fixed,
@@ -209,8 +209,8 @@ const ImageCollage = ({ images, type }) => {
           />
         </div>
         <div css={secTertWrapperBase} className='secondary-wrapper'>
-          <Img
-            fixed={[
+          <GatsbyImage
+            image={[
               images.secondary.mobile.fixed,
               {
                 ...images.secondary.phoneLarge.fixed,
@@ -223,8 +223,8 @@ const ImageCollage = ({ images, type }) => {
           />
         </div>
         <div css={secTertWrapperBase} className='tertiary-wrapper'>
-          <Img
-            fixed={[
+          <GatsbyImage
+            image={[
               images.tertiary.mobile.fixed,
               {
                 ...images.tertiary.phoneLarge.fixed,

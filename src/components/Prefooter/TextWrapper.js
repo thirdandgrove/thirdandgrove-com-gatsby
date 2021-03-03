@@ -23,7 +23,9 @@ const TextWrapper = styled.span`
       return 'none';
     } else {
       return (
-        'url(' + props.backgroundImage.localFile.childImageSharp.fluid.src + ')'
+        'url(' +
+        props.backgroundImage.localFile.childImageSharp.gatsbyImageData.src +
+        ')'
       );
     }
   }};

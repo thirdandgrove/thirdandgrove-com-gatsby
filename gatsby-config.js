@@ -54,13 +54,9 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    {
-      resolve: 'gatsby-plugin-sharp',
-      options: {
-        defaultQuality: 80,
-      },
-    },
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-manifest`,

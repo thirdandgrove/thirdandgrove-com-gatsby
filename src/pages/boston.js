@@ -203,9 +203,7 @@ export const query = graphql`
     slider: allFile(filter: { absolutePath: { regex: "/boston-page/" } }) {
       nodes {
         childImageSharp {
-          fluid(maxWidth: 363, maxHeight: 363) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(width: 363, height: 363, layout: CONSTRAINED)
         }
       }
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
@@ -89,10 +89,10 @@ const ArticlePreviewSlide = ({ article }) => {
               }
             `}
           >
-            <Img
-              fluid={
+            <GatsbyImage
+              image={
                 article.relationships.field_image.localFile.childImageSharp
-                  .fluid
+                  .gatsbyImageData
               }
               alt={article.field_image.alt}
             />

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -186,9 +186,10 @@ const About = ({ data }) => {
   const getSrc = name => {
     if (name === 'team') {
       return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
-        .fluid;
+        .gatsbyImageData;
     }
-    return images.find(img => img.name === name).childImageSharp.fluid;
+    return images.find(img => img.name === name).childImageSharp
+      .gatsbyImageData;
   };
 
   return (
@@ -212,8 +213,8 @@ const About = ({ data }) => {
           }
         `}
       >
-        <Img
-          fluid={getSrc('team')}
+        <GatsbyImage
+          image={getSrc('team')}
           alt='TAG Team'
           css={css`
             width: 100%;
@@ -281,32 +282,38 @@ const About = ({ data }) => {
 
         <div css={[leadersCss, container.medium]}>
           <div>
-            <Img alt='Justin Emond' fluid={getSrc('emond', 'leader')} />
+            <GatsbyImage image={getSrc('emond', 'leader')} alt='Justin Emond' />
             <h2>Justin Emond</h2>
             <p>Co-Founder, Chief Executive Officer</p>
           </div>
           <div>
-            <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
+            <GatsbyImage image={getSrc('slemp', 'leader')} alt='Jen Slemp' />
             <h2>Jen Slemp</h2>
             <p>Director of Strategy</p>
           </div>
           <div>
-            <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
+            <GatsbyImage
+              image={getSrc('andrade', 'leader')}
+              alt='Christina Andrade'
+            />
             <h2>Christina Andrade</h2>
             <p>Director of Operations</p>
           </div>
           <div>
-            <Img alt='Thomas Bolte' fluid={getSrc('thomas', 'leader')} />
+            <GatsbyImage
+              image={getSrc('thomas', 'leader')}
+              alt='Thomas Bolte'
+            />
             <h2>Thomas Bolte</h2>
             <p>Art Director</p>
           </div>
           <div>
-            <Img alt='Jen May' fluid={getSrc('may', 'leader')} />
+            <GatsbyImage image={getSrc('may', 'leader')} alt='Jen May' />
             <h2>Jen May</h2>
             <p>Director of Project Management</p>
           </div>
           <div>
-            <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
+            <GatsbyImage image={getSrc('topp', 'leader')} alt='Linda Topp' />
             <h2>Linda Topp</h2>
             <p>Director of Ecommerce</p>
           </div>
@@ -333,12 +340,12 @@ const About = ({ data }) => {
         <SplitSection css={container.large} gridColumnGap='20px'>
           <Location onClick={() => navigate(`/boston/`)}>
             <h2 css={h1L}>Boston</h2>
-            <Img fluid={getSrc('boston', 'location')} alt='Boston' />
+            <GatsbyImage image={getSrc('boston', 'location')} alt='Boston' />
             <h3>Howdya Like Them Apples?</h3>
           </Location>
           <Location>
             <h2 css={h1L}>San Francisco</h2>
-            <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
+            <GatsbyImage image={getSrc('oakland', 'location')} alt='Oakland' />
             <h3>Watch Out for the Seagulls</h3>
           </Location>
         </SplitSection>
@@ -391,9 +398,12 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 480, maxWidth: 980) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            height: 480
+            width: 980
+            transformOptions: { cropFocus: NORTH }
+            layout: CONSTRAINED
+          )
         }
       }
     }
@@ -407,9 +417,12 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            height: 335
+            width: 335
+            transformOptions: { cropFocus: NORTH }
+            layout: CONSTRAINED
+          )
         }
       }
     }
