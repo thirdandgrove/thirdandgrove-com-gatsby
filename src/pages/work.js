@@ -306,7 +306,7 @@ const Work = () => {
             childImageTypeA: childImageSharp {
               gatsbyImageData(
                 width: 250
-                height: 495
+                height: 360
                 transformOptions: { cropFocus: CENTER }
                 layout: FIXED
               )
