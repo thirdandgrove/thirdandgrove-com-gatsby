@@ -1,7 +1,7 @@
 require('dotenv').config();
 
-const isProduction = !(
-  process.env.BRANCH !== undefined && process.env.BRANCH !== 'master'
+const isProduction = (
+  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
 );
 
 module.exports = {
