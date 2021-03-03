@@ -130,14 +130,10 @@ export const query = graphql`
             gatsbyImageData(width: 530, height: 400, layout: CONSTRAINED)
           }
           childImageSlideMobile: childImageSharp {
-            fluid(maxWidth: 325, maxHeight: 250) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 325, height: 250, layout: CONSTRAINED)
           }
           childImageSlideDesktop: childImageSharp {
-            fluid(maxWidth: 450, maxHeight: 400) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 450, height: 400, layout: CONSTRAINED)
           }
         }
       }
@@ -211,24 +207,36 @@ export const query = graphql`
             )
           }
           childImageMobile: childImageSharp {
-            fixed(width: 335, height: 260, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 335
+              height: 260
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 450, height: 320, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 450
+              height: 320
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 380, height: 420, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 380
+              height: 420
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 420, height: 340, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 420
+              height: 340
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
         }
       }
@@ -240,24 +248,31 @@ export const query = graphql`
             gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
           }
           childImageMobile: childImageSharp {
-            fixed(width: 1, height: 1) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(width: 1, height: 1, layout: FIXED)
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 250, height: 180, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 250
+              height: 180
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 340, height: 260, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 340
+              height: 260
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 270, height: 210, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 270
+              height: 210
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
         }
       }
@@ -269,24 +284,31 @@ export const query = graphql`
             gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
           }
           childImageMobile: childImageSharp {
-            fixed(width: 1, height: 1) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(width: 1, height: 1, layout: FIXED)
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 250, height: 495, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 250
+              height: 495
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 230, height: 210, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 230
+              height: 210
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 320, height: 210, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              width: 320
+              height: 210
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
         }
       }
