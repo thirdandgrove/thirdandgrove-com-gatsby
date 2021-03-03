@@ -43,6 +43,30 @@ const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
           padding-bottom: 115px;
           padding-top: 90px;
         }
+
+        .slick-arrow {
+          width: 20px;
+          height: 16px;
+          opacity: 0.7;
+          transition: 0.3s ease opacity;
+
+          &:hover,
+          &:focus {
+            opacity: 1;
+          }
+
+          &::before {
+            display: none;
+          }
+        }
+
+        .slick-prev {
+          background: url('/images/arrow-l.svg');
+        }
+
+        .slick-next {
+          background: url('/images/arrow-r.svg');
+        }
       `}
     >
       <h2 css={smSectionHead}>{title}</h2>
