@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const SEO = ({ description, lang, meta, keywords, title, image }) => {
+const SEO = ({ description, lang, meta, keywords, title, image, noIndex }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,6 +26,8 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
 
   const imageWithFullpath = `https://www.thirdandgrove.com${metaImage}`;
 
+  const metaRobots = noIndex ? 'noindex,nofollow' : 'index,follow';
+
   return (
     <Helmet
       htmlAttributes={{
@@ -34,6 +36,14 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
+        {
+          name: `googlebot`,
+          content: metaRobots,
+        },
+        {
+          name: `robots`,
+          content: metaRobots,
+        },
         {
           name: `description`,
           content: metaDescription,
@@ -167,6 +177,7 @@ SEO.defaultProps = {
   description: ``,
   title: null,
   image: null,
+  noIndex: false,
 };
 
 SEO.propTypes = {
@@ -176,6 +187,7 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string,
   image: PropTypes.string,
+  noIndex: PropTypes.bool,
 };
 
 export default SEO;
