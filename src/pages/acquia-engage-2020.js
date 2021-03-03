@@ -259,16 +259,6 @@ const AcquiaEngage = ({ data }) => {
         metaTitle: node.header[0].title,
         title: node.header[0].title,
         subTitle: node.header[0].date,
-        linksA: [
-          {
-            url: '../../Visit TAG at Acquia Engage 2020.ics',
-            text: '+iCal',
-          },
-          {
-            url: '../../Visit TAG at Acquia Engage 2020.ics',
-            text: '+Google Calendar',
-          },
-        ],
         mobileMinHeight: '93vh',
         hideNav: true,
         color: colors.yellow,
