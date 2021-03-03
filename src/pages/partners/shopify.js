@@ -196,7 +196,7 @@ const Shopify = query => {
           <br />
           Ready to get started?
         </p>
-        <ContactForm formName='drupal-support' />
+        <ContactForm formName='shopify-support' />
       </FullWidthSection>
     </Layout>
   );
