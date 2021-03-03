@@ -91,7 +91,7 @@ module.exports = {
         apiKey: process.env.RESUMATOR_API_KEY,
       },
     },
-    `gatsby-plugin-remove-serviceworker`,
+    ...(process.env === 'production' ? [`gatsby-plugin-offline`] : []),
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
