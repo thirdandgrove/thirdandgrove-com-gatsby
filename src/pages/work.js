@@ -75,10 +75,10 @@ const Project = ({ study, index }) => {
                     margin-bottom: 0;
 
                     > div {
-                      padding-bottom: ${index % 2 ? '76% !important' : '100%'};
+                      padding-bottom: ${index % 2 ? '8% !important' : '0%'};
                       padding-bottom: ${index % 4 === 2
-                        ? '131% !important'
-                        : '100%'};
+                        ? '64% !important'
+                        : '0%'};
                     }
                   }
                 `}
@@ -96,7 +96,7 @@ const Project = ({ study, index }) => {
               }
 
               &::after {
-                content: '+';
+                content: ' ';
                 position: absolute;
                 right: 0;
                 top: 0;
@@ -200,12 +200,6 @@ const Work = () => {
       field_image {
         alt
       }
-      field_secondary_image {
-        alt
-      }
-      field_tertiary_image {
-        alt
-      }
       path {
         alias
       }
@@ -220,111 +214,10 @@ const Work = () => {
             childImageSharp {
               gatsbyImageData(
                 transformOptions: { cropFocus: NORTH }
-                layout: FULL_WIDTH
-              )
-            }
-            childImageMobile: childImageSharp {
-              gatsbyImageData(
-                width: 335
-                height: 260
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-            childImageTypeA: childImageSharp {
-              gatsbyImageData(
-                width: 450
-                height: 320
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-            childImageTypeB: childImageSharp {
-              gatsbyImageData(
-                width: 380
-                height: 420
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-            childImageTypeC: childImageSharp {
-              gatsbyImageData(
-                width: 420
-                height: 340
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-          }
-        }
-        field_secondary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
-            }
-            childImageMobile: childImageSharp {
-              gatsbyImageData(width: 1, height: 1, layout: FIXED)
-            }
-            childImageTypeA: childImageSharp {
-              gatsbyImageData(
-                width: 250
-                height: 180
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-            childImageTypeB: childImageSharp {
-              gatsbyImageData(
-                width: 340
-                height: 260
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-            childImageTypeC: childImageSharp {
-              gatsbyImageData(
-                width: 270
-                height: 210
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-          }
-        }
-        field_tertiary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
-            }
-            childImageMobile: childImageSharp {
-              gatsbyImageData(width: 1, height: 1, layout: FIXED)
-            }
-            childImageTypeA: childImageSharp {
-              gatsbyImageData(
-                width: 250
-                height: 360
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-            childImageTypeB: childImageSharp {
-              gatsbyImageData(
-                width: 230
-                height: 210
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
-              )
-            }
-            childImageTypeC: childImageSharp {
-              gatsbyImageData(
-                width: 320
-                height: 210
-                transformOptions: { cropFocus: CENTER }
-                layout: FIXED
+                layout: CONSTRAINED
+                width: 1250
+                height: 850
+                formats: [AUTO, WEBP, AVIF]
               )
             }
           }

@@ -151,7 +151,11 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    gatsbyImageData(width: 800, layout: CONSTRAINED)
+                    gatsbyImageData(
+                      width: 800
+                      layout: CONSTRAINED
+                      formats: [AUTO, WEBP, AVIF]
+                    )
                   }
                 }
               }
@@ -204,6 +208,7 @@ export const query = graphql`
                       height: 600
                       transformOptions: { cropFocus: CENTER }
                       layout: CONSTRAINED
+                      formats: [AUTO, WEBP, AVIF]
                     )
                   }
                 }
@@ -232,6 +237,7 @@ export const query = graphql`
                       width: 800
                       transformOptions: { cropFocus: CENTER }
                       layout: CONSTRAINED
+                      formats: [AUTO, WEBP, AVIF]
                     )
                   }
                 }
@@ -252,6 +258,7 @@ export const query = graphql`
                 height: 500
                 transformOptions: { cropFocus: CENTER }
                 layout: CONSTRAINED
+                formats: [AUTO, WEBP, AVIF]
               )
             }
           }
@@ -261,7 +268,12 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              gatsbyImageData(width: 800, height: 600, layout: CONSTRAINED)
+              gatsbyImageData(
+                width: 800
+                height: 600
+                layout: CONSTRAINED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }
@@ -270,7 +282,12 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              gatsbyImageData(width: 800, height: 600, layout: CONSTRAINED)
+              gatsbyImageData(
+                width: 800
+                height: 600
+                layout: CONSTRAINED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }

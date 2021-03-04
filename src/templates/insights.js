@@ -133,7 +133,12 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              gatsbyImageData(width: 980, height: 500, layout: CONSTRAINED)
+              gatsbyImageData(
+                width: 980
+                height: 500
+                layout: CONSTRAINED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }
@@ -163,7 +168,11 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    gatsbyImageData(width: 800, layout: CONSTRAINED)
+                    gatsbyImageData(
+                      width: 800
+                      layout: CONSTRAINED
+                      formats: [AUTO, WEBP, AVIF]
+                    )
                   }
                 }
               }
@@ -215,6 +224,7 @@ export const query = graphql`
                       width: 600
                       height: 600
                       layout: CONSTRAINED
+                      formats: [AUTO, WEBP, AVIF]
                     )
                   }
                 }
@@ -239,7 +249,11 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    gatsbyImageData(width: 800, layout: CONSTRAINED)
+                    gatsbyImageData(
+                      width: 800
+                      layout: CONSTRAINED
+                      formats: [AUTO, WEBP, AVIF]
+                    )
                   }
                 }
               }

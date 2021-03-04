@@ -200,6 +200,7 @@ export const query = graphql`
               height: 850
               transformOptions: { cropFocus: CENTER }
               layout: CONSTRAINED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
           childImageMobile: childImageSharp {
@@ -208,6 +209,7 @@ export const query = graphql`
               height: 260
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
           childImageTypeA: childImageSharp {
@@ -216,6 +218,7 @@ export const query = graphql`
               height: 320
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
           childImageTypeB: childImageSharp {
@@ -224,6 +227,7 @@ export const query = graphql`
               height: 420
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
           childImageTypeC: childImageSharp {
@@ -232,6 +236,7 @@ export const query = graphql`
               height: 340
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
         }
@@ -241,10 +246,20 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
+            gatsbyImageData(
+              width: 850
+              height: 850
+              layout: CONSTRAINED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
           childImageMobile: childImageSharp {
-            gatsbyImageData(width: 1, height: 1, layout: FIXED)
+            gatsbyImageData(
+              width: 1
+              height: 1
+              layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
           childImageTypeA: childImageSharp {
             gatsbyImageData(
@@ -252,6 +267,7 @@ export const query = graphql`
               height: 180
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
           childImageTypeB: childImageSharp {
@@ -260,6 +276,7 @@ export const query = graphql`
               height: 260
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
           childImageTypeC: childImageSharp {
@@ -268,6 +285,7 @@ export const query = graphql`
               height: 210
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
         }
@@ -277,17 +295,28 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
+            gatsbyImageData(
+              width: 850
+              height: 850
+              layout: CONSTRAINED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
           childImageMobile: childImageSharp {
-            gatsbyImageData(width: 1, height: 1, layout: FIXED)
+            gatsbyImageData(
+              width: 1
+              height: 1
+              layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
           childImageTypeA: childImageSharp {
             gatsbyImageData(
               width: 250
-              height: 360
+              height: 495
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
           childImageTypeB: childImageSharp {
@@ -296,6 +325,7 @@ export const query = graphql`
               height: 210
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
           childImageTypeC: childImageSharp {
@@ -304,6 +334,7 @@ export const query = graphql`
               height: 210
               transformOptions: { cropFocus: CENTER }
               layout: FIXED
+              formats: [AUTO, WEBP, AVIF]
             )
           }
         }

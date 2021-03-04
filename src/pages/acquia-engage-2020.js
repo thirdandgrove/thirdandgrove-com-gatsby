@@ -475,6 +475,7 @@ export const query = graphql`
             width: 335
             transformOptions: { cropFocus: NORTH }
             layout: CONSTRAINED
+            formats: [AUTO, WEBP, AVIF]
           )
         }
       }

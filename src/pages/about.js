@@ -66,14 +66,6 @@ const About = ({ data }) => {
         margin-bottom: 90px;
       }
     }
-
-    .gatsby-image-wrapper > div {
-      // Forcing correct image aspect ratio, overriding inline
-      // gatsby-image provided styles
-      ${mediaQueries.phoneLarge} {
-        padding-bottom: 68% !important;
-      }
-    }
   `;
 
   const Row = styled.section`
@@ -168,15 +160,6 @@ const About = ({ data }) => {
         ${pLight};
         padding: 0;
         margin: 0 0 1px 0;
-      }
-    }
-    .gatsby-image-wrapper > div {
-      // Forcing correct image aspect ratio, overriding inline
-      // gatsby-image provided styles
-      padding-bottom: 100% !important;
-
-      ${mediaQueries.phoneLarge} {
-        padding-bottom: 63.2% !important;
       }
     }
   `;
@@ -403,6 +386,7 @@ export const query = graphql`
             width: 980
             transformOptions: { cropFocus: NORTH }
             layout: CONSTRAINED
+            formats: [AUTO, WEBP, AVIF]
           )
         }
       }
@@ -418,10 +402,10 @@ export const query = graphql`
         name
         childImageSharp {
           gatsbyImageData(
-            height: 335
-            width: 335
             transformOptions: { cropFocus: NORTH }
-            layout: CONSTRAINED
+            layout: FULL_WIDTH
+            aspectRatio: 1.275
+            formats: [AUTO, WEBP, AVIF]
           )
         }
       }

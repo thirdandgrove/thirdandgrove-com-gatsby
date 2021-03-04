@@ -203,7 +203,12 @@ export const query = graphql`
     slider: allFile(filter: { absolutePath: { regex: "/boston-page/" } }) {
       nodes {
         childImageSharp {
-          gatsbyImageData(width: 363, height: 363, layout: CONSTRAINED)
+          gatsbyImageData(
+            width: 363
+            height: 363
+            layout: CONSTRAINED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }

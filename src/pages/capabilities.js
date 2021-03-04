@@ -83,6 +83,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
                   margin-bottom: 20px;
 
                   > div {
+                    height: 0;
                     padding-bottom: 100% !important;
                   }
 
@@ -249,22 +250,22 @@ export const query = graphql`
   query CapabilitiesQuery {
     technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED, formats: [AUTO, WEBP, AVIF])
       }
     }
     strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED, formats: [AUTO, WEBP, AVIF])
       }
     }
     creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED, formats: [AUTO, WEBP, AVIF])
       }
     }
     dataImageDesktop: file(relativePath: { eq: "data.png" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED, formats: [AUTO, WEBP, AVIF])
       }
     }
   }

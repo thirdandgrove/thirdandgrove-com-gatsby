@@ -77,16 +77,6 @@ const ArticlePreviewSlide = ({ article }) => {
           <div
             css={css`
               flex: 0 0 38%;
-
-              .gatsby-image-wrapper > div {
-                // Forcing correct image aspect ratio, overriding inline
-                // gatsby-image provided styles
-                padding-bottom: 77% !important;
-
-                ${mediaQueries.phoneLarge} {
-                  padding-bottom: 88.9% !important;
-                }
-              }
             `}
           >
             <GatsbyImage
