@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import mp4 from '../../static/thirdgrove-work.mp4';
@@ -58,10 +58,10 @@ const Project = ({ study, index }) => {
             }}
           >
             {({ transform, opacity }) => (
-              <Img
-                fluid={
+              <GatsbyImage
+                image={
                   study.relationships.field_image.localFile.childImageSharp
-                    .fluid
+                    .gatsbyImageData
                 }
                 alt={study.field_image.alt}
                 style={{ transform, opacity }}
@@ -75,10 +75,10 @@ const Project = ({ study, index }) => {
                     margin-bottom: 0;
 
                     > div {
-                      padding-bottom: ${index % 2 ? '76% !important' : '100%'};
+                      padding-bottom: ${index % 2 ? '8% !important' : '0%'};
                       padding-bottom: ${index % 4 === 2
-                        ? '131% !important'
-                        : '100%'};
+                        ? '64% !important'
+                        : '0%'};
                     }
                   }
                 `}
@@ -96,7 +96,7 @@ const Project = ({ study, index }) => {
               }
 
               &::after {
-                content: '+';
+                content: ' ';
                 position: absolute;
                 right: 0;
                 top: 0;
@@ -190,6 +190,7 @@ const Work = () => {
         }
       }
     }
+
     fragment CaseStudyFragmentHere on case_study {
       id
       title
@@ -197,12 +198,6 @@ const Work = () => {
       field_inverse_header
       field_image_arrangement
       field_image {
-        alt
-      }
-      field_secondary_image {
-        alt
-      }
-      field_tertiary_image {
         alt
       }
       path {
@@ -217,91 +212,13 @@ const Work = () => {
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 1250, maxHeight: 850, cropFocus: NORTH) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 335, height: 260, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeA: childImageSharp {
-              fixed(width: 450, height: 320, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 380, height: 420, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 420, height: 340, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-          }
-        }
-        field_secondary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 1, height: 1) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeA: childImageSharp {
-              fixed(width: 250, height: 180, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 340, height: 260, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 270, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-          }
-        }
-        field_tertiary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 1, height: 1) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeA: childImageSharp {
-              fixed(width: 250, height: 495, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 230, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 320, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
+              gatsbyImageData(
+                transformOptions: { cropFocus: NORTH }
+                layout: CONSTRAINED
+                width: 1250
+                height: 850
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }

@@ -51,13 +51,9 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    {
-      resolve: 'gatsby-plugin-sharp',
-      options: {
-        defaultQuality: 80,
-      },
-    },
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -88,7 +84,7 @@ module.exports = {
         apiKey: process.env.RESUMATOR_API_KEY,
       },
     },
-    `gatsby-plugin-remove-serviceworker`,
+    ...(process.env === 'production' ? [`gatsby-plugin-offline`] : []),
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {

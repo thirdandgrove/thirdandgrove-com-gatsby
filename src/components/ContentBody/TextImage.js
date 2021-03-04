@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import {
@@ -43,8 +43,11 @@ const TextImage = ({ data }) => {
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
-        <Img
-          fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
+        <GatsbyImage
+          image={
+            data.relationships.field_image.localFile.childImageSharp
+              .gatsbyImageData
+          }
           alt={data.field_image.alt}
           css={css`
             margin-bottom: 40px;
@@ -62,8 +65,11 @@ const TextImage = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       />
       <section>
-        <Img
-          fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
+        <GatsbyImage
+          image={
+            data.relationships.field_image.localFile.childImageSharp
+              .gatsbyImageData
+          }
           alt={data.field_image.alt}
           css={css`
             margin-bottom: 40px;

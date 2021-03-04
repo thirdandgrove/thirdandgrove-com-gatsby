@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { NewsletterSimpleOverlay } from '../components/NewsletterForm';
 import LogoGrid from '../components/LogoGrid';
@@ -28,7 +28,8 @@ const AcquiaEngage = ({ data }) => {
   const images = data.allFile.nodes;
 
   const getSrc = name => {
-    return images.find(img => img.name === name).childImageSharp.fluid;
+    return images.find(img => img.name === name).childImageSharp
+      .gatsbyImageData;
   };
 
   const getImageSrc = imgName =>
@@ -259,16 +260,6 @@ const AcquiaEngage = ({ data }) => {
         metaTitle: node.header[0].title,
         title: node.header[0].title,
         subTitle: node.header[0].date,
-        linksA: [
-          {
-            url: '../../Visit TAG at Acquia Engage 2020.ics',
-            text: '+iCal',
-          },
-          {
-            url: '../../Visit TAG at Acquia Engage 2020.ics',
-            text: '+Google Calendar',
-          },
-        ],
         mobileMinHeight: '93vh',
         hideNav: true,
         color: colors.yellow,
@@ -298,9 +289,9 @@ const AcquiaEngage = ({ data }) => {
         `}
       >
         <div css={[splitWithButtonsCss, container.medium]}>
-          <Img
+          <GatsbyImage
+            image={getSrc('cc-transparent')}
             alt='Third and Grove Card Caddy'
-            fluid={getSrc('cc-transparent')}
             className='cc-image'
           />
           <h3>{node.header[0].subtitle}</h3>
@@ -364,7 +355,7 @@ const AcquiaEngage = ({ data }) => {
         <div css={[splitWithImageCss, container.medium]}>
           {node.who[0].people.map(({ img, name, email, title }) => (
             <div key={name}>
-              <Img alt={name} fluid={getSrc(img, 'leader')} />
+              <GatsbyImage image={getSrc(img, 'leader')} alt={name} />
               <h4>{name}</h4>
               <p>
                 <a href={`mailto:${email}`}>Say Hi</a>
@@ -479,9 +470,13 @@ export const query = graphql`
         name
         publicURL
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            height: 335
+            width: 335
+            transformOptions: { cropFocus: NORTH }
+            layout: CONSTRAINED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }

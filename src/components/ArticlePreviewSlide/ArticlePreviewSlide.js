@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
@@ -77,22 +77,12 @@ const ArticlePreviewSlide = ({ article }) => {
           <div
             css={css`
               flex: 0 0 38%;
-
-              .gatsby-image-wrapper > div {
-                // Forcing correct image aspect ratio, overriding inline
-                // gatsby-image provided styles
-                padding-bottom: 77% !important;
-
-                ${mediaQueries.phoneLarge} {
-                  padding-bottom: 88.9% !important;
-                }
-              }
             `}
           >
-            <Img
-              fluid={
+            <GatsbyImage
+              image={
                 article.relationships.field_image.localFile.childImageSharp
-                  .fluid
+                  .gatsbyImageData
               }
               alt={article.field_image.alt}
             />

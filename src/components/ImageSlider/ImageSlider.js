@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import { mediaQueries } from '../../styles';
@@ -70,8 +70,8 @@ const ImageSlider = ({ data }) => {
         {data &&
           data.nodes.map(node => {
             return (
-              <Img
-                fluid={node.childImageSharp.fluid}
+              <GatsbyImage
+                image={node.childImageSharp.gatsbyImageData}
                 key={node.publicURL}
                 alt='Boston'
               />

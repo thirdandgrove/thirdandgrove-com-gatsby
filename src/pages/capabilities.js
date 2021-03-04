@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { fonts, mediaQueries, container, weights } from '../styles';
 import Layout from '../components/layout';
@@ -74,8 +74,8 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
             }}
           >
             {({ transform, opacity }) => (
-              <Img
-                fluid={imageSrc}
+              <GatsbyImage
+                image={imageSrc}
                 alt={imageAlt}
                 style={{ transform, opacity }}
                 css={css`
@@ -83,6 +83,7 @@ const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
                   margin-bottom: 20px;
 
                   > div {
+                    height: 0;
                     padding-bottom: 100% !important;
                   }
 
@@ -140,7 +141,7 @@ const CapabilitiesPage = ({ data }) => {
     >
       <Capability
         id='technology'
-        imageSrc={data.technologyImageDesktop.childImageSharp.fluid}
+        imageSrc={data.technologyImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Laptop on desk with drink'
         content={
           <>
@@ -173,7 +174,7 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='strategy'
-        imageSrc={data.strategyImageDesktop.childImageSharp.fluid}
+        imageSrc={data.strategyImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Two office workers looking at a chart on a laptop'
         content={
           <>
@@ -196,7 +197,7 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='creative'
-        imageSrc={data.creativeImageDesktop.childImageSharp.fluid}
+        imageSrc={data.creativeImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Man drawing logos in a notebook'
         content={
           <>
@@ -220,7 +221,7 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='data'
-        imageSrc={data.dataImageDesktop.childImageSharp.fluid}
+        imageSrc={data.dataImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Black and Red'
         content={
           <>
@@ -249,30 +250,22 @@ export const query = graphql`
   query CapabilitiesQuery {
     technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, formats: [AUTO, WEBP, AVIF])
       }
     }
     strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, formats: [AUTO, WEBP, AVIF])
       }
     }
     creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, formats: [AUTO, WEBP, AVIF])
       }
     }
     dataImageDesktop: file(relativePath: { eq: "data.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, formats: [AUTO, WEBP, AVIF])
       }
     }
   }

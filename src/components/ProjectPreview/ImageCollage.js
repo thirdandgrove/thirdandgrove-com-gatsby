@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage, withArtDirection } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import { mediaQueries, jsBreakpoints } from '../../styles';
@@ -195,42 +195,39 @@ const ImageCollage = ({ images, type }) => {
     <div className={type} css={collageWrapper}>
       <div className='collage-board' css={collageBoardBase}>
         <div css={primaryWrapperBase} className='primary-wrapper'>
-          <Img
-            fixed={[
-              images.primary.mobile.fixed,
+          <GatsbyImage
+            image={withArtDirection(images.primary.mobile.gatsbyImageData, [
               {
-                ...images.primary.phoneLarge.fixed,
+                image: images.primary.phoneLarge.gatsbyImageData,
                 media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
               },
-            ]}
+            ])}
             alt={images.primary.alt}
             className={`primary${selectedClass()}`}
             css={imageStyles}
           />
         </div>
         <div css={secTertWrapperBase} className='secondary-wrapper'>
-          <Img
-            fixed={[
-              images.secondary.mobile.fixed,
+          <GatsbyImage
+            image={withArtDirection(images.secondary.mobile.gatsbyImageData, [
               {
-                ...images.secondary.phoneLarge.fixed,
+                image: images.secondary.phoneLarge.gatsbyImageData,
                 media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
               },
-            ]}
+            ])}
             alt={images.secondary.alt}
             className={`secondary${selectedClass()}`}
             css={imageStyles}
           />
         </div>
         <div css={secTertWrapperBase} className='tertiary-wrapper'>
-          <Img
-            fixed={[
-              images.tertiary.mobile.fixed,
+          <GatsbyImage
+            image={withArtDirection(images.tertiary.mobile.gatsbyImageData, [
               {
-                ...images.tertiary.phoneLarge.fixed,
+                image: images.tertiary.phoneLarge.gatsbyImageData,
                 media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
               },
-            ]}
+            ])}
             alt={images.tertiary.alt}
             className={`tertiary${selectedClass()}`}
             css={imageStyles}
