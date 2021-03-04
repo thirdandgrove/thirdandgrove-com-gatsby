@@ -53,7 +53,43 @@ import dadiAwards from './logos/dadi-awards.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
-    acquiaEngage: [
+    all: [
+      <img
+        src={mintLogo}
+        alt='Mint'
+        width={isSmScreen ? '100' : '156'}
+        height={isSmScreen ? '32' : '50'}
+      />,
+      <img
+        src={sunpowerLogo}
+        alt='Sunpower'
+        width={isSmScreen ? '134' : '183'}
+        height={isSmScreen ? '32' : '44'}
+      />,
+      <img
+        src={glanbia}
+        alt='glanbia'
+        width={isSmScreen ? '100' : '148'}
+        height={isSmScreen ? '49' : '74'}
+      />,
+      <img
+        src={wvi}
+        alt='World Vision'
+        width={isSmScreen ? '188' : '194'}
+        height={isSmScreen ? '100' : '40'}
+      />,
+      <img
+        src={kingArthur}
+        alt='King Arthur'
+        width={isSmScreen ? '62' : '94'}
+        height={isSmScreen ? '62' : '94'}
+      />,
+      <img
+        src={cooperVision}
+        alt='Cooper Vision'
+        width={isSmScreen ? '134' : '177'}
+        height={isSmScreen ? '24' : '32'}
+      />,
       <img
         src={cloudHealth}
         alt='Cloud Health'
@@ -61,66 +97,52 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '122' : '50'}
       />,
       <img
-        src={isgm}
-        alt='ISGM'
-        width={isSmScreen ? '150' : '180'}
-        height={isSmScreen ? '37' : '50'}
+        src={stubhub}
+        alt='StubHub'
+        width={isSmScreen ? '166' : '240'}
+        height={isSmScreen ? '142' : '100'}
       />,
       <img
-        src={carlyle}
-        alt='Carlyle'
-        width={isSmScreen ? '126' : '200'}
-        height={isSmScreen ? '122' : '50'}
-      />,
-    ],
-    shopify: [
-      <img
-        src={memebox}
-        alt='memebox'
-        width={isSmScreen ? '135' : '170'}
-        height={isSmScreen ? '16' : '24'}
+        src={geLogo}
+        alt='General Electric'
+        width={isSmScreen ? '53' : '72'}
+        height={isSmScreen ? '53' : '72'}
       />,
       <img
-        src={ccLogo}
-        alt='California Closets'
-        width={isSmScreen ? '99' : '136'}
-        height={isSmScreen ? '37' : '50'}
+        src={dassault}
+        alt='Dassault Systemes'
+        width={isSmScreen ? '166' : '240'}
+        height={isSmScreen ? '142' : '80'}
       />,
       <img
-        src={goldwin}
-        alt='goldwin'
-        width={isSmScreen ? '125' : '180'}
-        height={isSmScreen ? '36' : '52'}
+        src={benefitLogo}
+        alt='Benefit'
+        width={isSmScreen ? '105' : '140'}
+        height={isSmScreen ? '35' : '46'}
       />,
       <img
-        src={gaiam}
-        alt='gaiam'
-        width={isSmScreen ? '61' : '81'}
-        height={isSmScreen ? '68' : '90'}
+        src={uclaLogo}
+        alt='UCLA'
+        width={isSmScreen ? '85' : '116'}
+        height={isSmScreen ? '40' : '54'}
       />,
       <img
-        src={brainiac}
-        alt='brainiac'
-        width={isSmScreen ? '93' : '150'}
-        height={isSmScreen ? '31' : '51'}
+        src={umg}
+        alt='Universal'
+        width={isSmScreen ? '200' : '240'}
+        height={isSmScreen ? '42' : '43'}
       />,
       <img
-        src={equator}
-        alt='equator'
-        width={isSmScreen ? '99' : '150'}
-        height={isSmScreen ? '34' : '52'}
+        src={wsiLogo}
+        alt='Williams-Sonoma Inc.'
+        width={isSmScreen ? '98' : '134'}
+        height={isSmScreen ? '32' : '43'}
       />,
       <img
-        src={absolutLogo}
-        alt='Absolut Vodka'
-        width={isSmScreen ? '94' : '150'}
-        height={isSmScreen ? '20' : '32'}
-      />,
-      <img
-        src={jameson}
-        alt='jameson'
-        width={isSmScreen ? '95' : '150'}
-        height={isSmScreen ? '48' : '76'}
+        src={reebok}
+        alt='Reebok'
+        width={isSmScreen ? '240' : '240'}
+        height={isSmScreen ? '62' : '43'}
       />,
     ],
     acquia: [
