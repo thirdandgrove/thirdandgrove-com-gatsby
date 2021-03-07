@@ -76,7 +76,7 @@ const BigCommerce = query => {
       <ProjectsSlider
         data={caseStudies}
         backgroundColor={colors.lightgray}
-        tech='BigCommerce'
+        tech={['Big Commerce', 'ecommerce']}
       />
       <SplitSection gridColumnGap='16px' css={partnersProjects}>
         <article>
