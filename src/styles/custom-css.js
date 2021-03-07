@@ -52,6 +52,9 @@ export const btnStyles = css`
       ${colors.darkgray} 50%,
       ${colors.white} 50%
     );
+    @media all and (-ms-high-contrast: none) {
+      background-image: none;
+    }
     background-size: 100% 200%;
     background-position: top;
     transition: all 0.3s ease;
@@ -73,6 +76,10 @@ export const btnStyles = css`
 
     span {
       background-position: bottom;
+    }
+
+    @media all and (-ms-high-contrast: none) {
+      color: ${colors.white};
     }
 
     &::before {

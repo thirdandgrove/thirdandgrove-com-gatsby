@@ -166,7 +166,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
   `;
 
   return (
-    <FullWidthSection height='0' css={SliderSectionStyles}>
+    <FullWidthSection height='0' customStyles={SliderSectionStyles}>
       <h2 css={smSectionHead}>{title}</h2>
 
       <Slider {...settingsMain}>

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Spring } from 'react-spring/renderprops';
+import { Spring } from 'react-spring/renderprops.cjs';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
@@ -16,9 +16,21 @@ const ArticlePreview = ({ article }) => {
 
   const Card = styled.div`
     width: 100%;
-    margin-bottom: 116px;
+    margin-bottom: 116px
     transition-duration: 0.4s;
     transition-timing-function: ease-out;
+    @media all and (-ms-high-contrast: none) {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      flex: 100%;
+      margin: 0;
+    }
+
+    @media all and (-ms-high-contrast: none) and (min-width: 900px) {
+      flex: 45%;
+      margin: 0 25px;
+    }
+
     ${mediaQueries.phoneLarge} {
       margin-bottom: 90px;
     }

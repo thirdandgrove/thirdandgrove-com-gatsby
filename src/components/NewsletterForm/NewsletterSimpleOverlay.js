@@ -87,7 +87,7 @@ const NewsletterSimpleOverlay = ({
       <FullWidthSection
         className={isActive ? 'active' : ''}
         padding='60px 20px'
-        css={css`
+        customStyles={css`
           ${mediaQueries.phoneLarge} {
           }
           position: fixed;

@@ -142,7 +142,7 @@ const Boston = ({ data }) => {
 
       <FullWidthSection
         height='750px'
-        css={css`
+        customStyles={css`
           background-color: ${colors.white};
           z-index: 1;
           height: 600px;

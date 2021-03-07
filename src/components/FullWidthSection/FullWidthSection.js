@@ -1,25 +1,62 @@
 import styled from '@emotion/styled';
-
+import React, { forwardRef } from 'react';
 import { weights, mediaQueries } from '../../styles';
 
-export default styled.section`
-  width: ${props => props.width || '100%'};
-  min-height: ${props => props.minHeight || '300px'};
-  display: flex;
-  font-weight: ${props => props.fontWeight || weights.medium};
-  flex-direction: ${props => props.flexDirection || 'column'};
-  align-items: ${props => props.align || 'center'};
-  justify-content: ${props => props.justify || 'center'};
-  background-color: ${props => props.backgroundColor};
-  background-image: url(${props => props.backgroundImage});
-  background-size: cover;
-  overflow: hidden;
-  background-position: center;
-  margin: ${props => props.margin || '0 auto'};
-  padding: ${props => props.padding || '0 20px'};
-  text-align: ${props => props.textAlign || 'left'};
+const FullWidthSection = forwardRef((props, ref) => {
+  const {
+    width,
+    minHeight,
+    fontWeight,
+    flexDirection,
+    align,
+    justify,
+    backgroundColor,
+    backgroundImage,
+    margin,
+    padding,
+    textAlign,
+    height,
+  } = props;
+  // This outer container solves this https://github.com/philipwalton/flexbugs#flexbug-3
+  // flexbox bug in ie11 when setting only min-height
+  // We needed to make this a function component instead
+  // of a pure styled component to add the outer wrapper.
+  const OuterSection = styled.div`
+    @media all and (-ms-high-contrast: none) {
+      display: flex;
+      flex-direction: column;
+    }
+  `;
 
-  ${mediaQueries.phoneLarge} {
-    min-height: ${props => props.height || '700px'};
-  }
-`;
+  const InnerSection = styled.section`
+    width: ${width || '100%'};
+    min-height: ${minHeight || '300px'};
+    display: flex;
+    font-weight: ${fontWeight || weights.medium};
+    flex-direction: ${flexDirection || 'column'};
+    align-items: ${align || 'center'};
+    justify-content: ${justify || 'center'};
+    background-color: ${backgroundColor};
+    background-image: url(${backgroundImage});
+    background-size: cover;
+    overflow: hidden;
+    background-position: center;
+    margin: ${margin || '0 auto'};
+    padding: ${padding || '0 20px'};
+    text-align: ${textAlign || 'left'};
+
+    ${mediaQueries.phoneLarge} {
+      min-height: ${height || '700px'};
+    }
+  `;
+
+  return (
+    <OuterSection>
+      <InnerSection ref={ref} css={props.customStyles}>
+        {props.children}
+      </InnerSection>
+    </OuterSection>
+  );
+});
+
+export default FullWidthSection;

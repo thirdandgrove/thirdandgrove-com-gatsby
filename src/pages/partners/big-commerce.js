@@ -29,7 +29,7 @@ const BigCommerce = query => {
         titlePadding: '0 100px',
       }}
     >
-      <FullWidthSection height='400px' align='left' css={list}>
+      <FullWidthSection height='400px' align='left' customStyles={list}>
         <h4>Scale your sales potential with BigCommerce</h4>
         <p>
           We work directly with incredible organizations to build complex

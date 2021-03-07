@@ -4,7 +4,6 @@ import { navigate, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
@@ -36,7 +35,9 @@ const About = ({ data }) => {
 
     div {
       ${mediaQueries.phoneLarge} {
-        flex: 0 0 calc(50% - 86px);
+        flex-basis: calc(50% - 86px);
+        flex-grow: 0;
+        flex-shrink: 0;
         padding-top: 20px;
 
         &:nth-child(odd):last-child {
@@ -62,6 +63,7 @@ const About = ({ data }) => {
       ${pLight};
       margin-bottom: 64px;
       text-align: center;
+
       ${mediaQueries.phoneLarge} {
         margin-bottom: 90px;
       }
@@ -72,6 +74,10 @@ const About = ({ data }) => {
       // gatsby-image provided styles
       ${mediaQueries.phoneLarge} {
         padding-bottom: 68% !important;
+      }
+
+      @media all and (-ms-high-contrast: none) {
+        padding-bottom: 95% !important;
       }
     }
   `;
@@ -120,9 +126,21 @@ const About = ({ data }) => {
     }
   `;
   const Location = styled.section`
+    @media all and (-ms-high-contrast: none) {
+      flex: none;
+      margin: 0;
+      text-align: center;
+    }
+
+    @media all and (-ms-high-contrast: none) and (min-width: 900px) {
+      flex: 1;
+      margin: 0 25px;
+    }
+
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
+
     h2,
     h3,
     p {
@@ -202,7 +220,7 @@ const About = ({ data }) => {
       <FullWidthSection
         textAlign='center'
         height='100%'
-        css={css`
+        customStyles={css`
           ${container.medium};
           padding-top: 20px;
 
@@ -240,7 +258,7 @@ const About = ({ data }) => {
       </FullWidthSection>
       <FullWidthSection
         height='550px'
-        css={css`
+        customStyles={css`
           background-color: ${colors.lightblue};
           z-index: 1;
           height: 600px;
@@ -269,7 +287,7 @@ const About = ({ data }) => {
         </p>
       </FullWidthSection>
       <FullWidthSection
-        css={css`
+        customStyles={css`
           padding: 44px 0 0;
 
           ${mediaQueries.desktop} {
@@ -321,7 +339,7 @@ const About = ({ data }) => {
         defaultItemWidth='33%'
       />
       <FullWidthSection
-        css={css`
+        customStyles={css`
           padding: 44px 0 0;
 
           ${mediaQueries.desktop} {
@@ -348,7 +366,7 @@ const About = ({ data }) => {
         height='400px'
         backgroundColor={colors.lightblue}
         padding='0 0 30px'
-        css={css`
+        customStyles={css`
           z-index: 1;
         `}
       >

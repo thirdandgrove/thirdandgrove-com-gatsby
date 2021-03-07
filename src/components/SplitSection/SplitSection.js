@@ -13,6 +13,16 @@ const SplitSection = ({
   <div
     {...props}
     css={css`
+      @media all and (-ms-high-contrast: none) {
+        display: flex;
+        flex-flow: column nowrap;
+      }
+
+      @media all and (-ms-high-contrast: none) and (min-width: 900px) {
+        display: flex;
+        flex-flow: row nowrap;
+      }
+
       ${mediaQueries.phoneLarge} {
         display: grid;
         grid-template-columns: ${gridTemplateColumns};

@@ -27,7 +27,7 @@ const Shopify = query => {
         titlePadding: '0 100px',
       }}
     >
-      <FullWidthSection height='400px' align='left' css={partnersSub}>
+      <FullWidthSection height='400px' align='left' customStyles={partnersSub}>
         <h4>Scalable, commerce-first experiences</h4>
         <p>
           Commerce is increasingly less about selling and more about inspiring

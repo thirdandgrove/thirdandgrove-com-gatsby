@@ -27,6 +27,10 @@ const CTAGrid = ({
     grid-row-gap: 70px;
     width: 100%;
     padding-bottom: 0;
+    @media all and (-ms-high-contrast: none) {
+      display: flex;
+      flex-flow: row nowrap;
+    }
 
     ${mediaQueries.phoneLarge} {
       ${container.textOnly}
@@ -48,6 +52,11 @@ const CTAGrid = ({
       -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
       grid-column-gap: 100px;
+    }
+
+    @media all and (-ms-high-contrast: none) and (min-width: 900px) {
+      display: flex;
+      flex-flow: row nowrap;
     }
   `;
 
@@ -99,7 +108,10 @@ const CTAGrid = ({
   const getImageSrc = name => images.filter(({ node }) => name === node.name);
 
   return (
-    <FullWidthSection css={sectionStyles} backgroundColor={backgroundColor}>
+    <FullWidthSection
+      customStyles={sectionStyles}
+      backgroundColor={backgroundColor}
+    >
       {header !== '' && <h3>{header}</h3>}
       <div css={!altStyle ? ctaGridContainer : ctaGridContainerAlt}>
         {items.map(({ node }) => (

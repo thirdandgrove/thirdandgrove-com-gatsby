@@ -114,6 +114,16 @@ const Insights = ({ data }) => {
               padding-top: 20px;
               margin-bottom: 30px;
 
+              @media all and (-ms-high-contrast: none) {
+                display: flex;
+                flex-flow: column nowrap;
+              }
+
+              @media all and (-ms-high-contrast: none) and (min-width: 900px) {
+                display: flex;
+                flex-flow: row;
+              }
+
               ${mediaQueries.phoneLarge} {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
