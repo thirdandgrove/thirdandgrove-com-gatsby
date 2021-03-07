@@ -19,6 +19,7 @@ import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
+import AcquiaBadge from '../../../static/images/acquia-badge.svg';
 
 const Acquia = query => {
   const { insights, caseStudies } = query.data;
@@ -52,6 +53,13 @@ const Acquia = query => {
       padding: 110px 0;
     }
   `;
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
+  `;
+
   return (
     <Layout
       headerData={{
@@ -114,6 +122,9 @@ const Acquia = query => {
           }
         `}
       >
+        <div css={badgeStyle}>
+          <img src={AcquiaBadge} alt='Acquia Badge' width='180' height='180' />
+        </div>
         <h3>Team up with a partner who is tight with Acquia</h3>
         <p>
           We’ve invested over 130,000 hours on the Acquia platform (we’re good

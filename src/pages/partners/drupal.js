@@ -19,6 +19,7 @@ import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
+import DrupalBadge from '../../../static/images/drupal-badge.svg';
 
 const Drupal = query => {
   const { insights, caseStudies } = query.data;
@@ -52,6 +53,13 @@ const Drupal = query => {
       padding: 110px 0;
     }
   `;
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
+  `;
+
   return (
     <Layout
       headerData={{
@@ -111,6 +119,9 @@ const Drupal = query => {
           }
         `}
       >
+        <div css={badgeStyle}>
+          <img src={DrupalBadge} alt='Drupal Badge' width='180' height='180' />
+        </div>
         <h3>Go from bottlenecked to bottoms up</h3>
         <p>
           We partner with brands that give a damn about their Drupal
