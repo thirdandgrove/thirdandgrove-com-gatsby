@@ -222,14 +222,16 @@ export const query = graphql`
         }
       }
     }
-    hawaiianHostMac: file(relativePath: { eq: "hawaiian-host-macbook.png" }) {
+    hawaiianHostMac: file(
+      relativePath: { eq: "hawaiian-host-macbook@2x.png" }
+    ) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
-    badlandsMac: file(relativePath: { eq: "badlands-macbook.png" }) {
+    badlandsMac: file(relativePath: { eq: "badlands-macbook@2x.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
