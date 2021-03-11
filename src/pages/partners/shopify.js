@@ -226,14 +226,14 @@ export const query = graphql`
       relativePath: { eq: "hawaiian-host-macbook@2x.png" }
     ) {
       childImageSharp {
-        fluid {
+        fluid(maxWidth: 1440, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     badlandsMac: file(relativePath: { eq: "badlands-macbook@2x.png" }) {
       childImageSharp {
-        fluid {
+        fluid(maxWidth: 1440, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
