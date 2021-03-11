@@ -19,7 +19,10 @@ const Video = ({ data }) => {
   const { width } = useWindow();
   const refVimeo = useRef();
   const isLgScreen = width >= jsBreakpoints.phoneLarge;
-  const showControls = data.field_video_controls;
+  const {
+    field_vimeo_video_link: videoLink,
+    field_video_controls: showControls,
+  } = data;
   const [playing, setPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [buttonX, setButtonX] = useState('50%');
@@ -143,7 +146,7 @@ const Video = ({ data }) => {
       )}
       <ReactPlayer
         css={playerStyles}
-        url={data.field_vimeo_video_link.uri}
+        url={videoLink.uri}
         playing={playing}
         ref={refVimeo}
         width='100%'
