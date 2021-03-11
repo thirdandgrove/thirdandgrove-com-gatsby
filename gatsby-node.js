@@ -16,7 +16,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const queries = await graphql(`
     query {
-      caseStudies: allCaseStudy() {
+      caseStudies: allCaseStudy {
         nodes {
           id
           title
@@ -26,7 +26,7 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
-      insights: allInsight() {
+      insights: allInsight {
         nodes {
           id
           title
