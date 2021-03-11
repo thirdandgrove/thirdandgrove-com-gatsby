@@ -1,8 +1,7 @@
 require('dotenv').config();
 
-const isProduction = (
-  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
-);
+const isProduction =
+  process.env.BRANCH !== undefined && process.env.BRANCH === 'master';
 
 module.exports = {
   siteMetadata: {
@@ -196,6 +195,12 @@ module.exports = {
             host: null,
           },
         },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        devMode: true,
       },
     },
   ],
