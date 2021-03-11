@@ -1,7 +1,9 @@
 require('dotenv').config();
 
 const isProduction =
-  process.env.BRANCH !== undefined && process.env.BRANCH === 'master';
+  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
+    ? 'production'
+    : 'development';
 
 module.exports = {
   siteMetadata: {
