@@ -66,9 +66,16 @@ const Improvement = ({
         }
 
         .stat-container {
+          ${mediaQueries.phoneLarge} {
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+
           display: flex;
           justify-content: center;
           flex-direction: column;
+          margin-left: 0;
+          margin-right: 0;
 
           h4 {
             font-size: 45px;
@@ -117,8 +124,8 @@ const Improvement = ({
 
               ${mediaQueries.phoneLarge} {
                 flex: 0 0 80%;
-                margin-left: ${index % 2 === 1 ? '-200px' : 0};
-                margin-right: ${index % 2 === 0 ? '-200px' : 0};
+                margin-left: ${index % 2 === 1 ? '-200px' : '10px'};
+                margin-right: ${index % 2 === 0 ? '-200px' : '10px'};
               }
             `}
           />
