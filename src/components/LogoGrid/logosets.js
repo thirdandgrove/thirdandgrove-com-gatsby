@@ -46,7 +46,7 @@ import prudential from './logos/prudential_logo.svg';
 import universal from './logos/universal_music_logo.png';
 import carlyle from './logos/carlyle.png';
 import boissance from './logos/boissance.svg';
-import hawaiianHost from './logos/hawaiian-host.png';
+import hawaiianHost from './logos/hawiian-host-logo-gray.svg';
 import wcBradley from './logos/wc-bradley.svg';
 import gLogo from './logos/g-logo.svg';
 import rubios from './logos/rubios-logo.svg';
@@ -548,7 +548,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={hawaiianHost}
         alt='Hawaiian Host'
-        width={isSmScreen ? '126' : '182'}
+        width={isSmScreen ? '126' : '121'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img
@@ -634,7 +634,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={hawaiianHost}
         alt='Hawaiian Host'
-        width={isSmScreen ? '126' : '182'}
+        width={isSmScreen ? '126' : '121'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img
