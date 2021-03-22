@@ -15,6 +15,12 @@ import BigcommerceBadge from '../../../static/images/bigcommerce-badge.png';
 const Partners = () => {
   const badges = [
     {
+      src: ShopifyBadge,
+      alt: 'shopify',
+      label: 'Shopify',
+      link: '/partners/shopify',
+    },
+    {
       src: AcquiaBadge,
       alt: 'acquia',
       label: 'Acquia',
@@ -31,12 +37,6 @@ const Partners = () => {
       alt: 'gatsby',
       label: 'Gatsby',
       link: '/partners/gatsby',
-    },
-    {
-      src: ShopifyBadge,
-      alt: 'shopify',
-      label: 'Shopify',
-      link: '/partners/shopify',
     },
     {
       src: BigcommerceBadge,
