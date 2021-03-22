@@ -53,6 +53,76 @@ import dadiAwards from './logos/dadi-awards.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
+    acquiaEngage: [
+      <img
+        src={cloudHealth}
+        alt='Cloud Health'
+        width={isSmScreen ? '126' : '170'}
+        height={isSmScreen ? '122' : '50'}
+      />,
+      <img
+        src={isgm}
+        alt='ISGM'
+        width={isSmScreen ? '150' : '180'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={carlyle}
+        alt='Carlyle'
+        width={isSmScreen ? '126' : '200'}
+        height={isSmScreen ? '122' : '50'}
+      />,
+    ],
+    shopify: [
+      <img
+        src={memebox}
+        alt='memebox'
+        width={isSmScreen ? '135' : '170'}
+        height={isSmScreen ? '16' : '24'}
+      />,
+      <img
+        src={ccLogo}
+        alt='California Closets'
+        width={isSmScreen ? '99' : '136'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
+        src={goldwin}
+        alt='goldwin'
+        width={isSmScreen ? '125' : '180'}
+        height={isSmScreen ? '36' : '52'}
+      />,
+      <img
+        src={gaiam}
+        alt='gaiam'
+        width={isSmScreen ? '61' : '81'}
+        height={isSmScreen ? '68' : '90'}
+      />,
+      <img
+        src={brainiac}
+        alt='brainiac'
+        width={isSmScreen ? '93' : '150'}
+        height={isSmScreen ? '31' : '51'}
+      />,
+      <img
+        src={equator}
+        alt='equator'
+        width={isSmScreen ? '99' : '150'}
+        height={isSmScreen ? '34' : '52'}
+      />,
+      <img
+        src={absolutLogo}
+        alt='Absolut Vodka'
+        width={isSmScreen ? '94' : '150'}
+        height={isSmScreen ? '20' : '32'}
+      />,
+      <img
+        src={jameson}
+        alt='jameson'
+        width={isSmScreen ? '95' : '150'}
+        height={isSmScreen ? '48' : '76'}
+      />,
+    ],
     acquia: [
       <img
         src={mintLogo}
