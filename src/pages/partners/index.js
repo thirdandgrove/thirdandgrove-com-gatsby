@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import Layout from '../../components/layout';
 import FullWidthSection from '../../components/FullWidthSection';
 import { mediaQueries } from '../../styles';
-import DrupalBadge from '../../../static/images/drupal-badge.svg';
+import DrupalBadge from '../../../static/images/drupal-badge.png';
 import AcquiaBadge from '../../../static/images/acquia-badge.svg';
 import ShopifyBadge from '../../../static/images/shopify-badge.svg';
 import GatsbyBadge from '../../../static/images/gatsby-badge.png';
@@ -78,7 +78,7 @@ const Partners = () => {
     }
 
     img {
-      max-width: 180px;
+      width: 180px;
       height: auto;
     }
   `;
