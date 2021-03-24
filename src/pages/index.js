@@ -1,13 +1,22 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import loadable from '@loadable/component';
+import Loadable from '@loadable/component';
 
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
+import Layout from '../components/layout';
+import ProjectsSlider from '../components/ProjectsSlider';
+import InsightsSlider from '../components/InsightsSlider';
+import CapabilitiesSlider from '../components/CapabilitiesSlider';
+import LogoGrid from '../components/LogoGrid';
+import SplitSection from '../components/SplitSection';
+import { ContactUs, BeUs } from '../components/Prefooter';
+import FullWidthSection from '../components/FullWidthSection';
+import { NewsletterFullWidthSection } from '../components/NewsletterForm';
 
 const Index = ({ data }) => {
-  const Layout = loadable(() => import('../components/layout'));
+  /* const Layout = loadable(() => import('../components/layout'));
   const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
   const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
   const CapabilitiesSlider = loadable(() =>
@@ -21,7 +30,7 @@ const Index = ({ data }) => {
   );
   const { NewsletterFullWidthSection } = loadable(() =>
     import('../components/NewsletterForm')
-  );
+  ); */
   const halfPage = useRef();
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
@@ -41,7 +50,8 @@ const Index = ({ data }) => {
             {/* This is going to re-implemented after a couple weeks */}
             {/* A digital agency{' '} */}
             slaying the mundane,
-            <br /> pixel by pixel.
+            <br />
+            pixel by pixel.
             {/* Holy S%#*! that was fast.
             <br />
             (With{' '}
@@ -87,7 +97,9 @@ Index.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default Index;
+const LoadableIndex = Loadable(() => import('./Index'));
+
+export default LoadableIndex;
 
 export const query = graphql`
   {
