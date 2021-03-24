@@ -16,6 +16,7 @@
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "@loadable/component": "^5.14.1",
     "axios": "^0.21.1",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
@@ -51,9 +52,11 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/eslint-parser": "^7.13.10",
     "babel-eslint": "~10.1.0",
     "cypress": "^6.3.0",
-    "eslint": "~7.18.0",
+    "eslint": "^7.22.0",
     "eslint-config-airbnb": "~18.2.1",
     "eslint-config-prettier": "~7.2.0",
     "eslint-plugin-cypress": "^2.11.2",
