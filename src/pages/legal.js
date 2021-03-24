@@ -1,8 +1,10 @@
 import React from 'react';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layout';
 import { container, mediaQueries, weights, contentHeadings } from '../styles';
+
+const Layout = loadable(() => import('../components/layout'));
 
 const Legal = () => {
   const date = 'Effective: Apr 1, 2019';

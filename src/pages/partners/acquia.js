@@ -2,11 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import loadable from '@loadable/component';
 
-import Layout from '../../components/layout';
-import FullWidthSection from '../../components/FullWidthSection';
-import ProjectsSlider from '../../components/ProjectsSlider';
-import LogoGrid from '../../components/LogoGrid';
 import {
   colors,
   mediaQueries,
@@ -15,10 +12,21 @@ import {
   container,
   pLight,
 } from '../../styles';
-import SplitSection from '../../components/SplitSection';
-import InsightsSlider from '../../components/InsightsSlider';
-import Quote from '../../components/ContentBody/Quote';
-import CTA from '../../components/CTA';
+
+const Layout = loadable(() => import('../../components/layout'));
+const FullWidthSection = loadable(() =>
+  import('../../components/FullWidthSection')
+);
+const SplitSection = loadable(() => import('../../components/SplitSection'));
+const LogoGrid = loadable(() => import('../../components/LogoGrid'));
+const Quote = loadable(() => import('../../components/ContentBody/Quote'));
+const CTA = loadable(() => import('../../components/CTA'));
+const InsightsSlider = loadable(() =>
+  import('../../components/InsightsSlider')
+);
+const ProjectsSlider = loadable(() =>
+  import('../../components/ProjectsSlider')
+);
 
 const Acquia = query => {
   const { insights, caseStudies } = query.data;

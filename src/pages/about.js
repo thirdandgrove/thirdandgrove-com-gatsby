@@ -4,11 +4,8 @@ import { navigate, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
-import LogoGrid from '../components/LogoGrid';
 import {
   colors,
   fonts,
@@ -20,7 +17,14 @@ import {
   contValues,
   pLight,
 } from '../styles';
-import Button from '../components/Button';
+
+const LogoGrid = loadable(() => import('../components/LogoGrid'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const SplitSection = loadable(() => import('../components/SplitSection'));
+const Layout = loadable(() => import('../components/layout'));
+const Button = loadable(() => import('../components/Button'));
 
 const About = ({ data }) => {
   const leadersCss = css`

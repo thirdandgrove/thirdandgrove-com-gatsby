@@ -1,17 +1,23 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Layout from '../../components/layout';
-import Button from '../../components/Button';
-import FullWidthSection from '../../components/FullWidthSection';
-import LogoGrid from '../../components/LogoGrid';
-import InsightsSlider from '../../components/InsightsSlider';
-import CTAGrid from '../../components/CTAGrid';
-import Capability from '../../components/Capability';
-import Improvement from '../../components/Improvement';
-import ContactForm from '../../components/ContactForm';
 import { colors, mediaQueries } from '../../styles';
+
+const Layout = loadable(() => import('../../components/layout'));
+const Button = loadable(() => import('../../components/Button'));
+const FullWidthSection = loadable(() =>
+  import('../../components/FullWidthSection')
+);
+const LogoGrid = loadable(() => import('../../components/LogoGrid'));
+const InsightsSlider = loadable(() =>
+  import('../../components/InsightsSlider')
+);
+const CTAGrid = loadable(() => import('../../components/CTAGrid'));
+const Capability = loadable(() => import('../../components/Capability'));
+const Improvement = loadable(() => import('../../components/Improvement'));
+const ContactForm = loadable(() => import('../../components/ContactForm'));
 
 const Shopify = query => {
   const { allShopifyPlusCtaGridFourJson, allFile, insights } = query.data;

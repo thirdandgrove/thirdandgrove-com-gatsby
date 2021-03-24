@@ -2,10 +2,14 @@ import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import { fonts, weights, container, mediaQueries } from '../styles';
-import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
+
+const Layout = loadable(() => import('../components/layout'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
 
 const Careers = () => {
   const data = useStaticQuery(graphql`

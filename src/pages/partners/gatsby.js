@@ -1,13 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Layout from '../../components/layout';
-import FullWidthSection from '../../components/FullWidthSection';
 import { colors, mediaQueries, fonts, weights, container } from '../../styles';
-import InsightsSlider from '../../components/InsightsSlider';
-import Quote from '../../components/ContentBody/Quote';
-import CTA from '../../components/CTA';
+
+const Quote = loadable(() => import('../../components/ContentBody/Quote'));
+const CTA = loadable(() => import('../../components/CTA'));
+const Layout = loadable(() => import('../../components/layout'));
+const FullWidthSection = loadable(() =>
+  import('../../components/FullWidthSection')
+);
+const InsightsSlider = loadable(() =>
+  import('../../components/InsightsSlider')
+);
 
 const Gatsby = query => {
   const { insights } = query.data;

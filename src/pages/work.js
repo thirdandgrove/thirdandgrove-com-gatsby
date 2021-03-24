@@ -4,16 +4,20 @@ import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import mp4 from '../../static/thirdgrove-work.mp4';
-import Layout from '../components/layout';
-import { FakeButton } from '../components/Button';
 import { weights, mediaQueries, container, fonts } from '../styles';
-import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
-import VideoSection from '../components/VideoSection';
 import { ensureTrailingSlash } from '../util';
-import CTA from '../components/CTA';
+
+const Layout = loadable(() => import('../components/layout'));
+const CTA = loadable(() => import('../components/CTA'));
+const { FakeButton } = loadable(() => import('../components/Button'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const VideoSection = loadable(() => import('../components/VideoSection'));
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();

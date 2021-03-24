@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, navigate } from 'gatsby';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import {
   fonts,
@@ -11,11 +12,14 @@ import {
   colors,
   weights,
 } from '../styles';
-import ArticlePreview from '../components/ArticlePreview';
-import Button from '../components/Button';
-import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
 import { ensureTrailingSlash } from '../util';
+
+const Layout = loadable(() => import('../components/layout'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const Button = loadable(() => import('../components/Button'));
+const ArticlePreview = loadable(() => import('../components/ArticlePreview'));
 
 const Insights = ({ data }) => {
   const articles = data.allInsight.nodes;

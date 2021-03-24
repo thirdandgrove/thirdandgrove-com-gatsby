@@ -3,15 +3,23 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
-import { NewsletterSimpleOverlay } from '../components/NewsletterForm';
-import LogoGrid from '../components/LogoGrid';
-import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
-import Layout from '../components/layout';
 import { container, mediaQueries, weights, colors, fonts } from '../styles';
-import Button from '../components/Button';
-import { GetInTouch, SeeInsights } from '../components/Prefooter';
+
+const { NewsletterSimpleOverlay } = loadable(() =>
+  import('../components/NewsletterForm')
+);
+const LogoGrid = loadable(() => import('../components/LogoGrid'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const SplitSection = loadable(() => import('../components/SplitSection'));
+const Layout = loadable(() => import('../components/layout'));
+const Button = loadable(() => import('../components/Button'));
+const { GetInTouch, SeeInsights } = loadable(() =>
+  import('../components/Prefooter')
+);
 
 const AcquiaEngage = ({ data }) => {
   const [isActive, setIsActive] = useState(false);

@@ -3,13 +3,8 @@ import PropTypes from 'prop-types';
 import { navigate, graphql } from 'gatsby';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
-import WhatWeDo from '../components/WhatWeDo';
-import ImageSlider from '../components/ImageSlider';
-import { TextWrapper } from '../components/Prefooter';
 import {
   colors,
   fonts,
@@ -21,7 +16,16 @@ import {
   contValues,
   pLight,
 } from '../styles';
-import Button from '../components/Button';
+
+const Layout = loadable(() => import('../components/layout'));
+const WhatWeDo = loadable(() => import('../components/WhatWeDo'));
+const ImageSlider = loadable(() => import('../components/ImageSlider'));
+const { TextWrapper } = loadable(() => import('../components/Prefooter'));
+const Button = loadable(() => import('../components/Button'));
+const SplitSection = loadable(() => import('../components/SplitSection'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
 
 const Boston = ({ data }) => {
   const Row = styled.section`

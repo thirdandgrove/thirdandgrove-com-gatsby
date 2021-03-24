@@ -1,18 +1,26 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layout';
-import ProjectsSlider from '../components/ProjectsSlider';
-import InsightsSlider from '../components/InsightsSlider';
-import CapabilitiesSlider from '../components/CapabilitiesSlider';
-import LogoGrid from '../components/LogoGrid';
-import SplitSection from '../components/SplitSection';
-import { ContactUs, BeUs } from '../components/Prefooter';
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
-import FullWidthSection from '../components/FullWidthSection';
-import { NewsletterFullWidthSection } from '../components/NewsletterForm';
+
+const Layout = loadable(() => import('../components/layout'));
+const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
+const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
+const CapabilitiesSlider = loadable(() =>
+  import('../components/CapabilitiesSlider')
+);
+const LogoGrid = loadable(() => import('../components/LogoGrid'));
+const SplitSection = loadable(() => import('../components/SplitSection'));
+const { ContactUs, BeUs } = loadable(() => import('../components/Prefooter'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const { NewsletterFullWidthSection } = loadable(() =>
+  import('../components/NewsletterForm')
+);
 
 const Index = ({ data }) => {
   const halfPage = useRef();

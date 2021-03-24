@@ -1,11 +1,13 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import { navigate } from 'gatsby';
+import loadable from '@loadable/component';
 
 import { weights, h1L } from '../styles';
-import Layout from '../components/layout';
-import Button from '../components/Button';
-import SEO from '../components/seo';
+
+const Layout = loadable(() => import('../components/layout'));
+const Button = loadable(() => import('../components/Button'));
+const SEO = loadable(() => import('../components/seo'));
 
 const NotFoundPage = () => (
   <Layout
