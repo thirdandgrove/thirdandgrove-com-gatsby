@@ -46,9 +46,7 @@ const Partners = () => {
     },
   ];
 
-  const handleGoTo = link => () => {
-    navigate(link);
-  };
+  const handleGoTo = link => () => navigate(link);
 
   const Badges = styled.div`
     max-width: 850px;
