@@ -4,6 +4,15 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import loadable from '@loadable/component';
 
+import {
+  colors,
+  mediaQueries,
+  fonts,
+  weights,
+  container,
+  pLight,
+} from '../../styles';
+
 const Layout = loadable(() => import('../../components/layout'));
 const FullWidthSection = loadable(() =>
   import('../../components/FullWidthSection')
