@@ -6,23 +6,22 @@ import loadable from '@loadable/component';
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 
-const Layout = loadable(() => import('../components/layout'));
-const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
-const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
-const CapabilitiesSlider = loadable(() =>
-  import('../components/CapabilitiesSlider')
-);
-const LogoGrid = loadable(() => import('../components/LogoGrid'));
-const SplitSection = loadable(() => import('../components/SplitSection'));
-const { ContactUs, BeUs } = loadable(() => import('../components/Prefooter'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
-const { NewsletterFullWidthSection } = loadable(() =>
-  import('../components/NewsletterForm')
-);
-
 const Index = ({ data }) => {
+  const Layout = loadable(() => import('../components/layout'));
+  const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
+  const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
+  const CapabilitiesSlider = loadable(() =>
+    import('../components/CapabilitiesSlider')
+  );
+  const LogoGrid = loadable(() => import('../components/LogoGrid'));
+  const SplitSection = loadable(() => import('../components/SplitSection'));
+  const { ContactUs, BeUs } = loadable(() => import('../components/Prefooter'));
+  const FullWidthSection = loadable(() =>
+    import('../components/FullWidthSection')
+  );
+  const { NewsletterFullWidthSection } = loadable(() =>
+    import('../components/NewsletterForm')
+  );
   const halfPage = useRef();
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
