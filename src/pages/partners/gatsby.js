@@ -8,6 +8,7 @@ import { colors, mediaQueries, fonts, weights, container } from '../../styles';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
+import GatsbyBadge from '../../../static/images/gatsby-badge.png';
 
 const Gatsby = query => {
   const { insights } = query.data;
@@ -19,6 +20,13 @@ const Gatsby = query => {
       padding: 200px 0 90px;
     }
   `;
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
+  `;
+
   return (
     <Layout
       headerData={{
@@ -48,6 +56,9 @@ const Gatsby = query => {
           }
         `}
       >
+        <div css={badgeStyle}>
+          <img src={GatsbyBadge} alt='Drupal Badge' width='180' />
+        </div>
         <h4>
           Build a digital experience that your competitors can’t compete with
         </h4>
