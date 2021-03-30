@@ -8,12 +8,12 @@
   publish = "public"
 
   # Default build command.
-  command = "gatsby build"
+  command = "echo 'Built on Gatsby Cloud'"
 
   functions = "public/functions"
 
-[[plugins]]
-  package = "netlify-plugin-gatsby-cache"
+#[[plugins]]
+#  package = "netlify-plugin-gatsby-cache"
 
 [context.production]
   environment = { PROCESS_FORM = "true" }
