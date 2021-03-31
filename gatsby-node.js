@@ -28,6 +28,7 @@ exports.createPages = async ({ actions, graphql }) => {
       }
       insights: allInsight(filter: { field_hidden: { eq: false } }) {
         nodes {
+          invalid_key
           id
           title
           drupal_internal__nid
