@@ -288,7 +288,7 @@ const About = ({ data }) => {
           <div>
             <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
             <h2>Jen Slemp</h2>
-            <p>Director of Strategy</p>
+            <p>Directory of Delivery</p>
           </div>
           <div>
             <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
@@ -296,19 +296,24 @@ const About = ({ data }) => {
             <p>Director of Operations</p>
           </div>
           <div>
-            <Img alt='Thomas Bolte' fluid={getSrc('thomas', 'leader')} />
-            <h2>Thomas Bolte</h2>
+            <Img alt='Joneric Amundson' fluid={getSrc('joneric', 'leader')} />
+            <h2>Joneric Amundson</h2>
             <p>Art Director</p>
-          </div>
-          <div>
-            <Img alt='Jen May' fluid={getSrc('may', 'leader')} />
-            <h2>Jen May</h2>
-            <p>Director of Project Management</p>
           </div>
           <div>
             <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
             <h2>Linda Topp</h2>
             <p>Director of Ecommerce</p>
+          </div>
+          <div>
+            <Img alt='John Entwistle' fluid={getSrc('john', 'leader')} />
+            <h2>John Entwistle</h2>
+            <p>Engineering Manager</p>
+          </div>
+          <div>
+            <Img alt='Jeremy Dickens' fluid={getSrc('jeremy', 'leader')} />
+            <h2>Jeremy Dickens</h2>
+            <p>Back End Lead</p>
           </div>
         </div>
       </FullWidthSection>
@@ -400,7 +405,7 @@ export const query = graphql`
     allFile(
       filter: {
         absolutePath: {
-          regex: "/boston|oakland|emond|slemp|andrade|may|topp|thomas/"
+          regex: "/boston|oakland|emond|slemp|andrade|may|topp|joneric|john|jeremy/"
         }
       }
     ) {
