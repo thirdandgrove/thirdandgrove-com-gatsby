@@ -10,7 +10,9 @@ const Button = ({ children, ...props }) => {
   `;
   return (
     <StyledButton {...props}>
-      <span>{children}</span>
+      <span role='img' aria-label='Button background image'>
+        {children}
+      </span>
     </StyledButton>
   );
 };

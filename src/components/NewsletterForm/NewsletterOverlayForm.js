@@ -48,8 +48,22 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
       `}
     >
       <fieldset css={fieldsetStyles}>
+        <legend
+          css={css`
+            display: none;
+          `}
+        >
+          Newsletter Form
+        </legend>
         {/* eslint-disable-next-line */}
-        <label htmlFor='nws-email' />
+        <label
+          htmlFor='nws-emailoverlay'
+          css={css`
+            display: none;
+          `}
+        >
+          Email Address
+        </label>
         {!submitted && (
           <Input
             css={css`
@@ -58,7 +72,7 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
             `}
             type='email'
             name='email'
-            id='nws-email'
+            id='nws-emailoverlay'
             placeholder='Email'
             value={email}
             onChange={evt => updateEmail(evt.target.value)}
