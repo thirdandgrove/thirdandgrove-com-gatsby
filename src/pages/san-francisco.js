@@ -51,21 +51,42 @@ const SanFrancisco = ({ data }) => {
         color: ${colors.darkgray};
         letter-spacing: -1.38px;
         text-align: center;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
 
         ${mediaQueries.phoneLarge} {
-          margin-bottom: 36px;
           font-size: 48px;
         }
       }
       h3 {
         font-family: ${fonts.sans};
-        font-weight: ${weights.light};
-        font-size: 15px;
+        font-weight: ${weights.bold};
+        font-size: 16px;
+        line-height: 23px;
         color: ${colors.darkgray};
         letter-spacing: 0.2px;
         text-align: center;
       }
+    }
+  `;
+
+  const introText = css`
+    font-size: 21px;
+    font-weight: weights.bold;
+    line-height: 1.48;
+    text-align: center;
+    color: ${colors.darkgray};
+    padding: 70px 0;
+
+    ${mediaQueries.phoneLarge} {
+      font-weight: ${weights.bold};
+      text-align: center;
+      letter-spacing: -0.09px;
+      line-height: 1.48;
+      width: ${contValues.min};
+    }
+
+    a {
+      text-decoration: underline;
     }
   `;
 
@@ -86,17 +107,7 @@ const SanFrancisco = ({ data }) => {
       }}
     >
       <FullWidthSection textAlign='center' height='750px' minHeight='730px'>
-        <h4
-          css={[
-            pLight,
-            css`
-              padding: 70px 0;
-              ${mediaQueries.phoneLarge} {
-                width: ${contValues.min};
-              }
-            `,
-          ]}
-        >
+        <h4 css={introText}>
           We’re a full service Boston-based agency with the best engingeers in
           the city – any city really. We are the only Drupal development agency
           to employ a Drupal 8 core maintainer and consistently rank in
@@ -112,6 +123,7 @@ const SanFrancisco = ({ data }) => {
           maximize their Drupal investment and optimize performance with
           reliable, stress-tested ongoing support.
         </h4>
+
         <Row>
           <div>
             <h2>177k</h2>
@@ -138,8 +150,6 @@ const SanFrancisco = ({ data }) => {
         </Row>
       </FullWidthSection>
       <ImageSlider data={data.slider} />
-      <WhatWeDo />
-
       <FullWidthSection
         height='750px'
         css={css`
