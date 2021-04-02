@@ -47,7 +47,7 @@
       ]
     },
     "speakers": {
-      "header": "Speaker Sessions to Watch",
+      "header": "Come Vist our Booth",
       "people": [
         {
           "img": "emond",
@@ -69,6 +69,31 @@
     "quote": {
       "text": "It’s a rare opportunity that an agency like TAG can fit in so well with our in-house team. The support, partnership, and commitment to creating a custom solution for our multi-lingual sites made all the difference in our successful launch.",
       "author": "Steve Reichgut, Former Director of Web Engineering & Web Operations at Benefit Cosmetics"
+    },
+    "liveQas": {
+      "header": "Live QA Schedule",
+      "qas": [
+        {
+          "date": "April 12th",
+          "title": "Decoupled with Justin and Jeremy"
+        },
+        {
+          "date": "April 13th",
+          "title": "Ask a core maintainer anything"
+        },
+        {
+          "date": "April 14th",
+          "title": "How to improve Core Web Vitals with Drupal"
+        },
+        {
+          "date": "April 15th",
+          "title": "Learn Digital Strategies for Higher Ed (Justin + Ally panel)"
+        },
+        {
+          "date": "April 16th",
+          "title": "Happy Hour at our booth. Drink and Chat Live: (Whisky tasting. Justin + Ashley)"
+        }
+      ]
     }
   }
 ]
