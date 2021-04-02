@@ -67,6 +67,7 @@ const Quote = ({
     text-align: ${isSmall || center ? 'center' : 'left'};
     padding-top: 10px;
     font-weight: ${weights.light};
+    color: ${color};
 
     ${mediaQueries.phoneLarge} {
       font-size: 16px;
