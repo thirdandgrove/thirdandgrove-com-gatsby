@@ -14,6 +14,7 @@ const Quote = ({
   quoteColor,
   center,
   altStyle,
+  innerMargin,
 }) => {
   const isSmall = size === 'small';
 
@@ -84,7 +85,7 @@ const Quote = ({
     padding: ${isSmall ? '0 10px' : '0 20px'};
     ${mediaQueries.phoneLarge} {
       ${isSmall &&
-      `margin: 0 0 130px;
+      `margin: 0 0 ${innerMargin || '130px'};
         padding: 13px 8px 0;
       `};
     }
@@ -104,7 +105,7 @@ const Quote = ({
           <span css={quoR}>&rdquo;</span>
         </div>
         {data.field_footer_text && (
-          <p css={quoteAttr}>—{data.field_footer_text}</p>
+          <p css={quoteAttr}>{`—${data.field_footer_text}`}</p>
         )}
       </div>
     </FullWidthSection>
@@ -120,6 +121,7 @@ Quote.propTypes = {
   quoteColor: PropTypes.string,
   center: PropTypes.bool,
   altStyle: PropTypes.bool,
+  innerMargin: PropTypes.string,
 };
 
 Quote.defaultProps = {
@@ -130,6 +132,7 @@ Quote.defaultProps = {
   quoteColor: colors.yellow,
   center: false,
   altStyle: false,
+  innerMargin: '130px',
 };
 
 export default Quote;
