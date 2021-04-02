@@ -155,6 +155,8 @@ const About = ({ data }) => {
       letter-spacing: -0.5px;
       padding-top: 20px;
       margin-bottom: 12px;
+      text-align: center;
+
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
