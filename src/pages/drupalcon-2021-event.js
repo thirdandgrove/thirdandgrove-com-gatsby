@@ -30,12 +30,32 @@ const Drupalicon = ({ data }) => {
     speakers,
     liveQas,
     quote,
+    swag,
   } = data.allDrupaliconJson.edges[0].node;
 
   const images = data.allFile.nodes;
 
-  const getSrc = name => {
-    return images.find(img => img.name === name).childImageSharp.fluid;
+  const getSrc = (name, type) => {
+    const image = images.find(img => img.name === name);
+    let src = '';
+    switch (true) {
+      case type === 'leader':
+        src = image.childImageSharp.fluid;
+        break;
+
+      case type === 'childImageTypeA':
+        src = image.childImageTypeA.fluid;
+        break;
+
+      case type === 'svg':
+        src = image.publicURL;
+        break;
+
+      default:
+        src = image.childImageSharp.fluid;
+        break;
+    }
+    return src;
   };
 
   const getImageSrc = imgName =>
@@ -136,8 +156,6 @@ const Drupalicon = ({ data }) => {
     }
 
     > div > div {
-      margin-bottom: 64px;
-
       ${mediaQueries.phoneLarge} {
         margin-bottom: 90px;
         flex: 0 0 calc(50% - 86px);
@@ -178,9 +196,12 @@ const Drupalicon = ({ data }) => {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-bottom: 64px;
+
       ${mediaQueries.phoneLarge} {
         display: block;
       }
+
       button {
         margin: 0 auto;
         display: block;
@@ -245,11 +266,11 @@ const Drupalicon = ({ data }) => {
         subTitle: header.date,
         linksA: [
           {
-            url: '../Visit TAG at Acquia Engage 2020.ics',
+            url: '../../Visit TAG at Acquia Engage 2020.ics',
             text: '+iCal',
           },
           {
-            url: '../Visit TAG at Acquia Engage 2020.ics',
+            url: '../../Visit TAG at Acquia Engage 2020.ics',
             text: '+Google Calendar',
           },
         ],
@@ -262,79 +283,133 @@ const Drupalicon = ({ data }) => {
         navLink: joinLink,
       }}
     >
-      <FullWidthSection
-        height='200px'
-        backgroundColor={colors.white}
+      <SplitSection
         css={css`
           > div {
-            ${container.textOnly}
-            padding: 10px 20px 0;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 25px 20px;
+
             ${mediaQueries.phoneLarge} {
+              padding: 50px 50px 100px;
             }
+
             .cc-image {
-              max-width: 300px;
+              max-width: 200px;
+              height: 200px;
               width: 100%;
               margin: 0 auto;
+            }
+
+            h3 {
+              font-size: 21px;
+              font-weight: ${weights.bold};
+              margin-bottom: 6px;
+              font-family: ${fonts.sans};
+              line-height: 1.2;
+
+              ${mediaQueries.phoneLarge} {
+                font-size: 23px;
+              }
+            }
+
+            .button--container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 25px 0;
+
+              ${mediaQueries.phoneLarge} {
+                display: block;
+              }
+
+              button {
+                margin: 0 auto;
+                display: block;
+              }
+            }
+          }
+          > div:last-of-type {
+            padding-bottom: 50px;
+
+            ${mediaQueries.phoneLarge} {
+              padding-bottom: 100px;
+              padding-top: 73px;
             }
           }
         `}
       >
-        <div css={[splitWithButtonsCss, container.medium]}>
-          <div
+        {' '}
+        <div>
+          <img
+            alt='DrupalCon'
+            src={getSrc('drupalcon', 'svg')}
+            className='cc-image'
+          />
+          <h3
             css={css`
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              flex-direction: column;
+              text-align: center;
             `}
           >
-            <Img
-              alt='Third and Grove Web Camera Cover'
-              fluid={getSrc('TAG-webcamCover-01')}
-              className='cc-image'
-            />
-            <small>Drupalcon 2021</small>
-          </div>
-          <h3>{booth.header}</h3>
+            {booth.header}
+          </h3>
           <div>
             {booth.ctas.map(({ text, url }) => (
-              <div className='button--container'>
-                {text.toLowerCase() === 'grab that swag' ? (
-                  <ButtonForm
-                    text={text}
-                    header='Enter your email for your free card caddy.'
-                    confirmMessage='Thanks! We’ll be in touch.'
-                    subheader=''
-                    formName='drupalcon-swag-form'
-                    css={css`
-                      display: none;
+              <div className='button--container' style={{ marginBottom: '0' }}>
+                <Button
+                  css={css`
+                    display: none;
 
-                      ${mediaQueries.phoneLarge} {
-                        display: inline-block;
-                      }
-                    `}
-                  />
-                ) : (
-                  <Button
-                    css={css`
-                      display: none;
-
-                      ${mediaQueries.phoneLarge} {
-                        display: inline-block;
-                      }
-                    `}
-                  >
-                    <a href={url} target='_blank' rel='noreferrer'>
-                      {text}
-                    </a>
-                  </Button>
-                )}
+                    ${mediaQueries.phoneLarge} {
+                      display: inline-block;
+                    }
+                  `}
+                >
+                  <a href={url} target='_blank' rel='noreferrer'>
+                    {text}
+                  </a>
+                </Button>
               </div>
             ))}
           </div>
         </div>
-      </FullWidthSection>
+        <div>
+          <Img
+            alt='Third and Grove Web Camera Cover'
+            fluid={getSrc('TAG-webcamCover-01', 'childImageTypeA')}
+            className='cc-image'
+          />
+          <h3
+            css={css`
+              text-align: center;
+            `}
+          >
+            {swag.header}
+          </h3>
+          <div>
+            {swag.ctas.map(({ text, url }) => (
+              <div className='button--container'>
+                <ButtonForm
+                  text={text}
+                  header='Enter your email for your free card caddy.'
+                  confirmMessage='Thanks! We’ll be in touch.'
+                  subheader=''
+                  formName='drupalcon-swag-form'
+                  css={css`
+                    display: none;
+
+                    ${mediaQueries.phoneLarge} {
+                      display: inline-block;
+                    }
+                  `}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </SplitSection>
 
       <FullWidthSection height='500px' backgroundColor={colors.yellow}>
         <div
@@ -408,7 +483,7 @@ const Drupalicon = ({ data }) => {
           padding: 40px 0 20px;
 
           ${mediaQueries.desktop} {
-            padding: 45px 0 20px;
+            padding: 60px 0 20px;
           }
 
           h3 {
@@ -440,10 +515,11 @@ const Drupalicon = ({ data }) => {
       <Quote
         center
         size='small'
-        padding='100px 0 0 0'
+        padding='100px 0 100px 0'
         backgroundColor={colors.drupal9Blue}
         quoteColor={colors.yellow}
         color={colors.white}
+        innerMargin='0'
         data={{
           field_quote: quote.text,
           field_footer_text: quote.author,
@@ -461,6 +537,13 @@ const Drupalicon = ({ data }) => {
               padding: 120px 0;
             }
 
+            .cc-image {
+              max-width: 200px;
+              height: 200px;
+              width: 100%;
+              margin: 40px auto 0;
+            }
+
             a {
               text-decoration: underline;
             }
@@ -468,6 +551,11 @@ const Drupalicon = ({ data }) => {
             p {
               font-size: 18px;
               margin: 20px 0;
+              display: flex;
+
+              b {
+                white-space: pre;
+              }
             }
 
             h3 {
@@ -489,36 +577,25 @@ const Drupalicon = ({ data }) => {
                   <p>
                     <b>{date}</b>
                     <span>&nbsp;-&nbsp;</span>
-                    <b>{title}</b>
+                    <strong>{title}</strong>
                   </p>
                 </li>
               ))}
             </ul>
           </div>
+          <Img
+            alt='DrupalCon Silver Sponsor'
+            fluid={getSrc('silver-sponsor', 'childImageTypeA')}
+            objectFit='contain'
+            imgStyle={{
+              objectFit: 'contain',
+            }}
+            className='cc-image'
+          />
         </div>
       </FullWidthSection>
 
       <InsightsSlider data={data.allInsight} />
-
-      {/* <FullWidthSection
-        backgroundColor={colors.drupal9Blue}
-        padding='110px 0'
-        minHeight='100%'
-      >
-        <ButtonForm
-          text='another modal form'
-          header='other form for another reason !'
-          confirmMessage='T.'
-          formName='other-form'
-          css={css`
-            display: none;
-
-            ${mediaQueries.phoneLarge} {
-              display: inline-block;
-            }
-          `}
-        />
-      </FullWidthSection> */}
 
       <SplitSection>
         <WhatWeDo
@@ -583,6 +660,11 @@ export const query = graphql`
             ...GatsbyImageSharpFluid_withWebp
           }
         }
+        childImageTypeA: childImageSharp {
+          fluid(maxWidth: 335) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
       }
     }
     allInsight(
@@ -607,6 +689,13 @@ export const query = graphql`
             }
           }
           booth {
+            ctas {
+              text
+              url
+            }
+            header
+          }
+          swag {
             ctas {
               text
               url
