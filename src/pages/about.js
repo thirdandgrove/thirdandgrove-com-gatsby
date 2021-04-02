@@ -141,6 +141,8 @@ const About = ({ data }) => {
       ${h1L};
       padding-top: 10px;
       margin-bottom: 8px;
+      text-align: center;
+
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
@@ -153,6 +155,8 @@ const About = ({ data }) => {
       letter-spacing: -0.5px;
       padding-top: 20px;
       margin-bottom: 12px;
+      text-align: center;
+
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
@@ -336,7 +340,7 @@ const About = ({ data }) => {
             <Img fluid={getSrc('boston', 'location')} alt='Boston' />
             <h3>Howdya Like Them Apples?</h3>
           </Location>
-          <Location>
+          <Location onClick={() => navigate(`/san-francisco/`)}>
             <h2 css={h1L}>San Francisco</h2>
             <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
             <h3>Watch Out for the Seagulls</h3>
