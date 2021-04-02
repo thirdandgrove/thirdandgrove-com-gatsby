@@ -115,6 +115,7 @@ const Careers = () => {
         title: 'We work with the best.',
         height: '400px',
         mobileMinHeight: '93vh',
+        noIndex: true,
       }}
     >
       <FullWidthSection

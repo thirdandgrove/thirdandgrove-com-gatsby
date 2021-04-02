@@ -71,6 +71,9 @@ const Footer = () => {
         <Link css={linkStyle} to='/legal/'>
           Legal
         </Link>
+        <Link css={linkStyle} to='/partners/'>
+          Partners
+        </Link>
       </div>
     </div>
   );

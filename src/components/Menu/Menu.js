@@ -363,21 +363,6 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               Gatsby
             </Link>
           </div>
-          <div>
-            <Link
-              css={[
-                linkSecondaryStyle,
-                textFadeIn,
-                linkBaseStyles,
-                mobileDelay8,
-                desktopDelay5,
-              ]}
-              onClick={() => toggleOpen()}
-              to='/partners/big-commerce/'
-            >
-              BigCommerce
-            </Link>
-          </div>
         </section>
       </div>
     </nav>

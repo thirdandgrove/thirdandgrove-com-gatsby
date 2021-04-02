@@ -248,6 +248,18 @@ export const query = graphql`
               }
             }
           }
+          ... on component__video {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_video_controls
+            field_vimeo_video_link {
+              uri
+            }
+          }
         }
       }
     }

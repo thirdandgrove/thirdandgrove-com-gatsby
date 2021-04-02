@@ -1,10 +1,8 @@
 require('dotenv').config();
 
 const isProduction =
-  process.env.BRANCH !== undefined
-    ? process.env.BRANCH !== 'master'
-      ? 'development'
-      : 'production'
+  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
+    ? 'production'
     : 'development';
 
 module.exports = {
@@ -91,7 +89,7 @@ module.exports = {
         apiKey: process.env.RESUMATOR_API_KEY,
       },
     },
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {

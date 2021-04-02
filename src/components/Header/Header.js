@@ -27,6 +27,7 @@ import FullWidthSection from '../FullWidthSection';
  * @param {string} image - passed to SEO
  * @param {string} heroImage - used as background on desktop
  * @param {string} heroImageMobile - used as background on mobile
+ * @param {bool} noIndex
  */
 const Header = ({
   title,
@@ -52,6 +53,7 @@ const Header = ({
   banner,
   images,
   navLink,
+  noIndex,
 }) => {
   const isLightBackground = value => {
     let r;
@@ -134,15 +136,10 @@ const Header = ({
     }
 
     ${mediaQueries.phoneLarge} {
-      width: 75%;
       padding: ${titlePadding};
       font-size: 72px;
       line-height: 1.17;
       letter-spacing: -1px;
-    }
-
-    ${mediaQueries.desktop} {
-      width: 60%;
     }
   `;
   const sectionCSS = css`
@@ -250,7 +247,12 @@ const Header = ({
 
   return (
     <>
-      <SEO title={metaTitle || title} description={description} image={image} />
+      <SEO
+        title={metaTitle || title}
+        description={description}
+        image={image}
+        noIndex={noIndex}
+      />
       <TopNav
         fill={fontColor}
         hideNav={hideNav}
@@ -324,6 +326,7 @@ export const headerPropTypes = {
   banner: PropTypes.bool,
   images: PropTypes.array,
   navLink: PropTypes.string,
+  noIndex: PropTypes.bool,
 };
 
 Header.propTypes = headerPropTypes;
@@ -352,6 +355,7 @@ Header.defaultProps = {
   banner: false,
   images: [],
   navLink: 'https://engage.acquia.com',
+  noIndex: false,
 };
 
 export default Header;

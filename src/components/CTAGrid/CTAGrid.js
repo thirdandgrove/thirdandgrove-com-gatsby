@@ -16,7 +16,10 @@ const CTAGrid = ({
   backgroundColor,
   link,
   cta,
+  maxWidth,
   gridColumns,
+  invisibleCta,
+  noPaddingImg,
   altStyle,
 }) => {
   const ctaGridContainer = css`
@@ -29,7 +32,7 @@ const CTAGrid = ({
     padding-bottom: 0;
 
     ${mediaQueries.phoneLarge} {
-      ${container.textOnly}
+      ${maxWidth ? container.max : container.textOnly}
       display: grid;
       -ms-grid-columns: ${gridColumns};
       grid-template-columns: ${gridColumns};
@@ -79,7 +82,7 @@ const CTAGrid = ({
       line-height: 39px;
 
       ${mediaQueries.phoneLarge} {
-        width: 820px;
+        width: ${maxWidth}px;
         max-width: 100%;
         margin: 0 auto;
         font-size: 39px;
@@ -109,10 +112,11 @@ const CTAGrid = ({
             title={node.title}
             description={node.description}
             altStyle={altStyle}
+            noPaddingImg
           />
         ))}
       </div>
-      {!altStyle && (
+      {!altStyle && !invisibleCta && (
         <div css={buttonStyle}>
           {link.indexOf('#') !== -1 ? (
             <a href={link} className='anchor'>
@@ -138,7 +142,10 @@ CTAGrid.propTypes = {
   backgroundColor: PropTypes.string,
   link: PropTypes.string,
   cta: PropTypes.string,
+  maxWidth: PropTypes.bool,
   gridColumns: PropTypes.string,
+  invisibleCta: PropTypes.bool,
+  noPaddingImg: PropTypes.bool,
 };
 
 CTAGrid.defaultProps = {
@@ -149,7 +156,10 @@ CTAGrid.defaultProps = {
   backgroundColor: '#FFF',
   link: '/',
   cta: 'Get Support Now',
+  maxWidth: false,
   gridColumns: '1fr 1fr 1fr',
+  invisibleCta: false,
+  noPaddingImg: false,
 };
 
 export default CTAGrid;
