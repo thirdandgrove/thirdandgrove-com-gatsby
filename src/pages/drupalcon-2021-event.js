@@ -28,7 +28,7 @@ const Drupalicon = ({ data }) => {
     booth,
     tag,
     speakers,
-    insights,
+    liveQas,
     quote,
   } = data.allDrupaliconJson.edges[0].node;
 
@@ -268,10 +268,9 @@ const Drupalicon = ({ data }) => {
         css={css`
           > div {
             ${container.textOnly}
-            padding: 50px 20px 0;
+            padding: 10px 20px 0;
             position: relative;
             ${mediaQueries.phoneLarge} {
-              padding: 100px 0 0 0;
             }
             .cc-image {
               max-width: 300px;
@@ -282,11 +281,21 @@ const Drupalicon = ({ data }) => {
         `}
       >
         <div css={[splitWithButtonsCss, container.medium]}>
-          <Img
-            alt='Third and Grove Card Caddy'
-            fluid={getSrc('cc-transparent')}
-            className='cc-image'
-          />
+          <div
+            css={css`
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            `}
+          >
+            <Img
+              alt='Third and Grove Web Camera Cover'
+              fluid={getSrc('TAG-webcamCover-01')}
+              className='cc-image'
+            />
+            <small>Drupalcon 2021</small>
+          </div>
           <h3>{booth.header}</h3>
           <div>
             {booth.ctas.map(({ text, url }) => (
@@ -297,6 +306,7 @@ const Drupalicon = ({ data }) => {
                     header='Enter your email for your free card caddy.'
                     confirmMessage='Thanks! We’ll be in touch.'
                     subheader=''
+                    formName='drupalcon-swag-form'
                     css={css`
                       display: none;
 
@@ -325,42 +335,72 @@ const Drupalicon = ({ data }) => {
           </div>
         </div>
       </FullWidthSection>
-      <FullWidthSection
-        height='500px'
-        css={css`
-          ${container.textOnly}
-          padding: 50px 20px;
-          position: relative;
-          ${mediaQueries.phoneLarge} {
-            padding: 50px 0 120px 0;
-          }
 
-          p {
-            text-align: left;
-            margin: 20px 0;
-          }
-        `}
-      >
-        <h3>{tag.header}</h3>
-        <p dangerouslySetInnerHTML={{ __html: tag.body }} />
-        {tag.ctas.map(({ text, url }) => (
-          <div className='button--container'>
-            <Button
-              css={css`
-                display: none;
+      <FullWidthSection height='500px' backgroundColor={colors.yellow}>
+        <div
+          css={css`
+            ${container.textOnly}
+            padding: 50px 20px;
+            position: relative;
+            text-align: center;
 
-                ${mediaQueries.phoneLarge} {
-                  display: inline-block;
-                }
-              `}
-            >
-              <a href={url} target='_blank' rel='noreferrer'>
-                {text}
-              </a>
-            </Button>
-          </div>
-        ))}
+            ${mediaQueries.phoneLarge} {
+              padding: 120px 0;
+            }
+
+            a {
+              text-decoration: underline;
+            }
+
+            p {
+              text-align: center;
+              margin: 20px 0;
+            }
+          `}
+        >
+          <h3>{tag.header}</h3>
+          <p>
+            DrupalCon Global event organizers are working hard to bring you a
+            virtual version of the DrupalCon experience you know and love. The
+            event will take place April 12th-16th, 2021 Online, and{' '}
+            <a href='https://drupal.regfox.com/drupalcon-north-america-2021'>
+              you can register for the event now
+            </a>
+            .
+          </p>
+          <p>
+            Third and Grove is excited to share thought leadership around all
+            things open- source. We will walk you through how we craft digital
+            experiences and discover opportunities to enhance B2B lead
+            generation strategies, and how to be ready for Drupal 10.
+          </p>
+          <p>
+            We know Drupal like the back of our hand. DrupalCon Global will have
+            everything from keynotes, sessions, industry and topical summits,
+            discussion groups, networking opportunities, and much more. Be sure
+            to drop by the Third and Grove booth and get to know us a little
+            better.
+          </p>
+          {tag.ctas.map(({ text, url }) => (
+            <div className='button--container'>
+              <Button
+                css={css`
+                  display: none;
+
+                  ${mediaQueries.phoneLarge} {
+                    display: inline-block;
+                  }
+                `}
+              >
+                <a href={url} target='_blank' rel='noreferrer'>
+                  {text}
+                </a>
+              </Button>
+            </div>
+          ))}
+        </div>
       </FullWidthSection>
+
       <FullWidthSection
         backgroundColor={colors.white}
         height='100%'
@@ -397,19 +437,70 @@ const Drupalicon = ({ data }) => {
         </div>
       </FullWidthSection>
 
-      <InsightsSlider data={data.allInsight} />
-
       <Quote
+        center
         size='small'
+        padding='100px 0 0 0'
+        backgroundColor={colors.drupal9Blue}
+        quoteColor={colors.yellow}
+        color={colors.white}
         data={{
-          field_quote:
-            'It’s a rare opportunity that an agency like TAG can fit in so well with our in-house team. The support, partnership, and commitment to creating a custom solution for our multi-lingual sites made all the difference in our successful launch.',
-          field_footer_text:
-            'Steve Reichgut,  Former Director of Web Engineering & Web Operations at Benefit Cosmetics',
+          field_quote: quote.text,
+          field_footer_text: quote.author,
         }}
       />
 
-      <FullWidthSection
+      <FullWidthSection height='500px' backgroundColor={colors.yellow}>
+        <div
+          css={css`
+            ${container.textOnly}
+            padding: 100px 20px;
+            position: relative;
+
+            ${mediaQueries.phoneLarge} {
+              padding: 120px 0;
+            }
+
+            a {
+              text-decoration: underline;
+            }
+
+            p {
+              font-size: 18px;
+              margin: 20px 0;
+            }
+
+            h3 {
+              font-size: 27px;
+              font-weight: ${weights.bold};
+              text-align: center;
+
+              ${mediaQueries.phoneLarge} {
+                font-size: 32px;
+              }
+            }
+          `}
+        >
+          <h3>{liveQas.header}</h3>
+          <div className='button--container'>
+            <ul>
+              {liveQas.qas.map(({ date, title }) => (
+                <li>
+                  <p>
+                    <b>{date}</b>
+                    <span>&nbsp;-&nbsp;</span>
+                    <b>{title}</b>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </FullWidthSection>
+
+      <InsightsSlider data={data.allInsight} />
+
+      {/* <FullWidthSection
         backgroundColor={colors.drupal9Blue}
         padding='110px 0'
         minHeight='100%'
@@ -418,6 +509,7 @@ const Drupalicon = ({ data }) => {
           text='another modal form'
           header='other form for another reason !'
           confirmMessage='T.'
+          formName='other-form'
           css={css`
             display: none;
 
@@ -426,7 +518,7 @@ const Drupalicon = ({ data }) => {
             }
           `}
         />
-      </FullWidthSection>
+      </FullWidthSection> */}
 
       <SplitSection>
         <WhatWeDo
@@ -438,7 +530,7 @@ const Drupalicon = ({ data }) => {
       </SplitSection>
 
       <FullWidthSection
-        backgroundColor={colors.lightblue}
+        backgroundColor={colors.white}
         padding='110px 0'
         minHeight='100%'
       >
@@ -482,9 +574,7 @@ export default Drupalicon;
 
 export const query = graphql`
   {
-    allFile(
-      filter: { absolutePath: { regex: "/acquia-engage/|/headshots/" } }
-    ) {
+    allFile(filter: { absolutePath: { regex: "/drupalcon/|/headshots/" } }) {
       nodes {
         name
         publicURL
@@ -546,6 +636,13 @@ export const query = graphql`
           quote {
             author
             text
+          }
+          liveQas {
+            header
+            qas {
+              date
+              title
+            }
           }
         }
       }
