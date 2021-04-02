@@ -29,7 +29,12 @@
         {
           "text": "Visit our booth",
           "url": "/"
-        },
+        }
+      ]
+    },
+    "swag": {
+      "header": "You know you want in on this lovefest while keeping your security secure. Our webcam swag.",
+      "ctas": [
         {
           "text": "Grab That Swag",
           "url": "/"
@@ -37,7 +42,7 @@
       ]
     },
     "tag": {
-      "header": "DrupalCon is Our Favorite Conference of the Year",
+      "header": "Drupalcon is one of our favorite conferences of the year",
       "body": "<p>DrupalCon Global event organizers are working hard to bring you a virtual version of the DrupalCon experience you know and love. The event will take place April 12th-16th, 2021 Online, and <a href='https://drupal.regfox.com/drupalcon-north-america-2021'>you can register for the event now</a>.</p><p>Third and Grove is excited to share thought leadership around all things open- source.  We will walk you through how we craft digital experiences and discover opportunities to enhance B2B lead generation strategies, and how to be ready for Drupal 10.</p><p>We know Drupal like the back of our hand. DrupalCon Global will have everything from keynotes, sessions, industry and topical summits, discussion groups,  networking opportunities, and much more.  Be sure to drop by the Third and Grove booth and get to know us a little better.</p>",
       "ctas": [
         {
@@ -71,7 +76,7 @@
       "author": "Steve Reichgut, Former Director of Web Engineering & Web Operations at Benefit Cosmetics"
     },
     "liveQas": {
-      "header": "Live QA Schedule",
+      "header": "Live Booth QA Schedule",
       "qas": [
         {
           "date": "April 12th",
@@ -79,7 +84,7 @@
         },
         {
           "date": "April 13th",
-          "title": "Ask a core maintainer anything"
+          "title": "Ask a Core Maintainer Anything"
         },
         {
           "date": "April 14th",
@@ -87,11 +92,11 @@
         },
         {
           "date": "April 15th",
-          "title": "Learn Digital Strategies for Higher Ed (Justin + Ally panel)"
+          "title": "Learn Digital Strategies for Higher Ed"
         },
         {
           "date": "April 16th",
-          "title": "Happy Hour at our booth. Drink and Chat Live: (Whisky tasting. Justin + Ashley)"
+          "title": "Happy Hour Whiskey Tasting. Drink and Chat Live: (Whisky tasting. Justin + Ashley)"
         }
       ]
     }
