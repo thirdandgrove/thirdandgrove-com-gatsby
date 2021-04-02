@@ -141,6 +141,8 @@ const About = ({ data }) => {
       ${h1L};
       padding-top: 10px;
       margin-bottom: 8px;
+      text-align: center;
+
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
