@@ -360,6 +360,7 @@ const OverlayForm = ({
               <form
                 name={`${formName}`}
                 method='POST'
+                encType='multipart/form-data'
                 data-netlify='true'
                 netlify-honeypot='bot-field'
                 css={css`
