@@ -318,5 +318,46 @@ exports.handler = async (event, _context, callback) => {
   }
   /** acquia-engage Form */
 
+  /** drupalcon Form */
+  if (form_name === 'drupalcon-swag-form') {
+    // handle form drupalcon
+    const {
+      email,
+      name,
+      addressOne,
+      addressTwo,
+      city,
+      state,
+      country,
+      zipcode,
+    } = data;
+    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON } = process.env;
+
+    console.log(KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON);
+
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_DRUPALCON}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [
+          {
+            email,
+            name,
+            addressOne,
+            addressTwo,
+            city,
+            state,
+            country,
+            zipcode,
+            url: referrer,
+          },
+        ],
+      }),
+    }).catch(console.error);
+  }
+  /** drupalcon Form */
+
   callback(null, { statusCode: 200 });
 };
