@@ -298,7 +298,7 @@ const About = ({ data }) => {
           <div>
             <Img alt='Joneric Amundson' fluid={getSrc('joneric', 'leader')} />
             <h2>Joneric Amundson</h2>
-            <p>Art Director</p>
+            <p>Creative Director</p>
           </div>
           <div>
             <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
