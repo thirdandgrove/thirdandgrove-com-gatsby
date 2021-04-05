@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Global, css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
@@ -16,26 +16,132 @@ const OverlayForm = ({
   setIsActive,
   formName,
 }) => {
-  const [email, updateEmail] = useState('');
-  const [submitted, hasSubmitted] = useState(false);
-  const toggle = () => setIsActive(!isActive);
-  const onSubmit = evt => {
-    evt.preventDefault();
-    if (!email) {
+  const [formState, updateForm] = useState({
+    email: '',
+    name: '',
+    addressOne: '',
+    addressTwo: '',
+    city: '',
+    state: '',
+    country: '',
+    zipcode: '',
+    botField: '',
+  });
+
+  const [errors, updateErrors] = useState(null);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const toggle = () => {
+    setIsActive(!isActive);
+    setHasSubmitted(false);
+  };
+
+  const updateInput = event => {
+    updateErrors(null);
+    updateForm({ ...formState, [event.target.name]: event.target.value });
+  };
+
+  const onSubmit = event => {
+    event.preventDefault();
+    const {
+      name,
+      email,
+      addressOne,
+      city,
+      state,
+      country,
+      zipcode,
+    } = formState;
+    if (hasSubmitted) {
+      // Deter multiple submissions.
+      updateErrors({ error: 'The form has already been submitted.' });
       return;
     }
-
+    // Validate inputs.
+    if (
+      !name ||
+      !email ||
+      !addressOne ||
+      !city ||
+      !state ||
+      !country ||
+      !zipcode
+    ) {
+      // Notify user of required fields.
+      const currentErrs = {};
+      if (!name) {
+        currentErrs.name = 'Name is required';
+      }
+      if (!email) {
+        currentErrs.email = 'Email is required';
+      }
+      if (!addressOne) {
+        currentErrs.addressOne = 'Address is required';
+      }
+      if (!city) {
+        currentErrs.city = 'City is required';
+      }
+      if (!state) {
+        currentErrs.state = 'State/Region is required';
+      }
+      if (!country) {
+        currentErrs.country = 'Country is required';
+      }
+      if (!zipcode) {
+        currentErrs.zipcode = 'Zipcode is required';
+      }
+      updateErrors(currentErrs);
+      return;
+    }
+    // The form has not been submitted.
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': formName, email }),
+      body: encode({ 'form-name': formName, ...formState }),
     }).then(() => {
-      updateEmail('');
-      hasSubmitted(true);
-      setTimeout(() => {
-        setIsActive(!isActive);
-      }, 1000);
+      updateForm({
+        email: '',
+        name: '',
+        addressOne: '',
+        addressTwo: '',
+        city: '',
+        state: '',
+        country: '',
+        zipcode: '',
+      });
+      setHasSubmitted(true);
     });
+  };
+
+  const ReturnError = ({ errs, name }) => {
+    return errs ? (
+      <div
+        css={css`
+          margin-bottom: 10px;
+          margin-top: -10px;
+          ${mediaQueries.xs} {
+            position: relative;
+          }
+        `}
+      >
+        <div
+          css={css`
+            ${mediaQueries.phoneLarge} {
+            }
+
+            p {
+              display: inline;
+              color: ${colors.red};
+            }
+          `}
+        >
+          {errs &&
+            Object.entries(errs).map(
+              (err, i) => name === err[0] && <p key={err[1]}>{err[1]}</p>
+            )}
+        </div>
+      </div>
+    ) : null;
   };
 
   const fieldsetStyles = css`
@@ -73,6 +179,18 @@ const OverlayForm = ({
 
     &:invalid {
       border: ${colors.red} 1px solid;
+    }
+  `;
+
+  const flexStyles = css`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+
+    ${mediaQueries.phoneLarge} {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
     }
   `;
 
@@ -121,9 +239,14 @@ const OverlayForm = ({
             background-color: ${colors.white};
             padding: 72px 24px;
             position: relative;
+            overflow-y: ${hasSubmitted ? `auto` : `scroll`};
 
             @media (max-width: 475px) {
               padding: 125px 24px;
+            }
+
+            ${mediaQueries.phoneLarge} {
+              overflow-y: initial;
             }
           `}
         >
@@ -234,42 +357,142 @@ const OverlayForm = ({
             >
               {subheader}
             </p>
-            <form
-              name='acquia-engage'
-              data-netlify='true'
-              netlify-honeypot='bot-field'
-              css={css`
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-              `}
-            >
-              <input type='hidden' name='form-name' value='acquia-engage' />
-              <fieldset css={fieldsetStyles}>
-                {!submitted && (
-                  <input
-                    css={inputStyles}
-                    type='email'
-                    name='email'
-                    id='nws-email'
-                    placeholder='Email'
-                    value={email}
-                    onChange={evt => updateEmail(evt.target.value)}
-                  />
-                )}
-              </fieldset>
-              <Button
-                onClick={onSubmit}
-                disabled={submitted}
+            {!hasSubmitted ? (
+              <form
+                name={`${formName}`}
+                data-netlify='true'
+                netlify-honeypot='bot-field'
                 css={css`
-                  max-width: 200px;
-                  width: 100%;
-                  margin: auto;
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column;
                 `}
               >
-                {submitted ? confirmMessage : buttonText}
-              </Button>
-            </form>
+                <input
+                  type='hidden'
+                  name={`${formName}`}
+                  value={`${formName}`}
+                />
+                <fieldset css={[fieldsetStyles, flexStyles]}>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.name}
+                      onChange={updateInput}
+                      type='text'
+                      name='name'
+                      id='of-name'
+                      placeholder='Name'
+                    />
+                    <ReturnError errs={errors} name='name' />
+                  </div>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.email}
+                      onChange={updateInput}
+                      type='email'
+                      name='email'
+                      id='of-email'
+                      placeholder='Email'
+                    />
+                    <ReturnError errs={errors} name='email' />
+                  </div>
+                </fieldset>
+                <fieldset css={[fieldsetStyles, flexStyles]}>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.addressOne}
+                      onChange={updateInput}
+                      type='text'
+                      name='addressOne'
+                      id='of-addressOne'
+                      placeholder='Address 1'
+                    />
+                    <ReturnError errs={errors} name='addressOne' />
+                  </div>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.addressTwo}
+                      onChange={updateInput}
+                      type='text'
+                      name='addressTwo'
+                      id='of-addressTwo'
+                      placeholder='Address 2 [Optional]'
+                    />
+                  </div>
+                </fieldset>
+
+                <fieldset css={[fieldsetStyles, flexStyles]}>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.city}
+                      onChange={updateInput}
+                      type='text'
+                      name='city'
+                      id='of-city'
+                      placeholder='City'
+                    />
+                    <ReturnError errs={errors} name='city' />
+                  </div>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.state}
+                      onChange={updateInput}
+                      type='text'
+                      name='state'
+                      id='of-state'
+                      placeholder='State/Region'
+                    />
+                    <ReturnError errs={errors} name='state' />
+                  </div>
+                </fieldset>
+
+                <fieldset css={[fieldsetStyles, flexStyles]}>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.country}
+                      onChange={updateInput}
+                      type='text'
+                      name='country'
+                      id='of-country'
+                      placeholder='Country'
+                    />
+                    <ReturnError errs={errors} name='country' />
+                  </div>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.zipcode}
+                      onChange={updateInput}
+                      type='number'
+                      name='zipcode'
+                      id='of-zipcode'
+                      placeholder='Zipcode'
+                    />
+                    <ReturnError errs={errors} name='zipcode' />
+                  </div>
+                </fieldset>
+                <Button
+                  onClick={onSubmit}
+                  disabled={hasSubmitted}
+                  css={css`
+                    max-width: 200px;
+                    width: 100%;
+                    margin: auto;
+                  `}
+                >
+                  {hasSubmitted ? confirmMessage : buttonText}
+                </Button>
+              </form>
+            ) : (
+              <p>{confirmMessage}</p>
+            )}
           </div>
         </div>
       </FullWidthSection>
