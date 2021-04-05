@@ -271,11 +271,11 @@ const Drupalicon = ({ data }) => {
         subTitle: header.date,
         linksA: [
           {
-            url: '../../Visit TAG at Acquia Engage 2020.ics',
+            url: '/',
             text: '+iCal',
           },
           {
-            url: '../../Visit TAG at Acquia Engage 2020.ics',
+            url: '/',
             text: '+Google Calendar',
           },
         ],
