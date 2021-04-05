@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Global, css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
@@ -96,7 +96,7 @@ const OverlayForm = ({
     // The form has not been submitted.
     fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: { 'Content-Type': 'multipart/form-data' },
       body: encode({ 'form-name': formName, ...formState }),
     }).then(() => {
       updateForm({
@@ -360,6 +360,7 @@ const OverlayForm = ({
             {!hasSubmitted ? (
               <form
                 name={`${formName}`}
+                method='POST'
                 data-netlify='true'
                 netlify-honeypot='bot-field'
                 css={css`
