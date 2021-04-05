@@ -22,6 +22,7 @@ const Drupalicon = ({ data }) => {
   const [joinLink, setJoinLink] = useState(
     'https://acquiaengage2020.eventfinity.co/libraries/105548'
   );
+  const [isDate, setDate] = useState(false);
 
   const {
     header,
@@ -60,6 +61,10 @@ const Drupalicon = ({ data }) => {
 
   const getImageSrc = imgName =>
     images.filter(({ name }) => name === imgName)[0].publicURL;
+
+  useEffect(() => {
+    setDate(new Date() > new Date('2021-04-12'));
+  }, []);
 
   useEffect(() => {
     async function getLinks() {
@@ -285,6 +290,10 @@ const Drupalicon = ({ data }) => {
     >
       <SplitSection
         css={css`
+          grid-template-columns: ${isDate
+            ? `repeat(2, 1fr)`
+            : `1fr !important`};
+
           > div {
             display: flex;
             flex-direction: column;
@@ -342,39 +351,45 @@ const Drupalicon = ({ data }) => {
         `}
       >
         {' '}
-        <div>
-          <img
-            alt='DrupalCon'
-            src={getSrc('drupalcon', 'svg')}
-            className='cc-image'
-          />
-          <h3
-            css={css`
-              text-align: center;
-            `}
-          >
-            {booth.header}
-          </h3>
+        {isDate && (
           <div>
-            {booth.ctas.map(({ text, url }) => (
-              <div className='button--container' style={{ marginBottom: '0' }}>
-                <Button
-                  css={css`
-                    display: none;
-
-                    ${mediaQueries.phoneLarge} {
-                      display: inline-block;
-                    }
-                  `}
+            <img
+              alt='DrupalCon'
+              src={getSrc('drupalcon', 'svg')}
+              className='cc-image'
+            />
+            <h3
+              css={css`
+                text-align: center;
+              `}
+            >
+              {booth.header}
+            </h3>
+            <div>
+              {booth.ctas.map(({ text, url }) => (
+                <div
+                  className='button--container'
+                  style={{ marginBottom: '0' }}
+                  key={url}
                 >
-                  <a href={url} target='_blank' rel='noreferrer'>
-                    {text}
-                  </a>
-                </Button>
-              </div>
-            ))}
+                  <Button
+                    css={css`
+                      display: none;
+
+                      ${mediaQueries.phoneLarge} {
+                        display: inline-block;
+                      }
+                    `}
+                  >
+                    <a href={url} target='_blank' rel='noreferrer'>
+                      {text}
+                    </a>
+                  </Button>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div>
           <Img
             alt='Third and Grove Web Camera Cover'
@@ -390,7 +405,7 @@ const Drupalicon = ({ data }) => {
           </h3>
           <div>
             {swag.ctas.map(({ text, url }) => (
-              <div className='button--container'>
+              <div className='button--container' key={url}>
                 <ButtonForm
                   text={text}
                   header='Enter your details for your free webcam cover.'
@@ -457,7 +472,7 @@ const Drupalicon = ({ data }) => {
             better.
           </p>
           {tag.ctas.map(({ text, url }) => (
-            <div className='button--container'>
+            <div className='button--container' key={url}>
               <Button
                 css={css`
                   display: none;
@@ -537,7 +552,7 @@ const Drupalicon = ({ data }) => {
           <div className='button--container'>
             <ul>
               {liveQas.qas.map(({ date, title }) => (
-                <li>
+                <li key={title}>
                   <p>
                     <b>{date}</b>
                     <span>&nbsp;-&nbsp;</span>
