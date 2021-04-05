@@ -6,7 +6,6 @@ import { css } from '@emotion/react';
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
-import AcquiaEngage from '../../../static/images/acquia-engage-logo.svg';
 import DrupaliCon from '../../images/drupalcon/drupalcon.svg';
 
 import TagLogo from './svg/TagLogo';
@@ -22,7 +21,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const { width } = useWindow();
 
   useEffect(() => {
-    setDate(new Date() > new Date('2020-10-20'));
+    setDate(new Date() > new Date('2021-04-12'));
   }, []);
 
   return (
