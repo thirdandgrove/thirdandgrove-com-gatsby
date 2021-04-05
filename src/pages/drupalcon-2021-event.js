@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
@@ -393,7 +393,7 @@ const Drupalicon = ({ data }) => {
               <div className='button--container'>
                 <ButtonForm
                   text={text}
-                  header='Enter your email for your free card caddy.'
+                  header='Enter your details for your free webcam cover.'
                   confirmMessage='Thanks! We’ll be in touch.'
                   subheader=''
                   formName='drupalcon-swag-form'
@@ -476,49 +476,13 @@ const Drupalicon = ({ data }) => {
         </div>
       </FullWidthSection>
 
-      <FullWidthSection
-        backgroundColor={colors.white}
-        height='100%'
-        css={css`
-          padding: 40px 0 20px;
-
-          ${mediaQueries.desktop} {
-            padding: 60px 0 20px;
-          }
-
-          h3 {
-            font-size: 27px;
-            font-weight: ${weights.bold};
-
-            ${mediaQueries.phoneLarge} {
-              font-size: 32px;
-            }
-          }
-        `}
-      >
-        <h3>{speakers.header}</h3>
-
-        <div css={[splitWithImageCss, container.medium]}>
-          {speakers.people.map(({ img, name, email, title }) => (
-            <div key={name}>
-              <Img alt={name} fluid={getSrc(img, 'leader')} />
-              <h4>{name}</h4>
-              <p>
-                <a href={`mailto:${email}`}>Say Hi</a>
-              </p>
-              <p>{title}</p>
-            </div>
-          ))}
-        </div>
-      </FullWidthSection>
-
       <Quote
         center
         size='small'
         padding='100px 0 100px 0'
-        backgroundColor={colors.drupal9Blue}
+        backgroundColor={colors.white}
         quoteColor={colors.yellow}
-        color={colors.white}
+        color={colors.darkgray}
         innerMargin='0'
         data={{
           field_quote: quote.text,
@@ -623,7 +587,7 @@ const Drupalicon = ({ data }) => {
             }
           `}
         >
-          Drupalicon
+          Drupalcon
           <br />
           2021
         </h3>
@@ -637,7 +601,7 @@ const Drupalicon = ({ data }) => {
         >
           Ready to get started?
         </p>
-        <ContactForm formName='druplicon' />
+        <ContactForm formName='drupalcon' />
       </FullWidthSection>
     </Layout>
   );
