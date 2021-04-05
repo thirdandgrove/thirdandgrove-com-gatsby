@@ -10,7 +10,7 @@ import SplitSection from '../components/SplitSection';
 import Layout from '../components/layout';
 import { container, mediaQueries, weights, colors, fonts } from '../styles';
 import Button from '../components/Button';
-import { GetInTouch, WhatWeDo } from '../components/Prefooter';
+import { BeUs, WhatWeDo } from '../components/Prefooter';
 import InsightsSlider from '../components/InsightsSlider';
 import Quote from '../components/ContentBody/Quote';
 import ButtonForm from '../components/ButtonForm';
@@ -582,7 +582,7 @@ const Drupalicon = ({ data }) => {
           link='/work/'
           linkText='explore work'
         />
-        <GetInTouch />
+        <BeUs />
       </SplitSection>
 
       <FullWidthSection

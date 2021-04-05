@@ -16,7 +16,7 @@ const wrapperStyles = css`
 
 const WhatWeDo = ({ text, link, linkText }) => {
   return (
-    <TextWrapper backgroundColor={colors.lightblue} css={wrapperStyles}>
+    <TextWrapper backgroundColor={colors.yellow} css={wrapperStyles}>
       <h3>{text}</h3>
       <Button onClick={() => navigate(link)}>{linkText}</Button>
     </TextWrapper>
