@@ -96,7 +96,6 @@ const OverlayForm = ({
     // The form has not been submitted.
     fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'multipart/form-data' },
       body: encode({ 'form-name': formName, ...formState }),
     }).then(() => {
       updateForm({
