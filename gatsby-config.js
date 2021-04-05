@@ -13,6 +13,12 @@ module.exports = {
     siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-loadable-components-ssr`,
+      options: {
+        useHydrate: true,
+      },
+    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-fixhash`,

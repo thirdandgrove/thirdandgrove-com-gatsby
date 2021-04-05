@@ -12,7 +12,7 @@ import FullWidthSection from '../FullWidthSection';
  * Header used on every page.
  *
  * @param {string} title - passed through to SEO
- * @param {object} subTitle
+ * @param {string} subTitle
  * @param {string} label
  * @param {bool} labelMobileOnly
  * @param {string} metaTitle - passed through to SEO
@@ -304,7 +304,7 @@ const Header = ({
 // This is exported for use in layout.js.
 export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  subTitle: PropTypes.object,
+  subTitle: PropTypes.string,
   label: PropTypes.string,
   labelMobileOnly: PropTypes.bool,
   metaTitle: PropTypes.string,
