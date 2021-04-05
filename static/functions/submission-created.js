@@ -330,7 +330,8 @@ exports.handler = async (event, _context, callback) => {
       state,
       country,
       zipcode,
-    } = data;
+    } = data.data;
+
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON } = process.env;
 
     console.log(KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON);
