@@ -184,7 +184,7 @@ const About = ({ data }) => {
 
   // returns the correct image source needed to render
   const getSrc = name => {
-    if (name === 'team') {
+    if (name === 'team_2') {
       return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
         .fluid;
     }
@@ -213,7 +213,7 @@ const About = ({ data }) => {
         `}
       >
         <Img
-          fluid={getSrc('team')}
+          fluid={getSrc('team_2')}
           alt='TAG Team'
           css={css`
             width: 100%;
@@ -283,7 +283,7 @@ const About = ({ data }) => {
           <div>
             <Img alt='Justin Emond' fluid={getSrc('emond', 'leader')} />
             <h2>Justin Emond</h2>
-            <p>Co-Founder, Chief Executive Officer</p>
+            <p>Founder, Chief Executive Officer</p>
           </div>
           <div>
             <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
@@ -313,7 +313,7 @@ const About = ({ data }) => {
           <div>
             <Img alt='Jeremy Dickens' fluid={getSrc('jeremy', 'leader')} />
             <h2>Jeremy Dickens</h2>
-            <p>Back End Lead</p>
+            <p>Engineering Manager</p>
           </div>
         </div>
       </FullWidthSection>
@@ -392,11 +392,16 @@ export default About;
 
 export const query = graphql`
   {
-    teamPhoto: allFile(filter: { name: { in: "team" } }) {
+    teamPhoto: allFile(filter: { name: { in: "team_2" } }) {
       nodes {
         name
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 480, maxWidth: 980) {
+          fluid(
+            cropFocus: CENTER
+            maxHeight: 480
+            maxWidth: 980
+            quality: 100
+          ) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
