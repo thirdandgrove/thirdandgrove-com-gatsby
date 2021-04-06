@@ -271,11 +271,11 @@ const Drupalicon = ({ data }) => {
         subTitle: header.date,
         linksA: [
           {
-            url: '/',
+            url: '../../../calendar/Drupalcon2021.ics',
             text: '+iCal',
           },
           {
-            url: '/',
+            url: '../../../calendar/Drupalcon2021.ics',
             text: '+Google Calendar',
           },
         ],
@@ -286,6 +286,7 @@ const Drupalicon = ({ data }) => {
         banner: true,
         styles: layoutStyles,
         navLink: joinLink,
+        logo: getSrc('Silver_sponsor_0', 'childImageTypeA'),
       }}
     >
       <SplitSection
@@ -529,12 +530,18 @@ const Drupalicon = ({ data }) => {
 
             p {
               font-size: 18px;
-              margin: 20px 0;
+              margin: 20px auto;
               display: flex;
 
               b {
                 white-space: pre;
               }
+            }
+
+            .qa--container {
+              width: 100%;
+              max-width: 550px;
+              margin: 0 auto;
             }
 
             h3 {
@@ -549,28 +556,15 @@ const Drupalicon = ({ data }) => {
           `}
         >
           <h3>{liveQas.header}</h3>
-          <div className='button--container'>
-            <ul>
-              {liveQas.qas.map(({ date, title }) => (
-                <li key={title}>
-                  <p>
-                    <b>{date}</b>
-                    <span>&nbsp;-&nbsp;</span>
-                    <strong>{title}</strong>
-                  </p>
-                </li>
-              ))}
-            </ul>
+          <div className='qa--container'>
+            {liveQas.qas.map(({ date, title }) => (
+              <p key={title}>
+                <b>{date}</b>
+                <span>&nbsp;-&nbsp;</span>
+                <strong>{title}</strong>
+              </p>
+            ))}
           </div>
-          <Img
-            alt='DrupalCon Silver Sponsor'
-            fluid={getSrc('silver-sponsor', 'childImageTypeA')}
-            objectFit='contain'
-            imgStyle={{
-              objectFit: 'contain',
-            }}
-            className='cc-image'
-          />
         </div>
       </FullWidthSection>
 
