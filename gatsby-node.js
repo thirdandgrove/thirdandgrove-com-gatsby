@@ -2,7 +2,9 @@
 const path = require('path');
 const util = require('util');
 const childProcess = require('child_process');
+
 const express = require('express');
+
 const { ensureTrailingSlash, updatePaths } = require('./src/util');
 
 const exec = util.promisify(childProcess.exec);
@@ -165,10 +167,19 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions,
+}) => {
   actions.setWebpackConfig({
     node: {
       fs: 'empty',
+    },
+    module: {
+      rules: [{ test: /\.ics$/, use: 'raw-loader' }],
     },
   });
 };
