@@ -281,9 +281,9 @@ const Drupalicon = ({ data }) => {
         >
           <h3>{tag.header}</h3>
           <p>
-            DrupalCon Global event organizers are working hard to bring you a
-            virtual version of the DrupalCon experience you know and love. The
-            event will take place April 12th-16th, 2021 Online, and{' '}
+            DrupalCon North America event organizers are working hard to bring
+            you a virtual version of the DrupalCon experience you know and love.
+            The event will take place April 12th-16th, 2021 Online, and{' '}
             <a href='https://drupal.regfox.com/drupalcon-north-america-2021'>
               you can register for the event now
             </a>
@@ -296,11 +296,11 @@ const Drupalicon = ({ data }) => {
             generation strategies, and how to be ready for Drupal 10.
           </p>
           <p>
-            We know Drupal like the back of our hand. DrupalCon Global will have
-            everything from keynotes, sessions, industry and topical summits,
-            discussion groups, networking opportunities, and much more. Be sure
-            to drop by the Third and Grove booth and get to know us a little
-            better.
+            We know Drupal like the back of our hand. DrupalCon North America
+            will have everything from keynotes, sessions, industry and topical
+            summits, discussion groups, networking opportunities, and much more.
+            Be sure to drop by the Third and Grove booth and get to know us a
+            little better.
           </p>
           {tag.ctas.map(({ text, url }) => (
             <div className='button--container' key={url}>
