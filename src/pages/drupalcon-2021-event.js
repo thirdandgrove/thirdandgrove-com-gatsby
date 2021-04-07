@@ -16,12 +16,6 @@ import Quote from '../components/ContentBody/Quote';
 import ButtonForm from '../components/ButtonForm';
 
 const Drupalicon = ({ data }) => {
-  const [exploreLink, setExploreLink] = useState(
-    'https://acquiaengage2020.eventfinity.co/libraries/105548'
-  );
-  const [joinLink, setJoinLink] = useState(
-    'https://acquiaengage2020.eventfinity.co/libraries/105548'
-  );
   const [isDate, setDate] = useState(false);
 
   const {
@@ -62,42 +56,16 @@ const Drupalicon = ({ data }) => {
     return src;
   };
 
-  useEffect(() => {
-    setDate(new Date() > new Date('2021-04-12'));
-  }, []);
-
-  useEffect(() => {
-    async function getLinks() {
-      const URL =
-        'https://spreadsheets.google.com/feeds/cells/18dA1bKdXZo3ecZFyjLhtY1CXFwZDsCpwxpnZQqB8Y8s/1/public/full?alt=json';
-
-      try {
-        const response = await fetch(URL);
-        const json = await response.json();
-        json.feed.entry.forEach(item => {
-          if (item.title.$t.indexOf('B1') !== -1) {
-            setExploreLink(item.content.$t);
-          }
-          if (item.title.$t.indexOf('B2') !== -1) {
-            setJoinLink(item.content.$t);
-          }
-        });
-      } catch (error) {
-        setJoinLink('https://acquiaengage2020.eventfinity.co/libraries/105548');
-        setExploreLink(
-          'https://acquiaengage2020.eventfinity.co/libraries/105548'
-        );
-      }
-    }
-    getLinks();
-  }, []);
-
   const layoutStyles = css`
     span {
       font-size: 25px;
       font-weight: ${weights.black};
     }
   `;
+
+  useEffect(() => {
+    setDate(new Date() > new Date('2021-04-12'));
+  }, []);
 
   return (
     <Layout
@@ -106,7 +74,7 @@ const Drupalicon = ({ data }) => {
         metaTitle: 'Talk to Drupal Experts at DrupalCon 2021 | Third and Grove',
         title: header.title,
         description:
-          'Drop by our virtual booth for a chat during DrupalCon Global 2021! Feel free to attend our speaker sessions, too!',
+          'Drop by our virtual booth for a chat during DrupalCon North America 2021! Feel free to attend our speaker sessions, too!',
         subTitle: header.date,
         linksA: [
           {
@@ -124,7 +92,7 @@ const Drupalicon = ({ data }) => {
         invert: true,
         banner: true,
         styles: layoutStyles,
-        navLink: joinLink,
+        navLink: 'https://events.drupal.org/drupalcon2021',
         logo: getSrc('Silver_sponsor_0', 'childImageTypeA'),
       }}
     >
