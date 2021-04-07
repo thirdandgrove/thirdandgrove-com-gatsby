@@ -59,7 +59,6 @@ const Drupalicon = ({ data }) => {
   const layoutStyles = css`
     span {
       font-size: 25px;
-      font-weight: ${weights.black};
     }
   `;
 
@@ -93,7 +92,8 @@ const Drupalicon = ({ data }) => {
         banner: true,
         styles: layoutStyles,
         navLink: 'https://events.drupal.org/drupalcon2021',
-        logo: getSrc('Silver_sponsor_0', 'childImageTypeA'),
+        logo: null,
+        heroLogo: true,
       }}
     >
       <SplitSection
@@ -140,8 +140,10 @@ const Drupalicon = ({ data }) => {
             }
 
             h4 {
+              font-size: 20px;
               font-family: ${fonts.sans};
-              margin-bottom: 18px;
+              margin-bottom: 16px;
+              text-align: center;
             }
 
             p {
@@ -220,7 +222,7 @@ const Drupalicon = ({ data }) => {
         <div>
           <Img
             alt='Third and Grove Web Camera Cover'
-            fluid={getSrc('TAG-Webcam-Cover', 'childImageTypeB')}
+            fluid={getSrc('TAG-Webcam-Cover-NEW', 'childImageTypeB')}
             className='cc-image'
           />
           <h3
@@ -260,7 +262,10 @@ const Drupalicon = ({ data }) => {
       <FullWidthSection height='500px' backgroundColor={colors.yellow}>
         <div
           css={css`
-            ${container.textOnly}
+            width: 700px;
+            max-width: 100%;
+            margin: 0 auto;
+
             padding: 50px 20px;
             position: relative;
             text-align: center;
@@ -279,6 +284,18 @@ const Drupalicon = ({ data }) => {
             }
           `}
         >
+          <div style={{ width: '150px', margin: '0 auto 2rem' }}>
+            <Img
+              alt='DrupalCon Silver Sponsor'
+              fluid={getSrc('Silver_sponsor_0', 'childImageTypeA')}
+              objectFit='contain'
+              imgStyle={{
+                objectFit: 'contain',
+                backgroundColor: 'transparent',
+              }}
+              className='image'
+            />
+          </div>
           <h3>{tag.header}</h3>
           <p>
             DrupalCon North America event organizers are working hard to bring
@@ -362,9 +379,18 @@ const Drupalicon = ({ data }) => {
               font-size: 18px;
               margin: 20px auto;
               display: flex;
+              align-items: baseline;
 
               b {
                 white-space: pre;
+              }
+
+              strong {
+                font-size: 22px;
+
+                span {
+                  font-size: 14px;
+                }
               }
             }
 
@@ -372,6 +398,10 @@ const Drupalicon = ({ data }) => {
               width: 100%;
               max-width: 550px;
               margin: 0 auto;
+            }
+
+            hr {
+              margin: 5px auto;
             }
 
             h3 {
@@ -387,11 +417,16 @@ const Drupalicon = ({ data }) => {
         >
           <h3>{liveQas.header}</h3>
           <div className='qa--container'>
-            {liveQas.qas.map(({ date, title }) => (
+            {liveQas.qas.map(({ date, title, time }) => (
               <p key={title}>
                 <b>{date}</b>
                 <span>&nbsp;-&nbsp;</span>
-                <strong>{title}</strong>
+                <strong>
+                  {title}
+                  <br />
+                  <hr />
+                  <span>{time}</span>
+                </strong>
               </p>
             ))}
           </div>
@@ -426,7 +461,7 @@ const Drupalicon = ({ data }) => {
             }
           `}
         >
-          Drupalcon
+          DrupalCon
           <br />
           2021
         </h3>
@@ -541,6 +576,7 @@ export const query = graphql`
             qas {
               date
               title
+              time
             }
           }
         }
