@@ -5,9 +5,17 @@ import { css } from '@emotion/react';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
-import { colors, fonts, mediaQueries, weights } from '../../styles';
+import {
+  colors,
+  fonts,
+  mediaQueries,
+  weights,
+  jsBreakpoints,
+} from '../../styles';
 import FullWidthSection from '../FullWidthSection';
-
+import TagLogo from '../TopNav/svg/TagLogo';
+import ThirdAndGrove from '../TopNav/svg/ThirdAndGrove';
+import useWindow from '../../hooks/useWindow';
 /**
  * Header used on every page.
  *
@@ -29,6 +37,7 @@ import FullWidthSection from '../FullWidthSection';
  * @param {string} heroImageMobile - used as background on mobile
  * @param {bool} noIndex - set noindex,nofollow to page
  * @param {string} logo - small image to add to promo pages
+ * @param {string} heroLogo - optional logo in hero area
  */
 const Header = ({
   title,
@@ -56,7 +65,9 @@ const Header = ({
   navLink,
   noIndex,
   logo,
+  heroLogo,
 }) => {
+  const { width } = useWindow();
   const isLightBackground = value => {
     let r;
     let g;
@@ -267,6 +278,31 @@ const Header = ({
         height={height}
         minHeight={mobileMinHeight}
       >
+        {heroLogo && (
+          <div
+            css={css`
+              margin-bottom: 12px;
+            `}
+          >
+            {typeof window !== 'undefined' &&
+            width > jsBreakpoints.phoneLarge ? (
+              <ThirdAndGrove
+                css={css`
+                  height: 22px;
+                  fill: ${fontColor};
+                `}
+              />
+            ) : (
+              <TagLogo
+                css={css`
+                  fill: ${fontColor};
+                  height: 50px;
+                `}
+              />
+            )}
+          </div>
+        )}
+
         {label && (
           <span data-cy='labelText' css={headerlabel}>
             {label}
@@ -331,6 +367,7 @@ export const headerPropTypes = {
   navLink: PropTypes.string,
   noIndex: PropTypes.bool,
   logo: PropTypes.string,
+  heroLogo: PropTypes.bool,
 };
 
 Header.propTypes = headerPropTypes;
@@ -361,6 +398,7 @@ Header.defaultProps = {
   navLink: 'https://engage.acquia.com',
   noIndex: false,
   logo: null,
+  heroLogo: false,
 };
 
 export default Header;
