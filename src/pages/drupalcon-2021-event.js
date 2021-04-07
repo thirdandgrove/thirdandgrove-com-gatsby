@@ -28,7 +28,6 @@ const Drupalicon = ({ data }) => {
     header,
     booth,
     tag,
-    speakers,
     liveQas,
     quote,
     swag,
@@ -48,6 +47,10 @@ const Drupalicon = ({ data }) => {
         src = image.childImageTypeA.fluid;
         break;
 
+      case type === 'childImageTypeB':
+        src = image.childImageTypeB.fluid;
+        break;
+
       case type === 'svg':
         src = image.publicURL;
         break;
@@ -58,9 +61,6 @@ const Drupalicon = ({ data }) => {
     }
     return src;
   };
-
-  const getImageSrc = imgName =>
-    images.filter(({ name }) => name === imgName)[0].publicURL;
 
   useEffect(() => {
     setDate(new Date() > new Date('2021-04-12'));
@@ -99,175 +99,14 @@ const Drupalicon = ({ data }) => {
     }
   `;
 
-  const logogridStyles = css`
-    h2 {
-      font-size: 27px;
-      font-weight: ${weights.bold};
-
-      ${mediaQueries.phoneLarge} {
-        font-size: 32px;
-      }
-    }
-
-    h3 {
-      font-family: ${fonts.sans};
-      font-weight: ${weights.thin};
-      line-height: 1;
-      font-size: 16px;
-    }
-
-    div {
-      max-width: 850px;
-    }
-
-    .logo-grid-container {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-top: 75px;
-
-      ${mediaQueries.phoneLarge} {
-        margin-top: 0;
-        justify-content: space-between;
-        flex-direction: row;
-      }
-    }
-
-    .logo-grid-item {
-      ${mediaQueries.phoneLarge} {
-        flex: 0 0 25%;
-        width: 25%;
-        max-width: 25%;
-        margin-bottom: 50px;
-      }
-    }
-
-    .logo-grid-item img {
-      width: 100%;
-    }
-  `;
-
-  const splitWithButtonsCss = css`
-    > div {
-      padding-top: 20px;
-
-      ${mediaQueries.phoneLarge} {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding-left: 40px;
-        padding-right: 40px;
-      }
-    }
-
-    > div > div {
-      ${mediaQueries.phoneLarge} {
-        margin-bottom: 90px;
-        flex: 0 0 calc(50% - 86px);
-        padding-top: 20px;
-
-        &:nth-child(odd):last-child {
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-    }
-
-    h3 {
-      font-size: 21px;
-      font-weight: ${weights.bold};
-      margin-bottom: 6px;
-      padding-top: 40px;
-      font-family: ${fonts.sans};
-      line-height: 1.2;
-
-      ${mediaQueries.phoneLarge} {
-        font-size: 23px;
-      }
-    }
-
-    p {
-      font-weight: ${weights.thin};
-      margin-bottom: 0;
-    }
-
-    .gatsby-image-wrapper > div {
-      ${mediaQueries.phoneLarge} {
-        padding-bottom: 100% !important;
-      }
-    }
-
-    .button--container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 64px;
-
-      ${mediaQueries.phoneLarge} {
-        display: block;
-      }
-
-      button {
-        margin: 0 auto;
-        display: block;
-      }
-    }
-  `;
-
-  const splitWithImageCss = css`
-    padding-top: 0;
-
-    ${mediaQueries.phoneLarge} {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-
-    > div {
-      margin-bottom: 64px;
-
-      ${mediaQueries.phoneLarge} {
-        flex: 0 0 calc(50% - 86px);
-        padding-top: 20px;
-
-        &:nth-child(odd):last-child {
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-    }
-
-    h4 {
-      font-size: 21px;
-      font-weight: ${weights.bold};
-      margin-bottom: 6px;
-      padding-top: 40px;
-
-      ${mediaQueries.phoneLarge} {
-        font-size: 27px;
-      }
-    }
-
-    p {
-      font-weight: ${weights.thin};
-      margin-bottom: 0;
-    }
-
-    .gatsby-image-wrapper > div {
-      ${mediaQueries.phoneLarge} {
-        padding-bottom: 100% !important;
-      }
-    }
-  `;
-
   return (
     <Layout
       css={layoutStyles}
       headerData={{
-        metaTitle: header.title,
+        metaTitle: 'Talk to Drupal Experts at DrupalCon 2021 | Third and Grove',
         title: header.title,
+        description:
+          'Drop by our virtual booth for a chat during DrupalCon Global 2021! Feel free to attend our speaker sessions, too!',
         subTitle: header.date,
         linksA: [
           {
@@ -307,22 +146,41 @@ const Drupalicon = ({ data }) => {
             }
 
             .cc-image {
-              max-width: 200px;
-              height: 200px;
+              max-width: 800px;
+              height: auto;
               width: 100%;
-              margin: 0 auto;
+              margin: 0 auto 24px;
+            }
+
+            .d-image {
+              max-width: 400px;
+              height: auto;
+              width: 100%;
+              margin: 0 auto 48px;
             }
 
             h3 {
               font-size: 21px;
               font-weight: ${weights.bold};
-              margin-bottom: 6px;
+              margin-bottom: 24px;
               font-family: ${fonts.sans};
               line-height: 1.2;
 
               ${mediaQueries.phoneLarge} {
                 font-size: 23px;
               }
+            }
+
+            h4 {
+              font-family: ${fonts.sans};
+              margin-bottom: 18px;
+            }
+
+            p {
+              max-width: 700px;
+              width: 100%;
+              text-align: center;
+              margin-bottom: 0;
             }
 
             .button--container {
@@ -357,7 +215,7 @@ const Drupalicon = ({ data }) => {
             <img
               alt='DrupalCon'
               src={getSrc('drupalcon', 'svg')}
-              className='cc-image'
+              className='d-image'
             />
             <h3
               css={css`
@@ -394,7 +252,7 @@ const Drupalicon = ({ data }) => {
         <div>
           <Img
             alt='Third and Grove Web Camera Cover'
-            fluid={getSrc('TAG-webcamCover-01', 'childImageTypeA')}
+            fluid={getSrc('TAG-Webcam-Cover', 'childImageTypeB')}
             className='cc-image'
           />
           <h3
@@ -404,6 +262,10 @@ const Drupalicon = ({ data }) => {
           >
             {swag.header}
           </h3>
+
+          <h4>{swag.subheader}</h4>
+          <p>{swag.body}</p>
+
           <div>
             {swag.ctas.map(({ text, url }) => (
               <div className='button--container' key={url}>
@@ -638,6 +500,11 @@ export const query = graphql`
             ...GatsbyImageSharpFluid_withWebp
           }
         }
+        childImageTypeB: childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
       }
     }
     allInsight(
@@ -674,6 +541,8 @@ export const query = graphql`
               url
             }
             header
+            subheader
+            body
           }
           tag {
             body
