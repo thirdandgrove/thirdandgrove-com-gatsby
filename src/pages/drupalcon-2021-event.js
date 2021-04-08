@@ -232,10 +232,7 @@ const Drupalicon = ({ data }) => {
           >
             {swag.header}
           </h3>
-
-          <h4>{swag.subheader}</h4>
           <p>{swag.body}</p>
-
           <div>
             {swag.ctas.map(({ text, url }) => (
               <div className='button--container' key={url}>
@@ -443,40 +440,6 @@ const Drupalicon = ({ data }) => {
         />
         <BeUs />
       </SplitSection>
-
-      <FullWidthSection
-        backgroundColor={colors.white}
-        padding='110px 0'
-        minHeight='100%'
-      >
-        <h3
-          id='contact'
-          css={css`
-            font-size: 36px;
-            margin-bottom: 20px;
-            text-align: center;
-            ${mediaQueries.phoneLarge} {
-              font-size: 48px;
-              margin: 0 0 1.45rem;
-            }
-          `}
-        >
-          DrupalCon
-          <br />
-          2021
-        </h3>
-        <p
-          css={css`
-            font-size: 16px;
-            line-height: 27px;
-            font-weight: lighter;
-            text-align: center;
-          `}
-        >
-          Ready to get started?
-        </p>
-        <ContactForm formName='drupalcon' />
-      </FullWidthSection>
     </Layout>
   );
 };
