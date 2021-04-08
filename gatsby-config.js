@@ -13,17 +13,11 @@ module.exports = {
     siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
+    `gatsby-plugin-preact`,
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-fixhash`,
       options: { offsetY: 20 },
-    },
-    {
-      resolve: 'gatsby-plugin-react-axe',
-      options: {
-        // Options to pass to axe-core.
-        // See: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure
-      },
     },
     {
       resolve: `gatsby-plugin-netlify`,
