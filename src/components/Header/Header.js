@@ -289,7 +289,7 @@ const Header = ({
               margin-bottom: 12px;
             `}
           >
-            {!isMobile ? (
+            {isMobile ? (
               <ThirdAndGrove
                 css={css`
                   height: 22px;
