@@ -7,14 +7,12 @@ import { css } from '@emotion/react';
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
-import DrupaliCon from '../../images/drupalcon/drupalcon.svg';
 
 import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
 import Hamburger from './svg/hamburger';
 
 const TopNav = ({ fill, hideNav, banner, navLink, logo }) => {
-  console.log(logo);
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
   const [acquiaOpen, setAcquiaOpen] = useState(false);
@@ -58,6 +56,7 @@ const TopNav = ({ fill, hideNav, banner, navLink, logo }) => {
           />
         </div>
       )}
+
       {hideNav && banner && !isDate && (
         <div
           css={[
