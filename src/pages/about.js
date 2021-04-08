@@ -141,6 +141,8 @@ const About = ({ data }) => {
       ${h1L};
       padding-top: 10px;
       margin-bottom: 8px;
+      text-align: center;
+
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
@@ -153,6 +155,8 @@ const About = ({ data }) => {
       letter-spacing: -0.5px;
       padding-top: 20px;
       margin-bottom: 12px;
+      text-align: center;
+
       ${mediaQueries.phoneLarge} {
         text-align: center;
       }
@@ -184,7 +188,7 @@ const About = ({ data }) => {
 
   // returns the correct image source needed to render
   const getSrc = name => {
-    if (name === 'team') {
+    if (name === 'team_2') {
       return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
         .fluid;
     }
@@ -213,7 +217,7 @@ const About = ({ data }) => {
         `}
       >
         <Img
-          fluid={getSrc('team')}
+          fluid={getSrc('team_2')}
           alt='TAG Team'
           css={css`
             width: 100%;
@@ -283,12 +287,12 @@ const About = ({ data }) => {
           <div>
             <Img alt='Justin Emond' fluid={getSrc('emond', 'leader')} />
             <h2>Justin Emond</h2>
-            <p>Co-Founder, Chief Executive Officer</p>
+            <p>Founder, Chief Executive Officer</p>
           </div>
           <div>
             <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
             <h2>Jen Slemp</h2>
-            <p>Director of Strategy</p>
+            <p>Directory of Delivery</p>
           </div>
           <div>
             <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
@@ -296,19 +300,24 @@ const About = ({ data }) => {
             <p>Director of Operations</p>
           </div>
           <div>
-            <Img alt='Thomas Bolte' fluid={getSrc('thomas', 'leader')} />
-            <h2>Thomas Bolte</h2>
-            <p>Art Director</p>
-          </div>
-          <div>
-            <Img alt='Jen May' fluid={getSrc('may', 'leader')} />
-            <h2>Jen May</h2>
-            <p>Director of Project Management</p>
+            <Img alt='Joneric Amundson' fluid={getSrc('joneric', 'leader')} />
+            <h2>Joneric Amundson</h2>
+            <p>Creative Director</p>
           </div>
           <div>
             <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
             <h2>Linda Topp</h2>
             <p>Director of Ecommerce</p>
+          </div>
+          <div>
+            <Img alt='John Entwistle' fluid={getSrc('john', 'leader')} />
+            <h2>John Entwistle</h2>
+            <p>Engineering Manager</p>
+          </div>
+          <div>
+            <Img alt='Jeremy Dickens' fluid={getSrc('jeremy', 'leader')} />
+            <h2>Jeremy Dickens</h2>
+            <p>Engineering Manager</p>
           </div>
         </div>
       </FullWidthSection>
@@ -336,7 +345,7 @@ const About = ({ data }) => {
             <Img fluid={getSrc('boston', 'location')} alt='Boston' />
             <h3>Howdya Like Them Apples?</h3>
           </Location>
-          <Location>
+          <Location onClick={() => navigate(`/san-francisco/`)}>
             <h2 css={h1L}>San Francisco</h2>
             <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
             <h3>Watch Out for the Seagulls</h3>
@@ -387,11 +396,16 @@ export default About;
 
 export const query = graphql`
   {
-    teamPhoto: allFile(filter: { name: { in: "team" } }) {
+    teamPhoto: allFile(filter: { name: { in: "team_2" } }) {
       nodes {
         name
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 480, maxWidth: 980) {
+          fluid(
+            cropFocus: CENTER
+            maxHeight: 480
+            maxWidth: 980
+            quality: 100
+          ) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -400,7 +414,7 @@ export const query = graphql`
     allFile(
       filter: {
         absolutePath: {
-          regex: "/boston|oakland|emond|slemp|andrade|may|topp|thomas/"
+          regex: "/boston|oakland|emond|slemp|andrade|may|topp|joneric|john|jeremy/"
         }
       }
     ) {
