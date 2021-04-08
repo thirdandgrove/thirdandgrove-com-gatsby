@@ -1,5 +1,5 @@
 /* eslint-disable no-bitwise */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
@@ -68,6 +68,7 @@ const Header = ({
   heroLogo,
 }) => {
   const { width } = useWindow();
+  const [isMobile, setIsMobile] = useState(false);
   const isLightBackground = value => {
     let r;
     let g;
@@ -258,6 +259,10 @@ const Header = ({
   const getImageSrc = name =>
     images.filter(({ node }) => name === node.name)[0].node.publicURL;
 
+  useEffect(() => {
+    setIsMobile(width > jsBreakpoints.phoneLarge);
+  }, [width]);
+
   return (
     <>
       <SEO
@@ -284,8 +289,7 @@ const Header = ({
               margin-bottom: 12px;
             `}
           >
-            {typeof window !== 'undefined' &&
-            width > jsBreakpoints.phoneLarge ? (
+            {!isMobile ? (
               <ThirdAndGrove
                 css={css`
                   height: 22px;
