@@ -260,7 +260,9 @@ const Header = ({
     images.filter(({ node }) => name === node.name)[0].node.publicURL;
 
   useEffect(() => {
-    setIsMobile(width > jsBreakpoints.phoneLarge);
+    setIsMobile(
+      typeof window !== 'undefined' && width > jsBreakpoints.phoneLarge
+    );
   }, [width]);
 
   return (
