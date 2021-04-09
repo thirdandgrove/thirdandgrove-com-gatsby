@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import Img from 'gatsby-image';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
@@ -36,7 +37,9 @@ import useWindow from '../../hooks/useWindow';
  * @param {string} heroImage - used as background on desktop
  * @param {string} heroImageMobile - used as background on mobile
  * @param {bool} noIndex - set noindex,nofollow to page
+ * @param {bool} hasHeroLogo - optional logo state in hero area
  * @param {string} heroLogo - optional logo in hero area
+ * @param {string} heroLogoAlt - optional logo alt text in hero area
  */
 const Header = ({
   title,
@@ -63,7 +66,9 @@ const Header = ({
   images,
   navLink,
   noIndex,
+  hasHeroLogo,
   heroLogo,
+  heroLogoAlt,
 }) => {
   const { width } = useWindow();
   const [isMobile, setIsMobile] = useState(false);
@@ -287,14 +292,16 @@ const Header = ({
         height={height}
         minHeight={mobileMinHeight}
       >
-        {heroLogo && (
+        {hasHeroLogo && (
           <div
             css={css`
               margin-bottom: 12px;
               display: ${loaded};
             `}
           >
-            {loaded === 'block' && isMobile ? (
+            {heroLogo ? (
+              <Img fluid={heroLogo} alt={heroLogoAlt} />
+            ) : loaded === 'block' && isMobile ? (
               <ThirdAndGrove
                 css={css`
                   height: 22px;
@@ -375,7 +382,9 @@ export const headerPropTypes = {
   images: PropTypes.array,
   navLink: PropTypes.string,
   noIndex: PropTypes.bool,
-  heroLogo: PropTypes.bool,
+  hasHeroLogo: PropTypes.bool,
+  heroLogo: PropTypes.string,
+  heroLogoAlt: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -405,7 +414,9 @@ Header.defaultProps = {
   images: [],
   navLink: 'https://engage.acquia.com',
   noIndex: false,
-  heroLogo: false,
+  hasHeroLogo: false,
+  heroLogo: null,
+  heroLogoAlt: null,
 };
 
 export default Header;

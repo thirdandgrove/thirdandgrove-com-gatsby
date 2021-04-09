@@ -121,7 +121,9 @@ const Drupalcon2021Event = ({ data }) => {
         banner: true,
         styles: layoutStyles,
         navLink: joinLink,
-        heroLogo: true,
+        hasHeroLogo: true,
+        heroLogo: null,
+        heroLogoAlt: null,
       }}
     >
       <SplitSection
