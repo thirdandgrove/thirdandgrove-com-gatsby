@@ -167,10 +167,19 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions,
+}) => {
   actions.setWebpackConfig({
     node: {
       fs: 'empty',
+    },
+    module: {
+      rules: [{ test: /\.ics$/, use: 'raw-loader' }],
     },
   });
 };

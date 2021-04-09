@@ -1,7 +1,7 @@
 [
   {
     "header": {
-      "title": "DrupalCon Global 2021",
+      "title": "DrupalCon North America 2021",
       "date": "VIRTUAL EVENT & CONFERENCE",
       "subtitle": "COME MEET THIRD AND GROVE AT DRUPALCON 2021",
       "links": [
@@ -33,16 +33,18 @@
       ]
     },
     "swag": {
-      "header": "You know you want in on this lovefest while keeping your security secure. Our webcam swag.",
+      "header": "Get A FREE Third and Grove Webcam Cover",
+      "subheader": "Get A FREE Third and Grove Webcam Cover",
+      "body": "We know it’s been a long year. You were stuck inside, mask-mandated, staring at a screen all day.  Use this handy webcam cover to conceal that beautiful mug from onlookers. Or better yet, enjoy a Zoom call in your robe and keep your shenanigans from plain sight. (Just don’t tell HR on us!)",
       "ctas": [
         {
-          "text": "Grab That Swag",
+          "text": "Grab our Webcam Swag",
           "url": "/"
         }
       ]
     },
     "tag": {
-      "header": "Drupalcon is one of our favorite conferences of the year",
+      "header": "DrupalCon is one of our favorite conferences of the year",
       "body": "<p>DrupalCon Global event organizers are working hard to bring you a virtual version of the DrupalCon experience you know and love. The event will take place April 12th-16th, 2021 Online, and <a href='https://drupal.regfox.com/drupalcon-north-america-2021'>you can register for the event now</a>.</p><p>Third and Grove is excited to share thought leadership around all things open- source.  We will walk you through how we craft digital experiences and discover opportunities to enhance B2B lead generation strategies, and how to be ready for Drupal 10.</p><p>We know Drupal like the back of our hand. DrupalCon Global will have everything from keynotes, sessions, industry and topical summits, discussion groups,  networking opportunities, and much more.  Be sure to drop by the Third and Grove booth and get to know us a little better.</p>",
       "ctas": [
         {
@@ -80,23 +82,28 @@
       "qas": [
         {
           "date": "April 12th",
-          "title": "Decoupled with Justin and Jeremy"
+          "title": "Decoupled with Justin and Jeremy",
+          "time": "10:30am - 11:00am EDT, 3:00pm - 4:00pm EDT"
         },
         {
           "date": "April 13th",
-          "title": "Ask a Core Maintainer Anything"
+          "title": "Ask a Core Maintainer Anything",
+          "time": "10:30am - 11:00am EDT, 1:50pm - 2:20pm EDT, 3:00pm - 4:00pm EDT"
         },
         {
           "date": "April 14th",
-          "title": "How to improve Core Web Vitals with Drupal"
+          "title": "How to improve Core Web Vitals with Drupal",
+          "time": "10:30am - 11:00am EDT, 3:00pm - 4:00pm EDT"
         },
         {
           "date": "April 15th",
-          "title": "Learn Digital Strategies for Higher Ed"
+          "title": "Learn Digital Strategies for Higher Ed",
+          "time": "10:30am - 11:00am EDT, 1:50pm - 2:20pm EDT, 3:00pm - 4:00pm EDT"
         },
         {
           "date": "April 16th",
-          "title": "Happy Hour Whiskey Tasting. Drink and Chat Live: (Whisky tasting. Justin + Ashley)"
+          "title": "Drink and Chat Live",
+          "time": "10:30am - 11:00am EDT, 3:00pm - 4:00pm EDT"
         }
       ]
     }

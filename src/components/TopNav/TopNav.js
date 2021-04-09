@@ -6,7 +6,6 @@ import { css } from '@emotion/react';
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
-import DrupaliCon from '../../images/drupalcon/drupalcon.svg';
 
 import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
@@ -156,9 +155,18 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
                 max-width: 120px;
               }
 
+              .image {
+                width: 50px;
+              }
+
               a {
                 color: ${colors.black};
                 font-size: 18px;
+                text-decoration: underline;
+              }
+
+              a:hover {
+                color: ${colors.tagGray};
               }
 
               .top-bar--container {
@@ -202,9 +210,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
           ]}
         >
           <div className='top-bar--container'>
-            <div className='left'>
-              <img src={DrupaliCon} alt='Drupalcon 2021' />
-            </div>
+            <div className='left' />
 
             <div className='center'>
               <p>

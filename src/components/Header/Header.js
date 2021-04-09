@@ -1,13 +1,22 @@
 /* eslint-disable no-bitwise */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import Img from 'gatsby-image';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
-import { colors, fonts, mediaQueries, weights } from '../../styles';
+import {
+  colors,
+  fonts,
+  mediaQueries,
+  weights,
+  jsBreakpoints,
+} from '../../styles';
 import FullWidthSection from '../FullWidthSection';
-
+import TagLogo from '../TopNav/svg/TagLogo';
+import ThirdAndGrove from '../TopNav/svg/ThirdAndGrove';
+import useWindow from '../../hooks/useWindow';
 /**
  * Header used on every page.
  *
@@ -27,7 +36,10 @@ import FullWidthSection from '../FullWidthSection';
  * @param {string} image - passed to SEO
  * @param {string} heroImage - used as background on desktop
  * @param {string} heroImageMobile - used as background on mobile
- * @param {bool} noIndex
+ * @param {bool} noIndex - set noindex,nofollow to page
+ * @param {bool} hasHeroLogo - optional logo state in hero area
+ * @param {string} heroLogo - optional logo in hero area
+ * @param {string} heroLogoAlt - optional logo alt text in hero area
  */
 const Header = ({
   title,
@@ -54,7 +66,13 @@ const Header = ({
   images,
   navLink,
   noIndex,
+  hasHeroLogo,
+  heroLogo,
+  heroLogoAlt,
 }) => {
+  const { width } = useWindow();
+  const [isMobile, setIsMobile] = useState(false);
+  const [loaded, setLoaded] = useState('none');
   const isLightBackground = value => {
     let r;
     let g;
@@ -245,6 +263,16 @@ const Header = ({
   const getImageSrc = name =>
     images.filter(({ node }) => name === node.name)[0].node.publicURL;
 
+  useEffect(() => {
+    setIsMobile(
+      typeof window !== 'undefined' && width > jsBreakpoints.phoneLarge
+    );
+  }, [width]);
+
+  useEffect(() => {
+    setLoaded('block');
+  }, []);
+
   return (
     <>
       <SEO
@@ -264,6 +292,33 @@ const Header = ({
         height={height}
         minHeight={mobileMinHeight}
       >
+        {hasHeroLogo && (
+          <div
+            css={css`
+              margin-bottom: 12px;
+              display: ${loaded};
+            `}
+          >
+            {heroLogo ? (
+              <Img fluid={heroLogo} alt={heroLogoAlt} />
+            ) : loaded === 'block' && isMobile ? (
+              <ThirdAndGrove
+                css={css`
+                  height: 22px;
+                  fill: ${fontColor};
+                `}
+              />
+            ) : (
+              <TagLogo
+                css={css`
+                  fill: ${fontColor};
+                  height: 50px;
+                `}
+              />
+            )}
+          </div>
+        )}
+
         {label && (
           <span data-cy='labelText' css={headerlabel}>
             {label}
@@ -327,6 +382,9 @@ export const headerPropTypes = {
   images: PropTypes.array,
   navLink: PropTypes.string,
   noIndex: PropTypes.bool,
+  hasHeroLogo: PropTypes.bool,
+  heroLogo: PropTypes.string,
+  heroLogoAlt: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -356,6 +414,9 @@ Header.defaultProps = {
   images: [],
   navLink: 'https://engage.acquia.com',
   noIndex: false,
+  hasHeroLogo: false,
+  heroLogo: null,
+  heroLogoAlt: null,
 };
 
 export default Header;
