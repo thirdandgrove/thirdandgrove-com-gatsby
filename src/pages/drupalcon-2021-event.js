@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 
-import ContactForm from '../components/ContactForm';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
 import Layout from '../components/layout';
@@ -15,7 +14,7 @@ import InsightsSlider from '../components/InsightsSlider';
 import Quote from '../components/ContentBody/Quote';
 import ButtonForm from '../components/ButtonForm';
 
-const Drupalicon = ({ data }) => {
+const Drupalcon2021Event = ({ data }) => {
   const [isDate, setDate] = useState(false);
   const [exploreLink, setExploreLink] = useState(
     'https://events.drupal.org/drupalcon2021'
@@ -31,7 +30,7 @@ const Drupalicon = ({ data }) => {
     liveQas,
     quote,
     swag,
-  } = data.allDrupaliconJson.edges[0].node;
+  } = data.allDrupalconJson.edges[0].node;
 
   const images = data.allFile.nodes;
 
@@ -122,7 +121,6 @@ const Drupalicon = ({ data }) => {
         banner: true,
         styles: layoutStyles,
         navLink: joinLink,
-        logo: null,
         heroLogo: true,
       }}
     >
@@ -327,7 +325,7 @@ const Drupalicon = ({ data }) => {
           <p>
             DrupalCon North America event organizers are working hard to bring
             you a virtual version of the DrupalCon experience you know and love.
-            The event will take place April 12th-16th, 2021 Online, and{' '}
+            The event will take place April 12th-16th, 2021 Online, and
             <a href='https://drupal.regfox.com/drupalcon-north-america-2021'>
               you can register for the event now
             </a>
@@ -474,11 +472,11 @@ const Drupalicon = ({ data }) => {
   );
 };
 
-Drupalicon.propTypes = {
+Drupalcon2021Event.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default Drupalicon;
+export default Drupalcon2021Event;
 
 export const query = graphql`
   {
@@ -512,7 +510,7 @@ export const query = graphql`
         ...InsightFragment
       }
     }
-    allDrupaliconJson {
+    allDrupalconJson {
       edges {
         node {
           header {
