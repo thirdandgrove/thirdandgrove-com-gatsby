@@ -36,7 +36,6 @@ import useWindow from '../../hooks/useWindow';
  * @param {string} heroImage - used as background on desktop
  * @param {string} heroImageMobile - used as background on mobile
  * @param {bool} noIndex - set noindex,nofollow to page
- * @param {string} logo - small image to add to promo pages
  * @param {string} heroLogo - optional logo in hero area
  */
 const Header = ({
@@ -64,11 +63,11 @@ const Header = ({
   images,
   navLink,
   noIndex,
-  logo,
   heroLogo,
 }) => {
   const { width } = useWindow();
   const [isMobile, setIsMobile] = useState(false);
+  const [loaded, setLoaded] = useState('none');
   const isLightBackground = value => {
     let r;
     let g;
@@ -265,6 +264,10 @@ const Header = ({
     );
   }, [width]);
 
+  useEffect(() => {
+    setLoaded('block');
+  }, []);
+
   return (
     <>
       <SEO
@@ -278,7 +281,6 @@ const Header = ({
         hideNav={hideNav}
         banner={banner}
         navLink={navLink}
-        logo={logo}
       />
       <FullWidthSection
         css={[sectionCSS, styles]}
@@ -289,9 +291,10 @@ const Header = ({
           <div
             css={css`
               margin-bottom: 12px;
+              display: ${loaded};
             `}
           >
-            {isMobile ? (
+            {loaded === 'block' && isMobile ? (
               <ThirdAndGrove
                 css={css`
                   height: 22px;
@@ -372,7 +375,6 @@ export const headerPropTypes = {
   images: PropTypes.array,
   navLink: PropTypes.string,
   noIndex: PropTypes.bool,
-  logo: PropTypes.string,
   heroLogo: PropTypes.bool,
 };
 
@@ -403,7 +405,6 @@ Header.defaultProps = {
   images: [],
   navLink: 'https://engage.acquia.com',
   noIndex: false,
-  logo: null,
   heroLogo: false,
 };
 

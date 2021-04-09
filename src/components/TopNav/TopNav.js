@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
 import { css } from '@emotion/react';
 
 import useWindow from '../../hooks/useWindow';
@@ -12,7 +11,7 @@ import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
 import Hamburger from './svg/hamburger';
 
-const TopNav = ({ fill, hideNav, banner, navLink, logo }) => {
+const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!isOpen);
   const [acquiaOpen, setAcquiaOpen] = useState(false);
@@ -53,44 +52,6 @@ const TopNav = ({ fill, hideNav, banner, navLink, logo }) => {
               height: 22px;
               fill: ${isOpen ? colors.lightgray : fill};
             `}
-          />
-        </div>
-      )}
-
-      {hideNav && banner && !isDate && (
-        <div
-          css={[
-            container.max,
-            css`
-              position: absolute;
-              top: 0;
-              left: 0;
-              padding-top: 10px;
-              padding-bottom: 10px;
-              display: flex;
-              justify-content: flex-start;
-              align-items: center;
-              z-index: 4;
-
-              ${mediaQueries.phoneLarge} {
-                padding-top: 30px;
-              }
-
-              .image {
-                width: 70px;
-              }
-            `,
-          ]}
-        >
-          <Img
-            alt='DrupalCon Silver Sponsor'
-            fluid={logo}
-            objectFit='contain'
-            imgStyle={{
-              objectFit: 'contain',
-              backgroundColor: 'transparent',
-            }}
-            className='image'
           />
         </div>
       )}
@@ -166,6 +127,7 @@ const TopNav = ({ fill, hideNav, banner, navLink, logo }) => {
           <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />
         </>
       )}
+
       {hideNav && banner && isDate && (
         <div
           css={[
@@ -200,6 +162,11 @@ const TopNav = ({ fill, hideNav, banner, navLink, logo }) => {
               a {
                 color: ${colors.black};
                 font-size: 18px;
+                text-decoration: underline;
+              }
+
+              a:hover {
+                color: ${colors.tagGray};
               }
 
               .top-bar--container {
@@ -243,18 +210,7 @@ const TopNav = ({ fill, hideNav, banner, navLink, logo }) => {
           ]}
         >
           <div className='top-bar--container'>
-            <div className='left'>
-              <Img
-                alt='DrupalCon Silver Sponsor'
-                fluid={logo}
-                objectFit='contain'
-                imgStyle={{
-                  objectFit: 'contain',
-                  backgroundColor: 'transparent',
-                }}
-                className='image'
-              />
-            </div>
+            <div className='left' />
 
             <div className='center'>
               <p>
@@ -296,7 +252,6 @@ TopNav.propTypes = {
   fill: PropTypes.string,
   hideNav: PropTypes.bool,
   banner: PropTypes.bool,
-  logo: PropTypes.string,
   navLink: PropTypes.string.isRequired,
 };
 
@@ -304,7 +259,6 @@ TopNav.defaultProps = {
   fill: colors.lightgray,
   hideNav: false,
   banner: false,
-  logo: null,
 };
 
 export default TopNav;
