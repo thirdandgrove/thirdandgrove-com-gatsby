@@ -17,6 +17,12 @@ import ButtonForm from '../components/ButtonForm';
 
 const Drupalicon = ({ data }) => {
   const [isDate, setDate] = useState(false);
+  const [exploreLink, setExploreLink] = useState(
+    'https://events.drupal.org/drupalcon2021'
+  );
+  const [joinLink, setJoinLink] = useState(
+    'https://events.drupal.org/drupalcon2021'
+  );
 
   const {
     header,
@@ -66,6 +72,30 @@ const Drupalicon = ({ data }) => {
     setDate(new Date() > new Date('2021-04-12'));
   }, []);
 
+  useEffect(() => {
+    async function getLinks() {
+      const URL =
+        'https://spreadsheets.google.com/feeds/cells/18dA1bKdXZo3ecZFyjLhtY1CXFwZDsCpwxpnZQqB8Y8s/1/public/full?alt=json';
+
+      try {
+        const response = await fetch(URL);
+        const json = await response.json();
+        json.feed.entry.forEach(item => {
+          if (item.title.$t.indexOf('B1') !== -1) {
+            setExploreLink(item.content.$t);
+          }
+          if (item.title.$t.indexOf('B2') !== -1) {
+            setJoinLink(item.content.$t);
+          }
+        });
+      } catch (error) {
+        setJoinLink('https://events.drupal.org/drupalcon2021');
+        setExploreLink('https://events.drupal.org/drupalcon2021');
+      }
+    }
+    getLinks();
+  }, []);
+
   return (
     <Layout
       css={layoutStyles}
@@ -91,7 +121,7 @@ const Drupalicon = ({ data }) => {
         invert: true,
         banner: true,
         styles: layoutStyles,
-        navLink: 'https://events.drupal.org/drupalcon2021',
+        navLink: joinLink,
         logo: null,
         heroLogo: true,
       }}
@@ -210,7 +240,7 @@ const Drupalicon = ({ data }) => {
                       }
                     `}
                   >
-                    <a href={url} target='_blank' rel='noreferrer'>
+                    <a href={exploreLink} target='_blank' rel='noreferrer'>
                       {text}
                     </a>
                   </Button>
