@@ -157,6 +157,7 @@ const VideoSection = ({ url, mp4 }) => {
     >
       <button
         type='button'
+        data-cy='vimeoButton'
         css={btnStyles}
         onClick={() => {
           if (hasInteracted) {
@@ -173,6 +174,7 @@ const VideoSection = ({ url, mp4 }) => {
       {isLgScreen && (
         <>
           <ReactPlayer
+            data-cy='vimeoVideo'
             css={playerStyles}
             url={url}
             playing={playing}
@@ -204,6 +206,7 @@ const VideoSection = ({ url, mp4 }) => {
             autoPlay={isLgScreen}
             ref={refMovie}
             css={videoPlayer}
+            data-cy='introVideo'
           >
             <source src={mp4} type='video/mp4' />
           </video>
