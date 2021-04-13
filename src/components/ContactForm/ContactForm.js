@@ -259,7 +259,7 @@ const ContactForm = ({ formName, altStyle }) => {
           {errs &&
             Object.values(errs).map((err, i) => (
               <p key={err}>
-                {err}{' '}
+                {err}
                 {i !== Object.keys(errs).length - 1 && (
                   <span>&nbsp;-&nbsp;</span>
                 )}
@@ -268,6 +268,10 @@ const ContactForm = ({ formName, altStyle }) => {
         </div>
       </div>
     ) : null;
+  };
+
+  ErrorToaster.propTypes = {
+    errs: PropTypes.object.isRequired,
   };
 
   return (
@@ -297,7 +301,7 @@ const ContactForm = ({ formName, altStyle }) => {
           <fieldset css={hidden}>
             {/* eslint-disable-next-line */}
             <label>
-              Don’t fill this out if you&apos;re human:{' '}
+              Don’t fill this out if you&apos;re human:
               <input
                 name='botField'
                 value={formState.botField}
@@ -354,6 +358,7 @@ const ContactForm = ({ formName, altStyle }) => {
             </fieldset>
 
             <fieldset css={fieldSetStyles}>
+              {/* eslint jsx-a11y/label-has-associated-control: ["error", { assert: "either" } ] */}
               <label
                 htmlFor='cf-website'
                 css={[
@@ -361,7 +366,7 @@ const ContactForm = ({ formName, altStyle }) => {
                   formState.website ? activeLabel : inactiveLabel,
                 ]}
               >
-                <span>Website</span>{' '}
+                <span>Website</span>
               </label>
               <Input
                 css={inputStyles}

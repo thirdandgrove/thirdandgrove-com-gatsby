@@ -26,7 +26,7 @@ const Thanks = ({ message }) => {
   }, []);
 
   return (
-    <div css={thanksStyles}>
+    <div css={thanksStyles} data-cy='thanks'>
       <Spring
         delay={0}
         to={{
