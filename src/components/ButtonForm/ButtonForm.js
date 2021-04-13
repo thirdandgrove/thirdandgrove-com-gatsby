@@ -31,6 +31,7 @@ const ButtonForm = ({ header, text, confirmMessage, subheader, formName }) => {
         `}
         onClick={e => handleClick(e)}
         onKeyDown={onKeypress}
+        data-cy='buttonFormButton'
       >
         {text}
       </Button>

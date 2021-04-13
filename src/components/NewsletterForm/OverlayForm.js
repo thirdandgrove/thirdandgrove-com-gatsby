@@ -253,6 +253,7 @@ const OverlayForm = ({
           <button
             type='button'
             onClick={toggle}
+            data-cy='buttonFormCloseButton'
             css={css`
               ${mediaQueries.phoneLarge} {
                 top: -30px;
@@ -273,6 +274,10 @@ const OverlayForm = ({
               padding: 15px;
               transition: none;
               border-radius: 9px;
+
+              span {
+                pointer-events: none;
+              }
             `}
           >
             <span
@@ -359,6 +364,7 @@ const OverlayForm = ({
             </p>
             {!hasSubmitted ? (
               <form
+                data-cy='buttonFormForm'
                 name={`${formName}`}
                 data-netlify='true'
                 netlify-honeypot='bot-field'
