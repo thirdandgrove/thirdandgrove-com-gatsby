@@ -1,10 +1,10 @@
-describe('Navigation', () => {
+describe('Contact Form', () => {
   it('renders contact form', () => {
     cy.visit('/contact');
     cy.get('[data-cy=contactForm]').should('exist');
     cy.get('[type="text"]').should('exist');
     cy.get('[type="email"]').should('exist');
-    cy.get('[type="url"]').should('exist');
+    cy.get('#cf-website').should('exist');
     cy.get('[type="tel"]').should('exist');
     cy.get('[type="hidden"]').should('not.be', 'visible');
     cy.get('[data-cy=messageField]').should('exist');
@@ -24,21 +24,29 @@ describe('Navigation', () => {
   it('fills out the form', () => {
     cy.get('[type="text"]').type('First Last');
     cy.get('[type="email"]').type('email@test.com');
-    cy.get('[type="url"]').type('http://www.url.com');
+    cy.get('#cf-website').type('http://www.url.com');
     cy.get('[type="tel"]').type('555-555-5555');
     cy.get('[data-cy=messageField]').type('this is a message');
     cy.get('[type="text"]').should('have.value', 'First Last');
     cy.get('[type="email"]').should('have.value', 'email@test.com');
-    cy.get('[type="url"]').should('have.value', 'http://www.url.com');
+    cy.get('#cf-website').should('have.value', 'http://www.url.com');
     cy.get('[type="tel"]').should('have.value', '555-555-5555');
     cy.get('[data-cy=messageField]').should('have.value', 'this is a message');
   });
 
   it('submits the form', () => {
+    function waitOneSecond() {
+      return new Cypress.Promise(resolve => {
+        setTimeout(() => {
+          resolve(true);
+        }, 1000);
+      });
+    }
     cy.get('[data-cy=contactSubmit]').click();
-    cy.get('[data-cy=messageField]').should(
-      'have.value',
-      'Thank you for your inquiry.'
-    );
+    cy.wrap(null).then(() => {
+      return waitOneSecond().then(() => {
+        cy.get('[data-cy=thanks]').should('exist');
+      });
+    });
   });
 });
