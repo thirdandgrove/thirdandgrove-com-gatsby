@@ -1,1 +1,5 @@
-describe('Careers', () => {});
+describe('Careers', () => {
+  before(() => {
+    cy.visit('/');
+  });
+});

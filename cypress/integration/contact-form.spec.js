@@ -1,4 +1,8 @@
 describe('Contact Form', () => {
+  before(() => {
+    cy.visit('/');
+  });
+
   it('renders contact form', () => {
     cy.visit('/contact');
     cy.get('[data-cy=contactForm]').should('exist');

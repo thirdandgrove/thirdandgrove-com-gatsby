@@ -1,8 +1,13 @@
 describe('Navigation', () => {
+  before(() => {
+    cy.visit('/');
+  });
+
   it('opens menu', () => {
     cy.visit('/');
     cy.get('[data-cy=menuButton] > svg').click();
   });
+
   it('Has all expected links', () => {
     cy.get('nav a[href*="work"]').should('exist');
     cy.get('nav a[href*="capabilities"]').should('exist');
