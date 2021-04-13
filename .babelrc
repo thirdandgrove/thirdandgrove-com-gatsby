@@ -1,0 +1,24 @@
+{
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "babel-plugin-istanbul",
+          {
+            "include": ["src/**/*.js"]
+          }
+        ]
+      ]
+    }
+  },
+  "presets": [
+    [
+      "babel-preset-gatsby",
+      {
+        "targets": {
+          "browsers": [">0.25%", "not dead"]
+        }
+      }
+    ]
+  ]
+}
