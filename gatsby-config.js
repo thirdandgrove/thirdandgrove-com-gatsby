@@ -91,6 +91,20 @@ module.exports = {
     },
     `gatsby-plugin-remove-serviceworker`,
     {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: 'GTM-MKBKRBC',
+        includeInDevelopment: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: 'UA-46758288-8',
+        head: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
