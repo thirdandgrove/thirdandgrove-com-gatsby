@@ -51,7 +51,10 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.4",
     "babel-eslint": "~10.1.0",
+    "babel-plugin-istanbul": "^6.0.0",
+    "babel-preset-gatsby": "^1.2.0",
     "cypress": "^7.0.1",
     "eslint": "~7.18.0",
     "eslint-config-airbnb": "~18.2.1",
@@ -82,8 +85,8 @@
     "lambda": "netlify-lambda build ./static/functions",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
-    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run"
+    "test:e2e": "NODE_ENV=development start-server-and-test develop http://localhost:8000 cy:open",
+    "test:e2e:ci": "NODE_ENV=development start-server-and-test develop http://localhost:8000 cy:run"
   },
   "repository": {
     "type": "git",
