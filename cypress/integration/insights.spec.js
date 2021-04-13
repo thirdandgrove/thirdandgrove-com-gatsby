@@ -5,6 +5,7 @@ describe('Insights', () => {
 
   it('renders the Insights Page page', () => {
     cy.visit('/insights/');
-    cy.get('[data-cy=titleText]').should('exist');
+    cy.scrollTo('bottom');
+    cy.get('[data-cy=articlePreview]').should('exist');
   });
 });
