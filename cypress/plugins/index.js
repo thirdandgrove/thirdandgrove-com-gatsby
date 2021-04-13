@@ -12,7 +12,15 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-module.exports = (_on, _config) => {
+module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+  /* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
+  /* eslint-disable global-require */
+  require('@cypress/code-coverage/task')(on, config);
+  // include any other plugin code...
+
+  // It's IMPORTANT to return the config object
+  // with any changed environment variables
+  return config;
 };
