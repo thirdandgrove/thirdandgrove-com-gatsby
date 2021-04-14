@@ -17,6 +17,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        with:
+          env: true
+          start: yarn run test:e2e:ci
+          wait-on: 'http://localhost:8000'
         env:
           DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
           BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
@@ -29,9 +33,3 @@ jobs:
           NODE_ENV: ${{ secrets.NODE_ENV }}
           NODE_VERSION: ${{ secrets.NODE_VERSION }}
           PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
-          run: |
-            echo << 'EOF'
-            ${{ env.DRUPAL_URL }}
-            echo 'EOF'
-          start: yarn run test:e2e:ci
-          wait-on: 'http://localhost:8000'
