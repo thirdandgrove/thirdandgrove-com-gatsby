@@ -1,17 +1,5 @@
-name: Cypress
+name: integration-tests
 on: [push]
-env:
-  DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
-  BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
-  BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
-  RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
-  KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
-  KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
-  KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
-  KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
-  NODE_ENV: ${{ secrets.NODE_ENV }}
-  NODE_VERSION: ${{ secrets.NODE_VERSION }}
-  PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
@@ -21,14 +9,14 @@ jobs:
         node: [14]
     name: E2E on Node v${{ matrix.node }}
     steps:
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
+      # https://github.com/cypress-io/github-action
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v1
+        with:
+          start: yarn run test:e2e
+          wait-on: 'http://localhost:8000'
         env:
           DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
           BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
@@ -41,7 +29,3 @@ jobs:
           NODE_ENV: ${{ secrets.NODE_ENV }}
           NODE_VERSION: ${{ secrets.NODE_VERSION }}
           PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
-        with:
-          env: true
-          start: yarn run test:e2e:ci
-          wait-on: 'http://localhost:8000'
