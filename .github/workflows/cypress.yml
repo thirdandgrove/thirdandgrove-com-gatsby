@@ -3,6 +3,18 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
+    env:
+      DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
+      BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+      BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+      RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
+      KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+      KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
+      KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
+      KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
+      NODE_ENV: ${{ secrets.NODE_ENV }}
+      NODE_VERSION: ${{ secrets.NODE_VERSION }}
+      PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
     # Cypress Docker image with Chrome v78
     # and Firefox v70 pre-installed
     container: cypress/browsers:node12.13.0-chrome78-ff70
@@ -10,28 +22,18 @@ jobs:
       matrix:
         node: [14]
     name: E2E on Node v${{ matrix.node }}
-
     steps:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - name: Display env vars
+        run: | # run multiple commands
+          echo ${{ env.DRUPAL_URL }}
       - name: Checkout
         uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v2
-        env:
-          DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
-          BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
-          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
-          RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
-          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
-          KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
-          KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
-          KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
-          NODE_VERSION: ${{ secrets.NODE_VERSION }}
-          PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
         with:
           start: yarn run test:e2e:ci
           # quote the url to be safe against YML parsing surprises
