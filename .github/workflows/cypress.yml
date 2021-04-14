@@ -10,18 +10,7 @@ jobs:
       matrix:
         node: [14]
     name: E2E on Node v${{ matrix.node }}
-    env:
-      DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
-      BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
-      BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
-      RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
-      KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
-      KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
-      KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
-      KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
-      NODE_ENV: ${{ secrets.NODE_ENV }}
-      NODE_VERSION: ${{ secrets.NODE_VERSION }}
-      PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
+
     steps:
       - name: Setup Node
         uses: actions/setup-node@v1
@@ -31,6 +20,18 @@ jobs:
         uses: actions/checkout@v2
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        env:
+          DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
+          BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
+          KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
+          KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          NODE_VERSION: ${{ secrets.NODE_VERSION }}
+          PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
         with:
           start: yarn run test:e2e:ci
           # quote the url to be safe against YML parsing surprises
