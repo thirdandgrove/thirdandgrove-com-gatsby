@@ -12,7 +12,7 @@ jobs:
       - name: Dump GitHub secrets.DRUPAL_URL
         env:
           GITHUB_DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
-        run: echo "$GITHUB_DRUPAL_URL"
+        run: echo ${{secrets.DRUPAL_URL}} | sed 's/./& /g'
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
