@@ -15,7 +15,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: yarn run test:e2e
+          start: yarn run test:e2e:ci
           wait-on: 'http://localhost:8000'
         env:
           DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
