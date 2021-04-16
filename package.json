@@ -85,8 +85,8 @@
     "lambda": "netlify-lambda build ./static/functions",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
-    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run"
+    "test:e2e": "NODE_ENV=development yarn start-server-and-test 'yarn develop' http://localhost:8000 'yarn cy:open'",
+    "test:e2e:ci": "NODE_ENV=development yarn start-server-and-test 'yarn develop' http://localhost:8000 'yarn cy:run'"
   },
   "repository": {
     "type": "git",
