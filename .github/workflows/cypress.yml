@@ -9,51 +9,23 @@ jobs:
         node: [14]
     name: E2E on Node v${{ matrix.node }}
     steps:
-      - name: Dump GitHub secrets.DRUPAL_URL
+      - name: Checkout
+        uses: actions/checkout@v2
+      # https://github.com/cypress-io/github-action
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn run test:e2e
+          wait-on: 'http://localhost:8000'
         env:
-          GITHUB_DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
-        run: echo ${{secrets.DRUPAL_URL}} | sed 's/./& /g'
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-#- name: Checkout
-#  uses: actions/checkout@v2
-## https://github.com/cypress-io/github-action
-#- name: Cypress run
-#  uses: cypress-io/github-action@v2
-#  with:
-#    start: yarn run test:e2e
-#    wait-on: 'http://localhost:8000'
-#  env:
-#    DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
-#    BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
-#    BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
-#    RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
-#    KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
-#    KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
-#    KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
-#    KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
-#    NODE_ENV: ${{ secrets.NODE_ENV }}
-#    NODE_VERSION: ${{ secrets.NODE_VERSION }}
-#    PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
+          DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
+          BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
+          KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
+          KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          NODE_VERSION: ${{ secrets.NODE_VERSION }}
+          PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
