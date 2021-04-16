@@ -12,6 +12,7 @@ env:
   NODE_ENV: ${{ secrets.NODE_ENV }}
   NODE_VERSION: ${{ secrets.NODE_VERSION }}
   PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
+  WAIT_ON_TIMEOUT: 600000
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
@@ -29,4 +30,4 @@ jobs:
         with:
           start: yarn run test:e2e:ci
           wait-on: 'http://localhost:8000'
-          wait-on-timeout: 120
+          wait-on-timeout: 240
