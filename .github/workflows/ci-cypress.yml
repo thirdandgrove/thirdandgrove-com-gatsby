@@ -11,9 +11,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # https://github.com/cypress-io/github-action
       - name: Cypress run
         uses: cypress-io/github-action@v2
+      - name: Clear and reInstall Packages
+        run: |
+          rm -rf node_modules package-lock.json yarn.lock && yarn install
         with:
           start: yarn run test:e2e:ci
           wait-on: 'http://localhost:8000'
