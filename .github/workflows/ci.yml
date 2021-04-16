@@ -1,39 +1,20 @@
-name: Cypress
-
+name: Manually triggered workflow
 on:
-  check_run:
-    types: [completed]
-
-env:
-  DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
-  BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
-  BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
-  RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
-  KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
-  KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
-  KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
-  KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
-  NODE_ENV: ${{ secrets.NODE_ENV }}
-  NODE_VERSION: ${{ secrets.NODE_VERSION }}
-  PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
-  WAIT_ON_TIMEOUT: 600000
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-16.04
-    container: cypress/browsers:node12.13.0-chrome78-ff70
-    strategy:
-      matrix:
-        node: [14]
-
-    name: Cypress E2E testing on Node v${{ matrix.node }}
+  say_hello:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          start: yarn run test:e2e:ci
-          wait-on: 'http://localhost:8000'
-          wait-on-timeout: 240
+      - run: |
+          echo "Hello ${{ github.event.inputs.name }}!"
+          echo "- in ${{ github.event.inputs.home }}!"
