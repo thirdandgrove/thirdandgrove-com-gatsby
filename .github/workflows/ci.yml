@@ -1,7 +1,13 @@
 name: Cypress
 on:
-  check_run:
-    types: [completed]
+  push:
+    branches:
+      - master
+  # Will run once the PR is opened or a new commit is pushed against it
+  pull_request:
+    types:
+      - opened
+      - synchronize
 env:
   DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
   BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
@@ -29,11 +35,15 @@ jobs:
       - name: Wait on tests
         uses: lewagon/wait-on-check-action@v0.2
         with:
-          ref: ${{ github.ref }}
+          check-name: 'Gatsby Build Service - tagd8_gatsby'
           wait-interval: 20 # seconds
+      - name: Set build URL
+        run: |
+          BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/master/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
+          echo "${BULID_URL}"
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: yarn run test:e2e:ci
+          start: cypress run --config baseUrl=${BULID_URL}
           wait-on: 'http://localhost:8000'
           wait-on-timeout: 240
