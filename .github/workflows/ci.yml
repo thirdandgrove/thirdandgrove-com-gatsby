@@ -1,5 +1,5 @@
-name: Cypress
 on: [pull_request]
+
 env:
   DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
   BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
@@ -13,6 +13,7 @@ env:
   NODE_VERSION: ${{ secrets.NODE_VERSION }}
   PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
   WAIT_ON_TIMEOUT: 600000
+
 jobs:
   cypress-run:
     runs-on: ubuntu-16.04
@@ -27,9 +28,9 @@ jobs:
       - name: Wait on tests
         uses: lewagon/wait-on-check-action@master
         with:
-          check-name: 'Gatsby Build Service - tagd8_gatsby'
           ref: ${{ github.event.pull_request.head.sha }}
-          wait-interval: 20 # seconds
+          wait-interval: 10 # seconds
+          running-workflow-name: 'Gatsby Build Service - tagd8_gatsby' # the name of this job
       - name: Set build URL
         run: |
           BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/master/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
