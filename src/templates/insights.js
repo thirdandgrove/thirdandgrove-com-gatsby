@@ -27,18 +27,22 @@ const Insights = ({ data }) => {
     }
   `;
 
+  const headerData = {
+    title: post.title,
+    label: `${post.created} - ${post.relationships.uid.name}`,
+    invert: post.field_inverse_header,
+    defaultBackground: false,
+    color: backgroundColor || colors.yellow,
+    mobileMinHeight: '470px',
+    titleMarginBottom: '70px',
+  };
+
+  if (post.relationships.field_image) {
+    headerData.image = post.relationships.field_image.localFile.publicURL;
+  }
+
   return (
-    <Layout
-      headerData={{
-        title: post.title,
-        label: `${post.created} - ${post.relationships.uid.name}`,
-        invert: post.field_inverse_header,
-        defaultBackground: false,
-        color: backgroundColor || colors.yellow,
-        mobileMinHeight: '470px',
-        titleMarginBottom: '70px',
-      }}
-    >
+    <Layout headerData={headerData}>
       <div
         css={[
           css`
@@ -246,6 +250,18 @@ export const query = graphql`
                   }
                 }
               }
+            }
+          }
+          ... on component__video {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_video_controls
+            field_vimeo_video_link {
+              uri
             }
           }
         }

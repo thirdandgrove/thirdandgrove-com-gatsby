@@ -9,7 +9,13 @@ import ArticlePreviewSlide from '../ArticlePreviewSlide';
 import FullWidthSection from '../FullWidthSection';
 import Button from '../Button';
 
-const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
+const InsightsSlider = ({
+  showButton,
+  showTitle,
+  backgroundColor,
+  title,
+  data,
+}) => {
   const settings = {
     arrows: false,
     autoplay: false,
@@ -44,7 +50,7 @@ const InsightsSlider = ({ showButton, backgroundColor, title, data }) => {
         }
       `}
     >
-      <h2 css={smSectionHead}>{title}</h2>
+      {showTitle && <h2 css={smSectionHead}>{title}</h2>}
       <Slider
         {...settings}
         css={css`
@@ -76,10 +82,12 @@ InsightsSlider.propTypes = {
   backgroundColor: PropTypes.string,
   title: PropTypes.string,
   data: PropTypes.object.isRequired,
+  showTitle: PropTypes.bool,
 };
 
 InsightsSlider.defaultProps = {
   showButton: true,
+  showTitle: true,
   backgroundColor: colors.white,
   title: `Insights`,
 };

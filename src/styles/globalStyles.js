@@ -125,7 +125,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro';
-    font-display: fallback;
+    font-display: swap;
     src: local('NBInternationalProLight'),
       url('/Fonts/NBInternationalPro/NBInternationalProLight.woff2')
         /* no woff for this font */ format('woff2');
@@ -134,7 +134,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro';
-    font-display: fallback;
+    font-display: swap;
     src: local('NBInternationalProRegular'),
       url('/Fonts/NBInternationalPro/NBInternationalProRegular.woff2')
         format('woff2'),
@@ -145,7 +145,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro';
-    font-display: fallback;
+    font-display: swap;
     src: local('NBInternationalProItalic'),
       url('/Fonts/NBInternationalPro/NBInternationalProItalic.woff2')
         format('woff2'),
@@ -157,7 +157,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro';
-    font-display: fallback;
+    font-display: swap;
     src: local('NBInternationalProBold'),
       url('/Fonts/NBInternationalPro/NBInternationalProBold.woff2')
         format('woff2'),
@@ -168,7 +168,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro';
-    font-display: fallback;
+    font-display: swap;
     src: local('NBInternationalProBoldItalic'),
       url('/Fonts/NBInternationalPro/NBInternationalProBoldItalic.woff2')
         format('woff2'),
@@ -180,7 +180,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: 'NB International Pro Mono';
-    font-display: fallback;
+    font-display: swap;
     src: local('NBInternationalProMono'),
       url('/Fonts/NBInternationalPro/NBInternationalProMono.woff2')
         format('woff2'),
