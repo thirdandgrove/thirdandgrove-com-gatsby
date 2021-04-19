@@ -6,7 +6,6 @@ import { css } from '@emotion/react';
 import useWindow from '../../hooks/useWindow';
 import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
-import AcquiaEngage from '../../../static/images/acquia-engage-logo.svg';
 
 import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
@@ -21,7 +20,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const { width } = useWindow();
 
   useEffect(() => {
-    setDate(new Date() > new Date('2020-10-20'));
+    setDate(new Date() > new Date('2021-04-12'));
   }, []);
 
   return (
@@ -142,8 +141,8 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
 
               z-index: 4;
               width: 100%;
-              background-color: ${colors.tagGray};
-              color: ${colors.white};
+              background-color: ${colors.white};
+              color: ${colors.tagGray};
 
               p {
                 margin-bottom: 0;
@@ -153,11 +152,21 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
 
               img {
                 margin: 0;
-                max-width: 200px;
+                max-width: 120px;
+              }
+
+              .image {
+                width: 50px;
               }
 
               a {
-                color: ${colors.white};
+                color: ${colors.black};
+                font-size: 18px;
+                text-decoration: underline;
+              }
+
+              a:hover {
+                color: ${colors.tagGray};
               }
 
               .top-bar--container {
@@ -201,9 +210,8 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
           ]}
         >
           <div className='top-bar--container'>
-            <div className='left'>
-              <img src={AcquiaEngage} alt='Acquia Engage 2020' />
-            </div>
+            <div className='left' />
+
             <div className='center'>
               <p>
                 <a href={navLink} target='_blank' rel='noreferrer'>
