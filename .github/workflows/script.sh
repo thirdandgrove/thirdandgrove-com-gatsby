@@ -27,4 +27,4 @@ else
 fi
 }
 
-recurse ${{ github.sha }}
+recurse $SHA

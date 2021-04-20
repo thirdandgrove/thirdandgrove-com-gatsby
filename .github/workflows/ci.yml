@@ -52,6 +52,8 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
       - name: Get Status of Gatsby Build
+        env:
+          SHA: ${{ github.sha }}
         run: |
           # make file runnable, might not be necessary
           chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
