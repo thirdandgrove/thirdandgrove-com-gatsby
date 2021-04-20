@@ -14,15 +14,16 @@ if [ $status == "completed" ]; then
   if [ $conclusion == "success" ]; then
     echo $conclusion == "success"
   else
+    echo "> Gatsby build conclusion was not successful"
     echo $conclusion
+    kill %%
   fi
 
 else
   sleep 20s
   echo "Waiting on check to complete ... "
-  echo $1
-  recurse $1
   echo $status
+  recurse $1
 fi
 }
 
