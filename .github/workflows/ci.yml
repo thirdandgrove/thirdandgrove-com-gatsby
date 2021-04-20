@@ -55,6 +55,9 @@ jobs:
         env:
           SHA: ${{ github.sha }}
         run: |
+          # check location of jq
+          which -a jq
+
           # make file runnable, might not be necessary
           chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
 
