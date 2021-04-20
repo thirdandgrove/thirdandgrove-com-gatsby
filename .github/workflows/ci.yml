@@ -1,6 +1,6 @@
 name: Cypress
 # Triggers the workflow on push or pull request events
-on: [push, pull_request]
+on: [pull_request]
 
 env:
   DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
@@ -58,13 +58,13 @@ jobs:
       - name: Wait on tests
         uses: lewagon/wait-on-check-action@master
         with:
-          ref: ${{github.event.pull_request.head.sha}}
+          ref: ${{ github.event.commits.id }}
           wait-interval: 10 # seconds
           running-workflow-name: 'Gatsby Build Service - tagd8_gatsby'
       - name: Set build URL
         run: |
-          echo "${{ github.event.pull_request.head.sha }}"
-          BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.event.pull_request.head.sha }}/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
+          echo "${{ github.event.commits.id }}"
+          BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.event.commits.id }}/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
           echo "${BULID_URL}"
       - name: Cypress run
         uses: cypress-io/github-action@v2
