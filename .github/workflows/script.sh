@@ -18,6 +18,7 @@ if [ $status == "completed" ]; then
   fi
 
 else
+  sleep 20s
   echo "Waiting on check to complete ... "
   echo $1
   recurse $1
