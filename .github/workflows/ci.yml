@@ -68,12 +68,12 @@ jobs:
       - name: Set build URL
         run: |
           echo "${{ github.sha }}"
-          GASTBY_BUILD_ID=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq '.check_runs[0].external_id')
-          BULID_URL='https://build-${GASTBY_BUILD_ID}.gtsb.io'
-          echo "${BULID_URL}"
+          export GASTBY_BUILD_ID=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq '.check_runs[0].external_id')
+          export BULID_URL='https://build-$GASTBY_BUILD_ID.gtsb.io'
+          echo "$BULID_URL"
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: cypress run --config baseUrl=${BULID_URL}
-          wait-on: '${BULID_URL}'
+          start: cypress run --config baseUrl=$BULID_URL
+          wait-on: $BULID_URL
           wait-on-timeout: 240
