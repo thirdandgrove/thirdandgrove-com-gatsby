@@ -52,7 +52,7 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
       - name: Wait on tests
-        uses: lewagon/wait-on-check-action@master
+        uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa # v0.2
         with:
           ref: ${{ github.event.before }}
           wait-interval: 10 # seconds
