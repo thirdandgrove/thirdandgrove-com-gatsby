@@ -57,7 +57,7 @@ jobs:
           chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
 
           # run script
-          "${GITHUB_WORKSPACE}/.github/workflows/script.sh ${{ github.sha }}"
+          "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
       - name: Set build URL
         run: |
           echo "${{ github.sha }}"
