@@ -292,7 +292,7 @@ const About = ({ data }) => {
           <div>
             <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
             <h2>Jen Slemp</h2>
-            <p>Directory of Delivery</p>
+            <p>Director of Delivery</p>
           </div>
           <div>
             <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
