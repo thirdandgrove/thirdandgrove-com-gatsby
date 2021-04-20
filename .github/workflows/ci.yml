@@ -31,7 +31,7 @@ jobs:
       - name: Wait on tests
         uses: lewagon/wait-on-check-action@master
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
           wait-interval: 10 # seconds
           running-workflow-name: 'Gatsby Build Service - tagd8_gatsby'
       - name: Set build URL
