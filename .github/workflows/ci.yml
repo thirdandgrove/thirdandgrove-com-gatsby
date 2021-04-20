@@ -1,6 +1,6 @@
 name: Cypress
 # Triggers the workflow on push or pull request events
-on: [pull_request]
+on: [push, pull_request]
 
 env:
   DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
