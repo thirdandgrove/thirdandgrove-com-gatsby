@@ -33,8 +33,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           wait-interval: 10 # seconds
-          check-name: Gatsby Build Service - tagd8_gatsby # the name of this job
-          running-workflow-name: Gatsby Build Service - tagd8_gatsby
+          running-workflow-name: 'Gatsby Build Service - tagd8_gatsby'
       - name: Set build URL
         run: |
           echo "${{ github.event.pull_request.head.sha }}"
