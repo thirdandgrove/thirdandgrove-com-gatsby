@@ -51,16 +51,17 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - name: Wait on tests
-        uses: lewagon/wait-on-check-action@bafe56a6863672c681c3cf671f5e10b20abf2eaa # v0.2
-        with:
-          ref: ${{ github.event.before }}
-          wait-interval: 10 # seconds
-          running-workflow-name: 'Gatsby Build Service - tagd8_gatsby'
+      - name: Get Status of Gatsby Build
+        run: |
+          # make file runnable, might not be necessary
+          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+
+          # run script
+          "${GITHUB_WORKSPACE}/.github/workflows/script.sh ${{ github.sha }}"
       - name: Set build URL
         run: |
-          echo "${{ github.event.before }}"
-          BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.event.before }}/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
+          echo "${{ github.sha }}"
+          BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
           echo "${BULID_URL}"
       - name: Cypress run
         uses: cypress-io/github-action@v2
