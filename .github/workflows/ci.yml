@@ -52,7 +52,7 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
       - name: Install jq
-        run: sudo apt-get jq
+        run: sudo apt-get install jq
       - name: Get Status of Gatsby Build
         env:
           SHA: ${{ github.sha }}
