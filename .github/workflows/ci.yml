@@ -36,7 +36,8 @@ jobs:
           check-name: Gatsby Build Service - tagd8_gatsby # the name of this job
       - name: Set build URL
         run: |
-          BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/master/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
+          echo "${{ github.event.pull_request.head.sha }}"
+          BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.event.pull_request.head.sha }}/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
           echo "${BULID_URL}"
       - name: Cypress run
         uses: cypress-io/github-action@v2
