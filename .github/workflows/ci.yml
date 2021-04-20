@@ -1,4 +1,7 @@
-on: [pull_request]
+name: Cypress
+on:
+  push:
+  workflow_dispatch:
 
 env:
   DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
@@ -15,7 +18,7 @@ env:
   WAIT_ON_TIMEOUT: 600000
 
 jobs:
-  Gatsby-Build-Service---tagd8_gatsby:
+  cypress:
     runs-on: ubuntu-16.04
     container: cypress/browsers:node12.13.0-chrome78-ff70
     strategy:
@@ -30,7 +33,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           wait-interval: 10 # seconds
-          running-workflow-name: 'Gatsby Build Service - tagd8_gatsby' # the name of this job
+          check-name: Gatsby Build Service - tagd8_gatsby # the name of this job
       - name: Set build URL
         run: |
           BULID_URL='https://build-'$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/master/check-runs | jq '.check_runs[0].external_id')'.gtsb.io'
