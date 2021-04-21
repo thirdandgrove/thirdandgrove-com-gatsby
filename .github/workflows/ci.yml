@@ -70,11 +70,15 @@ jobs:
           buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
 
           # set cypress base url
-          export CYPRESS_BASE_URL=https://build-$buildUrl.gtsb.io
+          export BASE_URL=https://build-$buildUrl.gtsb.io
 
           # check CYPRESS_BASE_URL is set
-          echo "$CYPRESS_BASE_URL"
+          echo "$BASE_URL"
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_BASE_URL: ${{ BASE_URL }}
+          CYPRESS_host: api.dev.local
+          CYPRESS_port: 4222
         with:
-          start: yarn run cy:run
+          command: yarn run cy:run
