@@ -80,12 +80,9 @@ jobs:
           key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install Cypress
-        working-directory: ${GITHUB_WORKSPACE}
         run: npm i cypress
 
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
-          config: baseUrl=${{ needs.test_setup.outputs.preview_url }}
           install: false # We test a live preview URL, no need to install packages
-          working-directory: ${GITHUB_WORKSPACE}
