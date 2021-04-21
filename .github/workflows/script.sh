@@ -3,7 +3,7 @@
 recurse()
 {
 status=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq '.check_runs[1].status')
-name=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq '.check_runs[1].status')
+name=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq '.check_runs[1].name')
 
 if [[ $status == *"completed"* ]]; then
   echo "> Check has completed"
