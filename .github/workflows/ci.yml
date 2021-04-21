@@ -56,9 +56,6 @@ jobs:
         env:
           SHA: ${{ github.sha }}
         run: |
-          # check location of jq
-          which -a jq
-
           # make file runnable, might not be necessary
           chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
 
@@ -76,5 +73,3 @@ jobs:
           echo "$CYPRESS_BASE_URL"
       - name: Cypress run
         uses: cypress-io/github-action@v2
-        with:
-          command: yarn run cy:run
