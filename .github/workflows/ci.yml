@@ -68,7 +68,7 @@ jobs:
       - name: Set build URL
         run: |
           echo "${{ github.sha }}"
-          BULID_URL='https://build-$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -r '.check_runs[0].external_id').gtsb.io'
+          BULID_URL='https://build-$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -c -r '.check_runs[] | select( .name | contains("Gatsby Build Service - test-build-tagd8")) | .external_id').gtsb.io'
           echo "$BULID_URL"
       - name: Cypress run
         uses: cypress-io/github-action@v2
