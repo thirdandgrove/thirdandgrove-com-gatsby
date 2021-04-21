@@ -83,7 +83,7 @@ jobs:
           npm i -D babel-preset-gatsby babel-plugin-istanbul cypress @cypress/code-coverage
 
       - name: Cypress info
-        run: npx cypress info
+        run: cypress info
 
       - name: Dump env context
         env:
@@ -93,5 +93,6 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
+          build: npm i -D babel-preset-gatsby babel-plugin-istanbul cypress @cypress/code-coverage
           config: baseUrl=${{ env.CYPRESS_BASE_URL }}
           install: false
