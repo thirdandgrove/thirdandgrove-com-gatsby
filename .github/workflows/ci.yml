@@ -71,19 +71,21 @@ jobs:
 
           # check CYPRESS_BASE_URL is set
           echo "$CYPRESS_BASE_URL"
+
       - name: Cache services/website/node_modules and Cypress
-        uses: actions/cache@v2
+      - uses: actions/cache@v2
         with:
           path: |
             ~/.cache/Cypress
             node_modules
           key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - run: |
+          npm i -D
 
-      - name: Install Cypress
-        run: npm i cypress -g
+      - name: Cypress info
+        run: npx cypress info
 
       - name: Run Cypress
-        uses: cypress-io/github-action@v2
+      - uses: cypress-io/github-action@v2
         with:
-          build: npm i
-          install: false # We test a live preview URL, no need to install packages
+          install: false
