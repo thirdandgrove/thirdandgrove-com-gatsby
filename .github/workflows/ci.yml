@@ -14,7 +14,6 @@ env:
   NODE_ENV: ${{ secrets.NODE_ENV }}
   NODE_VERSION: ${{ secrets.NODE_VERSION }}
   PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
-  WAIT_ON_TIMEOUT: 600000
 
 jobs:
   cypress:
@@ -77,5 +76,3 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: cypress run
-          wait-on: ${{ CYPRESS_BASE_URL }}
-          wait-on-timeout: 240
