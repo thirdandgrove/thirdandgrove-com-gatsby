@@ -2,15 +2,15 @@
 
 recurse()
 {
-status=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[] | select( .name | contains("Gatsby Build Service - test-build-tagd8")) | .status')
-name=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[] | select( .name | contains("Gatsby Build Service - test-build-tagd8")) | .name')
+status=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[] | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .status')
+name=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[] | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .name')
 
 
 if [[ $status == *"completed"* ]]; then
   echo "> Check has completed"
   echo "> Check Gatsby build conclusion"
   echo $status
-  local conclusion=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c '.check_runs[] | select( .name | contains("Gatsby Build Service - test-build-tagd8")) | .conclusion')
+  local conclusion=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c '.check_runs[] | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .conclusion')
   echo $conclusion
 
   if [[ $conclusion == *"success"* ]]; then
