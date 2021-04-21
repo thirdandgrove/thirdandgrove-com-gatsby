@@ -66,10 +66,10 @@ jobs:
           # run script
           "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
       - name: Set build URL
+        env:
+          BULID_URL: ${{ https://build-$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -r '.check_runs[0].external_id').gtsb.io' }}
         run: |
           echo "${{ github.sha }}"
-          export GASTBY_BUILD_ID=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq '.check_runs[0].external_id')
-          export BULID_URL='https://build-$GASTBY_BUILD_ID.gtsb.io'
           echo "$BULID_URL"
       - name: Cypress run
         uses: cypress-io/github-action@v2
