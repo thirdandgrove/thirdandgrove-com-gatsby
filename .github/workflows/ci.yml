@@ -80,12 +80,18 @@ jobs:
             node_modules
           key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - run: |
-          npm i -D
+          npm i -D babel-preset-gatsby babel-plugin-istanbul cypress @cypress/code-coverage
 
       - name: Cypress info
         run: npx cypress info
 
+      - name: Dump env context
+        env:
+          ENV_CONTEXT: ${{ toJson(env) }}
+        run: echo "$ENV_CONTEXT"
+
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
+          config: baseUrl=${{ env.CYPRESS_BASE_URL }}
           install: false
