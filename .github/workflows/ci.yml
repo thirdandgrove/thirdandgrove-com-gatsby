@@ -66,16 +66,13 @@ jobs:
           "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
       - name: Set build URL
         run: |
-          echo "$CYPRESS_BASE_URL"
-
-          echo "${{ github.sha }}"
-
+          # curl json external_id
           buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -c -r '.check_runs[] | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
 
-          echo $buildUrl
-
+          # set cypress base url
           export CYPRESS_BASE_URL=https://build-$buildUrl.gtsb.io
 
+          # check CYPRESS_BASE_URL is set
           echo "$CYPRESS_BASE_URL"
       - name: Cypress run
         uses: cypress-io/github-action@v2
