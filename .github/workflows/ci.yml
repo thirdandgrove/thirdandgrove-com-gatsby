@@ -85,4 +85,5 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
+          build: npm i -D cypress
           install: false # We test a live preview URL, no need to install packages
