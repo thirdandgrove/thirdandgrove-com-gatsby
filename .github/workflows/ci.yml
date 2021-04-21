@@ -84,9 +84,6 @@ jobs:
             node_modules
           key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
-      - name: Install NPM packages 📥
-        run: npm ci
-
       - name: Install Cypress 📥
         run: npm i cypress
 
