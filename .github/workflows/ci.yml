@@ -67,10 +67,15 @@ jobs:
       - name: Set build URL
         run: |
           echo "$CYPRESS_BASE_URL"
+
           echo "${{ github.sha }}"
+
           buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -c -r '.check_runs[] | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
+
           echo $buildUrl
-          CYPRESS_BASE_URL=https://build-$buildUrl.gtsb.io
+
+          export CYPRESS_BASE_URL=https://build-$buildUrl.gtsb.io
+
           echo "$CYPRESS_BASE_URL"
       - name: Cypress run
         uses: cypress-io/github-action@v2
