@@ -80,10 +80,10 @@ jobs:
           key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install Cypress
-        run: npm i cypress
+        run: npm i cypress -g
 
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
-          build: npm i -D cypress
+          command: npx cypress run
           install: false # We test a live preview URL, no need to install packages
