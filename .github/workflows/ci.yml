@@ -52,7 +52,7 @@ jobs:
           echo "$CYPRESS_BASE_URL"
 
           # install
-          npm i -D babel-preset-gatsby babel-plugin-istanbul cypress @cypress/code-coverage
+          npm install babel-preset-gatsby babel-plugin-istanbul cypress @cypress/code-coverage
 
           # run
           cypress run --config baseUrl="$CYPRESS_BASE_URL"
