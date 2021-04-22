@@ -45,6 +45,6 @@ jobs:
           # check CYPRESS_BASE_URL is set
           echo "$CYPRESS_BASE_URL"
 
-        - uses: cypress-io/github-action@v2
-          with:
-            install-command: yarn --frozen-lockfile --silent install
+      - uses: cypress-io/github-action@v2
+        with:
+          install-command: yarn --frozen-lockfile --silent install
