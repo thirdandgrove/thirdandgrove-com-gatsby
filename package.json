@@ -84,7 +84,7 @@
     "lint": "node ./node_modules/eslint/bin/eslint . --ignore-path .gitignore",
     "lambda": "netlify-lambda build ./static/functions",
     "cy:open": "cypress open",
-    "cy:run": "./node_modules/.bin/cypress run",
+    "cy:run": "cypress run",
     "test:e2e": "npx start-server-and-test 'yarn develop' http://localhost:8000 'yarn cy:open'",
     "test:e2e:ci": "npx start-server-and-test 'yarn develop' http://localhost:8000 'yarn cy:run'"
   },
