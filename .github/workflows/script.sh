@@ -15,12 +15,6 @@ if [[ $status == *"completed"* ]]; then
 
   if [[ $conclusion == *"success"* ]]; then
     echo "> $name: $conclusion"
-
-    # curl json external_id
-    local buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
-
-    # set cypress base url
-    echo "::set-env name=CYPRESS_BASE_URL::https://build-$buildUrl.gtsb.io"
   else
     echo "> Gatsby build conclusion was not successful"
     echo $conclusion
