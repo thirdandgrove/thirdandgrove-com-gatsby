@@ -26,32 +26,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
+
       - name: Install jq
         run: apt-get -y install jq
+
       - name: Get Status of Gatsby Build
         env:
           SHA: ${{ github.sha }}
@@ -61,7 +39,8 @@ jobs:
 
           # run script
           "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
-      - name: Set build URL npm instal and run cypress
+
+      - name: Set build URL npm install and run cypress
         run: |
           # curl json external_id
           buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
@@ -76,4 +55,4 @@ jobs:
           npm i -D babel-preset-gatsby babel-plugin-istanbul cypress @cypress/code-coverage
 
           # run
-          ./node_modules/.bin/cypress run --config baseUrl="$CYPRESS_BASE_URL"
+          cypress run --config baseUrl="$CYPRESS_BASE_URL"
