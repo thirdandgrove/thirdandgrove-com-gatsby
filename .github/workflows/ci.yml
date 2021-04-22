@@ -45,6 +45,7 @@ jobs:
           # check CYPRESS_BASE_URL is set
           echo "$CYPRESS_BASE_URL"
 
-      - uses: cypress-io/github-action@v2
-        with:
-          install-command: yarn --frozen-lockfile --silent install
+        - name: Custom tests 🧪
+          uses: cypress-io/github-action@v1
+          with:
+            command: yarn run cy:run
