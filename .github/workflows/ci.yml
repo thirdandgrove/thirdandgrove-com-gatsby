@@ -53,7 +53,20 @@ jobs:
           # check CYPRESS_BASE_URL is set
           echo "$CYPRESS_BASE_URL"
 
+      - name: Set the value
+        id: step_one
+        run: |
+          # curl json external_id
+          buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
+
+          echo "CYPRESS_BASE_URL=$buildUrl" >> $GITHUB_ENV
+
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.CYPRESS_BASE_URL }}" # This will output 'external_id'
+
       - name: Custom tests 🧪
         uses: cypress-io/github-action@v2
         with:
-          command: npx start-test 'yarn cy:run'
+          command: npx start-test '' 8080 'yarn cy:run'
