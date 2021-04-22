@@ -45,7 +45,7 @@ jobs:
           # check CYPRESS_BASE_URL is set
           echo "$CYPRESS_BASE_URL"
 
-        - name: Custom tests 🧪
-          uses: cypress-io/github-action@v1
-          with:
-            command: yarn run cy:run
+      - name: Custom tests 🧪
+        uses: cypress-io/github-action@v1
+        with:
+          command: yarn run cy:run
