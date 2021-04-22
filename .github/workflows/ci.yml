@@ -64,16 +64,16 @@ jobs:
       - name: Set build URL npm instal and run cypress
         run: |
           # curl json external_id
-          buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id') && /
+          buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
 
           # set cypress base url
-          export CYPRESS_BASE_URL=https://build-$buildUrl.gtsb.io && /
+          export CYPRESS_BASE_URL=https://build-$buildUrl.gtsb.io
 
           # check CYPRESS_BASE_URL is set
-          echo "$CYPRESS_BASE_URL" && /
+          echo "$CYPRESS_BASE_URL"
 
           # install
-          npm i -D babel-preset-gatsby babel-plugin-istanbul cypress @cypress/code-coverage && /
+          npm i -D babel-preset-gatsby babel-plugin-istanbul cypress @cypress/code-coverage
 
           # run
           ./node_modules/.bin/cypress run --config baseUrl="$CYPRESS_BASE_URL"
