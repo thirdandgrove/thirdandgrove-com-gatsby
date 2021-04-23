@@ -69,4 +69,4 @@ jobs:
       - name: Custom tests 🧪
         uses: cypress-io/github-action@v2
         with:
-          command: npx start-server-and-test '' 'yarn cy:run'
+          command: npx start-server-and-test '' ${{ env.CYPRESS_BASE_URL }} 'yarn cy:run'
