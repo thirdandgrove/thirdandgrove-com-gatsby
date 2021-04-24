@@ -35,8 +35,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Install jq
         run: apt-get -y install jq
+
       - name: Get Status of Gatsby Build
         env:
           SHA: ${{ github.sha }}
@@ -45,13 +47,14 @@ jobs:
           chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
           # run script
           "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+
       - name: Set the CYPRESS_BASE_URL
         id: step_one
         run: |
           # curl json external_id
           buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
           echo "CYPRESS_BASE_URL=$buildUrl" >> $GITHUB_ENV
-      - name: Run tests
+
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -60,6 +63,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm run test:e2e:ci
+
   minors:
     needs: [matrix, latest]
     name: 'non-latest minors'
@@ -77,6 +81,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm run test:e2e:ci
+
   node:
     name: 'node'
     needs: [latest, minors]
