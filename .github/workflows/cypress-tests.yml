@@ -28,6 +28,7 @@ jobs:
           preset: '>=12'
 
   init:
+    needs: [matrix]
     name: 'initial scripts'
     runs-on: ubuntu-latest
     steps:
@@ -53,7 +54,7 @@ jobs:
           echo "CYPRESS_BASE_URL=$buildUrl" >> $GITHUB_ENV
 
   latest:
-    needs: [matrix]
+    needs: [matrix, init]
     name: 'latest minors'
     runs-on: ubuntu-latest
     strategy:
