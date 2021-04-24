@@ -16,19 +16,7 @@ env:
   PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
 
 jobs:
-  matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      latest: ${{ steps.set-matrix.outputs.requireds }}
-      minors: ${{ steps.set-matrix.outputs.optionals }}
-    steps:
-      - uses: ljharb/actions/node/matrix@main
-        id: set-matrix
-        with:
-          preset: '>=12'
-
   init:
-    needs: [matrix]
     name: 'initial scripts'
     runs-on: ubuntu-latest
     steps:
@@ -53,30 +41,23 @@ jobs:
           buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
           echo "CYPRESS_BASE_URL=$buildUrl" >> $GITHUB_ENV
 
+  matrix:
+    needs: [init]
+    runs-on: ubuntu-latest
+    outputs:
+      latest: ${{ steps.set-matrix.outputs.requireds }}
+    steps:
+      - uses: ljharb/actions/node/matrix@main
+        id: set-matrix
+        with:
+          preset: '>=14'
+
   latest:
-    needs: [matrix, init]
+    needs: [matrix]
     name: 'latest minors'
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{ fromJson(needs.matrix.outputs.latest) }}
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: ljharb/actions/node/install@main
-        name: 'nvm install ${{ matrix.node-version }} && npm install'
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm run test:e2e:ci
-
-  minors:
-    needs: [matrix, latest]
-    name: 'non-latest minors'
-    continue-on-error: true
-    if: ${{ !github.head_ref || !startsWith(github.head_ref, 'renovate') }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJson(needs.matrix.outputs.minors) }}
     steps:
       - uses: actions/checkout@v2
         with:
