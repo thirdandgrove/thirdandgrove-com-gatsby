@@ -50,14 +50,16 @@ jobs:
       - uses: ljharb/actions/node/matrix@main
         id: set-matrix
         with:
-          preset: '>=14'
+          preset: '>=12'
 
   latest:
     needs: [matrix]
     name: 'latest minors'
     runs-on: ubuntu-latest
+
     strategy:
       matrix: ${{ fromJson(needs.matrix.outputs.latest) }}
+
     steps:
       - uses: actions/checkout@v2
         with:
