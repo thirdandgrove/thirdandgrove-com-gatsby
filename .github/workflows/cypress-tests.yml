@@ -58,6 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{ fromJson(needs.matrix.outputs.latest) }}
+    steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
