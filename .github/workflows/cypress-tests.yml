@@ -26,13 +26,14 @@ jobs:
         id: set-matrix
         with:
           preset: '>=12'
-  latest:
-    needs: [matrix]
-    name: 'latest minors'
+
+  init:
+    name: 'initial scripts'
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJson(needs.matrix.outputs.latest) }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Install jq
         run: apt-get -y install jq
 
@@ -46,12 +47,17 @@ jobs:
           "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
 
       - name: Set the CYPRESS_BASE_URL
-        id: step_one
         run: |
           # curl json external_id
           buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
           echo "CYPRESS_BASE_URL=$buildUrl" >> $GITHUB_ENV
 
+  latest:
+    needs: [matrix]
+    name: 'latest minors'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.matrix.outputs.latest) }}
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
