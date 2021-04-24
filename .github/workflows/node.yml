@@ -38,6 +38,7 @@ jobs:
           # curl json external_id
           buildUrl=$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/$1/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id')
           echo "CYPRESS_BASE_URL=$buildUrl" >> $GITHUB_ENV
+          echo "$CYPRESS_BASE_URL"
 
   matrix:
     needs: [init]
