@@ -41,6 +41,9 @@ jobs:
       - name: Test the CYPRESS_BASE_URL
         run: echo $CYPRESS_BASE_URL
 
+      - name: Linux list all environment variables
+        run: printenv
+
   matrix:
     needs: [init]
     runs-on: ubuntu-latest
@@ -70,7 +73,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           skip-install: true
           after_install: nvm install ${{ matrix.node-version }} && npm install --legacy-peer-deps
-      - run: npm run cy:run
+      - run: npm run cy:run:sh
 
   node:
     name: 'node'
