@@ -6,4 +6,4 @@ buildUrl=https://build-$(curl -s  https://api.github.com/repos/thirdandgrove/thi
 
 echo "$buildUrl"
 
-NODE_ENV=development CYPRESS_BASE_URL=$buildUrl cypress run
+NODE_ENV=test CYPRESS_BASE_URL=$buildUrl cypress run
