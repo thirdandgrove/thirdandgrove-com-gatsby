@@ -85,7 +85,7 @@
     "lambda": "netlify-lambda build ./static/functions",
     "cy:open": "NODE_ENV=development CYPRESS_BASE_URL=$(grep CYPRESS_BASE_URL .env | cut -d '=' -f2) cypress open",
     "cy:run": "NODE_ENV=development CYPRESS_BASE_URL=$(grep CYPRESS_BASE_URL .env | cut -d '=' -f2) cypress run",
-    "cy:run:sh": "sudo ./.github/workflows/run.sh",
+    "cy:run:sh": "./.github/workflows/run.sh",
     "test:e2e": "NODE_ENV=development npx start-server-and-test 'yarn develop' http://localhost:8000 'yarn cy:open'",
     "test:e2e:ci": "NODE_ENV=development npx start-server-and-test develop http://localhost:8000 cy:run"
   },
