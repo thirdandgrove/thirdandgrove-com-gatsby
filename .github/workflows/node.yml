@@ -16,7 +16,7 @@ env:
 
 jobs:
   init:
-    name: "initial scripts"
+    name: 'initial scripts'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -54,11 +54,11 @@ jobs:
       - uses: ljharb/actions/node/matrix@main
         id: set-matrix
         with:
-          preset: ">=12"
+          preset: '>=12'
 
   latest:
     needs: [matrix]
-    name: "latest minors"
+    name: 'latest minors'
     runs-on: ubuntu-latest
 
     strategy:
@@ -69,16 +69,18 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ljharb/actions/node/install@main
-        name: "nvm install ${{ matrix.node-version }} && npm install"
+        name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
           node-version: ${{ matrix.node-version }}
           skip-install: true
           after_install: nvm install ${{ matrix.node-version }} && npm install --legacy-peer-deps
+        env:
+          SHA: ${{ github.sha }}
       - run: npm run cy:run:sh
 
   node:
-    name: "node"
+    name: 'node'
     needs: [latest]
     runs-on: ubuntu-latest
     steps:
-      - run: "echo tests completed"
+      - run: 'echo tests completed'
