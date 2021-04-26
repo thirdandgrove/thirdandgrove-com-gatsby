@@ -54,11 +54,12 @@ jobs:
       - uses: ljharb/actions/node/matrix@main
         id: set-matrix
         with:
-          preset: '>=12'
+          preset: '12'
+          type: 'majors'
 
   latest:
     needs: [matrix]
-    name: 'latest minors'
+    name: 'latest majors'
     runs-on: ubuntu-latest
 
     strategy:
