@@ -77,6 +77,8 @@ jobs:
         env:
           SHA: ${{ github.sha }}
       - run: npm run cy:run:sh
+        env:
+          SHA: ${{ github.sha }}
 
   node:
     name: 'node'
