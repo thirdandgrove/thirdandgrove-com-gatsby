@@ -1,0 +1,17 @@
+{
+  "parent": null,
+  "pid": 57111,
+  "argv": [
+    "/Users/nhulea/.nvm/versions/node/v12.19.0/bin/node",
+    "/Users/nhulea/.nvm/versions/node/v12.19.0/bin/npm",
+    "cy:run"
+  ],
+  "execArgv": [],
+  "cwd": "/Users/nhulea/www/tag",
+  "time": 1619281563356,
+  "ppid": 57105,
+  "coverageFilename": "/Users/nhulea/www/tag/.nyc_output/18aacb59-6bfc-4c05-ab26-879d278a0f32.json",
+  "externalId": "",
+  "uuid": "18aacb59-6bfc-4c05-ab26-879d278a0f32",
+  "files": []
+}
