@@ -35,16 +35,6 @@ jobs:
           # run script
           "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
 
-      - name: Set the CYPRESS_BASE_URL
-        run: |
-          echo "CYPRESS_BASE_URL=https://build-$(curl -s  https://api.github.com/repos/thirdandgrove/thirdandgrove-com-gatsby/commits/${{ github.sha }}/check-runs | jq -c -r '.check_runs[]? | select( .name | contains("Gatsby Build Service - tagd8_gatsby")) | .external_id').gtsb.io/" >> $GITHUB_ENV
-
-      - name: Test the CYPRESS_BASE_URL
-        run: echo $CYPRESS_BASE_URL
-
-      - name: Linux list all environment variables
-        run: printenv
-
   matrix:
     needs: [init]
     runs-on: ubuntu-latest
@@ -81,9 +71,27 @@ jobs:
         env:
           SHA: ${{ github.sha }}
 
+  upload:
+    name: 'upload'
+    needs: [latest]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Move Artifacts'
+        run: |
+          mkdir ${GITHUB_WORKSPACE}/artifacts
+          cp -R ${GITHUB_WORKSPACE}/cypress/screenshots ${GITHUB_WORKSPACE}/artifacts
+          cp -R ${GITHUB_WORKSPACE}/cypress/videos ${GITHUB_WORKSPACE}/artifacts
+          cp -R ${GITHUB_WORKSPACE}/coverage ${GITHUB_WORKSPACE}/artifacts
+      - name: 'Upload Artifacts'
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts-for-dowload
+          path: artifacts
+          retention-days: 5
+
   node:
     name: 'node'
-    needs: [latest]
+    needs: [upload]
     runs-on: ubuntu-latest
     steps:
       - run: 'echo tests completed'
