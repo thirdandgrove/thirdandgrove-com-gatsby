@@ -6,6 +6,7 @@ describe('drupalcon-2021-event Page', () => {
       }, 1000);
     });
   }
+
   before(() => {
     cy.visit('/');
   });
@@ -17,29 +18,30 @@ describe('drupalcon-2021-event Page', () => {
 
   it('click swag button form component', () => {
     cy.visit('/drupalcon-2021-event/');
-    cy.get('[data-cy=buttonFormButton]').should('exist');
-    cy.get('[data-cy=buttonFormButton]').click();
-    cy.wrap(null).then(() => {
-      return waitOneSecond().then(() => {
-        cy.get('.button--container section.active').should('exist');
-        cy.get('[data-cy=buttonFormCloseButton]').click({
-          multiple: true,
-        });
-      });
+    cy.wait(20000);
+    cy.get('[data-cy=buttonFormButton]')
+      .should('exist')
+      .focus()
+      .click({ multiple: true });
+    cy.wait(20000);
+    cy.get('.button--container section.active').should('exist');
+    cy.get('[data-cy=buttonFormCloseButton]').click({
+      multiple: true,
     });
   });
 
   it('keypress swag button form component', () => {
     cy.visit('/drupalcon-2021-event/');
-    cy.get('[data-cy=buttonFormButton]').should('exist');
-    cy.get('[data-cy=buttonFormButton]').focus();
-    cy.get('[data-cy=buttonFormButton]').type('{enter}');
-    cy.wrap(null).then(() => {
-      return waitOneSecond().then(() => {
-        cy.get('.button--container section.active').should('exist');
-        cy.get('[data-cy=buttonFormCloseButton]').focus();
-        cy.get('[data-cy=buttonFormCloseButton]').type('{enter}');
-      });
-    });
+    cy.wait(20000);
+    cy.get('[data-cy=buttonFormButton]')
+      .should('exist')
+      .focus()
+      .type('{enter}');
+    cy.wait(20000);
+    cy.get('.button--container section.active').should('exist');
+    cy.get('.button--container section.active')
+      .should('exist')
+      .focus()
+      .type('{enter}');
   });
 });
