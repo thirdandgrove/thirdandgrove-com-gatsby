@@ -6,7 +6,14 @@ import { Spring } from 'react-spring/renderprops';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { mediaQueries, weights, fonts } from '../../styles';
 
-const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg }) => {
+const CTAGridItem = ({
+  icon,
+  title,
+  description,
+  altStyle,
+  noPaddingImg,
+  extraCssItem,
+}) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
   const ctaContainer = css`
@@ -29,6 +36,7 @@ const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg }) => {
     h4 {
       font-size: 27px;
       line-height: 39px;
+
       ${mediaQueries.phoneLarge} {
         margin-bottom: 36px;
         font-size: 39px;
@@ -39,6 +47,8 @@ const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg }) => {
     p {
       font-weight: ${weights.thin};
     }
+
+    ${extraCssItem}
   `;
 
   const ctaContainerAlt = css`
@@ -80,6 +90,8 @@ const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg }) => {
     &:last-of-type {
       border-bottom: none;
     }
+
+    ${extraCssItem}
   `;
   return (
     <>
@@ -125,8 +137,8 @@ const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg }) => {
                   <img src={icon[0].node.publicURL} alt={description} />
                 )}
 
-                <h4>{title}</h4>
-                <p>{description}</p>
+                {title && <h4>{title}</h4>}
+                {description && <p>{description}</p>}
               </div>
             </div>
           )}
@@ -142,6 +154,7 @@ CTAGridItem.propTypes = {
   description: PropTypes.string,
   altStyle: PropTypes.bool,
   noPaddingImg: PropTypes.bool,
+  extraCssItem: PropTypes.object,
 };
 
 CTAGridItem.defaultProps = {
@@ -150,6 +163,7 @@ CTAGridItem.defaultProps = {
   description: '',
   altStyle: false,
   noPaddingImg: false,
+  extraCssItem: null,
 };
 
 export default CTAGridItem;
