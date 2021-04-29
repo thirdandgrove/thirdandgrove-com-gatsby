@@ -7,8 +7,9 @@ describe('drupalcon-2021-event Page', () => {
     });
   }
 
-  before(() => {
+  beforeEach(() => {
     cy.visit('/');
+    cy.log('banana');
   });
 
   it('renders the drupalcon-2021-event Page page', () => {
@@ -18,30 +19,16 @@ describe('drupalcon-2021-event Page', () => {
 
   it('click swag button form component', () => {
     cy.visit('/drupalcon-2021-event/');
-    cy.wait(20000);
-    cy.get('[data-cy=buttonFormButton]')
-      .should('exist')
-      .focus()
-      .click({ multiple: true });
-    cy.wait(20000);
+    cy.wait(4000);
+    cy.contains('Grab our Webcam Swag').should('exist');
+    cy.contains('Grab our Webcam Swag').click();
+    cy.wait(1000);
     cy.get('.button--container section.active').should('exist');
-    cy.get('[data-cy=buttonFormCloseButton]').click({
-      multiple: true,
-    });
+    cy.get(
+      '#gatsby-focus-wrapper > main > div > div:nth-child(2) > div:nth-child(4) > div > section > div > button'
+    ).should('exist');
+    cy.get(
+      '#gatsby-focus-wrapper > main > div > div:nth-child(2) > div:nth-child(4) > div > section > div > button'
+    ).click();
   });
 
-  it('keypress swag button form component', () => {
-    cy.visit('/drupalcon-2021-event/');
-    cy.wait(20000);
-    cy.get('[data-cy=buttonFormButton]')
-      .should('exist')
-      .focus()
-      .type('{enter}');
-    cy.wait(20000);
-    cy.get('.button--container section.active').should('exist');
-    cy.get('.button--container section.active')
-      .should('exist')
-      .focus()
-      .type('{enter}');
-  });
-});
