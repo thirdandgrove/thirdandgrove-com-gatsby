@@ -31,4 +31,4 @@ describe('drupalcon-2021-event Page', () => {
       '#gatsby-focus-wrapper > main > div > div:nth-child(2) > div:nth-child(4) > div > section > div > button'
     ).click();
   });
-
+});
