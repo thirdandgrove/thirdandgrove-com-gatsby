@@ -9,7 +9,6 @@ describe('drupalcon-2021-event Page', () => {
 
   beforeEach(() => {
     cy.visit('/');
-    cy.log('banana');
   });
 
   it('renders the drupalcon-2021-event Page page', () => {
