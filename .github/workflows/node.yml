@@ -1,6 +1,6 @@
 name: Cypress
 # Triggers the workflow on push or pull request events
-on: [push, pull_request]
+on: [push]
 
 env:
   DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
@@ -16,7 +16,7 @@ env:
 
 jobs:
   init:
-    name: 'initial scripts'
+    name: "initial scripts"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,12 +44,12 @@ jobs:
       - uses: ljharb/actions/node/matrix@main
         id: set-matrix
         with:
-          preset: '12'
-          type: 'majors'
+          preset: "12"
+          type: "majors"
 
   latest:
     needs: [matrix]
-    name: 'latest majors'
+    name: "latest majors"
     runs-on: ubuntu-latest
 
     strategy:
@@ -60,7 +60,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ljharb/actions/node/install@main
-        name: 'nvm install ${{ matrix.node-version }} && npm install'
+        name: "nvm install ${{ matrix.node-version }} && npm install"
         with:
           node-version: ${{ matrix.node-version }}
           skip-install: true
@@ -72,17 +72,17 @@ jobs:
           SHA: ${{ github.sha }}
 
   upload:
-    name: 'upload'
+    name: "upload"
     needs: [latest]
     runs-on: ubuntu-latest
     steps:
-      - name: 'Move Artifacts'
+      - name: "Move Artifacts"
         run: |
           mkdir ${GITHUB_WORKSPACE}/artifacts
           cp -R ${GITHUB_WORKSPACE}/cypress/screenshots ${GITHUB_WORKSPACE}/artifacts
           cp -R ${GITHUB_WORKSPACE}/cypress/videos ${GITHUB_WORKSPACE}/artifacts
           cp -R ${GITHUB_WORKSPACE}/coverage ${GITHUB_WORKSPACE}/artifacts
-      - name: 'Upload Artifacts'
+      - name: "Upload Artifacts"
         uses: actions/upload-artifact@v2
         with:
           name: artifacts-for-dowload
@@ -90,8 +90,8 @@ jobs:
           retention-days: 5
 
   node:
-    name: 'node'
+    name: "node"
     needs: [upload]
     runs-on: ubuntu-latest
     steps:
-      - run: 'echo tests completed'
+      - run: "echo tests completed"
