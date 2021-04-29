@@ -1,10 +1,9 @@
 describe('Navigation', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('/');
   });
 
   it('opens menu', () => {
-    cy.visit('/');
     cy.get('[data-cy=menuButton] > svg').click();
   });
 
