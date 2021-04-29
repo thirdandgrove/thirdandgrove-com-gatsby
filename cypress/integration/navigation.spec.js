@@ -4,7 +4,7 @@ describe('Navigation', () => {
   });
 
   it('opens menu', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
   });
 
   it('Has all expected links', () => {
@@ -21,12 +21,12 @@ describe('Navigation', () => {
   });
 
   it('Closes the menu', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
   });
 
   it('Navigates to work', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="work"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="work"]').click({ force: true });
     cy.get('[data-cy=titleText]').should('exist');
     cy.get('[data-cy=titleText]').should(
       'contain',
@@ -35,20 +35,20 @@ describe('Navigation', () => {
   });
 
   it('Navigates to capabilities', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="capabilities"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="capabilities"]').click({ force: true });
     cy.get('[data-cy=titleText]').should('exist');
   });
 
   it('Navigates to insights', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="insights"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="insights"]').click({ force: true });
     cy.get('[data-cy=insightTitle]').should('exist');
   });
 
   it('Navigates to about', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="about"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="about"]').click({ force: true });
     cy.get('[data-cy=titleText]').should('exist');
     cy.get('[data-cy=titleText]').should(
       'contain',
@@ -57,39 +57,39 @@ describe('Navigation', () => {
   });
 
   it('Navigates to careers', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="careers"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="careers"]').click({ force: true });
     cy.get('[data-cy=titleText]').should('exist');
     cy.get('[data-cy=titleText]').should('contain', 'We work with the best.');
   });
 
   it('Navigates to contact', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="contact"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="contact"]').click({ force: true });
     cy.get('[data-cy=contactForm]').should('exist');
   });
 
   it('Navigates to Drupal Partner Page', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="/partners/drupal/"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="/partners/drupal/"]').click({ force: true });
     cy.get('[data-cy=titleText]').should('exist');
   });
 
   it('Navigates to Shopify Partner Page', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="/partners/shopify/"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="/partners/shopify/"]').click({ force: true });
     cy.get('[data-cy=titleText]').should('exist');
   });
 
   it('Navigates to Drupal Acquia Page', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="/partners/acquia/"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="/partners/acquia/"]').click({ force: true });
     cy.get('[data-cy=titleText]').should('exist');
   });
 
   it('Navigates to Gatsby Partner Page', () => {
-    cy.get('[data-cy=menuButton] > svg').click();
-    cy.get('nav a[href*="/partners/gatsby/"]').click();
+    cy.get('[data-cy=menuButton] > svg').click({ force: true });
+    cy.get('nav a[href*="/partners/gatsby/"]').click({ force: true });
     cy.get('[data-cy=titleText]').should('exist');
   });
 });
