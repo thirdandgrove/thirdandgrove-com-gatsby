@@ -13,12 +13,6 @@ const ButtonForm = ({ header, text, confirmMessage, subheader, formName }) => {
     setIsActive(!isActive);
   };
 
-  const onKeypress = e => {
-    if (e.keyCode === 13) {
-      setIsActive(!isActive);
-    }
-  };
-
   return (
     <>
       <Button
@@ -30,7 +24,6 @@ const ButtonForm = ({ header, text, confirmMessage, subheader, formName }) => {
           }
         `}
         onClick={e => handleClick(e)}
-        onKeyDown={onKeypress}
         data-cy='buttonFormButton'
       >
         {text}
