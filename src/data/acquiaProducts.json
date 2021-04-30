@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Acquia CMS",
+    "icon": "Acquia-CMS",
+    "description": "A pre-configured version of Drupal with enhanced capabilities you won't find anywhere else. All maintained by Acquia."
+  },
+  {
+    "title": "Cloud Platform",
+    "icon": "Cloud-Platform-Logo",
+    "description": "The most scalable and secure platform for building, launching, and managing digital experiences with Drupal."
+  },
+  {
+    "title": "Migrate",
+    "icon": "Acquia-CMS-Migrate-Logo",
+    "description": "The first and only automated migration tool to accelerate Drupal 7 to Drupal 9 migrations by up to 80%"
+  },
+  {
+    "title": "Cloud IDE",
+    "icon": "Acquia-Cloud-IDE-Logo",
+    "description": "Cloud IDE has everything you need to write great code and create experiences. Designed specifically for Drupal, set up in minutes."
+  },
+  {
+    "title": "Edge",
+    "icon": "Edge-CDN-Logo",
+    "description": "Acquia Edge CDN and Security are the fastest and most secure technologies to support your digital experience."
+  },
+  {
+    "title": "Site Studio",
+    "icon": "Site-Studio-Logo",
+    "description": "Change the way you build and update digital experiences. Low-code expedites development timelines and empowers business users to contribute."
+  },
+  {
+    "title": "Site Factory",
+    "icon": "Site-Factory-Logo",
+    "description": "The best solution to build, govern, run and enhance a portfolio of digital experiences."
+  },
+  {
+    "title": "Content Hub",
+    "icon": "Content-Hub-Logo",
+    "description": "Discover and syndicate content through a centralized tool. Make one of your most value assets, your content, accessible to your whole team."
+  }
+]
