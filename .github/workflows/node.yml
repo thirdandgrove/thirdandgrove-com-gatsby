@@ -78,8 +78,7 @@ jobs:
     steps:
       - name: "Move Artifacts"
         run: |
-          mkdir ./artifacts
-          cp -R ./cypress/videos ./artifacts
+          ls -al ${GITHUB_WORKSPACE} && ls -al ${GITHUB_WORKSPACE}/cypress/ && mkdir ${GITHUB_WORKSPACE}/artifacts && cp -R ${GITHUB_WORKSPACE}/cypress/videos ./artifacts
       - name: "Upload Artifacts"
         uses: actions/upload-artifact@v2
         with:
