@@ -67,9 +67,12 @@ jobs:
           after_install: nvm install ${{ matrix.node-version }} && npm install --legacy-peer-deps
         env:
           SHA: ${{ github.sha }}
-      - run: npm run cy:run:sh
+
+      - name: "Run Tests"
+        run: npm run cy:run:sh
         env:
           SHA: ${{ github.sha }}
+
       - name: "Move Artifacts"
         run: |
           ls -al
@@ -77,6 +80,7 @@ jobs:
           ls -al ${{ github.workspace }}/cypress/
           mkdir -p ${{ github.workspace }}/artifacts
           cp -R ${{ github.workspace }}/cypress/videos ${{ github.workspace }}/artifacts
+
       - name: "Upload Artifacts"
         uses: actions/upload-artifact@v2
         with:
@@ -86,7 +90,7 @@ jobs:
 
   node:
     name: "node"
-    needs: [upload]
+    needs: [latest]
     runs-on: ubuntu-latest
     steps:
       - run: "echo tests completed"
