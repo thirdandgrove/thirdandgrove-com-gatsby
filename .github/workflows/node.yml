@@ -76,8 +76,12 @@ jobs:
     needs: [latest]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: "Move Artifacts"
         run: |
+
           ls -al && ls -al ${{ github.workspace }} && ls -al ${{ github.workspace }}/cypress/ && mkdir -p ${{ github.workspace }}/artifacts && cp -R ${{ github.workspace }}/cypress/videos ${{ github.workspace }}/artifacts
       - name: "Upload Artifacts"
         uses: actions/upload-artifact@v2
