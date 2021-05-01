@@ -12,7 +12,6 @@ env:
   KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
   KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
   PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
-  INSTALL_COMMAND: install --legacy-peer-deps
 
 jobs:
   init:
@@ -63,8 +62,6 @@ jobs:
         name: "nvm install ${{ matrix.node-version }} && npm install"
         with:
           node-version: ${{ matrix.node-version }}
-          skip-install: true
-          after_install: nvm install ${{ matrix.node-version }} && npm install --legacy-peer-deps
         env:
           SHA: ${{ github.sha }}
 
