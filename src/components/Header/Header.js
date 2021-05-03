@@ -160,16 +160,22 @@ const Header = ({
       letter-spacing: -1px;
     }
   `;
+  const sectionBackgroundCSS =
+    heroImageMobile && heroImage
+      ? css`
+          background-image: url(${heroImageMobile});
+          ${mediaQueries.desktop} {
+            background-image: url(${heroImage});
+          }
+          ${mediaQueries.phoneLarge} {
+            background-image: url(${heroImage});
+          }
+        `
+      : css``;
   const sectionCSS = css`
     padding: 88px 0;
     background-color: ${color};
-    background-image: url(${heroImageMobile});
-    ${mediaQueries.desktop} {
-      background-image: url(${heroImage});
-    }
-    ${mediaQueries.phoneLarge} {
-      background-image: url(${heroImage});
-    }
+    ${sectionBackgroundCSS}
   `;
   const headerSubTitle = css`
     margin-top: 32px;
