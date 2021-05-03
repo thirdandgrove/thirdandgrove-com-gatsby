@@ -10,7 +10,7 @@ const Button = ({ children, ...props }) => {
   `;
   return (
     <StyledButton {...props}>
-      <span role='img' aria-label='Button background image'>
+      <span role='img' aria-label='Button Gradient Color'>
         {children}
       </span>
     </StyledButton>
