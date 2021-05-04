@@ -21,7 +21,8 @@ const Studies = ({ data }) => {
   return (
     <Layout
       headerData={{
-        metaTitle: post.title,
+        metaTitle: post.field_meta_title || post.title,
+        description: post.field_meta_description,
         title: post.title,
         invert: post.field_inverse_header,
         defaultBackground: false,
@@ -88,6 +89,8 @@ export const query = graphql`
       id
       title
       field_subtitle
+      field_meta_title
+      field_meta_description
       field_image_arrangement
       field_inverse_header
       field_color {
