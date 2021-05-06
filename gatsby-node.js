@@ -9,6 +9,13 @@ const { ensureTrailingSlash, updatePaths } = require('./src/util');
 
 const exec = util.promisify(childProcess.exec);
 
+require('dotenv').config();
+
+const isProduction =
+  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
+    ? 'production'
+    : 'development';
+
 exports.onCreateDevServer = ({ app }) => {
   app.use(express.static('static'));
 };
@@ -167,19 +174,30 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({
-  stage,
-  rules,
-  loaders,
-  plugins,
-  actions,
-}) => {
+exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     node: {
       fs: 'empty',
     },
     module: {
-      rules: [{ test: /\.ics$/, use: 'raw-loader' }],
+      rules: [
+        {
+          test: /\.(jsx|js|tsx|ts)$/,
+          include: path.resolve(__dirname, '../src'),
+          rules:
+            isProduction !== 'production'
+              ? [
+                  {
+                    loader: 'istanbul-instrumenter-loader',
+                    options: {
+                      esModules: true,
+                    },
+                  },
+                ]
+              : [],
+        },
+        { test: /\.ics$/, use: 'raw-loader' },
+      ],
     },
   });
 };
