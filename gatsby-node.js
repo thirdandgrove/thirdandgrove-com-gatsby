@@ -183,7 +183,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       rules: [
         {
           test: /\.(jsx|js|tsx|ts)$/,
-          include: path.resolve(__dirname, '../src'),
+          include: path.resolve(__dirname, './src'),
           rules:
             isProduction !== 'production'
               ? [
