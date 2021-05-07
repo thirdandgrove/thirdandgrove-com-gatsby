@@ -17,7 +17,7 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
   /* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
   /* eslint-disable global-require */
-  // require('@cypress/code-coverage/task')(on, config);
+  require('@cypress/code-coverage/task')(on, config);
   // include any other plugin code...
 
   // It's IMPORTANT to return the config object
