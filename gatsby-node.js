@@ -174,7 +174,7 @@ exports.createPages = async ({ actions, graphql }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+/* exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     node: {
       fs: 'empty',
@@ -197,6 +197,35 @@ exports.onCreateWebpackConfig = ({ actions }) => {
               : [],
         },
         { test: /\.ics$/, use: 'raw-loader' },
+      ],
+    },
+  });
+}; */
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    node: {
+      fs: 'empty',
+    },
+    module: {
+      rules: [
+        isProduction !== 'production'
+          ? {
+              test: /\.(jsx|js|tsx|ts)$/,
+              use: {
+                loader: 'istanbul-instrumenter-loader',
+                options: {
+                  esModules: true,
+                },
+              },
+              enforce: 'post',
+              include: path.resolve('./src'),
+            }
+          : {},
+        {
+          test: /\.ics$/,
+          use: 'raw-loader',
+        },
       ],
     },
   });
