@@ -10,10 +10,10 @@ import mp4 from '../../static/thirdgrove-work.mp4';
 import { weights, mediaQueries, container, fonts } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import { ensureTrailingSlash } from '../util';
+import { FakeButton } from '../components/Button';
 
 const Layout = loadable(() => import('../components/layout'));
 const CTA = loadable(() => import('../components/CTA'));
-const { FakeButton } = loadable(() => import('../components/Button'));
 const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
 );

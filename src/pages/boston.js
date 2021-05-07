@@ -16,11 +16,10 @@ import {
   contValues,
   pLight,
 } from '../styles';
+import { TextWrapper } from '../components/Prefooter';
 
 const Layout = loadable(() => import('../components/layout'));
-const WhatWeDo = loadable(() => import('../components/WhatWeDo'));
 const ImageSlider = loadable(() => import('../components/ImageSlider'));
-const { TextWrapper } = loadable(() => import('../components/Prefooter'));
 const Button = loadable(() => import('../components/Button'));
 const SplitSection = loadable(() => import('../components/SplitSection'));
 const FullWidthSection = loadable(() =>

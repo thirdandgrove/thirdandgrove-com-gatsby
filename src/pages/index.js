@@ -5,6 +5,8 @@ import loadable from '@loadable/component';
 
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
+import { ContactUs, BeUs } from '../components/Prefooter';
+import { NewsletterFullWidthSection } from '../components/NewsletterForm';
 
 const Layout = loadable(() => import('../components/layout'));
 const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
@@ -14,12 +16,8 @@ const CapabilitiesSlider = loadable(() =>
 );
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const SplitSection = loadable(() => import('../components/SplitSection'));
-const { ContactUs, BeUs } = loadable(() => import('../components/Prefooter'));
 const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
-);
-const { NewsletterFullWidthSection } = loadable(() =>
-  import('../components/NewsletterForm')
 );
 
 const Index = ({ data }) => {

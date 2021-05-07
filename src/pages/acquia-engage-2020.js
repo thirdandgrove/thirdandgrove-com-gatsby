@@ -6,10 +6,9 @@ import Img from 'gatsby-image';
 import loadable from '@loadable/component';
 
 import { container, mediaQueries, weights, colors, fonts } from '../styles';
+import { NewsletterSimpleOverlay } from '../components/NewsletterForm';
+import { GetInTouch, SeeInsights } from '../components/Prefooter';
 
-const { NewsletterSimpleOverlay } = loadable(() =>
-  import('../components/NewsletterForm')
-);
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
@@ -17,9 +16,6 @@ const FullWidthSection = loadable(() =>
 const SplitSection = loadable(() => import('../components/SplitSection'));
 const Layout = loadable(() => import('../components/layout'));
 const Button = loadable(() => import('../components/Button'));
-const { GetInTouch, SeeInsights } = loadable(() =>
-  import('../components/Prefooter')
-);
 
 const AcquiaEngage = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
