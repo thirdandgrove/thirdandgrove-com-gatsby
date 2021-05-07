@@ -76,13 +76,13 @@ jobs:
         run: |
           mkdir -p ${{ github.workspace }}/artifacts
           cp -R ${{ github.workspace }}/cypress/videos ${{ github.workspace }}/artifacts
+          cp -R ${{ github.workspace }}/coverage ${{ github.workspace }}/artifacts
 
       - name: 'Upload Artifacts'
         uses: actions/upload-artifact@v2
         with:
           name: artifacts-for-dowload
           path: artifacts
-          retention-days: 5
 
   node:
     name: 'node'
