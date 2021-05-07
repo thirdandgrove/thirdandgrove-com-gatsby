@@ -3574,7 +3574,7 @@ babel-preset-gatsby@^0.12.3:
     gatsby-core-utils "^1.10.1"
     gatsby-legacy-polyfills "^0.7.1"
 
-babel-preset-gatsby@^1.2.0:
+babel-preset-gatsby@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-1.4.0.tgz#9df83bde4ff89e1824dd84e18131023faa7ce504"
   integrity sha512-AkWPgzR6TdMkmagG5VD8u5s/EAvTBJgaJWoU3mkGyoojxq9+ila7nQlau9MZhztKn3oGRx3jKuT2rv6samIIYw==
