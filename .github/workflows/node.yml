@@ -15,7 +15,7 @@ env:
 
 jobs:
   init:
-    name: "initial scripts"
+    name: 'initial scripts'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,12 +43,12 @@ jobs:
       - uses: ljharb/actions/node/matrix@main
         id: set-matrix
         with:
-          preset: "12"
-          type: "majors"
+          preset: '12'
+          type: 'majors'
 
   latest:
     needs: [matrix]
-    name: "latest majors"
+    name: 'latest majors'
     runs-on: ubuntu-latest
 
     strategy:
@@ -59,23 +59,25 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ljharb/actions/node/install@main
-        name: "nvm install ${{ matrix.node-version }} && npm install"
+        name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
           node-version: ${{ matrix.node-version }}
+          skip-install: true
+          after_install: nvm install ${{ matrix.node-version }} && npm install --legacy-peer-deps
         env:
           SHA: ${{ github.sha }}
 
-      - name: "Run Tests"
+      - name: 'Run Tests'
         run: npm run cy:run:sh
         env:
           SHA: ${{ github.sha }}
 
-      - name: "Move Artifacts"
+      - name: 'Move Artifacts'
         run: |
           mkdir -p ${{ github.workspace }}/artifacts
           cp -R ${{ github.workspace }}/cypress/videos ${{ github.workspace }}/artifacts
 
-      - name: "Upload Artifacts"
+      - name: 'Upload Artifacts'
         uses: actions/upload-artifact@v2
         with:
           name: artifacts-for-dowload
@@ -83,8 +85,8 @@ jobs:
           retention-days: 5
 
   node:
-    name: "node"
+    name: 'node'
     needs: [latest]
     runs-on: ubuntu-latest
     steps:
-      - run: "echo tests completed"
+      - run: 'echo tests completed'
