@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Customer Data Platform",
+    "icon": "Acquia-CDP-Logo",
+    "description": "Unlock and unify your data to generate rich insights that drive engagement. Drive stronger ROI through smarter marketing and cultivating authentic experiences."
+  },
+  {
+    "title": "Personalization",
+    "icon": "Personalization-Logo",
+    "description": "Design and build an experience that feels unique to every customer with a no-code, intelligent optimization engine built for Drupal & powered by the world’s #1 CDP."
+  },
+  {
+    "title": "Campaign Studio",
+    "icon": "Campaign-Studio",
+    "description": "Create and orchestrate customer journeys as unique as your customers across channels, devices and media to make meaningful connections at every turn."
+  },
+  {
+    "title": "Campaign Factory",
+    "icon": "Campaign-Factory-Logo",
+    "description": "Create a far-reaching, unified experience across all your consumer touchpoints with pinpoint precision and control. The scale you want with the ease-of-use you demand."
+  },
+  {
+    "title": "DAM",
+    "icon": "Acquia-DAM-Logo",
+    "description": "Accelerate your brand’s creative operations from concept to completion, delivering consistency and reliability along the way."
+  }
+]

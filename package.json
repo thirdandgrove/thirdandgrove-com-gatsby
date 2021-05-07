@@ -38,6 +38,7 @@
     "gatsby-plugin-robots-txt": "^1.5.5",
     "gatsby-plugin-sharp": "^2.13.1",
     "gatsby-plugin-sitemap": "^2.11.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.21",
     "gatsby-source-drupal": "^3.12.0",
     "gatsby-source-filesystem": "^2.10.0",
     "gatsby-transformer-json": "^2.10.0",

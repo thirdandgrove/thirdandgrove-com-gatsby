@@ -36,12 +36,12 @@ const ImageSlider = ({ data }) => {
       height='0'
       css={css`
         padding-top: 25px;
-        padding-bottom: 60px;
+        padding-bottom: 0;
         padding-left: 0;
         padding-right: 0;
 
         ${mediaQueries.phoneLarge} {
-          padding-bottom: 115px;
+          padding-bottom: 0;
           padding-top: 90px;
         }
       `}
@@ -51,7 +51,7 @@ const ImageSlider = ({ data }) => {
         css={css`
           max-width: 100%;
           max-height: 100%;
-          margin-bottom: 65px;
+          margin-bottom: 0;
           overflow: hidden;
 
           .slick-list {

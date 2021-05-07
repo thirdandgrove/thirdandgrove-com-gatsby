@@ -1,0 +1,111 @@
+[
+  {
+    "header": {
+      "title": "DrupalCon North America 2021",
+      "date": "VIRTUAL EVENT & CONFERENCE",
+      "subtitle": "COME MEET THIRD AND GROVE AT DRUPALCON 2021",
+      "links": [
+        {
+          "text": "LinkedIn",
+          "url": "https://www.linkedin.com/company/third-and-grove/"
+        },
+        {
+          "text": "Instagram",
+          "url": "https://www.instagram.com/thirdandgrove/"
+        },
+        {
+          "text": "GitHub",
+          "url": "https://github.com/thirdandgrove"
+        },
+        {
+          "text": "Twitter",
+          "url": "https://twitter.com/thirdandgrove"
+        }
+      ]
+    },
+    "booth": {
+      "header": "Drop by our virtual booth for a chat during DrupalCon Global 2021! Feel free to attend our speaker sessions, too!",
+      "ctas": [
+        {
+          "text": "Visit our booth",
+          "url": "/"
+        }
+      ]
+    },
+    "swag": {
+      "header": "Get A FREE Third and Grove Webcam Cover",
+      "subheader": "Get A FREE Third and Grove Webcam Cover",
+      "body": "We know it’s been a long year. You were stuck inside, mask-mandated, staring at a screen all day.  Use this handy webcam cover to conceal that beautiful mug from onlookers. Or better yet, enjoy a Zoom call in your robe and keep your shenanigans from plain sight. (Just don’t tell HR on us!)",
+      "ctas": [
+        {
+          "text": "Grab our Webcam Swag",
+          "url": "/"
+        }
+      ]
+    },
+    "tag": {
+      "header": "DrupalCon is one of our favorite conferences of the year",
+      "body": "<p>DrupalCon Global event organizers are working hard to bring you a virtual version of the DrupalCon experience you know and love. The event will take place April 12th-16th, 2021 Online, and <a href='https://drupal.regfox.com/drupalcon-north-america-2021'>you can register for the event now</a>.</p><p>Third and Grove is excited to share thought leadership around all things open- source.  We will walk you through how we craft digital experiences and discover opportunities to enhance B2B lead generation strategies, and how to be ready for Drupal 10.</p><p>We know Drupal like the back of our hand. DrupalCon Global will have everything from keynotes, sessions, industry and topical summits, discussion groups,  networking opportunities, and much more.  Be sure to drop by the Third and Grove booth and get to know us a little better.</p>",
+      "ctas": [
+        {
+          "text": "Discover Event Info",
+          "url": "https://events.drupal.org/drupalcon2021"
+        }
+      ]
+    },
+    "speakers": {
+      "header": "Come Vist our Booth",
+      "people": [
+        {
+          "img": "emond",
+          "name": "Justin Emond",
+          "email": "justin@thirdandgrove.com",
+          "title": "Founder, Chief Executive Officer"
+        },
+        {
+          "img": "ashley",
+          "name": "Ashley Remington",
+          "email": "aremington@thirdandgrove.com",
+          "title": "Senior Account Manager"
+        }
+      ]
+    },
+    "insights": {
+      "header": "Check Out Drupal Insights"
+    },
+    "quote": {
+      "text": "It’s a rare opportunity that an agency like TAG can fit in so well with our in-house team. The support, partnership, and commitment to creating a custom solution for our multi-lingual sites made all the difference in our successful launch.",
+      "author": "Steve Reichgut, Former Director of Web Engineering & Web Operations at Benefit Cosmetics"
+    },
+    "liveQas": {
+      "header": "Live Booth QA Schedule",
+      "qas": [
+        {
+          "date": "April 12th",
+          "title": "Decoupled with Justin and Jeremy",
+          "time": "10:30am - 11:00am EDT, 3:00pm - 4:00pm EDT"
+        },
+        {
+          "date": "April 13th",
+          "title": "Ask a Core Maintainer Anything",
+          "time": "10:30am - 11:00am EDT, 1:50pm - 2:20pm EDT, 3:00pm - 4:00pm EDT"
+        },
+        {
+          "date": "April 14th",
+          "title": "How to improve Core Web Vitals with Drupal",
+          "time": "10:30am - 11:00am EDT, 3:00pm - 4:00pm EDT"
+        },
+        {
+          "date": "April 15th",
+          "title": "Learn Digital Strategies for Higher Ed",
+          "time": "10:30am - 11:00am EDT, 1:50pm - 2:20pm EDT, 3:00pm - 4:00pm EDT"
+        },
+        {
+          "date": "April 16th",
+          "title": "Drink and Chat Live",
+          "time": "10:30am - 11:00am EDT, 3:00pm - 4:00pm EDT"
+        }
+      ]
+    }
+  }
+]

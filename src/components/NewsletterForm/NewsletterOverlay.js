@@ -140,7 +140,7 @@ export default () => {
               `}
             />
           </button>
-          <h1
+          <h2
             css={css`
               ${mediaQueries.phoneLarge} {
                 color: ${colors.reallydarkgray};
@@ -161,7 +161,7 @@ export default () => {
             Illuminating
             <br />
             stuff, right?
-          </h1>
+          </h2>
           <div
             css={css`
               display: flex;
