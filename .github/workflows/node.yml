@@ -67,10 +67,17 @@ jobs:
         env:
           SHA: ${{ github.sha }}
 
-      - name: 'Run Tests'
+      - name: 'Run Tests Chrome'
         run: npm run cy:run:sh
         env:
           SHA: ${{ github.sha }}
+          BROWSER: 'chrome'
+
+      - name: 'Run Tests Firefox'
+        run: npm run cy:run:sh
+        env:
+          SHA: ${{ github.sha }}
+          BROWSER: 'firefox'
 
       - name: 'Move Artifacts'
         run: |
