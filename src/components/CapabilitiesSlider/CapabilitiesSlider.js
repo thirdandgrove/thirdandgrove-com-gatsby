@@ -6,10 +6,10 @@ import loadable from '@loadable/component';
 
 import { colors, mediaQueries, smSectionHead } from '../../styles';
 
+import slides from './CapabilitiesSlide.json';
+
 const CapabilitiesSlide = loadable(() => import('./CapabilitiesSlide'));
 const CapabilitiesSlideNav = loadable(() => import('./CapabilitiesSlideNav'));
-const slides = loadable(() => import('./CapabilitiesSlide.json'));
-
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const CapabilitiesSlider = ({ backgroundColor, title }) => {
