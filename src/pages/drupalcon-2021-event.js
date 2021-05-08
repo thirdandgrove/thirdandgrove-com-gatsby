@@ -15,7 +15,6 @@ import Quote from '../components/ContentBody/Quote';
 import ButtonForm from '../components/ButtonForm';
 
 const Drupalcon2021Event = ({ data }) => {
-  const [isDate, setDate] = useState(false);
   const [exploreLink, setExploreLink] = useState(
     'https://events.drupal.org/drupalcon2021'
   );
@@ -66,10 +65,6 @@ const Drupalcon2021Event = ({ data }) => {
       font-size: 25px;
     }
   `;
-
-  useEffect(() => {
-    setDate(new Date() > new Date('2021-04-12'));
-  }, []);
 
   useEffect(() => {
     async function getLinks() {
@@ -128,9 +123,7 @@ const Drupalcon2021Event = ({ data }) => {
     >
       <SplitSection
         css={css`
-          grid-template-columns: ${isDate
-            ? `repeat(2, 1fr)`
-            : `1fr !important`};
+          grid-template-columns: repeat(2, 1fr);
 
           > div {
             display: flex;
@@ -209,46 +202,44 @@ const Drupalcon2021Event = ({ data }) => {
           }
         `}
       >
-        {' '}
-        {isDate && (
+        <div>
+          <img
+            alt='DrupalCon'
+            src={getSrc('drupalcon', 'svg')}
+            className='d-image'
+          />
+          <h3
+            css={css`
+              text-align: center;
+            `}
+          >
+            {booth.header}
+          </h3>
           <div>
-            <img
-              alt='DrupalCon'
-              src={getSrc('drupalcon', 'svg')}
-              className='d-image'
-            />
-            <h3
-              css={css`
-                text-align: center;
-              `}
-            >
-              {booth.header}
-            </h3>
-            <div>
-              {booth.ctas.map(({ text, url }) => (
-                <div
-                  className='button--container'
-                  style={{ marginBottom: '0' }}
-                  key={url}
-                >
-                  <Button
-                    css={css`
-                      display: none;
+            {booth.ctas.map(({ text, url }) => (
+              <div
+                className='button--container'
+                style={{ marginBottom: '0' }}
+                key={url}
+              >
+                <Button
+                  css={css`
+                    display: none;
 
-                      ${mediaQueries.phoneLarge} {
-                        display: inline-block;
-                      }
-                    `}
-                  >
-                    <a href={exploreLink} target='_blank' rel='noreferrer'>
-                      {text}
-                    </a>
-                  </Button>
-                </div>
-              ))}
-            </div>
+                    ${mediaQueries.phoneLarge} {
+                      display: inline-block;
+                    }
+                  `}
+                >
+                  <a href={exploreLink} target='_blank' rel='noreferrer'>
+                    {text}
+                  </a>
+                </Button>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
+
         <div>
           <Img
             alt='Third and Grove Web Camera Cover'

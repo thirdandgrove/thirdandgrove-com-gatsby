@@ -1,3 +1,7 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
+/* eslint-disable global-require */
+import '@cypress/code-coverage/support';
+
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.

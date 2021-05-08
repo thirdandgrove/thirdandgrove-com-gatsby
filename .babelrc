@@ -1,0 +1,28 @@
+{
+  "env": {
+    "development": {
+      "plugins": [
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-private-methods",
+        [
+          "babel-plugin-istanbul",
+          {
+            "include": ["src/**/*.js"]
+          }
+        ]
+      ]
+    }
+  },
+  "presets": [
+    [
+      "babel-preset-gatsby",
+      {
+        "loose": true,
+        "shippedProposals": true,
+        "targets": {
+          "browsers": [">0.25%", "not dead"]
+        }
+      }
+    ]
+  ]
+}

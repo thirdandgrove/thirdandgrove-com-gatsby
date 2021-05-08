@@ -1,0 +1,93 @@
+name: Cypress
+# Triggers the workflow on push or pull request events
+on: [push]
+
+env:
+  DRUPAL_URL: ${{ secrets.DRUPAL_URL }}
+  BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+  BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+  RESUMATOR_API_KEY: ${{ secrets.RESUMATOR_API_KEY }}
+  KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+  KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
+  KLAVIYO_LIST_ID_ACQUIA_ENGAGE: ${{ secrets.KLAVIYO_LIST_ID_ACQUIA_ENGAGE }}
+  KLAVIYO_LIST_ID_DRUPALCON: ${{ secrets.KLAVIYO_LIST_ID_DRUPALCON }}
+  PIPEDRIVE_KEY: ${{ secrets.PIPEDRIVE_KEY }}
+
+jobs:
+  init:
+    name: 'initial scripts'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install jq
+        run: sudo apt-get -y install jq
+
+      - name: Get Status of Gatsby Build
+        env:
+          SHA: ${{ github.sha }}
+        run: |
+          # make file runnable, might not be necessary
+          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/run.sh"
+          # run script
+          "${GITHUB_WORKSPACE}/.github/workflows/script.sh"
+
+  matrix:
+    needs: [init]
+    runs-on: ubuntu-latest
+    outputs:
+      latest: ${{ steps.set-matrix.outputs.requireds }}
+    steps:
+      - uses: ljharb/actions/node/matrix@main
+        id: set-matrix
+        with:
+          preset: '16'
+          type: 'majors'
+
+  latest:
+    needs: [matrix]
+    name: 'latest majors'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix: ${{ fromJson(needs.matrix.outputs.latest) }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: ljharb/actions/node/install@main
+        name: 'nvm install ${{ matrix.node-version }} && npm install'
+        with:
+          node-version: ${{ matrix.node-version }}
+          skip-install: true
+          after_install: nvm install ${{ matrix.node-version }} && npm install --legacy-peer-deps
+        env:
+          SHA: ${{ github.sha }}
+
+      - name: 'Run Tests Chrome'
+        run: npm run cy:run:sh
+        env:
+          SHA: ${{ github.sha }}
+          BROWSER: 'chrome'
+
+      - name: 'Move Artifacts'
+        run: |
+          mkdir -p ${{ github.workspace }}/artifacts
+          cp -R ${{ github.workspace }}/cypress/videos ${{ github.workspace }}/artifacts
+          cp -R ${{ github.workspace }}/coverage ${{ github.workspace }}/artifacts
+
+      - name: 'Upload Artifacts'
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts-for-dowload
+          path: artifacts
+
+  node:
+    name: 'node'
+    needs: [latest]
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo tests completed'

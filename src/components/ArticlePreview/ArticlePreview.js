@@ -55,7 +55,11 @@ const ArticlePreview = ({ article }) => {
       }}
     >
       {({ transform, opacity }) => (
-        <Card ref={nodeRef} style={{ transform, opacity }}>
+        <Card
+          ref={nodeRef}
+          style={{ transform, opacity }}
+          data-cy='articlePreview'
+        >
           <Link
             css={css`
               display: block;
