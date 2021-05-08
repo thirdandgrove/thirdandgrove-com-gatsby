@@ -1,12 +1,12 @@
 import React from 'react';
 import { navigate } from 'gatsby';
-import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
 import { colors, mediaQueries, smSectionHead } from '../../styles';
 
+const Slider = loadable(() => import('react-slick'));
 const ArticlePreviewSlide = loadable(() => import('../ArticlePreviewSlide'));
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 const Button = loadable(() => import('../Button'));

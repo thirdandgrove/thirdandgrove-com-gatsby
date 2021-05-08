@@ -1,5 +1,4 @@
 import React from 'react';
-import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
@@ -8,6 +7,7 @@ import { colors, mediaQueries, smSectionHead } from '../../styles';
 
 import slides from './CapabilitiesSlide.json';
 
+const Slider = loadable(() => import('react-slick'));
 const CapabilitiesSlide = loadable(() => import('./CapabilitiesSlide'));
 const CapabilitiesSlideNav = loadable(() => import('./CapabilitiesSlideNav'));
 const FullWidthSection = loadable(() => import('../FullWidthSection'));

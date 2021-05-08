@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import Slider from 'react-slick';
 import loadable from '@loadable/component';
 
 import { mediaQueries, fonts, weights, colors } from '../../styles';
 
+const Slider = loadable(() => import('react-slick'));
 const ProjectPreview = loadable(() => import('../ProjectPreview'));
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
