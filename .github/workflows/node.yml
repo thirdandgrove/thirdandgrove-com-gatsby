@@ -73,12 +73,6 @@ jobs:
           SHA: ${{ github.sha }}
           BROWSER: 'chrome'
 
-      - name: 'Run Tests Firefox'
-        run: npm run cy:run:sh
-        env:
-          SHA: ${{ github.sha }}
-          BROWSER: 'firefox'
-
       - name: 'Move Artifacts'
         run: |
           mkdir -p ${{ github.workspace }}/artifacts
