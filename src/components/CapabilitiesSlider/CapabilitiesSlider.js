@@ -7,7 +7,7 @@ import { colors, mediaQueries, smSectionHead } from '../../styles';
 
 import slides from './CapabilitiesSlide.json';
 
-const Slider = loadable(() => import('react-slick'));
+const Slider = loadable.lib(() => import('react-slick'));
 const CapabilitiesSlide = loadable(() => import('./CapabilitiesSlide'));
 const CapabilitiesSlideNav = loadable(() => import('./CapabilitiesSlideNav'));
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
