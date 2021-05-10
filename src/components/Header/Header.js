@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 import loadable from '@loadable/component';
 
+import SEO from '../seo';
 import {
   colors,
   fonts,
@@ -13,11 +14,10 @@ import {
   jsBreakpoints,
 } from '../../styles';
 import useWindow from '../../hooks/useWindow';
+import TagLogo from '../TopNav/svg/TagLogo';
+import ThirdAndGrove from '../TopNav/svg/ThirdAndGrove';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
-const TagLogo = loadable(() => import('../TopNav/svg/TagLogo'));
-const ThirdAndGrove = loadable(() => import('../TopNav/svg/ThirdAndGrove'));
-const SEO = loadable(() => import('../seo'));
 const TopNav = loadable(() => import('../TopNav'));
 
 /**
