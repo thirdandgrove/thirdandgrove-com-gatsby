@@ -6,7 +6,7 @@ import loadable from '@loadable/component';
 
 import { mediaQueries, fonts, weights, colors } from '../../styles';
 
-const Slider = loadable.lib(() => import('react-slick'));
+const Slider = loadable(() => import('react-slick'));
 const ProjectPreview = loadable(() => import('../ProjectPreview'));
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
