@@ -5,8 +5,23 @@ import loadable from '@loadable/component';
 
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
-import { ContactUs, BeUs } from '../components/Prefooter';
-import { NewsletterFullWidthSection } from '../components/NewsletterForm';
+
+const LoadableContactUs = loadable(async () => {
+  const { ContactUs } = await import('../components/Prefooter');
+  return ContactUs;
+});
+
+const LoadableBeUs = loadable(async () => {
+  const { BeUs } = await import('../components/Prefooter');
+  return BeUs;
+});
+
+const LoadableNewsletterFullWidthSection = loadable(async () => {
+  const { NewsletterFullWidthSection } = await import(
+    '../components/NewsletterForm'
+  );
+  return NewsletterFullWidthSection;
+});
 
 const Layout = loadable(() => import('../components/layout'));
 const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
@@ -26,35 +41,15 @@ const Index = ({ data }) => {
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
 
-  // silly holiday treats
-  // const today = new Date();
-  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
-
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            {/* This is going to re-implemented after a couple weeks */}
-            {/* A digital agency{' '} */}
             slaying the mundane,
             <br />
             pixel by pixel.
-            {/* Holy S%#*! that was fast.
-            <br />
-            (With{' '}
-            <Link
-              css={css`
-                color: ${colors.darkgray};
-                text-decoration: underline;
-              `}
-              to='/partners/gatsby/'
-            >
-              Gatsby
-            </Link>{' '}
-            it&apos;s all fire, no waiting) */}
           </>
         ),
         mobileMinHeight: '93vh',
@@ -70,10 +65,10 @@ const Index = ({ data }) => {
         <>
           <InsightsSlider data={data.allInsight} />
           <LogoGrid title='A Few of Our Friends' />
-          <NewsletterFullWidthSection />
+          <LoadableNewsletterFullWidthSection />
           <SplitSection>
-            <ContactUs />
-            <BeUs />
+            <LoadableContactUs />
+            <LoadableBeUs />
           </SplitSection>
         </>
       ) : (
