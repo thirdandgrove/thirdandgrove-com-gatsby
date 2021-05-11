@@ -1,39 +1,10 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import loadable from '@loadable/component';
 
+import ProxyComponent from '../components/ProxyComponent';
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
-
-const LoadableContactUs = loadable(async () => {
-  const { ContactUs } = await import('../components/Prefooter');
-  return ContactUs;
-});
-
-const LoadableBeUs = loadable(async () => {
-  const { BeUs } = await import('../components/Prefooter');
-  return BeUs;
-});
-
-const LoadableNewsletterFullWidthSection = loadable(async () => {
-  const { NewsletterFullWidthSection } = await import(
-    '../components/NewsletterForm'
-  );
-  return NewsletterFullWidthSection;
-});
-
-const Layout = loadable(() => import('../components/layout'));
-const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
-const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
-const CapabilitiesSlider = loadable(() =>
-  import('../components/CapabilitiesSlider')
-);
-const LogoGrid = loadable(() => import('../components/LogoGrid'));
-const SplitSection = loadable(() => import('../components/SplitSection'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
 
 const Index = ({ data }) => {
   const halfPage = useRef();
@@ -42,7 +13,8 @@ const Index = ({ data }) => {
   const isScrolling = useHasBeenVisible(preload);
 
   return (
-    <Layout
+    <ProxyComponent
+      module='../components/layout'
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
@@ -56,25 +28,39 @@ const Index = ({ data }) => {
       }}
     >
       {' '}
-      <ProjectsSlider data={data.allCaseStudy} />
-      <CapabilitiesSlider
+      <ProxyComponent
+        module='../components/ProjectsSlider'
+        data={data.allCaseStudy}
+      />
+      <ProxyComponent
+        module='../components/CapabilitiesSlider'
         title='What We Do'
         backgroundColor={colors.lightblue}
       />
       {hasScrolled || isScrolling ? (
         <>
-          <InsightsSlider data={data.allInsight} />
-          <LogoGrid title='A Few of Our Friends' />
-          <LoadableNewsletterFullWidthSection />
-          <SplitSection>
-            <LoadableContactUs />
-            <LoadableBeUs />
-          </SplitSection>
+          <ProxyComponent
+            module='../components/InsightsSlider'
+            data={data.allInsight}
+          />
+          <ProxyComponent
+            module='../components/LogoGrid'
+            title='A Few of Our Friends'
+          />
+          <ProxyComponent module='../components/SplitSection'>
+            <ProxyComponent module='../components/SplitSection' />
+            <ProxyComponent module='../components/SplitSection' />
+          </ProxyComponent>
         </>
       ) : (
-        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
+        <ProxyComponent
+          module='../components/FullWidthSection'
+          ref={halfPage}
+          height='2286px'
+          minHeight='3448px'
+        />
       )}
-    </Layout>
+    </ProxyComponent>
   );
 };
 

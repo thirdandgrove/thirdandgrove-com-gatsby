@@ -2,12 +2,13 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Button from '../Button';
 import { smSectionHead, container, mediaQueries, weights } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
-import ImageCollage from './ImageCollage';
+const ImageCollage = loadable(() => import('./ImageCollage'));
+const Button = loadable(() => import('../Button'));
 
 const slideTitleWrapper = css`
   display: flex;
