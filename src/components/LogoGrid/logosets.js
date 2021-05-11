@@ -56,7 +56,7 @@ import dadiAwards from './logos/dadi-awards.png';
 import farmacyLogo from './logos/farmacy-logo.svg';
 import amorepacifioLogo from './logos/amorepacifio-logo.svg';
 
-const logosets = (logoset, isSmScreen) => {
+export default (logoset, isSmScreen) => {
   const sets = {
     acquiaEngage: [
       <img
@@ -653,5 +653,3 @@ const logosets = (logoset, isSmScreen) => {
   };
   return sets[logoset];
 };
-
-export default logosets;

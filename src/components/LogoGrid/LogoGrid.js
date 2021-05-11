@@ -13,7 +13,8 @@ import {
   container,
 } from '../../styles';
 
-const logoSets = loadable(() => import('./logosets'));
+import logoSets from './logosets';
+
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const LogoGrid = ({
