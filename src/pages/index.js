@@ -61,16 +61,15 @@ const Index = ({ data }) => {
         title='What We Do'
         backgroundColor={colors.lightblue}
       />
+      <InsightsSlider data={data.allInsight} />
+      <LogoGrid title='A Few of Our Friends' />
+      <LoadableNewsletterFullWidthSection />
+      <SplitSection>
+        <LoadableContactUs />
+        <LoadableBeUs />
+      </SplitSection>
       {hasScrolled || isScrolling ? (
-        <>
-          <InsightsSlider data={data.allInsight} />
-          <LogoGrid title='A Few of Our Friends' />
-          <LoadableNewsletterFullWidthSection />
-          <SplitSection>
-            <LoadableContactUs />
-            <LoadableBeUs />
-          </SplitSection>
-        </>
+        <></>
       ) : (
         <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
       )}
