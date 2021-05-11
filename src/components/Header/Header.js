@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
-import loadable from '@loadable/component';
 
+import TopNav from '../TopNav';
 import SEO from '../seo';
 import {
   colors,
@@ -13,12 +13,10 @@ import {
   weights,
   jsBreakpoints,
 } from '../../styles';
-import useWindow from '../../hooks/useWindow';
+import FullWidthSection from '../FullWidthSection';
 import TagLogo from '../TopNav/svg/TagLogo';
 import ThirdAndGrove from '../TopNav/svg/ThirdAndGrove';
-
-const FullWidthSection = loadable(() => import('../FullWidthSection'));
-const TopNav = loadable(() => import('../TopNav'));
+import useWindow from '../../hooks/useWindow';
 
 /**
  * Header used on every page.
