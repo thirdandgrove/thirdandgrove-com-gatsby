@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import useWindow from '../../hooks/useWindow';
-import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
 
 import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
 import Hamburger from './svg/hamburger';
+
+const Menu = loadable(() => import('../Menu'));
 
 const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const [isOpen, setOpen] = useState(false);
