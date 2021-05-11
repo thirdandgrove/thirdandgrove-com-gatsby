@@ -5,7 +5,6 @@ import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 import loadable from '@loadable/component';
 
-import SEO from '../seo';
 import {
   colors,
   fonts,
@@ -19,7 +18,7 @@ import useWindow from '../../hooks/useWindow';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 const TopNav = loadable(() => import('../TopNav'));
-
+const SEO = loadable(() => import('../seo'));
 /**
  * Header used on every page.
  *
