@@ -1932,14 +1932,14 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@loadable/babel-plugin@^5.13.2":
+"@loadable/babel-plugin@^5.12.0":
   version "5.13.2"
   resolved "https://registry.yarnpkg.com/@loadable/babel-plugin/-/babel-plugin-5.13.2.tgz#373cddc64ee5437814f7dca1c1b6a7b2c1665a9f"
   integrity sha512-vSZUVeTH1S1sDbk8Tzft0plZSkN7W4zmVR5w/Bmy4UmvBiu9lin7ztrDpoUTUzxpoups+OJbTc/OosvN0aMXWg==
   dependencies:
     "@babel/plugin-syntax-dynamic-import" "^7.7.4"
 
-"@loadable/component@^5.14.1", "@loadable/component@^5.15.0":
+"@loadable/component@^5.14.1":
   version "5.15.0"
   resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.15.0.tgz#48b9524237be553f48b158f8c9152593f3f3fded"
   integrity sha512-g63rQzypPOZi0BeGsK4ST2MYhsFR+i7bhL8k/McUoWDNMDuTTdUlQ2GACKxqh5sI/dNC/6nVoPrycMnSylnAgQ==
@@ -1948,14 +1948,14 @@
     hoist-non-react-statics "^3.3.1"
     react-is "^16.12.0"
 
-"@loadable/server@^5.15.0":
+"@loadable/server@^5.12.0":
   version "5.15.0"
   resolved "https://registry.yarnpkg.com/@loadable/server/-/server-5.15.0.tgz#40d282df53cbc7a1815c38133871fa292f559ced"
   integrity sha512-1WaKLO+fS2fx9eCzj85zq6DeGtwY9YKKJ2nF7KFcmUXh4IaolcC5lalKKb2DQuE4ucu6gIINjhVU+EBFFlZN9g==
   dependencies:
     lodash "^4.17.15"
 
-"@loadable/webpack-plugin@^5.15.0":
+"@loadable/webpack-plugin@^5.12.0":
   version "5.15.0"
   resolved "https://registry.yarnpkg.com/@loadable/webpack-plugin/-/webpack-plugin-5.15.0.tgz#2e8cb749faef79d958cb72761dbda6f3c25c6ff1"
   integrity sha512-6eKaEqjGiMuMiazzVopbyMHrUflUkTOd29nUHaUmmbdo6FTGo+VqdBZ4Y1dvkEaa/b6NjkPTKbLdVmZvHVx2jg==
@@ -7269,16 +7269,16 @@ gatsby-plugin-gtag@^1.0.13:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-gtag/-/gatsby-plugin-gtag-1.0.13.tgz#ffa08a728ba1cfe33090e52764d014a025a5d35a"
   integrity sha512-Oul6O67klajrEjkkF1diD228SmyUWsAwTq/1tYq41vBwmyNiPk4dhk8K93rrNQ5d5zesSv+awBeGBa503tQqGw==
 
-gatsby-plugin-loadable-components-ssr@next:
-  version "2.2.0-beta.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-loadable-components-ssr/-/gatsby-plugin-loadable-components-ssr-2.2.0-beta.0.tgz#4eabeacef0181014077538e6a55b3949480652af"
-  integrity sha512-D30ivgw1dMzGUQltJRPJHbg+H3noZPY8f92iApUhmXGM4go5PZGvc3OGOBnsrxFxPgC89QzyqaiT385v3TplcQ==
+gatsby-plugin-loadable-components-ssr@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-loadable-components-ssr/-/gatsby-plugin-loadable-components-ssr-2.1.0.tgz#cafb98df82ec029d5380a2dcf4816fd572f52dfe"
+  integrity sha512-/jifBSNo+JuzPO91OrO4jYh2j2bqNYA0oiG3/6GkY6vkF9GmwyUpcnThRdiju2l3CReuKpvI5A8nDP6I6iCaSA==
   dependencies:
     "@babel/runtime" "^7.9.6"
-    "@loadable/babel-plugin" "^5.13.2"
-    "@loadable/component" "^5.15.0"
-    "@loadable/server" "^5.15.0"
-    "@loadable/webpack-plugin" "^5.15.0"
+    "@loadable/babel-plugin" "^5.12.0"
+    "@loadable/server" "^5.12.0"
+    "@loadable/webpack-plugin" "^5.12.0"
+    react-dom "^16.12.0"
 
 gatsby-plugin-manifest@^2.11.0:
   version "2.12.1"
@@ -13135,7 +13135,7 @@ react-dev-utils@^4.2.3:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-dom@^16.14.0:
+react-dom@^16.12.0, react-dom@^16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
   integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
