@@ -2,8 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import FullWidthSection from '../FullWidthSection';
 import useWindow from '../../hooks/useWindow';
 import {
   colors,
@@ -13,7 +13,8 @@ import {
   container,
 } from '../../styles';
 
-import logoSets from './logosets';
+const logoSets = loadable(() => import('./logosets'));
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const LogoGrid = ({
   title,
