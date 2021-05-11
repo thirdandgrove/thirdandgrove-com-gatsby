@@ -7,11 +7,10 @@ import loadable from '@loadable/component';
 import useWindow from '../../hooks/useWindow';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
 
-import TagLogo from './svg/TagLogo';
-import ThirdAndGrove from './svg/ThirdAndGrove';
-import Hamburger from './svg/hamburger';
-
 const Menu = loadable(() => import('../Menu'));
+const TagLogo = loadable(() => import('./svg/TagLogo'));
+const ThirdAndGrove = loadable(() => import('./svg/ThirdAndGrove'));
+const Hamburger = loadable(() => import('./svg/hamburger'));
 
 const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const [isOpen, setOpen] = useState(false);

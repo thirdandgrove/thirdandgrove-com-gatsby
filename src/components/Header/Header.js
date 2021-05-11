@@ -12,13 +12,13 @@ import {
   weights,
   jsBreakpoints,
 } from '../../styles';
-import TagLogo from '../TopNav/svg/TagLogo';
-import ThirdAndGrove from '../TopNav/svg/ThirdAndGrove';
 import useWindow from '../../hooks/useWindow';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 const TopNav = loadable(() => import('../TopNav'));
 const SEO = loadable(() => import('../seo'));
+const TagLogo = loadable(() => import('../TopNav/svg/TagLogo'));
+const ThirdAndGrove = loadable(() => import('../TopNav/svg/ThirdAndGrove'));
 /**
  * Header used on every page.
  *
