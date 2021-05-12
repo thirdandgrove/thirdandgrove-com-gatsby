@@ -193,8 +193,6 @@ module.exports = {
           },
           development: {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: null,
-            host: null,
           },
         },
       },
