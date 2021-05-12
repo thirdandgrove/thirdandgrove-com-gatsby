@@ -78,6 +78,7 @@ const Insights = ({ data }) => {
         <ContentBody
           comps={post.relationships.field_components}
           type='insight'
+          trim
         />
       </div>
       <NewsletterOverlay />
