@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import TruncateMarkup from 'react-truncate-markup';
-import ReactHtmlParser from 'react-html-parser';
 
-import ButtonForm from '../ButtonForm';
 import FullWidthSection from '../FullWidthSection';
 import {
   contentH2,
@@ -17,7 +14,6 @@ import {
 
 const Text = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
-  const gatedTrim = data.type === 'insight' && data.trim && data.isFirstText;
   return (
     <FullWidthSection
       fontWeight={weights.thin}
@@ -27,6 +23,7 @@ const Text = ({ data }) => {
       align='start'
       justify='start'
       height='auto'
+      dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
         .stats-container,
         .stat-container {
@@ -35,20 +32,16 @@ const Text = ({ data }) => {
           align-items: center;
           width: 100%;
         }
-
         .stats-container {
           flex-direction: column;
         }
-
         .stat-container {
           flex: auto;
           flex-direction: column;
           margin-bottom: 24px;
-
           :last-of-type {
             margin-bottom: 0;
           }
-
           h4 {
             font-size: 48px;
             font-weight: bold;
@@ -56,7 +49,6 @@ const Text = ({ data }) => {
             line-height: 54px;
             margin-bottom: 0;
           }
-
           p {
             font-size: 16px;
             font-weight: bold;
@@ -64,7 +56,6 @@ const Text = ({ data }) => {
             line-height: 27px;
           }
         }
-
         ${container.min} ${mediaQueries.phoneLarge} {
           .stats-container {
             flex-direction: row;
@@ -74,44 +65,18 @@ const Text = ({ data }) => {
           }
           padding: 0;
         }
-
         ${renderDropCap && dropCap}
-
         a {
           text-decoration: underline;
         }
-
         h2 {
           ${contentH2}
         }
-
         h3 {
           ${contentHeadings}
         }
       `}
-    >
-      {' '}
-      {gatedTrim ? (
-        <>
-          <TruncateMarkup lines={7} ellipsis=''>
-            <div>{ReactHtmlParser(data.field_body.processed)}</div>
-          </TruncateMarkup>
-          <ButtonForm
-            text='Access Insight'
-            header='Enter your details for free access to insight.'
-            confirmMessage='Thanks! We’ll be in touch.'
-            subheader='subheader'
-            formName='ebook-form'
-            styles={css`
-              margin: 0 auto;
-              display: block;
-            `}
-          />
-        </>
-      ) : (
-        <div>{ReactHtmlParser(data.field_body.processed)}</div>
-      )}
-    </FullWidthSection>
+    />
   );
 };
 

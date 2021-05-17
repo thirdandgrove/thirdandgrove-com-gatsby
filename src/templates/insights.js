@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
+import ButtonFormDownload from '../components/ButtonFormDownload';
 import { colors, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
@@ -12,6 +13,7 @@ import {
   NewsletterFullWidthSection,
   NewsletterOverlay,
 } from '../components/NewsletterForm';
+import FullWidthSection from '../components/FullWidthSection';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -75,11 +77,31 @@ const Insights = ({ data }) => {
             `}
           />
         )}
-        <ContentBody
-          comps={post.relationships.field_components}
-          type='insight'
-          trim
-        />
+        {/* {post.relationships.field_e_book_file.localFile.absolutePath} */}
+        {post.relationships.field_e_book_file ? (
+          <FullWidthSection minHeight='none' height='100px'>
+            <ButtonFormDownload
+              filepath={
+                post.relationships.field_e_book_file.localFile.publicURL
+              }
+              text='Access Insight'
+              header='Submit your email for free access to E-book.'
+              confirmMessage='Thanks!'
+              subheader=''
+              formName='ebook-form'
+              styles={css`
+                margin: 0 auto;
+                display: block;
+              `}
+            />
+          </FullWidthSection>
+        ) : (
+          <ContentBody
+            comps={post.relationships.field_components}
+            type='insight'
+            trim
+          />
+        )}
       </div>
       <NewsletterOverlay />
       <NewsletterFullWidthSection />
@@ -131,6 +153,13 @@ export const query = graphql`
         }
         uid {
           name: display_name
+        }
+        field_e_book_file {
+          filename
+          id
+          localFile {
+            publicURL
+          }
         }
         field_image {
           id
