@@ -156,7 +156,7 @@ const Insights = ({ data }) => {
                 }
                 text='Sign Me Up'
                 header='Submit your email to access our free ebook'
-                confirmMessage='Thanks!'
+                confirmMessage='Thanks for you submission!'
                 subheader=''
                 formName='ebook-form'
                 styles={css`
@@ -174,7 +174,7 @@ const Insights = ({ data }) => {
           />
         )}
       </div>
-      <NewsletterOverlay />
+      {post.relationships.field_e_book_file ? `` : <NewsletterOverlay />}
       <NewsletterFullWidthSection />
       <InsightsSlider
         data={data.allInsight}
