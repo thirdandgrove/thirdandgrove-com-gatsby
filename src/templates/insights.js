@@ -5,7 +5,14 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import ButtonFormDownload from '../components/ButtonFormDownload';
-import { colors, mediaQueries } from '../styles';
+import {
+  colors,
+  mediaQueries,
+  container,
+  contentH2,
+  contentHeadings,
+  weights,
+} from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
 import InsightsSlider from '../components/InsightsSlider';
@@ -79,22 +86,85 @@ const Insights = ({ data }) => {
         )}
         {/* {post.relationships.field_e_book_file.localFile.absolutePath} */}
         {post.relationships.field_e_book_file ? (
-          <FullWidthSection minHeight='none' height='100px'>
-            <ButtonFormDownload
-              filepath={
-                post.relationships.field_e_book_file.localFile.publicURL
-              }
-              text='Access Insight'
-              header='Submit your email for free access to E-book.'
-              confirmMessage='Thanks!'
-              subheader=''
-              formName='ebook-form'
-              styles={css`
-                margin: 0 auto;
-                display: block;
+          <>
+            <FullWidthSection
+              fontWeight={weights.thin}
+              margin='0 auto'
+              padding='0 20px'
+              textAlign='left'
+              align='start'
+              justify='start'
+              height='auto'
+              dangerouslySetInnerHTML={{ __html: post.field_summary.processed }}
+              css={css`
+                .stats-container,
+                .stat-container {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 100%;
+                }
+                .stats-container {
+                  flex-direction: column;
+                }
+                .stat-container {
+                  flex: auto;
+                  flex-direction: column;
+                  margin-bottom: 24px;
+                  :last-of-type {
+                    margin-bottom: 0;
+                  }
+                  h4 {
+                    font-size: 48px;
+                    font-weight: bold;
+                    letter-spacing: -0.2px;
+                    line-height: 54px;
+                    margin-bottom: 0;
+                  }
+                  p {
+                    font-size: 16px;
+                    font-weight: bold;
+                    letter-spacing: 0.21px;
+                    line-height: 27px;
+                  }
+                }
+                ${container.min} ${mediaQueries.phoneLarge} {
+                  .stats-container {
+                    flex-direction: row;
+                  }
+                  .stat-container {
+                    margin-bottom: 0;
+                  }
+                  padding: 0;
+                }
+                a {
+                  text-decoration: underline;
+                }
+                h2 {
+                  ${contentH2}
+                }
+                h3 {
+                  ${contentHeadings}
+                }
               `}
             />
-          </FullWidthSection>
+            <FullWidthSection minHeight='none' height='100px'>
+              <ButtonFormDownload
+                filepath={
+                  post.relationships.field_e_book_file.localFile.publicURL
+                }
+                text='Sign Me Up'
+                header='Submit your email to access our free ebook'
+                confirmMessage='Thanks!'
+                subheader=''
+                formName='ebook-form'
+                styles={css`
+                  margin: 0 auto;
+                  display: block;
+                `}
+              />
+            </FullWidthSection>
+          </>
         ) : (
           <ContentBody
             comps={post.relationships.field_components}
@@ -145,6 +215,9 @@ export const query = graphql`
       }
       field_image {
         alt
+      }
+      field_summary {
+        processed
       }
       created(formatString: "MMM D, YYYY")
       relationships {

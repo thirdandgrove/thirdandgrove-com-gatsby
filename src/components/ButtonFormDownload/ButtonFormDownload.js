@@ -50,7 +50,7 @@ const ButtonFormDownload = ({
             onClick={() => {}}
             onKeyDown={onKeypress}
           >
-            Download E-book
+            Download Now
           </Button>
         </a>
       ) : (
