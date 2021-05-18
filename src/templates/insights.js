@@ -38,7 +38,9 @@ const Insights = ({ data }) => {
 
   const headerData = {
     title: post.title,
-    label: `${post.created} - ${post.relationships.uid.name}`,
+    label: post.relationships.field_e_book_file
+      ? ``
+      : `${post.created} - ${post.relationships.uid.name}`,
     invert: post.field_inverse_header,
     defaultBackground: false,
     color: backgroundColor || colors.yellow,
@@ -84,7 +86,6 @@ const Insights = ({ data }) => {
             `}
           />
         )}
-        {/* {post.relationships.field_e_book_file.localFile.absolutePath} */}
         {post.relationships.field_e_book_file ? (
           <>
             <FullWidthSection
