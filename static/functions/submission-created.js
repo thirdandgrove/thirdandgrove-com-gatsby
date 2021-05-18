@@ -369,7 +369,6 @@ exports.handler = async (event, _context, callback) => {
 
   /** Newsletter Form */
   if (form_name === 'newsletter') {
-    // handle form newsletter
     const { email } = data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
 
@@ -387,11 +386,8 @@ exports.handler = async (event, _context, callback) => {
 
   /** acquia-engage Form */
   if (form_name === 'acquia-engage') {
-    // handle form newsletter
     const { email } = data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_ACQUIA_ENGAGE } = process.env;
-
-    console.log(KLAVIYO_API_KEY, KLAVIYO_LIST_ID_ACQUIA_ENGAGE);
 
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/subscribe`,
@@ -421,8 +417,6 @@ exports.handler = async (event, _context, callback) => {
 
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON } = process.env;
 
-    console.log(KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON);
-
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_DRUPALCON}/subscribe`,
       method: 'POST',
@@ -446,6 +440,28 @@ exports.handler = async (event, _context, callback) => {
     }).catch(console.error);
   }
   /** drupalcon Form */
+
+  /** e-book Form */
+  if (form_name === 'ebook-form') {
+    const { email } = data.data;
+    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_EBOOK } = process.env;
+
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_EBOOK}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [
+          {
+            email,
+            url: referrer,
+          },
+        ],
+      }),
+    }).catch(console.error);
+  }
+  /** e-book Form */
 
   callback(null, { statusCode: 200 });
 };
