@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
@@ -24,6 +24,21 @@ import FullWidthSection from '../components/FullWidthSection';
 
 const Insights = ({ data }) => {
   const post = data.insight;
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const ref = useRef(null);
+
+  const scrollToShow = (refernce, yOffset) => {
+    const el = refernce.current;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    if (formSubmitted === true) {
+      scrollToShow(ref, -150);
+    }
+  }, [formSubmitted]);
 
   const imageAlt = post.field_image && post.field_image.alt;
 
@@ -66,6 +81,7 @@ const Insights = ({ data }) => {
       >
         {post.relationships.field_image && (
           <Img
+            ref={ref}
             fluid={
               post.relationships.field_image.localFile.childImageSharp.fluid
             }
@@ -86,17 +102,18 @@ const Insights = ({ data }) => {
             `}
           />
         )}
+        {post.relationships.field_e_book_file && <div ref={ref} />}
         {post.relationships.field_e_book_file ? (
           <>
             <FullWidthSection
               fontWeight={weights.thin}
               margin='0 auto'
-              padding='0 20px'
-              textAlign='left'
-              align='start'
-              justify='start'
+              padding={formSubmitted ? '50px 20px 10px' : '0 20px'}
+              textAlign={formSubmitted ? `center` : `left`}
+              align={formSubmitted ? `center` : `start`}
+              justify={formSubmitted ? `center` : `start`}
               height='auto'
-              dangerouslySetInnerHTML={{ __html: post.field_summary.processed }}
+              minHeight={formSubmitted ? `0` : `300px`}
               css={css`
                 .stats-container,
                 .stat-container {
@@ -147,8 +164,29 @@ const Insights = ({ data }) => {
                 h3 {
                   ${contentHeadings}
                 }
+                h2.thanks {
+                  text-align: center;
+                  margin: 0 auto;
+                  justify-self: center;
+                }
               `}
-            />
+            >
+              {formSubmitted ? (
+                <div>
+                  <h2 className='thanks'>
+                    Thank you for submitting your email.
+                    <br />
+                    Use the button below to download our ebook.
+                  </h2>
+                </div>
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.field_summary.processed,
+                  }}
+                />
+              )}
+            </FullWidthSection>
             <FullWidthSection minHeight='none' height='100px'>
               <ButtonFormDownload
                 filepath={
@@ -159,9 +197,14 @@ const Insights = ({ data }) => {
                 confirmMessage='Thanks for you submission!'
                 subheader=''
                 formName='ebook-form'
+                formSubmitted={formSubmitted}
+                setFormSubmitted={setFormSubmitted}
                 styles={css`
                   margin: 0 auto;
                   display: block;
+                  ${formSubmitted
+                    ? `margin-bottom: 50px;`
+                    : `margin-bottom: 0;`}
                 `}
               />
             </FullWidthSection>
