@@ -452,12 +452,7 @@ exports.handler = async (event, _context, callback) => {
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            email,
-            url: referrer,
-          },
-        ],
+        profiles: [{ email, url: referrer }],
       }),
     }).catch(console.error);
   }
