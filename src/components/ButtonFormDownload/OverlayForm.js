@@ -325,7 +325,7 @@ const OverlayForm = ({
                       type='email'
                       name='email'
                       id='of-email'
-                      placeholder='Email'
+                      placeholder='Work Email'
                     />
                     <ReturnError errs={errors} name='email' />
                   </div>
