@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
@@ -15,9 +15,10 @@ const ButtonFormDownload = ({
   formName,
   styles,
   filepath,
+  setFormSubmitted,
+  formSubmitted,
 }) => {
   const [isActive, setIsActive] = useState(false);
-  const [formFubmitted, setFormSubmitted] = useState(false);
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -29,13 +30,9 @@ const ButtonFormDownload = ({
     }
   };
 
-  useEffect(() => {
-    console.log(formFubmitted);
-  }, [formFubmitted]);
-
   return (
     <>
-      {formFubmitted ? (
+      {formSubmitted ? (
         <a href={filepath} target='_blank' rel='noreferrer'>
           <Button
             css={css`
@@ -94,8 +91,15 @@ ButtonFormDownload.propTypes = {
   formName: PropTypes.string.isRequired,
   styles: PropTypes.object,
   filepath: PropTypes.string,
+  formSubmitted: PropTypes.bool,
+  setFormSubmitted: PropTypes.func,
 };
 
-ButtonFormDownload.defaultProps = { styles: {}, filepath: `` };
+ButtonFormDownload.defaultProps = {
+  styles: {},
+  filepath: ``,
+  formSubmitted: false,
+  setFormSubmitted: () => {},
+};
 
 export default ButtonFormDownload;

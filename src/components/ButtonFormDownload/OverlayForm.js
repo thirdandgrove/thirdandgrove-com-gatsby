@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Global, css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
@@ -63,6 +63,7 @@ const OverlayForm = ({
       updateForm({
         email: '',
       });
+      setIsActive(!isActive);
       setHasSubmitted(true);
       setFormSubmitted(true);
     });
