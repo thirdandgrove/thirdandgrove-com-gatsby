@@ -108,7 +108,7 @@ const Insights = ({ data }) => {
             <FullWidthSection
               fontWeight={weights.thin}
               margin='0 auto'
-              padding={formSubmitted ? '50px 20px 10px' : '0 20px'}
+              padding={formSubmitted ? '50px 20px 25px' : '0 20px'}
               textAlign={formSubmitted ? `center` : `left`}
               align={formSubmitted ? `center` : `start`}
               justify={formSubmitted ? `center` : `start`}
@@ -182,7 +182,7 @@ const Insights = ({ data }) => {
               ) : (
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: post.field_summary.processed,
+                    __html: post?.field_summary.processed,
                   }}
                 />
               )}
