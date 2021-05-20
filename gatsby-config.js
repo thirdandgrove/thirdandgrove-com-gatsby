@@ -85,10 +85,17 @@ module.exports = {
     },
     `gatsby-plugin-remove-serviceworker`,
     {
-      resolve: `gatsby-plugin-google-tagmanager`,
+      resolve: 'gatsby-plugin-google-tagmanager-timeout',
       options: {
         id: 'GTM-MKBKRBC',
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
         includeInDevelopment: false,
+        timeout: 3000, // default value is 1000ms
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        // Defaults to null
+        defaultDataLayer: { platform: 'gatsby' },
       },
     },
     {
