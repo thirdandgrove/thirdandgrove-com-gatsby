@@ -54,7 +54,7 @@ const Insights = ({ data }) => {
   const headerData = {
     title: post.title,
     label: post.relationships.field_e_book_file
-      ? ``
+      ? `Special Report`
       : `${post.created} - ${post.relationships.uid.name}`,
     invert: post.field_inverse_header,
     defaultBackground: false,
@@ -153,7 +153,6 @@ const Insights = ({ data }) => {
                   .stat-container {
                     margin-bottom: 0;
                   }
-                  padding: 0;
                 }
                 a {
                   text-decoration: underline;
