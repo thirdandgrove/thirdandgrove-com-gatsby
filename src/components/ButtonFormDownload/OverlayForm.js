@@ -335,7 +335,7 @@ const OverlayForm = ({
                   onClick={onSubmit}
                   disabled={hasSubmitted}
                   css={css`
-                    max-width: 200px;
+                    max-width: 225px;
                     width: 100%;
                     margin: auto;
                   `}
