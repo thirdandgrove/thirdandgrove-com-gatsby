@@ -216,8 +216,12 @@ const Insights = ({ data }) => {
           />
         )}
       </div>
-      {post.relationships.field_e_book_file ? `` : <NewsletterOverlay />}
-      <NewsletterFullWidthSection />
+      {!post.relationships.field_e_book_file && (
+        <>
+          <NewsletterOverlay />
+          <NewsletterFullWidthSection />
+        </>
+      )}
       <InsightsSlider
         data={data.allInsight}
         showButton={false}
