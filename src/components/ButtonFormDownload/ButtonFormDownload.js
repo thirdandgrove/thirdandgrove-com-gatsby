@@ -75,6 +75,7 @@ const ButtonFormDownload = ({
         subheader={subheader}
         formName={formName}
         setFormSubmitted={setFormSubmitted}
+        buttonText='Download Now'
         css={css`
           display: ${isActive ? `flex` : `none`};
         `}
