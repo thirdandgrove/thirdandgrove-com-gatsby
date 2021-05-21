@@ -19,6 +19,10 @@ const OverlayForm = ({
 }) => {
   const [formState, updateForm] = useState({
     email: '',
+    firstName: '',
+    lastName: '',
+    company: '',
+    privacyPolicy: false,
     botField: '',
   });
 
@@ -32,23 +36,47 @@ const OverlayForm = ({
 
   const updateInput = event => {
     updateErrors(null);
-    updateForm({ ...formState, [event.target.name]: event.target.value });
+    updateForm({
+      ...formState,
+      [event.target.name]:
+        event.target.type === 'checkbox'
+          ? event.target.checked
+          : event.target.value,
+    });
   };
 
   const onSubmit = event => {
     event.preventDefault();
-    const { email } = formState;
+    const { email, firstName, lastName, company, privacyPolicy } = formState;
+
     if (hasSubmitted) {
       // Deter multiple submissions.
       updateErrors({ error: 'The form has already been submitted.' });
       return;
     }
     // Validate inputs.
-    if (!email) {
+    if (!email || !firstName || !lastName || !company || !privacyPolicy) {
       // Notify user of required fields.
       const currentErrs = {};
+
       if (!email) {
         currentErrs.email = 'Email is required';
+      }
+
+      if (!firstName) {
+        currentErrs.firstName = 'First Name is required';
+      }
+
+      if (!lastName) {
+        currentErrs.lastName = 'Last Name is required';
+      }
+
+      if (!company) {
+        currentErrs.company = 'Company is required';
+      }
+
+      if (!privacyPolicy) {
+        currentErrs.privacyPolicy = 'This checkbox is required for download';
       }
 
       updateErrors(currentErrs);
@@ -62,6 +90,10 @@ const OverlayForm = ({
     }).then(() => {
       updateForm({
         email: '',
+        firstName: '',
+        lastName: '',
+        company: '',
+        privacyPolicy: false,
       });
       setIsActive(!isActive);
       setHasSubmitted(true);
@@ -135,6 +167,49 @@ const OverlayForm = ({
 
     &:invalid {
       border: ${colors.red} 1px solid;
+    }
+  `;
+
+  const flexStyles = css`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+
+    ${mediaQueries.phoneLarge} {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+  `;
+
+  const checkBoxStyles = css`
+    margin-bottom: 10px;
+
+    div {
+      margin-bottom: 20px;
+      p {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 0;
+      }
+    }
+
+    div > label {
+      display: flex;
+      justify-content: flex-start;
+
+      input {
+        border: none;
+        outline: none;
+        width: 20px;
+        flex: 0 1 20px;
+        height: 20px;
+      }
+
+      span {
+        flex: 10;
+        margin-left: 10px;
+      }
     }
   `;
 
@@ -317,6 +392,34 @@ const OverlayForm = ({
                   name={`${formName}`}
                   value={`${formName}`}
                 />
+
+                <fieldset css={[fieldsetStyles, flexStyles]}>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.firstName}
+                      onChange={updateInput}
+                      type='text'
+                      name='firstName'
+                      id='of-firstName'
+                      placeholder='First Name'
+                    />
+                    <ReturnError errs={errors} name='firstName' />
+                  </div>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.lastName}
+                      onChange={updateInput}
+                      type='text'
+                      name='lastName'
+                      id='of-lastName'
+                      placeholder='Last Name'
+                    />
+                    <ReturnError errs={errors} name='lastName' />
+                  </div>
+                </fieldset>
+
                 <fieldset css={[fieldsetStyles]}>
                   <div>
                     <input
@@ -331,6 +434,64 @@ const OverlayForm = ({
                     <ReturnError errs={errors} name='email' />
                   </div>
                 </fieldset>
+
+                <fieldset css={[fieldsetStyles]}>
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.company}
+                      onChange={updateInput}
+                      type='text'
+                      name='company'
+                      id='of-company'
+                      placeholder='Company'
+                    />
+                    <ReturnError errs={errors} name='company' />
+                  </div>
+                </fieldset>
+
+                <fieldset css={[fieldsetStyles, checkBoxStyles]}>
+                  <div>
+                    <label htmlFor='of-privacyPolicy'>
+                      <input
+                        css={inputStyles}
+                        value={formState.privacyPolicy}
+                        onChange={updateInput}
+                        type='checkbox'
+                        name='privacyPolicy'
+                        id='of-privacyPolicy'
+                      />
+                      <span>
+                        By checking this box, I agree to receive emails from
+                        Shopify. Your information will be processed in
+                        accordance with Shopify’s{' '}
+                        <a
+                          href='https://www.shopify.com/legal/privacy'
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          Privacy Policy
+                        </a>
+                        .
+                      </span>
+                    </label>
+                    <ReturnError errs={errors} name='privacyPolicy' />
+                  </div>
+                  <span>
+                    By entering your email, you agree to receive emails from
+                    Shopify. Your information will be processed in accordance
+                    with our{' '}
+                    <a
+                      href='https://www.shopify.com/legal/privacy'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      Privacy Policy
+                    </a>
+                    .
+                  </span>
+                </fieldset>
+
                 <Button
                   onClick={onSubmit}
                   disabled={hasSubmitted}
