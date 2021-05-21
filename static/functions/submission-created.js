@@ -443,8 +443,9 @@ exports.handler = async (event, _context, callback) => {
 
   /** e-book Form */
   if (form_name === 'ebook-form') {
-    const { email } = data.data;
+    const { email, firstName, lastName, company } = data.data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_EBOOK } = process.env;
+    const name = `${firstName} ${lastName}`;
 
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_EBOOK}/subscribe`,
@@ -452,7 +453,9 @@ exports.handler = async (event, _context, callback) => {
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
+        profiles: [
+          { email, name, firstName, lastName, company, url: referrer },
+        ],
       }),
     }).catch(console.error);
   }
