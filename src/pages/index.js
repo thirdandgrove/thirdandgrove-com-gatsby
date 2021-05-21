@@ -121,6 +121,13 @@ export const query = graphql`
       uid {
         name: display_name
       }
+      field_e_book_file {
+        filename
+        id
+        localFile {
+          publicURL
+        }
+      }
       field_image {
         id
         localFile {
