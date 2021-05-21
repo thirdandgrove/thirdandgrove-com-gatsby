@@ -11,9 +11,12 @@ import {
   mediaQueries,
   dropCap,
 } from '../../styles';
+import { modifyExternalLinks } from '../../util';
 
 const Text = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
+  const body = modifyExternalLinks(data.field_body.processed);
+
   return (
     <FullWidthSection
       fontWeight={weights.thin}
@@ -23,7 +26,7 @@ const Text = ({ data }) => {
       align='start'
       justify='start'
       height='auto'
-      dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+      dangerouslySetInnerHTML={{ __html: body }}
       css={css`
         .stats-container,
         .stat-container {

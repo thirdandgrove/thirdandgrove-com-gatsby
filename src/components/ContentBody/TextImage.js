@@ -11,6 +11,7 @@ import {
   contentHeadings,
   dropCap,
 } from '../../styles';
+import { modifyExternalLinks } from '../../util';
 import SplitSection from '../SplitSection';
 
 const TextImage = ({ data }) => {
@@ -40,6 +41,8 @@ const TextImage = ({ data }) => {
     }
   `;
 
+  const body = modifyExternalLinks(data.field_body.processed);
+
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
@@ -52,15 +55,11 @@ const TextImage = ({ data }) => {
           `}
         />
       </section>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section dangerouslySetInnerHTML={{ __html: body }} />
     </SplitSection>
   ) : (
     <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section dangerouslySetInnerHTML={{ __html: body }} />
       <section>
         <Img
           fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
