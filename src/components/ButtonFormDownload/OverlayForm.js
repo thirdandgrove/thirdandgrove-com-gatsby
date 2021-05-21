@@ -184,19 +184,28 @@ const OverlayForm = ({
 
   const checkBoxStyles = css`
     margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+
+    span {
+      font-size: 12px;
+      line-height: 1.5;
+    }
 
     div {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       p {
         display: block;
-        margin-top: 20px;
+        margin-top: 10px;
         margin-bottom: 0;
+        font-size: 12px;
       }
     }
 
     div > label {
       display: flex;
       justify-content: flex-start;
+      font-size: 12px;
 
       input {
         border: none;
@@ -209,6 +218,7 @@ const OverlayForm = ({
       span {
         flex: 10;
         margin-left: 10px;
+        font-size: 12px;
       }
     }
   `;
@@ -247,7 +257,7 @@ const OverlayForm = ({
           css={css`
             ${mediaQueries.phoneLarge} {
               width: 700px;
-              padding: 115px 24px;
+              padding: 70px 24px;
             }
 
             @media (max-width: 900px) and (orientation: landscape) {
@@ -420,7 +430,7 @@ const OverlayForm = ({
                   </div>
                 </fieldset>
 
-                <fieldset css={[fieldsetStyles]}>
+                <fieldset css={[fieldsetStyles, flexStyles]}>
                   <div>
                     <input
                       css={inputStyles}
@@ -433,9 +443,7 @@ const OverlayForm = ({
                     />
                     <ReturnError errs={errors} name='email' />
                   </div>
-                </fieldset>
 
-                <fieldset css={[fieldsetStyles]}>
                   <div>
                     <input
                       css={inputStyles}
