@@ -1,3 +1,5 @@
+const cheerio = require('cheerio');
+
 module.exports = {
   ensureTrailingSlash: str => (str.endsWith('/') ? str : `${str}/`),
   encode: data => {
@@ -24,20 +26,18 @@ module.exports = {
       );
     };
 
-    const parser = new DOMParser();
-    const content = parser.parseFromString(html, 'text/html');
-    const anchors = [...content.getElementsByTagName('a')];
+    const $ = cheerio.load(html);
 
-    anchors.forEach(v => {
-      const href = v.getAttribute('href');
+    $('a').each(function (i, elem) {
+      const href = $(elem).attr('href');
 
       if (isExternalURL(href)) {
-        v.setAttribute('target', '_blank');
-        v.setAttribute('rel', 'noreferrer');
+        $(elem).attr('target', '_blank');
+        $(elem).attr('rel', 'noreferrer');
       }
     });
 
-    return content.body.innerHTML;
+    return $.html();
   },
   updatePaths: json => {
     return new Promise((resolve, reject) => {
