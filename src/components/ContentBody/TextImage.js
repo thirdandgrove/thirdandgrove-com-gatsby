@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
@@ -41,7 +41,12 @@ const TextImage = ({ data }) => {
     }
   `;
 
-  const body = modifyExternalLinks(data.field_body.processed);
+  const isBrowser = typeof window !== 'undefined';
+  const [body, setBody] = useState(data.field_body.processed);
+
+  if (isBrowser) {
+    setBody(modifyExternalLinks(data.field_body.processed, window.location));
+  }
 
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>

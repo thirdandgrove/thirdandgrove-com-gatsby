@@ -7,11 +7,11 @@ module.exports = {
       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
       .join('&');
   },
-  modifyExternalLinks: html => {
+  modifyExternalLinks: (html, location) => {
     const checkDomain = url => {
       let u = url;
       if (u.indexOf('//') === 0) {
-        u = window.location.protocol + u;
+        u = location.protocol + u;
       }
       return u
         .toLowerCase()
@@ -22,7 +22,7 @@ module.exports = {
     const isExternalURL = url => {
       return (
         ((url.length > 1 && url.indexOf(':') > -1) || url.indexOf('//') > -1) &&
-        checkDomain(window.location.href) !== checkDomain(url)
+        checkDomain(location.href) !== checkDomain(url)
       );
     };
 
