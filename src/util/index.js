@@ -7,11 +7,11 @@ module.exports = {
       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
       .join('&');
   },
-  modifyExternalLinks: (html, location) => {
+  modifyExternalLinks: (html, siteUrl) => {
     const checkDomain = url => {
       let u = url;
       if (u.indexOf('//') === 0) {
-        u = location.protocol + u;
+        u = siteUrl + u;
       }
       return u
         .toLowerCase()
@@ -19,19 +19,11 @@ module.exports = {
         .split('/')[0];
     };
 
-    const isExternalURL = url => {
-      return (
-        ((url.length > 1 && url.indexOf(':') > -1) || url.indexOf('//') > -1) &&
-        checkDomain(location.href) !== checkDomain(url)
-      );
-    };
-
     const $ = cheerio.load(html);
 
-    $('a').each(function (i, elem) {
+    $('a').each((i, elem) => {
       const href = $(elem).attr('href');
-
-      if (isExternalURL(href)) {
+      if (checkDomain(siteUrl) !== checkDomain(href)) {
         $(elem).attr('target', '_blank');
         $(elem).attr('rel', 'noreferrer');
       }
