@@ -186,7 +186,11 @@ const Insights = ({ data }) => {
                 />
               )}
             </FullWidthSection>
-            <FullWidthSection minHeight='none' height='100px'>
+            <FullWidthSection
+              minHeight='none'
+              height='100px'
+              padding='0 20px 100px'
+            >
               <ButtonFormDownload
                 filepath={
                   post.relationships.field_e_book_file.localFile.publicURL
