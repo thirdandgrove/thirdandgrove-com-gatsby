@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
@@ -13,15 +13,13 @@ import {
 } from '../../styles';
 import { modifyExternalLinks } from '../../util';
 
-const Text = ({ data }) => {
+const Text = ({ data, url }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
-
-  const isBrowser = typeof window !== 'undefined';
   const [body, setBody] = useState(data.field_body.processed);
 
-  if (isBrowser) {
-    setBody(modifyExternalLinks(data.field_body.processed, window.location));
-  }
+  useEffect(() => {
+    setBody(modifyExternalLinks(data.field_body.processed, url));
+  }, []);
 
   return (
     <FullWidthSection
@@ -91,6 +89,7 @@ const Text = ({ data }) => {
 
 Text.propTypes = {
   data: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default Text;

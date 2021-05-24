@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
@@ -14,7 +14,7 @@ import {
 import { modifyExternalLinks } from '../../util';
 import SplitSection from '../SplitSection';
 
-const TextImage = ({ data }) => {
+const TextImage = ({ data, url }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
   const sectionStyle = css`
     ${container.min}
@@ -41,12 +41,11 @@ const TextImage = ({ data }) => {
     }
   `;
 
-  const isBrowser = typeof window !== 'undefined';
   const [body, setBody] = useState(data.field_body.processed);
 
-  if (isBrowser) {
-    setBody(modifyExternalLinks(data.field_body.processed, window.location));
-  }
+  useEffect(() => {
+    setBody(modifyExternalLinks(data.field_body.processed, url));
+  }, []);
 
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
@@ -81,6 +80,7 @@ const TextImage = ({ data }) => {
 
 TextImage.propTypes = {
   data: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default TextImage;
