@@ -7283,6 +7283,13 @@ gatsby-plugin-google-tagmanager-timeout@^2.2.5:
   dependencies:
     "@babel/runtime" "^7.8.7"
 
+gatsby-plugin-google-tagmanager@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-3.5.0.tgz#c59d3a4d7710c990e5d18273043180d0be154095"
+  integrity sha512-fs9o1p6pKPYOKV2FVhgZ+ItPFQ84DS3ZKrJuRCD8cDbvMI/XQQjFYr8yW/r1CrL3YcI+frUAJj7PCFv7IfBoRw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 gatsby-plugin-gtag@^1.0.13:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-gtag/-/gatsby-plugin-gtag-1.0.13.tgz#ffa08a728ba1cfe33090e52764d014a025a5d35a"
