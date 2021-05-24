@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, Profiler } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import loadable from '@loadable/component';
@@ -36,46 +36,7 @@ const FullWidthSection = loadable(() =>
 );
 
 const Index = ({ data }) => {
-  const halfPage = useRef();
-  const preload = useRef();
-  const hasScrolled = useHasBeenVisible(halfPage);
-  const isScrolling = useHasBeenVisible(preload);
-
-  return (
-    <Layout
-      headerData={{
-        metaTitle: `We are an obsessive digital innovation company`,
-        title: (
-          <>
-            slaying the mundane,
-            <br />
-            pixel by pixel.
-          </>
-        ),
-        mobileMinHeight: '93vh',
-      }}
-    >
-      {' '}
-      <ProjectsSlider data={data.allCaseStudy} />
-      <CapabilitiesSlider
-        title='What We Do'
-        backgroundColor={colors.lightblue}
-      />
-      {hasScrolled || isScrolling ? (
-        <>
-          <InsightsSlider data={data.allInsight} />
-          <LogoGrid title='A Few of Our Friends' />
-          <LoadableNewsletterFullWidthSection />
-          <SplitSection>
-            <LoadableContactUs />
-            <LoadableBeUs />
-          </SplitSection>
-        </>
-      ) : (
-        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
-      )}
-    </Layout>
-  );
+  return <div />;
 };
 
 Index.propTypes = {
