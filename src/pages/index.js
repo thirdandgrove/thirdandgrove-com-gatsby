@@ -36,7 +36,26 @@ const FullWidthSection = loadable(() =>
 );
 
 const Index = ({ data }) => {
-  return <div />;
+  const halfPage = useRef();
+  const preload = useRef();
+  const hasScrolled = useHasBeenVisible(halfPage);
+  const isScrolling = useHasBeenVisible(preload);
+
+  return (
+    <Layout
+      headerData={{
+        metaTitle: `We are an obsessive digital innovation company`,
+        title: (
+          <>
+            slaying the mundane,
+            <br />
+            pixel by pixel.
+          </>
+        ),
+        mobileMinHeight: '93vh',
+      }}
+    />
+  );
 };
 
 Index.propTypes = {
