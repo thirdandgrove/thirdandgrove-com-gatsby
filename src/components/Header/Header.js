@@ -308,7 +308,12 @@ const Header = ({
             `}
           >
             {heroLogo ? (
-              <Img fluid={heroLogo} alt={heroLogoAlt} />
+              <Img
+                fluid={heroLogo}
+                alt={heroLogoAlt}
+                fadeIn={false}
+                loading='eager'
+              />
             ) : loaded === 'block' && isMobile ? (
               <ThirdAndGrove
                 css={css`

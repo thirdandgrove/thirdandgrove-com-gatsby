@@ -74,6 +74,8 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
               <Img
                 fluid={imageSrc}
                 alt={imageAlt}
+                fadeIn={false}
+                loading='eager'
                 style={{ transform, opacity }}
                 css={css`
                   width: 100%;

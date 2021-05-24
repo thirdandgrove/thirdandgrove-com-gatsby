@@ -71,6 +71,8 @@ const ImageSlider = ({ data }) => {
           data.nodes.map(node => {
             return (
               <Img
+                fadeIn={false}
+                loading='eager'
                 fluid={node.childImageSharp.fluid}
                 key={node.publicURL}
                 alt='Boston'

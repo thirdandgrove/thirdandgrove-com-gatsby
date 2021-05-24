@@ -115,6 +115,8 @@ const Improvement = ({
       >
         {({ transform, opacity }) => (
           <Img
+            fadeIn={false}
+            loading='eager'
             fluid={imageSrc}
             alt={imageAlt}
             style={{ transform, opacity }}

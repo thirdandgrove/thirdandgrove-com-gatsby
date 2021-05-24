@@ -44,6 +44,8 @@ const TextImage = ({ data }) => {
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
         <Img
+          fadeIn={false}
+          loading='eager'
           fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
           alt={data.field_image.alt}
           css={css`
