@@ -21,6 +21,7 @@ import {
   NewsletterOverlay,
 } from '../components/NewsletterForm';
 import FullWidthSection from '../components/FullWidthSection';
+import { modifyExternalLinks } from '../util';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -66,6 +67,17 @@ const Insights = ({ data }) => {
   if (post.relationships.field_image) {
     headerData.image = post.relationships.field_image.localFile.publicURL;
   }
+
+  const [body, setBody] = useState(post?.field_summary.processed);
+
+  useEffect(() => {
+    setBody(
+      modifyExternalLinks(
+        post?.field_summary.processed,
+        data.site.siteMetadata.siteUrl
+      )
+    );
+  }, []);
 
   return (
     <Layout headerData={headerData}>
@@ -181,7 +193,7 @@ const Insights = ({ data }) => {
               ) : (
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: post?.field_summary.processed,
+                    __html: body,
                   }}
                 />
               )}
@@ -210,6 +222,7 @@ const Insights = ({ data }) => {
           </>
         ) : (
           <ContentBody
+            url={data.site.siteMetadata.siteUrl}
             comps={post.relationships.field_components}
             type='insight'
             trim
@@ -415,6 +428,11 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }
