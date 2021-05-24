@@ -1,10 +1,9 @@
-import React, { useRef, Profiler } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import loadable from '@loadable/component';
 
 import { colors } from '../styles';
-import { useHasBeenVisible } from '../hooks/useVisibility';
 
 const LoadableContactUs = loadable(async () => {
   const { ContactUs } = await import('../components/Prefooter');
@@ -31,16 +30,8 @@ const CapabilitiesSlider = loadable(() =>
 );
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const SplitSection = loadable(() => import('../components/SplitSection'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
 
 const Index = ({ data }) => {
-  const halfPage = useRef();
-  const preload = useRef();
-  const hasScrolled = useHasBeenVisible(halfPage);
-  const isScrolling = useHasBeenVisible(preload);
-
   return (
     <Layout
       headerData={{
@@ -55,25 +46,18 @@ const Index = ({ data }) => {
         mobileMinHeight: '93vh',
       }}
     >
-      {' '}
       <ProjectsSlider data={data.allCaseStudy} />
       <CapabilitiesSlider
         title='What We Do'
         backgroundColor={colors.lightblue}
       />
-      {hasScrolled || isScrolling ? (
-        <>
-          <InsightsSlider data={data.allInsight} />
-          <LogoGrid title='A Few of Our Friends' />
-          <LoadableNewsletterFullWidthSection />
-          <SplitSection>
-            <LoadableContactUs />
-            <LoadableBeUs />
-          </SplitSection>
-        </>
-      ) : (
-        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
-      )}
+      <InsightsSlider data={data.allInsight} />
+      <LogoGrid title='A Few of Our Friends' />
+      <LoadableNewsletterFullWidthSection />
+      <SplitSection>
+        <LoadableContactUs />
+        <LoadableBeUs />
+      </SplitSection>
     </Layout>
   );
 };
