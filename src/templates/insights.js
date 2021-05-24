@@ -68,12 +68,14 @@ const Insights = ({ data }) => {
     headerData.image = post.relationships.field_image.localFile.publicURL;
   }
 
-  const [body, setBody] = useState(post?.field_summary.processed);
+  const [body, setBody] = useState(
+    post?.field_summary ? post?.field_summary?.processed : ''
+  );
 
   useEffect(() => {
     setBody(
       modifyExternalLinks(
-        post?.field_summary.processed,
+        post?.field_summary ? post?.field_summary?.processed : '',
         data.site.siteMetadata.siteUrl
       )
     );
