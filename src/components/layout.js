@@ -1,4 +1,5 @@
 import React from 'react';
+import { Global } from '@emotion/react';
 import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 
@@ -10,14 +11,10 @@ import '../styles/layout.css';
 
 const Header = loadable(() => import('./Header'));
 const Footer = loadable(() => import('./Footer'));
-const LoadableGlobal = loadable(async () => {
-  const { Global } = await import('@emotion/react');
-  return Global;
-});
 
 const Layout = ({ children, headerData }) => (
   <>
-    <LoadableGlobal styles={globalStyles} />
+    <Global styles={globalStyles} />
     <Header {...headerData} />
     <main>{children}</main>
     <Footer />
