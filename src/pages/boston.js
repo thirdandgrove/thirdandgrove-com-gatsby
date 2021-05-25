@@ -24,9 +24,8 @@ const SplitSection = loadable(() => import('../components/SplitSection'));
 const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
 );
-const LoadableTextWrapper = loadable(async () => {
-  const { TextWrapper } = await import('../components/Prefooter');
-  return TextWrapper;
+const LoadableTextWrapper = loadable(() => import('../components/Prefooter'), {
+  resolveComponent: components => components.TextWrapper,
 });
 
 const Boston = ({ data }) => {

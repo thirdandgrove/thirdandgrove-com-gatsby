@@ -6,21 +6,18 @@ import loadable from '@loadable/component';
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 
-const LoadableContactUs = loadable(async () => {
-  const { ContactUs } = await import('../components/Prefooter');
-  return ContactUs;
-});
+const LoadableNewsletterFullWidthSection = loadable(
+  () => import('../components/NewsletterForm'),
+  {
+    resolveComponent: components => components.NewsletterFullWidthSection,
+  }
+);
 
-const LoadableBeUs = loadable(async () => {
-  const { BeUs } = await import('../components/Prefooter');
-  return BeUs;
+const LoadableBeUs = loadable(() => import('../components/Prefooter'), {
+  resolveComponent: components => components.BeUs,
 });
-
-const LoadableNewsletterFullWidthSection = loadable(async () => {
-  const { NewsletterFullWidthSection } = await import(
-    '../components/NewsletterForm'
-  );
-  return NewsletterFullWidthSection;
+const LoadableContactUs = loadable(() => import('../components/Prefooter'), {
+  resolveComponent: components => components.ContactUs,
 });
 
 const Layout = loadable(() => import('../components/layout'));

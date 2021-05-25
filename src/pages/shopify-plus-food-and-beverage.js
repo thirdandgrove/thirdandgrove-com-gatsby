@@ -12,9 +12,8 @@ const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const CTA = loadable(() => import('../components/CTA'));
 const CTAGrid = loadable(() => import('../components/CTAGrid'));
 const Quote = loadable(() => import('../components/ContentBody/Quote'));
-const LoadableFakeButton = loadable(async () => {
-  const { FakeButton } = await import('../components/Button');
-  return FakeButton;
+const LoadableFakeButton = loadable(() => import('../components/Button'), {
+  resolveComponent: components => components.FakeButton,
 });
 
 const ShopifyPlusFoodAndBeverage = ({ data }) => {

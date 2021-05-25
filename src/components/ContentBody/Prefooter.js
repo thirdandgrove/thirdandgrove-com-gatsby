@@ -9,9 +9,8 @@ import { ensureTrailingSlash } from '../../util';
 
 const Button = loadable(() => import('../Button'));
 const SplitSection = loadable(() => import('../SplitSection'));
-const LoadableTextWrapper = loadable(async () => {
-  const { TextWrapper } = await import('../Prefooter');
-  return TextWrapper;
+const LoadableTextWrapper = loadable(() => import('../Prefooter'), {
+  resolveComponent: components => components.TextWrapper,
 });
 
 const pStyles = css`

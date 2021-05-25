@@ -17,9 +17,8 @@ const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
 );
 const VideoSection = loadable(() => import('../components/VideoSection'));
-const LoadableFakeButton = loadable(async () => {
-  const { FakeButton } = await import('../components/Button');
-  return FakeButton;
+const LoadableFakeButton = loadable(() => import('../components/Button'), {
+  resolveComponent: components => components.FakeButton,
 });
 
 const Project = ({ study, index }) => {
