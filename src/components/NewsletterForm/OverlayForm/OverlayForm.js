@@ -3,11 +3,11 @@ import { Global, css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 
-import { mediaQueries, colors, fonts, weights } from '../../styles';
-import { encode } from '../../util';
+import { mediaQueries, colors, fonts, weights } from '../../../styles';
+import { encode } from '../../../util';
 
-const Button = loadable(() => import('../Button'));
-const FullWidthSection = loadable(() => import('../FullWidthSection'));
+const Button = loadable(() => import('../../Button'));
+const FullWidthSection = loadable(() => import('../../FullWidthSection'));
 
 const OverlayForm = ({
   buttonText,

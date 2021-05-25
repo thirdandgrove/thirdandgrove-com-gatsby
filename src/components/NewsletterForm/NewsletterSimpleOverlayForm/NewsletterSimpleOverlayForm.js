@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
-import { encode } from '../../util';
-import { colors } from '../../styles';
+import { encode } from '../../../util';
+import { colors } from '../../../styles';
 
-const Input = loadable(() => import('../Input'));
-const Button = loadable(() => import('../Button'));
+const Input = loadable(() => import('../../Input'));
+const Button = loadable(() => import('../../Button'));
 
 const NewsletterSimpleOverlayForm = ({
   setIsActive,

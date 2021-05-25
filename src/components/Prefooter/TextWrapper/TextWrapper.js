@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template, no-else-return */
 import styled from '@emotion/styled';
 
-import { weights, mediaQueries } from '../../styles';
+import { weights, mediaQueries } from '../../../styles';
 
 const TextWrapper = styled.span`
   display: flex;

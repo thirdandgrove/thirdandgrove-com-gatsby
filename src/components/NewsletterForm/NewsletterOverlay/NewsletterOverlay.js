@@ -1,81 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Global, css } from '@emotion/react';
-import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 
-import { mediaQueries, colors, fonts, weights } from '../../styles';
-import { encode } from '../../util';
+import { mediaQueries, colors, fonts } from '../../../styles';
 
-const FullWidthSection = loadable(() => import('../FullWidthSection'));
-const Button = loadable(() => import('../Button'));
+const FullWidthSection = loadable(() => import('../../FullWidthSection'));
+const NewsletterOverlayForm = loadable(() =>
+  import('../NewsletterOverlayForm')
+);
 
-const NewsletterSimpleOverlay = ({
-  buttonText,
-  confirmMessage,
-  header,
-  subheader,
-  isActive,
-  setIsActive,
-}) => {
-  const [email, updateEmail] = useState('');
-  const [submitted, hasSubmitted] = useState(false);
+export default () => {
+  const [isActive, setIsActive] = useState(false);
   const toggle = () => setIsActive(!isActive);
-  const onSubmit = evt => {
-    evt.preventDefault();
-    if (!email) {
-      return;
-    }
+  let openedOnce = false;
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'acquia-engage', email }),
-    }).then(() => {
-      updateEmail('');
-      hasSubmitted(true);
-      setTimeout(() => {
-        setIsActive(!isActive);
-      }, 1000);
-    });
-  };
-
-  const fieldsetStyles = css`
-    border: none;
-    margin: 0;
-    padding: 0;
-  `;
-
-  const inputStyles = css`
-    background: transparent;
-    outline: 1px solid ${colors.darkgray};
-    border: none;
-    height: 50px;
-    color: ${colors.darkgray};
-    font-family: ${fonts.sans};
-    font-weight: ${weights.light};
-    font-size: 16px;
-    letter-spacing: 2px;
-    line-height: 1.3;
-    padding: 0 20px;
-    margin-bottom: 20px;
-    width: 100%;
-
-    &::placeholder {
-      color: ${colors.darkgray};
-    }
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-      /* this hack allows the background color of autocomplete to stay transparent */
-      transition: background-color 5000s ease-in-out 0s;
-    }
-
-    &:invalid {
-      border: ${colors.red} 1px solid;
-    }
-  `;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!openedOnce) {
+        toggle();
+        openedOnce = true;
+      }
+    }, 1000 * 30);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -110,6 +57,10 @@ const NewsletterSimpleOverlay = ({
         <div
           css={css`
             ${mediaQueries.phoneLarge} {
+              background-image: url('/images/illuminating.png');
+              background-position: 345px -140px;
+              background-size: 1100px;
+              background-repeat: no-repeat;
               width: 700px;
               padding: 115px 24px;
             }
@@ -118,6 +69,10 @@ const NewsletterSimpleOverlay = ({
               padding: 4% 24px;
             }
 
+            background-image: url('/images/illuminating-crop.png');
+            background-position: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
             width: calc(100% - 60px);
             background-color: ${colors.white};
             padding: 72px 24px;
@@ -125,6 +80,8 @@ const NewsletterSimpleOverlay = ({
 
             @media (max-width: 475px) {
               padding: 125px 24px;
+              background-position: 119% -13px;
+              background-size: 70%;
             }
           `}
         >
@@ -186,7 +143,7 @@ const NewsletterSimpleOverlay = ({
               `}
             />
           </button>
-          <h1
+          <h2
             css={css`
               ${mediaQueries.phoneLarge} {
                 color: ${colors.reallydarkgray};
@@ -204,8 +161,10 @@ const NewsletterSimpleOverlay = ({
               margin-bottom: 12px;
             `}
           >
-            {header}
-          </h1>
+            Illuminating
+            <br />
+            stuff, right?
+          </h2>
           <div
             css={css`
               display: flex;
@@ -233,66 +192,15 @@ const NewsletterSimpleOverlay = ({
                 line-height: 27px;
               `}
             >
-              {subheader}
+              Join our mailing list and you can stay this informed all the time.
             </p>
-            <form
-              name='acquia-engage'
-              data-netlify='true'
-              netlify-honeypot='bot-field'
-              css={css`
-                display: flex;
-                justify-content: center;
-                flex-direction: column;
-              `}
-            >
-              <input type='hidden' name='form-name' value='acquia-engage' />
-              <fieldset css={fieldsetStyles}>
-                {!submitted && (
-                  <input
-                    css={inputStyles}
-                    type='email'
-                    name='email'
-                    id='nws-email'
-                    placeholder='Email'
-                    value={email}
-                    onChange={evt => updateEmail(evt.target.value)}
-                  />
-                )}
-              </fieldset>
-              <Button
-                onClick={onSubmit}
-                disabled={submitted}
-                css={css`
-                  max-width: 200px;
-                  width: 100%;
-                  margin: auto;
-                `}
-              >
-                {submitted ? confirmMessage : buttonText}
-              </Button>
-            </form>
+            <NewsletterOverlayForm
+              setIsActive={setIsActive}
+              isActive={isActive}
+            />
           </div>
         </div>
       </FullWidthSection>
     </>
   );
 };
-
-NewsletterSimpleOverlay.propTypes = {
-  setIsActive: PropTypes.func.isRequired,
-  isActive: PropTypes.bool.isRequired,
-  buttonText: PropTypes.string,
-  confirmMessage: PropTypes.string,
-  header: PropTypes.string,
-  subheader: PropTypes.string,
-};
-
-NewsletterSimpleOverlay.defaultProps = {
-  buttonText: 'Sign Me Up',
-  confirmMessage: 'Thank You',
-  header: 'Illuminating stuff, right?',
-  subheader:
-    'Join our mailing list and you can stay this informed all the time.',
-};
-
-export default NewsletterSimpleOverlay;

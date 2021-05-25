@@ -2,10 +2,10 @@ import React from 'react';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
-import { mediaQueries, colors, fonts } from '../../styles';
+import { mediaQueries, colors, fonts } from '../../../styles';
 
-const FullWidthSection = loadable(() => import('../FullWidthSection'));
-const NewsletterForm = loadable(() => import('./NewsletterForm'));
+const FullWidthSection = loadable(() => import('../../FullWidthSection'));
+const NewsletterForm = loadable(() => import('../NewsletterForm'));
 
 export default () => (
   <FullWidthSection padding='60px 20px'>

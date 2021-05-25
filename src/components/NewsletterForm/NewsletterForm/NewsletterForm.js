@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
-import { encode } from '../../util';
-import { colors } from '../../styles';
+import { encode } from '../../../util';
 
-const Input = loadable(() => import('../Input'));
-const Button = loadable(() => import('../Button'));
+const Input = loadable(() => import('../../Input'));
+const Button = loadable(() => import('../../Button'));
 
-const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
+export default () => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
 
@@ -26,9 +24,6 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
     }).then(() => {
       updateEmail('');
       hasSubmitted(true);
-      setTimeout(() => {
-        setIsActive(!isActive);
-      }, 1000);
     });
   };
 
@@ -59,7 +54,7 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
         </legend>
         {/* eslint-disable-next-line */}
         <label
-          htmlFor='nws-emailoverlay'
+          htmlFor='nws-email'
           css={css`
             display: none;
           `}
@@ -68,37 +63,18 @@ const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
         </label>
         {!submitted && (
           <Input
-            css={css`
-              background-color: ${colors.white};
-              letter-spacing: 0;
-            `}
             type='email'
             name='email'
-            id='nws-emailoverlay'
+            id='nws-email'
             placeholder='Email'
             value={email}
             onChange={evt => updateEmail(evt.target.value)}
           />
         )}
       </fieldset>
-      <Button
-        onClick={onSubmit}
-        disabled={submitted}
-        css={css`
-          max-width: 200px;
-          width: 100%;
-          margin: auto;
-        `}
-      >
+      <Button onClick={onSubmit} disabled={submitted}>
         {submitted ? 'Thank You' : 'Sign Me Up'}
       </Button>
     </form>
   );
 };
-
-NewsletterOverlayForm.propTypes = {
-  setIsActive: PropTypes.func.isRequired,
-  isActive: PropTypes.bool.isRequired,
-};
-
-export default NewsletterOverlayForm;
