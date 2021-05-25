@@ -1,8 +1,6 @@
-import TextWrapper from './TextWrapper';
-import BeUs from './BeUs';
-import ContactUs from './ContactUs';
-import SeeInsights from './SeeInsights';
-import GetInTouch from './GetInTouch';
-import WhatWeDo from './WhatWeDo';
-
-export { TextWrapper, ContactUs, BeUs, SeeInsights, GetInTouch, WhatWeDo };
+export { default as TextWrapper } from './TextWrapper';
+export { default as BeUs } from './BeUs';
+export { default as ContactUs } from './ContactUs';
+export { default as SeeInsights } from './SeeInsights';
+export { default as GetInTouch } from './GetInTouch';
+export { default as WhatWeDo } from './WhatWeDo';
