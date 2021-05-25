@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
-import ButtonFormDownload from '../components/ButtonFormDownload';
 import {
   colors,
   mediaQueries,
@@ -13,14 +13,28 @@ import {
   contentHeadings,
   weights,
 } from '../styles';
-import Layout from '../components/layout';
-import ContentBody from '../components/ContentBody';
-import InsightsSlider from '../components/InsightsSlider';
-import {
-  NewsletterFullWidthSection,
-  NewsletterOverlay,
-} from '../components/NewsletterForm';
-import FullWidthSection from '../components/FullWidthSection';
+
+const Layout = loadable(() => import('../components/layout'));
+const ContentBody = loadable(() => import('../components/ContentBody'));
+const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
+const ButtonFormDownload = loadable(() =>
+  import('../components/ButtonFormDownload')
+);
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const LoadableNewsletterFullWidthSection = loadable(
+  () => import('../components/NewsletterForm'),
+  {
+    resolveComponent: components => components.NewsletterFullWidthSection,
+  }
+);
+const LoadableNewsletterOverlay = loadable(
+  () => import('../components/NewsletterForm'),
+  {
+    resolveComponent: components => components.NewsletterOverlay,
+  }
+);
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -222,8 +236,8 @@ const Insights = ({ data }) => {
       </div>
       {!post.relationships.field_e_book_file && (
         <>
-          <NewsletterOverlay />
-          <NewsletterFullWidthSection />
+          <LoadableNewsletterOverlay />
+          <LoadableNewsletterFullWidthSection />
         </>
       )}
       <InsightsSlider

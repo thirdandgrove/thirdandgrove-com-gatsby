@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import { fonts, mediaQueries } from '../styles';
-import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
+
+const Layout = loadable(() => import('../components/layout'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
 
 const LegacyInsights = ({ pageContext }) => {
   const { body, title, created, author } = pageContext;

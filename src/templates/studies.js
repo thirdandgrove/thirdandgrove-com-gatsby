@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
 import { fonts, weights, colors, mediaQueries, container } from '../styles';
-import Layout from '../components/layout';
-import ContentBody from '../components/ContentBody';
+
+const Layout = loadable(() => import('../components/layout'));
+const ContentBody = loadable(() => import('../components/ContentBody'));
 
 const Studies = ({ data }) => {
   const post = data.caseStudy;
