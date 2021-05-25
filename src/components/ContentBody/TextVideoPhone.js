@@ -11,9 +11,9 @@ import {
   contentHeadings,
   dropCap,
 } from '../../styles';
+import PhoneVideo from '../PhoneVideo';
 
 const SplitSection = loadable(() => import('../SplitSection'));
-const PhoneVideo = loadable(() => import('../PhoneVideo'));
 
 const TextVideoPhone = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
