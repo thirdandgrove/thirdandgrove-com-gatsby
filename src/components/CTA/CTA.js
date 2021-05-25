@@ -8,10 +8,7 @@ import { colors, weights, mediaQueries } from '../../styles';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
-const LoadableFakeButton = loadable(async () => {
-  const { FakeButton } = await import('../Button');
-  return FakeButton;
-});
+const FakeButton = loadable(() => import('../FakeButton'));
 
 const CTA = ({
   backgroundColor,
@@ -106,11 +103,11 @@ const CTA = ({
         {link.indexOf('#') !== -1 ? (
           <a href={link} className='anchor'>
             {' '}
-            <LoadableFakeButton>{cta}</LoadableFakeButton>
+            <FakeButton>{cta}</FakeButton>
           </a>
         ) : (
           <Link to={link}>
-            <LoadableFakeButton>{cta}</LoadableFakeButton>
+            <FakeButton>{cta}</FakeButton>
           </Link>
         )}
       </div>

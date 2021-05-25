@@ -23,17 +23,11 @@ const ButtonFormDownload = loadable(() =>
 const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
 );
-const LoadableNewsletterFullWidthSection = loadable(
-  () => import('../components/NewsletterForm'),
-  {
-    resolveComponent: components => components.NewsletterFullWidthSection,
-  }
+const NewsletterFullWidthSection = loadable(() =>
+  import('../components/NewsletterForm/NewsletterFullWidthSection')
 );
-const LoadableNewsletterOverlay = loadable(
-  () => import('../components/NewsletterForm'),
-  {
-    resolveComponent: components => components.NewsletterOverlay,
-  }
+const NewsletterOverlay = loadable(() =>
+  import('../components/NewsletterForm/NewsletterOverlay')
 );
 
 const Insights = ({ data }) => {
@@ -236,8 +230,8 @@ const Insights = ({ data }) => {
       </div>
       {!post.relationships.field_e_book_file && (
         <>
-          <LoadableNewsletterOverlay />
-          <LoadableNewsletterFullWidthSection />
+          <NewsletterOverlay />
+          <NewsletterFullWidthSection />
         </>
       )}
       <InsightsSlider

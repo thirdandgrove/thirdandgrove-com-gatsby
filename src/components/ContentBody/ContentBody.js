@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import loadable from '@loadable/component';
 
-import Image from './Image';
-import Quote from './Quote';
-import Text from './Text';
-import TextSplitwithImage from './TextImage';
-import TextSplitwithVideoPhone from './TextVideoPhone';
-import Prefooter from './Prefooter';
-import Video from './Video';
+const Image = loadable(() => import('./Image'));
+const Quote = loadable(() => import('./Quote'));
+const Text = loadable(() => import('./Text'));
+const TextSplitwithImage = loadable(() => import('./TextImage'));
+const TextSplitwithVideoPhone = loadable(() => import('./TextVideoPhone'));
+const Prefooter = loadable(() => import('./Prefooter'));
+const Video = loadable(() => import('./Video'));
 
 const Components = {
   Image,

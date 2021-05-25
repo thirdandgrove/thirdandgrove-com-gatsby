@@ -24,9 +24,9 @@ const SplitSection = loadable(() => import('../components/SplitSection'));
 const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
 );
-const LoadableTextWrapper = loadable(() => import('../components/Prefooter'), {
-  resolveComponent: components => components.TextWrapper,
-});
+const TextWrapper = loadable(() =>
+  import('../components/Prefooter/TextWrapper')
+);
 
 const SanFrancisco = ({ data }) => {
   const Row = styled.section`
@@ -189,14 +189,14 @@ const SanFrancisco = ({ data }) => {
       </FullWidthSection>
 
       <SplitSection>
-        <LoadableTextWrapper backgroundColor={colors.yellow}>
+        <TextWrapper backgroundColor={colors.yellow}>
           <h3>Catch up over coffee?</h3>
           <Button onClick={() => navigate(`/contact/`)}>Get in Touch</Button>
-        </LoadableTextWrapper>
-        <LoadableTextWrapper backgroundColor={colors.lightblue}>
+        </TextWrapper>
+        <TextWrapper backgroundColor={colors.lightblue}>
           <h3>Join the best in the Bay Area.</h3>
           <Button onClick={() => navigate(`/careers/`)}>Work at TAG</Button>
-        </LoadableTextWrapper>
+        </TextWrapper>
       </SplitSection>
     </Layout>
   );

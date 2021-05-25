@@ -10,16 +10,8 @@ import { container, mediaQueries, weights, colors, fonts } from '../styles';
 const Button = loadable(() => import('../components/Button'));
 const Quote = loadable(() => import('../components/ContentBody/Quote'));
 const ButtonForm = loadable(() => import('../components/ButtonForm'));
-
-const LoadableWhatWeDo = loadable(async () => {
-  const { WhatWeDo } = await import('../components/Prefooter');
-  return WhatWeDo;
-});
-
-const LoadableBeUs = loadable(async () => {
-  const { BeUs } = await import('../components/Prefooter');
-  return BeUs;
-});
+const BeUs = loadable(() => import('../components/Prefooter/BeUs'));
+const WhatWeDo = loadable(() => import('../components/Prefooter/WhatWeDo'));
 
 const Layout = loadable(() => import('../components/layout'));
 const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
@@ -477,12 +469,12 @@ const Drupalcon2021Event = ({ data }) => {
       <InsightsSlider data={data.allInsight} />
 
       <SplitSection>
-        <LoadableWhatWeDo
+        <WhatWeDo
           text='See What We Do.'
           link='/work/'
           linkText='explore work'
         />
-        <LoadableBeUs />
+        <BeUs />
       </SplitSection>
     </Layout>
   );

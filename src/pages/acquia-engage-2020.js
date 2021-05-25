@@ -6,9 +6,14 @@ import Img from 'gatsby-image';
 import loadable from '@loadable/component';
 
 import { container, mediaQueries, weights, colors, fonts } from '../styles';
-import { NewsletterSimpleOverlay } from '../components/NewsletterForm';
-import { GetInTouch, SeeInsights } from '../components/Prefooter';
 
+const NewsletterSimpleOverlay = loadable(() =>
+  import('../components/NewsletterForm/NewsletterSimpleOverlay')
+);
+const GetInTouch = loadable(() => import('../components/Prefooter/GetInTouch'));
+const SeeInsights = loadable(() =>
+  import('../components/Prefooter/SeeInsights')
+);
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')

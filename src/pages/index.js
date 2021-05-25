@@ -6,19 +6,11 @@ import loadable from '@loadable/component';
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 
-const LoadableNewsletterFullWidthSection = loadable(
-  () => import('../components/NewsletterForm'),
-  {
-    resolveComponent: components => components.NewsletterFullWidthSection,
-  }
+const NewsletterFullWidthSection = loadable(() =>
+  import('../components/NewsletterForm/NewsletterFullWidthSection')
 );
-
-const LoadableBeUs = loadable(() => import('../components/Prefooter'), {
-  resolveComponent: components => components.BeUs,
-});
-const LoadableContactUs = loadable(() => import('../components/Prefooter'), {
-  resolveComponent: components => components.ContactUs,
-});
+const BeUs = loadable(() => import('../components/Prefooter/BeUs'));
+const ContactUs = loadable(() => import('../components/Prefooter/ContactUs'));
 
 const Layout = loadable(() => import('../components/layout'));
 const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
@@ -62,10 +54,10 @@ const Index = ({ data }) => {
         <>
           <InsightsSlider data={data.allInsight} />
           <LogoGrid title='A Few of Our Friends' />
-          <LoadableNewsletterFullWidthSection />
+          <NewsletterFullWidthSection />
           <SplitSection>
-            <LoadableContactUs />
-            <LoadableBeUs />
+            <ContactUs />
+            <BeUs />
           </SplitSection>
         </>
       ) : (

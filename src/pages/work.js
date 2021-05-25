@@ -17,9 +17,7 @@ const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
 );
 const VideoSection = loadable(() => import('../components/VideoSection'));
-const LoadableFakeButton = loadable(() => import('../components/Button'), {
-  resolveComponent: components => components.FakeButton,
-});
+const FakeButton = loadable(() => import('../components/FakeButton'));
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -149,7 +147,7 @@ const Project = ({ study, index }) => {
             >
               {study.field_subtitle}
             </h3>
-            <LoadableFakeButton
+            <FakeButton
               css={css`
                 display: none;
 
@@ -159,7 +157,7 @@ const Project = ({ study, index }) => {
               `}
             >
               View Case Study
-            </LoadableFakeButton>
+            </FakeButton>
           </div>
         </Link>
       </div>

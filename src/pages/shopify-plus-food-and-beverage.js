@@ -12,9 +12,7 @@ const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const CTA = loadable(() => import('../components/CTA'));
 const CTAGrid = loadable(() => import('../components/CTAGrid'));
 const Quote = loadable(() => import('../components/ContentBody/Quote'));
-const LoadableFakeButton = loadable(() => import('../components/Button'), {
-  resolveComponent: components => components.FakeButton,
-});
+const FakeButton = loadable(() => import('../components/FakeButton'));
 
 const ShopifyPlusFoodAndBeverage = ({ data }) => {
   const sectionStyle = css`
@@ -136,9 +134,7 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
           </div>
         </div>
         <Link to='/contact/'>
-          <LoadableFakeButton className='basic-block--cta'>
-            Contact Us
-          </LoadableFakeButton>
+          <FakeButton className='basic-block--cta'>Contact Us</FakeButton>
         </Link>
       </section>
       <LogoGrid

@@ -8,10 +8,8 @@ import { colors, fonts, weights, mediaQueries } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const Button = loadable(() => import('../Button'));
+const TextWrapper = loadable(() => import('../Prefooter/TextWrapper'));
 const SplitSection = loadable(() => import('../SplitSection'));
-const LoadableTextWrapper = loadable(() => import('../Prefooter'), {
-  resolveComponent: components => components.TextWrapper,
-});
 
 const pStyles = css`
   margin-bottom: 10px;
@@ -60,7 +58,7 @@ const Prefooter = ({ data }) => (
     `}
   >
     <div>
-      <LoadableTextWrapper
+      <TextWrapper
         css={preFooterStyles}
         backgroundImage={data.relationships.field_image}
         backgroundColor={
@@ -84,10 +82,10 @@ const Prefooter = ({ data }) => (
             {data.field_primary_cta.title}
           </Button>
         )}
-      </LoadableTextWrapper>
+      </TextWrapper>
     </div>
     <div>
-      <LoadableTextWrapper
+      <TextWrapper
         css={preFooterStyles}
         backgroundColor={
           data.field_secondary_color
@@ -110,7 +108,7 @@ const Prefooter = ({ data }) => (
             {data.field_secondary_cta.title}
           </Button>
         )}
-      </LoadableTextWrapper>
+      </TextWrapper>
     </div>
   </SplitSection>
 );
