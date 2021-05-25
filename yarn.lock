@@ -1014,7 +1014,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.3.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
+"@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.3.1", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
   version "7.14.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
   integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
@@ -7275,13 +7275,6 @@ gatsby-plugin-google-marketing-platform@^0.1.21:
   integrity sha512-SsGXt29rj8zULYN6rmYu1IkO8R985v+W6ILG5WNU5VdNj4cUTqXN7YL3qpoLyGTcjliMBDNxpBTFEthM6eVITg==
   dependencies:
     common-tags "^1.8.0"
-
-gatsby-plugin-google-tagmanager-timeout@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager-timeout/-/gatsby-plugin-google-tagmanager-timeout-2.2.5.tgz#ba27d59f535f8e2616fe31c1a79fb6736570732a"
-  integrity sha512-LyQG6oZSkvX5eF5mPbE3BPxn9hQ0QxQ0DgXDduE8oY+nPkvRCwFVe7+/1jWdj57WjZ31lU0Mslzm+5R31lHz/A==
-  dependencies:
-    "@babel/runtime" "^7.8.7"
 
 gatsby-plugin-google-tagmanager@^3.5.0:
   version "3.5.0"
