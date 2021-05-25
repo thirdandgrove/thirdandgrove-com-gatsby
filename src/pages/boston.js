@@ -16,7 +16,6 @@ import {
   contValues,
   pLight,
 } from '../styles';
-import { TextWrapper } from '../components/Prefooter';
 
 const Layout = loadable(() => import('../components/layout'));
 const ImageSlider = loadable(() => import('../components/ImageSlider'));
@@ -25,6 +24,10 @@ const SplitSection = loadable(() => import('../components/SplitSection'));
 const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
 );
+const LoadableTextWrapper = loadable(async () => {
+  const { TextWrapper } = await import('../components/Prefooter');
+  return TextWrapper;
+});
 
 const Boston = ({ data }) => {
   const Row = styled.section`
@@ -186,14 +189,14 @@ const Boston = ({ data }) => {
       </FullWidthSection>
 
       <SplitSection>
-        <TextWrapper backgroundColor={colors.yellow}>
+        <LoadableTextWrapper backgroundColor={colors.yellow}>
           <h3>Catch up over coffee?</h3>
           <Button onClick={() => navigate(`/contact/`)}>Get in Touch</Button>
-        </TextWrapper>
-        <TextWrapper backgroundColor={colors.lightblue}>
+        </LoadableTextWrapper>
+        <LoadableTextWrapper backgroundColor={colors.lightblue}>
           <h3>Join the best in Boston.</h3>
           <Button onClick={() => navigate(`/careers/`)}>Work at TAG</Button>
-        </TextWrapper>
+        </LoadableTextWrapper>
       </SplitSection>
     </Layout>
   );

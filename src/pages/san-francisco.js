@@ -3,13 +3,8 @@ import PropTypes from 'prop-types';
 import { navigate, graphql } from 'gatsby';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
-import WhatWeDo from '../components/WhatWeDo';
-import ImageSlider from '../components/ImageSlider';
-import { TextWrapper } from '../components/Prefooter';
 import {
   colors,
   fonts,
@@ -21,7 +16,18 @@ import {
   contValues,
   pLight,
 } from '../styles';
-import Button from '../components/Button';
+
+const Layout = loadable(() => import('../components/layout'));
+const ImageSlider = loadable(() => import('../components/ImageSlider'));
+const Button = loadable(() => import('../components/Button'));
+const SplitSection = loadable(() => import('../components/SplitSection'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const LoadableTextWrapper = loadable(async () => {
+  const { TextWrapper } = await import('../components/Prefooter');
+  return TextWrapper;
+});
 
 const SanFrancisco = ({ data }) => {
   const Row = styled.section`
@@ -184,14 +190,14 @@ const SanFrancisco = ({ data }) => {
       </FullWidthSection>
 
       <SplitSection>
-        <TextWrapper backgroundColor={colors.yellow}>
+        <LoadableTextWrapper backgroundColor={colors.yellow}>
           <h3>Catch up over coffee?</h3>
           <Button onClick={() => navigate(`/contact/`)}>Get in Touch</Button>
-        </TextWrapper>
-        <TextWrapper backgroundColor={colors.lightblue}>
+        </LoadableTextWrapper>
+        <LoadableTextWrapper backgroundColor={colors.lightblue}>
           <h3>Join the best in the Bay Area.</h3>
           <Button onClick={() => navigate(`/careers/`)}>Work at TAG</Button>
-        </TextWrapper>
+        </LoadableTextWrapper>
       </SplitSection>
     </Layout>
   );

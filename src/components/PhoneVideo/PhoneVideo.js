@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-
-import FullWidthSection from '../FullWidthSection';
+import loadable from '@loadable/component';
 
 import phoneSVG from './phone.png';
+
+const FullWidthSection = loadable(() => '../FullWidthSection');
 
 const PhoneVideo = ({ src }) => {
   return (

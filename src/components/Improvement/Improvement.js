@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
-import Button from '../Button';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { mediaQueries } from '../../styles';
 import hawaiianHost from '../LogoGrid/logos/hawiian-host-logo--black.png';
 import badlands from '../LogoGrid/logos/badlands.png';
+
+const Button = loadable(() => import('../Button'));
 
 const logos = {
   badlands,

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Global, css } from '@emotion/react';
 import PropTypes from 'prop-types';
+import loadable from '@loadable/component';
 
-import FullWidthSection from '../FullWidthSection';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
-import Button from '../Button';
 import { encode } from '../../util';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
+const Button = loadable(() => import('../Button'));
 
 const NewsletterSimpleOverlay = ({
   buttonText,

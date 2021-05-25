@@ -2,12 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { navigate } from 'gatsby';
+import loadable from '@loadable/component';
 
-import Button from '../Button';
-import { TextWrapper } from '../Prefooter';
-import SplitSection from '../SplitSection';
 import { colors, fonts, weights, mediaQueries } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
+
+const Button = loadable(() => import('../Button'));
+const SplitSection = loadable(() => import('../SplitSection'));
+const LoadableTextWrapper = loadable(async () => {
+  const { TextWrapper } = await import('../Prefooter');
+  return TextWrapper;
+});
 
 const pStyles = css`
   margin-bottom: 10px;
@@ -56,7 +61,7 @@ const Prefooter = ({ data }) => (
     `}
   >
     <div>
-      <TextWrapper
+      <LoadableTextWrapper
         css={preFooterStyles}
         backgroundImage={data.relationships.field_image}
         backgroundColor={
@@ -80,10 +85,10 @@ const Prefooter = ({ data }) => (
             {data.field_primary_cta.title}
           </Button>
         )}
-      </TextWrapper>
+      </LoadableTextWrapper>
     </div>
     <div>
-      <TextWrapper
+      <LoadableTextWrapper
         css={preFooterStyles}
         backgroundColor={
           data.field_secondary_color
@@ -106,7 +111,7 @@ const Prefooter = ({ data }) => (
             {data.field_secondary_cta.title}
           </Button>
         )}
-      </TextWrapper>
+      </LoadableTextWrapper>
     </div>
   </SplitSection>
 );

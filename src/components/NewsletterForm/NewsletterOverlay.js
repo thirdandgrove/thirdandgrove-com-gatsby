@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Global, css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import FullWidthSection from '../FullWidthSection';
 import { mediaQueries, colors, fonts } from '../../styles';
 
-import NewsletterOverlayForm from './NewsletterOverlayForm';
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
+const NewsletterOverlayForm = loadable(() => import('./NewsletterOverlayForm'));
 
 export default () => {
   const [isActive, setIsActive] = useState(false);

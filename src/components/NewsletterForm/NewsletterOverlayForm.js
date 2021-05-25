@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Input from '../Input';
-import Button from '../Button';
 import { encode } from '../../util';
 import { colors } from '../../styles';
+
+const Input = loadable(() => import('../Input'));
+const Button = loadable(() => import('../Button'));
 
 const NewsletterOverlayForm = ({ setIsActive, isActive }) => {
   const [email, updateEmail] = useState('');

@@ -1,11 +1,12 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Button from '../Button';
 import { colors, mediaQueries } from '../../styles';
 
-import TextWrapper from './TextWrapper';
+const Button = loadable(() => import('../Button'));
+const TextWrapper = loadable(() => import('./TextWrapper'));
 
 const wrapperStyles = css`
   ${mediaQueries.phoneLarge} {

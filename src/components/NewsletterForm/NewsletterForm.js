@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Input from '../Input';
-import Button from '../Button';
 import { encode } from '../../util';
+
+const Input = loadable(() => import('../Input'));
+const Button = loadable(() => import('../Button'));
 
 export default () => {
   const [email, updateEmail] = useState('');

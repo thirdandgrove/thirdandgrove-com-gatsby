@@ -10,7 +10,6 @@ import mp4 from '../../static/thirdgrove-work.mp4';
 import { weights, mediaQueries, container, fonts } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import { ensureTrailingSlash } from '../util';
-import { FakeButton } from '../components/Button';
 
 const Layout = loadable(() => import('../components/layout'));
 const CTA = loadable(() => import('../components/CTA'));
@@ -18,6 +17,10 @@ const FullWidthSection = loadable(() =>
   import('../components/FullWidthSection')
 );
 const VideoSection = loadable(() => import('../components/VideoSection'));
+const LoadableFakeButton = loadable(async () => {
+  const { FakeButton } = await import('../components/Button');
+  return FakeButton;
+});
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -147,7 +150,7 @@ const Project = ({ study, index }) => {
             >
               {study.field_subtitle}
             </h3>
-            <FakeButton
+            <LoadableFakeButton
               css={css`
                 display: none;
 
@@ -157,7 +160,7 @@ const Project = ({ study, index }) => {
               `}
             >
               View Case Study
-            </FakeButton>
+            </LoadableFakeButton>
           </div>
         </Link>
       </div>

@@ -5,7 +5,6 @@ import { graphql, Link } from 'gatsby';
 import loadable from '@loadable/component';
 
 import { colors, container, mediaQueries, weights } from '../styles';
-import { FakeButton } from '../components/Button';
 
 const Layout = loadable(() => import('../components/layout'));
 const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
@@ -13,6 +12,10 @@ const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const CTA = loadable(() => import('../components/CTA'));
 const CTAGrid = loadable(() => import('../components/CTAGrid'));
 const Quote = loadable(() => import('../components/ContentBody/Quote'));
+const LoadableFakeButton = loadable(async () => {
+  const { FakeButton } = await import('../components/Button');
+  return FakeButton;
+});
 
 const ShopifyPlusFoodAndBeverage = ({ data }) => {
   const sectionStyle = css`
@@ -134,7 +137,9 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
           </div>
         </div>
         <Link to='/contact/'>
-          <FakeButton className='basic-block--cta'>Contact Us</FakeButton>
+          <LoadableFakeButton className='basic-block--cta'>
+            Contact Us
+          </LoadableFakeButton>
         </Link>
       </section>
       <LogoGrid

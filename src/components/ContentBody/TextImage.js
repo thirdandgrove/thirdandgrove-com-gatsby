@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import {
   weights,
@@ -11,7 +12,8 @@ import {
   contentHeadings,
   dropCap,
 } from '../../styles';
-import SplitSection from '../SplitSection';
+
+const SplitSection = loadable(() => import('../SplitSection'));
 
 const TextImage = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;

@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
+import loadable from '@loadable/component';
 
 import useWindow from '../../hooks/useWindow';
 import {
@@ -12,7 +13,8 @@ import {
   fonts,
   weights,
 } from '../../styles';
-import FullWidthSection from '../FullWidthSection';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const VideoSection = ({ url, mp4 }) => {
   const { width } = useWindow();

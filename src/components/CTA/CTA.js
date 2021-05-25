@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Link } from 'gatsby';
+import loadable from '@loadable/component';
 
 import { colors, weights, mediaQueries } from '../../styles';
-import FullWidthSection from '../FullWidthSection';
-import { FakeButton } from '../Button';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
+
+const LoadableFakeButton = loadable(async () => {
+  const { FakeButton } = await import('../Button');
+  return FakeButton;
+});
 
 const CTA = ({
   backgroundColor,
@@ -100,11 +106,11 @@ const CTA = ({
         {link.indexOf('#') !== -1 ? (
           <a href={link} className='anchor'>
             {' '}
-            <FakeButton>{cta}</FakeButton>
+            <LoadableFakeButton>{cta}</LoadableFakeButton>
           </a>
         ) : (
           <Link to={link}>
-            <FakeButton>{cta}</FakeButton>
+            <LoadableFakeButton>{cta}</LoadableFakeButton>
           </Link>
         )}
       </div>

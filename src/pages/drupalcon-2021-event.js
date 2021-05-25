@@ -3,16 +3,30 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
-import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
-import Layout from '../components/layout';
 import { container, mediaQueries, weights, colors, fonts } from '../styles';
-import Button from '../components/Button';
-import { BeUs, WhatWeDo } from '../components/Prefooter';
-import InsightsSlider from '../components/InsightsSlider';
-import Quote from '../components/ContentBody/Quote';
-import ButtonForm from '../components/ButtonForm';
+
+const Button = loadable(() => import('../components/Button'));
+const Quote = loadable(() => import('../components/ContentBody/Quote'));
+const ButtonForm = loadable(() => import('../components/ButtonForm'));
+
+const LoadableWhatWeDo = loadable(async () => {
+  const { WhatWeDo } = await import('../components/Prefooter');
+  return WhatWeDo;
+});
+
+const LoadableBeUs = loadable(async () => {
+  const { BeUs } = await import('../components/Prefooter');
+  return BeUs;
+});
+
+const Layout = loadable(() => import('../components/layout'));
+const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
+const SplitSection = loadable(() => import('../components/SplitSection'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
 
 const Drupalcon2021Event = ({ data }) => {
   const [isDate, setDate] = useState(false);
@@ -463,12 +477,12 @@ const Drupalcon2021Event = ({ data }) => {
       <InsightsSlider data={data.allInsight} />
 
       <SplitSection>
-        <WhatWeDo
+        <LoadableWhatWeDo
           text='See What We Do.'
           link='/work/'
           linkText='explore work'
         />
-        <BeUs />
+        <LoadableBeUs />
       </SplitSection>
     </Layout>
   );

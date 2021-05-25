@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import {
   weights,
@@ -10,8 +11,9 @@ import {
   contentHeadings,
   dropCap,
 } from '../../styles';
-import SplitSection from '../SplitSection';
-import PhoneVideo from '../PhoneVideo';
+
+const SplitSection = loadable(() => import('../SplitSection'));
+const PhoneVideo = loadable(() => import('../PhoneVideo'));
 
 const TextVideoPhone = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;

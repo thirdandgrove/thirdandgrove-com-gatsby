@@ -3,9 +3,11 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import { mediaQueries } from '../../styles';
-import FullWidthSection from '../FullWidthSection';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const ImageSlider = ({ data }) => {
   const settings = {
