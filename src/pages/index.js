@@ -6,6 +6,16 @@ import loadable from '@loadable/component';
 import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 
+const LoadableContactUs = loadable(async () => {
+  const { ContactUs } = await import('../components/Prefooter');
+  return ContactUs;
+});
+
+const LoadableBeUs = loadable(async () => {
+  const { BeUs } = await import('../components/Prefooter');
+  return BeUs;
+});
+
 const LoadableNewsletterFullWidthSection = loadable(async () => {
   const { NewsletterFullWidthSection } = await import(
     '../components/NewsletterForm'
@@ -56,6 +66,10 @@ const Index = ({ data }) => {
           <InsightsSlider data={data.allInsight} />
           <LogoGrid title='A Few of Our Friends' />
           <LoadableNewsletterFullWidthSection />
+          <SplitSection>
+            <LoadableContactUs />
+            <LoadableBeUs />
+          </SplitSection>
         </>
       ) : (
         <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
