@@ -39,6 +39,7 @@ const ArticlePreviewSlide = ({ article }) => {
       }
     }
   `;
+
   return (
     <Card>
       <span
@@ -112,7 +113,9 @@ const ArticlePreviewSlide = ({ article }) => {
           <Link to={ensureTrailingSlash(article.path.alias)}>
             <h3>{article.title}</h3>
             <footer>
-              {`${article.created} - ${article.relationships.uid.name}`}
+              {article.relationships.field_e_book_file
+                ? `Special Report`
+                : `${article.created} - ${article.relationships.uid.name}`}
             </footer>
           </Link>
         </div>

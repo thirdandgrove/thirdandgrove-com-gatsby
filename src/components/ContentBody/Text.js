@@ -32,20 +32,16 @@ const Text = ({ data }) => {
           align-items: center;
           width: 100%;
         }
-
         .stats-container {
           flex-direction: column;
         }
-
         .stat-container {
           flex: auto;
           flex-direction: column;
           margin-bottom: 24px;
-
           :last-of-type {
             margin-bottom: 0;
           }
-
           h4 {
             font-size: 48px;
             font-weight: bold;
@@ -53,7 +49,6 @@ const Text = ({ data }) => {
             line-height: 54px;
             margin-bottom: 0;
           }
-
           p {
             font-size: 16px;
             font-weight: bold;
@@ -61,7 +56,6 @@ const Text = ({ data }) => {
             line-height: 27px;
           }
         }
-
         ${container.min} ${mediaQueries.phoneLarge} {
           .stats-container {
             flex-direction: row;
@@ -71,17 +65,13 @@ const Text = ({ data }) => {
           }
           padding: 0;
         }
-
         ${renderDropCap && dropCap}
-
         a {
           text-decoration: underline;
         }
-
         h2 {
           ${contentH2}
         }
-
         h3 {
           ${contentHeadings}
         }
