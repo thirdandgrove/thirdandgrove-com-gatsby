@@ -24,7 +24,7 @@ const Components = {
  * @param {array!} comps Components from Drupal
  * @param {string!} type Content type from Drupal
  */
-const ContentBody = ({ comps, type }) => {
+const ContentBody = ({ comps, type, url }) => {
   if (!Array.isArray(comps)) {
     throw new Error(
       `Comps prop is not an array, ${typeof comps} cannot be passed to ContentBody.`
@@ -44,6 +44,7 @@ const ContentBody = ({ comps, type }) => {
         const Component = Components[componentName];
         return (
           <Component
+            url={url}
             data={{ ...comp, type, isFirstText: firstText.id === comp.id }}
             key={comp.id}
           />
@@ -56,6 +57,7 @@ const ContentBody = ({ comps, type }) => {
 ContentBody.propTypes = {
   comps: PropTypes.arrayOf(PropTypes.object).isRequired,
   type: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default ContentBody;

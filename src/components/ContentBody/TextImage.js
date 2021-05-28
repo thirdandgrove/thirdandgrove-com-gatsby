@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
@@ -11,9 +11,10 @@ import {
   contentHeadings,
   dropCap,
 } from '../../styles';
+import { modifyExternalLinks } from '../../util';
 import SplitSection from '../SplitSection';
 
-const TextImage = ({ data }) => {
+const TextImage = ({ data, url }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
   const sectionStyle = css`
     ${container.min}
@@ -40,6 +41,12 @@ const TextImage = ({ data }) => {
     }
   `;
 
+  const [body, setBody] = useState(data.field_body.processed);
+
+  useEffect(() => {
+    setBody(modifyExternalLinks(data.field_body.processed, url));
+  }, []);
+
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
@@ -52,15 +59,11 @@ const TextImage = ({ data }) => {
           `}
         />
       </section>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section dangerouslySetInnerHTML={{ __html: body }} />
     </SplitSection>
   ) : (
     <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section dangerouslySetInnerHTML={{ __html: body }} />
       <section>
         <Img
           fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
@@ -77,6 +80,7 @@ const TextImage = ({ data }) => {
 
 TextImage.propTypes = {
   data: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default TextImage;
