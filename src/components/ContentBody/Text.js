@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
@@ -11,11 +11,18 @@ import {
   mediaQueries,
   dropCap,
 } from '../../styles';
+import { modifyExternalLinks } from '../../util';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
-const Text = ({ data }) => {
+const Text = ({ data, url }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
+  const [body, setBody] = useState(data.field_body.processed);
+
+  useEffect(() => {
+    setBody(modifyExternalLinks(data.field_body.processed, url));
+  }, []);
+
   return (
     <FullWidthSection
       fontWeight={weights.thin}
@@ -25,7 +32,7 @@ const Text = ({ data }) => {
       align='start'
       justify='start'
       height='auto'
-      dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+      dangerouslySetInnerHTML={{ __html: body }}
       css={css`
         .stats-container,
         .stat-container {
@@ -84,6 +91,7 @@ const Text = ({ data }) => {
 
 Text.propTypes = {
   data: PropTypes.object.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default Text;
