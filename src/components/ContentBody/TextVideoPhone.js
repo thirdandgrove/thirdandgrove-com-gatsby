@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
@@ -10,18 +10,11 @@ import {
   contentHeadings,
   dropCap,
 } from '../../styles';
-import { modifyExternalLinks } from '../../util';
 import SplitSection from '../SplitSection';
 import PhoneVideo from '../PhoneVideo';
 
-const TextVideoPhone = ({ data, url }) => {
+const TextVideoPhone = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
-  const [body, setBody] = useState(data.field_body.processed);
-
-  useEffect(() => {
-    setBody(modifyExternalLinks(data.field_body.processed, url));
-  }, []);
-
   const sectionStyle = css`
     ${container.min}
     font-weight: ${weights.thin};
@@ -64,14 +57,14 @@ const TextVideoPhone = ({ data, url }) => {
       </section>
       <section
         css={sectionVerticalAlignment}
-        dangerouslySetInnerHTML={{ __html: body }}
+        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       />
     </SplitSection>
   ) : (
     <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
       <section
         css={sectionVerticalAlignment}
-        dangerouslySetInnerHTML={{ __html: body }}
+        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       />
       <section>
         <PhoneVideo
@@ -86,7 +79,6 @@ const TextVideoPhone = ({ data, url }) => {
 
 TextVideoPhone.propTypes = {
   data: PropTypes.object.isRequired,
-  url: PropTypes.string.isRequired,
 };
 
 export default TextVideoPhone;

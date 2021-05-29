@@ -17,7 +17,6 @@
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.9",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
