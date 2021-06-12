@@ -4,20 +4,16 @@ import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
-import loadable from '@loadable/component';
 
 import mp4 from '../../static/thirdgrove-work.mp4';
 import { weights, mediaQueries, container, fonts } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import { ensureTrailingSlash } from '../util';
-
-const Layout = loadable(() => import('../components/layout'));
-const CTA = loadable(() => import('../components/CTA'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
-const VideoSection = loadable(() => import('../components/VideoSection'));
-const FakeButton = loadable(() => import('../components/FakeButton'));
+import VideoSection from '../components/VideoSection';
+import FullWidthSection from '../components/FullWidthSection';
+import Layout from '../components/layout';
+import CTA from '../components/CTA';
+import FakeButton from '../components/FakeButton';
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -312,6 +308,7 @@ const Work = () => {
       }
     }
   `);
+
   const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
 
   return (
@@ -323,6 +320,7 @@ const Work = () => {
       }}
     >
       <VideoSection url={allNodeHomePage.edges[0].node.field_video} mp4={mp4} />
+
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}
