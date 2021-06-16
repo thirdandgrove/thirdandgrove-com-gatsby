@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
 import Button from '../Button';
-import { mediaQueries } from '../../styles';
+import { mediaQueries, colors } from '../../styles';
 
 import OverlayForm from './OverlayForm';
 
@@ -30,20 +30,36 @@ const ButtonFormDownload = ({
     }
   };
 
+  const solidButtonStyles = css`
+    display: none;
+
+    ${mediaQueries.phoneLarge} {
+      display: inline-block;
+    }
+
+    span {
+      background-image: linear-gradient(
+        to bottom,
+        ${colors.white},
+        ${colors.white} 50%,
+        ${colors.white} 50%
+      );
+    }
+
+    &::before {
+      background: ${colors.tagGray};
+      height: 100%;
+    }
+
+    ${styles}
+  `;
+
   return (
     <>
       {formSubmitted ? (
         <a href={filepath} target='_blank' rel='noreferrer'>
           <Button
-            css={css`
-              display: none;
-
-              ${mediaQueries.phoneLarge} {
-                display: inline-block;
-              }
-
-              ${styles}
-            `}
+            css={solidButtonStyles}
             onClick={() => {}}
             onKeyDown={onKeypress}
           >
@@ -52,15 +68,7 @@ const ButtonFormDownload = ({
         </a>
       ) : (
         <Button
-          css={css`
-            display: none;
-
-            ${mediaQueries.phoneLarge} {
-              display: inline-block;
-            }
-
-            ${styles}
-          `}
+          css={solidButtonStyles}
           onClick={e => handleClick(e)}
           onKeyDown={onKeypress}
         >
