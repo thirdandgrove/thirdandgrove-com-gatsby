@@ -106,6 +106,31 @@ const Insights = ({ data }) => {
         {post.relationships.field_e_book_file ? (
           <>
             <FullWidthSection
+              minHeight='none'
+              height='100px'
+              padding='0 20px 50px'
+            >
+              <ButtonFormDownload
+                filepath={
+                  post.relationships.field_e_book_file.localFile.publicURL
+                }
+                text='Access E-book'
+                header='Submit your email to access our free ebook'
+                confirmMessage='Thanks for you submission!'
+                subheader=''
+                formName='ebook-form'
+                formSubmitted={formSubmitted}
+                setFormSubmitted={setFormSubmitted}
+                styles={css`
+                  margin: 0 auto;
+                  display: block;
+                  ${formSubmitted
+                    ? `margin-bottom: 50px;`
+                    : `margin-bottom: 0;`}
+                `}
+              />
+            </FullWidthSection>
+            <FullWidthSection
               fontWeight={weights.thin}
               margin='0 auto'
               padding={formSubmitted ? '50px 20px 25px' : '0 20px'}
@@ -185,31 +210,6 @@ const Insights = ({ data }) => {
                   }}
                 />
               )}
-            </FullWidthSection>
-            <FullWidthSection
-              minHeight='none'
-              height='100px'
-              padding='0 20px 100px'
-            >
-              <ButtonFormDownload
-                filepath={
-                  post.relationships.field_e_book_file.localFile.publicURL
-                }
-                text='Access E-book'
-                header='Submit your email to access our free ebook'
-                confirmMessage='Thanks for you submission!'
-                subheader=''
-                formName='ebook-form'
-                formSubmitted={formSubmitted}
-                setFormSubmitted={setFormSubmitted}
-                styles={css`
-                  margin: 0 auto;
-                  display: block;
-                  ${formSubmitted
-                    ? `margin-bottom: 50px;`
-                    : `margin-bottom: 0;`}
-                `}
-              />
             </FullWidthSection>
           </>
         ) : (
