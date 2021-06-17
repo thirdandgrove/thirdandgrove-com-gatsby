@@ -115,8 +115,8 @@ const Insights = ({ data }) => {
                   post.relationships.field_e_book_file.localFile.publicURL
                 }
                 text='Access E-book'
-                header='Submit your email to access our free ebook'
-                confirmMessage='Thanks for you submission!'
+                header='Submit your email to access our free ebook.'
+                confirmMessage='Thank you for you submission!'
                 subheader=''
                 formName='ebook-form'
                 formSubmitted={formSubmitted}
