@@ -3,7 +3,6 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
-import loadable from '@loadable/component';
 
 import {
   mediaQueries,
@@ -14,8 +13,7 @@ import {
   weights,
 } from '../../styles';
 import useWindow from '../../hooks/useWindow';
-
-const FullWidthSection = loadable(() => import('../FullWidthSection'));
+import FullWidthSection from '../FullWidthSection';
 
 const Video = ({ data }) => {
   const isBrowser = typeof window !== 'undefined' && window.document;
@@ -81,8 +79,7 @@ const Video = ({ data }) => {
     iframe {
       width: 100% !important;
       left: 0 !important;
-      margin: 0import { loadable } from '@loadable/component';
-;
+      margin: 0;
     }
   `;
 
