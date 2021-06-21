@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
-import { loadable } from '@loadable/component';
+import loadable from '@loadable/component';
 
 import {
   mediaQueries,
