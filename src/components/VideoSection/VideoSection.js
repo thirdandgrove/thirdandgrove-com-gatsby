@@ -3,9 +3,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
-import loadable from '@loadable/component';
 
-import useWindow from '../../hooks/useWindow';
 import {
   mediaQueries,
   jsBreakpoints,
@@ -13,10 +11,11 @@ import {
   fonts,
   weights,
 } from '../../styles';
-
-const FullWidthSection = loadable(() => import('../FullWidthSection'));
+import useWindow from '../../hooks/useWindow';
+import FullWidthSection from '../FullWidthSection';
 
 const VideoSection = ({ url, mp4 }) => {
+  const isBrowser = typeof window !== 'undefined' && window.document;
   const { width } = useWindow();
   const refMovie = useRef();
   const refVimeo = useRef();
@@ -174,29 +173,6 @@ const VideoSection = ({ url, mp4 }) => {
 
       {isLgScreen && (
         <>
-          <ReactPlayer
-            css={playerStyles}
-            url={url}
-            playing={playing}
-            ref={refVimeo}
-            volume={hasInteracted ? 1 : 0}
-            width='100%'
-            style={{
-              display: `${hasInteracted && playing ? 'block' : 'none'}`,
-              opacity: `${hasInteracted && playing ? '1' : '0.65'}`,
-            }}
-            config={{
-              vimeo: {
-                playerOptions: {
-                  controls: false,
-                  responsive: true,
-                  autoplay: false,
-                  loop: isLgScreen,
-                },
-              },
-            }}
-          />
-
           <video
             alt=''
             playsInline

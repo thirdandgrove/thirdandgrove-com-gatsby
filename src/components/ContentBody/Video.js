@@ -3,9 +3,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
-import loadable from '@loadable/component';
 
-import useWindow from '../../hooks/useWindow';
 import {
   mediaQueries,
   jsBreakpoints,
@@ -14,10 +12,11 @@ import {
   fonts,
   weights,
 } from '../../styles';
-
-const FullWidthSection = loadable(() => import('../FullWidthSection'));
+import useWindow from '../../hooks/useWindow';
+import FullWidthSection from '../FullWidthSection';
 
 const Video = ({ data }) => {
+  const isBrowser = typeof window !== 'undefined' && window.document;
   const { width } = useWindow();
   const refVimeo = useRef();
   const isLgScreen = width >= jsBreakpoints.phoneLarge;
@@ -146,23 +145,25 @@ const Video = ({ data }) => {
           {hasInteracted && playing ? 'Pause' : 'Play'}
         </button>
       )}
-      <ReactPlayer
-        css={playerStyles}
-        url={videoLink.uri}
-        playing={playing}
-        ref={refVimeo}
-        width='100%'
-        config={{
-          vimeo: {
-            playerOptions: {
-              controls: showControls,
-              responsive: true,
-              autoplay: false,
-              loop: false,
+      {isBrowser && (
+        <ReactPlayer
+          css={playerStyles}
+          url={videoLink.uri}
+          playing={playing}
+          ref={refVimeo}
+          width='100%'
+          config={{
+            vimeo: {
+              playerOptions: {
+                controls: showControls,
+                responsive: true,
+                autoplay: false,
+                loop: false,
+              },
             },
-          },
-        }}
-      />
+          }}
+        />
+      )}
     </FullWidthSection>
   );
 };
