@@ -116,7 +116,7 @@ const Insights = ({ data }) => {
                 }
                 text='Access E-book'
                 header='Submit your email to access our free ebook.'
-                confirmMessage='Thank you for you submission!'
+                confirmMessage='Thank you for your submission!'
                 subheader=''
                 formName='ebook-form'
                 formSubmitted={formSubmitted}
