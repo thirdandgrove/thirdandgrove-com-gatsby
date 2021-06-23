@@ -58,6 +58,7 @@ const InsightsSlider = ({
         css={css`
           max-width: 100%;
           max-height: 100%;
+          width: 100%;
           margin-bottom: 65px;
 
           .slick-list {
