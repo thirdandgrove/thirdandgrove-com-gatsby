@@ -67,8 +67,10 @@ const Insights = ({ data }) => {
     mobileMinHeight: '470px',
     titleMarginBottom: '40px',
     imageAlt,
-    summary: post?.field_summary.processed,
-    ebook: post.relationships.field_e_book_file,
+    summary: post.field_summary ? post?.field_summary.processed : '',
+    ebook: post.relationships.field_e_book_file
+      ? post.relationships.field_e_book_file
+      : '',
   };
 
   if (post.relationships.field_image) {
