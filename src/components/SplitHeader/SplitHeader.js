@@ -126,8 +126,8 @@ const SplitHeader = ({
     }
 
     position: relative;
-    margin-bottom: ${titleMarginBottom};
-    padding: 0 20px;
+    margin-bottom: 15px;
+    padding: 0;
     line-height: 1.23;
     font-size: 29px;
     font-weight: ${weights.medium};
@@ -157,7 +157,7 @@ const SplitHeader = ({
     }
 
     ${mediaQueries.phoneLarge} {
-      padding: ${titlePadding};
+      padding: 0;
       font-size: 52px;
       line-height: 1.17;
       letter-spacing: -1px;
@@ -224,9 +224,6 @@ const SplitHeader = ({
     }
   `;
 
-  const getImageSrc = name =>
-    images.filter(({ node }) => name === node.name)[0].node.publicURL;
-
   useEffect(() => {
     setIsMobile(
       typeof window !== 'undefined' && width > jsBreakpoints.phoneLarge
@@ -240,16 +237,25 @@ const SplitHeader = ({
   const innerSectionCSS = css`
     ${container.max}
     display: flex;
+    flex-direction: column;
 
-    div.left,
-    div.right {
+    div.left {
       flex: 1;
     }
 
-    ${mediaQueries.desktop} {
+    div.right {
+      flex: 2;
+    }
+
+    ${mediaQueries.phoneLarge} {
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: row;
+
+      div.left {
+        margin-right: 10px;
+      }
     }
   `;
 
@@ -275,11 +281,6 @@ const SplitHeader = ({
       >
         <div css={innerSectionCSS}>
           <div className='left'>
-            {label && (
-              <span data-cy='labelText' css={headerlabel}>
-                {label}
-              </span>
-            )}
             {title && (
               <h1 data-cy='titleText' css={headerTitle}>
                 {title}
@@ -294,12 +295,12 @@ const SplitHeader = ({
             <FullWidthSection
               fontWeight={weights.thin}
               margin='0 auto'
-              padding={formSubmitted ? '50px 20px 25px' : '0 20px'}
+              padding={formSubmitted ? '50px 20px 25px' : '0'}
               textAlign={formSubmitted ? `center` : `left`}
               align={formSubmitted ? `center` : `start`}
               justify={formSubmitted ? `center` : `start`}
               height='auto'
-              minHeight={formSubmitted ? `0` : `300px`}
+              minHeight={formSubmitted ? `0` : `0`}
               css={css`
                 a {
                   text-decoration: underline;
@@ -351,7 +352,6 @@ const SplitHeader = ({
               formSubmitted={formSubmitted}
               setFormSubmitted={setFormSubmitted}
               styles={css`
-                margin: 0 auto;
                 display: block;
                 ${formSubmitted ? `margin-bottom: 50px;` : `margin-bottom: 0;`}
               `}
@@ -361,13 +361,13 @@ const SplitHeader = ({
           <div className='right'>
             {splitHeroImage && (
               <Img
-                fluid={splitHeroImage.localFile.childImageSharp.fluid}
+                fluid={splitHeroImage.localFile.childImageSquare.fluid}
                 alt={imageAlt}
                 css={css`
-                  margin-left: 20px;
-                  margin-right: 20px;
+                  margin-top: 25px;
 
                   ${mediaQueries.phoneLarge} {
+                    margin-top: 0;
                     margin-left: auto;
                     margin-right: auto;
                   }

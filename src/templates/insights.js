@@ -121,13 +121,12 @@ const Insights = ({ data }) => {
             />
           )}
         {post.relationships.field_e_book_file && <div ref={ref} />}
-        {!post.relationships.field_e_book_file && (
-          <ContentBody
-            comps={post.relationships.field_components}
-            type='insight'
-            trim
-          />
-        )}
+
+        <ContentBody
+          comps={post.relationships.field_components}
+          type='insight'
+          trim
+        />
       </div>
       {!post.relationships.field_e_book_file && (
         <>
@@ -200,6 +199,11 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+            childImageSquare: childImageSharp {
+              fluid(maxWidth: 1280, maxHeight: 1280) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
