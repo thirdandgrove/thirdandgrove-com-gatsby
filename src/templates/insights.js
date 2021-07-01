@@ -207,6 +207,11 @@ export const query = graphql`
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
+            childImageLandscape: childImageSharp {
+              fluid(maxWidth: 1280, maxHeight: 780) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
           }
         }
         field_components {

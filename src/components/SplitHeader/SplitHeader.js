@@ -158,7 +158,7 @@ const SplitHeader = ({
 
     ${mediaQueries.phoneLarge} {
       padding: 0;
-      font-size: 52px;
+      font-size: 42px;
       line-height: 1.17;
       letter-spacing: -1px;
     }
@@ -225,9 +225,7 @@ const SplitHeader = ({
   `;
 
   useEffect(() => {
-    setIsMobile(
-      typeof window !== 'undefined' && width > jsBreakpoints.phoneLarge
-    );
+    setIsMobile(typeof window !== 'undefined' && width > jsBreakpoints.tablet);
   }, [width]);
 
   useEffect(() => {
@@ -237,24 +235,41 @@ const SplitHeader = ({
   const innerSectionCSS = css`
     ${container.max}
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     div.left {
+      margin-top: 50px;
       flex: 1;
     }
 
     div.right {
-      flex: 2;
+      flex: 1;
     }
 
-    ${mediaQueries.phoneLarge} {
+    ${mediaQueries.tablet} {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: row;
 
       div.left {
+        margin-top: 0;
         margin-right: 10px;
+        flex: 1;
+      }
+      div.right {
+        flex: 1;
+      }
+    }
+
+    ${mediaQueries.phoneLarge} {
+      div.left {
+        margin-top: 0;
+        margin-right: 10px;
+        flex: 1;
+      }
+      div.right {
+        flex: 2;
       }
     }
   `;
@@ -295,9 +310,9 @@ const SplitHeader = ({
             <FullWidthSection
               fontWeight={weights.thin}
               margin='0 auto'
-              padding={formSubmitted ? '50px 20px 25px' : '0'}
-              textAlign={formSubmitted ? `center` : `left`}
-              align={formSubmitted ? `center` : `start`}
+              padding={formSubmitted ? '0' : '0'}
+              textAlign={formSubmitted ? `left` : `left`}
+              align={formSubmitted ? `start` : `start`}
               justify={formSubmitted ? `center` : `start`}
               height='auto'
               minHeight={formSubmitted ? `0` : `0`}
@@ -318,21 +333,25 @@ const SplitHeader = ({
                 h3 {
                   color: ${fontColor};
                 }
-                h2.thanks {
-                  text-align: center;
-                  margin: 0 auto;
+                .thanks {
+                  margin: 0;
                   justify-self: center;
                   color: ${fontColor};
+                  padding: 0;
+                }
+
+                .thanks--container {
+                  margin: 20px 0 25px;
                 }
               `}
             >
               {formSubmitted ? (
-                <div>
-                  <h2 className='thanks'>
-                    Thank you for submitting your email.
-                    <br />
+                <div className='thanks--container'>
+                  <p className='thanks'>Thank you for submitting your email.</p>
+
+                  <p className='thanks'>
                     Use the button below to download our ebook.
-                  </h2>
+                  </p>
                 </div>
               ) : (
                 <div
@@ -344,7 +363,7 @@ const SplitHeader = ({
             </FullWidthSection>
             <ButtonFormDownload
               filepath={ebook.localFile.publicURL}
-              text='Access E-book'
+              text='Download E-book'
               header='Submit your email to access our free ebook'
               confirmMessage='Thanks for you submission!'
               subheader=''
@@ -361,7 +380,11 @@ const SplitHeader = ({
           <div className='right'>
             {splitHeroImage && (
               <Img
-                fluid={splitHeroImage.localFile.childImageSquare.fluid}
+                fluid={
+                  !isMobile
+                    ? splitHeroImage.localFile.childImageLandscape.fluid
+                    : splitHeroImage.localFile.childImageSquare.fluid
+                }
                 alt={imageAlt}
                 css={css`
                   margin-top: 25px;
