@@ -157,6 +157,7 @@ const SplitHeader = ({
       letter-spacing: -1px;
     }
   `;
+
   const sectionBackgroundCSS =
     heroImageMobile && heroImage
       ? css`
@@ -169,6 +170,7 @@ const SplitHeader = ({
           }
         `
       : css``;
+
   const sectionCSS = css`
     padding: 88px 0;
     background-color: ${color};
@@ -200,25 +202,17 @@ const SplitHeader = ({
     }
   `;
 
-  useEffect(() => {
-    setIsMobile(typeof window !== 'undefined' && width > jsBreakpoints.tablet);
-  }, [width]);
-
-  useEffect(() => {
-    setLoaded('block');
-  }, []);
-
   const innerSectionCSS = css`
     ${container.max}
     display: flex;
     flex-direction: column-reverse;
 
-    div.left {
+    div.column-one {
       margin-top: 50px;
       flex: 1;
     }
 
-    div.right {
+    div.column-two {
       flex: 1;
     }
 
@@ -228,27 +222,37 @@ const SplitHeader = ({
       align-items: center;
       flex-direction: row;
 
-      div.left {
+      div.column-one {
         margin-top: 0;
         margin-right: 10px;
         flex: 1;
       }
-      div.right {
+
+      div.column-two {
         flex: 1;
       }
     }
 
     ${mediaQueries.phoneLarge} {
-      div.left {
+      div.column-one {
         margin-top: 0;
         margin-right: 10px;
         flex: 1;
       }
-      div.right {
+
+      div.column-two {
         flex: 2;
       }
     }
   `;
+
+  useEffect(() => {
+    setIsMobile(typeof window !== 'undefined' && width > jsBreakpoints.tablet);
+  }, [width]);
+
+  useEffect(() => {
+    setLoaded('block');
+  }, []);
 
   return (
     <>
@@ -258,6 +262,7 @@ const SplitHeader = ({
         image={image}
         noIndex={noIndex}
       />
+
       <TopNav
         fill={fontColor}
         hideNav={hideNav}
@@ -271,7 +276,7 @@ const SplitHeader = ({
         minHeight='100vh'
       >
         <div css={innerSectionCSS}>
-          <div className='left'>
+          <div className='column-one'>
             {title && (
               <h1 data-cy='titleText' css={headerTitle}>
                 {title}
@@ -295,29 +300,25 @@ const SplitHeader = ({
               css={css`
                 a {
                   text-decoration: underline;
-                  color: ${fontColor};
                 }
-                p {
-                  color: ${fontColor};
-                }
-                li {
-                  color: ${fontColor};
-                }
-                h2 {
-                  color: ${fontColor};
-                }
-                h3 {
-                  color: ${fontColor};
-                }
+
                 .thanks {
                   margin: 0;
                   justify-self: center;
-                  color: ${fontColor};
                   padding: 0;
                 }
 
                 .thanks--container {
                   margin: 20px 0 25px;
+                }
+
+                a,
+                p,
+                li,
+                h2,
+                h3,
+                .thanks {
+                  color: ${fontColor};
                 }
               `}
             >
@@ -353,7 +354,7 @@ const SplitHeader = ({
             />
           </div>
 
-          <div className='right'>
+          <div className='column-two'>
             {splitHeroImage && (
               <Img
                 fluid={
