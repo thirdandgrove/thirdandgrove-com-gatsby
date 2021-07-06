@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
@@ -15,22 +15,6 @@ import {
 
 const Insights = ({ data }) => {
   const post = data.insight;
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const ref = useRef(null);
-
-  const scrollToShow = (refernce, yOffset) => {
-    const el = refernce.current;
-    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-    window.scrollTo({ top: y, behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    if (formSubmitted === true) {
-      scrollToShow(ref, -150);
-    }
-  }, [formSubmitted]);
-
   const imageAlt = post.field_image && post.field_image.alt;
 
   const backgroundColor = post.field_color && post.field_color.color;
@@ -99,7 +83,6 @@ const Insights = ({ data }) => {
         {!post.relationships.field_e_book_file &&
           post.relationships.field_image && (
             <Img
-              ref={ref}
               fluid={
                 post.relationships.field_image.localFile.childImageSharp.fluid
               }
@@ -120,7 +103,6 @@ const Insights = ({ data }) => {
               `}
             />
           )}
-        {post.relationships.field_e_book_file && <div ref={ref} />}
 
         <ContentBody
           comps={post.relationships.field_components}

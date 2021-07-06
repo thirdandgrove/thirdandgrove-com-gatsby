@@ -13,8 +13,6 @@ import {
   mediaQueries,
   weights,
   jsBreakpoints,
-  contentH2,
-  contentHeadings,
 } from '../../styles';
 import useWindow from '../../hooks/useWindow';
 import ButtonFormDownload from '../ButtonFormDownload';
@@ -49,15 +47,12 @@ import FullWidthSection from '../FullWidthSection';
  */
 const SplitHeader = ({
   title,
-  label,
   labelMobileOnly,
   metaTitle,
   description,
   children,
   color,
   invert,
-  titleMarginBottom,
-  titlePadding,
   image,
   heroImage,
   heroImageMobile,
@@ -65,7 +60,6 @@ const SplitHeader = ({
   hideNav,
   styles,
   banner,
-  images,
   navLink,
   noIndex,
   splitHeroImage,
@@ -199,24 +193,6 @@ const SplitHeader = ({
     animation-timing-function: ease-out;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-
-    ${mediaQueries.desktop} {
-      margin-bottom: 42px;
-      ${labelMobileOnly && `display: none`};
-    }
-  `;
-
-  const headerlabel = css`
-    margin-bottom: 32px;
-    font-family: ${fonts.sans};
-    font-size: 15px;
-    font-weight: ${weights.light};
-    line-height: 2.4;
-    text-transform: capitalize;
-    color: ${fontColor};
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
 
     ${mediaQueries.desktop} {
       margin-bottom: 42px;
@@ -410,15 +386,12 @@ const SplitHeader = ({
 export const headerPropTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   subTitle: PropTypes.string,
-  label: PropTypes.string,
   labelMobileOnly: PropTypes.bool,
   metaTitle: PropTypes.string,
   description: PropTypes.string,
   children: PropTypes.node,
   invert: PropTypes.bool,
   color: PropTypes.string,
-  titleMarginBottom: PropTypes.string,
-  titlePadding: PropTypes.string,
   image: PropTypes.string,
   splitHeroImage: PropTypes.object,
   heroImage: PropTypes.string,
@@ -426,7 +399,6 @@ export const headerPropTypes = {
   hideNav: PropTypes.bool,
   styles: PropTypes.object,
   banner: PropTypes.bool,
-  images: PropTypes.array,
   navLink: PropTypes.string,
   noIndex: PropTypes.bool,
   imageAlt: PropTypes.string,
@@ -439,22 +411,18 @@ SplitHeader.propTypes = headerPropTypes;
 SplitHeader.defaultProps = {
   title: null,
   subTitle: null,
-  label: null,
   labelMobileOnly: false,
   metaTitle: null,
   description: null,
   children: null,
   invert: false,
   color: colors.yellow,
-  titleMarginBottom: '0',
-  titlePadding: '0 20px',
   image: null,
   heroImage: null,
   heroImageMobile: null,
   hideNav: false,
   styles: {},
   banner: false,
-  images: [],
   navLink: 'https://engage.acquia.com',
   noIndex: false,
   splitHeroImage: null,
