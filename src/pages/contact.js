@@ -85,7 +85,7 @@ const Contact = () => {
       headerData={{
         title: 'Contact us:',
         height: '850px',
-        children: <ContactForm />,
+        children: <ContactForm useSteps />,
       }}
     >
       <div css={[container.textOnly, wrapperCss]}>

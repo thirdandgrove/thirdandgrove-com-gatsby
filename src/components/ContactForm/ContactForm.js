@@ -10,7 +10,8 @@ import { encode } from '../../util';
 
 import Thanks from './Thanks';
 
-const ContactForm = ({ formName, altStyle }) => {
+const ContactForm = ({ formName, useSteps, altStyle }) => {
+  const [step, setStep] = useState(1);
   const [formState, updateForm] = useState({
     comments: '',
     email: '',
@@ -24,6 +25,19 @@ const ContactForm = ({ formName, altStyle }) => {
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
+  };
+
+  const handleNext = () => {
+    const { name } = formState;
+    if (!name) {
+      const currentErrs = {};
+      if (!name) {
+        currentErrs.name = 'Name is required';
+      }
+      updateErrors(currentErrs);
+      return;
+    }
+    setStep(s => s + 1);
   };
 
   const submitContact = event => {
@@ -41,14 +55,11 @@ const ContactForm = ({ formName, altStyle }) => {
       if (!name) {
         currentErrs.name = 'Name is required';
       }
-      if (!website) {
-        currentErrs.website = 'Website is required';
-      }
       if (!email) {
         currentErrs.email = 'Email is required';
       }
-      if (!comments) {
-        currentErrs.comments = 'Message is required';
+      if (!website) {
+        currentErrs.website = 'Website is required';
       }
       updateErrors(currentErrs);
       return;
@@ -259,7 +270,7 @@ const ContactForm = ({ formName, altStyle }) => {
           {errs &&
             Object.values(errs).map((err, i) => (
               <p key={err}>
-                {err}{' '}
+                {`${err} `}
                 {i !== Object.keys(errs).length - 1 && (
                   <span>&nbsp;-&nbsp;</span>
                 )}
@@ -309,108 +320,103 @@ const ContactForm = ({ formName, altStyle }) => {
             css={css`
               ${mediaQueries.phoneLarge} {
                 display: grid;
-                grid-template-columns: repeat(2, calc(50% - 10px));
+                grid-template-columns: ${useSteps
+                  ? 'repeat(1, 100%)'
+                  : 'repeat(2, calc(50% - 10px))'};
                 grid-column-gap: 20px;
                 align-items: stretch;
               }
             `}
           >
-            <fieldset css={fieldSetStyles}>
-              {/* eslint-disable-next-line */}
-              <label
-                htmlFor='cf-name'
-                css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
-              >
-                <span>Name</span>
-              </label>
-              <Input
-                css={inputStyles}
-                value={formState.name}
-                onChange={updateInput}
-                type='text'
-                name='name'
-                id='cf-name'
-                altStyle={altStyle}
-              />
-            </fieldset>
+            {(!useSteps || step === 1) && (
+              <fieldset css={fieldSetStyles}>
+                {/* eslint-disable-next-line */}
+                <label
+                  htmlFor='cf-name'
+                  css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
+                >
+                  <span>Name</span>
+                </label>
+                <Input
+                  css={inputStyles}
+                  value={formState.name}
+                  onChange={updateInput}
+                  type='text'
+                  name='name'
+                  id='cf-name'
+                  altStyle={altStyle}
+                />
+              </fieldset>
+            )}
 
-            <fieldset css={fieldSetStyles}>
-              {/* eslint-disable-next-line */}
-              <label
-                htmlFor='cf-email'
-                css={[labelCss, formState.email ? activeLabel : inactiveLabel]}
-              >
-                <span>Email</span>
-              </label>
-              <Input
-                css={inputStyles}
-                value={formState.email}
-                onChange={updateInput}
-                type='email'
-                name='email'
-                id='cf-email'
-                altStyle={altStyle}
-              />
-            </fieldset>
+            {(!useSteps || step === 2) && (
+              <>
+                <fieldset css={fieldSetStyles}>
+                  {/* eslint-disable-next-line */}
+                  <label
+                    htmlFor='cf-email'
+                    css={[
+                      labelCss,
+                      formState.email ? activeLabel : inactiveLabel,
+                    ]}
+                  >
+                    <span>Email</span>
+                  </label>
+                  <Input
+                    css={inputStyles}
+                    value={formState.email}
+                    onChange={updateInput}
+                    type='email'
+                    name='email'
+                    id='cf-email'
+                    altStyle={altStyle}
+                  />
+                </fieldset>
 
-            <fieldset css={fieldSetStyles}>
-              <label
-                htmlFor='cf-website'
-                css={[
-                  labelCss,
-                  formState.website ? activeLabel : inactiveLabel,
-                ]}
-              >
-                <span>Website</span>{' '}
-              </label>
-              <Input
-                css={inputStyles}
-                value={formState.website}
-                onChange={updateInput}
-                name='website'
-                id='cf-website'
-                altStyle={altStyle}
-              />
-            </fieldset>
+                <fieldset css={fieldSetTextAreaStyles}>
+                  {/* eslint-disable-next-line */}
+                  <label
+                    htmlFor='cf-website'
+                    css={[
+                      labelCss,
+                      formState.website ? activeLabel : inactiveLabel,
+                    ]}
+                  >
+                    <span>Website</span>
+                  </label>
+                  <Input
+                    css={inputStyles}
+                    value={formState.website}
+                    onChange={updateInput}
+                    name='website'
+                    id='cf-website'
+                    altStyle={altStyle}
+                  />
+                </fieldset>
 
-            <fieldset css={fieldSetStyles}>
-              <label
-                htmlFor='cf-phone'
-                css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}
-              >
-                <span>Phone [optional]</span>{' '}
-              </label>
-              <Input
-                css={inputStyles}
-                value={formState.phone}
-                onChange={updateInput}
-                type='tel'
-                name='phone'
-                id='cf-phone'
-                altStyle={altStyle}
-              />
-            </fieldset>
-
-            <fieldset css={fieldSetTextAreaStyles}>
-              <label
-                htmlFor='cf-message'
-                css={[
-                  labelCss,
-                  fullWidth,
-                  formState.comments ? activeLabel : inactiveLabel,
-                ]}
-              >
-                <span>Leave a Message</span>{' '}
-              </label>
-              <TextArea
-                value={formState.comments}
-                onChange={updateInput}
-                data-cy='messageField'
-                name='comments'
-                id='cf-message'
-                altStyle={altStyle}
-              />
-            </fieldset>
+                <fieldset css={fieldSetTextAreaStyles}>
+                  {/* eslint-disable-next-line */}
+                  <label
+                    htmlFor='cf-message'
+                    css={[
+                      labelCss,
+                      fullWidth,
+                      formState.comments ? activeLabel : inactiveLabel,
+                    ]}
+                  >
+                    <span>Leave a Message [Optional]</span>
+                  </label>
+                  <TextArea
+                    value={formState.comments}
+                    onChange={updateInput}
+                    data-cy='messageField'
+                    name='comments'
+                    id='cf-message'
+                    altStyle={altStyle}
+                  />
+                </fieldset>
+              </>
+            )}
           </div>
           <div
             css={css`
@@ -424,9 +430,13 @@ const ContactForm = ({ formName, altStyle }) => {
               }
             `}
           >
-            <Button data-cy='contactSubmit' type='submit'>
-              send
-            </Button>
+            {!useSteps || step === 2 ? (
+              <Button data-cy='contactSubmit' type='submit'>
+                send
+              </Button>
+            ) : (
+              <Button onClick={handleNext}>next</Button>
+            )}
           </div>
           <ErrorToaster errs={errors} />
         </form>
@@ -440,11 +450,13 @@ const ContactForm = ({ formName, altStyle }) => {
 ContactForm.propTypes = {
   formName: PropTypes.string,
   altStyle: PropTypes.bool,
+  useSteps: PropTypes.bool,
 };
 
 ContactForm.defaultProps = {
   formName: 'contact',
   altStyle: false,
+  useSteps: false,
 };
 
 export default ContactForm;
