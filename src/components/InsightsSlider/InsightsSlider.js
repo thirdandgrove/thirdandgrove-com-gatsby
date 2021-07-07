@@ -17,11 +17,12 @@ const InsightsSlider = ({
   data,
 }) => {
   const settings = {
-    arrows: false,
+    arrows: true,
     autoplay: false,
     autoplaySpeed: 7500,
     cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
     centerPadding: 90,
+    dots: true,
     infinite: true,
     speed: 1000,
     centerMode: true,
@@ -48,13 +49,37 @@ const InsightsSlider = ({
           padding-bottom: 115px;
           padding-top: 90px;
         }
+
+        .slick-arrow {
+          width: 20px;
+          height: 16px;
+          opacity: 0.7;
+          transition: 0.3s ease opacity;
+
+          &:hover,
+          &:focus {
+            opacity: 1;
+          }
+
+          &::before {
+            display: none;
+          }
+        }
+
+        .slick-prev {
+          background: url('/images/arrow-l.svg');
+        }
+
+        .slick-next {
+          background: url('/images/arrow-r.svg');
+        }
       `}
     >
       {showTitle && <h2 css={smSectionHead}>{title}</h2>}
       <Slider
         {...settings}
         css={css`
-          max-width: 100%;
+          width: 85%;
           max-height: 100%;
           margin-bottom: 65px;
 
