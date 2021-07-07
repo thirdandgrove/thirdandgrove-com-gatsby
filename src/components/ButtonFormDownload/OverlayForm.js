@@ -223,6 +223,30 @@ const OverlayForm = ({
     }
   `;
 
+  const solidButtonStyles = css`
+    ${mediaQueries.phoneLarge} {
+      display: inline-block;
+    }
+
+    span {
+      background-image: linear-gradient(
+        to bottom,
+        ${colors.white},
+        ${colors.white} 50%,
+        ${colors.white} 50%
+      );
+    }
+
+    &::before {
+      background: ${colors.tagGray};
+      height: 100%;
+    }
+
+    max-width: 225px;
+    width: 100%;
+    margin: auto;
+  `;
+
   return (
     <>
       <Global
@@ -470,44 +494,19 @@ const OverlayForm = ({
                         id='of-privacyPolicy'
                       />
                       <span>
-                        By checking this box, I agree to receive emails from
-                        Shopify. Your information will be processed in
-                        accordance with Shopify’s{' '}
-                        <a
-                          href='https://www.shopify.com/legal/privacy'
-                          target='_blank'
-                          rel='noreferrer'
-                        >
-                          Privacy Policy
-                        </a>
-                        .
+                        By entering your email, you agree to receive emails from
+                        Third and Grove. Your information will be processed in
+                        accordance with our Privacy Policy.
                       </span>
                     </label>
                     <ReturnError errs={errors} name='privacyPolicy' />
                   </div>
-                  <span>
-                    By entering your email, you agree to receive emails from
-                    Shopify. Your information will be processed in accordance
-                    with our{' '}
-                    <a
-                      href='https://www.shopify.com/legal/privacy'
-                      target='_blank'
-                      rel='noreferrer'
-                    >
-                      Privacy Policy
-                    </a>
-                    .
-                  </span>
                 </fieldset>
 
                 <Button
                   onClick={onSubmit}
                   disabled={hasSubmitted}
-                  css={css`
-                    max-width: 225px;
-                    width: 100%;
-                    margin: auto;
-                  `}
+                  css={solidButtonStyles}
                 >
                   {hasSubmitted ? confirmMessage : buttonText}
                 </Button>
