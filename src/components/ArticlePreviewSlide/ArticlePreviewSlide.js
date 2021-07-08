@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
-import { fonts, weights, mediaQueries, container } from '../../styles';
+import { fonts, weights, mediaQueries, container, colors } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreviewSlide = ({ article }) => {
@@ -79,13 +79,17 @@ const ArticlePreviewSlide = ({ article }) => {
             css={css`
               flex: 0 0 38%;
 
-              .gatsby-image-wrapper > div {
-                // Forcing correct image aspect ratio, overriding inline
-                // gatsby-image provided styles
+              .gatsby-image-wrapper {
+                /* Forcing correct image aspect ratio, overriding inline
+                gatsby-image provided styles */
                 padding-bottom: 77% !important;
+                height: 0;
+                width: 100%;
 
                 ${mediaQueries.phoneLarge} {
                   padding-bottom: 88.9% !important;
+                  height: 0;
+                  width: 100%;
                 }
               }
             `}
@@ -98,6 +102,10 @@ const ArticlePreviewSlide = ({ article }) => {
               fadeIn={false}
               loading='eager'
               alt={article.field_image.alt}
+              backgroundColor={colors.yellow}
+              placeholderStyle={{ backgroundColor: colors.yellow }}
+              className='article-preview-image'
+              critical
             />
           </div>
         )}
