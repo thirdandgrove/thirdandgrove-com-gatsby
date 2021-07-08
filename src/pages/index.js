@@ -44,13 +44,13 @@ const Index = ({ data }) => {
       }}
     >
       <ProjectsSlider data={data.allCaseStudy} />
-      <CapabilitiesSlider
-        title='What We Do'
-        backgroundColor={colors.lightblue}
-      />
-      <InsightsSlider data={data.allInsight} />
       {hasScrolled || isScrolling ? (
         <>
+          <CapabilitiesSlider
+            title='What We Do'
+            backgroundColor={colors.lightblue}
+          />
+          <InsightsSlider data={data.allInsight} />
           <LogoGrid title='A Few of Our Friends' />
           <NewsletterFullWidthSection />
           <SplitSection>
