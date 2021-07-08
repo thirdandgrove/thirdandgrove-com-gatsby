@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import loadable from '@loadable/component';
 
+import { useHasBeenVisible } from '../hooks/useVisibility';
 import { colors } from '../styles';
 
 const NewsletterFullWidthSection = loadable(() =>
@@ -19,8 +20,15 @@ const CapabilitiesSlider = loadable(() =>
 );
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const SplitSection = loadable(() => import('../components/SplitSection'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
 
 const Index = ({ data }) => {
+  const halfPage = useRef();
+  const preload = useRef();
+  const hasScrolled = useHasBeenVisible(halfPage);
+  const isScrolling = useHasBeenVisible(preload);
   return (
     <Layout
       headerData={{
@@ -41,12 +49,18 @@ const Index = ({ data }) => {
         backgroundColor={colors.lightblue}
       />
       <InsightsSlider data={data.allInsight} />
-      <LogoGrid title='A Few of Our Friends' />
-      <NewsletterFullWidthSection />
-      <SplitSection>
-        <ContactUs />
-        <BeUs />
-      </SplitSection>
+      {hasScrolled || isScrolling ? (
+        <>
+          <LogoGrid title='A Few of Our Friends' />
+          <NewsletterFullWidthSection />
+          <SplitSection>
+            <ContactUs />
+            <BeUs />
+          </SplitSection>
+        </>
+      ) : (
+        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
+      )}
     </Layout>
   );
 };
