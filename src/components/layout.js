@@ -11,11 +11,12 @@ import '../styles/layout.css';
 
 const Header = loadable(() => import('./Header'));
 const Footer = loadable(() => import('./Footer'));
+const SplitHeader = loadable(() => import('./SplitHeader'));
 
-const Layout = ({ children, headerData }) => (
+const Layout = ({ children, headerData, split, splitHeaderData }) => (
   <>
     <Global styles={globalStyles} />
-    <Header {...headerData} />
+    {split ? <SplitHeader {...splitHeaderData} /> : <Header {...headerData} />}
     <main>{children}</main>
     <Footer />
   </>
@@ -24,10 +25,14 @@ const Layout = ({ children, headerData }) => (
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   headerData: PropTypes.shape(headerPropTypes),
+  split: PropTypes.bool,
+  splitHeaderData: PropTypes.object,
 };
 
 Layout.defaultProps = {
   headerData: {},
+  splitHeaderData: {},
+  split: false,
 };
 
 export default Layout;
