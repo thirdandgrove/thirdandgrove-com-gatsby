@@ -283,7 +283,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {
@@ -314,7 +314,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {
@@ -345,7 +345,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {

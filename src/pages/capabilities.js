@@ -128,28 +128,28 @@ export const query = graphql`
     technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     dataImageDesktop: file(relativePath: { eq: "data.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }

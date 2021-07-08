@@ -166,7 +166,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -217,7 +217,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 600, maxHeight: 600, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -244,7 +244,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 800, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -261,7 +261,7 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500, cropFocus: CENTER) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
@@ -272,7 +272,7 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
@@ -283,7 +283,7 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
