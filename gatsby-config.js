@@ -92,13 +92,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingId: 'UA-46758288-8',
-        head: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
