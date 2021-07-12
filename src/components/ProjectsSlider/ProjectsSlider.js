@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import Slider from 'react-slick';
+import loadable from '@loadable/component';
 
 import { mediaQueries, fonts, weights, colors } from '../../styles';
-import ProjectPreview from '../ProjectPreview';
-import FullWidthSection from '../FullWidthSection';
+
+const Slider = loadable(() => import('react-slick'));
+const ProjectPreview = loadable(() => import('../ProjectPreview'));
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
   const [count, setCount] = useState('01');

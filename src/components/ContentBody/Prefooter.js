@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { navigate } from 'gatsby';
+import loadable from '@loadable/component';
 
-import Button from '../Button';
-import { TextWrapper } from '../Prefooter';
-import SplitSection from '../SplitSection';
 import { colors, fonts, weights, mediaQueries } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
+
+const Button = loadable(() => import('../Button'));
+const TextWrapper = loadable(() => import('../Prefooter/TextWrapper'));
+const SplitSection = loadable(() => import('../SplitSection'));
 
 const pStyles = css`
   margin-bottom: 10px;

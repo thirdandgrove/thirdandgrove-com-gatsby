@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Link } from 'gatsby';
+import loadable from '@loadable/component';
 
 import { colors, weights, mediaQueries } from '../../styles';
-import FullWidthSection from '../FullWidthSection';
-import { FakeButton } from '../Button';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
+
+const FakeButton = loadable(() => import('../FakeButton'));
 
 const CTA = ({
   backgroundColor,

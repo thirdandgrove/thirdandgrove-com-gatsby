@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Button from '../Button';
 import { mediaQueries, colors } from '../../styles';
 
-import OverlayForm from './OverlayForm';
+const Button = loadable(() => import('../Button'));
+const OverlayForm = loadable(() => import('./OverlayForm'));
 
 const ButtonFormDownload = ({
   header,

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import FullWidthSection from '../FullWidthSection';
 import {
   contentH2,
   contentHeadings,
@@ -11,6 +11,8 @@ import {
   mediaQueries,
   dropCap,
 } from '../../styles';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const Text = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;

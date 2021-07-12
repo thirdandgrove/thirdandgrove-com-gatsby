@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
 import { fonts, weights, colors, mediaQueries, container } from '../styles';
-import Layout from '../components/layout';
-import ContentBody from '../components/ContentBody';
+
+const Layout = loadable(() => import('../components/layout'));
+const ContentBody = loadable(() => import('../components/ContentBody'));
 
 const Studies = ({ data }) => {
   const post = data.caseStudy;
@@ -164,7 +166,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -215,7 +217,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 600, maxHeight: 600, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -242,7 +244,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 800, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -259,7 +261,7 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500, cropFocus: CENTER) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
@@ -270,7 +272,7 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
@@ -281,7 +283,7 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }

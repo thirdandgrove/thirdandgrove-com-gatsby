@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
-import TopNav from '../TopNav';
-import SEO from '../seo';
 import {
   colors,
   fonts,
@@ -13,10 +12,13 @@ import {
   weights,
   jsBreakpoints,
 } from '../../styles';
-import FullWidthSection from '../FullWidthSection';
-import TagLogo from '../TopNav/svg/TagLogo';
-import ThirdAndGrove from '../TopNav/svg/ThirdAndGrove';
 import useWindow from '../../hooks/useWindow';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
+const TopNav = loadable(() => import('../TopNav'));
+const SEO = loadable(() => import('../seo'));
+const TagLogo = loadable(() => import('../TopNav/svg/TagLogo'));
+const ThirdAndGrove = loadable(() => import('../TopNav/svg/ThirdAndGrove'));
 /**
  * Header used on every page.
  *
@@ -306,7 +308,12 @@ const Header = ({
             `}
           >
             {heroLogo ? (
-              <Img fluid={heroLogo} alt={heroLogoAlt} />
+              <Img
+                fluid={heroLogo}
+                alt={heroLogoAlt}
+                fadeIn={false}
+                loading='eager'
+              />
             ) : loaded === 'block' && isMobile ? (
               <ThirdAndGrove
                 css={css`

@@ -4,16 +4,20 @@ import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import mp4 from '../../static/thirdgrove-work.mp4';
-import Layout from '../components/layout';
-import { FakeButton } from '../components/Button';
 import { weights, mediaQueries, container, fonts } from '../styles';
-import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
-import VideoSection from '../components/VideoSection';
 import { ensureTrailingSlash } from '../util';
-import CTA from '../components/CTA';
+
+const Layout = loadable(() => import('../components/layout'));
+const CTA = loadable(() => import('../components/CTA'));
+const VideoSection = loadable(() => import('../components/VideoSection'));
+const FakeButton = loadable(() => import('../components/FakeButton'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -25,7 +29,7 @@ const Project = ({ study, index }) => {
       padding='0'
       textAlign='left'
       css={css`
-        &:nth-child(2) {
+        &:nth-of-type(2) {
           margin-top: 20px;
 
           ${mediaQueries.phoneLarge} {
@@ -70,15 +74,18 @@ const Project = ({ study, index }) => {
                   margin-bottom: 20px;
 
                   ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '64%' : index === 0 ? '64%' : '49%'};
+                    flex: 0 0 ${
+                      index % 2 ? '64%' : index === 0 ? '64%' : '49%'
+                    };
                     width: ${index % 2 ? '64%' : index === 0 ? '64%' : '49%'};
                     margin-bottom: 0;
 
                     > div {
                       padding-bottom: ${index % 2 ? '76% !important' : '100%'};
-                      padding-bottom: ${index % 4 === 2
-                        ? '131% !important'
-                        : '100%'};
+                      padding-bottom: ${
+                        index % 4 === 2 ? '131% !important' : '100%'
+                      }import { loadable } from '@loadable/component';
+;
                     }
                   }
                 `}
@@ -218,7 +225,7 @@ const Work = () => {
             publicURL
             childImageSharp {
               fluid(maxWidth: 1250, maxHeight: 850, cropFocus: NORTH) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
             childImageMobile: childImageSharp {
@@ -249,7 +256,7 @@ const Work = () => {
             publicURL
             childImageSharp {
               fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
             childImageMobile: childImageSharp {
@@ -280,7 +287,7 @@ const Work = () => {
             publicURL
             childImageSharp {
               fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
             childImageMobile: childImageSharp {
@@ -308,8 +315,9 @@ const Work = () => {
       }
     }
   `);
-  const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
 
+  const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
+  const isBrowser = typeof window !== 'undefined' && window.document;
   return (
     <Layout
       headerData={{
@@ -318,7 +326,13 @@ const Work = () => {
         height: '400px',
       }}
     >
-      <VideoSection url={allNodeHomePage.edges[0].node.field_video} mp4={mp4} />
+      {isBrowser && (
+        <VideoSection
+          url={allNodeHomePage.edges[0].node.field_video}
+          mp4={mp4}
+        />
+      )}
+
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />
       ))}

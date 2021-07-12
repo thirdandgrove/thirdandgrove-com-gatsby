@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
-import TopNav from '../TopNav';
-import SEO from '../seo';
 import {
   container,
   colors,
@@ -15,8 +14,12 @@ import {
   jsBreakpoints,
 } from '../../styles';
 import useWindow from '../../hooks/useWindow';
-import ButtonFormDownload from '../ButtonFormDownload';
-import FullWidthSection from '../FullWidthSection';
+
+const TopNav = loadable(() => import('../TopNav'));
+const SEO = loadable(() => import('../seo'));
+const ButtonFormDownload = loadable(() => import('../ButtonFormDownload'));
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
+
 /**
  * Header used on every page.
  *

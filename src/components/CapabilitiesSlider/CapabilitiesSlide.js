@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import loadable from '@loadable/component';
 
-import Button from '../Button';
 import { colors, mediaQueries, container } from '../../styles';
 
 import img from './icons/data.png';
 
+const Button = loadable(() => import('../Button'));
 function CapabilitiesSlide({ title, description, icon, link }) {
   const ref = useRef();
   const [width, setWidth] = useState(0);

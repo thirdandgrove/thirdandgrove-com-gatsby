@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
-import { OverlayForm } from '../NewsletterForm';
+import OverlayForm from '../NewsletterForm/OverlayForm';
 import Button from '../Button';
 import { mediaQueries } from '../../styles';
 

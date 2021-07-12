@@ -1,59 +1,48 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layout';
-import ProjectsSlider from '../components/ProjectsSlider';
-import InsightsSlider from '../components/InsightsSlider';
-import CapabilitiesSlider from '../components/CapabilitiesSlider';
-import LogoGrid from '../components/LogoGrid';
-import SplitSection from '../components/SplitSection';
-import { ContactUs, BeUs } from '../components/Prefooter';
-import { colors } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
-import FullWidthSection from '../components/FullWidthSection';
-import { NewsletterFullWidthSection } from '../components/NewsletterForm';
+import { colors } from '../styles';
+
+const NewsletterFullWidthSection = loadable(() =>
+  import('../components/NewsletterForm/NewsletterFullWidthSection')
+);
+const BeUs = loadable(() => import('../components/Prefooter/BeUs'));
+const ContactUs = loadable(() => import('../components/Prefooter/ContactUs'));
+
+const Layout = loadable(() => import('../components/layout'));
+const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
+const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
+const CapabilitiesSlider = loadable(() =>
+  import('../components/CapabilitiesSlider')
+);
+const LogoGrid = loadable(() => import('../components/LogoGrid'));
+const SplitSection = loadable(() => import('../components/SplitSection'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
 
 const Index = ({ data }) => {
   const halfPage = useRef();
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
-
-  // silly holiday treats
-  // const today = new Date();
-  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
-
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            {/* This is going to re-implemented after a couple weeks */}
-            {/* A digital agency{' '} */}
             slaying the mundane,
-            <br /> pixel by pixel.
-            {/* Holy S%#*! that was fast.
             <br />
-            (With{' '}
-            <Link
-              css={css`
-                color: ${colors.darkgray};
-                text-decoration: underline;
-              `}
-              to='/partners/gatsby/'
-            >
-              Gatsby
-            </Link>{' '}
-            it&apos;s all fire, no waiting) */}
+            pixel by pixel.
           </>
         ),
         mobileMinHeight: '93vh',
       }}
     >
-      {' '}
       <ProjectsSlider data={data.allCaseStudy} />
       <CapabilitiesSlider
         title='What We Do'
@@ -134,17 +123,17 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 530, maxHeight: 400) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageSlideMobile: childImageSharp {
             fluid(maxWidth: 325, maxHeight: 250) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageSlideDesktop: childImageSharp {
             fluid(maxWidth: 450, maxHeight: 400) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }
@@ -175,7 +164,7 @@ export const query = graphql`
                 publicURL
                 childImageSharp {
                   fluid(maxWidth: 630, maxHeight: 630) {
-                    ...GatsbyImageSharpFluid_withWebp
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                   }
                 }
               }
@@ -213,7 +202,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {
@@ -244,7 +233,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {
@@ -275,7 +264,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {

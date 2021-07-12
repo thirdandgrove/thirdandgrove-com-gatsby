@@ -2,18 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
+import loadable from '@loadable/component';
 
-import Quote from '../components/ContentBody/Quote';
-import LogoGrid from '../components/LogoGrid';
-import ProjectsSlider from '../components/ProjectsSlider';
-import FullWidthSection from '../components/FullWidthSection';
-import Layout from '../components/layout';
 import { container, mediaQueries, weights, colors } from '../styles';
-import ContactForm from '../components/ContactForm';
-import CTA from '../components/CTA';
-import CTAGrid from '../components/CTAGrid';
 import drupalLogo from '../images/drupal-support/drupal-logo.png';
 import preserver from '../images/drupal-support/preserver.png';
+
+const Layout = loadable(() => import('../components/layout'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const LogoGrid = loadable(() => import('../components/LogoGrid'));
+const Quote = loadable(() => import('../components/ContentBody/Quote'));
+const CTA = loadable(() => import('../components/CTA'));
+const CTAGrid = loadable(() => import('../components/CTAGrid'));
+const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
+const ContactForm = loadable(() => import('../components/ContactForm'));
 
 const DrupalSupport = ({ data }) => {
   const sectionStylesWithImage = css`
@@ -279,7 +283,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {
@@ -310,7 +314,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {
@@ -341,7 +345,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {

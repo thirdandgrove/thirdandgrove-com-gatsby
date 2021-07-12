@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
 import { mediaQueries, container, fonts, weights } from '../styles';
-import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
-import Button from '../components/Button';
+
+const Layout = loadable(() => import('../components/layout'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
+const Button = loadable(() => import('../components/Button'));
 
 const Job = ({ pageContext: { title, boardCode, description } }) => {
   const wrapperStyles = css`

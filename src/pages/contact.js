@@ -1,9 +1,11 @@
 import React from 'react';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layout';
-import ContactForm from '../components/ContactForm';
 import { mediaQueries, fonts, weights, container } from '../styles';
+
+const Layout = loadable(() => import('../components/layout'));
+const ContactForm = loadable(() => import('../components/ContactForm'));
 
 const Contact = () => {
   const wrapperCss = css`

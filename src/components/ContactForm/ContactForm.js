@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Input from '../Input';
-import Button from '../Button';
-import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
 import { encode } from '../../util';
 
-import Thanks from './Thanks';
+const Input = loadable(() => import('../Input'));
+const Button = loadable(() => import('../Button'));
+const TextArea = loadable(() => import('../TextArea'));
+const Thanks = loadable(() => import('./Thanks'));
 
 const ContactForm = ({ formName, altStyle }) => {
   const [formState, updateForm] = useState({

@@ -60,18 +60,21 @@ export default (logoset, isSmScreen) => {
   const sets = {
     acquiaEngage: [
       <img
+        loading='lazy'
         src={cloudHealth}
         alt='Cloud Health'
         width={isSmScreen ? '126' : '170'}
         height={isSmScreen ? '122' : '50'}
       />,
       <img
+        loading='lazy'
         src={isgm}
         alt='ISGM'
         width={isSmScreen ? '150' : '180'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={carlyle}
         alt='Carlyle'
         width={isSmScreen ? '126' : '200'}
@@ -80,48 +83,56 @@ export default (logoset, isSmScreen) => {
     ],
     shopify: [
       <img
+        loading='lazy'
         src={memebox}
         alt='memebox'
         width={isSmScreen ? '135' : '170'}
         height={isSmScreen ? '16' : '24'}
       />,
       <img
+        loading='lazy'
         src={ccLogo}
         alt='California Closets'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={goldwin}
         alt='goldwin'
         width={isSmScreen ? '125' : '180'}
         height={isSmScreen ? '36' : '52'}
       />,
       <img
+        loading='lazy'
         src={gaiam}
         alt='gaiam'
         width={isSmScreen ? '61' : '81'}
         height={isSmScreen ? '68' : '90'}
       />,
       <img
+        loading='lazy'
         src={brainiac}
         alt='brainiac'
         width={isSmScreen ? '93' : '150'}
         height={isSmScreen ? '31' : '51'}
       />,
       <img
+        loading='lazy'
         src={equator}
         alt='equator'
         width={isSmScreen ? '99' : '150'}
         height={isSmScreen ? '34' : '52'}
       />,
       <img
+        loading='lazy'
         src={absolutLogo}
         alt='Absolut Vodka'
         width={isSmScreen ? '94' : '150'}
         height={isSmScreen ? '20' : '32'}
       />,
       <img
+        loading='lazy'
         src={jameson}
         alt='jameson'
         width={isSmScreen ? '95' : '150'}
@@ -130,60 +141,70 @@ export default (logoset, isSmScreen) => {
     ],
     acquia: [
       <img
+        loading='lazy'
         src={mintLogo}
         alt='Mint'
         width={isSmScreen ? '100' : '156'}
         height={isSmScreen ? '32' : '50'}
       />,
       <img
+        loading='lazy'
         src={sunpowerLogo}
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
         height={isSmScreen ? '32' : '44'}
       />,
       <img
+        loading='lazy'
         src={glanbia}
         alt='glanbia'
         width={isSmScreen ? '100' : '148'}
         height={isSmScreen ? '49' : '74'}
       />,
       <img
+        loading='lazy'
         src={wvi}
         alt='World Vision'
         width={isSmScreen ? '188' : '194'}
         height={isSmScreen ? '100' : '40'}
       />,
       <img
+        loading='lazy'
         src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
         height={isSmScreen ? '62' : '94'}
       />,
       <img
+        loading='lazy'
         src={cooperVision}
         alt='Cooper Vision'
         width={isSmScreen ? '134' : '177'}
         height={isSmScreen ? '24' : '32'}
       />,
       <img
+        loading='lazy'
         src={cloudHealth}
         alt='Cloud Health'
         width={isSmScreen ? '126' : '170'}
         height={isSmScreen ? '122' : '50'}
       />,
       <img
+        loading='lazy'
         src={stubhub}
         alt='StubHub'
         width={isSmScreen ? '166' : '240'}
         height={isSmScreen ? '142' : '100'}
       />,
       <img
+        loading='lazy'
         src={geLogo}
         alt='General Electric'
         width={isSmScreen ? '53' : '72'}
         height={isSmScreen ? '53' : '72'}
       />,
       <img
+        loading='lazy'
         src={dassault}
         alt='Dassault Systemes'
         width={isSmScreen ? '166' : '240'}
@@ -192,66 +213,77 @@ export default (logoset, isSmScreen) => {
     ],
     drupal: [
       <img
+        loading='lazy'
         src={mintLogo}
         alt='Mint'
         width={isSmScreen ? '100' : '156'}
         height={isSmScreen ? '32' : '50'}
       />,
       <img
+        loading='lazy'
         src={sunpowerLogo}
         alt='Sunpower'
         width={isSmScreen ? '134' : '183'}
         height={isSmScreen ? '32' : '44'}
       />,
       <img
+        loading='lazy'
         src={benefitLogo}
         alt='Benefit'
         width={isSmScreen ? '105' : '140'}
         height={isSmScreen ? '35' : '46'}
       />,
       <img
+        loading='lazy'
         src={wvi}
         alt='World Vision'
         width={isSmScreen ? '188' : '194'}
         height={isSmScreen ? '100' : '40'}
       />,
       <img
+        loading='lazy'
         src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
         height={isSmScreen ? '62' : '94'}
       />,
       <img
+        loading='lazy'
         src={cooperVision}
         alt='Cooper Vision'
         width={isSmScreen ? '134' : '177'}
         height={isSmScreen ? '24' : '32'}
       />,
       <img
+        loading='lazy'
         src={cloudHealth}
         alt='Cloud Health'
         width={isSmScreen ? '126' : '170'}
         height={isSmScreen ? '122' : '50'}
       />,
       <img
+        loading='lazy'
         src={uclaLogo}
         alt='UCLA'
         width={isSmScreen ? '85' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
       <img
+        loading='lazy'
         src={umg}
         alt='Universal'
         width={isSmScreen ? '200' : '240'}
         height={isSmScreen ? '42' : '43'}
       />,
       <img
+        loading='lazy'
         src={wsiLogo}
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '98' : '134'}
         height={isSmScreen ? '32' : '43'}
       />,
       <img
+        loading='lazy'
         src={reebok}
         alt='Reebok'
         width={isSmScreen ? '240' : '240'}
@@ -260,72 +292,84 @@ export default (logoset, isSmScreen) => {
     ],
     default: [
       <img
+        loading='lazy'
         src={harvardLogo}
         alt='Harvard'
         width={isSmScreen ? '100' : '129'}
         height={isSmScreen ? '40' : '34'}
       />,
       <img
+        loading='lazy'
         src={googleLogo}
         alt='Google'
         width={isSmScreen ? '99' : '134'}
         height={isSmScreen ? '33' : '44'}
       />,
       <img
+        loading='lazy'
         src={benefitLogo}
         alt='Benefit'
         width={isSmScreen ? '105' : '140'}
         height={isSmScreen ? '35' : '46'}
       />,
       <img
+        loading='lazy'
         src={vmware}
         alt='VMWare'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={geLogo}
         alt='GE'
         width={isSmScreen ? '53' : '72'}
         height={isSmScreen ? '53' : '72'}
       />,
       <img
+        loading='lazy'
         src={wsiLogo}
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '98' : '134'}
         height={isSmScreen ? '32' : '43'}
       />,
       <img
+        loading='lazy'
         src={draper}
         alt='Draper'
         width={isSmScreen ? '140' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
       <img
+        loading='lazy'
         src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
         height={isSmScreen ? '62' : '94'}
       />,
       <img
+        loading='lazy'
         src={pernodLogo}
         alt='Pernod Ricard'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
       <img
+        loading='lazy'
         src={alvinAiley}
         alt='King Arthur'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
       <img
+        loading='lazy'
         src={ccLogo}
         alt='California Closets'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={stubhub}
         alt='StubHub'
         width={isSmScreen ? '166' : '240'}
@@ -334,96 +378,112 @@ export default (logoset, isSmScreen) => {
     ],
     about: [
       <img
+        loading='lazy'
         src={googleLogo}
         alt='Google'
         width={isSmScreen ? '105' : '134'}
         height={isSmScreen ? '35' : '44'}
       />,
       <img
+        loading='lazy'
         src={foxLogo}
         alt='FOX'
         width={isSmScreen ? '68' : '84'}
         height={isSmScreen ? '30' : '36'}
       />,
       <img
+        loading='lazy'
         src={geLogo}
         alt='GE'
         width={isSmScreen ? '51' : '72'}
         height={isSmScreen ? '51' : '72'}
       />,
       <img
+        loading='lazy'
         src={absolutLogo}
         alt='Absolut Vodka'
         width={isSmScreen ? '87' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
       <img
+        loading='lazy'
         src={quickenLogo}
         alt='Quicken'
         width={isSmScreen ? '107' : '134'}
         height={isSmScreen ? '24' : '30'}
       />,
       <img
+        loading='lazy'
         src={uclaLogo}
         alt='UCLA'
         width={isSmScreen ? '87' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
       <img
+        loading='lazy'
         src={wsiLogo}
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '96' : '116'}
         height={isSmScreen ? '31' : '38'}
       />,
       <img
+        loading='lazy'
         src={dwellLogo}
         alt='dwell'
         width={isSmScreen ? '78' : '94'}
         height={isSmScreen ? '30' : '36'}
       />,
       <img
+        loading='lazy'
         src={googleLogo}
         alt='Google'
         width={isSmScreen ? '105' : '134'}
         height={isSmScreen ? '35' : '44'}
       />,
       <img
+        loading='lazy'
         src={foxLogo}
         alt='FOX'
         width={isSmScreen ? '68' : '84'}
         height={isSmScreen ? '30' : '36'}
       />,
       <img
+        loading='lazy'
         src={geLogo}
         alt='GE'
         width={isSmScreen ? '51' : '72'}
         height={isSmScreen ? '51' : '72'}
       />,
       <img
+        loading='lazy'
         src={absolutLogo}
         alt='Absolut Vodka'
         width={isSmScreen ? '87' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
       <img
+        loading='lazy'
         src={quickenLogo}
         alt='Quicken'
         width={isSmScreen ? '107' : '134'}
         height={isSmScreen ? '24' : '30'}
       />,
       <img
+        loading='lazy'
         src={uclaLogo}
         alt='UCLA'
         width={isSmScreen ? '87' : '116'}
         height={isSmScreen ? '40' : '54'}
       />,
       <img
+        loading='lazy'
         src={wsiLogo}
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '96' : '116'}
         height={isSmScreen ? '31' : '38'}
       />,
       <img
+        loading='lazy'
         src={dwellLogo}
         alt='dwell'
         width={isSmScreen ? '78' : '94'}
@@ -432,24 +492,28 @@ export default (logoset, isSmScreen) => {
     ],
     acquiaDXP: [
       <img
+        loading='lazy'
         src={salesforce}
         alt='Salesforce'
         width={isSmScreen ? '91' : '120'}
         height={isSmScreen ? '64' : '84'}
       />,
       <img
+        loading='lazy'
         src={bigcommerce}
         alt='Big Commerce'
         width={isSmScreen ? '131' : '219'}
         height={isSmScreen ? '30' : '50'}
       />,
       <img
+        loading='lazy'
         src={marketo}
         alt='Marketo'
         width={isSmScreen ? '93' : '148'}
         height={isSmScreen ? '40' : '64'}
       />,
       <img
+        loading='lazy'
         src={gaLogo}
         alt='Google Analytics'
         width={isSmScreen ? '109' : '161'}
@@ -458,36 +522,42 @@ export default (logoset, isSmScreen) => {
     ],
     awards: [
       <img
+        loading='lazy'
         src={addyAward}
         alt='Addy Awards'
         width={isSmScreen ? '80' : '90'}
         height={isSmScreen ? '42' : '62'}
       />,
       <img
+        loading='lazy'
         src={museLogo}
         alt='Muse Awards'
         width={isSmScreen ? '140' : '200'}
         height={isSmScreen ? '64' : '84'}
       />,
       <img
+        loading='lazy'
         src={awwwLogo}
         alt='Awww Awards'
         width={isSmScreen ? '109' : '135'}
         height={isSmScreen ? '42' : '62'}
       />,
       <img
+        loading='lazy'
         src={w3Awards}
         alt='W3 Awards'
         width={isSmScreen ? '128' : '142'}
         height={isSmScreen ? '60' : '70'}
       />,
       <img
+        loading='lazy'
         src={cssAwards}
         alt='CSS awards'
         width={isSmScreen ? '168' : '210'}
         height={isSmScreen ? '40' : '60'}
       />,
       <img
+        loading='lazy'
         src={dadiAwards}
         alt='Dadi awards'
         width={isSmScreen ? '140' : '180'}
@@ -496,48 +566,56 @@ export default (logoset, isSmScreen) => {
     ],
     drupalSupport: [
       <img
+        loading='lazy'
         src={stubhub}
         alt='StubHub'
         width={isSmScreen ? '166' : '240'}
         height={isSmScreen ? '142' : '100'}
       />,
       <img
+        loading='lazy'
         src={vmware}
         alt='VMWare'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={akamai}
         alt='Akamai'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={harvardLogo}
         alt='Harvard'
         width={isSmScreen ? '100' : '129'}
         height={isSmScreen ? '40' : '34'}
       />,
       <img
+        loading='lazy'
         src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
         height={isSmScreen ? '62' : '94'}
       />,
       <img
+        loading='lazy'
         src={isgm}
         alt='ISGM'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={prudential}
         alt='Prudential Insurance'
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={universal}
         alt='Universal Music'
         width={isSmScreen ? '98' : '134'}
@@ -546,48 +624,56 @@ export default (logoset, isSmScreen) => {
     ],
     shopifyPlus: [
       <img
+        loading='lazy'
         src={hawaiianHost}
         alt='Hawaiian Host'
         width={isSmScreen ? '126' : '121'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img
+        loading='lazy'
         src={benefitLogo}
         alt='benefit'
         width={isSmScreen ? '150' : '180'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={boissance}
         alt='BOISSANCE'
         width={isSmScreen ? '126' : '150'}
         height={isSmScreen ? '61' : '80'}
       />,
       <img
+        loading='lazy'
         src={goldwin}
         alt='Goldwin'
         width={isSmScreen ? '125' : '180'}
         height={isSmScreen ? '36' : '52'}
       />,
       <img
+        loading='lazy'
         src={pernodLogo}
         alt='Pernod Ricard'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
       <img
+        loading='lazy'
         src={farmacyLogo}
         alt='Farmacy'
         width={isSmScreen ? '146' : '193'}
         height={isSmScreen ? '39' : '64'}
       />,
       <img
+        loading='lazy'
         src={amorepacifioLogo}
         alt='AMOREPACIFIO'
         width={isSmScreen ? '159' : '173'}
         height={isSmScreen ? '16' : '32'}
       />,
       <img
+        loading='lazy'
         src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
@@ -596,54 +682,63 @@ export default (logoset, isSmScreen) => {
     ],
     shopifyPlusFoodAndBeverage: [
       <img
+        loading='lazy'
         src={brainiac}
         alt='brainiac'
         width={isSmScreen ? '93' : '150'}
         height={isSmScreen ? '31' : '51'}
       />,
       <img
+        loading='lazy'
         src={equator}
         alt='equator'
         width={isSmScreen ? '99' : '150'}
         height={isSmScreen ? '34' : '52'}
       />,
       <img
+        loading='lazy'
         src={pernodLogo}
         alt='Pernod Ricard'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
       <img
+        loading='lazy'
         src={gLogo}
         alt='G'
         width={isSmScreen ? '55' : '66'}
         height={isSmScreen ? '55' : '66'}
       />,
       <img
+        loading='lazy'
         src={wcBradley}
         alt='WC | BRADLEY'
         width={isSmScreen ? '150' : '180'}
         height={isSmScreen ? '37' : '50'}
       />,
       <img
+        loading='lazy'
         src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
         height={isSmScreen ? '62' : '94'}
       />,
       <img
+        loading='lazy'
         src={hawaiianHost}
         alt='Hawaiian Host'
         width={isSmScreen ? '126' : '121'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img
+        loading='lazy'
         src={rubios}
         alt="Rubio's"
         width={isSmScreen ? '126' : '182'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img
+        loading='lazy'
         src={wsiLogo}
         alt='Williams-Sonoma Inc.'
         width={isSmScreen ? '98' : '134'}

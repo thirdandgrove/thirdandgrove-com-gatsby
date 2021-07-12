@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Link } from 'gatsby';
+import loadable from '@loadable/component';
 
 import { container, mediaQueries } from '../../styles';
-import FullWidthSection from '../FullWidthSection';
-import { FakeButton } from '../Button';
 
-import CTAGridItem from './CTAGridItem';
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
+const FakeButton = loadable(() => import('../FakeButton'));
+const CTAGridItem = loadable(() => import('./CTAGridItem'));
 
 const CTAGrid = ({
   items,

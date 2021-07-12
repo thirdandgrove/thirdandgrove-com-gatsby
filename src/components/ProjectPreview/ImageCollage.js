@@ -196,6 +196,8 @@ const ImageCollage = ({ images, type }) => {
       <div className='collage-board' css={collageBoardBase}>
         <div css={primaryWrapperBase} className='primary-wrapper'>
           <Img
+            fadeIn={false}
+            loading='eager'
             fixed={[
               images.primary.mobile.fixed,
               {
@@ -210,6 +212,8 @@ const ImageCollage = ({ images, type }) => {
         </div>
         <div css={secTertWrapperBase} className='secondary-wrapper'>
           <Img
+            fadeIn={false}
+            loading='eager'
             fixed={[
               images.secondary.mobile.fixed,
               {
@@ -224,6 +228,8 @@ const ImageCollage = ({ images, type }) => {
         </div>
         <div css={secTertWrapperBase} className='tertiary-wrapper'>
           <Img
+            fadeIn={false}
+            loading='eager'
             fixed={[
               images.tertiary.mobile.fixed,
               {

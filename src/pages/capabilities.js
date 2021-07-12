@@ -1,10 +1,11 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
+import loadable from '@loadable/component';
 
-import Layout from '../components/layout';
-import CTA from '../components/CTA';
-import Capability from '../components/Capability';
+const Layout = loadable(() => import('../components/layout'));
+const CTA = loadable(() => import('../components/CTA'));
+const Capability = loadable(() => import('../components/Capability'));
 
 const CapabilitiesPage = ({ data }) => {
   return (
@@ -127,28 +128,28 @@ export const query = graphql`
     technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     dataImageDesktop: file(relativePath: { eq: "data.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }

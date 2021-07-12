@@ -3,16 +3,22 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
-import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
-import Layout from '../components/layout';
 import { container, mediaQueries, weights, colors, fonts } from '../styles';
-import Button from '../components/Button';
-import { BeUs, WhatWeDo } from '../components/Prefooter';
-import InsightsSlider from '../components/InsightsSlider';
-import Quote from '../components/ContentBody/Quote';
-import ButtonForm from '../components/ButtonForm';
+
+const Button = loadable(() => import('../components/Button'));
+const Quote = loadable(() => import('../components/ContentBody/Quote'));
+const ButtonForm = loadable(() => import('../components/ButtonForm'));
+const BeUs = loadable(() => import('../components/Prefooter/BeUs'));
+const WhatWeDo = loadable(() => import('../components/Prefooter/WhatWeDo'));
+
+const Layout = loadable(() => import('../components/layout'));
+const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
+const SplitSection = loadable(() => import('../components/SplitSection'));
+const FullWidthSection = loadable(() =>
+  import('../components/FullWidthSection')
+);
 
 const Drupalcon2021Event = ({ data }) => {
   const [isDate, setDate] = useState(false);
@@ -488,17 +494,17 @@ export const query = graphql`
         publicURL
         childImageSharp {
           fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
         childImageTypeA: childImageSharp {
           fluid(maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
         childImageTypeB: childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid_withWebp
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

@@ -3,8 +3,8 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
+import loadable from '@loadable/component';
 
-import useWindow from '../../hooks/useWindow';
 import {
   mediaQueries,
   jsBreakpoints,
@@ -12,9 +12,12 @@ import {
   fonts,
   weights,
 } from '../../styles';
-import FullWidthSection from '../FullWidthSection';
+import useWindow from '../../hooks/useWindow';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const VideoSection = ({ url, mp4 }) => {
+  const isBrowser = typeof window !== 'undefined' && window.document;
   const { width } = useWindow();
   const refMovie = useRef();
   const refVimeo = useRef();
@@ -194,7 +197,6 @@ const VideoSection = ({ url, mp4 }) => {
               },
             }}
           />
-
           <video
             alt=''
             playsInline

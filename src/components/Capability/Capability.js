@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import loadable from '@loadable/component';
 
-import FullWidthSection from '../FullWidthSection';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { fonts, mediaQueries, container, weights } from '../../styles';
+
+const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
   const nodeRef = useRef();
@@ -74,6 +76,8 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
               <Img
                 fluid={imageSrc}
                 alt={imageAlt}
+                fadeIn={false}
+                loading='eager'
                 style={{ transform, opacity }}
                 css={css`
                   width: 100%;

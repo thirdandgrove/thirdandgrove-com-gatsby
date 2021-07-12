@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql, Link } from 'gatsby';
+import loadable from '@loadable/component';
 
-import { FakeButton } from '../components/Button';
-import CTA from '../components/CTA';
-import CTAGrid from '../components/CTAGrid';
-import Layout from '../components/layout';
-import ProjectsSlider from '../components/ProjectsSlider';
-import Quote from '../components/ContentBody/Quote';
-import LogoGrid from '../components/LogoGrid';
 import { colors, container, mediaQueries, weights } from '../styles';
+
+const Layout = loadable(() => import('../components/layout'));
+const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
+const LogoGrid = loadable(() => import('../components/LogoGrid'));
+const CTA = loadable(() => import('../components/CTA'));
+const CTAGrid = loadable(() => import('../components/CTAGrid'));
+const Quote = loadable(() => import('../components/ContentBody/Quote'));
+const FakeButton = loadable(() => import('../components/FakeButton'));
 
 const ShopifyPlusFoodAndBeverage = ({ data }) => {
   const sectionStyle = css`
@@ -236,7 +238,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {
@@ -267,7 +269,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {
@@ -298,7 +300,7 @@ export const query = graphql`
           publicURL
           childImageSharp {
             fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           childImageMobile: childImageSharp {

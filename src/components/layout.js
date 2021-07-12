@@ -1,15 +1,17 @@
 import React from 'react';
 import { Global } from '@emotion/react';
 import PropTypes from 'prop-types';
+import loadable from '@loadable/component';
 
 import { globalStyles } from '../styles';
 
 import { headerPropTypes } from './Header/Header';
-import Header from './Header';
-import SplitHeader from './SplitHeader';
-import Footer from './Footer';
 
 import '../styles/layout.css';
+
+const Header = loadable(() => import('./Header'));
+const Footer = loadable(() => import('./Footer'));
+const SplitHeader = loadable(() => import('./SplitHeader'));
 
 const Layout = ({ children, headerData, split, splitHeaderData }) => (
   <>

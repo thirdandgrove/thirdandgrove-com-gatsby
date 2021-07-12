@@ -68,6 +68,8 @@ const ArticlePreview = ({ article }) => {
                   article.relationships.field_image.localFile.childImageSharp
                     .fluid
                 }
+                fadeIn={false}
+                loading='eager'
                 alt={article.field_image.alt}
               />
             )}

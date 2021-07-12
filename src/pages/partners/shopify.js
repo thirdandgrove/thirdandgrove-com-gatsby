@@ -1,17 +1,23 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/react';
+import loadable from '@loadable/component';
 
-import Layout from '../../components/layout';
-import Button from '../../components/Button';
-import FullWidthSection from '../../components/FullWidthSection';
-import LogoGrid from '../../components/LogoGrid';
-import InsightsSlider from '../../components/InsightsSlider';
-import CTAGrid from '../../components/CTAGrid';
-import Capability from '../../components/Capability';
-import Improvement from '../../components/Improvement';
-import ContactForm from '../../components/ContactForm';
 import { colors, mediaQueries } from '../../styles';
+
+const Layout = loadable(() => import('../../components/layout'));
+const Button = loadable(() => import('../../components/Button'));
+const FullWidthSection = loadable(() =>
+  import('../../components/FullWidthSection')
+);
+const LogoGrid = loadable(() => import('../../components/LogoGrid'));
+const InsightsSlider = loadable(() =>
+  import('../../components/InsightsSlider')
+);
+const CTAGrid = loadable(() => import('../../components/CTAGrid'));
+const Capability = loadable(() => import('../../components/Capability'));
+const Improvement = loadable(() => import('../../components/Improvement'));
+const ContactForm = loadable(() => import('../../components/ContactForm'));
 
 const Shopify = query => {
   const { allShopifyPlusCtaGridFourJson, allFile, insights } = query.data;
@@ -227,21 +233,21 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid(maxWidth: 1440, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     badlandsMac: file(relativePath: { eq: "badlands-macbook@2x.png" }) {
       childImageSharp {
         fluid(maxWidth: 1440, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     weKnowImageDesktop: file(relativePath: { eq: "we-know.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
@@ -250,7 +256,7 @@ export const query = graphql`
     ) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
@@ -288,7 +294,7 @@ export const query = graphql`
               publicURL
               childImageSharp {
                 fluid(maxWidth: 450, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid_withWebp
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }
@@ -319,7 +325,7 @@ export const query = graphql`
                     publicURL
                     childImageSharp {
                       fluid(maxWidth: 630, maxHeight: 630) {
-                        ...GatsbyImageSharpFluid_withWebp
+                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
                       }
                     }
                   }
