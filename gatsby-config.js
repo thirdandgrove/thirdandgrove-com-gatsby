@@ -183,5 +183,12 @@ module.exports = {
         devMode: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: 'UA-46758288-8',
+        head: false,
+      },
+    },
   ],
 };
