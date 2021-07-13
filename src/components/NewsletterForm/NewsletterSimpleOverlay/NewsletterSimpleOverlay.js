@@ -9,14 +9,7 @@ import { encode } from '../../../util';
 const FullWidthSection = loadable(() => import('../../FullWidthSection'));
 const Button = loadable(() => import('../../Button'));
 
-const NewsletterSimpleOverlay = ({
-  buttonText,
-  confirmMessage,
-  header,
-  subheader,
-  isActive,
-  setIsActive,
-}) => {
+const NewsletterSimpleOverlay = ({ buttonText, confirmMessage, header, subheader, isActive, setIsActive }) => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
   const toggle = () => setIsActive(!isActive);
@@ -291,8 +284,7 @@ NewsletterSimpleOverlay.defaultProps = {
   buttonText: 'Sign Me Up',
   confirmMessage: 'Thank You',
   header: 'Illuminating stuff, right?',
-  subheader:
-    'Join our mailing list and you can stay this informed all the time.',
+  subheader: 'Join our mailing list and you can stay this informed all the time.',
 };
 
 export default NewsletterSimpleOverlay;

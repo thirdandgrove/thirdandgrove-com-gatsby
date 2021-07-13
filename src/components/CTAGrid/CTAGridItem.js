@@ -6,14 +6,7 @@ import { Spring } from 'react-spring/renderprops';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { mediaQueries, weights, fonts } from '../../styles';
 
-const CTAGridItem = ({
-  icon,
-  title,
-  description,
-  altStyle,
-  noPaddingImg,
-  extraCssItem,
-}) => {
+const CTAGridItem = ({ icon, title, description, altStyle, noPaddingImg, extraCssItem }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
   const ctaContainer = css`
@@ -104,10 +97,7 @@ const CTAGridItem = ({
             }}
           >
             {({ transform }) => (
-              <div
-                style={{ transform }}
-                className='cta-grid-item--image-wrapper'
-              >
+              <div style={{ transform }} className='cta-grid-item--image-wrapper'>
                 {icon[0] && icon[0].node && icon[0].node.publicURL && (
                   <img src={icon[0].node.publicURL} alt={description} />
                 )}
@@ -127,11 +117,7 @@ const CTAGridItem = ({
           }}
         >
           {({ transform, opacity }) => (
-            <div
-              style={{ transform, opacity }}
-              css={ctaContainerAlt}
-              ref={nodeRef}
-            >
+            <div style={{ transform, opacity }} css={ctaContainerAlt} ref={nodeRef}>
               <div className='cta-grid-item--inner-wrapper'>
                 {icon[0] && icon[0].node && icon[0].node.publicURL && (
                   <img src={icon[0].node.publicURL} alt={description} />

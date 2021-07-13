@@ -7,9 +7,7 @@ import loadable from '@loadable/component';
 import { fonts, weights, container, mediaQueries } from '../styles';
 
 const Layout = loadable(() => import('../components/layout'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 
 const Careers = () => {
   const data = useStaticQuery(graphql`
@@ -150,11 +148,7 @@ const Careers = () => {
           <JobList>
             {uniqueJobs.map(job => (
               <li key={JSON.stringify(job)}>
-                <Link
-                  to={`/careers/${job.title.toLowerCase().replace(/ /g, '-')}/`}
-                >
-                  {job.title}
-                </Link>
+                <Link to={`/careers/${job.title.toLowerCase().replace(/ /g, '-')}/`}>{job.title}</Link>
               </li>
             ))}
           </JobList>
@@ -167,10 +161,7 @@ const Careers = () => {
             </div>
             <SubCalltoAction>
               {`You know it. We are. Got the hustle? Got the Drive? Send your resume to `}
-              <a
-                href='mailto:careers@thirdandgrove.com'
-                title='careers@thirdandgrove.com'
-              >
+              <a href='mailto:careers@thirdandgrove.com' title='careers@thirdandgrove.com'>
                 careers@thirdandgrove.com
               </a>
               {` and lets see what happens.`}

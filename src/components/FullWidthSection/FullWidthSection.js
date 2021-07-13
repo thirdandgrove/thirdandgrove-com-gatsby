@@ -11,10 +11,7 @@ export default styled.section`
   align-items: ${props => props.align || 'center'};
   justify-content: ${props => props.justify || 'center'};
   background-color: ${props => props.backgroundColor};
-  ${props =>
-    props.backgroundImage
-      ? `background-image: url(${props.backgroundImage})`
-      : ``};
+  ${props => (props.backgroundImage ? `background-image: url(${props.backgroundImage})` : ``)};
   background-size: cover;
   overflow: hidden;
   background-position: center;

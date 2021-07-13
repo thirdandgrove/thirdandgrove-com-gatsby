@@ -4,20 +4,11 @@ import { graphql, navigate } from 'gatsby';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
-import {
-  fonts,
-  h1L,
-  mediaQueries,
-  container,
-  colors,
-  weights,
-} from '../styles';
+import { fonts, h1L, mediaQueries, container, colors, weights } from '../styles';
 import { ensureTrailingSlash } from '../util';
 
 const Layout = loadable(() => import('../components/layout'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 const Button = loadable(() => import('../components/Button'));
 const ArticlePreview = loadable(() => import('../components/ArticlePreview'));
 
@@ -99,13 +90,7 @@ const Insights = ({ data }) => {
               {headerArticle.title}
             </h1>
 
-            <Button
-              onClick={() =>
-                navigate(ensureTrailingSlash(headerArticle.path.alias))
-              }
-            >
-              Read More
-            </Button>
+            <Button onClick={() => navigate(ensureTrailingSlash(headerArticle.path.alias))}>Read More</Button>
           </>
         ),
       }}
@@ -144,10 +129,7 @@ Insights.propTypes = {
 
 export const data = graphql`
   {
-    allInsight(
-      sort: { fields: created, order: DESC }
-      filter: { field_hidden: { eq: false } }
-    ) {
+    allInsight(sort: { fields: created, order: DESC }, filter: { field_hidden: { eq: false } }) {
       nodes {
         ...InsightFragment
       }

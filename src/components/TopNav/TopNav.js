@@ -119,10 +119,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
               data-cy='menuButton'
               aria-label='open site menu'
             >
-              <Hamburger
-                fill={isOpen ? colors.lightgray : fill}
-                isOpen={isOpen}
-              />
+              <Hamburger fill={isOpen ? colors.lightgray : fill} isOpen={isOpen} />
             </button>
           </div>
           <Menu toggleOpen={toggleOpen} menuOpen={isOpen} />

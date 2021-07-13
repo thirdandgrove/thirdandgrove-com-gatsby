@@ -27,28 +27,17 @@ const Components = {
  */
 const ContentBody = ({ comps, type }) => {
   if (!Array.isArray(comps)) {
-    throw new Error(
-      `Comps prop is not an array, ${typeof comps} cannot be passed to ContentBody.`
-    );
+    throw new Error(`Comps prop is not an array, ${typeof comps} cannot be passed to ContentBody.`);
   }
   const validComps = comps.filter(comp => comp.relationships);
-  const firstText = validComps.find(comp =>
-    comp.relationships.component_type.name.toLowerCase().includes('text')
-  );
+  const firstText = validComps.find(comp => comp.relationships.component_type.name.toLowerCase().includes('text'));
   return (
     <>
       {validComps.map(comp => {
         // Dynamically select a component based on field name
-        const componentName = comp.relationships.component_type.name
-          .split(' ')
-          .join('');
+        const componentName = comp.relationships.component_type.name.split(' ').join('');
         const Component = Components[componentName];
-        return (
-          <Component
-            data={{ ...comp, type, isFirstText: firstText.id === comp.id }}
-            key={comp.id}
-          />
-        );
+        return <Component data={{ ...comp, type, isFirstText: firstText.id === comp.id }} key={comp.id} />;
       })}
     </>
   );

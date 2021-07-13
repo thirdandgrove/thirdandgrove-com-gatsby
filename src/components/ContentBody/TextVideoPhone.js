@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
-import {
-  weights,
-  container,
-  mediaQueries,
-  contentH2,
-  contentHeadings,
-  dropCap,
-} from '../../styles';
+import { weights, container, mediaQueries, contentH2, contentHeadings, dropCap } from '../../styles';
 import PhoneVideo from '../PhoneVideo';
 
 const SplitSection = loadable(() => import('../SplitSection'));
@@ -57,17 +50,11 @@ const TextVideoPhone = ({ data }) => {
           title='CloudHealth'
         />
       </section>
-      <section
-        css={sectionVerticalAlignment}
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section css={sectionVerticalAlignment} dangerouslySetInnerHTML={{ __html: data.field_body.processed }} />
     </SplitSection>
   ) : (
     <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
-      <section
-        css={sectionVerticalAlignment}
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section css={sectionVerticalAlignment} dangerouslySetInnerHTML={{ __html: data.field_body.processed }} />
       <section>
         <PhoneVideo
           // eslint-disable-next-line

@@ -47,8 +47,7 @@ const ArticlePreviewSlide = ({ article }) => {
           container.max,
           css`
             display: block;
-            transition: 1s cubic-bezier(0.86, 0, 0.07, 1) padding-left,
-              1s cubic-bezier(0.86, 0, 0.07, 1) padding-right;
+            transition: 1s cubic-bezier(0.86, 0, 0.07, 1) padding-left, 1s cubic-bezier(0.86, 0, 0.07, 1) padding-right;
 
             ${mediaQueries.phoneLarge} {
               display: flex;
@@ -95,10 +94,7 @@ const ArticlePreviewSlide = ({ article }) => {
             `}
           >
             <Img
-              fluid={
-                article.relationships.field_image.localFile.childImageSharp
-                  .fluid
-              }
+              fluid={article.relationships.field_image.localFile.childImageSharp.fluid}
               fadeIn={false}
               loading='eager'
               alt={article.field_image.alt}

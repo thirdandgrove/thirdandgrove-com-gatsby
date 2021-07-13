@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
-import {
-  contentH2,
-  contentHeadings,
-  weights,
-  container,
-  mediaQueries,
-  dropCap,
-} from '../../styles';
+import { contentH2, contentHeadings, weights, container, mediaQueries, dropCap } from '../../styles';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 

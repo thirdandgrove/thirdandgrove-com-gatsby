@@ -38,10 +38,7 @@ const OverlayForm = ({
     updateErrors(null);
     updateForm({
       ...formState,
-      [event.target.name]:
-        event.target.type === 'checkbox'
-          ? event.target.checked
-          : event.target.value,
+      [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value,
     });
   };
 
@@ -123,10 +120,7 @@ const OverlayForm = ({
             }
           `}
         >
-          {errs &&
-            Object.entries(errs).map(
-              (err, i) => name === err[0] && <p key={err[1]}>{err[1]}</p>
-            )}
+          {errs && Object.entries(errs).map((err, i) => name === err[0] && <p key={err[1]}>{err[1]}</p>)}
         </div>
       </div>
     ) : null;
@@ -229,12 +223,7 @@ const OverlayForm = ({
     }
 
     span {
-      background-image: linear-gradient(
-        to bottom,
-        ${colors.white},
-        ${colors.white} 50%,
-        ${colors.white} 50%
-      );
+      background-image: linear-gradient(to bottom, ${colors.white}, ${colors.white} 50%, ${colors.white} 50%);
     }
 
     &::before {
@@ -421,11 +410,7 @@ const OverlayForm = ({
                   flex-direction: column;
                 `}
               >
-                <input
-                  type='hidden'
-                  name={`${formName}`}
-                  value={`${formName}`}
-                />
+                <input type='hidden' name={`${formName}`} value={`${formName}`} />
 
                 <fieldset css={[fieldsetStyles, flexStyles]}>
                   <div>
@@ -494,20 +479,15 @@ const OverlayForm = ({
                         id='of-privacyPolicy'
                       />
                       <span>
-                        By entering your email, you agree to receive emails from
-                        Third and Grove. Your information will be processed in
-                        accordance with our Privacy Policy.
+                        By entering your email, you agree to receive emails from Third and Grove. Your information will
+                        be processed in accordance with our Privacy Policy.
                       </span>
                     </label>
                     <ReturnError errs={errors} name='privacyPolicy' />
                   </div>
                 </fieldset>
 
-                <Button
-                  onClick={onSubmit}
-                  disabled={hasSubmitted}
-                  css={solidButtonStyles}
-                >
+                <Button onClick={onSubmit} disabled={hasSubmitted} css={solidButtonStyles}>
                   {hasSubmitted ? confirmMessage : buttonText}
                 </Button>
               </form>
@@ -536,8 +516,7 @@ OverlayForm.defaultProps = {
   buttonText: 'Sign Me Up',
   confirmMessage: 'Thank You',
   header: 'Illuminating stuff, right?',
-  subheader:
-    'Join our mailing list and you can stay this informed all the time.',
+  subheader: 'Join our mailing list and you can stay this informed all the time.',
   formName: 'overlay-form',
   setFormSubmitted: () => {},
 };

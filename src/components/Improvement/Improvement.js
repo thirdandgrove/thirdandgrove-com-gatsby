@@ -18,18 +18,7 @@ const logos = {
   'hawaiian-host': hawaiianHost,
 };
 
-const Improvement = ({
-  index,
-  imageSrc,
-  imageAlt,
-  stats,
-  id,
-  content,
-  brand,
-  brandWidth,
-  link,
-  showButton,
-}) => {
+const Improvement = ({ index, imageSrc, imageAlt, stats, id, content, brand, brandWidth, link, showButton }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 

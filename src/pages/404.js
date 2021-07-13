@@ -23,9 +23,7 @@ const NotFoundPage = () => (
           `}
         >
           <h1 css={h1L}>Damn.</h1>
-          <p>
-            That page is not available. Head home and we&apos;ll get you sorted.
-          </p>
+          <p>That page is not available. Head home and we&apos;ll get you sorted.</p>
           <br />
           <Button onClick={() => navigate('/')}>Go to home</Button>
         </div>

@@ -5,13 +5,7 @@ import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 import loadable from '@loadable/component';
 
-import {
-  colors,
-  fonts,
-  mediaQueries,
-  weights,
-  jsBreakpoints,
-} from '../../styles';
+import { colors, fonts, mediaQueries, weights, jsBreakpoints } from '../../styles';
 import useWindow from '../../hooks/useWindow';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
@@ -82,27 +76,20 @@ const Header = ({
 
     if (value.match(/^rgb/)) {
       // If HEX, store the red, green, blue values in separate variables.
-      [r, g, b] = value.match(
-        /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
-      );
+      [r, g, b] = value.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
     } else {
       // If RGB, convert it to HEX
       // @see: http://gist.github.com/983661
-      const rgbVal = +`0x${value
-        .slice(1)
-        .replace(value.length < 5 && /./g, '$&$&')}`;
+      const rgbVal = +`0x${value.slice(1).replace(value.length < 5 && /./g, '$&$&')}`;
 
       r = rgbVal >> 16;
       g = rgbVal & 255;
       b = (rgbVal >> 8) & 255;
     }
-    return (
-      Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b)) > 127.5
-    );
+    return Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b)) > 127.5;
   };
 
-  const fontColor =
-    isLightBackground(color) && !invert ? colors.darkgray : colors.lightgray;
+  const fontColor = isLightBackground(color) && !invert ? colors.darkgray : colors.lightgray;
 
   const headerTitle = css`
     @keyframes headerSlide {
@@ -268,13 +255,10 @@ const Header = ({
     }
   `;
 
-  const getImageSrc = name =>
-    images.filter(({ node }) => name === node.name)[0].node.publicURL;
+  const getImageSrc = name => images.filter(({ node }) => name === node.name)[0].node.publicURL;
 
   useEffect(() => {
-    setIsMobile(
-      typeof window !== 'undefined' && width > jsBreakpoints.phoneLarge
-    );
+    setIsMobile(typeof window !== 'undefined' && width > jsBreakpoints.phoneLarge);
   }, [width]);
 
   useEffect(() => {
@@ -283,23 +267,9 @@ const Header = ({
 
   return (
     <>
-      <SEO
-        title={metaTitle || title}
-        description={description}
-        image={image}
-        noIndex={noIndex}
-      />
-      <TopNav
-        fill={fontColor}
-        hideNav={hideNav}
-        banner={banner}
-        navLink={navLink}
-      />
-      <FullWidthSection
-        css={[sectionCSS, styles]}
-        height={height}
-        minHeight={mobileMinHeight}
-      >
+      <SEO title={metaTitle || title} description={description} image={image} noIndex={noIndex} />
+      <TopNav fill={fontColor} hideNav={hideNav} banner={banner} navLink={navLink} />
+      <FullWidthSection css={[sectionCSS, styles]} height={height} minHeight={mobileMinHeight}>
         {hasHeroLogo && (
           <div
             css={css`
@@ -308,12 +278,7 @@ const Header = ({
             `}
           >
             {heroLogo ? (
-              <Img
-                fluid={heroLogo}
-                alt={heroLogoAlt}
-                fadeIn={false}
-                loading='eager'
-              />
+              <Img fluid={heroLogo} alt={heroLogoAlt} fadeIn={false} loading='eager' />
             ) : loaded === 'block' && isMobile ? (
               <ThirdAndGrove
                 css={css`

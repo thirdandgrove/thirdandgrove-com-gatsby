@@ -67,8 +67,7 @@ export default () => (
           text-align: center;
         `}
       >
-        Keep up to date by signing up for our newsletter. It’ll be fun, we
-        promise.
+        Keep up to date by signing up for our newsletter. It’ll be fun, we promise.
       </p>
       <NewsletterForm />
     </div>

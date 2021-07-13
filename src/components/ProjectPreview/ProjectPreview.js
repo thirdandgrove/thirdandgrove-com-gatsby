@@ -77,10 +77,8 @@ const ProjectPreview = ({ project, minHeight }) => {
   `;
   // Prepare image srcset based on Type (A, B, or C).
   const primaryImageData = project.relationships.field_image.localFile;
-  const secondaryImageData =
-    project.relationships.field_secondary_image.localFile;
-  const tertiaryImageData =
-    project.relationships.field_tertiary_image.localFile;
+  const secondaryImageData = project.relationships.field_secondary_image.localFile;
+  const tertiaryImageData = project.relationships.field_tertiary_image.localFile;
 
   // Assuming type-a is the default.
   const images = {
@@ -122,9 +120,7 @@ const ProjectPreview = ({ project, minHeight }) => {
         <h1 css={h1Styles}>{project.title}</h1>
       </div>
       <ImageCollage images={images} type={project.field_image_arrangement} />
-      <Button onClick={() => navigate(ensureTrailingSlash(project.path.alias))}>
-        View Case Study
-      </Button>
+      <Button onClick={() => navigate(ensureTrailingSlash(project.path.alias))}>View Case Study</Button>
     </div>
   );
 };

@@ -90,46 +90,36 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
         backgroundColor={colors.yellow}
         quoteColor={colors.white}
         data={{
-          field_quote:
-            'It is a quantum leap forward and we are looking forward to the next leap as well!',
-          field_footer_text:
-            'Mike Hoefer, Director, King Arthur Baking Company',
+          field_quote: 'It is a quantum leap forward and we are looking forward to the next leap as well!',
+          field_footer_text: 'Mike Hoefer, Director, King Arthur Baking Company',
         }}
       />
       <section css={sectionStyle}>
         <div className='basic-block--container'>
           <div className='basic-block--title'>
             <h2>
-              We are a full service digital commerce agency specializing in food
-              and beverage. We help brands design, build, optimize, and market
-              their D2C brands online.
+              We are a full service digital commerce agency specializing in food and beverage. We help brands design,
+              build, optimize, and market their D2C brands online.
             </h2>
           </div>
           <div className='basic-block--content'>
+            <p>Our creative and strategy teams ideate delightful buying experiences for food and beverage brands.</p>
+
             <p>
-              Our creative and strategy teams ideate delightful buying
-              experiences for food and beverage brands.
+              We specialize in Shopify, and have deep expertise with Shopify’s app store, theme store, front end
+              development, and backend integrations. We have integrated with every ERP and CRM tool under the sun,
+              including SAP, Microsoft Dynamics (DX), Salesforce, NetSuite, QuickBooks, Workday, and Sage.
             </p>
 
             <p>
-              We specialize in Shopify, and have deep expertise with Shopify’s
-              app store, theme store, front end development, and backend
-              integrations. We have integrated with every ERP and CRM tool under
-              the sun, including SAP, Microsoft Dynamics (DX), Salesforce,
-              NetSuite, QuickBooks, Workday, and Sage.
+              We are fluent in the most crucial regulatory requirements for U.S. food brands, including website
+              accessibility ADA guidelines (WCAG AA) and the California Consumer Privacy Act (CCPA).
             </p>
 
             <p>
-              We are fluent in the most crucial regulatory requirements for U.S.
-              food brands, including website accessibility ADA guidelines (WCAG
-              AA) and the California Consumer Privacy Act (CCPA).
-            </p>
-
-            <p>
-              We have extensive experience with the highly-regulated alcohol
-              industry, including shipping, tax, and marketing. We have built
-              deep integrations with ShipCompliant and WineShipping.com to
-              fulfill orders, as well as custom needs.
+              We have extensive experience with the highly-regulated alcohol industry, including shipping, tax, and
+              marketing. We have built deep integrations with ShipCompliant and WineShipping.com to fulfill orders, as
+              well as custom needs.
             </p>
           </div>
         </div>
@@ -137,10 +127,7 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
           <FakeButton className='basic-block--cta'>Contact Us</FakeButton>
         </Link>
       </section>
-      <LogoGrid
-        logoset='shopifyPlusFoodAndBeverage'
-        title='A few of our friends'
-      />
+      <LogoGrid logoset='shopifyPlusFoodAndBeverage' title='A few of our friends' />
       <CTAGrid
         items={data.allShopifyPlusFoodAndBeverageSupportCtaGridTwoJson.edges}
         images={data.allFile.edges}

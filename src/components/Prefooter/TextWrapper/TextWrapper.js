@@ -16,15 +16,10 @@ const TextWrapper = styled.span`
   flex-shrink: 0;
   background-color: ${props => props.backgroundColor};
   background-image: ${props => {
-    if (
-      typeof props.backgroundImage === 'undefined' ||
-      props.backgroundImage == null
-    ) {
+    if (typeof props.backgroundImage === 'undefined' || props.backgroundImage == null) {
       return 'none';
     } else {
-      return (
-        'url(' + props.backgroundImage.localFile.childImageSharp.fluid.src + ')'
-      );
+      return 'url(' + props.backgroundImage.localFile.childImageSharp.fluid.src + ')';
     }
   }};
 

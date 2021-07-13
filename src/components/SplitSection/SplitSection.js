@@ -4,12 +4,7 @@ import { css } from '@emotion/react';
 
 import { mediaQueries } from '../../styles';
 
-const SplitSection = ({
-  children,
-  gridTemplateColumns,
-  gridColumnGap,
-  ...props
-}) => (
+const SplitSection = ({ children, gridTemplateColumns, gridColumnGap, ...props }) => (
   <div
     {...props}
     css={css`
@@ -28,10 +23,7 @@ const SplitSection = ({
 SplitSection.propTypes = {
   gridTemplateColumns: PropTypes.string,
   gridColumnGap: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 };
 
 SplitSection.defaultProps = {

@@ -260,10 +260,7 @@ const ContactForm = ({ formName, altStyle }) => {
           {errs &&
             Object.values(errs).map((err, i) => (
               <p key={err}>
-                {err}{' '}
-                {i !== Object.keys(errs).length - 1 && (
-                  <span>&nbsp;-&nbsp;</span>
-                )}
+                {err} {i !== Object.keys(errs).length - 1 && <span>&nbsp;-&nbsp;</span>}
               </p>
             ))}
         </div>
@@ -299,11 +296,7 @@ const ContactForm = ({ formName, altStyle }) => {
             {/* eslint-disable-next-line */}
             <label>
               Don’t fill this out if you&apos;re human:{' '}
-              <input
-                name='botField'
-                value={formState.botField}
-                onChange={updateInput}
-              />
+              <input name='botField' value={formState.botField} onChange={updateInput} />
             </label>
           </fieldset>
           <div
@@ -318,10 +311,7 @@ const ContactForm = ({ formName, altStyle }) => {
           >
             <fieldset css={fieldSetStyles}>
               {/* eslint-disable-next-line */}
-              <label
-                htmlFor='cf-name'
-                css={[labelCss, formState.name ? activeLabel : inactiveLabel]}
-              >
+              <label htmlFor='cf-name' css={[labelCss, formState.name ? activeLabel : inactiveLabel]}>
                 <span>Name</span>
               </label>
               <Input
@@ -337,10 +327,7 @@ const ContactForm = ({ formName, altStyle }) => {
 
             <fieldset css={fieldSetStyles}>
               {/* eslint-disable-next-line */}
-              <label
-                htmlFor='cf-email'
-                css={[labelCss, formState.email ? activeLabel : inactiveLabel]}
-              >
+              <label htmlFor='cf-email' css={[labelCss, formState.email ? activeLabel : inactiveLabel]}>
                 <span>Email</span>
               </label>
               <Input
@@ -355,13 +342,7 @@ const ContactForm = ({ formName, altStyle }) => {
             </fieldset>
 
             <fieldset css={fieldSetStyles}>
-              <label
-                htmlFor='cf-website'
-                css={[
-                  labelCss,
-                  formState.website ? activeLabel : inactiveLabel,
-                ]}
-              >
+              <label htmlFor='cf-website' css={[labelCss, formState.website ? activeLabel : inactiveLabel]}>
                 <span>Website</span>{' '}
               </label>
               <Input
@@ -375,10 +356,7 @@ const ContactForm = ({ formName, altStyle }) => {
             </fieldset>
 
             <fieldset css={fieldSetStyles}>
-              <label
-                htmlFor='cf-phone'
-                css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}
-              >
+              <label htmlFor='cf-phone' css={[labelCss, formState.phone ? activeLabel : inactiveLabel]}>
                 <span>Phone [optional]</span>{' '}
               </label>
               <Input
@@ -393,14 +371,7 @@ const ContactForm = ({ formName, altStyle }) => {
             </fieldset>
 
             <fieldset css={fieldSetTextAreaStyles}>
-              <label
-                htmlFor='cf-message'
-                css={[
-                  labelCss,
-                  fullWidth,
-                  formState.comments ? activeLabel : inactiveLabel,
-                ]}
-              >
+              <label htmlFor='cf-message' css={[labelCss, fullWidth, formState.comments ? activeLabel : inactiveLabel]}>
                 <span>Leave a Message</span>{' '}
               </label>
               <TextArea

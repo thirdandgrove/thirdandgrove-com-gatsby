@@ -5,27 +5,13 @@ import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
 import useWindow from '../../hooks/useWindow';
-import {
-  colors,
-  mediaQueries,
-  jsBreakpoints,
-  smSectionHead,
-  container,
-} from '../../styles';
+import { colors, mediaQueries, jsBreakpoints, smSectionHead, container } from '../../styles';
 
 import logoSets from './logosets';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
-const LogoGrid = ({
-  title,
-  subtitle,
-  logoset,
-  backgroundColor,
-  minHeight,
-  styles,
-  defaultItemWidth,
-}) => {
+const LogoGrid = ({ title, subtitle, logoset, backgroundColor, minHeight, styles, defaultItemWidth }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
 
@@ -111,15 +97,9 @@ const LogoGrid = ({
   `;
 
   return (
-    <FullWidthSection
-      backgroundColor={backgroundColor}
-      minHeight={minHeight}
-      height='600px'
-    >
+    <FullWidthSection backgroundColor={backgroundColor} minHeight={minHeight} height='600px'>
       <div css={[container.max, containerStyles, styles]}>
-        <h2 css={[smSectionHead, subtitle ? multiLineStyles : titleStyles]}>
-          {title}
-        </h2>
+        <h2 css={[smSectionHead, subtitle ? multiLineStyles : titleStyles]}>{title}</h2>
         {subtitle && <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>}
         <Logos>
           {renderSet.map((logo, i) => (

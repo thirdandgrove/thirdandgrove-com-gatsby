@@ -31,14 +31,10 @@ function CapabilitiesSlide({ title, description, icon, link }) {
       const w = window.innerWidth;
       switch (true) {
         case w >= 1025:
-          getWidth =
-            ref.current.children[0].children[1].clientWidth +
-            window.innerWidth * 0.2;
+          getWidth = ref.current.children[0].children[1].clientWidth + window.innerWidth * 0.2;
           break;
         case w >= 900:
-          getWidth =
-            ref.current.children[0].children[1].clientWidth +
-            window.innerWidth * 0.1;
+          getWidth = ref.current.children[0].children[1].clientWidth + window.innerWidth * 0.1;
           break;
         default:
           getWidth = window.innerWidth;
@@ -150,10 +146,7 @@ function CapabilitiesSlide({ title, description, icon, link }) {
         <img className='animate-opacity' src={imageSrc} alt={title} />
         <H3>{title}</H3>
         <P className='animate-opacity'>{description}</P>
-        <Button
-          className='slider-button animate-opacity'
-          onClick={() => navigate(`${link}`)}
-        >
+        <Button className='slider-button animate-opacity' onClick={() => navigate(`${link}`)}>
           Learn More
         </Button>
       </span>

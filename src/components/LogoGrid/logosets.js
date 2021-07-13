@@ -66,13 +66,7 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '126' : '170'}
         height={isSmScreen ? '122' : '50'}
       />,
-      <img
-        loading='lazy'
-        src={isgm}
-        alt='ISGM'
-        width={isSmScreen ? '150' : '180'}
-        height={isSmScreen ? '37' : '50'}
-      />,
+      <img loading='lazy' src={isgm} alt='ISGM' width={isSmScreen ? '150' : '180'} height={isSmScreen ? '37' : '50'} />,
       <img
         loading='lazy'
         src={carlyle}
@@ -103,13 +97,7 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '125' : '180'}
         height={isSmScreen ? '36' : '52'}
       />,
-      <img
-        loading='lazy'
-        src={gaiam}
-        alt='gaiam'
-        width={isSmScreen ? '61' : '81'}
-        height={isSmScreen ? '68' : '90'}
-      />,
+      <img loading='lazy' src={gaiam} alt='gaiam' width={isSmScreen ? '61' : '81'} height={isSmScreen ? '68' : '90'} />,
       <img
         loading='lazy'
         src={brainiac}
@@ -319,13 +307,7 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '99' : '136'}
         height={isSmScreen ? '37' : '50'}
       />,
-      <img
-        loading='lazy'
-        src={geLogo}
-        alt='GE'
-        width={isSmScreen ? '53' : '72'}
-        height={isSmScreen ? '53' : '72'}
-      />,
+      <img loading='lazy' src={geLogo} alt='GE' width={isSmScreen ? '53' : '72'} height={isSmScreen ? '53' : '72'} />,
       <img
         loading='lazy'
         src={wsiLogo}
@@ -384,20 +366,8 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '105' : '134'}
         height={isSmScreen ? '35' : '44'}
       />,
-      <img
-        loading='lazy'
-        src={foxLogo}
-        alt='FOX'
-        width={isSmScreen ? '68' : '84'}
-        height={isSmScreen ? '30' : '36'}
-      />,
-      <img
-        loading='lazy'
-        src={geLogo}
-        alt='GE'
-        width={isSmScreen ? '51' : '72'}
-        height={isSmScreen ? '51' : '72'}
-      />,
+      <img loading='lazy' src={foxLogo} alt='FOX' width={isSmScreen ? '68' : '84'} height={isSmScreen ? '30' : '36'} />,
+      <img loading='lazy' src={geLogo} alt='GE' width={isSmScreen ? '51' : '72'} height={isSmScreen ? '51' : '72'} />,
       <img
         loading='lazy'
         src={absolutLogo}
@@ -440,20 +410,8 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '105' : '134'}
         height={isSmScreen ? '35' : '44'}
       />,
-      <img
-        loading='lazy'
-        src={foxLogo}
-        alt='FOX'
-        width={isSmScreen ? '68' : '84'}
-        height={isSmScreen ? '30' : '36'}
-      />,
-      <img
-        loading='lazy'
-        src={geLogo}
-        alt='GE'
-        width={isSmScreen ? '51' : '72'}
-        height={isSmScreen ? '51' : '72'}
-      />,
+      <img loading='lazy' src={foxLogo} alt='FOX' width={isSmScreen ? '68' : '84'} height={isSmScreen ? '30' : '36'} />,
+      <img loading='lazy' src={geLogo} alt='GE' width={isSmScreen ? '51' : '72'} height={isSmScreen ? '51' : '72'} />,
       <img
         loading='lazy'
         src={absolutLogo}
@@ -600,13 +558,7 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '62' : '94'}
         height={isSmScreen ? '62' : '94'}
       />,
-      <img
-        loading='lazy'
-        src={isgm}
-        alt='ISGM'
-        width={isSmScreen ? '99' : '136'}
-        height={isSmScreen ? '37' : '50'}
-      />,
+      <img loading='lazy' src={isgm} alt='ISGM' width={isSmScreen ? '99' : '136'} height={isSmScreen ? '37' : '50'} />,
       <img
         loading='lazy'
         src={prudential}
@@ -702,13 +654,7 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
-      <img
-        loading='lazy'
-        src={gLogo}
-        alt='G'
-        width={isSmScreen ? '55' : '66'}
-        height={isSmScreen ? '55' : '66'}
-      />,
+      <img loading='lazy' src={gLogo} alt='G' width={isSmScreen ? '55' : '66'} height={isSmScreen ? '55' : '66'} />,
       <img
         loading='lazy'
         src={wcBradley}

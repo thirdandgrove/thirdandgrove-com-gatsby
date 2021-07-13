@@ -8,14 +8,7 @@ import phoneSVG from './phone.png';
 
 const PhoneVideo = ({ src }) => {
   return (
-    <FullWidthSection
-      margin='0 auto'
-      padding='0 20px'
-      textAlign='left'
-      align='center'
-      justify='center'
-      height='auto'
-    >
+    <FullWidthSection margin='0 auto' padding='0 20px' textAlign='left' align='center' justify='center' height='auto'>
       <div
         className='video--outer-container'
         css={css`

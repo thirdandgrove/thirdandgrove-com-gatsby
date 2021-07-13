@@ -16,27 +16,14 @@ const WhatWeDo = loadable(() => import('../components/Prefooter/WhatWeDo'));
 const Layout = loadable(() => import('../components/layout'));
 const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
 const SplitSection = loadable(() => import('../components/SplitSection'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 
 const Drupalcon2021Event = ({ data }) => {
   const [isDate, setDate] = useState(false);
-  const [exploreLink, setExploreLink] = useState(
-    'https://events.drupal.org/drupalcon2021'
-  );
-  const [joinLink, setJoinLink] = useState(
-    'https://events.drupal.org/drupalcon2021'
-  );
+  const [exploreLink, setExploreLink] = useState('https://events.drupal.org/drupalcon2021');
+  const [joinLink, setJoinLink] = useState('https://events.drupal.org/drupalcon2021');
 
-  const {
-    header,
-    booth,
-    tag,
-    liveQas,
-    quote,
-    swag,
-  } = data.allDrupalconJson.edges[0].node;
+  const { header, booth, tag, liveQas, quote, swag } = data.allDrupalconJson.edges[0].node;
 
   const images = data.allFile.nodes;
 
@@ -134,9 +121,7 @@ const Drupalcon2021Event = ({ data }) => {
     >
       <SplitSection
         css={css`
-          grid-template-columns: ${isDate
-            ? `repeat(2, 1fr)`
-            : `1fr !important`};
+          grid-template-columns: ${isDate ? `repeat(2, 1fr)` : `1fr !important`};
 
           > div {
             display: flex;
@@ -218,11 +203,7 @@ const Drupalcon2021Event = ({ data }) => {
         {' '}
         {isDate && (
           <div>
-            <img
-              alt='DrupalCon'
-              src={getSrc('drupalcon', 'svg')}
-              className='d-image'
-            />
+            <img alt='DrupalCon' src={getSrc('drupalcon', 'svg')} className='d-image' />
             <h3
               css={css`
                 text-align: center;
@@ -232,11 +213,7 @@ const Drupalcon2021Event = ({ data }) => {
             </h3>
             <div>
               {booth.ctas.map(({ text, url }) => (
-                <div
-                  className='button--container'
-                  style={{ marginBottom: '0' }}
-                  key={url}
-                >
+                <div className='button--container' style={{ marginBottom: '0' }} key={url}>
                   <Button
                     css={css`
                       display: none;
@@ -331,26 +308,19 @@ const Drupalcon2021Event = ({ data }) => {
           </div>
           <h3>{tag.header}</h3>
           <p>
-            DrupalCon North America event organizers are working hard to bring
-            you a virtual version of the DrupalCon experience you know and love.
-            The event will take place April 12th-16th, 2021 Online, and
-            <a href='https://drupal.regfox.com/drupalcon-north-america-2021'>
-              you can register for the event now
-            </a>
-            .
+            DrupalCon North America event organizers are working hard to bring you a virtual version of the DrupalCon
+            experience you know and love. The event will take place April 12th-16th, 2021 Online, and
+            <a href='https://drupal.regfox.com/drupalcon-north-america-2021'>you can register for the event now</a>.
           </p>
           <p>
-            Third and Grove is excited to share thought leadership around all
-            things open- source. We will walk you through how we craft digital
-            experiences and discover opportunities to enhance B2B lead
-            generation strategies, and how to be ready for Drupal 10.
+            Third and Grove is excited to share thought leadership around all things open- source. We will walk you
+            through how we craft digital experiences and discover opportunities to enhance B2B lead generation
+            strategies, and how to be ready for Drupal 10.
           </p>
           <p>
-            We know Drupal like the back of our hand. DrupalCon North America
-            will have everything from keynotes, sessions, industry and topical
-            summits, discussion groups, networking opportunities, and much more.
-            Be sure to drop by the Third and Grove booth and get to know us a
-            little better.
+            We know Drupal like the back of our hand. DrupalCon North America will have everything from keynotes,
+            sessions, industry and topical summits, discussion groups, networking opportunities, and much more. Be sure
+            to drop by the Third and Grove booth and get to know us a little better.
           </p>
           {tag.ctas.map(({ text, url }) => (
             <div className='button--container' key={url}>
@@ -469,11 +439,7 @@ const Drupalcon2021Event = ({ data }) => {
       <InsightsSlider data={data.allInsight} />
 
       <SplitSection>
-        <WhatWeDo
-          text='See What We Do.'
-          link='/work/'
-          linkText='explore work'
-        />
+        <WhatWeDo text='See What We Do.' link='/work/' linkText='explore work' />
         <BeUs />
       </SplitSection>
     </Layout>
@@ -509,11 +475,7 @@ export const query = graphql`
         }
       }
     }
-    allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 4
-      filter: { field_hidden: { eq: false } }
-    ) {
+    allInsight(sort: { fields: created, order: DESC }, limit: 4, filter: { field_hidden: { eq: false } }) {
       nodes {
         ...InsightFragment
       }

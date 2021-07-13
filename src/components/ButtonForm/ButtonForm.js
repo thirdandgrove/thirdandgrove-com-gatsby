@@ -6,14 +6,7 @@ import OverlayForm from '../NewsletterForm/OverlayForm';
 import Button from '../Button';
 import { mediaQueries } from '../../styles';
 
-const ButtonForm = ({
-  header,
-  text,
-  confirmMessage,
-  subheader,
-  formName,
-  styles,
-}) => {
+const ButtonForm = ({ header, text, confirmMessage, subheader, formName, styles }) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {

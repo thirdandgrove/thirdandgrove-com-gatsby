@@ -6,22 +6,10 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import loadable from '@loadable/component';
 
-import {
-  colors,
-  fonts,
-  weights,
-  smSectionHead,
-  h1L,
-  container,
-  mediaQueries,
-  contValues,
-  pLight,
-} from '../styles';
+import { colors, fonts, weights, smSectionHead, h1L, container, mediaQueries, contValues, pLight } from '../styles';
 
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 const SplitSection = loadable(() => import('../components/SplitSection'));
 const Layout = loadable(() => import('../components/layout'));
 const Button = loadable(() => import('../components/Button'));
@@ -193,8 +181,7 @@ const About = ({ data }) => {
   // returns the correct image source needed to render
   const getSrc = name => {
     if (name === 'team_2') {
-      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
-        .fluid;
+      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp.fluid;
     }
     return images.find(img => img.name === name).childImageSharp.fluid;
   };
@@ -256,9 +243,7 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Radically Honest</h3>
-        <h2 css={[h1L, container.medium]}>
-          If you had a bit of food stuck in your teeth, we’d let you know.
-        </h2>
+        <h2 css={[h1L, container.medium]}>If you had a bit of food stuck in your teeth, we’d let you know.</h2>
         <p
           css={[
             pLight,
@@ -271,9 +256,8 @@ const About = ({ data }) => {
             `,
           ]}
         >
-          We work with brands we love and can’t wait to help grow. That means we
-          might not always tell you what you want to hear, but we’ll definitely
-          tell you what you need to hear.
+          We work with brands we love and can’t wait to help grow. That means we might not always tell you what you want
+          to hear, but we’ll definitely tell you what you need to hear.
         </p>
       </FullWidthSection>
       <FullWidthSection
@@ -384,9 +368,7 @@ const About = ({ data }) => {
         >
           Show us what you&apos;re made of.
         </h2>
-        <Button onClick={() => navigate(`/careers/`)}>
-          view open positions
-        </Button>
+        <Button onClick={() => navigate(`/careers/`)}>view open positions</Button>
       </FullWidthSection>
     </Layout>
   );
@@ -404,24 +386,13 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(
-            cropFocus: CENTER
-            maxHeight: 480
-            maxWidth: 980
-            quality: 100
-          ) {
+          fluid(cropFocus: CENTER, maxHeight: 480, maxWidth: 980, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
     }
-    allFile(
-      filter: {
-        absolutePath: {
-          regex: "/boston|oakland|emond|slemp|andrade|may|topp|joneric|john|jeremy/"
-        }
-      }
-    ) {
+    allFile(filter: { absolutePath: { regex: "/boston|oakland|emond|slemp|andrade|may|topp|joneric|john|jeremy/" } }) {
       nodes {
         name
         childImageSharp {

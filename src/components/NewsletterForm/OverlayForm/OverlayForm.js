@@ -9,15 +9,7 @@ import { encode } from '../../../util';
 const Button = loadable(() => import('../../Button'));
 const FullWidthSection = loadable(() => import('../../FullWidthSection'));
 
-const OverlayForm = ({
-  buttonText,
-  confirmMessage,
-  header,
-  subheader,
-  isActive,
-  setIsActive,
-  formName,
-}) => {
+const OverlayForm = ({ buttonText, confirmMessage, header, subheader, isActive, setIsActive, formName }) => {
   const [formState, updateForm] = useState({
     email: '',
     name: '',
@@ -45,30 +37,14 @@ const OverlayForm = ({
 
   const onSubmit = event => {
     event.preventDefault();
-    const {
-      name,
-      email,
-      addressOne,
-      city,
-      state,
-      country,
-      zipcode,
-    } = formState;
+    const { name, email, addressOne, city, state, country, zipcode } = formState;
     if (hasSubmitted) {
       // Deter multiple submissions.
       updateErrors({ error: 'The form has already been submitted.' });
       return;
     }
     // Validate inputs.
-    if (
-      !name ||
-      !email ||
-      !addressOne ||
-      !city ||
-      !state ||
-      !country ||
-      !zipcode
-    ) {
+    if (!name || !email || !addressOne || !city || !state || !country || !zipcode) {
       // Notify user of required fields.
       const currentErrs = {};
       if (!name) {
@@ -137,10 +113,7 @@ const OverlayForm = ({
             }
           `}
         >
-          {errs &&
-            Object.entries(errs).map(
-              (err, i) => name === err[0] && <p key={err[1]}>{err[1]}</p>
-            )}
+          {errs && Object.entries(errs).map((err, i) => name === err[0] && <p key={err[1]}>{err[1]}</p>)}
         </div>
       </div>
     ) : null;
@@ -370,11 +343,7 @@ const OverlayForm = ({
                   flex-direction: column;
                 `}
               >
-                <input
-                  type='hidden'
-                  name={`${formName}`}
-                  value={`${formName}`}
-                />
+                <input type='hidden' name={`${formName}`} value={`${formName}`} />
                 <fieldset css={[fieldsetStyles, flexStyles]}>
                   <div>
                     <input
@@ -516,8 +485,7 @@ OverlayForm.defaultProps = {
   buttonText: 'Sign Me Up',
   confirmMessage: 'Thank You',
   header: 'Illuminating stuff, right?',
-  subheader:
-    'Join our mailing list and you can stay this informed all the time.',
+  subheader: 'Join our mailing list and you can stay this informed all the time.',
   formName: 'overlay-form',
 };
 

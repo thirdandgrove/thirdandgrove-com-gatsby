@@ -6,23 +6,17 @@ import loadable from '@loadable/component';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import { colors } from '../styles';
 
-const NewsletterFullWidthSection = loadable(() =>
-  import('../components/NewsletterForm/NewsletterFullWidthSection')
-);
+const NewsletterFullWidthSection = loadable(() => import('../components/NewsletterForm/NewsletterFullWidthSection'));
 const BeUs = loadable(() => import('../components/Prefooter/BeUs'));
 const ContactUs = loadable(() => import('../components/Prefooter/ContactUs'));
 
 const Layout = loadable(() => import('../components/layout'));
 const ProjectsSlider = loadable(() => import('../components/ProjectsSlider'));
 const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
-const CapabilitiesSlider = loadable(() =>
-  import('../components/CapabilitiesSlider')
-);
+const CapabilitiesSlider = loadable(() => import('../components/CapabilitiesSlider'));
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const SplitSection = loadable(() => import('../components/SplitSection'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 
 const Index = ({ data }) => {
   const halfPage = useRef();
@@ -44,10 +38,7 @@ const Index = ({ data }) => {
       }}
     >
       <ProjectsSlider data={data.allCaseStudy} />
-      <CapabilitiesSlider
-        title='What We Do'
-        backgroundColor={colors.lightblue}
-      />
+      <CapabilitiesSlider title='What We Do' backgroundColor={colors.lightblue} />
       {hasScrolled || isScrolling ? (
         <>
           <InsightsSlider data={data.allInsight} />
@@ -73,20 +64,12 @@ export default Index;
 
 export const query = graphql`
   {
-    allCaseStudy(
-      sort: { fields: created, order: DESC }
-      limit: 7
-      filter: { field_hidden: { eq: false } }
-    ) {
+    allCaseStudy(sort: { fields: created, order: DESC }, limit: 7, filter: { field_hidden: { eq: false } }) {
       nodes {
         ...CaseStudyFragment
       }
     }
-    allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 4
-      filter: { field_hidden: { eq: false } }
-    ) {
+    allInsight(sort: { fields: created, order: DESC }, limit: 4, filter: { field_hidden: { eq: false } }) {
       nodes {
         ...InsightFragment
       }

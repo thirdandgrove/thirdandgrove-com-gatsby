@@ -7,13 +7,9 @@ import { colors, mediaQueries } from '../../styles';
 
 const Layout = loadable(() => import('../../components/layout'));
 const Button = loadable(() => import('../../components/Button'));
-const FullWidthSection = loadable(() =>
-  import('../../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../../components/FullWidthSection'));
 const LogoGrid = loadable(() => import('../../components/LogoGrid'));
-const InsightsSlider = loadable(() =>
-  import('../../components/InsightsSlider')
-);
+const InsightsSlider = loadable(() => import('../../components/InsightsSlider'));
 const CTAGrid = loadable(() => import('../../components/CTAGrid'));
 const Capability = loadable(() => import('../../components/Capability'));
 const Improvement = loadable(() => import('../../components/Improvement'));
@@ -78,9 +74,7 @@ const Shopify = query => {
           content='We helped Badlands pivot their D2C strategy to bring the best outdoor gear in the world directly to diehards all across America.'
           imageSrc={query.data.badlandsMac.childImageSharp.fluid}
           imageAlt='Badlands'
-          stats={[
-            { description: 'Increase in Conversion Rate', percent: '364%' },
-          ]}
+          stats={[{ description: 'Increase in Conversion Rate', percent: '364%' }]}
           index={1}
         />
       </FullWidthSection>
@@ -139,9 +133,7 @@ const Shopify = query => {
       />
       <Capability
         id='migration'
-        imageSrc={
-          query.data.platformMigrationImageDesktop.childImageSharp.fluid
-        }
+        imageSrc={query.data.platformMigrationImageDesktop.childImageSharp.fluid}
         imageAlt='White shoe'
         content={
           <>
@@ -158,23 +150,9 @@ const Shopify = query => {
         index={1}
         maxWidth
       />
-      <LogoGrid
-        logoset='shopifyPlus'
-        title='Taking Names'
-        backgroundColor={colors.lightgray}
-        minHeight='0'
-      />
-      <InsightsSlider
-        data={insights}
-        showButton={false}
-        showTitle={false}
-        backgroundColor={colors.lightgray}
-      />
-      <FullWidthSection
-        backgroundColor={colors.lightblue}
-        padding='110px 0'
-        minHeight='100%'
-      >
+      <LogoGrid logoset='shopifyPlus' title='Taking Names' backgroundColor={colors.lightgray} minHeight='0' />
+      <InsightsSlider data={insights} showButton={false} showTitle={false} backgroundColor={colors.lightgray} />
+      <FullWidthSection backgroundColor={colors.lightblue} padding='110px 0' minHeight='100%'>
         <h3
           id='contact'
           css={css`
@@ -228,9 +206,7 @@ export const query = graphql`
         }
       }
     }
-    hawaiianHostMac: file(
-      relativePath: { eq: "hawaiian-host-macbook@2x.png" }
-    ) {
+    hawaiianHostMac: file(relativePath: { eq: "hawaiian-host-macbook@2x.png" }) {
       childImageSharp {
         fluid(maxWidth: 1440, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -251,9 +227,7 @@ export const query = graphql`
         }
       }
     }
-    platformMigrationImageDesktop: file(
-      relativePath: { eq: "platform-migration.png" }
-    ) {
+    platformMigrationImageDesktop: file(relativePath: { eq: "platform-migration.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -265,9 +239,7 @@ export const query = graphql`
       limit: 5
       filter: {
         field_hidden: { eq: false }
-        relationships: {
-          field_tags: { elemMatch: { name: { regex: "/shopify plus/i" } } }
-        }
+        relationships: { field_tags: { elemMatch: { name: { regex: "/shopify plus/i" } } } }
       }
     ) {
       nodes {

@@ -8,18 +8,12 @@ import { partnersProjects, list } from '../../styles/custom-css';
 import EliteSRC from '../../../static/images/Partner_Wordmark-Elite_1col.svg';
 
 const Layout = loadable(() => import('../../components/layout'));
-const FullWidthSection = loadable(() =>
-  import('../../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../../components/FullWidthSection'));
 const SplitSection = loadable(() => import('../../components/SplitSection'));
 const Quote = loadable(() => import('../../components/ContentBody/Quote'));
 const CTA = loadable(() => import('../../components/CTA'));
-const InsightsSlider = loadable(() =>
-  import('../../components/InsightsSlider')
-);
-const ProjectsSlider = loadable(() =>
-  import('../../components/ProjectsSlider')
-);
+const InsightsSlider = loadable(() => import('../../components/InsightsSlider'));
+const ProjectsSlider = loadable(() => import('../../components/ProjectsSlider'));
 
 const BigCommerce = query => {
   const { insights, caseStudies } = query.data;
@@ -28,8 +22,7 @@ const BigCommerce = query => {
     <Layout
       headerData={{
         invert: true,
-        label:
-          'eCommerce Pioneers — Online Store Creationists — Platform Solution Prowess',
+        label: 'eCommerce Pioneers — Online Store Creationists — Platform Solution Prowess',
         title: 'BigCommerce Things Come in Small Packages',
         color: colors.black,
         mobileMinHeight: '620px',
@@ -40,25 +33,16 @@ const BigCommerce = query => {
       <FullWidthSection height='400px' align='left' css={list}>
         <h4>Scale your sales potential with BigCommerce</h4>
         <p>
-          We work directly with incredible organizations to build complex
-          systems and innovative digital experiences; working with mid-market
-          and enterprise clients to develop web experiences in Drupal and
-          BigCommerce.
+          We work directly with incredible organizations to build complex systems and innovative digital experiences;
+          working with mid-market and enterprise clients to develop web experiences in Drupal and BigCommerce.
         </p>
         <div>
           <ul>
+            <li>BigCommerce API integration, custom development, and platform migration.</li>
+            <li>BigCommerce responsive theme design, user experience, and UI design.</li>
             <li>
-              BigCommerce API integration, custom development, and platform
-              migration.
-            </li>
-            <li>
-              BigCommerce responsive theme design, user experience, and UI
-              design.
-            </li>
-            <li>
-              BigCommerce on-page search engine optimization, website migration,
-              analytics tracking, conversion rate option, and structured data
-              implementation.
+              BigCommerce on-page search engine optimization, website migration, analytics tracking, conversion rate
+              option, and structured data implementation.
             </li>
           </ul>
         </div>
@@ -81,40 +65,31 @@ const BigCommerce = query => {
           </a>
         </div>
       </FullWidthSection>
-      <ProjectsSlider
-        data={caseStudies}
-        backgroundColor={colors.lightgray}
-        tech='BigCommerce'
-      />
+      <ProjectsSlider data={caseStudies} backgroundColor={colors.lightgray} tech='BigCommerce' />
       <SplitSection gridColumnGap='16px' css={partnersProjects}>
         <article>
           <h2>Conquer complexity</h2>
           <p>
-            BigCommerce is not complex, but your integration may be. We’ve
-            pioneered robust integrations for both back and front-end
-            experiences.
+            BigCommerce is not complex, but your integration may be. We’ve pioneered robust integrations for both back
+            and front-end experiences.
           </p>
         </article>
         <article>
           <h2>Maximize your budget</h2>
           <p>
-            Minimize your build investment and reinvest into initiatives that
-            move the needle. (We can help with that too).
+            Minimize your build investment and reinvest into initiatives that move the needle. (We can help with that
+            too).
           </p>
         </article>
         <article>
           <h2>Global first</h2>
-          <p>
-            Companies need to think globally to compete. We’ll help you lay the
-            foundation from day one.
-          </p>
+          <p>Companies need to think globally to compete. We’ll help you lay the foundation from day one.</p>
         </article>
         <article>
           <h2>Automate all the things</h2>
           <p>
-            Automation is about more than just saving time. We leverage
-            automation to create processes that create raving fans and big
-            spenders.
+            Automation is about more than just saving time. We leverage automation to create processes that create
+            raving fans and big spenders.
           </p>
         </article>
       </SplitSection>
@@ -125,11 +100,7 @@ const BigCommerce = query => {
           field_footer_text: 'Justin Emond',
         }}
       />
-      <InsightsSlider
-        data={insights}
-        showButton={false}
-        backgroundColor={colors.lightgray}
-      />
+      <InsightsSlider data={insights} showButton={false} backgroundColor={colors.lightgray} />
       <CTA />
     </Layout>
   );
@@ -137,11 +108,7 @@ const BigCommerce = query => {
 
 export const query = graphql`
   {
-    insights: allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 5
-      filter: { field_hidden: { eq: false } }
-    ) {
+    insights: allInsight(sort: { fields: created, order: DESC }, limit: 5, filter: { field_hidden: { eq: false } }) {
       nodes {
         id
         title
@@ -208,10 +175,7 @@ export const query = graphql`
         }
       }
     }
-    caseStudies: allCaseStudy(
-      limit: 10
-      filter: { field_hidden: { eq: false } }
-    ) {
+    caseStudies: allCaseStudy(limit: 10, filter: { field_hidden: { eq: false } }) {
       nodes {
         id
         title

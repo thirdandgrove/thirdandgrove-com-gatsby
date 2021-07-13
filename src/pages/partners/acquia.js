@@ -4,28 +4,17 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import loadable from '@loadable/component';
 
-import {
-  colors,
-  mediaQueries,
-  fonts,
-  weights,
-  container,
-  pLight,
-} from '../../styles';
+import { colors, mediaQueries, fonts, weights, container, pLight } from '../../styles';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
 import CTAGrid from '../../components/CTAGrid';
 
 const Layout = loadable(() => import('../../components/layout'));
-const FullWidthSection = loadable(() =>
-  import('../../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../../components/FullWidthSection'));
 const SplitSection = loadable(() => import('../../components/SplitSection'));
 const LogoGrid = loadable(() => import('../../components/LogoGrid'));
-const ProjectsSlider = loadable(() =>
-  import('../../components/ProjectsSlider')
-);
+const ProjectsSlider = loadable(() => import('../../components/ProjectsSlider'));
 
 const Acquia = query => {
   const { insights, caseStudies } = query.data;
@@ -63,8 +52,7 @@ const Acquia = query => {
     <Layout
       headerData={{
         invert: true,
-        label:
-          'Deep Integrations — Rich Personalization — Efficient Development',
+        label: 'Deep Integrations — Rich Personalization — Efficient Development',
         title: 'Squeeze every last drop out of your Acquia investment.',
         color: colors.acquiaBlue,
         mobileMinHeight: '620px',
@@ -123,10 +111,9 @@ const Acquia = query => {
       >
         <h3>Team up with a partner who is tight with Acquia</h3>
         <p>
-          We’ve invested over 130,000 hours on the Acquia platform (we’re good
-          friends with the team by now but feel free to ask around). This means
-          fewer conversations about development and more about how to improve
-          visitor engagement.
+          We’ve invested over 130,000 hours on the Acquia platform (we’re good friends with the team by now but feel
+          free to ask around). This means fewer conversations about development and more about how to improve visitor
+          engagement.
         </p>
         <div>
           <ul>
@@ -142,17 +129,8 @@ const Acquia = query => {
           </ul>
         </div>
       </FullWidthSection>
-      <ProjectsSlider
-        data={caseStudies}
-        backgroundColor={colors.lightgray}
-        tech='Acquia'
-      />
-      <LogoGrid
-        logoset='acquia'
-        title='Some of Our Acquia Clients'
-        backgroundColor={colors.white}
-        minHeight='0'
-      />
+      <ProjectsSlider data={caseStudies} backgroundColor={colors.lightgray} tech='Acquia' />
+      <LogoGrid logoset='acquia' title='Some of Our Acquia Clients' backgroundColor={colors.white} minHeight='0' />
       <SplitSection
         gridTemplateColumns='repeat(3, 1fr)'
         css={css`
@@ -244,15 +222,10 @@ const Acquia = query => {
         data={{
           field_quote:
             'Through their significant contributions to the Drupal ecosystem and to helping clients like Mint.com engage in new ways with their audience, Third & Grove have proven themselves to be an invaluable partner as the Acquia community continues to grow.',
-          field_footer_text:
-            'Joe Wykes - SVP Global Channels & eCommerce - Acquia',
+          field_footer_text: 'Joe Wykes - SVP Global Channels & eCommerce - Acquia',
         }}
       />
-      <InsightsSlider
-        data={insights}
-        showButton={false}
-        backgroundColor={colors.lightgray}
-      />
+      <InsightsSlider data={insights} showButton={false} backgroundColor={colors.lightgray} />
       <CTA />
     </Layout>
   );
@@ -287,11 +260,7 @@ export const query = graphql`
         }
       }
     }
-    insights: allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 5
-      filter: { field_hidden: { eq: false } }
-    ) {
+    insights: allInsight(sort: { fields: created, order: DESC }, limit: 5, filter: { field_hidden: { eq: false } }) {
       nodes {
         id
         title
@@ -358,10 +327,7 @@ export const query = graphql`
         }
       }
     }
-    caseStudies: allCaseStudy(
-      limit: 10
-      filter: { field_hidden: { eq: false } }
-    ) {
+    caseStudies: allCaseStudy(limit: 10, filter: { field_hidden: { eq: false } }) {
       nodes {
         id
         title

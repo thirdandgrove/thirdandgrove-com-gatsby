@@ -5,14 +5,7 @@ import { css } from '@emotion/react';
 import Img from 'gatsby-image';
 import loadable from '@loadable/component';
 
-import {
-  container,
-  colors,
-  fonts,
-  mediaQueries,
-  weights,
-  jsBreakpoints,
-} from '../../styles';
+import { container, colors, fonts, mediaQueries, weights, jsBreakpoints } from '../../styles';
 import useWindow from '../../hooks/useWindow';
 
 const TopNav = loadable(() => import('../TopNav'));
@@ -81,27 +74,20 @@ const SplitHeader = ({
 
     if (value.match(/^rgb/)) {
       // If HEX, store the red, green, blue values in separate variables.
-      [r, g, b] = value.match(
-        /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
-      );
+      [r, g, b] = value.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
     } else {
       // If RGB, convert it to HEX
       // @see: http://gist.github.com/983661
-      const rgbVal = +`0x${value
-        .slice(1)
-        .replace(value.length < 5 && /./g, '$&$&')}`;
+      const rgbVal = +`0x${value.slice(1).replace(value.length < 5 && /./g, '$&$&')}`;
 
       r = rgbVal >> 16;
       g = rgbVal & 255;
       b = (rgbVal >> 8) & 255;
     }
-    return (
-      Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b)) > 127.5
-    );
+    return Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b)) > 127.5;
   };
 
-  const fontColor =
-    isLightBackground(color) && !invert ? colors.darkgray : colors.lightgray;
+  const fontColor = isLightBackground(color) && !invert ? colors.darkgray : colors.lightgray;
 
   const headerTitle = css`
     @keyframes headerSlide {
@@ -259,25 +245,11 @@ const SplitHeader = ({
 
   return (
     <>
-      <SEO
-        title={metaTitle || title}
-        description={description}
-        image={image}
-        noIndex={noIndex}
-      />
+      <SEO title={metaTitle || title} description={description} image={image} noIndex={noIndex} />
 
-      <TopNav
-        fill={fontColor}
-        hideNav={hideNav}
-        banner={banner}
-        navLink={navLink}
-      />
+      <TopNav fill={fontColor} hideNav={hideNav} banner={banner} navLink={navLink} />
 
-      <FullWidthSection
-        css={[sectionCSS, styles]}
-        height='100vh'
-        minHeight='100vh'
-      >
+      <FullWidthSection css={[sectionCSS, styles]} height='100vh' minHeight='100vh'>
         <div css={innerSectionCSS}>
           <div className='column-one'>
             {title && (
@@ -329,9 +301,7 @@ const SplitHeader = ({
                 <div className='thanks--container'>
                   <p className='thanks'>Thank you for submitting your email.</p>
 
-                  <p className='thanks'>
-                    Use the button below to download our ebook.
-                  </p>
+                  <p className='thanks'>Use the button below to download our ebook.</p>
                 </div>
               ) : (
                 <div

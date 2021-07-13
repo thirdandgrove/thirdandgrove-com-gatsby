@@ -7,17 +7,7 @@ import { weights, mediaQueries, colors, contValues } from '../../styles';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
-const Quote = ({
-  data,
-  size,
-  padding,
-  color,
-  backgroundColor,
-  quoteColor,
-  center,
-  altStyle,
-  innerMargin,
-}) => {
+const Quote = ({ data, size, padding, color, backgroundColor, quoteColor, center, altStyle, innerMargin }) => {
   const isSmall = size === 'small';
 
   const quoteText = css`
@@ -94,21 +84,14 @@ const Quote = ({
   `;
 
   return (
-    <FullWidthSection
-      height='auto'
-      minHeight='auto'
-      padding={padding}
-      backgroundColor={backgroundColor}
-    >
+    <FullWidthSection height='auto' minHeight='auto' padding={padding} backgroundColor={backgroundColor}>
       <div css={containerStyles}>
         <div css={!altStyle ? quoteText : quoteTextAlt}>
           <span css={quoL}>&ldquo;</span>
           {data.field_quote}
           <span css={quoR}>&rdquo;</span>
         </div>
-        {data.field_footer_text && (
-          <p css={quoteAttr}>{`—${data.field_footer_text}`}</p>
-        )}
+        {data.field_footer_text && <p css={quoteAttr}>{`—${data.field_footer_text}`}</p>}
       </div>
     </FullWidthSection>
   );

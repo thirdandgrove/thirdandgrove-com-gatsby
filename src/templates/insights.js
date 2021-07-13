@@ -10,12 +10,8 @@ import { colors, mediaQueries } from '../styles';
 const Layout = loadable(() => import('../components/layout'));
 const ContentBody = loadable(() => import('../components/ContentBody'));
 const InsightsSlider = loadable(() => import('../components/InsightsSlider'));
-const NewsletterFullWidthSection = loadable(() =>
-  import('../components/NewsletterForm/NewsletterFullWidthSection')
-);
-const NewsletterOverlay = loadable(() =>
-  import('../components/NewsletterForm/NewsletterOverlay')
-);
+const NewsletterFullWidthSection = loadable(() => import('../components/NewsletterForm/NewsletterFullWidthSection'));
+const NewsletterOverlay = loadable(() => import('../components/NewsletterForm/NewsletterOverlay'));
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -32,9 +28,7 @@ const Insights = ({ data }) => {
 
   const headerData = {
     title: post.title,
-    label: post.relationships.field_e_book_file
-      ? `Special Report`
-      : `${post.created} - ${post.relationships.uid.name}`,
+    label: post.relationships.field_e_book_file ? `Special Report` : `${post.created} - ${post.relationships.uid.name}`,
     invert: post.field_inverse_header,
     defaultBackground: false,
     color: backgroundColor || colors.yellow,
@@ -44,9 +38,7 @@ const Insights = ({ data }) => {
 
   const splitHeaderData = {
     title: post.title,
-    label: post.relationships.field_e_book_file
-      ? `Special Report`
-      : `${post.created} - ${post.relationships.uid.name}`,
+    label: post.relationships.field_e_book_file ? `Special Report` : `${post.created} - ${post.relationships.uid.name}`,
     invert: post.field_inverse_header,
     splitHeroImage: post.relationships.field_image,
     file: post.relationships.field_e_book_file,
@@ -56,9 +48,7 @@ const Insights = ({ data }) => {
     titleMarginBottom: '40px',
     imageAlt,
     summary: post.field_summary ? post?.field_summary.processed : '',
-    ebook: post.relationships.field_e_book_file
-      ? post.relationships.field_e_book_file
-      : '',
+    ebook: post.relationships.field_e_book_file ? post.relationships.field_e_book_file : '',
   };
 
   if (post.relationships.field_image) {
@@ -70,9 +60,7 @@ const Insights = ({ data }) => {
     <Layout
       headerData={headerData}
       split={post.relationships.field_e_book_file && true}
-      splitHeaderData={
-        post.relationships.field_e_book_file ? splitHeaderData : {}
-      }
+      splitHeaderData={post.relationships.field_e_book_file ? splitHeaderData : {}}
     >
       <div
         css={[
@@ -84,35 +72,28 @@ const Insights = ({ data }) => {
           wrapperStyle,
         ]}
       >
-        {!post.relationships.field_e_book_file &&
-          post.relationships.field_image && (
-            <Img
-              fluid={
-                post.relationships.field_image.localFile.childImageSharp.fluid
+        {!post.relationships.field_e_book_file && post.relationships.field_image && (
+          <Img
+            fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+            alt={imageAlt}
+            css={css`
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-top: -100px;
+              margin-bottom: 60px;
+              max-width: 980px;
+
+              ${mediaQueries.phoneLarge} {
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: -165px;
+                margin-bottom: 80px;
               }
-              alt={imageAlt}
-              css={css`
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-top: -100px;
-                margin-bottom: 60px;
-                max-width: 980px;
+            `}
+          />
+        )}
 
-                ${mediaQueries.phoneLarge} {
-                  margin-left: auto;
-                  margin-right: auto;
-                  margin-top: -165px;
-                  margin-bottom: 80px;
-                }
-              `}
-            />
-          )}
-
-        <ContentBody
-          comps={post.relationships.field_components}
-          type='insight'
-          trim
-        />
+        <ContentBody comps={post.relationships.field_components} type='insight' trim />
       </div>
       {!post.relationships.field_e_book_file && (
         <>
@@ -140,9 +121,7 @@ export const query = graphql`
       limit: 5
       filter: {
         field_hidden: { eq: false }
-        relationships: {
-          field_tags: { elemMatch: { name: { in: $PostTags } } }
-        }
+        relationships: { field_tags: { elemMatch: { name: { in: $PostTags } } } }
         id: { ne: $PostId }
       }
       sort: { fields: created, order: DESC }

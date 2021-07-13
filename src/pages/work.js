@@ -15,9 +15,7 @@ const Layout = loadable(() => import('../components/layout'));
 const CTA = loadable(() => import('../components/CTA'));
 const VideoSection = loadable(() => import('../components/VideoSection'));
 const FakeButton = loadable(() => import('../components/FakeButton'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 
 const Project = ({ study, index }) => {
   const nodeRef = useRef();
@@ -63,10 +61,7 @@ const Project = ({ study, index }) => {
           >
             {({ transform, opacity }) => (
               <Img
-                fluid={
-                  study.relationships.field_image.localFile.childImageSharp
-                    .fluid
-                }
+                fluid={study.relationships.field_image.localFile.childImageSharp.fluid}
                 alt={study.field_image.alt}
                 style={{ transform, opacity }}
                 css={css`
@@ -74,9 +69,7 @@ const Project = ({ study, index }) => {
                   margin-bottom: 20px;
 
                   ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${
-                      index % 2 ? '64%' : index === 0 ? '64%' : '49%'
-                    };
+                    flex: 0 0 ${index % 2 ? '64%' : index === 0 ? '64%' : '49%'};
                     width: ${index % 2 ? '64%' : index === 0 ? '64%' : '49%'};
                     margin-bottom: 0;
 
@@ -174,10 +167,7 @@ Project.propTypes = {
 };
 
 const Work = () => {
-  const {
-    allEntitySubqueueCaseStudies,
-    allNodeHomePage,
-  } = useStaticQuery(graphql`
+  const { allEntitySubqueueCaseStudies, allNodeHomePage } = useStaticQuery(graphql`
     {
       allEntitySubqueueCaseStudies(limit: 6) {
         nodes {
@@ -326,12 +316,7 @@ const Work = () => {
         height: '400px',
       }}
     >
-      {isBrowser && (
-        <VideoSection
-          url={allNodeHomePage.edges[0].node.field_video}
-          mp4={mp4}
-        />
-      )}
+      {isBrowser && <VideoSection url={allNodeHomePage.edges[0].node.field_video} mp4={mp4} />}
 
       {studies.map((study, index) => (
         <Project study={study} index={index} key={study.id} />

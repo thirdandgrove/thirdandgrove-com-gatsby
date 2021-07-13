@@ -102,27 +102,9 @@ const SEO = ({ description, lang, meta, keywords, title, image, noIndex }) => {
         crossOrigin='anonymous'
         type='font/woff2'
       />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-Thin.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-Bold.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
-      <link
-        rel='preload'
-        href='/Fonts/Canela/Canela-Black.woff2'
-        as='font'
-        crossOrigin='anonymous'
-        type='font/woff2'
-      />
+      <link rel='preload' href='/Fonts/Canela/Canela-Thin.woff2' as='font' crossOrigin='anonymous' type='font/woff2' />
+      <link rel='preload' href='/Fonts/Canela/Canela-Bold.woff2' as='font' crossOrigin='anonymous' type='font/woff2' />
+      <link rel='preload' href='/Fonts/Canela/Canela-Black.woff2' as='font' crossOrigin='anonymous' type='font/woff2' />
       <link
         rel='preload'
         href='/Fonts/Canela/Canela-BlackItalic.woff2'

@@ -5,9 +5,7 @@ import loadable from '@loadable/component';
 import { mediaQueries, colors, fonts } from '../../../styles';
 
 const FullWidthSection = loadable(() => import('../../FullWidthSection'));
-const NewsletterOverlayForm = loadable(() =>
-  import('../NewsletterOverlayForm')
-);
+const NewsletterOverlayForm = loadable(() => import('../NewsletterOverlayForm'));
 
 export default () => {
   const [isActive, setIsActive] = useState(false);
@@ -194,10 +192,7 @@ export default () => {
             >
               Join our mailing list and you can stay this informed all the time.
             </p>
-            <NewsletterOverlayForm
-              setIsActive={setIsActive}
-              isActive={isActive}
-            />
+            <NewsletterOverlayForm setIsActive={setIsActive} isActive={isActive} />
           </div>
         </div>
       </FullWidthSection>

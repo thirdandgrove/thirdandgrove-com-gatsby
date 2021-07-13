@@ -5,19 +5,12 @@ import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
 import loadable from '@loadable/component';
 
-import {
-  mediaQueries,
-  jsBreakpoints,
-  colors,
-  fonts,
-  weights,
-} from '../../styles';
+import { mediaQueries, jsBreakpoints, colors, fonts, weights } from '../../styles';
 import useWindow from '../../hooks/useWindow';
 
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 
 const VideoSection = ({ url, mp4 }) => {
-  const isBrowser = typeof window !== 'undefined' && window.document;
   const { width } = useWindow();
   const refMovie = useRef();
   const refVimeo = useRef();

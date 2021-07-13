@@ -7,17 +7,11 @@ import loadable from '@loadable/component';
 
 import { container, mediaQueries, weights, colors, fonts } from '../styles';
 
-const NewsletterSimpleOverlay = loadable(() =>
-  import('../components/NewsletterForm/NewsletterSimpleOverlay')
-);
+const NewsletterSimpleOverlay = loadable(() => import('../components/NewsletterForm/NewsletterSimpleOverlay'));
 const GetInTouch = loadable(() => import('../components/Prefooter/GetInTouch'));
-const SeeInsights = loadable(() =>
-  import('../components/Prefooter/SeeInsights')
-);
+const SeeInsights = loadable(() => import('../components/Prefooter/SeeInsights'));
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 const SplitSection = loadable(() => import('../components/SplitSection'));
 const Layout = loadable(() => import('../components/layout'));
 const Button = loadable(() => import('../components/Button'));
@@ -25,12 +19,8 @@ const Button = loadable(() => import('../components/Button'));
 const AcquiaEngage = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const [exploreLink, setExploreLink] = useState(
-    'https://acquiaengage2020.eventfinity.co/libraries/105548'
-  );
-  const [joinLink, setJoinLink] = useState(
-    'https://acquiaengage2020.eventfinity.co/libraries/105548'
-  );
+  const [exploreLink, setExploreLink] = useState('https://acquiaengage2020.eventfinity.co/libraries/105548');
+  const [joinLink, setJoinLink] = useState('https://acquiaengage2020.eventfinity.co/libraries/105548');
 
   const { node } = data.allAcquiaEngageJson.edges[0];
 
@@ -40,8 +30,7 @@ const AcquiaEngage = ({ data }) => {
     return images.find(img => img.name === name).childImageSharp.fluid;
   };
 
-  const getImageSrc = imgName =>
-    images.filter(({ name }) => name === imgName)[0].publicURL;
+  const getImageSrc = imgName => images.filter(({ name }) => name === imgName)[0].publicURL;
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -71,9 +60,7 @@ const AcquiaEngage = ({ data }) => {
         });
       } catch (error) {
         setJoinLink('https://acquiaengage2020.eventfinity.co/libraries/105548');
-        setExploreLink(
-          'https://acquiaengage2020.eventfinity.co/libraries/105548'
-        );
+        setExploreLink('https://acquiaengage2020.eventfinity.co/libraries/105548');
       }
     }
     getLinks();
@@ -307,11 +294,7 @@ const AcquiaEngage = ({ data }) => {
         `}
       >
         <div css={[splitWithButtonsCss, container.medium]}>
-          <Img
-            alt='Third and Grove Card Caddy'
-            fluid={getSrc('cc-transparent')}
-            className='cc-image'
-          />
+          <Img alt='Third and Grove Card Caddy' fluid={getSrc('cc-transparent')} className='cc-image' />
           <h3>{node.header[0].subtitle}</h3>
 
           <div>
@@ -426,8 +409,8 @@ const AcquiaEngage = ({ data }) => {
         <br />
         <h3>Our Friends</h3>
         <p>
-          After you visit with us, we have some other suggestions for you.
-          Here’s a breakdown of what to do and who to meet.
+          After you visit with us, we have some other suggestions for you. Here’s a breakdown of what to do and who to
+          meet.
         </p>
         {node.talk[0].talks.map(({ title, date, time, description }) => (
           <span key={title}>
@@ -481,9 +464,7 @@ export default AcquiaEngage;
 
 export const query = graphql`
   {
-    allFile(
-      filter: { absolutePath: { regex: "/acquia-engage/|/headshots/" } }
-    ) {
+    allFile(filter: { absolutePath: { regex: "/acquia-engage/|/headshots/" } }) {
       nodes {
         name
         publicURL

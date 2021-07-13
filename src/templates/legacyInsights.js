@@ -6,17 +6,12 @@ import loadable from '@loadable/component';
 import { fonts, mediaQueries } from '../styles';
 
 const Layout = loadable(() => import('../components/layout'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 
 const LegacyInsights = ({ pageContext }) => {
   const { body, title, created, author } = pageContext;
 
-  const bodyWithImages = body.replace(
-    /\/sites\/default\/files/gi,
-    'https://cms.thirdandgrove.com/sites/default/files'
-  );
+  const bodyWithImages = body.replace(/\/sites\/default\/files/gi, 'https://cms.thirdandgrove.com/sites/default/files');
 
   const SectionStyle = css`
     width: 100%;

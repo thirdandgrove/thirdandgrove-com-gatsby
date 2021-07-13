@@ -35,11 +35,7 @@ const Thanks = ({ message }) => {
         }}
       >
         {({ transform, opacity }) => (
-          <h5
-            style={{ transform, opacity }}
-            css={smSectionHead}
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
+          <h5 style={{ transform, opacity }} css={smSectionHead} dangerouslySetInnerHTML={{ __html: message }} />
         )}
       </Spring>
     </div>

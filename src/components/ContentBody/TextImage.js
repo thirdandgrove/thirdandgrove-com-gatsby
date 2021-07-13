@@ -4,14 +4,7 @@ import Img from 'gatsby-image';
 import { css } from '@emotion/react';
 import loadable from '@loadable/component';
 
-import {
-  weights,
-  container,
-  mediaQueries,
-  contentH2,
-  contentHeadings,
-  dropCap,
-} from '../../styles';
+import { weights, container, mediaQueries, contentH2, contentHeadings, dropCap } from '../../styles';
 
 const SplitSection = loadable(() => import('../SplitSection'));
 
@@ -56,15 +49,11 @@ const TextImage = ({ data }) => {
           `}
         />
       </section>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section dangerouslySetInnerHTML={{ __html: data.field_body.processed }} />
     </SplitSection>
   ) : (
     <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section dangerouslySetInnerHTML={{ __html: data.field_body.processed }} />
       <section>
         <Img
           fluid={data.relationships.field_image.localFile.childImageSharp.fluid}

@@ -39,12 +39,7 @@ const ButtonFormDownload = ({
     }
 
     span {
-      background-image: linear-gradient(
-        to bottom,
-        ${colors.white},
-        ${colors.white} 50%,
-        ${colors.white} 50%
-      );
+      background-image: linear-gradient(to bottom, ${colors.white}, ${colors.white} 50%, ${colors.white} 50%);
     }
 
     &::before {
@@ -59,20 +54,12 @@ const ButtonFormDownload = ({
     <>
       {formSubmitted ? (
         <a href={filepath} target='_blank' rel='noreferrer'>
-          <Button
-            css={solidButtonStyles}
-            onClick={() => {}}
-            onKeyDown={onKeypress}
-          >
+          <Button css={solidButtonStyles} onClick={() => {}} onKeyDown={onKeypress}>
             Download Now
           </Button>
         </a>
       ) : (
-        <Button
-          css={solidButtonStyles}
-          onClick={e => handleClick(e)}
-          onKeyDown={onKeypress}
-        >
+        <Button css={solidButtonStyles} onClick={e => handleClick(e)} onKeyDown={onKeypress}>
           {text}
         </Button>
       )}

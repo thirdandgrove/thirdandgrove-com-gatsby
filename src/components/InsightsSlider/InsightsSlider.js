@@ -11,13 +11,7 @@ const ArticlePreviewSlide = loadable(() => import('../ArticlePreviewSlide'));
 const FullWidthSection = loadable(() => import('../FullWidthSection'));
 const Button = loadable(() => import('../Button'));
 
-const InsightsSlider = ({
-  showButton,
-  showTitle,
-  backgroundColor,
-  title,
-  data,
-}) => {
+const InsightsSlider = ({ showButton, showTitle, backgroundColor, title, data }) => {
   const settings = {
     arrows: false,
     autoplay: false,
@@ -73,9 +67,7 @@ const InsightsSlider = ({
             return <ArticlePreviewSlide key={node.title} article={node} />;
           })}
       </Slider>
-      {showButton && (
-        <Button onClick={() => navigate(`/insights/`)}>Our Insights</Button>
-      )}
+      {showButton && <Button onClick={() => navigate(`/insights/`)}>Our Insights</Button>}
     </FullWidthSection>
   );
 };

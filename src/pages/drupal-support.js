@@ -9,9 +9,7 @@ import drupalLogo from '../images/drupal-support/drupal-logo.png';
 import preserver from '../images/drupal-support/preserver.png';
 
 const Layout = loadable(() => import('../components/layout'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 const LogoGrid = loadable(() => import('../components/LogoGrid'));
 const Quote = loadable(() => import('../components/ContentBody/Quote'));
 const CTA = loadable(() => import('../components/CTA'));
@@ -121,11 +119,7 @@ const DrupalSupport = ({ data }) => {
         iconAlt='Drupal'
         altStyle
       />
-      <ProjectsSlider
-        data={data.allCaseStudy}
-        backgroundColor={colors.white}
-        minHeight='750'
-      />
+      <ProjectsSlider data={data.allCaseStudy} backgroundColor={colors.white} minHeight='750' />
       <Quote
         center
         altStyle
@@ -136,8 +130,7 @@ const DrupalSupport = ({ data }) => {
         data={{
           field_quote:
             'I wanted to let you know how much I have enjoyed working with the amazing team at Third and Grove. You guys go above and beyond!',
-          field_footer_text:
-            'Brittany Juliano, Digital Content Specialist, Draper Labs',
+          field_footer_text: 'Brittany Juliano, Digital Content Specialist, Draper Labs',
         }}
       />
       <section css={sectionStylesWithImage}>
@@ -186,11 +179,7 @@ const DrupalSupport = ({ data }) => {
         backgroundColor={colors.lightblue}
         altStyle
       />
-      <FullWidthSection
-        backgroundColor={colors.white}
-        padding='75px 0 100px 0'
-        minHeight='100%'
-      >
+      <FullWidthSection backgroundColor={colors.white} padding='75px 0 100px 0' minHeight='100%'>
         <h3
           id='contact'
           css={css`

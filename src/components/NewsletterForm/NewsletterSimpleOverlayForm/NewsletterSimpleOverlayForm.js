@@ -9,12 +9,7 @@ import { colors } from '../../../styles';
 const Input = loadable(() => import('../../Input'));
 const Button = loadable(() => import('../../Button'));
 
-const NewsletterSimpleOverlayForm = ({
-  setIsActive,
-  isActive,
-  buttonText,
-  confirmMessage,
-}) => {
+const NewsletterSimpleOverlayForm = ({ setIsActive, isActive, buttonText, confirmMessage }) => {
   const [email, updateEmail] = useState('');
   const [submitted, hasSubmitted] = useState(false);
 

@@ -6,9 +6,7 @@ import loadable from '@loadable/component';
 import { mediaQueries, container, fonts, weights } from '../styles';
 
 const Layout = loadable(() => import('../components/layout'));
-const FullWidthSection = loadable(() =>
-  import('../components/FullWidthSection')
-);
+const FullWidthSection = loadable(() => import('../components/FullWidthSection'));
 const Button = loadable(() => import('../components/Button'));
 
 const Job = ({ pageContext: { title, boardCode, description } }) => {
@@ -60,12 +58,7 @@ const Job = ({ pageContext: { title, boardCode, description } }) => {
                   margin-top: 72px;
                 }
               `}
-              onClick={() =>
-                window.open(
-                  `https://thirdandgrove.applytojob.com/apply/${boardCode}`,
-                  '_blank'
-                )
-              }
+              onClick={() => window.open(`https://thirdandgrove.applytojob.com/apply/${boardCode}`, '_blank')}
             >
               Apply Now
             </Button>

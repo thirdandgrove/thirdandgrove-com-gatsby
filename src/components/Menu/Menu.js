@@ -217,43 +217,23 @@ const Menu = ({ menuOpen, toggleOpen }) => {
         ]}
       >
         <section css={[sectionStyle, sectionPrimaryStyle]}>
-          <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-            Contents
-          </h5>
+          <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>Contents</h5>
           <Link
             onClick={() => toggleOpen()}
-            css={[
-              linkPrimaryStyle,
-              textFadeIn,
-              linkBaseStyles,
-              mobileDelay1,
-              desktopDelay1,
-            ]}
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles, mobileDelay1, desktopDelay1]}
             to='/work/'
           >
             Work
           </Link>
           <Link
-            css={[
-              linkPrimaryStyle,
-              textFadeIn,
-              linkBaseStyles,
-              mobileDelay2,
-              desktopDelay2,
-            ]}
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles, mobileDelay2, desktopDelay2]}
             onClick={() => toggleOpen()}
             to='/capabilities/'
           >
             Capabilities
           </Link>
           <Link
-            css={[
-              linkPrimaryStyle,
-              textFadeIn,
-              linkBaseStyles,
-              mobileDelay3,
-              desktopDelay3,
-            ]}
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles, mobileDelay3, desktopDelay3]}
             onClick={() => toggleOpen()}
             to='/insights/'
           >
@@ -264,39 +244,21 @@ const Menu = ({ menuOpen, toggleOpen }) => {
         <section css={[sectionStyle, sectionPrimaryStyle]}>
           <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>Company</h5>
           <Link
-            css={[
-              linkPrimaryStyle,
-              textFadeIn,
-              linkBaseStyles,
-              mobileDelay4,
-              desktopDelay1,
-            ]}
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles, mobileDelay4, desktopDelay1]}
             onClick={() => toggleOpen()}
             to='/about/'
           >
             About
           </Link>
           <Link
-            css={[
-              linkPrimaryStyle,
-              textFadeIn,
-              linkBaseStyles,
-              mobileDelay5,
-              desktopDelay2,
-            ]}
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles, mobileDelay5, desktopDelay2]}
             onClick={() => toggleOpen()}
             to='/careers/'
           >
             Careers
           </Link>
           <Link
-            css={[
-              linkPrimaryStyle,
-              textFadeIn,
-              linkBaseStyles,
-              mobileDelay6,
-              desktopDelay3,
-            ]}
+            css={[linkPrimaryStyle, textFadeIn, linkBaseStyles, mobileDelay6, desktopDelay3]}
             onClick={() => toggleOpen()}
             to='/contact/'
           >
@@ -304,59 +266,31 @@ const Menu = ({ menuOpen, toggleOpen }) => {
           </Link>
         </section>
         <section css={[sectionStyle, sectionSecondaryStyle]}>
-          <h5
-            css={[sectionHeaderStyle, textFadeIn, mobileDelay7, desktopDelay1]}
-          >
-            Partners
-          </h5>
+          <h5 css={[sectionHeaderStyle, textFadeIn, mobileDelay7, desktopDelay1]}>Partners</h5>
           <div css={linksWrapper}>
             <Link
-              css={[
-                linkSecondaryStyle,
-                textFadeIn,
-                linkBaseStyles,
-                mobileDelay8,
-                desktopDelay1,
-              ]}
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles, mobileDelay8, desktopDelay1]}
               onClick={() => toggleOpen()}
               to='/partners/drupal/'
             >
               Drupal
             </Link>
             <Link
-              css={[
-                linkSecondaryStyle,
-                textFadeIn,
-                linkBaseStyles,
-                mobileDelay8,
-                desktopDelay2,
-              ]}
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles, mobileDelay8, desktopDelay2]}
               onClick={() => toggleOpen()}
               to='/partners/acquia/'
             >
               Acquia
             </Link>
             <Link
-              css={[
-                linkSecondaryStyle,
-                textFadeIn,
-                linkBaseStyles,
-                mobileDelay8,
-                desktopDelay3,
-              ]}
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles, mobileDelay8, desktopDelay3]}
               onClick={() => toggleOpen()}
               to='/partners/shopify/'
             >
               Shopify
             </Link>
             <Link
-              css={[
-                linkSecondaryStyle,
-                textFadeIn,
-                linkBaseStyles,
-                mobileDelay9,
-                desktopDelay4,
-              ]}
+              css={[linkSecondaryStyle, textFadeIn, linkBaseStyles, mobileDelay9, desktopDelay4]}
               onClick={() => toggleOpen()}
               to='/partners/gatsby/'
             >

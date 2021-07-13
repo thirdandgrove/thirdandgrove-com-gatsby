@@ -24,9 +24,8 @@ const CapabilitiesPage = ({ data }) => {
           <>
             <h2>Technology</h2>
             <p>
-              Work with the best engineers in the room—no matter what room
-              you’re in. Our engineers are writing and discovering the future of
-              digital excellence.
+              Work with the best engineers in the room—no matter what room you’re in. Our engineers are writing and
+              discovering the future of digital excellence.
             </p>
             <ul>
               <li>Front-End Development</li>
@@ -56,10 +55,7 @@ const CapabilitiesPage = ({ data }) => {
         content={
           <>
             <h2>Strategy</h2>
-            <p>
-              The foundation for great work. Know your customer, your goals, and
-              how to reach them.
-            </p>
+            <p>The foundation for great work. Know your customer, your goals, and how to reach them.</p>
             <ul>
               <li>Digital Strategy</li>
               <li>Trends &amp; Insights</li>
@@ -80,9 +76,8 @@ const CapabilitiesPage = ({ data }) => {
           <>
             <h2>Creative</h2>
             <p>
-              Where data, culture, and good looks come together. Create the
-              strongest connection to the brand experience, and look good doing
-              it.
+              Where data, culture, and good looks come together. Create the strongest connection to the brand
+              experience, and look good doing it.
             </p>
             <ul>
               <li>Campaign Creation</li>
@@ -104,8 +99,8 @@ const CapabilitiesPage = ({ data }) => {
           <>
             <h2>Data</h2>
             <p>
-              More than points on a graph. Data tells us how connect, and how we
-              can make those connections more meaningful.
+              More than points on a graph. Data tells us how connect, and how we can make those connections more
+              meaningful.
             </p>
             <ul>
               <li>Insights audit</li>

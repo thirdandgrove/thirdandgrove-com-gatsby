@@ -61,24 +61,12 @@ const Prefooter = ({ data }) => (
       <TextWrapper
         css={preFooterStyles}
         backgroundImage={data.relationships.field_image}
-        backgroundColor={
-          data.field_primary_color
-            ? data.field_primary_color.color
-            : colors.yellow
-        }
+        backgroundColor={data.field_primary_color ? data.field_primary_color.color : colors.yellow}
       >
         <p css={pStyles}>{data.field_primary_lead_in_text}</p>
         <h2 css={h2Styles}>{data.field_primary_body}</h2>
         {data.field_primary_cta && (
-          <Button
-            onClick={() =>
-              navigate(
-                ensureTrailingSlash(
-                  data.field_primary_cta.uri.replace('internal:', '')
-                )
-              )
-            }
-          >
+          <Button onClick={() => navigate(ensureTrailingSlash(data.field_primary_cta.uri.replace('internal:', '')))}>
             {data.field_primary_cta.title}
           </Button>
         )}
@@ -87,24 +75,12 @@ const Prefooter = ({ data }) => (
     <div>
       <TextWrapper
         css={preFooterStyles}
-        backgroundColor={
-          data.field_secondary_color
-            ? data.field_secondary_color.color
-            : colors.yellow
-        }
+        backgroundColor={data.field_secondary_color ? data.field_secondary_color.color : colors.yellow}
       >
         <p css={pStyles}>{data.field_secondary_lead_in_text}</p>
         <h2 css={h2Styles}>{data.field_secondary_body}</h2>
         {data.field_secondary_cta && (
-          <Button
-            onClick={() =>
-              navigate(
-                ensureTrailingSlash(
-                  data.field_secondary_cta.uri.replace('internal:', '')
-                )
-              )
-            }
-          >
+          <Button onClick={() => navigate(ensureTrailingSlash(data.field_secondary_cta.uri.replace('internal:', '')))}>
             {data.field_secondary_cta.title}
           </Button>
         )}

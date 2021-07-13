@@ -4,14 +4,7 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
 
-import {
-  mediaQueries,
-  jsBreakpoints,
-  container,
-  colors,
-  fonts,
-  weights,
-} from '../../styles';
+import { mediaQueries, jsBreakpoints, container, colors, fonts, weights } from '../../styles';
 import useWindow from '../../hooks/useWindow';
 import FullWidthSection from '../FullWidthSection';
 
@@ -20,10 +13,7 @@ const Video = ({ data }) => {
   const { width } = useWindow();
   const refVimeo = useRef();
   const isLgScreen = width >= jsBreakpoints.phoneLarge;
-  const {
-    field_vimeo_video_link: videoLink,
-    field_video_controls: showControls,
-  } = data;
+  const { field_vimeo_video_link: videoLink, field_video_controls: showControls } = data;
   const [playing, setPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [buttonX, setButtonX] = useState('50%');

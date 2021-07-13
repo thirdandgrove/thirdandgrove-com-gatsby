@@ -98,9 +98,7 @@ const Contact = () => {
 
         <div css={contactItem}>
           <h3 css={headingCss}>New Business</h3>
-          <a href='mailto:business@thirdandgrove.com'>
-            business@thirdandgrove.com
-          </a>
+          <a href='mailto:business@thirdandgrove.com'>business@thirdandgrove.com</a>
         </div>
 
         <div css={contactItem}>
@@ -121,38 +119,22 @@ const Contact = () => {
           <h3 css={headingCss}>Follow Us</h3>
           <ul css={socialList}>
             <li>
-              <a
-                href='https://www.linkedin.com/company/third-and-grove/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href='https://www.linkedin.com/company/third-and-grove/' target='_blank' rel='noopener noreferrer'>
                 LinkedIn
               </a>
             </li>
             <li>
-              <a
-                href='https://www.instagram.com/thirdandgrove/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href='https://www.instagram.com/thirdandgrove/' target='_blank' rel='noopener noreferrer'>
                 Instagram
               </a>
             </li>
             <li>
-              <a
-                href='https://github.com/thirdandgrove'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href='https://github.com/thirdandgrove' target='_blank' rel='noopener noreferrer'>
                 GitHub
               </a>
             </li>
             <li>
-              <a
-                href='https://twitter.com/thirdandgrove'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
+              <a href='https://twitter.com/thirdandgrove' target='_blank' rel='noopener noreferrer'>
                 Twitter
               </a>
             </li>
