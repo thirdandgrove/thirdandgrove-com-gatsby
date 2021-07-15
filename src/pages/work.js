@@ -212,7 +212,7 @@ const Work = () => {
             publicURL
             childImageSharp {
               fluid(maxWidth: 1250, maxHeight: 850, cropFocus: NORTH) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
             childImageMobile: childImageSharp {
@@ -243,7 +243,7 @@ const Work = () => {
             publicURL
             childImageSharp {
               fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
             childImageMobile: childImageSharp {
@@ -274,7 +274,7 @@ const Work = () => {
             publicURL
             childImageSharp {
               fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
             childImageMobile: childImageSharp {

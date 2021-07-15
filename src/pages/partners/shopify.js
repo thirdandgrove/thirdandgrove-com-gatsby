@@ -209,28 +209,28 @@ export const query = graphql`
     hawaiianHostMac: file(relativePath: { eq: "hawaiian-host-macbook@2x.png" }) {
       childImageSharp {
         fluid(maxWidth: 1440, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     badlandsMac: file(relativePath: { eq: "badlands-macbook@2x.png" }) {
       childImageSharp {
         fluid(maxWidth: 1440, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     weKnowImageDesktop: file(relativePath: { eq: "we-know.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
     platformMigrationImageDesktop: file(relativePath: { eq: "platform-migration.png" }) {
       childImageSharp {
         fluid {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
@@ -266,7 +266,7 @@ export const query = graphql`
               publicURL
               childImageSharp {
                 fluid(maxWidth: 450, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
@@ -297,7 +297,7 @@ export const query = graphql`
                     publicURL
                     childImageSharp {
                       fluid(maxWidth: 630, maxHeight: 630) {
-                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                        ...GatsbyImageSharpFluid_withWebp
                       }
                     }
                   }

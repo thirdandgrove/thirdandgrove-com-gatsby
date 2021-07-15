@@ -164,7 +164,7 @@ export const query = graphql`
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
             childImageSquare: childImageSharp {
@@ -206,7 +206,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                      ...GatsbyImageSharpFluid_withWebp
                     }
                   }
                 }
@@ -256,7 +256,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 600, maxHeight: 600) {
-                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                      ...GatsbyImageSharpFluid_withWebp
                     }
                   }
                 }
@@ -282,7 +282,7 @@ export const query = graphql`
                   publicURL
                   childImageSharp {
                     fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                      ...GatsbyImageSharpFluid_withWebp
                     }
                   }
                 }
