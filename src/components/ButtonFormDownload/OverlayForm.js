@@ -19,8 +19,6 @@ const OverlayForm = ({
 }) => {
   const [formState, updateForm] = useState({
     email: '',
-    firstName: '',
-    lastName: '',
     company: '',
     privacyPolicy: false,
     botField: '',
@@ -38,16 +36,13 @@ const OverlayForm = ({
     updateErrors(null);
     updateForm({
       ...formState,
-      [event.target.name]:
-        event.target.type === 'checkbox'
-          ? event.target.checked
-          : event.target.value,
+      [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value,
     });
   };
 
   const onSubmit = event => {
     event.preventDefault();
-    const { email, firstName, lastName, company, privacyPolicy } = formState;
+    const { email, company, privacyPolicy } = formState;
 
     if (hasSubmitted) {
       // Deter multiple submissions.
@@ -55,20 +50,12 @@ const OverlayForm = ({
       return;
     }
     // Validate inputs.
-    if (!email || !firstName || !lastName || !company || !privacyPolicy) {
+    if (!email || !company || !privacyPolicy) {
       // Notify user of required fields.
       const currentErrs = {};
 
       if (!email) {
         currentErrs.email = 'Email is required';
-      }
-
-      if (!firstName) {
-        currentErrs.firstName = 'First Name is required';
-      }
-
-      if (!lastName) {
-        currentErrs.lastName = 'Last Name is required';
       }
 
       if (!company) {
@@ -90,8 +77,6 @@ const OverlayForm = ({
     }).then(() => {
       updateForm({
         email: '',
-        firstName: '',
-        lastName: '',
         company: '',
         privacyPolicy: false,
       });
@@ -123,13 +108,20 @@ const OverlayForm = ({
             }
           `}
         >
-          {errs &&
-            Object.entries(errs).map(
-              (err, i) => name === err[0] && <p key={err[1]}>{err[1]}</p>
-            )}
+          {errs && Object.entries(errs).map((err, i) => name === err[0] && <p key={err[1]}>{err[1]}</p>)}
         </div>
       </div>
     ) : null;
+  };
+
+  ReturnError.propTypes = {
+    errs: PropTypes.array,
+    name: PropTypes.string,
+  };
+
+  ReturnError.defaultProps = {
+    errs: [],
+    name: '',
   };
 
   const fieldsetStyles = css`
@@ -229,12 +221,7 @@ const OverlayForm = ({
     }
 
     span {
-      background-image: linear-gradient(
-        to bottom,
-        ${colors.white},
-        ${colors.white} 50%,
-        ${colors.white} 50%
-      );
+      background-image: linear-gradient(to bottom, ${colors.white}, ${colors.white} 50%, ${colors.white} 50%);
     }
 
     &::before {
@@ -260,8 +247,6 @@ const OverlayForm = ({
         className={isActive ? 'active' : ''}
         padding='60px 20px'
         css={css`
-          ${mediaQueries.phoneLarge} {
-          }
           position: fixed;
           padding: 0;
           top: 0;
@@ -274,7 +259,6 @@ const OverlayForm = ({
           align-items: center;
           background-color: ${colors.darkergrayFaded};
           z-index: 9999;
-          }
         `}
       >
         <div
@@ -332,8 +316,6 @@ const OverlayForm = ({
               role='img'
               aria-label='close'
               css={css`
-                ${mediaQueries.phoneLarge} {
-                }
                 color: ${colors.white};
                 height: 30px;
                 width: 30px;
@@ -421,38 +403,7 @@ const OverlayForm = ({
                   flex-direction: column;
                 `}
               >
-                <input
-                  type='hidden'
-                  name={`${formName}`}
-                  value={`${formName}`}
-                />
-
-                <fieldset css={[fieldsetStyles, flexStyles]}>
-                  <div>
-                    <input
-                      css={inputStyles}
-                      value={formState.firstName}
-                      onChange={updateInput}
-                      type='text'
-                      name='firstName'
-                      id='of-firstName'
-                      placeholder='First Name'
-                    />
-                    <ReturnError errs={errors} name='firstName' />
-                  </div>
-                  <div>
-                    <input
-                      css={inputStyles}
-                      value={formState.lastName}
-                      onChange={updateInput}
-                      type='text'
-                      name='lastName'
-                      id='of-lastName'
-                      placeholder='Last Name'
-                    />
-                    <ReturnError errs={errors} name='lastName' />
-                  </div>
-                </fieldset>
+                <input type='hidden' name={`${formName}`} value={`${formName}`} />
 
                 <fieldset css={[fieldsetStyles, flexStyles]}>
                   <div>
@@ -494,20 +445,17 @@ const OverlayForm = ({
                         id='of-privacyPolicy'
                       />
                       <span>
-                        By entering your email, you agree to receive emails from
-                        Third and Grove. Your information will be processed in
-                        accordance with our Privacy Policy.
+                        By entering your email, you agree to receive emails from Third and Grove. Your information will
+                        be processed in accordance with our Privacy Policy. We do not sell, rent, or lease your data to
+                        third parties, and we will not provide your personal information to any third party individual,
+                        government agency, or company.
                       </span>
                     </label>
                     <ReturnError errs={errors} name='privacyPolicy' />
                   </div>
                 </fieldset>
 
-                <Button
-                  onClick={onSubmit}
-                  disabled={hasSubmitted}
-                  css={solidButtonStyles}
-                >
+                <Button onClick={onSubmit} disabled={hasSubmitted} css={solidButtonStyles}>
                   {hasSubmitted ? confirmMessage : buttonText}
                 </Button>
               </form>
@@ -536,8 +484,7 @@ OverlayForm.defaultProps = {
   buttonText: 'Sign Me Up',
   confirmMessage: 'Thank You',
   header: 'Illuminating stuff, right?',
-  subheader:
-    'Join our mailing list and you can stay this informed all the time.',
+  subheader: 'Join our mailing list and you can stay this informed all the time.',
   formName: 'overlay-form',
   setFormSubmitted: () => {},
 };
