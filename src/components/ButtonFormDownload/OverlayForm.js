@@ -19,7 +19,6 @@ const OverlayForm = ({
 }) => {
   const [formState, updateForm] = useState({
     email: '',
-    company: '',
     privacyPolicy: false,
     botField: '',
   });
@@ -42,7 +41,7 @@ const OverlayForm = ({
 
   const onSubmit = event => {
     event.preventDefault();
-    const { email, company, privacyPolicy } = formState;
+    const { email, privacyPolicy } = formState;
 
     if (hasSubmitted) {
       // Deter multiple submissions.
@@ -50,16 +49,12 @@ const OverlayForm = ({
       return;
     }
     // Validate inputs.
-    if (!email || !company || !privacyPolicy) {
+    if (!email || !privacyPolicy) {
       // Notify user of required fields.
       const currentErrs = {};
 
       if (!email) {
         currentErrs.email = 'Email is required';
-      }
-
-      if (!company) {
-        currentErrs.company = 'Company is required';
       }
 
       if (!privacyPolicy) {
@@ -77,7 +72,6 @@ const OverlayForm = ({
     }).then(() => {
       updateForm({
         email: '',
-        company: '',
         privacyPolicy: false,
       });
       setIsActive(!isActive);
@@ -108,7 +102,7 @@ const OverlayForm = ({
             }
           `}
         >
-          {errs && Object.entries(errs).map((err, i) => name === err[0] && <p key={err[1]}>{err[1]}</p>)}
+          {errs && Object.entries(errs).map(err => name === err[0] && <p key={err[1]}>{err[1]}</p>)}
         </div>
       </div>
     ) : null;
@@ -188,7 +182,6 @@ const OverlayForm = ({
       margin-bottom: 10px;
       p {
         display: block;
-        margin-top: 10px;
         margin-bottom: 0;
         font-size: 12px;
       }
@@ -198,6 +191,7 @@ const OverlayForm = ({
       display: flex;
       justify-content: flex-start;
       font-size: 12px;
+      margin-bottom: 16px;
 
       input {
         border: none;
@@ -263,27 +257,24 @@ const OverlayForm = ({
       >
         <div
           css={css`
-            ${mediaQueries.phoneLarge} {
-              width: 700px;
-              padding: 70px 24px;
-            }
-
-            @media (max-width: 900px) and (orientation: landscape) {
-              padding: 4% 24px;
-            }
-
             width: calc(100% - 60px);
             background-color: ${colors.white};
             padding: 72px 24px;
             position: relative;
             overflow-y: ${hasSubmitted ? `auto` : `scroll`};
 
+            @media (max-width: 900px) and (orientation: landscape) {
+              padding: 4% 24px;
+            }
+
             @media (max-width: 475px) {
               padding: 125px 24px;
             }
 
-            ${mediaQueries.phoneLarge} {
+            ${mediaQueries.tablet} {
               overflow-y: initial;
+              width: 100%;
+              max-width: 700px;
             }
           `}
         >
@@ -405,7 +396,7 @@ const OverlayForm = ({
               >
                 <input type='hidden' name={`${formName}`} value={`${formName}`} />
 
-                <fieldset css={[fieldsetStyles, flexStyles]}>
+                <fieldset css={[fieldsetStyles]}>
                   <div>
                     <input
                       css={inputStyles}
@@ -417,19 +408,6 @@ const OverlayForm = ({
                       placeholder='Work Email'
                     />
                     <ReturnError errs={errors} name='email' />
-                  </div>
-
-                  <div>
-                    <input
-                      css={inputStyles}
-                      value={formState.company}
-                      onChange={updateInput}
-                      type='text'
-                      name='company'
-                      id='of-company'
-                      placeholder='Company'
-                    />
-                    <ReturnError errs={errors} name='company' />
                   </div>
                 </fieldset>
 
