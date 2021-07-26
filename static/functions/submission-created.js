@@ -370,10 +370,21 @@ exports.handler = async (event, _context, callback) => {
   /** Newsletter Form */
   if (form_name === 'newsletter') {
     const { email } = data;
-    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID } = process.env;
+    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID, KLAVIYO_MAIN_LIST_ID } = process.env;
 
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [{ email, url: referrer }],
+      }),
+    }).catch(console.error);
+
+    /** SEND Newsletter TO MAIN LIST */
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
@@ -404,16 +415,7 @@ exports.handler = async (event, _context, callback) => {
   /** drupalcon Form */
   if (form_name === 'drupalcon-swag-form') {
     // handle form drupalcon
-    const {
-      email,
-      name,
-      addressOne,
-      addressTwo,
-      city,
-      state,
-      country,
-      zipcode,
-    } = data.data;
+    const { email, name, addressOne, addressTwo, city, state, country, zipcode } = data.data;
 
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON } = process.env;
 
@@ -443,9 +445,8 @@ exports.handler = async (event, _context, callback) => {
 
   /** e-book Form */
   if (form_name === 'ebook-form') {
-    const { email, firstName, lastName, company } = data.data;
+    const { email } = data.data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_EBOOK } = process.env;
-    const name = `${firstName} ${lastName}`;
 
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_EBOOK}/subscribe`,
@@ -453,9 +454,7 @@ exports.handler = async (event, _context, callback) => {
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [
-          { email, name, firstName, lastName, company, url: referrer },
-        ],
+        profiles: [{ email, url: referrer }],
       }),
     }).catch(console.error);
   }
