@@ -19,46 +19,33 @@ const Index = ({ data }) => {
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
-
-  // silly holiday treats
-  // const today = new Date();
-  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
-
+  const includeArray = [
+    'King Arthur Baking Company',
+    'Hawaiian Host',
+    'The Carlyle Group',
+    'Acquia.com',
+    'VMware',
+    'Goldwin',
+    'World Vision',
+  ];
   return (
     <Layout
       headerData={{
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            {/* This is going to re-implemented after a couple weeks */}
-            {/* A digital agency{' '} */}
-            slaying the mundane,
-            <br /> pixel by pixel.
-            {/* Holy S%#*! that was fast.
+            Building delightful,
+            <br /> award-winning
             <br />
-            (With{' '}
-            <Link
-              css={css`
-                color: ${colors.darkgray};
-                text-decoration: underline;
-              `}
-              to='/partners/gatsby/'
-            >
-              Gatsby
-            </Link>{' '}
-            it&apos;s all fire, no waiting) */}
+            eCommerce experiences.
           </>
         ),
         mobileMinHeight: '93vh',
       }}
     >
       {' '}
-      <ProjectsSlider data={data.allCaseStudy} />
-      <CapabilitiesSlider
-        title='What We Do'
-        backgroundColor={colors.lightblue}
-      />
+      <ProjectsSlider data={data.allCaseStudy} includeArray={includeArray} />
+      <CapabilitiesSlider title='What We Do' backgroundColor={colors.lightblue} />
       {hasScrolled || isScrolling ? (
         <>
           <InsightsSlider data={data.allInsight} />
@@ -84,20 +71,12 @@ export default Index;
 
 export const query = graphql`
   {
-    allCaseStudy(
-      sort: { fields: created, order: DESC }
-      limit: 7
-      filter: { field_hidden: { eq: false } }
-    ) {
+    allCaseStudy(sort: { fields: created, order: DESC }, limit: 7, filter: { field_hidden: { eq: false } }) {
       nodes {
         ...CaseStudyFragment
       }
     }
-    allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 4
-      filter: { field_hidden: { eq: false } }
-    ) {
+    allInsight(sort: { fields: created, order: DESC }, limit: 4, filter: { field_hidden: { eq: false } }) {
       nodes {
         ...InsightFragment
       }
