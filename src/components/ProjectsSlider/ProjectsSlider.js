@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable prefer-template */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -8,7 +9,7 @@ import { mediaQueries, fonts, weights, colors } from '../../styles';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
-const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
+const ProjectsSlider = ({ minHeight, backgroundColor, data, tech, includeArray }) => {
   const [count, setCount] = useState('01');
 
   const settings = {
@@ -29,19 +30,37 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
     },
   };
 
+  // If include array isset reorder array and filter
+  const reorderArray = (arr, order, key) => {
+    const insertAndShift = (array, from, to) => {
+      const cutOut = array.splice(from, 1)[0];
+      array.splice(to, 0, cutOut);
+      return array;
+    };
+
+    return arr.forEach((post, idx) => {
+      order.forEach((item, i) => {
+        if (item === post[key]) {
+          insertAndShift(arr, idx, i);
+        }
+      });
+    });
+  };
+
+  if (includeArray.length > 0) {
+    reorderArray(data.nodes, includeArray, 'title');
+  }
+
   let projects = [];
   if (tech) {
-    projects = data.nodes.filter(({ relationships }) =>
-      relationships.field_tags.some(({ name }) => name === tech)
-    );
+    projects = data.nodes.filter(({ relationships }) => relationships.field_tags.some(({ name }) => name === tech));
 
     projects = projects.length === 0 ? data.nodes : projects;
   } else {
     projects = data.nodes;
   }
 
-  const totalSlides =
-    projects.length < 10 ? '0' + projects.length : projects.length;
+  const totalSlides = projects.length < 10 ? '0' + projects.length : projects.length;
 
   const countStyles = css`
     position: absolute;
@@ -137,18 +156,10 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
         `}
       >
         {projects.map(node => {
-          return (
-            <ProjectPreview
-              key={node.title}
-              project={node}
-              minHeight={minHeight}
-            />
-          );
+          return <ProjectPreview key={node.title} project={node} minHeight={minHeight} />;
         })}
       </Slider>
-      <footer css={countStyles}>
-        {totalSlides !== '01' ? `${count} - ${totalSlides}` : ''}
-      </footer>
+      <footer css={countStyles}>{totalSlides !== '01' ? `${count} - ${totalSlides}` : ''}</footer>
     </FullWidthSection>
   );
 };
@@ -158,12 +169,14 @@ ProjectsSlider.propTypes = {
   data: PropTypes.object.isRequired,
   tech: PropTypes.string,
   minHeight: PropTypes.string,
+  includeArray: PropTypes.array,
 };
 
 ProjectsSlider.defaultProps = {
   backgroundColor: colors.white,
   tech: '',
   minHeight: '750',
+  includeArray: [],
 };
 
 export default ProjectsSlider;
