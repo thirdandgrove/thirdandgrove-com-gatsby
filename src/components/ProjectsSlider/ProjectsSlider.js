@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 /* eslint-disable prefer-template */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -9,7 +8,7 @@ import { mediaQueries, fonts, weights, colors } from '../../styles';
 import ProjectPreview from '../ProjectPreview';
 import FullWidthSection from '../FullWidthSection';
 
-const ProjectsSlider = ({ minHeight, backgroundColor, data, tech, includeArray }) => {
+const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
   const [count, setCount] = useState('01');
 
   const settings = {
@@ -29,27 +28,6 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech, includeArray }
       setCount(current);
     },
   };
-
-  // If include array isset reorder array and filter
-  const reorderArray = (arr, order, key) => {
-    const insertAndShift = (array, from, to) => {
-      const cutOut = array.splice(from, 1)[0];
-      array.splice(to, 0, cutOut);
-      return array;
-    };
-
-    return arr.forEach((post, idx) => {
-      order.forEach((item, i) => {
-        if (item === post[key]) {
-          insertAndShift(arr, idx, i);
-        }
-      });
-    });
-  };
-
-  if (includeArray.length > 0) {
-    reorderArray(data.nodes, includeArray, 'title');
-  }
 
   let projects = [];
   if (tech) {
@@ -169,14 +147,12 @@ ProjectsSlider.propTypes = {
   data: PropTypes.object.isRequired,
   tech: PropTypes.string,
   minHeight: PropTypes.string,
-  includeArray: PropTypes.array,
 };
 
 ProjectsSlider.defaultProps = {
   backgroundColor: colors.white,
   tech: '',
   minHeight: '750',
-  includeArray: [],
 };
 
 export default ProjectsSlider;
