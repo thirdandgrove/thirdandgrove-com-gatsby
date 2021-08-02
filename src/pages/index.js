@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+/* eslint-disable no-plusplus */
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
@@ -19,7 +20,7 @@ const Index = ({ data }) => {
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
-  const includeArray = [
+  const orderArray = [
     'King Arthur Baking Company',
     'Hawaiian Host',
     'The Carlyle Group',
@@ -28,6 +29,25 @@ const Index = ({ data }) => {
     'Goldwin',
     'World Vision',
   ];
+  // If include array isset reorder array and filter
+  const reorderArray = (arr, order) => {
+    const newArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      const { title } = arr[i];
+      for (let j = 0; j < order.length; j++) {
+        const t = order[j];
+        if (title === t) {
+          newArr[j] = arr[i];
+        }
+      }
+    }
+
+    return { nodes: newArr };
+  };
+
+  const [caseStudies, setCaseStudies] = useState(reorderArray(data.allCaseStudy.nodes, orderArray, 'title'));
+
   return (
     <Layout
       headerData={{
@@ -44,7 +64,7 @@ const Index = ({ data }) => {
       }}
     >
       {' '}
-      <ProjectsSlider data={data.allCaseStudy} includeArray={includeArray} />
+      <ProjectsSlider data={caseStudies} />
       <CapabilitiesSlider title='What We Do' backgroundColor={colors.lightblue} />
       {hasScrolled || isScrolling ? (
         <>
