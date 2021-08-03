@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+/* eslint-disable no-plusplus */
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
@@ -19,11 +20,29 @@ const Index = ({ data }) => {
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
+  const orderArray = [
+    'King Arthur Baking Company',
+    'Hawaiian Host',
+    'The Carlyle Group',
+    'Acquia.com',
+    'VMware',
+    'Goldwin',
+    'World Vision',
+  ];
+  // If include array isset reorder array and filter
+  const reorderArray = (arr, order) => {
+    const newArr = [];
+    arr.forEach(a => {
+      order.forEach((t, i) => {
+        if (a.title === t) {
+          newArr[i] = { ...a };
+        }
+      });
+    });
+    return { nodes: newArr };
+  };
 
-  // silly holiday treats
-  // const today = new Date();
-  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
+  const [caseStudies, setCaseStudies] = useState(reorderArray(data.allCaseStudy.nodes, orderArray, 'title'));
 
   return (
     <Layout
@@ -31,34 +50,19 @@ const Index = ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            {/* This is going to re-implemented after a couple weeks */}
-            {/* A digital agency{' '} */}
-            slaying the mundane,
-            <br /> pixel by pixel.
-            {/* Holy S%#*! that was fast.
+            Building delightful,
             <br />
-            (With{' '}
-            <Link
-              css={css`
-                color: ${colors.darkgray};
-                text-decoration: underline;
-              `}
-              to='/partners/gatsby/'
-            >
-              Gatsby
-            </Link>{' '}
-            it&apos;s all fire, no waiting) */}
+            award-winning
+            <br />
+            eCommerce experiences.
           </>
         ),
         mobileMinHeight: '93vh',
       }}
     >
       {' '}
-      <ProjectsSlider data={data.allCaseStudy} />
-      <CapabilitiesSlider
-        title='What We Do'
-        backgroundColor={colors.lightblue}
-      />
+      <ProjectsSlider data={caseStudies} />
+      <CapabilitiesSlider title='What We Do' backgroundColor={colors.lightblue} />
       {hasScrolled || isScrolling ? (
         <>
           <InsightsSlider data={data.allInsight} />
@@ -84,20 +88,12 @@ export default Index;
 
 export const query = graphql`
   {
-    allCaseStudy(
-      sort: { fields: created, order: DESC }
-      limit: 7
-      filter: { field_hidden: { eq: false } }
-    ) {
+    allCaseStudy(sort: { fields: created, order: DESC }, limit: 7, filter: { field_hidden: { eq: false } }) {
       nodes {
         ...CaseStudyFragment
       }
     }
-    allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 4
-      filter: { field_hidden: { eq: false } }
-    ) {
+    allInsight(sort: { fields: created, order: DESC }, limit: 4, filter: { field_hidden: { eq: false } }) {
       nodes {
         ...InsightFragment
       }
