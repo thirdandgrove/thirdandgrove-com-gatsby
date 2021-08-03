@@ -32,17 +32,13 @@ const Index = ({ data }) => {
   // If include array isset reorder array and filter
   const reorderArray = (arr, order) => {
     const newArr = [];
-
-    for (let i = 0; i < arr.length; i++) {
-      const { title } = arr[i];
-      for (let j = 0; j < order.length; j++) {
-        const t = order[j];
-        if (title === t) {
-          newArr[j] = arr[i];
+    arr.forEach(a => {
+      order.forEach((t, i) => {
+        if (a.title === t) {
+          newArr[i] = { ...a };
         }
-      }
-    }
-
+      });
+    });
     return { nodes: newArr };
   };
 
@@ -55,7 +51,8 @@ const Index = ({ data }) => {
         title: (
           <>
             Building delightful,
-            <br /> award-winning
+            <br />
+            award-winning
             <br />
             eCommerce experiences.
           </>
