@@ -19,6 +19,7 @@ const OverlayForm = ({
 }) => {
   const [formState, updateForm] = useState({
     email: '',
+    company: '',
     privacyPolicy: false,
     botField: '',
   });
@@ -41,7 +42,7 @@ const OverlayForm = ({
 
   const onSubmit = event => {
     event.preventDefault();
-    const { email, privacyPolicy } = formState;
+    const { email, company, privacyPolicy } = formState;
 
     if (hasSubmitted) {
       // Deter multiple submissions.
@@ -49,12 +50,16 @@ const OverlayForm = ({
       return;
     }
     // Validate inputs.
-    if (!email || !privacyPolicy) {
+    if (!email || !company || !privacyPolicy) {
       // Notify user of required fields.
       const currentErrs = {};
 
       if (!email) {
         currentErrs.email = 'Email is required';
+      }
+
+      if (!company) {
+        currentErrs.company = 'Company is required';
       }
 
       if (!privacyPolicy) {
@@ -72,6 +77,7 @@ const OverlayForm = ({
     }).then(() => {
       updateForm({
         email: '',
+        company: '',
         privacyPolicy: false,
       });
       setIsActive(!isActive);
@@ -396,7 +402,7 @@ const OverlayForm = ({
               >
                 <input type='hidden' name={`${formName}`} value={`${formName}`} />
 
-                <fieldset css={[fieldsetStyles]}>
+                <fieldset css={[fieldsetStyles, flexStyles]}>
                   <div>
                     <input
                       css={inputStyles}
@@ -408,6 +414,19 @@ const OverlayForm = ({
                       placeholder='Work Email'
                     />
                     <ReturnError errs={errors} name='email' />
+                  </div>
+
+                  <div>
+                    <input
+                      css={inputStyles}
+                      value={formState.company}
+                      onChange={updateInput}
+                      type='text'
+                      name='company'
+                      id='of-company'
+                      placeholder='Company'
+                    />
+                    <ReturnError errs={errors} name='company' />
                   </div>
                 </fieldset>
 
