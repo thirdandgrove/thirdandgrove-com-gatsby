@@ -50,11 +50,10 @@ const Index = ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
+            {' '}
             Building delightful,
             <br />
-            award-winning
-            <br />
-            eCommerce experiences.
+            award-winning experiences.
           </>
         ),
         mobileMinHeight: '93vh',
