@@ -103,6 +103,18 @@ exports.handler = async (event, _context, callback) => {
       console.error('error creating note', err);
       callback(null, { statusCode: 200 });
     }
+
+    const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
+
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [{ first_name, last_name, email, phone, website, comments, url: referrer, form: form_name }],
+      }),
+    }).catch(console.error);
   }
   /** Contact Form */
 
@@ -190,6 +202,18 @@ exports.handler = async (event, _context, callback) => {
       console.error('error creating note', err);
       callback(null, { statusCode: 200 });
     }
+
+    const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
+
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [{ first_name, last_name, email, phone, website, comments, url: referrer, form: form_name }],
+      }),
+    }).catch(console.error);
   }
   /** Drupal Support Form */
 
@@ -277,6 +301,18 @@ exports.handler = async (event, _context, callback) => {
       console.error('error creating note', err);
       callback(null, { statusCode: 200 });
     }
+
+    const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
+
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [{ first_name, last_name, email, phone, website, comments, url: referrer, form: form_name }],
+      }),
+    }).catch(console.error);
   }
   /** Shopify Plus Form */
 
@@ -364,6 +400,18 @@ exports.handler = async (event, _context, callback) => {
       console.error('error creating note', err);
       callback(null, { statusCode: 200 });
     }
+
+    const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
+
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [{ first_name, last_name, email, phone, website, comments, url: referrer, form: form_name }],
+      }),
+    }).catch(console.error);
   }
   /** DrupalCon Contact Form */
 
