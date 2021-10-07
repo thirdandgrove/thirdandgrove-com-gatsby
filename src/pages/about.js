@@ -231,7 +231,7 @@ const About = ({ data }) => {
             <h3>Clients</h3>
           </div>
           <div>
-            <h2>10</h2>
+            <h2>14+</h2>
             <h3>Awards</h3>
           </div>
         </Row>
