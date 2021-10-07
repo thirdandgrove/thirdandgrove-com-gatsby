@@ -9,17 +9,7 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
 import LogoGrid from '../components/LogoGrid';
-import {
-  colors,
-  fonts,
-  weights,
-  smSectionHead,
-  h1L,
-  container,
-  mediaQueries,
-  contValues,
-  pLight,
-} from '../styles';
+import { colors, fonts, weights, smSectionHead, h1L, container, mediaQueries, contValues, pLight } from '../styles';
 import Button from '../components/Button';
 
 const About = ({ data }) => {
@@ -123,6 +113,8 @@ const About = ({ data }) => {
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
+    width: 100%;
+    max-width: 750px;
     h2,
     h3,
     p {
@@ -187,10 +179,12 @@ const About = ({ data }) => {
   const images = data.allFile.nodes;
 
   // returns the correct image source needed to render
-  const getSrc = name => {
+  const getSrc = (name, type) => {
     if (name === 'team_2') {
-      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
-        .fluid;
+      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp.fluid;
+    }
+    if (type === 'location') {
+      return images.find(img => img.name === name).largeSquare.fluid;
     }
     return images.find(img => img.name === name).childImageSharp.fluid;
   };
@@ -233,12 +227,12 @@ const About = ({ data }) => {
             <h3>States</h3>
           </div>
           <div>
-            <h2>2</h2>
-            <h3>Offices</h3>
-          </div>
-          <div>
             <h2>140+</h2>
             <h3>Clients</h3>
+          </div>
+          <div>
+            <h2>10</h2>
+            <h3>Awards</h3>
           </div>
         </Row>
       </FullWidthSection>
@@ -252,9 +246,7 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Radically Honest</h3>
-        <h2 css={[h1L, container.medium]}>
-          If you had a bit of food stuck in your teeth, we’d let you know.
-        </h2>
+        <h2 css={[h1L, container.medium]}>If you had a bit of food stuck in your teeth, we’d let you know.</h2>
         <p
           css={[
             pLight,
@@ -267,9 +259,8 @@ const About = ({ data }) => {
             `,
           ]}
         >
-          We work with brands we love and can’t wait to help grow. That means we
-          might not always tell you what you want to hear, but we’ll definitely
-          tell you what you need to hear.
+          We work with brands we love and can’t wait to help grow. That means we might not always tell you what you want
+          to hear, but we’ll definitely tell you what you need to hear.
         </p>
       </FullWidthSection>
       <FullWidthSection
@@ -339,18 +330,13 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Where We Are</h3>
-        <SplitSection css={container.large} gridColumnGap='20px'>
+        <FullWidthSection>
           <Location onClick={() => navigate(`/boston/`)}>
             <h2 css={h1L}>Boston</h2>
             <Img fluid={getSrc('boston', 'location')} alt='Boston' />
             <h3>Howdya Like Them Apples?</h3>
           </Location>
-          <Location onClick={() => navigate(`/san-francisco/`)}>
-            <h2 css={h1L}>San Francisco</h2>
-            <Img fluid={getSrc('oakland', 'location')} alt='Oakland' />
-            <h3>Watch Out for the Seagulls</h3>
-          </Location>
-        </SplitSection>
+        </FullWidthSection>
       </FullWidthSection>
       <FullWidthSection
         minHeight='500px'
@@ -380,9 +366,7 @@ const About = ({ data }) => {
         >
           Show us what you&apos;re made of.
         </h2>
-        <Button onClick={() => navigate(`/careers/`)}>
-          view open positions
-        </Button>
+        <Button onClick={() => navigate(`/careers/`)}>view open positions</Button>
       </FullWidthSection>
     </Layout>
   );
@@ -400,28 +384,22 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(
-            cropFocus: CENTER
-            maxHeight: 480
-            maxWidth: 980
-            quality: 100
-          ) {
+          fluid(cropFocus: CENTER, maxHeight: 480, maxWidth: 980, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
     }
-    allFile(
-      filter: {
-        absolutePath: {
-          regex: "/boston|oakland|emond|slemp|andrade|may|topp|joneric|john|jeremy/"
-        }
-      }
-    ) {
+    allFile(filter: { absolutePath: { regex: "/boston|emond|slemp|andrade|may|topp|joneric|john|jeremy/" } }) {
       nodes {
         name
         childImageSharp {
           fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+        largeSquare: childImageSharp {
+          fluid(cropFocus: NORTH, maxHeight: 750, maxWidth: 750) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
