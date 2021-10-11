@@ -1,9 +1,6 @@
 require('dotenv').config();
 
-const isProduction =
-  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
-    ? 'production'
-    : 'development';
+const isProduction = process.env.BRANCH !== undefined && process.env.BRANCH === 'master' ? 'production' : 'development';
 
 module.exports = {
   siteMetadata: {
@@ -45,7 +42,12 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
-    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        checkSupportedExtensions: false,
+      },
+    },
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
@@ -128,8 +130,7 @@ module.exports = {
               return allInsight.nodes.map(node => {
                 return {
                   title: node.title,
-                  description:
-                    node.field_summary && node.field_summary.processed,
+                  description: node.field_summary && node.field_summary.processed,
                   guid: site.siteMetadata.siteUrl + node.path.alias,
                   custom_elements: [
                     {
