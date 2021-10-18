@@ -172,7 +172,7 @@ const Work = () => {
     allNodeHomePage,
   } = useStaticQuery(graphql`
     {
-      allEntitySubqueueCaseStudies(limit: 6) {
+      allEntitySubqueueCaseStudies {
         nodes {
           relationships {
             items {
@@ -309,6 +309,8 @@ const Work = () => {
     }
   `);
   const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
+
+  console.log(studies);
 
   return (
     <Layout
