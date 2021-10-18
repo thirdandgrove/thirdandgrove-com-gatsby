@@ -21,6 +21,7 @@ const Index = ({ data }) => {
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
   const orderArray = [
+    'Dartmouth',
     'King Arthur Baking Company',
     'Hawaiian Host',
     'The Carlyle Group',
@@ -42,7 +43,9 @@ const Index = ({ data }) => {
     return { nodes: newArr };
   };
 
-  const [caseStudies, setCaseStudies] = useState(reorderArray(data.allCaseStudy.nodes, orderArray, 'title'));
+  const [caseStudies, setCaseStudies] = useState(
+    reorderArray(data.allCaseStudy.nodes, orderArray, 'title')
+  );
 
   return (
     <Layout
@@ -61,7 +64,10 @@ const Index = ({ data }) => {
     >
       {' '}
       <ProjectsSlider data={caseStudies} />
-      <CapabilitiesSlider title='What We Do' backgroundColor={colors.lightblue} />
+      <CapabilitiesSlider
+        title='What We Do'
+        backgroundColor={colors.lightblue}
+      />
       {hasScrolled || isScrolling ? (
         <>
           <InsightsSlider data={data.allInsight} />
@@ -87,12 +93,20 @@ export default Index;
 
 export const query = graphql`
   {
-    allCaseStudy(sort: { fields: created, order: DESC }, limit: 7, filter: { field_hidden: { eq: false } }) {
+    allCaseStudy(
+      sort: { fields: created, order: DESC }
+      limit: 8
+      filter: { field_hidden: { eq: false } }
+    ) {
       nodes {
         ...CaseStudyFragment
       }
     }
-    allInsight(sort: { fields: created, order: DESC }, limit: 4, filter: { field_hidden: { eq: false } }) {
+    allInsight(
+      sort: { fields: created, order: DESC }
+      limit: 4
+      filter: { field_hidden: { eq: false } }
+    ) {
       nodes {
         ...InsightFragment
       }
