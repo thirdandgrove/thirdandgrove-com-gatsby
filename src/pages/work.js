@@ -70,15 +70,12 @@ const Project = ({ study, index }) => {
                   margin-bottom: 20px;
 
                   ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '64%' : index === 0 ? '64%' : '49%'};
-                    width: ${index % 2 ? '64%' : index === 0 ? '64%' : '49%'};
+                    flex: 0 0 64%;
+                    width: 64%;
                     margin-bottom: 0;
 
                     > div {
-                      padding-bottom: ${index % 2 ? '76% !important' : '100%'};
-                      padding-bottom: ${index % 4 === 2
-                        ? '131% !important'
-                        : '100%'};
+                      padding-bottom: 100%;
                     }
                   }
                 `}
@@ -91,8 +88,8 @@ const Project = ({ study, index }) => {
               position: relative;
 
               ${mediaQueries.phoneLarge} {
-                flex: 0 0 ${index % 2 ? '30%' : '35%'};
-                width: ${index % 2 ? '30%' : '35%'};
+                flex: 0 0 35%;
+                width: 35%;
               }
 
               &::after {
@@ -198,12 +195,18 @@ const Work = () => {
       field_image_arrangement
       field_image {
         alt
+        width
+        height
       }
       field_secondary_image {
         alt
+        width
+        height
       }
       field_tertiary_image {
         alt
+        width
+        height
       }
       path {
         alias
@@ -309,8 +312,6 @@ const Work = () => {
     }
   `);
   const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
-
-  console.log(studies);
 
   return (
     <Layout
