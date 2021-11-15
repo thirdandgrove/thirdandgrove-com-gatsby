@@ -26,5 +26,12 @@
     "icon": "./icons/data.png",
     "link": "/capabilities#data",
     "index": "3"
+  },
+  {
+    "title": "Marketing",
+    "description": "Like every therapist always says, communication is key. The same applies to your brand.",
+    "icon": "./icons/marketing.png",
+    "link": "/capabilities#marketing",
+    "index": "4"
   }
 ]

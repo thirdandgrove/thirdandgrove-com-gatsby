@@ -117,6 +117,28 @@ const CapabilitiesPage = ({ data }) => {
         }
         index={3}
       />
+      <Capability
+        id='marketing'
+        imageSrc={data.marketingImageDesktop.childImageSharp.fluid}
+        imageAlt='Rotary Telephone'
+        content={
+          <>
+            <h2>Marketing</h2>
+            <p>
+              Like every therapist always says, communication is key. The same
+              applies to your brand.
+            </p>
+            <ul>
+              <li>Marketing Strategy</li>
+              <li>Social Media Marketing</li>
+              <li>Advertising</li>
+              <li>Creative Concepts and Content</li>
+              <li>Analytics and Reporting</li>
+            </ul>
+          </>
+        }
+        index={4}
+      />
       <CTA />
     </Layout>
   );
@@ -146,6 +168,13 @@ export const query = graphql`
       }
     }
     dataImageDesktop: file(relativePath: { eq: "data.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    marketingImageDesktop: file(relativePath: { eq: "marketing.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
