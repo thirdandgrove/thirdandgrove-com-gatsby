@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -111,30 +112,61 @@ const Acquia = query => {
           }
 
           ${mediaQueries.phoneLarge} {
-            ${container.min}
+            ${container.medium}
           }
         `}
       >
-        <h3>Team up with a partner who is tight with Acquia</h3>
-        <p>
-          We’ve invested over 130,000 hours on the Acquia platform (we’re good
-          friends with the team by now but feel free to ask around). This means
-          fewer conversations about development and more about how to improve
-          visitor engagement.
-        </p>
-        <div>
-          <ul>
-            <li>Migration</li>
-            <li>Replatform/redesign</li>
-            <li>Personalization</li>
-            <li>Performance optimization</li>
-          </ul>
-          <ul>
-            <li>Ongoing support</li>
-            <li>Infrastructure Audit</li>
-            <li>Training and resource augmentation</li>
-          </ul>
-        </div>
+        <SplitSection
+          gridTemplateColumns='45% 49%'
+          css={css`
+            direction: rtl;
+          `}
+        >
+          <section
+            css={css`
+              margin: 20px;
+              text-align: center;
+              ${mediaQueries.phoneLarge} {
+                margin: 0 20px 0 80px;
+              }
+            `}
+          >
+            <Img
+              alt='Acquia Practice Certification'
+              fixed={query.data.practiceCertification.childImageSharp.fixed}
+            />
+          </section>
+          <section
+            css={css`
+              direction: ltr;
+            `}
+          >
+            <h3>Team up with a partner who is tight with Acquia</h3>
+            <p>
+              There are only nine agencies in the world that have achieved
+              Acquia’s Practice Certification, and TAG is one of them.
+            </p>
+            <p>
+              We’ve invested over 130,000 hours on the Acquia platform (we’re
+              good friends with the team by now but feel free to ask around).
+              This means fewer conversations about development and more about
+              how to improve visitor engagement.
+            </p>
+            <div>
+              <ul>
+                <li>Migration</li>
+                <li>Replatform/redesign</li>
+                <li>Personalization</li>
+                <li>Performance optimization</li>
+              </ul>
+              <ul>
+                <li>Ongoing support</li>
+                <li>Infrastructure Audit</li>
+                <li>Training and resource augmentation</li>
+              </ul>
+            </div>
+          </section>
+        </SplitSection>
       </FullWidthSection>
       <ProjectsSlider
         data={caseStudies}
@@ -278,6 +310,15 @@ export const query = graphql`
           name
           publicURL
           absolutePath
+        }
+      }
+    }
+    practiceCertification: file(
+      relativePath: { eq: "acquia-practice-certification.png" }
+    ) {
+      childImageSharp {
+        fixed(width: 200) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
         }
       }
     }
