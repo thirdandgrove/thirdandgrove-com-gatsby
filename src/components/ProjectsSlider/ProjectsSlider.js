@@ -31,14 +31,17 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
 
   let projects = [];
   if (tech) {
-    projects = data.nodes.filter(({ relationships }) => relationships.field_tags.some(({ name }) => name === tech));
+    projects = data.nodes.filter(({ relationships }) =>
+      relationships.field_tags.some(({ name }) => name === tech)
+    );
 
     projects = projects.length === 0 ? data.nodes : projects;
   } else {
     projects = data.nodes;
   }
 
-  const totalSlides = projects.length < 10 ? '0' + projects.length : projects.length;
+  const totalSlides =
+    projects.length < 10 ? '0' + projects.length : projects.length;
 
   const countStyles = css`
     position: absolute;
@@ -134,10 +137,18 @@ const ProjectsSlider = ({ minHeight, backgroundColor, data, tech }) => {
         `}
       >
         {projects.map(node => {
-          return <ProjectPreview key={node.title} project={node} minHeight={minHeight} />;
+          return (
+            <ProjectPreview
+              key={node.title}
+              project={node}
+              minHeight={minHeight}
+            />
+          );
         })}
       </Slider>
-      <footer css={countStyles}>{totalSlides !== '01' ? `${count} - ${totalSlides}` : ''}</footer>
+      <footer css={countStyles}>
+        {totalSlides !== '01' ? `${count} - ${totalSlides}` : ''}
+      </footer>
     </FullWidthSection>
   );
 };

@@ -8,16 +8,16 @@ import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 
 const Careers = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allResumatorJob(filter: { status: { eq: "Open" } }) {
-        nodes {
-          title
-          status
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     allResumatorJob(filter: { status: { eq: "Open" } }) {
+  //       nodes {
+  //         title
+  //         status
+  //       }
+  //     }
+  //   }
+  // `);
 
   const JobList = styled.ul`
     padding-left: 0;
@@ -100,7 +100,8 @@ const Careers = () => {
     }
   `;
 
-  const jobs = data.allResumatorJob.nodes;
+  // const jobs = data.allResumatorJob.nodes;
+  const jobs = [];
 
   // eliminate duplicate job listings
   const uniqueJobs = jobs

@@ -1,6 +1,9 @@
 require('dotenv').config();
 
-const isProduction = process.env.BRANCH !== undefined && process.env.BRANCH === 'master' ? 'production' : 'development';
+const isProduction =
+  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
+    ? 'production'
+    : 'development';
 
 module.exports = {
   siteMetadata: {
@@ -78,12 +81,12 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-source-resumator`,
-      options: {
-        apiKey: process.env.RESUMATOR_API_KEY,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-resumator`,
+    //   options: {
+    //     apiKey: process.env.RESUMATOR_API_KEY,
+    //   },
+    // },
     `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-google-tagmanager`,
@@ -130,7 +133,8 @@ module.exports = {
               return allInsight.nodes.map(node => {
                 return {
                   title: node.title,
-                  description: node.field_summary && node.field_summary.processed,
+                  description:
+                    node.field_summary && node.field_summary.processed,
                   guid: site.siteMetadata.siteUrl + node.path.alias,
                   custom_elements: [
                     {
