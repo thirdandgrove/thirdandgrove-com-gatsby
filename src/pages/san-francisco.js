@@ -190,7 +190,15 @@ const SanFrancisco = ({ data }) => {
         </TextWrapper>
         <TextWrapper backgroundColor={colors.lightblue}>
           <h3>Join the best in the Bay Area.</h3>
-          <Button onClick={() => navigate(`/careers/`)}>Work at TAG</Button>
+          <Button>
+            <a
+              href='https://thirdandgrove.breezy.hr/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Work at TAG
+            </a>
+          </Button>
         </TextWrapper>
       </SplitSection>
     </Layout>
