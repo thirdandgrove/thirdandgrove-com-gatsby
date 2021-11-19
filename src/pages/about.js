@@ -7,7 +7,6 @@ import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
 import LogoGrid from '../components/LogoGrid';
 import {
   colors,
@@ -380,8 +379,14 @@ const About = ({ data }) => {
         >
           Show us what you&apos;re made of.
         </h2>
-        <Button onClick={() => navigate(`/careers/`)}>
-          view open positions
+        <Button>
+          <a
+            href='https://thirdandgrove.breezy.hr/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            view open positions
+          </a>
         </Button>
       </FullWidthSection>
     </Layout>

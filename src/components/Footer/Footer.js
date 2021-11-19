@@ -62,9 +62,14 @@ const Footer = () => {
         <Link css={linkStyle} to='/about/'>
           About
         </Link>
-        <Link css={linkStyle} to='/careers/'>
+        <a
+          css={linkStyle}
+          href='https://thirdandgrove.breezy.hr/'
+          target='_blank'
+          rel='noreferrer'
+        >
           Careers
-        </Link>
+        </a>
         <Link css={linkStyle} to='/contact/'>
           Contact
         </Link>

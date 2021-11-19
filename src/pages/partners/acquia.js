@@ -143,8 +143,8 @@ const Acquia = query => {
           >
             <h3>Team up with a partner who is tight with Acquia</h3>
             <p>
-              There are only nine agencies in the world that have achieved
-              Acquia’s Practice Certification, and TAG is one of them.
+              TAG is only one of nine agencies in the world that have achieved
+              Acquia’s highest certification rating for Drupal Cloud Expertise.
             </p>
             <p>
               We’ve invested over 130,000 hours on the Acquia platform (we’re
