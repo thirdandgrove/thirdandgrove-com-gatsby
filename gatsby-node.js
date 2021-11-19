@@ -214,6 +214,20 @@ exports.createPages = async ({ actions, graphql }) => {
     statusCode: '301',
     force: true,
   });
+
+  createRedirect({
+    fromPath: 'https://www.thirdandgrove.com/careers/',
+    toPath: 'https://thirdandgrove.breezy.hr/',
+    statusCode: '301',
+    force: true,
+  });
+
+  createRedirect({
+    fromPath: 'https://www.thirdandgrove.com/san-francisco/',
+    toPath: 'https://www.thirdandgrove.com/about/',
+    statusCode: '301',
+    force: true,
+  });
 };
 
 exports.onCreateWebpackConfig = ({ actions }) => {
