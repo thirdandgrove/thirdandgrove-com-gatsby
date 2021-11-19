@@ -81,12 +81,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-source-resumator`,
-    //   options: {
-    //     apiKey: process.env.RESUMATOR_API_KEY,
-    //   },
-    // },
     `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-google-tagmanager`,
