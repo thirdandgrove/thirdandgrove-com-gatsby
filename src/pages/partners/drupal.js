@@ -145,8 +145,8 @@ const Drupal = query => {
             <p>
               We are one of only two Diamond Certified Drupal Partners globally,
               the highest certification tier offered by the Drupal Association.
-              This means we’re confident that we’re the best team out there to
-              solve your problems.
+              This means you can be confident that we’re the best team out there
+              to solve your problems.
             </p>
             <p>
               Your team can’t win if you constantly struggle with slow developer
