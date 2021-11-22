@@ -7,7 +7,6 @@ import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
 import LogoGrid from '../components/LogoGrid';
 import {
   colors,
@@ -297,7 +296,7 @@ const About = ({ data }) => {
           <div>
             <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
             <h2>Jen Slemp</h2>
-            <p>Director of Delivery</p>
+            <p>Chief Operating Officer</p>
           </div>
           <div>
             <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
@@ -310,19 +309,19 @@ const About = ({ data }) => {
             <p>Creative Director</p>
           </div>
           <div>
-            <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
-            <h2>Linda Topp</h2>
+            <Img alt='Nina Collier' fluid={getSrc('collier', 'leader')} />
+            <h2>Nina Collier</h2>
             <p>Director of Ecommerce</p>
           </div>
           <div>
-            <Img alt='John Entwistle' fluid={getSrc('john', 'leader')} />
-            <h2>John Entwistle</h2>
-            <p>Engineering Manager</p>
+            <Img alt='Brent Schultz' fluid={getSrc('schultz', 'leader')} />
+            <h2>Brent Schultz</h2>
+            <p>Director of Engineering</p>
           </div>
           <div>
-            <Img alt='Jeremy Dickens' fluid={getSrc('jeremy', 'leader')} />
-            <h2>Jeremy Dickens</h2>
-            <p>Engineering Manager</p>
+            <Img alt='Monica Thompson' fluid={getSrc('thompson', 'leader')} />
+            <h2>Monica Thompson</h2>
+            <p>Director of Strategy</p>
           </div>
         </div>
       </FullWidthSection>
@@ -420,7 +419,7 @@ export const query = graphql`
     allFile(
       filter: {
         absolutePath: {
-          regex: "/boston|emond|slemp|andrade|may|topp|joneric|john|jeremy/"
+          regex: "/boston|emond|slemp|andrade|may|topp|joneric|collier|schultz|thompson/"
         }
       }
     ) {
