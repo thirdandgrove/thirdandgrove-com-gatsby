@@ -16,7 +16,15 @@ const wrapperStyles = css`
 const BeUs = () => (
   <TextWrapper backgroundColor={colors.lightblue} css={wrapperStyles}>
     <h3>Get to be us.</h3>
-    <Button onClick={() => navigate(`/careers/`)}>Work at TAG</Button>
+    <Button>
+      <a
+        href='https://thirdandgrove.breezy.hr/'
+        target='_blank'
+        rel='noreferrer'
+      >
+        Work at TAG
+      </a>
+    </Button>
   </TextWrapper>
 );
 

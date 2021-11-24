@@ -7,9 +7,18 @@ import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
-import SplitSection from '../components/SplitSection';
 import LogoGrid from '../components/LogoGrid';
-import { colors, fonts, weights, smSectionHead, h1L, container, mediaQueries, contValues, pLight } from '../styles';
+import {
+  colors,
+  fonts,
+  weights,
+  smSectionHead,
+  h1L,
+  container,
+  mediaQueries,
+  contValues,
+  pLight,
+} from '../styles';
 import Button from '../components/Button';
 
 const About = ({ data }) => {
@@ -181,7 +190,8 @@ const About = ({ data }) => {
   // returns the correct image source needed to render
   const getSrc = (name, type) => {
     if (name === 'team_2') {
-      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp.fluid;
+      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
+        .fluid;
     }
     if (type === 'location') {
       return images.find(img => img.name === name).largeSquare.fluid;
@@ -246,7 +256,9 @@ const About = ({ data }) => {
         `}
       >
         <h3 css={smSectionHead}>Radically Honest</h3>
-        <h2 css={[h1L, container.medium]}>If you had a bit of food stuck in your teeth, we’d let you know.</h2>
+        <h2 css={[h1L, container.medium]}>
+          If you had a bit of food stuck in your teeth, we’d let you know.
+        </h2>
         <p
           css={[
             pLight,
@@ -259,8 +271,9 @@ const About = ({ data }) => {
             `,
           ]}
         >
-          We work with brands we love and can’t wait to help grow. That means we might not always tell you what you want
-          to hear, but we’ll definitely tell you what you need to hear.
+          We work with brands we love and can’t wait to help grow. That means we
+          might not always tell you what you want to hear, but we’ll definitely
+          tell you what you need to hear.
         </p>
       </FullWidthSection>
       <FullWidthSection
@@ -283,7 +296,7 @@ const About = ({ data }) => {
           <div>
             <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
             <h2>Jen Slemp</h2>
-            <p>Director of Delivery</p>
+            <p>Chief Operating Officer</p>
           </div>
           <div>
             <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
@@ -296,19 +309,19 @@ const About = ({ data }) => {
             <p>Creative Director</p>
           </div>
           <div>
-            <Img alt='Linda Topp' fluid={getSrc('topp', 'leader')} />
-            <h2>Linda Topp</h2>
+            <Img alt='Nina Collier' fluid={getSrc('collier', 'leader')} />
+            <h2>Nina Collier</h2>
             <p>Director of Ecommerce</p>
           </div>
           <div>
-            <Img alt='John Entwistle' fluid={getSrc('john', 'leader')} />
-            <h2>John Entwistle</h2>
-            <p>Engineering Manager</p>
+            <Img alt='Brent Schultz' fluid={getSrc('schultz', 'leader')} />
+            <h2>Brent Schultz</h2>
+            <p>Director of Engineering</p>
           </div>
           <div>
-            <Img alt='Jeremy Dickens' fluid={getSrc('jeremy', 'leader')} />
-            <h2>Jeremy Dickens</h2>
-            <p>Engineering Manager</p>
+            <Img alt='Monica Thompson' fluid={getSrc('thompson', 'leader')} />
+            <h2>Monica Thompson</h2>
+            <p>Director of Strategy</p>
           </div>
         </div>
       </FullWidthSection>
@@ -366,7 +379,15 @@ const About = ({ data }) => {
         >
           Show us what you&apos;re made of.
         </h2>
-        <Button onClick={() => navigate(`/careers/`)}>view open positions</Button>
+        <Button>
+          <a
+            href='https://thirdandgrove.breezy.hr/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            view open positions
+          </a>
+        </Button>
       </FullWidthSection>
     </Layout>
   );
@@ -384,13 +405,24 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(cropFocus: CENTER, maxHeight: 480, maxWidth: 980, quality: 100) {
+          fluid(
+            cropFocus: CENTER
+            maxHeight: 480
+            maxWidth: 980
+            quality: 100
+          ) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
     }
-    allFile(filter: { absolutePath: { regex: "/boston|emond|slemp|andrade|may|topp|joneric|john|jeremy/" } }) {
+    allFile(
+      filter: {
+        absolutePath: {
+          regex: "/boston|emond|slemp|andrade|may|topp|joneric|collier|schultz|thompson/"
+        }
+      }
+    ) {
       nodes {
         name
         childImageSharp {

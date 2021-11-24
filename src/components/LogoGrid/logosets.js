@@ -2,7 +2,6 @@ import React from 'react';
 
 import addyAward from './logos/addy-award.svg';
 import museLogo from './logos/muse-logo.png';
-import acquiaEngageLogo from './logos/acquia-engage-logo.svg';
 import awwwLogo from './logos/awwwards-logo.png';
 import harvardLogo from './logos/harvard.svg';
 import googleLogo from './logos/google.svg';
@@ -53,6 +52,7 @@ import rubios from './logos/rubios-logo.svg';
 import w3Awards from './logos/w3-awards.png';
 import cssAwards from './logos/css-awards.png';
 import dadiAwards from './logos/dadi-awards.png';
+import daveyAwards from './logos/davey-awards.png';
 import farmacyLogo from './logos/farmacy-logo.svg';
 import amorepacifioLogo from './logos/amorepacifio-logo.svg';
 
@@ -491,6 +491,12 @@ export default (logoset, isSmScreen) => {
         src={dadiAwards}
         alt='Dadi awards'
         width={isSmScreen ? '140' : '180'}
+        height={isSmScreen ? '90' : '110'}
+      />,
+      <img
+        src={daveyAwards}
+        alt='Davey awards'
+        width={isSmScreen ? '135' : '165'}
         height={isSmScreen ? '90' : '110'}
       />,
     ],

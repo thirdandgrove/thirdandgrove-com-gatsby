@@ -8,7 +8,7 @@ describe('Navigation', () => {
     cy.get(':nth-child(1) > [href="/capabilities"]').should('exist');
     cy.get(':nth-child(1) > [href="/insights"]').should('exist');
     cy.get(':nth-child(2) > [href="/about"]').should('exist');
-    cy.get(':nth-child(2) > [href="/careers"]').should('exist');
+
     cy.get(':nth-child(2) > [href="/contact"]').should('exist');
     cy.get('[href="/drupal"]').should('exist');
     cy.get('[href="/acquia"]').should('exist');
@@ -48,7 +48,6 @@ describe('Navigation', () => {
   });
   it('Navigates to careers', () => {
     cy.get('[data-cy=menuButton] > svg').click();
-    cy.get(':nth-child(2) > [href="/careers"]').click();
     cy.get('[data-cy=titleText]').should('exist');
     cy.get('[data-cy=titleText]').should('contain', 'Careers');
   });
