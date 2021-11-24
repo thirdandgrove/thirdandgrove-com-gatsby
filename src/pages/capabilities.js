@@ -139,6 +139,31 @@ const CapabilitiesPage = ({ data }) => {
         }
         index={4}
       />
+      <Capability
+        id='ada'
+        imageSrc={data.adaImageDesktop.childImageSharp.fluid}
+        imageAlt='Child hugging elephant'
+        content={
+          <>
+            <h2>ADA</h2>
+            <p>
+              From{' '}
+              <Link to='/insights/accessibility-for-everyone/'>
+                writing about it
+              </Link>{' '}
+              to working with clients, we ensure every brand we work with
+              empowers all users to experience their brand to the fullest.
+            </p>
+            <ul>
+              <li>ADA Audits & Testing</li>
+              <li>ADA Remediation</li>
+              <li>ADA Compliant Design</li>
+              <li>Compliance Implementation</li>
+            </ul>
+          </>
+        }
+        index={5}
+      />
       <CTA />
     </Layout>
   );
@@ -175,6 +200,13 @@ export const query = graphql`
       }
     }
     marketingImageDesktop: file(relativePath: { eq: "marketing.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    adaImageDesktop: file(relativePath: { eq: "ada.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp
