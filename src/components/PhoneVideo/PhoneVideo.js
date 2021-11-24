@@ -71,9 +71,9 @@ const PhoneVideo = ({ src }) => {
           >
             <video
               alt=''
-              playsinline='true'
-              muted='true'
-              loop='true'
+              playsInline
+              muted
+              loop
               preload='metadata'
               autoPlay
               css={css`

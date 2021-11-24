@@ -9,161 +9,152 @@ const { ensureTrailingSlash, updatePaths } = require('./src/util');
 
 const exec = util.promisify(childProcess.exec);
 
+const runQueries = async graphql => {
+  const isProduction =
+    process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
+      ? 'production'
+      : 'development';
+
+  let queries;
+  if (isProduction) {
+    queries = await graphql(`
+      query {
+        caseStudies: allCaseStudy(filter: { field_hidden: { eq: false } }) {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            path {
+              alias
+            }
+          }
+        }
+        insights: allInsight(filter: { field_hidden: { eq: false } }) {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            path {
+              alias
+            }
+            relationships {
+              field_tags {
+                name
+              }
+            }
+          }
+        }
+        legacyInsights: allNodeLegacyInsight {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            created(formatString: "MMM D, YYYY")
+            body {
+              processed
+            }
+            path {
+              alias
+            }
+            relationships {
+              uid {
+                name: display_name
+              }
+            }
+          }
+        }
+        redirects: allRedirectRedirect {
+          edges {
+            node {
+              redirect_source {
+                path
+              }
+              redirect_redirect {
+                uri
+              }
+              status_code
+            }
+          }
+        }
+      }
+    `);
+  } else {
+    queries = await graphql(`
+      query {
+        caseStudies: allCaseStudy(filter: { field_hidden: { eq: false } }) {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            path {
+              alias
+            }
+          }
+        }
+        insights: allInsight {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            path {
+              alias
+            }
+            relationships {
+              field_tags {
+                name
+              }
+            }
+          }
+        }
+        legacyInsights: allNodeLegacyInsight {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            created(formatString: "MMM D, YYYY")
+            body {
+              processed
+            }
+            path {
+              alias
+            }
+            relationships {
+              uid {
+                name: display_name
+              }
+            }
+          }
+        }
+        redirects: allRedirectRedirect {
+          edges {
+            node {
+              redirect_source {
+                path
+              }
+              redirect_redirect {
+                uri
+              }
+              status_code
+            }
+          }
+        }
+      }
+    `);
+  }
+
+  return queries.data;
+};
+
 exports.onCreateDevServer = ({ app }) => {
   app.use(express.static('static'));
 };
 
-const isProduction =
-  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
-    ? 'production'
-    : 'development';
-
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
 
-  const queries = await graphql(`
-    query {
-      caseStudies: allCaseStudy(filter: { field_hidden: { eq: false } }) {
-        nodes {
-          id
-          title
-          drupal_internal__nid
-          path {
-            alias
-          }
-        }
-      }
-      insights: allInsight {
-        nodes {
-          id
-          title
-          drupal_internal__nid
-          path {
-            alias
-          }
-          relationships {
-            field_tags {
-              name
-            }
-          }
-        }
-      }
-      jobs: allResumatorJob(filter: { status: { eq: "Open" } }) {
-        nodes {
-          title
-          description
-          board_code
-          status
-        }
-      }
-      legacyInsights: allNodeLegacyInsight {
-        nodes {
-          id
-          title
-          drupal_internal__nid
-          created(formatString: "MMM D, YYYY")
-          body {
-            processed
-          }
-          path {
-            alias
-          }
-          relationships {
-            uid {
-              name: display_name
-            }
-          }
-        }
-      }
-      redirects: allRedirectRedirect {
-        edges {
-          node {
-            redirect_source {
-              path
-            }
-            redirect_redirect {
-              uri
-            }
-            status_code
-          }
-        }
-      }
-    }
-  `);
-
-  const prodQueries = await graphql(`
-    query {
-      caseStudies: allCaseStudy(filter: { field_hidden: { eq: false } }) {
-        nodes {
-          id
-          title
-          drupal_internal__nid
-          path {
-            alias
-          }
-        }
-      }
-      insights: allInsight(filter: { field_hidden: { eq: false } }) {
-        nodes {
-          id
-          title
-          drupal_internal__nid
-          path {
-            alias
-          }
-          relationships {
-            field_tags {
-              name
-            }
-          }
-        }
-      }
-      jobs: allResumatorJob(filter: { status: { eq: "Open" } }) {
-        nodes {
-          title
-          description
-          board_code
-          status
-        }
-      }
-      legacyInsights: allNodeLegacyInsight {
-        nodes {
-          id
-          title
-          drupal_internal__nid
-          created(formatString: "MMM D, YYYY")
-          body {
-            processed
-          }
-          path {
-            alias
-          }
-          relationships {
-            uid {
-              name: display_name
-            }
-          }
-        }
-      }
-      redirects: allRedirectRedirect {
-        edges {
-          node {
-            redirect_source {
-              path
-            }
-            redirect_redirect {
-              uri
-            }
-            status_code
-          }
-        }
-      }
-    }
-  `);
-
-  const { jobs, caseStudies, insights, legacyInsights, redirects } =
-    isProduction === 'production' ? prodQueries.data : queries.data;
-
+  const { caseStudies, insights, legacyInsights, redirects } = await runQueries(
+    graphql
+  );
   const data = { data: { caseStudies, insights, legacyInsights, redirects } };
 
   const updatedRedirects = await updatePaths(data);
@@ -198,18 +189,6 @@ exports.createPages = async ({ actions, graphql }) => {
         author: legacyInsight.relationships.uid.name,
         created: legacyInsight.created,
         body: legacyInsight.body.processed,
-      },
-    })
-  );
-
-  jobs.nodes.map(job =>
-    createPage({
-      path: `/careers/${job.title.toLowerCase().replace(/ /g, '-')}/`,
-      component: path.resolve(`src/templates/job.js`),
-      context: {
-        title: job.title,
-        boardCode: job.board_code,
-        description: job.description,
       },
     })
   );
@@ -253,11 +232,15 @@ exports.createPages = async ({ actions, graphql }) => {
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-    node: {
-      fs: 'empty',
-    },
     module: {
       rules: [{ test: /\.ics$/, use: 'raw-loader' }],
+    },
+    resolve: {
+      fallback: {
+        os: require.resolve('os-browserify/browser'),
+        path: require.resolve('path-browserify'),
+        fs: false,
+      },
     },
   });
 };
