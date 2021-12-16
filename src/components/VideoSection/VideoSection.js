@@ -1,5 +1,5 @@
 /* eslint-disable prefer-template */
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReactPlayer from 'react-player';
@@ -142,6 +142,23 @@ const VideoSection = ({ url, mp4 }) => {
       transition: 0.2s ease-out all;
     }
   `;
+
+  useEffect(() => {
+    const mouseScroll = () => {
+      const elementTarget = refMovie.current;
+      if (elementTarget) {
+        if (
+          window.scrollY >
+          elementTarget.offsetTop + elementTarget.offsetHeight
+        ) {
+          setButtonVisible(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', mouseScroll);
+    return () => window.removeEventListener('scroll', mouseScroll);
+  }, []);
 
   return (
     <FullWidthSection
