@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import FullWidthSection from '../FullWidthSection';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
@@ -61,6 +61,10 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
                 list-style: none;
               }
             }
+
+            a {
+              text-decoration: underline;
+            }
           `}
         >
           <Spring
@@ -71,29 +75,18 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
             }}
           >
             {({ transform, opacity }) => (
-              <Img
-                fluid={imageSrc}
+              <GatsbyImage
+                image={imageSrc}
                 alt={imageAlt}
-                style={{ transform, opacity }}
+                imgStyle={{ transform, opacity }}
                 css={css`
                   width: 100%;
                   margin-bottom: 20px;
 
-                  > div {
-                    padding-bottom: 100% !important;
-                  }
-
                   ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '64%' : '49%'};
-                    width: ${index % 2 ? '64%' : '49%'};
+                    flex: 0 0 ${index % 2 ? '51%' : '49%'};
+                    width: ${index % 2 ? '51%' : '49%'};
                     margin-bottom: 0;
-
-                    > div {
-                      padding-bottom: ${index % 2 ? '76% !important' : '100%'};
-                      padding-bottom: ${index % 4 === 2
-                        ? '131% !important'
-                        : '100%'};
-                    }
                   }
                 `}
               />
@@ -105,8 +98,8 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
               position: relative;
 
               ${mediaQueries.phoneLarge} {
-                flex: 0 0 ${index % 2 ? '30%' : '40%'};
-                width: ${index % 2 ? '30%' : '40%'};
+                flex: 0 0 ${index % 2 ? '39%' : '40%'};
+                width: ${index % 2 ? '39%' : '40%'};
               }
             `}
           >

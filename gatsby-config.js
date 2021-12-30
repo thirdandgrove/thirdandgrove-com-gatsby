@@ -15,10 +15,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sitemap`,
     {
-      resolve: `gatsby-plugin-fixhash`,
-      options: { offsetY: 20 },
-    },
-    {
       resolve: `gatsby-plugin-netlify`,
       options: {
         headers: {
@@ -45,6 +41,7 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-transformer-sharp`,
       options: {

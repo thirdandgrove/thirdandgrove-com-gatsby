@@ -26,5 +26,19 @@
     "icon": "./icons/data.png",
     "link": "/capabilities#data",
     "index": "3"
+  },
+  {
+    "title": "Marketing",
+    "description": "Like every therapist always says, communication is key. The same applies to your brand.",
+    "icon": "./icons/marketing.png",
+    "link": "/capabilities#marketing",
+    "index": "4"
+  },
+  {
+    "title": "ADA",
+    "description": "From writing about it to working with clients, we ensure every brand we work with empowers all users to experience their brand to the fullest.",
+    "icon": "./icons/ada.png",
+    "link": "/capabilities#ada",
+    "index": "5"
   }
 ]

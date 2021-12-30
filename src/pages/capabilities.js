@@ -17,7 +17,7 @@ const CapabilitiesPage = ({ data }) => {
     >
       <Capability
         id='technology'
-        imageSrc={data.technologyImageDesktop.childImageSharp.fluid}
+        imageSrc={data.technologyImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Laptop on desk with drink'
         content={
           <>
@@ -50,7 +50,7 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='strategy'
-        imageSrc={data.strategyImageDesktop.childImageSharp.fluid}
+        imageSrc={data.strategyImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Two office workers looking at a chart on a laptop'
         content={
           <>
@@ -73,7 +73,7 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='creative'
-        imageSrc={data.creativeImageDesktop.childImageSharp.fluid}
+        imageSrc={data.creativeImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Man drawing logos in a notebook'
         content={
           <>
@@ -97,7 +97,7 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='data'
-        imageSrc={data.dataImageDesktop.childImageSharp.fluid}
+        imageSrc={data.dataImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Black and Red'
         content={
           <>
@@ -117,6 +117,53 @@ const CapabilitiesPage = ({ data }) => {
         }
         index={3}
       />
+      <Capability
+        id='marketing'
+        imageSrc={data.marketingImageDesktop.childImageSharp.gatsbyImageData}
+        imageAlt='Rotary Telephone'
+        content={
+          <>
+            <h2>Marketing</h2>
+            <p>
+              Like every therapist always says, communication is key. The same
+              applies to your brand.
+            </p>
+            <ul>
+              <li>Marketing Strategy</li>
+              <li>Social Media Marketing</li>
+              <li>Advertising</li>
+              <li>Creative Concepts and Content</li>
+              <li>Analytics and Reporting</li>
+            </ul>
+          </>
+        }
+        index={4}
+      />
+      <Capability
+        id='ada'
+        imageSrc={data.adaImageDesktop.childImageSharp.gatsbyImageData}
+        imageAlt='Child hugging elephant'
+        content={
+          <>
+            <h2>ADA</h2>
+            <p>
+              From{' '}
+              <Link to='/insights/accessibility-for-everyone/'>
+                writing about it
+              </Link>{' '}
+              to working with clients, we ensure every brand we work with
+              empowers all users to experience their brand to the fullest.
+            </p>
+            <ul>
+              <li>ADA Audits & Testing</li>
+              <li>ADA Remediation</li>
+              <li>ADA Compliant Design</li>
+              <li>Compliance Implementation</li>
+            </ul>
+          </>
+        }
+        index={5}
+      />
       <CTA />
     </Layout>
   );
@@ -126,30 +173,32 @@ export const query = graphql`
   query CapabilitiesQuery {
     technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
     strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
     creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
     dataImageDesktop: file(relativePath: { eq: "data.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
+      }
+    }
+    marketingImageDesktop: file(relativePath: { eq: "marketing.png" }) {
+      childImageSharp {
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
+      }
+    }
+    adaImageDesktop: file(relativePath: { eq: "ada.png" }) {
+      childImageSharp {
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
   }

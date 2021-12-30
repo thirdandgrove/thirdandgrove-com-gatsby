@@ -89,7 +89,7 @@ const Shopify = query => {
       />
       <Capability
         id='weknow'
-        imageSrc={query.data.weKnowImageDesktop.childImageSharp.fluid}
+        imageSrc={query.data.weKnowImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='We know that app'
         content={
           <>
@@ -134,7 +134,8 @@ const Shopify = query => {
       <Capability
         id='migration'
         imageSrc={
-          query.data.platformMigrationImageDesktop.childImageSharp.fluid
+          query.data.platformMigrationImageDesktop.childImageSharp
+            .gatsbyImageData
         }
         imageAlt='White shoe'
         content={
@@ -240,18 +241,14 @@ export const query = graphql`
     }
     weKnowImageDesktop: file(relativePath: { eq: "we-know.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED)
       }
     }
     platformMigrationImageDesktop: file(
       relativePath: { eq: "platform-migration.png" }
     ) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED)
       }
     }
     insights: allInsight(
