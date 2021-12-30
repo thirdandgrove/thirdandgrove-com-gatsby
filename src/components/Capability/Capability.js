@@ -61,6 +61,10 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
                 list-style: none;
               }
             }
+
+            a {
+              text-decoration: underline;
+            }
           `}
         >
           <Spring
