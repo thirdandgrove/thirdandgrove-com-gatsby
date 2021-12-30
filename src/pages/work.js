@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import mp4 from '../../static/thirdgrove-work.mp4';
@@ -58,13 +58,13 @@ const Project = ({ study, index }) => {
             }}
           >
             {({ transform, opacity }) => (
-              <Img
-                fluid={
+              <GatsbyImage
+                image={
                   study.relationships.field_image.localFile.childImageSharp
-                    .fluid
+                    .gatsbyImageData
                 }
                 alt={study.field_image.alt}
-                style={{ transform, opacity }}
+                imagestyle={{ transform, opacity }}
                 css={css`
                   width: 100%;
                   margin-bottom: 20px;
@@ -73,10 +73,6 @@ const Project = ({ study, index }) => {
                     flex: 0 0 64%;
                     width: 64%;
                     margin-bottom: 0;
-
-                    > div {
-                      padding-bottom: 100%;
-                    }
                   }
                 `}
               />
@@ -93,7 +89,7 @@ const Project = ({ study, index }) => {
               }
 
               &::after {
-                content: '+';
+                content: ' ';
                 position: absolute;
                 right: 0;
                 top: 0;
@@ -198,16 +194,6 @@ const Work = () => {
         width
         height
       }
-      field_secondary_image {
-        alt
-        width
-        height
-      }
-      field_tertiary_image {
-        alt
-        width
-        height
-      }
       path {
         alias
       }
@@ -220,91 +206,12 @@ const Work = () => {
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 1250, maxHeight: 850, cropFocus: NORTH) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 335, height: 260, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeA: childImageSharp {
-              fixed(width: 450, height: 320, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 380, height: 420, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 420, height: 340, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-          }
-        }
-        field_secondary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 1, height: 1) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeA: childImageSharp {
-              fixed(width: 250, height: 180, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 340, height: 260, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 270, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-          }
-        }
-        field_tertiary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 850, maxHeight: 850) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 1, height: 1) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeA: childImageSharp {
-              fixed(width: 250, height: 495, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 230, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 320, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
+              gatsbyImageData(
+                transformOptions: { cropFocus: CENTER }
+                layout: CONSTRAINED
+                width: 1250
+                height: 850
+              )
             }
           }
         }

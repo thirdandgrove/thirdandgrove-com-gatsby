@@ -7,7 +7,6 @@ import styled from '@emotion/styled';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
-import WhatWeDo from '../components/WhatWeDo';
 import ImageSlider from '../components/ImageSlider';
 import { TextWrapper } from '../components/Prefooter';
 import {
@@ -220,9 +219,7 @@ export const query = graphql`
     slider: allFile(filter: { absolutePath: { regex: "/boston-page/" } }) {
       nodes {
         childImageSharp {
-          fluid(maxWidth: 363, maxHeight: 363) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(width: 363, height: 363, layout: CONSTRAINED)
         }
       }
     }
