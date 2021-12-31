@@ -176,6 +176,7 @@ const Shopify = query => {
                 <li>ZenDesk</li>
                 <li>Drupal</li>
                 <li>Wordpress</li>
+                <li>Gatsby Cloud</li>
               </ul>
             </div>
           </>
