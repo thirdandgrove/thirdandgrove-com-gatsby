@@ -86,6 +86,61 @@ const Shopify = query => {
         maxWidth
         invisibleCta
         noPaddingImg
+        extraCSSSection={css`
+          padding-bottom: 0 !important;
+
+          > div {
+            padding-bottom: 40px;
+          }
+        `}
+      />
+      <LogoGrid
+        logoset='shopifyApps'
+        title='Our Favorite Partners'
+        subtitle='These are our top apps that we use with merchants on Shopify'
+        backgroundColor={colors.white}
+        styles={css`
+          padding-top: 25px !important;
+          padding-bottom: 80px !important;
+
+          > h2 {
+            font-size: 33px;
+            font-weight: 700;
+            letter-spacing: normal;
+            line-height: 1.2;
+          }
+          > h3 {
+            font-size: 18px;
+            font-weight: 100;
+            font-family: 'NB International Pro', sans-serif;
+            margin-bottom: 0;
+          }
+          > div {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
+          }
+          > div > div {
+            width: auto;
+            flex: unset;
+            padding: 0 10px;
+            margin-bottom: 0;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 30px;
+            }
+          }
+          > div > div > img {
+            margin-bottom: 0;
+          }
+        `}
+        minHeight='100px !important'
+        defaultItemWidth='20%'
       />
       <Capability
         id='weknow'
@@ -93,7 +148,7 @@ const Shopify = query => {
         imageAlt='We know that app'
         content={
           <>
-            <h2>Yeah. we know that app</h2>
+            <h2>We also know these apps too.</h2>
             <div
               css={css`
                 display: flex;
@@ -104,10 +159,9 @@ const Shopify = query => {
                 <li>Net Suite</li>
                 <li>Salesforce Marketing Cloud</li>
                 <li>Salesforce CRM</li>
-                <li>ReCharge</li>
                 <li>Bold Apps</li>
-                <li>Klaviyo</li>
-                <li>Yotpo</li>
+                <li>Loyalty Lion</li>
+                <li>Gorgias</li>
                 <li>PowerReviews</li>
                 <li>Shipstation</li>
                 <li>AS/400</li>
@@ -117,10 +171,8 @@ const Shopify = query => {
                 <li>Nosto</li>
                 <li>Shogun</li>
                 <li>Swell</li>
-                <li>Loyalty Lion</li>
                 <li>Smile.io</li>
                 <li>Shippo</li>
-                <li>Gorgias</li>
                 <li>ZenDesk</li>
                 <li>Drupal</li>
                 <li>Wordpress</li>
