@@ -110,7 +110,7 @@ const Shopify = query => {
             line-height: 1.2;
           }
           > h3 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 100;
             font-family: 'NB International Pro', sans-serif;
             margin-bottom: 0;
@@ -148,7 +148,7 @@ const Shopify = query => {
         imageAlt='We know that app'
         content={
           <>
-            <h2>We also know these apps too.</h2>
+            <h2>We know these apps too.</h2>
             <div
               css={css`
                 display: flex;
