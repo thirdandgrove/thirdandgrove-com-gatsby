@@ -55,6 +55,11 @@ import dadiAwards from './logos/dadi-awards.png';
 import daveyAwards from './logos/davey-awards.png';
 import farmacyLogo from './logos/farmacy-logo.svg';
 import amorepacifioLogo from './logos/amorepacifio-logo.svg';
+import boostLogo from './logos/boost.png';
+import yotpoLogo from './logos/yotpo.png';
+import klaviyoLogo from './logos/klaviyo.png';
+import eaLogo from './logos/essential-accessibility.png';
+import rechargeLogo from './logos/recharge.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -126,6 +131,38 @@ export default (logoset, isSmScreen) => {
         alt='jameson'
         width={isSmScreen ? '95' : '150'}
         height={isSmScreen ? '48' : '76'}
+      />,
+    ],
+    shopifyApps: [
+      <img
+        src={rechargeLogo}
+        alt='Recharge'
+        width={isSmScreen ? '100' : '176'}
+        height={isSmScreen ? '26' : '46'}
+      />,
+      <img
+        src={klaviyoLogo}
+        alt='Klaviyo'
+        width={isSmScreen ? '120' : '202'}
+        height={isSmScreen ? '66' : '112'}
+      />,
+      <img
+        src={eaLogo}
+        alt='Essential Accessibility'
+        width={isSmScreen ? '140' : '238'}
+        height={isSmScreen ? '31' : '54'}
+      />,
+      <img
+        src={boostLogo}
+        alt='Boost'
+        width={isSmScreen ? '80' : '143'}
+        height={isSmScreen ? '44' : '77'}
+      />,
+      <img
+        src={yotpoLogo}
+        alt='Yotpo'
+        width={isSmScreen ? '40' : '71'}
+        height={isSmScreen ? '43' : '76'}
       />,
     ],
     acquia: [
