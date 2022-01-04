@@ -19,10 +19,7 @@ const Studies = ({ data }) => {
 
   const backgroundColor = post.field_color && post.field_color.color;
 
-  useEffect(
-    () => updateExternalLinks(document.querySelectorAll('main > div a')),
-    []
-  );
+  useEffect(() => updateExternalLinks(document.querySelectorAll('main a')), []);
 
   return (
     <Layout

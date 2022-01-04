@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
@@ -62,12 +63,7 @@ const LegacyInsights = ({ pageContext }) => {
         ),
       }}
     >
-      <FullWidthSection
-        css={`
-          ${SectionStyle} legacyInsightsContainer
-        `}
-        height='100%'
-      >
+      <FullWidthSection css={SectionStyle} height='100%'>
         <div dangerouslySetInnerHTML={{ __html: bodyWithImages }} />
       </FullWidthSection>
     </Layout>
