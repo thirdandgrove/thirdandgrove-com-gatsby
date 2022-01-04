@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
 import { fonts, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
+import { updateExternalLinks } from '../util';
 
 const LegacyInsights = ({ pageContext }) => {
   const { body, title, created, author } = pageContext;
@@ -23,6 +24,11 @@ const LegacyInsights = ({ pageContext }) => {
       padding: 36px;
     }
   `;
+
+  useEffect(
+    () => updateExternalLinks(document.querySelectorAll('main > div a')),
+    []
+  );
 
   return (
     <Layout
@@ -56,7 +62,12 @@ const LegacyInsights = ({ pageContext }) => {
         ),
       }}
     >
-      <FullWidthSection css={SectionStyle} height='100%'>
+      <FullWidthSection
+        css={`
+          ${SectionStyle} legacyInsightsContainer
+        `}
+        height='100%'
+      >
         <div dangerouslySetInnerHTML={{ __html: bodyWithImages }} />
       </FullWidthSection>
     </Layout>

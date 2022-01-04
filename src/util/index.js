@@ -5,6 +5,19 @@ module.exports = {
       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
       .join('&');
   },
+  updateExternalLinks: anchorArray =>
+    anchorArray &&
+    [...anchorArray]
+      .filter(
+        a =>
+          a.getAttribute('href') &&
+          a.hostname !== window.location.hostname &&
+          (a.getAttribute('href') && a.hostname).indexOf(`thirdandgrove`) === -1
+      )
+      .forEach(a => {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noreferrer');
+      }),
   updatePaths: json => {
     return new Promise((resolve, reject) => {
       return [json.data].map(
