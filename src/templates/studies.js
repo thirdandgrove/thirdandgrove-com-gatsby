@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
@@ -7,6 +7,7 @@ import Img from 'gatsby-image';
 import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
 import ContentBody from '../components/ContentBody';
+import { updateExternalLinks } from '../util';
 
 const Studies = ({ data }) => {
   const post = data.caseStudy;
@@ -17,6 +18,8 @@ const Studies = ({ data }) => {
     post.relationships.field_image.localFile.childImageSharp.fluid;
 
   const backgroundColor = post.field_color && post.field_color.color;
+
+  useEffect(() => updateExternalLinks(document.querySelectorAll('main a')), []);
 
   return (
     <Layout

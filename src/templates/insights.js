@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
@@ -12,6 +12,7 @@ import {
   NewsletterFullWidthSection,
   NewsletterOverlay,
 } from '../components/NewsletterForm';
+import { updateExternalLinks } from '../util';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -61,6 +62,11 @@ const Insights = ({ data }) => {
     headerData.image = post.relationships.field_image.localFile.publicURL;
     splitHeaderData.image = post.relationships.field_image.localFile.publicURL;
   }
+
+  useEffect(
+    () => updateExternalLinks(document.querySelectorAll('main > div a')),
+    []
+  );
 
   return (
     <Layout
