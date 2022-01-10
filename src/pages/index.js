@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
@@ -21,6 +21,7 @@ const Index = ({ data }) => {
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
   const orderArray = [
+    'Badlands',
     'Dartmouth',
     'King Arthur Baking Company',
     'Hawaiian Host',
@@ -28,24 +29,22 @@ const Index = ({ data }) => {
     'Acquia.com',
     'VMware',
     'Goldwin',
-    'World Vision',
   ];
+
   // If include array isset reorder array and filter
   const reorderArray = (arr, order) => {
     const newArr = [];
-    arr.forEach(a => {
-      order.forEach((t, i) => {
-        if (a.title === t) {
-          newArr[i] = { ...a };
-        }
+    arr
+      .filter(({ title }) => title !== 'World Vision')
+      .forEach(node => {
+        order.forEach((t, i) => {
+          if (node.title === t) {
+            newArr[i] = { ...node };
+          }
+        });
       });
-    });
     return { nodes: newArr };
   };
-
-  const [caseStudies, setCaseStudies] = useState(
-    reorderArray(data.allCaseStudy.nodes, orderArray, 'title')
-  );
 
   return (
     <Layout
@@ -63,7 +62,9 @@ const Index = ({ data }) => {
       }}
     >
       {' '}
-      <ProjectsSlider data={caseStudies} />
+      <ProjectsSlider
+        data={reorderArray(data.allCaseStudy.nodes, orderArray)}
+      />
       <CapabilitiesSlider
         title='What We Do'
         backgroundColor={colors.lightblue}
