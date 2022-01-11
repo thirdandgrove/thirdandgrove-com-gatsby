@@ -5,6 +5,12 @@ import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 import CTA from '../components/CTA';
 import Capability from '../components/Capability';
+import adaGif from '../images/capabilities/ADA.gif';
+import createGif from '../images/capabilities/create.gif';
+import dataGif from '../images/capabilities/data.gif';
+import marketingGif from '../images/capabilities/marketing.gif';
+import strategyGif from '../images/capabilities/strategy.gif';
+import techGif from '../images/capabilities/tech.gif';
 
 const CapabilitiesPage = ({ data }) => {
   return (
@@ -17,8 +23,8 @@ const CapabilitiesPage = ({ data }) => {
     >
       <Capability
         id='technology'
-        imageSrc={data.technologyImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Laptop on desk with drink'
+        imageSrc={techGif}
+        imageAlt='Dog typing on computer'
         content={
           <>
             <h2>Technology</h2>
@@ -50,8 +56,8 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='strategy'
-        imageSrc={data.strategyImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Two office workers looking at a chart on a laptop'
+        imageSrc={strategyGif}
+        imageAlt='Dog cutting food like a chef'
         content={
           <>
             <h2>Strategy</h2>
@@ -73,8 +79,8 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='creative'
-        imageSrc={data.creativeImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Man drawing logos in a notebook'
+        imageSrc={createGif}
+        imageAlt='Dog dancing on two legs'
         content={
           <>
             <h2>Creative</h2>
@@ -97,8 +103,8 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='data'
-        imageSrc={data.dataImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Black and Red'
+        imageSrc={dataGif}
+        imageAlt='Dog helping man measure a piece of wood'
         content={
           <>
             <h2>Data</h2>
@@ -119,8 +125,8 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='marketing'
-        imageSrc={data.marketingImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Rotary Telephone'
+        imageSrc={marketingGif}
+        imageAlt='Dog getting head scratched and smiling'
         content={
           <>
             <h2>Marketing</h2>
@@ -141,8 +147,8 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='ada'
-        imageSrc={data.adaImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Child hugging elephant'
+        imageSrc={adaGif}
+        imageAlt='Dog with hotdog in mouth wagging tail'
         content={
           <>
             <h2>ADA</h2>
@@ -168,41 +174,6 @@ const CapabilitiesPage = ({ data }) => {
     </Layout>
   );
 };
-
-export const query = graphql`
-  query CapabilitiesQuery {
-    technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
-      }
-    }
-    strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
-      }
-    }
-    creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
-      }
-    }
-    dataImageDesktop: file(relativePath: { eq: "data.png" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
-      }
-    }
-    marketingImageDesktop: file(relativePath: { eq: "marketing.png" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
-      }
-    }
-    adaImageDesktop: file(relativePath: { eq: "ada.png" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
-      }
-    }
-  }
-`;
 
 export default CapabilitiesPage;
 

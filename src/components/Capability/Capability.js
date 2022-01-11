@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
-import { GatsbyImage } from 'gatsby-plugin-image';
 
 import FullWidthSection from '../FullWidthSection';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
@@ -75,10 +74,10 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
             }}
           >
             {({ transform, opacity }) => (
-              <GatsbyImage
-                image={imageSrc}
+              <img
+                src={imageSrc}
                 alt={imageAlt}
-                imgStyle={{ transform, opacity }}
+                style={{ transform, opacity }}
                 css={css`
                   width: 100%;
                   margin-bottom: 20px;
