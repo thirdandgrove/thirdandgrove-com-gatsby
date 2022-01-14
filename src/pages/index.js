@@ -20,31 +20,6 @@ const Index = ({ data }) => {
   const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
-  const orderArray = [
-    'Badlands',
-    'Dartmouth',
-    'King Arthur Baking Company',
-    'Hawaiian Host',
-    'The Carlyle Group',
-    'Acquia.com',
-    'VMware',
-    'Goldwin',
-  ];
-
-  // If include array isset reorder array and filter
-  const reorderArray = (arr, order) => {
-    const newArr = [];
-    arr
-      .filter(({ title }) => title !== 'World Vision')
-      .forEach(node => {
-        order.forEach((t, i) => {
-          if (node.title === t) {
-            newArr[i] = { ...node };
-          }
-        });
-      });
-    return { nodes: newArr };
-  };
 
   return (
     <Layout
@@ -63,7 +38,11 @@ const Index = ({ data }) => {
     >
       {' '}
       <ProjectsSlider
-        data={reorderArray(data.allCaseStudy.nodes, orderArray)}
+        data={{
+          nodes:
+            data.allEntitySubqueueCaseStudySliderHomepage.nodes[0].relationships
+              .items,
+        }}
       />
       <CapabilitiesSlider
         title='What We Do'
@@ -94,6 +73,15 @@ export default Index;
 
 export const query = graphql`
   {
+    allEntitySubqueueCaseStudySliderHomepage {
+      nodes {
+        relationships {
+          items {
+            ...CaseStudyFragment
+          }
+        }
+      }
+    }
     allCaseStudy(
       sort: { fields: created, order: DESC }
       limit: 8
