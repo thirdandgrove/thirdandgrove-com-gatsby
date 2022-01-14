@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -63,14 +63,6 @@ const About = ({ data }) => {
       text-align: center;
       ${mediaQueries.phoneLarge} {
         margin-bottom: 90px;
-      }
-    }
-
-    .gatsby-image-wrapper > div {
-      // Forcing correct image aspect ratio, overriding inline
-      // gatsby-image provided styles
-      ${mediaQueries.phoneLarge} {
-        padding-bottom: 68% !important;
       }
     }
   `;
@@ -175,15 +167,6 @@ const About = ({ data }) => {
         margin: 0 0 1px 0;
       }
     }
-    .gatsby-image-wrapper > div {
-      // Forcing correct image aspect ratio, overriding inline
-      // gatsby-image provided styles
-      padding-bottom: 100% !important;
-
-      ${mediaQueries.phoneLarge} {
-        padding-bottom: 63.2% !important;
-      }
-    }
   `;
   const images = data.allFile.nodes;
 
@@ -191,12 +174,13 @@ const About = ({ data }) => {
   const getSrc = (name, type) => {
     if (name === 'team_2') {
       return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
-        .fluid;
+        .gatsbyImageData;
     }
     if (type === 'location') {
-      return images.find(img => img.name === name).largeSquare.fluid;
+      return images.find(img => img.name === name).largeSquare.gatsbyImageData;
     }
-    return images.find(img => img.name === name).childImageSharp.fluid;
+    return images.find(img => img.name === name).childImageSharp
+      .gatsbyImageData;
   };
 
   return (
@@ -220,8 +204,8 @@ const About = ({ data }) => {
           }
         `}
       >
-        <Img
-          fluid={getSrc('team_2')}
+        <GatsbyImage
+          image={getSrc('team_2')}
           alt='TAG Team'
           css={css`
             width: 100%;
@@ -289,37 +273,52 @@ const About = ({ data }) => {
 
         <div css={[leadersCss, container.medium]}>
           <div>
-            <Img alt='Justin Emond' fluid={getSrc('emond', 'leader')} />
+            <GatsbyImage alt='Justin Emond' image={getSrc('emond', 'leader')} />
             <h2>Justin Emond</h2>
             <p>Founder, Chief Executive Officer</p>
           </div>
           <div>
-            <Img alt='Jen Slemp' fluid={getSrc('slemp', 'leader')} />
+            <GatsbyImage alt='Jen Slemp' image={getSrc('slemp', 'leader')} />
             <h2>Jen Slemp</h2>
             <p>Chief Operating Officer</p>
           </div>
           <div>
-            <Img alt='Christina Andrade' fluid={getSrc('andrade', 'leader')} />
+            <GatsbyImage
+              alt='Christina Andrade'
+              image={getSrc('andrade', 'leader')}
+            />
             <h2>Christina Andrade</h2>
             <p>Director of Operations</p>
           </div>
           <div>
-            <Img alt='Joneric Amundson' fluid={getSrc('joneric', 'leader')} />
+            <GatsbyImage
+              alt='Joneric Amundson'
+              image={getSrc('joneric', 'leader')}
+            />
             <h2>Joneric Amundson</h2>
             <p>Creative Director</p>
           </div>
           <div>
-            <Img alt='Nina Collier' fluid={getSrc('collier', 'leader')} />
+            <GatsbyImage
+              alt='Nina Collier'
+              image={getSrc('collier', 'leader')}
+            />
             <h2>Nina Collier</h2>
             <p>Director of Ecommerce</p>
           </div>
           <div>
-            <Img alt='Brent Schultz' fluid={getSrc('schultz', 'leader')} />
+            <GatsbyImage
+              alt='Brent Schultz'
+              image={getSrc('schultz', 'leader')}
+            />
             <h2>Brent Schultz</h2>
             <p>Director of Engineering</p>
           </div>
           <div>
-            <Img alt='Monica Thompson' fluid={getSrc('thompson', 'leader')} />
+            <GatsbyImage
+              alt='Monica Thompson'
+              image={getSrc('thompson', 'leader')}
+            />
             <h2>Monica Thompson</h2>
             <p>Director of Strategy</p>
           </div>
@@ -346,7 +345,7 @@ const About = ({ data }) => {
         <FullWidthSection>
           <Location onClick={() => navigate(`/boston/`)}>
             <h2 css={h1L}>Boston</h2>
-            <Img fluid={getSrc('boston', 'location')} alt='Boston' />
+            <GatsbyImage image={getSrc('boston', 'location')} alt='Boston' />
             <h3>Howdya Like Them Apples?</h3>
           </Location>
         </FullWidthSection>
@@ -405,14 +404,12 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(
-            cropFocus: CENTER
-            maxHeight: 480
-            maxWidth: 980
-            quality: 100
-          ) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            height: 480
+            width: 980
+            transformOptions: { cropFocus: CENTER }
+            layout: CONSTRAINED
+          )
         }
       }
     }
@@ -426,14 +423,18 @@ export const query = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            transformOptions: { cropFocus: NORTH }
+            layout: FULL_WIDTH
+            aspectRatio: 1.275
+          )
         }
         largeSquare: childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 750, maxWidth: 750) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            aspectRatio: 1.5
+            transformOptions: { cropFocus: NORTH }
+            layout: CONSTRAINED
+          )
         }
       }
     }
