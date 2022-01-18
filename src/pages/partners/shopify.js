@@ -76,6 +76,8 @@ const Shopify = query => {
             { description: 'Increase in Conversion Rate', percent: '364%' },
           ]}
           index={1}
+          link='/work/badlands/'
+          showButton
         />
       </FullWidthSection>
       <CTAGrid
