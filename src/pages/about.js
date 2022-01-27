@@ -288,7 +288,7 @@ const About = ({ data }) => {
               image={getSrc('andrade', 'leader')}
             />
             <h2>Christina Andrade</h2>
-            <p>Director of Operations</p>
+            <p>Chief People Officer</p>
           </div>
           <div>
             <GatsbyImage
