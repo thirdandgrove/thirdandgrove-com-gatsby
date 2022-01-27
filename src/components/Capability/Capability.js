@@ -2,12 +2,22 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import FullWidthSection from '../FullWidthSection';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { fonts, mediaQueries, container, weights } from '../../styles';
 
-const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
+const Capability = ({
+  imageSrc,
+  imageAlt,
+  imageGif,
+  imageGifAlt,
+  content,
+  index,
+  id,
+  maxWidth,
+}) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 
@@ -74,21 +84,39 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
             }}
           >
             {({ transform, opacity }) => (
-              <img
-                src={imageSrc}
-                alt={imageAlt}
-                style={{ transform, opacity }}
-                css={css`
-                  width: 100%;
-                  margin-bottom: 20px;
+              <>
+                <GatsbyImage
+                  image={imageSrc}
+                  alt={imageAlt}
+                  imgStyle={{ transform, opacity }}
+                  css={css`
+                    width: 100%;
+                    margin-bottom: 20px;
 
-                  ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '51%' : '49%'};
-                    width: ${index % 2 ? '51%' : '49%'};
-                    margin-bottom: 0;
-                  }
-                `}
-              />
+                    ${mediaQueries.phoneLarge} {
+                      flex: 0 0 ${index % 2 ? '51%' : '49%'};
+                      width: ${index % 2 ? '51%' : '49%'};
+                      margin-bottom: 0;
+                    }
+                  `}
+                />
+                <img
+                  src={imageGif}
+                  alt={imageGifAlt}
+                  style={{ transform, opacity }}
+                  css={css`
+                    width: 100%;
+                    margin-bottom: 20px;
+                    display: none;
+
+                    ${mediaQueries.phoneLarge} {
+                      flex: 0 0 ${index % 2 ? '51%' : '49%'};
+                      width: ${index % 2 ? '51%' : '49%'};
+                      margin-bottom: 0;
+                    }
+                  `}
+                />
+              </>
             )}
           </Spring>
 
@@ -113,6 +141,8 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
 Capability.propTypes = {
   imageSrc: PropTypes.object.isRequired,
   imageAlt: PropTypes.string.isRequired,
+  imageGif: PropTypes.object.isRequired,
+  imageGifAlt: PropTypes.string.isRequired,
   content: PropTypes.node.isRequired,
   index: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
