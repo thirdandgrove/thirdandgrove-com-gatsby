@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
+import pawPrintImage from '../../images/capabilities/pawprint.png';
 import FullWidthSection from '../FullWidthSection';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { fonts, mediaQueries, container, weights } from '../../styles';
@@ -20,6 +21,10 @@ const Capability = ({
 }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
+  const [showDogImage, setShowDogImage] = useState(false);
+
+  console.log(`Show Dog Image: `);
+  console.log(showDogImage);
 
   return (
     <FullWidthSection
@@ -84,39 +89,58 @@ const Capability = ({
             }}
           >
             {({ transform, opacity }) => (
-              <>
+              <div
+                css={css`
+                  width: 100%;
+                  margin-bottom: 20px;
+                  position: relative;
+
+                  ${mediaQueries.phoneLarge} {
+                    flex: 0 0 ${index % 2 ? '51%' : '49%'};
+                    width: ${index % 2 ? '51%' : '49%'};
+                    margin-bottom: 0;
+                  }
+                `}
+              >
                 <GatsbyImage
                   image={imageSrc}
                   alt={imageAlt}
                   imgStyle={{ transform, opacity }}
                   css={css`
-                    width: 100%;
-                    margin-bottom: 20px;
-
-                    ${mediaQueries.phoneLarge} {
-                      flex: 0 0 ${index % 2 ? '51%' : '49%'};
-                      width: ${index % 2 ? '51%' : '49%'};
-                      margin-bottom: 0;
-                    }
+                    display: ${showDogImage ? 'none' : 'block'};
                   `}
                 />
+                <button
+                  onClick={() => {
+                    setShowDogImage(true);
+                  }}
+                  css={css`
+                    border: 0;
+                    background: transparent;
+                  `}
+                  type='button'
+                >
+                  <img
+                    src={pawPrintImage}
+                    alt='Paw Print'
+                    css={css`
+                      position: absolute;
+                      left: 0;
+                      bottom: 0;
+                      margin-bottom: 25px;
+                      display: ${showDogImage ? 'none' : 'block'};
+                    `}
+                  />
+                </button>
                 <img
                   src={imageGif}
                   alt={imageGifAlt}
-                  style={{ transform, opacity }}
                   css={css`
+                    display: ${showDogImage ? 'block' : 'none'};
                     width: 100%;
-                    margin-bottom: 20px;
-                    display: none;
-
-                    ${mediaQueries.phoneLarge} {
-                      flex: 0 0 ${index % 2 ? '51%' : '49%'};
-                      width: ${index % 2 ? '51%' : '49%'};
-                      margin-bottom: 0;
-                    }
                   `}
                 />
-              </>
+              </div>
             )}
           </Spring>
 
@@ -141,7 +165,7 @@ const Capability = ({
 Capability.propTypes = {
   imageSrc: PropTypes.object.isRequired,
   imageAlt: PropTypes.string.isRequired,
-  imageGif: PropTypes.object.isRequired,
+  imageGif: PropTypes.string.isRequired,
   imageGifAlt: PropTypes.string.isRequired,
   content: PropTypes.node.isRequired,
   index: PropTypes.number.isRequired,

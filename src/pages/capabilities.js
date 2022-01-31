@@ -59,7 +59,7 @@ const CapabilitiesPage = ({ data }) => {
       <Capability
         id='strategy'
         imageSrc={data.strategyImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Two office workers looking at a chart on a laptop'
+        imageAlt='Person painting red room backed into a corner'
         imageGif={strategyGif}
         imageGifAlt='Dog cutting food like a chef'
         content={
@@ -84,7 +84,7 @@ const CapabilitiesPage = ({ data }) => {
       <Capability
         id='creative'
         imageSrc={data.creativeImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Man drawing logos in a notebook'
+        imageAlt='Person holding a balloon against a wall to make it look like an egg'
         imageGif={createGif}
         imageGifAlt='Dog dancing on two legs'
         content={
@@ -110,7 +110,7 @@ const CapabilitiesPage = ({ data }) => {
       <Capability
         id='data'
         imageSrc={data.dataImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Black and Red'
+        imageAlt='Hand with tiny multi-colored dots all over'
         imageGif={dataGif}
         imageGifAlt='Dog helping man measure a piece of wood'
         content={
@@ -194,17 +194,17 @@ export const query = graphql`
         gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
+    strategyImageDesktop: file(relativePath: { eq: "strategy.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
+    creativeImageDesktop: file(relativePath: { eq: "creative.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    dataImageDesktop: file(relativePath: { eq: "data.png" }) {
+    dataImageDesktop: file(relativePath: { eq: "data.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
