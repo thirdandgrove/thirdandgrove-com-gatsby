@@ -2,6 +2,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import { css } from '@emotion/react';
 
 import Layout from '../components/layout';
 import ProjectsSlider from '../components/ProjectsSlider';
@@ -10,7 +11,7 @@ import CapabilitiesSlider from '../components/CapabilitiesSlider';
 import LogoGrid from '../components/LogoGrid';
 import SplitSection from '../components/SplitSection';
 import { ContactUs, BeUs } from '../components/Prefooter';
-import { colors } from '../styles';
+import { colors, mediaQueries } from '../styles';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import FullWidthSection from '../components/FullWidthSection';
 import { NewsletterFullWidthSection } from '../components/NewsletterForm';
@@ -48,10 +49,57 @@ const Index = ({ data }) => {
         title='What We Do'
         backgroundColor={colors.lightblue}
       />
+      <LogoGrid
+        logoset='partners'
+        title='Our Partners'
+        minHeight='100px !important'
+        defaultItemWidth='20%'
+        styles={css`
+          > div {
+            align-items: flex-start;
+            height: 100%;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
+          }
+          > div > div {
+            margin-bottom: 70px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
+          }
+        `}
+      />
       {hasScrolled || isScrolling ? (
         <>
           <InsightsSlider data={data.allInsight} />
           <LogoGrid title='A Few of Our Friends' />
+          <LogoGrid
+            backgroundColor={colors.lightblue}
+            logoset='partners'
+            title={`We're Certified`}
+            minHeight='100px !important'
+            defaultItemWidth='20%'
+            styles={css`
+              > div {
+                align-items: flex-start;
+                height: 100%;
+
+                ${mediaQueries.phoneLarge} {
+                  margin-bottom: 0;
+                }
+              }
+              > div > div {
+                margin-bottom: 70px;
+
+                ${mediaQueries.phoneLarge} {
+                  margin-bottom: 0;
+                }
+              }
+            `}
+          />
           <NewsletterFullWidthSection />
           <SplitSection>
             <ContactUs />

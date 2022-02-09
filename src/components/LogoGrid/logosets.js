@@ -60,9 +60,45 @@ import yotpoLogo from './logos/yotpo.png';
 import klaviyoLogo from './logos/klaviyo.png';
 import eaLogo from './logos/essential-accessibility.png';
 import rechargeLogo from './logos/recharge.png';
+import acquia from './logos/acquia.svg';
+import shopify_monotone_black from './logos/shopify_monotone_black.svg';
+import gatsbyLogo from './logos/Gatsby-Logo.svg';
+import drupal from './logos/drupal.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
+    partners: [
+      <img
+        src={acquia}
+        alt='Acquia'
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
+      />,
+      <img
+        src={drupal}
+        alt='Drupal'
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
+      />,
+      <img
+        src={shopify_monotone_black}
+        alt='Shopify'
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
+      />,
+      <img
+        src={gatsbyLogo}
+        alt='Gatsby'
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
+      />,
+      <img
+        src={googleLogo}
+        alt='Google'
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
+      />,
+    ],
     acquiaEngage: [
       <img
         src={cloudHealth}

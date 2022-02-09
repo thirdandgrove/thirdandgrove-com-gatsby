@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/react';
 
+import LogoGrid from '../../components/LogoGrid';
+
 import { colors, fonts, weights, mediaQueries, container } from '../../styles';
 
 const Footer = () => {
@@ -80,6 +82,29 @@ const Footer = () => {
           Partners
         </Link>
       </div>
+      <LogoGrid
+        logoset='partners'
+        title=''
+        minHeight='100px !important'
+        defaultItemWidth='20%'
+        styles={css`
+          > div {
+            align-items: flex-start;
+            height: 100%;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
+          }
+          > div > div {
+            margin-bottom: 70px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
+          }
+        `}
+      />
     </div>
   );
 };
