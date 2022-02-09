@@ -78,7 +78,7 @@ const Index = ({ data }) => {
           <LogoGrid title='A Few of Our Friends' />
           <LogoGrid
             backgroundColor={colors.lightblue}
-            logoset='partners'
+            logoset='partnersCertified'
             title={`We're Certified`}
             minHeight='100px !important'
             defaultItemWidth='20%'

@@ -64,9 +64,32 @@ import acquia from './logos/acquia.svg';
 import shopify_monotone_black from './logos/shopify_monotone_black.svg';
 import gatsbyLogo from './logos/Gatsby-Logo.svg';
 import drupal from './logos/drupal.svg';
+import googlePartner from '../../../static/images/Partner-RGB.png';
+import acquiaBadge from '../../../static/images/acquia-practice-certification.png';
+import drupalBadge from '../../../static/images/drupal-certified-diamond-partner.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
+    partnersCertified: [
+      <img
+        src={acquiaBadge}
+        alt='Acquia Partner'
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
+      />,
+      <img
+        src={googlePartner}
+        alt='Google Partner'
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '95' : '95'}
+      />,
+      <img
+        src={drupalBadge}
+        alt='Drupal Partner'
+        width={isSmScreen ? '99' : '134'}
+        height={isSmScreen ? '33' : '44'}
+      />,
+    ],
     partners: [
       <img
         src={acquia}

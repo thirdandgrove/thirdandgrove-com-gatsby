@@ -21,6 +21,7 @@ const LogoGrid = ({
   logoset,
   backgroundColor,
   minHeight,
+  height,
   styles,
   defaultItemWidth,
 }) => {
@@ -112,7 +113,7 @@ const LogoGrid = ({
     <FullWidthSection
       backgroundColor={backgroundColor}
       minHeight={minHeight}
-      height='600px'
+      height={height}
     >
       <div css={[container.max, containerStyles, styles]}>
         <h2 css={[smSectionHead, subtitle ? multiLineStyles : titleStyles]}>
@@ -140,6 +141,7 @@ LogoGrid.propTypes = {
   minHeight: PropTypes.string,
   styles: PropTypes.object,
   defaultItemWidth: PropTypes.string,
+  height: PropTypes.string,
 };
 
 LogoGrid.defaultProps = {
@@ -149,6 +151,7 @@ LogoGrid.defaultProps = {
   subtitle: '',
   styles: {},
   defaultItemWidth: '25%',
+  height: '600px',
 };
 
 export default LogoGrid;
