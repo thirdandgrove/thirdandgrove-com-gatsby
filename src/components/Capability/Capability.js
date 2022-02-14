@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-import pawPrintImage from '../../images/capabilities/pawprint.png';
+import EasterEggContext from '../../context/EasterEggContext';
 import FullWidthSection from '../FullWidthSection';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { fonts, mediaQueries, container, weights } from '../../styles';
@@ -21,10 +21,6 @@ const Capability = ({
 }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
-  const [showDogImage, setShowDogImage] = useState(false);
-
-  console.log(`Show Dog Image: `);
-  console.log(showDogImage);
 
   return (
     <FullWidthSection
@@ -81,68 +77,50 @@ const Capability = ({
             }
           `}
         >
-          <Spring
-            delay={0}
-            to={{
-              transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-              opacity: isVisible ? '1' : '0',
-            }}
-          >
-            {({ transform, opacity }) => (
-              <div
-                css={css`
-                  width: 100%;
-                  margin-bottom: 20px;
-                  position: relative;
-
-                  ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '51%' : '49%'};
-                    width: ${index % 2 ? '51%' : '49%'};
-                    margin-bottom: 0;
-                  }
-                `}
+          <EasterEggContext.Consumer>
+            {context => (
+              <Spring
+                delay={0}
+                to={{
+                  transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
+                  opacity: isVisible ? '1' : '0',
+                }}
               >
-                <GatsbyImage
-                  image={imageSrc}
-                  alt={imageAlt}
-                  imgStyle={{ transform, opacity }}
-                  css={css`
-                    display: ${showDogImage ? 'none' : 'block'};
-                  `}
-                />
-                <button
-                  onClick={() => {
-                    setShowDogImage(true);
-                  }}
-                  css={css`
-                    border: 0;
-                    background: transparent;
-                  `}
-                  type='button'
-                >
-                  <img
-                    src={pawPrintImage}
-                    alt='Paw Print'
+                {({ transform, opacity }) => (
+                  <div
                     css={css`
-                      position: absolute;
-                      left: 0;
-                      bottom: 0;
-                      margin-bottom: 25px;
-                      display: ${showDogImage ? 'none' : 'block'};
+                      width: 100%;
+                      margin-bottom: 20px;
+                      position: relative;
+
+                      ${mediaQueries.phoneLarge} {
+                        flex: 0 0 ${index % 2 ? '51%' : '49%'};
+                        width: ${index % 2 ? '51%' : '49%'};
+                        margin-bottom: 0;
+                      }
                     `}
-                  />
-                </button>
-                <img
-                  src={imageGif}
-                  alt={imageGifAlt}
-                  css={css`
-                    display: ${showDogImage ? 'block' : 'none'};
-                    width: 100%;
-                  `}
-                />
-              </div>
+                  >
+                    <GatsbyImage
+                      image={imageSrc}
+                      alt={imageAlt}
+                      imgStyle={{ transform, opacity }}
+                      css={css`
+                        display: ${context.easterEgg ? 'none' : 'block'};
+                      `}
+                    />
+                    <img
+                      src={imageGif}
+                      alt={imageGifAlt}
+                      css={css`
+                        display: ${context.easterEgg ? 'block' : 'none'};
+                        width: 100%;
+                      `}
+                    />
+                  </div>
+                )}
+              </Spring>
             )}
-          </Spring>
+          </EasterEggContext.Consumer>
 
           <div
             css={css`
