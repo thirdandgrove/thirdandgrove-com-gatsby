@@ -24,10 +24,9 @@ const Footer = () => {
     }
   `;
   const wrapperStyle = css`
-    padding: 80px 0 0 0;
+    padding: 0;
     text-align: center;
     background-color: ${colors.darkgray};
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,6 +59,13 @@ const Footer = () => {
     <EasterEggContext.Consumer>
       {context => (
         <div css={wrapperStyle}>
+          <button
+            onClick={context.toggleEasterEgg}
+            css={easterEggButtonStyle}
+            type='button'
+          >
+            &nbsp;
+          </button>
           <div css={[innerWrapperStyle, container.max]}>
             <Link css={linkStyle} to='/work/'>
               Work
