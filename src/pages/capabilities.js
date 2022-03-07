@@ -5,6 +5,12 @@ import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 import CTA from '../components/CTA';
 import Capability from '../components/Capability';
+import adaGif from '../images/capabilities/ADA.gif';
+import createGif from '../images/capabilities/create.gif';
+import dataGif from '../images/capabilities/data.gif';
+import marketingGif from '../images/capabilities/marketing.gif';
+import strategyGif from '../images/capabilities/strategy.gif';
+import techGif from '../images/capabilities/tech.gif';
 
 const CapabilitiesPage = ({ data }) => {
   return (
@@ -19,6 +25,8 @@ const CapabilitiesPage = ({ data }) => {
         id='technology'
         imageSrc={data.technologyImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Laptop on desk with drink'
+        imageGif={techGif}
+        imageGifAlt='Dog typing on computer'
         content={
           <>
             <h2>Technology</h2>
@@ -51,7 +59,9 @@ const CapabilitiesPage = ({ data }) => {
       <Capability
         id='strategy'
         imageSrc={data.strategyImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Two office workers looking at a chart on a laptop'
+        imageAlt='Person painting red room backed into a corner'
+        imageGif={strategyGif}
+        imageGifAlt='Dog cutting food like a chef'
         content={
           <>
             <h2>Strategy</h2>
@@ -74,7 +84,9 @@ const CapabilitiesPage = ({ data }) => {
       <Capability
         id='creative'
         imageSrc={data.creativeImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Man drawing logos in a notebook'
+        imageAlt='Person holding a balloon against a wall to make it look like an egg'
+        imageGif={createGif}
+        imageGifAlt='Dog dancing on two legs'
         content={
           <>
             <h2>Creative</h2>
@@ -98,7 +110,9 @@ const CapabilitiesPage = ({ data }) => {
       <Capability
         id='data'
         imageSrc={data.dataImageDesktop.childImageSharp.gatsbyImageData}
-        imageAlt='Black and Red'
+        imageAlt='Hand with tiny multi-colored dots all over'
+        imageGif={dataGif}
+        imageGifAlt='Dog helping man measure a piece of wood'
         content={
           <>
             <h2>Data</h2>
@@ -121,6 +135,8 @@ const CapabilitiesPage = ({ data }) => {
         id='marketing'
         imageSrc={data.marketingImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Rotary Telephone'
+        imageGif={marketingGif}
+        imageGifAlt='Dog getting head scratched and smiling'
         content={
           <>
             <h2>Marketing</h2>
@@ -143,6 +159,8 @@ const CapabilitiesPage = ({ data }) => {
         id='ada'
         imageSrc={data.adaImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Child hugging elephant'
+        imageGif={adaGif}
+        imageGifAlt='Dog with hotdog in mouth wagging tail'
         content={
           <>
             <h2>ADA</h2>
@@ -176,17 +194,17 @@ export const query = graphql`
         gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
+    strategyImageDesktop: file(relativePath: { eq: "strategy.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
+    creativeImageDesktop: file(relativePath: { eq: "creative.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    dataImageDesktop: file(relativePath: { eq: "data.png" }) {
+    dataImageDesktop: file(relativePath: { eq: "data.jpg" }) {
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
