@@ -7,22 +7,66 @@ import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
-import LogoGrid from '../components/LogoGrid';
-import {
-  colors,
-  fonts,
-  weights,
-  smSectionHead,
-  h1L,
-  container,
-  mediaQueries,
-  contValues,
-  pLight,
-} from '../styles';
+import { colors, weights, mediaQueries } from '../styles';
 import Button from '../components/Button';
 import ColoredBlocks from '../components/ColoredBlocks';
 
 const About = ({ data }) => {
+  const remoteWorkStyle = css`
+    min-height: 450px;
+    position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 50px;
+    ${mediaQueries.phoneLarge} {
+      min-height: 700px;
+    }
+
+    div.gatsby-image-wrapper {
+      position: absolute;
+      right: 0;
+      width: 100%;
+
+      ${mediaQueries.phoneLarge} {
+        top: 50px;
+        width: 70%;
+      }
+    }
+
+    p {
+      position: relative;
+      margin-left: 50px;
+      margin-top: 25px;
+      font-size: 32px;
+      ${mediaQueries.phoneLarge} {
+        margin-left: 100px;
+        margin-top: 0;
+        font-size: 36px;
+      }
+    }
+
+    h2 {
+      position: relative;
+      color: ${colors.reallydarkgray};
+      font-weight: ${weights.bold};
+      font-size: 80px;
+      margin-left: 50px;
+
+      ${mediaQueries.phoneLarge} {
+        font-size: 120px;
+        margin-left: 100px;
+      }
+    }
+
+    button {
+      position: relative;
+      margin-left: 50px;
+      ${mediaQueries.phoneLarge} {
+        margin-left: 100px;
+      }
+    }
+  `;
+
   return (
     <Layout
       headerData={{
@@ -33,6 +77,22 @@ const About = ({ data }) => {
         color: colors.white,
       }}
     >
+      <FullWidthSection css={remoteWorkStyle}>
+        <GatsbyImage
+          image={data.remotePhoto.childImageSharp.gatsbyImageData}
+          alt='Man working remotely at computer with dress shirt and no pants'
+        />
+        <p>
+          Our CEO is in Boston, <br />
+          but we are a fully...
+        </p>
+        <h2>
+          Remote
+          <br />
+          Organization
+        </h2>
+        <Button>Contact Us</Button>
+      </FullWidthSection>
       <ColoredBlocks
         blocks={[
           {
@@ -65,7 +125,17 @@ About.propTypes = {
 
 export default About;
 
-// export const query = graphql`
-//   {
-//   }
-// `;
+export const query = graphql`
+  {
+    remotePhoto: file(relativePath: { eq: "about/remote-working.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          height: 627
+          width: 935
+          transformOptions: { cropFocus: CENTER }
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+`;
