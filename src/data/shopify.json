@@ -1,0 +1,87 @@
+[
+  {
+    "hero": [
+      {
+        "title": "Award Winning Shopify Agency",
+        "subtitle": "We specialize in development, design and ecommerce marketing solutions for global brands."
+      }
+    ],
+    "belowHero": [
+      {
+        "title": "Leaving ecommerce better than we found it",
+        "description": " As a certified Shopify Plus agency partner, Third and Grove provides dedicated commerce expertise and consumer-driven optimization while building quality technology for our clients storefronts.We help direct-to-consumer brands and divisions grow their ecommerce revenue and operations."
+      }
+    ],
+    "testimonials": [
+      {
+        "field_footer_text": " Ali Lowther, Chief Brand Officer @ Mott50",
+        "field_quote": "[The new site] is a huge improvement for our brand and brings us into the real world. This was flawless execution and I could not be more satisfied with our experience. Truly flabbergasted in the best way possible."
+      },
+      {
+        "field_footer_text": "Alison Akau, Ecommerce Manager @ Hawaiian Host",
+        "field_quote": "TAG is superb! Individually, they are VERY knowledgeable in their areas of expertise."
+      },
+      {
+        "field_footer_text": "Tiss Dahan, Vice President of Marketing @ Dansko",
+        "field_quote": "[TAG] is extremely knowledgeable, thoughtful, transparent, and just an overall great extension of our team."
+      },
+      {
+        "field_footer_text": "Nick Thomson, Senior Partner Manager @ Shopify Plus",
+        "field_quote": "It's an amazing team at TAG. Tons of fun projects and genuinely good people. Highly regarded Shopify Plus partner."
+      }
+    ],
+    "services": [
+      {
+        "title": "Shopify Development",
+        "values": [
+          "Front-end, UI Development",
+          "Back-end Integrations",
+          "Custom Middleware",
+          "App Integrations",
+          "Data & Content Migrations",
+          "ADA & WCAG Compliance",
+          "Site Speed Optimization"
+        ]
+      },
+      {
+        "title": "Commerce Strategy",
+        "values": [
+          "Business Growth & Operations",
+          "Promotional Planning",
+          "A/B Testing & Conversion Rate Optimization",
+          "Product Roadmapping",
+          "Data, Insights & Benchmarks",
+          "Custom Event Tracking",
+          "Trend Analysis",
+          "Multi-Channel & Omni-Channel"
+        ]
+      },
+      {
+        "title": "Shopify Expertisey",
+        "values": [
+          "Platform Migrations",
+          "Online Store 2.0",
+          "Loyalty Programs",
+          "Subscriptions",
+          "Internationalization",
+          "Apps & Vendors",
+          "CCPA & GDPR Compliance",
+          "Platform Training",
+          "Site Management"
+        ]
+      },
+      {
+        "title": "Marketing & Advertising",
+        "values": [
+          "Channel Evaluation",
+          "Audience Segmentation",
+          "Paid Media",
+          "SEO",
+          "Content Marketing",
+          "Email Marketing",
+          "Design"
+        ]
+      }
+    ]
+  }
+]

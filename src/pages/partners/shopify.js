@@ -11,32 +11,53 @@ import CTAGrid from '../../components/CTAGrid';
 import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
 import ContactForm from '../../components/ContactForm';
-import { colors, mediaQueries } from '../../styles';
+import Quote from '../../components/ContentBody/Quote';
+import { colors, mediaQueries, container, fonts, weights } from '../../styles';
 
 const Shopify = query => {
-  const { allShopifyPlusCtaGridFourJson, allFile, insights } = query.data;
+  const { allShopifyJson } = query.data;
+  const { hero, testimonials, services, belowHero } = allShopifyJson?.nodes[0];
+  const sectionPadding = css`
+    padding: 50px 20px;
+    ${mediaQueries.phoneLarge} {
+      padding: 200px 0 90px;
+    }
+  `;
 
   return (
     <Layout
       headerData={{
-        title: 'Ecommerce that converts',
+        title: hero[0]?.title,
         color: colors.yellow,
         mobileMinHeight: '707px',
         width: '480px',
         titlePadding: '0 100px',
-        children: (
-          <Link to='/partners/shopify/#contact'>
-            <Button
-              css={css`
-                margin-top: 50px;
-              `}
-            >
-              Contact Us
-            </Button>
-          </Link>
-        ),
+        children: <div>{hero[0]?.subtitle}</div>,
       }}
     >
+      <FullWidthSection
+        align='left'
+        css={css`
+          ${sectionPadding}
+          ${container.min}
+          h4 {
+            color: ${colors.reallydarkgray};
+            font-family: ${fonts.sans};
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 14px;
+          }
+          p {
+            font-weight: ${weights.light};
+            margin-bottom: 50px;
+            letter-spacing: -0.1px;
+          }
+        `}
+      >
+        <h4>{belowHero[0].title}</h4>
+        <p>{belowHero[0].description}</p>
+      </FullWidthSection>
+
       <FullWidthSection
         align='left'
         css={css`
@@ -80,21 +101,73 @@ const Shopify = query => {
           showButton
         />
       </FullWidthSection>
-      <CTAGrid
-        items={allShopifyPlusCtaGridFourJson.edges}
-        images={allFile.edges}
-        gridColumns='1fr 1fr 1fr 1fr'
-        altStyle={false}
-        maxWidth
-        invisibleCta
-        noPaddingImg
-        extraCSSSection={css`
-          padding-bottom: 0 !important;
+      <FullWidthSection
+        css={css`
+          display: grid;
+          -ms-grid-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
+          grid-column-gap: 10%;
+          grid-row-gap: 70px;
+          width: 100%;
+          padding-bottom: 0;
+          align-items: baseline;
+          padding: 80px 20px 70px 20px;
 
-          > div {
-            padding-bottom: 40px;
+          ${mediaQueries.phoneLarge} {
+            max-width: 100%;
+            display: grid;
+            -ms-grid-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-column-gap: 70px;
+            grid-row-gap: 70px;
+            padding: 100px 0;
+            width: 1220px;
           }
         `}
+      >
+        {services &&
+          services.map(service => {
+            return (
+              <div>
+                <h4
+                  css={css`
+                    margin-bottom: 36px;
+                    font-size: 39px;
+                    line-height: 48px;
+                  `}
+                >
+                  {service.title}
+                </h4>
+                <ul>
+                  {service.values.map(value => {
+                    return <li>{value}</li>;
+                  })}
+                </ul>
+              </div>
+            );
+          })}
+      </FullWidthSection>
+      <Capability
+        id='migration'
+        imageSrc={
+          query.data.platformMigrationImageDesktop.childImageSharp
+            .gatsbyImageData
+        }
+        imageAlt='White shoe'
+        content={
+          <>
+            <h2>Platform Migrations</h2>
+            <ul>
+              <li>Woo Commerce</li>
+              <li>SAP Hybris</li>
+              <li>Magento 1&2</li>
+              <li>Oracle Commerce Cloud</li>
+              <li>Salesforce Commerce Cloud</li>
+            </ul>
+          </>
+        }
+        index={1}
+        maxWidth
       />
       <LogoGrid
         logoset='shopifyApps'
@@ -144,41 +217,39 @@ const Shopify = query => {
         minHeight='100px !important'
         defaultItemWidth='20%'
       />
+
       <Capability
         id='weknow'
         imageSrc={query.data.weKnowImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='We know that app'
         content={
           <>
-            <h2>We know these apps too.</h2>
+            <h2>See our full list of Partners</h2>
             <div
               css={css`
                 display: flex;
+                gap: 40px;
               `}
             >
               <ul>
-                <li>SAP</li>
-                <li>Net Suite</li>
-                <li>Salesforce Marketing Cloud</li>
-                <li>Salesforce CRM</li>
-                <li>Bold Apps</li>
-                <li>Loyalty Lion</li>
+                <li>Algolia</li>
+                <li>Afterpay</li>
+                <li>Attentive</li>
+                <li>Boost Search</li>
+                <li>Findify</li>
+                <li>Foursixty</li>
+                <li>Dynamic Yield</li>
+                <li>Listrak</li>
                 <li>Gorgias</li>
-                <li>PowerReviews</li>
-                <li>Shipstation</li>
-                <li>AS/400</li>
+                <li>Klevu</li>
+                <li>Nosto</li>
               </ul>
               <ul>
-                <li>ShipWorks</li>
-                <li>Nosto</li>
-                <li>Shogun</li>
-                <li>Swell</li>
-                <li>Smile.io</li>
-                <li>Shippo</li>
-                <li>ZenDesk</li>
-                <li>Drupal</li>
-                <li>Wordpress</li>
-                <li>Gatsby Cloud</li>
+                <li>Omnisend</li>
+                <li>OneTrust</li>
+                <li>Rise.ai</li>
+                <li>Yottaa</li>
+                <li>Zendesk</li>
               </ul>
             </div>
           </>
@@ -186,39 +257,38 @@ const Shopify = query => {
         index={0}
         maxWidth
       />
-      <Capability
-        id='migration'
-        imageSrc={
-          query.data.platformMigrationImageDesktop.childImageSharp
-            .gatsbyImageData
-        }
-        imageAlt='White shoe'
-        content={
-          <>
-            <h2>Platform Migrations</h2>
-            <ul>
-              <li>Woo Commerce</li>
-              <li>SAP Hybris</li>
-              <li>Magento 1&2</li>
-              <li>Oracle Commerce Cloud</li>
-              <li>Salesforce Commerce Cloud</li>
-            </ul>
-          </>
-        }
-        index={1}
-        maxWidth
-      />
+
+      <FullWidthSection
+        css={css`
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-gap: 2rem;
+          align-items: baseline;
+
+          ${mediaQueries.phoneLarge} {
+            grid-template-columns: 1fr 1fr;
+          }
+        `}
+      >
+        {testimonials &&
+          testimonials.map(testimonial => {
+            return (
+              <Quote
+                size='small'
+                data={{
+                  field_quote: testimonial.field_quote,
+                  field_footer_text: testimonial.field_footer_text,
+                }}
+              />
+            );
+          })}
+      </FullWidthSection>
+
       <LogoGrid
         logoset='shopifyPlus'
         title='Taking Names'
         backgroundColor={colors.lightgray}
         minHeight='0'
-      />
-      <InsightsSlider
-        data={insights}
-        showButton={false}
-        showTitle={false}
-        backgroundColor={colors.lightgray}
       />
       <FullWidthSection
         backgroundColor={colors.lightblue}
@@ -269,15 +339,6 @@ export const query = graphql`
         }
       }
     }
-    allFile(filter: { absolutePath: { regex: "/shopify-plus/" } }) {
-      edges {
-        node {
-          name
-          publicURL
-          absolutePath
-        }
-      }
-    }
     hawaiianHostMac: file(
       relativePath: { eq: "hawaiian-host-macbook@2x.png" }
     ) {
@@ -306,79 +367,23 @@ export const query = graphql`
         gatsbyImageData(layout: CONSTRAINED)
       }
     }
-    insights: allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 5
-      filter: {
-        field_hidden: { eq: false }
-        relationships: {
-          field_tags: { elemMatch: { name: { regex: "/shopify plus/i" } } }
-        }
-      }
-    ) {
+    allShopifyJson {
       nodes {
-        id
-        title
-        field_inverse_header
-        field_image {
-          alt
+        testimonials {
+          field_quote
+          field_footer_text
         }
-        created(formatString: "MMM D, YYYY")
-        path {
-          alias
+        hero {
+          title
+          subtitle
         }
-        relationships {
-          node_type {
-            name
-          }
-          uid {
-            name: display_name
-          }
-          field_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 450, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-          field_components {
-            ... on component__text {
-              relationships {
-                component_type {
-                  name
-                }
-              }
-              field_body {
-                processed
-              }
-            }
-            ... on component__image {
-              id
-              field_image {
-                alt
-              }
-              relationships {
-                component_type {
-                  name
-                }
-                field_image {
-                  id
-                  localFile {
-                    publicURL
-                    childImageSharp {
-                      fluid(maxWidth: 630, maxHeight: 630) {
-                        ...GatsbyImageSharpFluid_withWebp
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+        services {
+          title
+          values
+        }
+        belowHero {
+          title
+          description
         }
       }
     }

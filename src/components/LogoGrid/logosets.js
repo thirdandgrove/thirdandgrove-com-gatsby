@@ -60,6 +60,7 @@ import yotpoLogo from './logos/yotpo.png';
 import klaviyoLogo from './logos/klaviyo.png';
 import eaLogo from './logos/essential-accessibility.png';
 import rechargeLogo from './logos/recharge.png';
+import shopifyLogo from './logos/shopify-plus-logo.svg';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -135,10 +136,16 @@ export default (logoset, isSmScreen) => {
     ],
     shopifyApps: [
       <img
-        src={rechargeLogo}
-        alt='Recharge'
-        width={isSmScreen ? '100' : '176'}
-        height={isSmScreen ? '26' : '46'}
+        src={shopifyLogo}
+        alt='Yotpo'
+        width={isSmScreen ? '120' : '202'}
+        height={isSmScreen ? '66' : '112'}
+      />,
+      <img
+        src={yotpoLogo}
+        alt='Yotpo'
+        width={isSmScreen ? '40' : '71'}
+        height={isSmScreen ? '43' : '76'}
       />,
       <img
         src={klaviyoLogo}
@@ -153,16 +160,10 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '31' : '54'}
       />,
       <img
-        src={boostLogo}
-        alt='Boost'
-        width={isSmScreen ? '80' : '143'}
-        height={isSmScreen ? '44' : '77'}
-      />,
-      <img
-        src={yotpoLogo}
-        alt='Yotpo'
-        width={isSmScreen ? '40' : '71'}
-        height={isSmScreen ? '43' : '76'}
+        src={rechargeLogo}
+        alt='Recharge'
+        width={isSmScreen ? '100' : '176'}
+        height={isSmScreen ? '26' : '46'}
       />,
     ],
     acquia: [
@@ -589,22 +590,22 @@ export default (logoset, isSmScreen) => {
     ],
     shopifyPlus: [
       <img
+        src={amorepacifioLogo}
+        alt='AMOREPACIFIO'
+        width={isSmScreen ? '159' : '173'}
+        height={isSmScreen ? '16' : '32'}
+      />,
+      <img
         src={hawaiianHost}
         alt='Hawaiian Host'
         width={isSmScreen ? '126' : '121'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img
-        src={benefitLogo}
-        alt='benefit'
-        width={isSmScreen ? '150' : '180'}
-        height={isSmScreen ? '37' : '50'}
-      />,
-      <img
-        src={boissance}
-        alt='BOISSANCE'
-        width={isSmScreen ? '126' : '150'}
-        height={isSmScreen ? '61' : '80'}
+        src={farmacyLogo}
+        alt='Farmacy'
+        width={isSmScreen ? '146' : '193'}
+        height={isSmScreen ? '39' : '64'}
       />,
       <img
         src={goldwin}
@@ -619,16 +620,16 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '49' : '63'}
       />,
       <img
-        src={farmacyLogo}
-        alt='Farmacy'
-        width={isSmScreen ? '146' : '193'}
-        height={isSmScreen ? '39' : '64'}
+        src={benefitLogo}
+        alt='benefit'
+        width={isSmScreen ? '150' : '180'}
+        height={isSmScreen ? '37' : '50'}
       />,
       <img
-        src={amorepacifioLogo}
-        alt='AMOREPACIFIO'
-        width={isSmScreen ? '159' : '173'}
-        height={isSmScreen ? '16' : '32'}
+        src={boissance}
+        alt='BOISSANCE'
+        width={isSmScreen ? '126' : '150'}
+        height={isSmScreen ? '61' : '80'}
       />,
       <img
         src={kingArthur}
