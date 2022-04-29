@@ -33,7 +33,7 @@
     "services": [
       {
         "title": "Shopify Development",
-        "values": [
+        "description": [
           "Front-end, UI Development",
           "Back-end Integrations",
           "Custom Middleware",
@@ -45,7 +45,7 @@
       },
       {
         "title": "Commerce Strategy",
-        "values": [
+        "description": [
           "Business Growth & Operations",
           "Promotional Planning",
           "A/B Testing & Conversion Rate Optimization",
@@ -58,7 +58,7 @@
       },
       {
         "title": "Shopify Expertisey",
-        "values": [
+        "description": [
           "Platform Migrations",
           "Online Store 2.0",
           "Loyalty Programs",
@@ -72,7 +72,7 @@
       },
       {
         "title": "Marketing & Advertising",
-        "values": [
+        "description": [
           "Channel Evaluation",
           "Audience Segmentation",
           "Paid Media",

@@ -18,9 +18,9 @@ const Shopify = query => {
   const { allShopifyJson } = query.data;
   const { hero, testimonials, services, belowHero } = allShopifyJson?.nodes[0];
   const sectionPadding = css`
-    padding: 50px 20px;
+    padding: 50px 20px 0;
     ${mediaQueries.phoneLarge} {
-      padding: 200px 0 90px;
+      padding: 120px 0 0;
     }
   `;
 
@@ -28,15 +28,16 @@ const Shopify = query => {
     <Layout
       headerData={{
         title: hero[0]?.title,
+        subTitle: hero[0]?.subtitle,
         color: colors.yellow,
         mobileMinHeight: '707px',
         width: '480px',
         titlePadding: '0 100px',
-        children: <div>{hero[0]?.subtitle}</div>,
       }}
     >
       <FullWidthSection
         align='left'
+        minHeight='300px'
         css={css`
           ${sectionPadding}
           ${container.min}
@@ -101,52 +102,20 @@ const Shopify = query => {
           showButton
         />
       </FullWidthSection>
-      <FullWidthSection
-        css={css`
-          display: grid;
-          -ms-grid-columns: 1fr 1fr;
-          grid-template-columns: 1fr;
-          grid-column-gap: 10%;
-          grid-row-gap: 70px;
-          width: 100%;
-          padding-bottom: 0;
-          align-items: baseline;
-          padding: 80px 20px 70px 20px;
-
-          ${mediaQueries.phoneLarge} {
-            max-width: 100%;
-            display: grid;
-            -ms-grid-columns: 1fr 1fr 1fr 1fr;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-column-gap: 70px;
-            grid-row-gap: 70px;
-            padding: 100px 0;
-            width: 1220px;
+      <CTAGrid
+        items={services}
+        gridColumns='1fr 1fr 1fr 1fr'
+        altStyle={false}
+        maxWidth
+        invisibleCta
+        noPaddingImg
+        extraCSSSection={css`
+          padding-bottom: 0 !important;
+          > div {
+            padding-bottom: 40px;
           }
         `}
-      >
-        {services &&
-          services.map(service => {
-            return (
-              <div>
-                <h4
-                  css={css`
-                    margin-bottom: 36px;
-                    font-size: 39px;
-                    line-height: 48px;
-                  `}
-                >
-                  {service.title}
-                </h4>
-                <ul>
-                  {service.values.map(value => {
-                    return <li>{value}</li>;
-                  })}
-                </ul>
-              </div>
-            );
-          })}
-      </FullWidthSection>
+      />
       <Capability
         id='migration'
         imageSrc={
@@ -379,7 +348,7 @@ export const query = graphql`
         }
         services {
           title
-          values
+          description
         }
         belowHero {
           title
