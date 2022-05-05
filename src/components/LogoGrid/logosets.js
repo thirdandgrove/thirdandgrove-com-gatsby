@@ -55,6 +55,8 @@ import dadiAwards from './logos/dadi-awards.png';
 import daveyAwards from './logos/davey-awards.png';
 import farmacyLogo from './logos/farmacy-logo.svg';
 import amorepacifioLogo from './logos/amorepacifio-logo.svg';
+import laneige from './logos/laneige.svg';
+import dansko from './logos/dansko.svg';
 import boostLogo from './logos/boost.png';
 import yotpoLogo from './logos/yotpo.png';
 import klaviyoLogo from './logos/klaviyo.png';
@@ -596,6 +598,12 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '16' : '32'}
       />,
       <img
+        src={laneige}
+        alt='Laneige'
+        width={isSmScreen ? '159' : '173'}
+        height={isSmScreen ? '16' : '32'}
+      />,
+      <img
         src={hawaiianHost}
         alt='Hawaiian Host'
         width={isSmScreen ? '126' : '121'}
@@ -608,6 +616,12 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '39' : '64'}
       />,
       <img
+        src={dansko}
+        alt='Dansko'
+        width={isSmScreen ? '146' : '193'}
+        height={isSmScreen ? '39' : '93'}
+      />,
+      <img
         src={goldwin}
         alt='Goldwin'
         width={isSmScreen ? '125' : '180'}
@@ -618,24 +632,6 @@ export default (logoset, isSmScreen) => {
         alt='Pernod Ricard'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
-      />,
-      <img
-        src={benefitLogo}
-        alt='benefit'
-        width={isSmScreen ? '150' : '180'}
-        height={isSmScreen ? '37' : '50'}
-      />,
-      <img
-        src={boissance}
-        alt='BOISSANCE'
-        width={isSmScreen ? '126' : '150'}
-        height={isSmScreen ? '61' : '80'}
-      />,
-      <img
-        src={kingArthur}
-        alt='King Arthur'
-        width={isSmScreen ? '62' : '94'}
-        height={isSmScreen ? '62' : '94'}
       />,
     ],
     shopifyPlusFoodAndBeverage: [
