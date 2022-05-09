@@ -594,43 +594,43 @@ export default (logoset, isSmScreen) => {
       <img
         src={amorepacifioLogo}
         alt='AMOREPACIFIO'
-        width={isSmScreen ? '159' : '173'}
+        width={isSmScreen ? '120' : '173'}
         height={isSmScreen ? '16' : '32'}
       />,
       <img
         src={laneige}
         alt='Laneige'
-        width={isSmScreen ? '159' : '173'}
+        width={isSmScreen ? '120' : '173'}
         height={isSmScreen ? '16' : '32'}
       />,
       <img
         src={hawaiianHost}
         alt='Hawaiian Host'
-        width={isSmScreen ? '126' : '121'}
+        width={isSmScreen ? '120' : '121'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img
         src={farmacyLogo}
         alt='Farmacy'
-        width={isSmScreen ? '146' : '193'}
+        width={isSmScreen ? '120' : '193'}
         height={isSmScreen ? '39' : '64'}
       />,
       <img
         src={dansko}
         alt='Dansko'
-        width={isSmScreen ? '146' : '193'}
-        height={isSmScreen ? '39' : '93'}
+        width={isSmScreen ? '120' : '173'}
+        height={isSmScreen ? '16' : '32'}
       />,
       <img
         src={goldwin}
         alt='Goldwin'
-        width={isSmScreen ? '125' : '180'}
+        width={isSmScreen ? '120' : '180'}
         height={isSmScreen ? '36' : '52'}
       />,
       <img
         src={pernodLogo}
         alt='Pernod Ricard'
-        width={isSmScreen ? '125' : '171'}
+        width={isSmScreen ? '140' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
     ],
