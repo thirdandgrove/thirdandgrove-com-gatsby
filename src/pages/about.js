@@ -322,6 +322,11 @@ const About = ({ data }) => {
             <h2>Monica Thompson</h2>
             <p>Director of Strategy</p>
           </div>
+          <div>
+            <GatsbyImage alt='Cristina Holt' image={getSrc('holt', 'leader')} />
+            <h2>Cristina Holt</h2>
+            <p>Director of Project Management</p>
+          </div>
         </div>
       </FullWidthSection>
       <LogoGrid
@@ -416,7 +421,7 @@ export const query = graphql`
     allFile(
       filter: {
         absolutePath: {
-          regex: "/boston|emond|slemp|andrade|may|topp|joneric|collier|schultz|thompson/"
+          regex: "/boston|emond|slemp|andrade|may|topp|joneric|collier|schultz|thompson|holt/"
         }
       }
     ) {
