@@ -1,5 +1,11 @@
 import React from 'react';
 
+import coreValuesOne from '../../images/about/corevalues-1.png';
+import coreValuesTwo from '../../images/about/corevalues-2.png';
+import coreValuesThree from '../../images/about/corevalues-3.png';
+import coreValuesFour from '../../images/about/corevalues-4.png';
+import coreValuesFive from '../../images/about/corevalues-5.png';
+
 import addyAward from './logos/addy-award.svg';
 import museLogo from './logos/muse-logo.png';
 import awwwLogo from './logos/awwwards-logo.png';
@@ -536,6 +542,63 @@ export default (logoset, isSmScreen) => {
         width={isSmScreen ? '135' : '165'}
         height={isSmScreen ? '90' : '110'}
       />,
+    ],
+    corevalues: [
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesOne}
+          alt='Own it'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          We take pride in what we put forth and hold ourselves accountable for outcomes both good and bad. We are each responsible for our words, actions, and results.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesTwo}
+          alt='Stay Curious'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Our team knows we don’t know everything. We let our egos take a backseat to our desire for learning and advancing each day.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesThree}
+          alt='Defy mediocrity'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Complacency kills. We aim for excellence and build upon each challenge with increased dedication to improving our craft.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesFour}
+          alt='Do the right thing'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          What we do when nobody is watching matters. While the right path may not be the easiest, we must act with integrity in all situations.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesFive}
+          alt='Start whit heart'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Our people are at the center of everything we do. Give the support, empathy, and energy to your teammates and clients that you expect in return.
+        </p>
+      </div>,
     ],
     drupalSupport: [
       <img

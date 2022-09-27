@@ -14,6 +14,7 @@ import ColoredBlocks from '../components/ColoredBlocks';
 import LogoGrid from '../components/LogoGrid';
 import LogoGridSlider from '../components/LogoGrid/LogoGridSlider';
 import ImageGallery from '../components/ImageGallery';
+import AppleImage from '../images/about/apple-animation.gif';
 
 const About = ({ data }) => {
   const {
@@ -134,6 +135,9 @@ const About = ({ data }) => {
     flex-direction: column;
     align-items: center;
     padding-right: 30px;
+    p {
+      min-height: 150px;
+    }
   `;
   const gradientStyle = css`
     position: absolute;
@@ -155,6 +159,165 @@ const About = ({ data }) => {
       flex-wrap: nowrap;
     }
   `;
+
+  const coreValuesStyle = css`
+    position: relative;
+    padding: 0;
+    bottom: 170px;
+
+    .gatsby-image-wrapper {
+      width: 100%;
+    }
+  `;
+
+  const coreValuesTitle = css`
+    width: 800px;
+    position: relative;
+    right: 90px;
+    top: 50px;
+
+    h3 {
+      font-size: 8.5rem;
+      font-family: ${fonts.serif};
+      line-height: 130px;
+    }
+
+    h3:nth-of-type(1) {
+      text-align: left;
+    }
+    h3:nth-of-type(2) {
+      text-align: right;
+    }
+  `;
+
+  const coreValuesSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  const sectionMain = css`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+  `;
+
+  const sectionRight = css`
+    width: 700px;
+    height: 500px;
+`;
+
+  const sectionRightLogos = css`
+    position: absolute;
+    width: 70%;
+    top: 100px;
+    right: 10px;
+    > div {
+      flex-wrap: nowrap;
+    }
+
+    .slick-list {
+      max-width: 500px !important;
+    }
+    .corevalue-body {
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: flex-end;
+
+      p {
+        text-align: left;
+        /* Body */
+        width: 100%;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 22px;
+        //line-height: 1.5;
+        /* or 38px */
+        /* or 38px */
+        letter-spacing: 0.025em;
+        color: #282829;
+        /* Inside auto layout */
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+      }
+    }
+`;
+
+  const sectionLeft = css`
+    position: relative;
+    bottom: 70px;
+    
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 76px;
+      /* identical to box height, or 317% */
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: #7e7e7f;
+      /* Inside auto layout */
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    strong {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 76px;
+      /* identical to box height, or 317% */
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.4px;
+      text-decoration-line: underline;
+      text-transform: uppercase;
+      color: #282829;
+      /* Inside auto layout */
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+  `;
+
+  const animateValue = (id, start, end, duration, symbol) => {
+    const obj = document.getElementById(id);
+    if (obj) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const newValue = Math.floor(progress * (end - start) + start);
+        obj.innerHTML = `${newValue} ${symbol}`;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    } else {
+      setTimeout(() => {
+        animateValue(id, start, end, duration, symbol);
+      }, 5000);
+    }
+  }
+
+
 
   return (
     <Layout
@@ -179,13 +342,69 @@ const About = ({ data }) => {
         <div css={gradientStyle} />
         <div css={statWrapper}>
           {stats.map(stat => {
+            const id = stat.title.replace(/\s+/g, '-').toLowerCase();
+            const numberData = stat.title.replace(/\D/g, '');
+            const symbol = stat.title.replace(/\d/g, '');
+            animateValue(
+              id,
+              0,
+              numberData,
+              2000,
+              symbol
+            );
             return (
               <div css={statItem}>
-                <h4>{stat.title}</h4>
+                <h4 id={id}>{stat.title}</h4>
                 <p>{stat.subtitle}</p>
               </div>
             );
           })}
+        </div>
+      </FullWidthSection>
+
+      <div
+        css={css`
+          display: flex;
+          flex-direction: row;
+          align-content: center;
+          justify-content: center;
+          align-items: flex-end;
+        `}
+      >
+        <img
+          src={AppleImage}
+          alt='Core Values'
+          css={css`
+            max-width: 400px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          `}
+        />
+        <div css={coreValuesTitle}>
+          <h3>Core</h3>
+          <h3>Values</h3>
+        </div>
+      </div>
+
+      <FullWidthSection css={coreValuesStyle}>
+        <div css={sectionMain}>
+          <div css={sectionLeft}>
+            <p>Start with Heart</p>
+            <strong>Own it</strong>
+            <p>Stay Curious</p>
+            <p>Do the Right Thing</p>
+            <p>Defy Mediocrity</p>
+          </div>
+          <div css={sectionRight}>
+            <LogoGridSlider
+              minHeight='100'
+              styles={sectionRightLogos}
+              logoset='corevalues'
+              backgroundColor='none'
+              sliderSettings={coreValuesSliderSettings}
+            />
+          </div>
         </div>
       </FullWidthSection>
       <h3
