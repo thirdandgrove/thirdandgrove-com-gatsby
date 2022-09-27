@@ -15,6 +15,7 @@ import LogoGrid from '../components/LogoGrid';
 import LogoGridSlider from '../components/LogoGrid/LogoGridSlider';
 import ImageGallery from '../components/ImageGallery';
 import AppleImage from '../images/about/apple-animation.gif';
+import Counter from '../components/Counter';
 
 const About = ({ data }) => {
   const {
@@ -211,7 +212,7 @@ const About = ({ data }) => {
   const sectionRight = css`
     width: 700px;
     height: 500px;
-`;
+  `;
 
   const sectionRightLogos = css`
     position: absolute;
@@ -226,7 +227,6 @@ const About = ({ data }) => {
       max-width: 500px !important;
     }
     .corevalue-body {
-
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
@@ -252,12 +252,12 @@ const About = ({ data }) => {
         flex-grow: 0;
       }
     }
-`;
+  `;
 
   const sectionLeft = css`
     position: relative;
     bottom: 70px;
-    
+
     p {
       font-style: normal;
       font-weight: 400;
@@ -296,29 +296,6 @@ const About = ({ data }) => {
     }
   `;
 
-  const animateValue = (id, start, end, duration, symbol) => {
-    const obj = document.getElementById(id);
-    if (obj) {
-      let startTimestamp = null;
-      const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const newValue = Math.floor(progress * (end - start) + start);
-        obj.innerHTML = `${newValue} ${symbol}`;
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
-        }
-      };
-      window.requestAnimationFrame(step);
-    } else {
-      setTimeout(() => {
-        animateValue(id, start, end, duration, symbol);
-      }, 5000);
-    }
-  }
-
-
-
   return (
     <Layout
       headerData={{
@@ -342,19 +319,11 @@ const About = ({ data }) => {
         <div css={gradientStyle} />
         <div css={statWrapper}>
           {stats.map(stat => {
-            const id = stat.title.replace(/\s+/g, '-').toLowerCase();
             const numberData = stat.title.replace(/\D/g, '');
             const symbol = stat.title.replace(/\d/g, '');
-            animateValue(
-              id,
-              0,
-              numberData,
-              2000,
-              symbol
-            );
             return (
               <div css={statItem}>
-                <h4 id={id}>{stat.title}</h4>
+                <Counter mainCount={numberData} symbol={symbol} />
                 <p>{stat.subtitle}</p>
               </div>
             );
