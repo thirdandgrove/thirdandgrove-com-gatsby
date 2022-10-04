@@ -122,6 +122,7 @@ class AboutSlider extends Component {
         flex-grow: 0;
         margin: 0;
         padding: 0;
+        cursor: pointer;
       }
 
       strong {
