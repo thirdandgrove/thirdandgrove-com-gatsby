@@ -16,6 +16,7 @@ import LogoGridSlider from '../components/LogoGrid/LogoGridSlider';
 import ImageGallery from '../components/ImageGallery';
 import AppleImage from '../images/about/apple-animation.gif';
 import Counter from '../components/Counter';
+import AboutSlider from '../components/AboutSlider/AboutSlider';
 
 const About = ({ data }) => {
   const {
@@ -191,111 +192,6 @@ const About = ({ data }) => {
     }
   `;
 
-  const coreValuesSliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
-  const sectionMain = css`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    height: 800px;
-  `;
-
-  const sectionRight = css`
-    width: 700px;
-    height: 500px;
-  `;
-
-  const sectionRightLogos = css`
-    position: absolute;
-    width: 70%;
-    top: 100px;
-    right: 10px;
-    > div {
-      flex-wrap: nowrap;
-    }
-
-    .slick-list {
-      max-width: 500px !important;
-    }
-    .corevalue-body {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-content: center;
-      justify-content: center;
-      align-items: flex-end;
-
-      p {
-        text-align: left;
-        /* Body */
-        width: 100%;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 22px;
-        //line-height: 1.5;
-        /* or 38px */
-        /* or 38px */
-        letter-spacing: 0.025em;
-        color: #282829;
-        /* Inside auto layout */
-        flex: none;
-        order: 1;
-        flex-grow: 0;
-      }
-    }
-  `;
-
-  const sectionLeft = css`
-    position: relative;
-    bottom: 70px;
-
-    p {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 76px;
-      /* identical to box height, or 317% */
-      display: flex;
-      align-items: center;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      color: #7e7e7f;
-      /* Inside auto layout */
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-      margin: 0;
-      padding: 0;
-    }
-
-    strong {
-      font-style: normal;
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 76px;
-      /* identical to box height, or 317% */
-      display: flex;
-      align-items: center;
-      letter-spacing: 0.4px;
-      text-decoration-line: underline;
-      text-transform: uppercase;
-      color: #282829;
-      /* Inside auto layout */
-      flex: none;
-      order: 1;
-      flex-grow: 0;
-    }
-  `;
-
   return (
     <Layout
       headerData={{
@@ -357,24 +253,7 @@ const About = ({ data }) => {
       </div>
 
       <FullWidthSection css={coreValuesStyle}>
-        <div css={sectionMain}>
-          <div css={sectionLeft}>
-            <p>Start with Heart</p>
-            <strong>Own it</strong>
-            <p>Stay Curious</p>
-            <p>Do the Right Thing</p>
-            <p>Defy Mediocrity</p>
-          </div>
-          <div css={sectionRight}>
-            <LogoGridSlider
-              minHeight='100'
-              styles={sectionRightLogos}
-              logoset='corevalues'
-              backgroundColor='none'
-              sliderSettings={coreValuesSliderSettings}
-            />
-          </div>
-        </div>
+        <AboutSlider />
       </FullWidthSection>
       <h3
         css={css`
