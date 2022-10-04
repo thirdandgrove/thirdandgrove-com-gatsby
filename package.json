@@ -41,6 +41,7 @@
     "gatsby-source-filesystem": "^4.0",
     "gatsby-transformer-json": "^4.0",
     "gatsby-transformer-sharp": "^4.0",
+    "html-react-parser": "^3.0.4",
     "netlify-lambda": "^2.0.3",
     "path-browserify": "^1.0.1",
     "prop-types": "^15.7.2",
@@ -50,6 +51,7 @@
     "react-player": "^2.8.1",
     "react-slick": "^0.28.0",
     "react-spring": "^8.0.27",
+    "react-syntax-highlighter": "^15.5.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
