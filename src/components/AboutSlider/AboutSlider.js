@@ -18,10 +18,12 @@ class AboutSlider extends Component {
       coreValuesSliderSettings: {
         dots: false,
         infinite: true,
-        speed: 500,
+        speed: 1500,
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 0,
+        arrows: false,
+        fade: true,
       },
     });
   }
@@ -59,6 +61,15 @@ class AboutSlider extends Component {
     const sectionRight = css`
       width: 700px;
       height: 500px;
+
+      .slick-slide {
+        -webkit-animation: fade 2s linear 0s infinite alternate;
+        -moz-animation: fade 2s linear 0s infinite alternate;
+        -ms-animation: fade 2s linear 0s infinite alternate;
+        -o-animation: fade 2s linear 0s infinite alternate;
+        animation: fade 2s linear 0s infinite alternate;
+        transition: all 1s ease-in-out !important;
+      }
     `;
 
     const sectionRightLogos = css`
