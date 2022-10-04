@@ -63,11 +63,11 @@ class AboutSlider extends Component {
       height: 500px;
 
       .slick-slide {
-        -webkit-animation: fade 2s linear 0s infinite alternate;
-        -moz-animation: fade 2s linear 0s infinite alternate;
-        -ms-animation: fade 2s linear 0s infinite alternate;
-        -o-animation: fade 2s linear 0s infinite alternate;
-        animation: fade 2s linear 0s infinite alternate;
+        -webkit-animation: fade 1.25s linear 0s infinite alternate;
+        -moz-animation: fade 1.25s linear 0s infinite alternate;
+        -ms-animation: fade 1.25s linear 0s infinite alternate;
+        -o-animation: fade 1.25s linear 0s infinite alternate;
+        animation: fade 1.25s linear 0s infinite alternate;
         transition: all 1s ease-in-out !important;
       }
     `;
