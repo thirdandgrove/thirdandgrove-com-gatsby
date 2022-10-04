@@ -1,3 +1,4 @@
+/* eslint-disable import/newline-after-import */
 /* eslint-disable array-callback-return */
 const path = require('path');
 const util = require('util');

@@ -26,6 +26,22 @@ const SEO = ({ description, lang, meta, keywords, title, image, noIndex }) => {
 
   const imageWithFullpath = `https://www.thirdandgrove.com${metaImage}`;
 
+  const balanceTextURL =
+    'https://cdnjs.cloudflare.com/ajax/libs/balance-text/3.3.0/balancetext.min.js';
+
+  const handleChangeClientState = (newState, addedTags) => {
+    if (addedTags && addedTags.scriptTags) {
+      const script = addedTags.scriptTags.find(
+        ({ src }) => src === balanceTextURL
+      );
+      if (script) {
+        script.addEventListener('load', () => window.balanceText(), {
+          once: true,
+        });
+      }
+    }
+  };
+
   const metaRobots = noIndex ? 'noindex,nofollow' : 'index,follow';
 
   return (
@@ -94,6 +110,7 @@ const SEO = ({ description, lang, meta, keywords, title, image, noIndex }) => {
             : []
         )
         .concat(meta)}
+      onChangeClientState={handleChangeClientState}
     >
       <link
         rel='preload'
@@ -166,6 +183,14 @@ const SEO = ({ description, lang, meta, keywords, title, image, noIndex }) => {
         {'GTM-MKBKRBC':true});
     `}
       </script>
+      <script src={balanceTextURL} />
+      <style type='text/css'>
+        {`/* Apply (proposed) CSS style. Plugin looks for elements with class named "balance-text" */
+          .balance-text {
+            text-wrap: balance;
+          }
+        `}
+      </style>
     </Helmet>
   );
 };
