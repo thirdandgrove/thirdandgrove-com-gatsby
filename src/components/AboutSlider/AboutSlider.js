@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { css } from '@emotion/react';
 
 import LogoGridSlider from '../LogoGrid/LogoGridSlider';
+import { mediaQueriesMax } from '../../styles/css-utils';
 
 class AboutSlider extends Component {
   constructor(props) {
@@ -75,6 +76,9 @@ class AboutSlider extends Component {
     const sectionRightLogos = css`
       position: absolute;
       width: 70%;
+      ${mediaQueriesMax.phoneLarge} {
+        width: 95%;
+      }
       top: 100px;
       right: 10px;
       > div {
@@ -83,6 +87,9 @@ class AboutSlider extends Component {
 
       .slick-list {
         max-width: 500px !important;
+        ${mediaQueriesMax.phoneLarge} {
+          max-width: 300px !important;
+        }
       }
       .corevalue-body {
         display: flex;
@@ -91,6 +98,9 @@ class AboutSlider extends Component {
         align-content: center;
         justify-content: center;
         align-items: flex-end;
+        ${mediaQueriesMax.phoneLarge} {
+          align-items: center;
+        }
 
         p {
           text-align: left;
@@ -108,6 +118,12 @@ class AboutSlider extends Component {
           flex: none;
           order: 1;
           flex-grow: 0;
+        }
+
+        ${mediaQueriesMax.phoneLarge} {
+          img {
+            margin-top: 20px;
+          }
         }
       }
     `;
@@ -170,6 +186,10 @@ class AboutSlider extends Component {
         flex: none;
         order: 1;
         flex-grow: 0;
+      }
+
+      ${mediaQueriesMax.phoneLarge} {
+        display: none;
       }
     `;
 

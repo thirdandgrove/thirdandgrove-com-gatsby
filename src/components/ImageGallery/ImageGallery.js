@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { mediaQueries, fonts, weights, colors } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import Button from '../Button';
+import { mediaQueriesMax } from '../../styles/css-utils';
 
 const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
   const imageGalleryWrapper = css`
@@ -26,6 +27,9 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
         padding-top: 140px;
         .gatsby-image-wrapper {
           max-width: 440px;
+        }
+        ${mediaQueriesMax.phoneLarge} {
+          padding-top: 0;
         }
       }
       .image-2 {
@@ -48,6 +52,10 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
         .gatsby-image-wrapper {
           max-width: 300px;
         }
+
+        ${mediaQueriesMax.phoneLarge} {
+          top: 0px;
+        }
       }
     }
   `;
@@ -65,6 +73,10 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
     position: absolute;
     right: 210px;
     bottom: 220px;
+
+    ${mediaQueriesMax.phoneLarge} {
+      display: none;
+    }
   `;
   return (
     <FullWidthSection

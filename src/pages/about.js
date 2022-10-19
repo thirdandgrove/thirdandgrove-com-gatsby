@@ -17,6 +17,7 @@ import ImageGallery from '../components/ImageGallery';
 import AppleImage from '../images/about/apple-animation.gif';
 import Counter from '../components/Counter';
 import AboutSlider from '../components/AboutSlider/AboutSlider';
+import { mediaQueriesMax } from '../styles/css-utils';
 
 const About = ({ data }) => {
   const {
@@ -36,14 +37,30 @@ const About = ({ data }) => {
     slidesToScroll: 1,
   };
 
+  const remoteWorkStyleCustom = css`
+    ${mediaQueriesMax.phoneLarge} {
+      p {
+        position: relative;
+        font-weight: ${weights.regular};
+        font-family: ${weights.serif};
+        font-size: 1rem;
+        right: 0;
+        margin: 0 20px;
+      }
+    }
+    ${mediaQueries.phoneLarge} {
+      display: none;
+    }
+  `;
+
   const remoteWorkStyle = css`
     min-height: 450px;
     position: relative;
     align-items: flex-start;
     justify-content: flex-start;
     margin-bottom: 50px;
-    ${mediaQueries.phoneLarge} {
-      min-height: 700px;
+    ${mediaQueriesMax.phoneLarge} {
+      min-height: 350px;
     }
 
     div.gatsby-image-wrapper {
@@ -64,10 +81,8 @@ const About = ({ data }) => {
       font-size: 32px;
       font-weight: ${weights.regular};
       font-family: ${weights.serif};
-      ${mediaQueries.phoneLarge} {
-        margin-left: 100px;
-        margin-top: 0;
-        font-size: 36px;
+      ${mediaQueriesMax.phoneLarge} {
+        display: none;
       }
     }
 
@@ -75,12 +90,16 @@ const About = ({ data }) => {
       position: relative;
       color: ${colors.reallydarkgray};
       font-weight: ${weights.bold};
-      font-size: 80px;
       margin-left: 50px;
 
       ${mediaQueries.phoneLarge} {
         font-size: 120px;
         margin-left: 100px;
+      }
+      margin-top: 30px;
+      font-size: xxx-large;
+      ${mediaQueries.desktop} {
+        font-size: 80px;
       }
     }
 
@@ -90,16 +109,9 @@ const About = ({ data }) => {
       ${mediaQueries.phoneLarge} {
         margin-left: 100px;
       }
-    }
-  `;
-
-  const subHeaderStyle = css`
-    padding: 20px;
-    ${mediaQueries.phoneLarge} {
-      max-width: 600px;
-      position: relative;
-      left: 200px;
-      top: -40px;
+      ${mediaQueriesMax.phoneLarge} {
+        margin-top: 150px;
+      }
     }
   `;
 
@@ -110,10 +122,28 @@ const About = ({ data }) => {
     }
   `;
 
+  const subHeaderStyle = css`
+    padding: 20px;
+    ${mediaQueries.phoneLarge} {
+      max-width: 600px;
+      position: relative;
+      left: 200px;
+      top: -40px;
+      padding-left: 0px;
+    }
+  `;
+
   const statsSection = css`
     position: relative;
     padding: 0;
+    ${mediaQueriesMax.phoneMini} {
+      display: none;
+    }
+    ${mediaQueriesMax.phoneLarge} {
+      min-height: 345px;
+    }
   `;
+
   const statWrapper = css`
     display: flex;
     align-items: center;
@@ -131,6 +161,31 @@ const About = ({ data }) => {
       text-align: center;
       letter-spacing: 0.4px;
     }
+    ${mediaQueriesMax.desktop} {
+      align-content: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 0 10%;
+
+      h4 {
+        font-size: xxx-large;
+        padding: 0;
+        margin: 0;
+      }
+      p {
+        line-height: normal;
+      }
+    }
+
+    ${mediaQueriesMax.phoneLarge} {
+      h4 {
+        font-size: xx-large;
+      }
+      p {
+        font-size: large;
+        line-height: normal;
+      }
+    }
   `;
   const statItem = css`
     display: flex;
@@ -140,7 +195,24 @@ const About = ({ data }) => {
     p {
       min-height: 150px;
     }
+    ${mediaQueriesMax.desktop} {
+      width: 50%;
+      max-height: 110px;
+      padding: 0;
+    }
+    ${mediaQueriesMax.phoneLarge} {
+      width: 35%;
+      max-height: 110px;
+      padding: 0;
+    }
   `;
+
+  const gradientStyleImage = css`
+    ${mediaQueriesMax.desktop} {
+      display: contents;
+    }
+  `;
+
   const gradientStyle = css`
     position: absolute;
     inset: 0 0 0 0;
@@ -182,6 +254,9 @@ const About = ({ data }) => {
       font-size: 8.5rem;
       font-family: ${fonts.serif};
       line-height: 130px;
+      ${mediaQueriesMax.phoneLarge} {
+        font-size: 6rem;
+      }
     }
 
     h3:nth-of-type(1) {
@@ -209,6 +284,7 @@ const About = ({ data }) => {
     >
       <FullWidthSection css={statsSection}>
         <GatsbyImage
+          css={gradientStyleImage}
           image={partyPhoto.childImageSharp.gatsbyImageData}
           alt='Get together party'
         />
@@ -257,10 +333,13 @@ const About = ({ data }) => {
       </FullWidthSection>
       <h3
         css={css`
-          font-size: 95px;
           font-family: ${fonts.serif};
           text-align: center;
-          line-height: 130px;
+          font-size: xxx-large;
+          ${mediaQueries.desktop} {
+            line-height: 130px;
+            font-size: 95px;
+          }
         `}
       >
         We are sort of a big deal.
@@ -282,7 +361,12 @@ const About = ({ data }) => {
       <FullWidthSection>
         <ImageGallery data={imageGallery} images={galleryImages.nodes} />
       </FullWidthSection>
-
+      <div css={remoteWorkStyleCustom}>
+        <p>
+          Our CEO is in Boston, <br />
+          but we are a fully...
+        </p>
+      </div>
       <FullWidthSection css={remoteWorkStyle}>
         <GatsbyImage
           image={remotePhoto.childImageSharp.gatsbyImageData}
