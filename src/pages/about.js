@@ -18,6 +18,7 @@ import AppleImage from '../images/about/apple-animation.gif';
 import Counter from '../components/Counter';
 import AboutSlider from '../components/AboutSlider/AboutSlider';
 import { mediaQueriesMax } from '../styles/css-utils';
+import { useHasBeenVisible } from '../hooks/useVisibility';
 
 const About = ({ data }) => {
   const {
@@ -28,6 +29,8 @@ const About = ({ data }) => {
     galleryImages,
   } = data;
   const { stats, header, imageGallery } = allAboutJson.nodes[0];
+  const nodeRef = React.useRef();
+  const isVisible = useHasBeenVisible(nodeRef);
 
   const awardSliderSettings = {
     dots: false,
@@ -46,6 +49,10 @@ const About = ({ data }) => {
         font-size: 1rem;
         right: 0;
         margin: 0 20px;
+        ${mediaQueriesMax.xs} {
+          font-weight: 350;
+          font-size: 2rem;
+        }
       }
     }
     ${mediaQueries.phoneLarge} {
@@ -101,6 +108,10 @@ const About = ({ data }) => {
       ${mediaQueries.desktop} {
         font-size: 80px;
       }
+      ${mediaQueriesMax.xs} {
+        margin-left: 0;
+        margin-top: 220px;
+      }
     }
 
     button {
@@ -111,6 +122,9 @@ const About = ({ data }) => {
       }
       ${mediaQueriesMax.phoneLarge} {
         margin-top: 150px;
+      }
+      ${mediaQueriesMax.xs} {
+        margin-top: 0;
       }
     }
   `;
@@ -128,7 +142,6 @@ const About = ({ data }) => {
       max-width: 600px;
       position: relative;
       left: 200px;
-      top: -40px;
       padding-left: 0px;
     }
   `;
@@ -141,6 +154,9 @@ const About = ({ data }) => {
     }
     ${mediaQueriesMax.phoneLarge} {
       min-height: 345px;
+    }
+    ${mediaQueriesMax.xs} {
+      min-height: 600px;
     }
   `;
 
@@ -186,6 +202,14 @@ const About = ({ data }) => {
         line-height: normal;
       }
     }
+    ${mediaQueriesMax.xs} {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: space-between;
+      justify-content: space-between;
+      align-items: center;
+    }
   `;
   const statItem = css`
     display: flex;
@@ -194,6 +218,9 @@ const About = ({ data }) => {
     padding-right: 30px;
     p {
       min-height: 150px;
+      ${mediaQueriesMax.xs} {
+        min-height: fit-content;
+      }
     }
     ${mediaQueriesMax.desktop} {
       width: 50%;
@@ -204,6 +231,10 @@ const About = ({ data }) => {
       width: 35%;
       max-height: 110px;
       padding: 0;
+    }
+    ${mediaQueriesMax.xs} {
+      min-height: fit-content;
+      max-height: fit-content;
     }
   `;
 
@@ -225,6 +256,9 @@ const About = ({ data }) => {
     .gatsby-image-wrapper {
       width: 100%;
     }
+    ${mediaQueriesMax.phoneLarge} {
+      margin: 20px auto;
+    }
   `;
   const awardsLogo = css`
     position: absolute;
@@ -242,6 +276,10 @@ const About = ({ data }) => {
     .gatsby-image-wrapper {
       width: 100%;
     }
+
+    ${mediaQueriesMax.xs} {
+      bottom: 30px;
+    }
   `;
 
   const coreValuesTitle = css`
@@ -257,6 +295,16 @@ const About = ({ data }) => {
       ${mediaQueriesMax.phoneLarge} {
         font-size: 6rem;
       }
+      ${mediaQueriesMax.xs} {
+        font-size: 5rem;
+        font-weight: 100;
+        line-height: normal;
+      }
+    }
+
+    ${mediaQueriesMax.xs} {
+      right: 175px;
+      top: 150px;
     }
 
     h3:nth-of-type(1) {
@@ -264,6 +312,17 @@ const About = ({ data }) => {
     }
     h3:nth-of-type(2) {
       text-align: right;
+    }
+  `;
+
+  const styleImageMainSlider = css`
+    max-width: 400px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    ${mediaQueriesMax.xs} {
+      position: relative;
+      left: 90px;
     }
   `;
 
@@ -289,18 +348,20 @@ const About = ({ data }) => {
           alt='Get together party'
         />
         <div css={gradientStyle} />
-        <div css={statWrapper}>
-          {stats.map(stat => {
-            const numberData = stat.title.replace(/\D/g, '');
-            const symbol = stat.title.replace(/\d/g, '');
-            return (
-              <div css={statItem}>
-                <Counter mainCount={numberData} symbol={symbol} />
-                <p>{stat.subtitle}</p>
-              </div>
-            );
-          })}
-        </div>
+        {!isVisible && (
+          <div css={statWrapper}>
+            {stats.map(stat => {
+              const numberData = stat.title.replace(/\D/g, '');
+              const symbol = stat.title.replace(/\d/g, '');
+              return (
+                <div css={statItem}>
+                  <Counter mainCount={numberData} symbol={symbol} />
+                  <p>{stat.subtitle}</p>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </FullWidthSection>
 
       <div
@@ -312,16 +373,7 @@ const About = ({ data }) => {
           align-items: flex-end;
         `}
       >
-        <img
-          src={AppleImage}
-          alt='Core Values'
-          css={css`
-            max-width: 400px;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          `}
-        />
+        <img src={AppleImage} alt='Core Values' css={styleImageMainSlider} />
         <div css={coreValuesTitle}>
           <h3>Core</h3>
           <h3>Values</h3>

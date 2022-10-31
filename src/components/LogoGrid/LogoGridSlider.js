@@ -147,7 +147,7 @@ LogoGridSlider.propTypes = {
   minHeight: PropTypes.string,
   styles: PropTypes.object,
   defaultItemWidth: PropTypes.string,
-  sliderSettings: PropTypes.array,
+  sliderSettings: PropTypes.object,
 };
 
 LogoGridSlider.defaultProps = {
