@@ -348,7 +348,7 @@ const About = ({ data }) => {
           alt='Get together party'
         />
         <div css={gradientStyle} />
-        {!isVisible && (
+        {isVisible && (
           <div css={statWrapper}>
             {stats.map(stat => {
               const numberData = stat.title.replace(/\D/g, '');
