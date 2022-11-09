@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 
 import LogoGridSlider from '../LogoGrid/LogoGridSlider';
 import { mediaQueriesMax } from '../../styles/css-utils';
+import { weights, mediaQueries, container, fonts } from '../../styles';
 
 class AboutSlider extends Component {
   constructor(props) {
@@ -141,6 +142,7 @@ class AboutSlider extends Component {
 
       p {
         font-style: normal;
+        font-family: ${fonts.mono};
         font-weight: 400;
         font-size: 24px;
         line-height: 76px;
@@ -200,7 +202,7 @@ class AboutSlider extends Component {
       }
     `;
 
-    // 0 Own it, 1 Stay Curious, 2 Defy mediocrity, 3 Do the right thing, 4 Start whit heart
+    // 0 Own it, 1 Stay Curious, 2 Defy mediocrity, 3 Do the right thing, 4 Start with heart
     return (
       <div css={sectionMain}>
         <div css={sectionLeft}>

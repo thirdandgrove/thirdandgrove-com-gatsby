@@ -366,7 +366,7 @@ const About = ({ data }) => {
         ),
       }}
     >
-      <FullWidthSection css={statsSection}>
+      <FullWidthSection css={statsSection} ref={nodeRef}>
         <GatsbyImage
           css={gradientStyleImage}
           image={partyPhoto.childImageSharp.gatsbyImageData}
