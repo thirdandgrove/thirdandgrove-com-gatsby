@@ -84,6 +84,7 @@ const About = ({ data }) => {
       position: relative;
       margin-left: 50px;
       margin-top: 25px;
+      margin-bottom: 0;
       font-size: 32px;
       font-weight: ${weights.regular};
       font-family: ${fonts.serif};
@@ -96,16 +97,15 @@ const About = ({ data }) => {
       position: relative;
       color: ${colors.reallydarkgray};
       font-weight: ${weights.bold};
-      margin-left: 50px;
+      margin-left: 40px;
 
       ${mediaQueries.phoneLarge} {
         font-size: 120px;
-        margin-left: 100px;
+        margin-left: 40px;
       }
-      margin-top: 30px;
       font-size: xxx-large;
       ${mediaQueries.desktop} {
-        font-size: 80px;
+        font-size: 120px;
       }
       ${mediaQueriesMax.xs} {
         margin-left: 0;
@@ -117,7 +117,7 @@ const About = ({ data }) => {
       position: relative;
       margin-left: 50px;
       ${mediaQueries.phoneLarge} {
-        margin-left: 100px;
+        margin-left: 40px;
       }
       ${mediaQueriesMax.phoneLarge} {
         margin-top: 200px;
