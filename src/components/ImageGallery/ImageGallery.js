@@ -30,6 +30,7 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
         }
         ${mediaQueriesMax.phoneLarge} {
           padding-top: 0;
+          margin-left: 0;
         }
       }
       .image-2 {
@@ -55,6 +56,10 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
 
         ${mediaQueriesMax.phoneLarge} {
           top: 0px;
+          left: 0px;
+          .gatsby-image-wrapper {
+            max-width: 100%;
+          }
         }
       }
     }
@@ -67,6 +72,12 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
     margin-top: 25px;
     font-weight: ${weights.bold};
     font-family: ${fonts.serif};
+
+    ${mediaQueriesMax.phoneLarge} {
+      width: 100%;
+      text-align: justify;
+      letter-spacing: -0.5px;
+    }
   `;
 
   const buttonStyle = css`

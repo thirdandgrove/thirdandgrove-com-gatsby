@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import Slider from 'react-slick';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { colors, weights, mediaQueries, fonts } from '../styles';
 import Button from '../components/Button';
 import ColoredBlocks from '../components/ColoredBlocks';
-import LogoGrid from '../components/LogoGrid';
 import LogoGridSlider from '../components/LogoGrid/LogoGridSlider';
 import ImageGallery from '../components/ImageGallery';
 import AppleImage from '../images/about/apple-animation.gif';
@@ -26,6 +23,7 @@ const About = ({ data }) => {
     partyPhoto,
     remotePhoto,
     grandma,
+    grandmaMobile,
     galleryImages,
   } = data;
   const { stats, header, imageGallery } = allAboutJson.nodes[0];
@@ -34,6 +32,7 @@ const About = ({ data }) => {
 
   const awardSliderSettings = {
     dots: false,
+    arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
@@ -121,7 +120,7 @@ const About = ({ data }) => {
         margin-left: 100px;
       }
       ${mediaQueriesMax.phoneLarge} {
-        margin-top: 150px;
+        margin-top: 200px;
       }
       ${mediaQueriesMax.xs} {
         margin-top: 0;
@@ -133,6 +132,18 @@ const About = ({ data }) => {
     max-width: 1080px;
     h1 {
       text-align: left;
+    }
+    ${mediaQueriesMax.phoneLarge} {
+      .balance-text {
+        width: 90%;
+        text-align: justify;
+        letter-spacing: -2.5px;
+      }
+      .balance-text > br {
+        display: none;
+      }
+      padding-bottom: 0px;
+      min-height: 66vh;
     }
   `;
 
@@ -259,7 +270,21 @@ const About = ({ data }) => {
     ${mediaQueriesMax.phoneLarge} {
       margin: 20px auto;
     }
+
+    .award-image {
+      display: initial;
+      ${mediaQueriesMax.phoneLarge} {
+        display: none;
+      }
+    }
+    .award-image-mobile {
+      display: none;
+      ${mediaQueriesMax.phoneLarge} {
+        display: initial;
+      }
+    }
   `;
+
   const awardsLogo = css`
     position: absolute;
     top: 0;
@@ -398,7 +423,13 @@ const About = ({ data }) => {
       </h3>
       <FullWidthSection css={awardStyle}>
         <GatsbyImage
+          className='award-image'
           image={grandma.childImageSharp.gatsbyImageData}
+          alt='Grandma standing with a plate'
+        />
+        <GatsbyImage
+          className='award-image-mobile'
+          image={grandmaMobile.childImageSharp.gatsbyImageData}
           alt='Grandma standing with a plate'
         />
         <LogoGridSlider
@@ -493,6 +524,16 @@ export const query = graphql`
         gatsbyImageData(
           width: 1400
           height: 700
+          transformOptions: { cropFocus: CENTER }
+          layout: CONSTRAINED
+        )
+      }
+    }
+    grandmaMobile: file(relativePath: { eq: "about/grandmaMobile.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          width: 700
+          height: 1400
           transformOptions: { cropFocus: CENTER }
           layout: CONSTRAINED
         )

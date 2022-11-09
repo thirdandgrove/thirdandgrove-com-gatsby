@@ -19,10 +19,8 @@ class AboutSlider extends Component {
       coreValuesSliderSettings: {
         dots: false,
         infinite: true,
-        speed: 1500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: 0,
         arrows: false,
         fade: true,
       },
@@ -63,13 +61,22 @@ class AboutSlider extends Component {
       width: 700px;
       height: 500px;
 
-      .slick-slide {
-        -webkit-animation: fade 1.25s linear 0s infinite alternate;
-        -moz-animation: fade 1.25s linear 0s infinite alternate;
-        -ms-animation: fade 1.25s linear 0s infinite alternate;
-        -o-animation: fade 1.25s linear 0s infinite alternate;
-        animation: fade 1.25s linear 0s infinite alternate;
-        transition: all 1s ease-in-out !important;
+      .slick-active {
+        animation: fade 0.2s linear 0s infinite;
+        transition: visibility 0s linear 0s, opacity 0.2s linear 0s;
+        opacity: 1;
+        animation-name: fadeInOpacity;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+      }
+
+      @keyframes fadeInOpacity {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
     `;
 
