@@ -138,7 +138,7 @@ class AboutSlider extends Component {
 
     const sectionLeft = css`
       position: relative;
-      bottom: 70px;
+      bottom: 50px;
 
       p {
         font-style: normal;

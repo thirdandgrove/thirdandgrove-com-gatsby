@@ -129,7 +129,8 @@ const About = ({ data }) => {
   `;
 
   const headerStyle = css`
-    max-width: 1080px;
+    max-width: 1440px;
+    padding-top: 200px;
     h1 {
       text-align: left;
     }
@@ -311,12 +312,12 @@ const About = ({ data }) => {
     width: 800px;
     position: relative;
     right: 90px;
-    top: 50px;
+    top: 0;
 
     h3 {
       font-size: 8.5rem;
       font-family: ${fonts.serif};
-      line-height: 130px;
+      line-height: 90px;
       ${mediaQueriesMax.phoneLarge} {
         font-size: 6rem;
       }
@@ -341,7 +342,7 @@ const About = ({ data }) => {
   `;
 
   const styleImageMainSlider = css`
-    max-width: 400px;
+    max-width: 300px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -394,8 +395,8 @@ const About = ({ data }) => {
           display: flex;
           flex-direction: row;
           align-content: center;
-          justify-content: center;
           align-items: flex-end;
+          padding-top: 130px;
         `}
       >
         <img src={AppleImage} alt='Core Values' css={styleImageMainSlider} />
