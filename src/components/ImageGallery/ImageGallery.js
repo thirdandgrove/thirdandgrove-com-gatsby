@@ -18,7 +18,7 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
     justify-content: center;
     ${mediaQueries.phoneLarge} {
       padding-top: 150px;
-      padding-bottom: 150px;
+      padding-bottom: 80px;
     }
 
     &.type-a {
@@ -81,10 +81,6 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
   `;
 
   const buttonStyle = css`
-    position: absolute;
-    right: 210px;
-    bottom: 220px;
-
     ${mediaQueriesMax.phoneLarge} {
       display: none;
     }
@@ -95,6 +91,7 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
       backgroundColor={backgroundColor}
       css={css`
         position: relative;
+        padding-bottom: 40px;
       `}
     >
       <div css={imageGalleryWrapper} className='type-a'>
@@ -105,7 +102,7 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
           return (
             // eslint-disable-next-line react/no-array-index-key
             <div className={`image-${key}`} key={key}>
-              <h3 css={imageTitle}>{dataItem.title}</h3>
+              <h3 css={imageTitle}>“{dataItem.title}”</h3>
               <GatsbyImage
                 image={imageToDisplay.childImageSharp.gatsbyImageData}
                 alt='Grandma standing with a plate'
@@ -113,8 +110,10 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
             </div>
           );
         })}
+      </div>
+      <div>
         <Button onClick='' css={buttonStyle}>
-          Work for tag
+          Work at tag
         </Button>
       </div>
     </FullWidthSection>

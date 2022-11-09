@@ -44,7 +44,7 @@ const About = ({ data }) => {
       p {
         position: relative;
         font-weight: ${weights.regular};
-        font-family: ${weights.serif};
+        font-family: ${fonts.serif};
         font-size: 1rem;
         right: 0;
         margin: 0 20px;
@@ -75,7 +75,7 @@ const About = ({ data }) => {
       width: 100%;
 
       ${mediaQueries.phoneLarge} {
-        top: 50px;
+        top: 120px;
         width: 70%;
       }
     }
@@ -86,7 +86,7 @@ const About = ({ data }) => {
       margin-top: 25px;
       font-size: 32px;
       font-weight: ${weights.regular};
-      font-family: ${weights.serif};
+      font-family: ${fonts.serif};
       ${mediaQueriesMax.phoneLarge} {
         display: none;
       }
@@ -367,27 +367,29 @@ const About = ({ data }) => {
         ),
       }}
     >
-      <FullWidthSection css={statsSection} ref={nodeRef}>
+      <FullWidthSection css={statsSection}>
         <GatsbyImage
           css={gradientStyleImage}
           image={partyPhoto.childImageSharp.gatsbyImageData}
           alt='Get together party'
         />
         <div css={gradientStyle} />
-        {isVisible && (
-          <div css={statWrapper}>
-            {stats.map(stat => {
-              const numberData = stat.title.replace(/\D/g, '');
-              const symbol = stat.title.replace(/\d/g, '');
-              return (
-                <div css={statItem}>
-                  <Counter mainCount={numberData} symbol={symbol} />
-                  <p>{stat.subtitle}</p>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        <div css={statWrapper} ref={nodeRef}>
+          {isVisible && (
+            <>
+              {stats.map(stat => {
+                const numberData = stat.title.replace(/\D/g, '');
+                const symbol = stat.title.replace(/\d/g, '');
+                return (
+                  <div css={statItem}>
+                    <Counter mainCount={numberData} symbol={symbol} />
+                    <p>{stat.subtitle}</p>
+                  </div>
+                );
+              })}
+            </>
+          )}
+        </div>
       </FullWidthSection>
 
       <div
