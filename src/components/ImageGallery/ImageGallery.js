@@ -48,7 +48,7 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
         flex-direction: column-reverse;
         position: relative;
         left: 35px;
-        top: -130px;
+        top: -75px;
         max-width: 400px;
         .gatsby-image-wrapper {
           max-width: 300px;
@@ -75,8 +75,7 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
 
     ${mediaQueriesMax.phoneLarge} {
       width: 100%;
-      text-align: justify;
-      letter-spacing: -0.5px;
+      text-align: center;
     }
   `;
 

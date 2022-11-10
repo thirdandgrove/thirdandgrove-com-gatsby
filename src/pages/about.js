@@ -136,9 +136,7 @@ const About = ({ data }) => {
     }
     ${mediaQueriesMax.phoneLarge} {
       .balance-text {
-        width: 90%;
-        text-align: justify;
-        letter-spacing: -2.5px;
+        width: 100%;
       }
       .balance-text > br {
         display: none;
@@ -161,6 +159,9 @@ const About = ({ data }) => {
   const statsSection = css`
     position: relative;
     padding: 0;
+    .gatsby-image-wrapper {
+      width: 100%;
+    }
     ${mediaQueriesMax.phoneMini} {
       display: none;
     }
@@ -251,6 +252,7 @@ const About = ({ data }) => {
   `;
 
   const gradientStyleImage = css`
+    display: contents;
     ${mediaQueriesMax.desktop} {
       display: contents;
     }
@@ -447,6 +449,7 @@ const About = ({ data }) => {
       <FullWidthSection>
         <ImageGallery data={imageGallery} images={galleryImages.nodes} />
       </FullWidthSection>
+
       <div css={remoteWorkStyleCustom}>
         <p>
           Our CEO is in Boston, <br />
@@ -516,6 +519,7 @@ export const query = graphql`
     partyPhoto: file(relativePath: { eq: "about/party-image.png" }) {
       childImageSharp {
         gatsbyImageData(
+          width: 1400
           height: 700
           transformOptions: { cropFocus: CENTER }
           layout: CONSTRAINED
