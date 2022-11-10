@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 import Slider from 'react-slick';
 
 import { mediaQueries, fonts, weights, colors } from '../../styles';
-import ProjectPreview from '../ProjectPreview';
+import AboutUsQuotePreview from './AboutUsQuotePreview';
 import FullWidthSection from '../FullWidthSection';
 
 const AboutUsQuoteSlider = ({ minHeight, backgroundColor, data }) => {
@@ -143,9 +143,9 @@ const AboutUsQuoteSlider = ({ minHeight, backgroundColor, data }) => {
       >
         {projects.map(node => {
           return (
-            <ProjectPreview
+            <AboutUsQuotePreview
               key={node.name}
-              project={node}
+              node={node}
               minHeight={minHeight}
             />
           );

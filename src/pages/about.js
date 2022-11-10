@@ -584,6 +584,10 @@ export const query = graphql`
             transformOptions: { cropFocus: CENTER }
             layout: CONSTRAINED
           )
+          fullWidth: gatsbyImageData(
+            transformOptions: { cropFocus: CENTER }
+            layout: FULL_WIDTH
+          )
         }
       }
     }
