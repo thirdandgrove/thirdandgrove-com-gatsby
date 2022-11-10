@@ -10,6 +10,7 @@ import { colors, weights, mediaQueries, fonts, jsBreakpoints } from '../styles';
 import Button from '../components/Button';
 import ColoredBlocks from '../components/ColoredBlocks';
 import LogoGridSlider from '../components/LogoGrid/LogoGridSlider';
+import AboutUsQuoteSlider from '../components/AboutUsQuoteSlider/AboutUsQuoteSlider';
 import ImageGallery from '../components/ImageGallery';
 import AppleImage from '../images/about/apple-animation.gif';
 import Counter from '../components/Counter';
@@ -450,7 +451,11 @@ const About = ({ data }) => {
       </FullWidthSection>
 
       {width < jsBreakpoints.phoneLarge ? (
-        <div>TEST</div>
+        <AboutUsQuoteSlider
+          data={{
+            nodes: { images: galleryImages.nodes, text: imageGallery },
+          }}
+        />
       ) : (
         <FullWidthSection>
           <ImageGallery data={imageGallery} images={galleryImages.nodes} />
