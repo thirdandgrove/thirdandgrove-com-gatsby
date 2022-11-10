@@ -509,7 +509,7 @@ export const query = graphql`
           height: 627
           width: 935
           transformOptions: { cropFocus: CENTER }
-          layout: CONSTRAINED
+          layout: FULL_WIDTH
         )
       }
     }
