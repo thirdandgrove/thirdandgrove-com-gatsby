@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
-import { colors, weights, mediaQueries, fonts } from '../styles';
+import { colors, weights, mediaQueries, fonts, jsBreakpoints } from '../styles';
 import Button from '../components/Button';
 import ColoredBlocks from '../components/ColoredBlocks';
 import LogoGridSlider from '../components/LogoGrid/LogoGridSlider';
@@ -16,6 +16,7 @@ import Counter from '../components/Counter';
 import AboutSlider from '../components/AboutSlider/AboutSlider';
 import { mediaQueriesMax } from '../styles/css-utils';
 import { useHasBeenVisible } from '../hooks/useVisibility';
+import useWindowSize from '../hooks/useWindowSize';
 
 const About = ({ data }) => {
   const {
@@ -354,6 +355,8 @@ const About = ({ data }) => {
     }
   `;
 
+  const { width } = useWindowSize();
+
   return (
     <Layout
       headerData={{
@@ -446,9 +449,13 @@ const About = ({ data }) => {
         />
       </FullWidthSection>
 
-      <FullWidthSection>
-        <ImageGallery data={imageGallery} images={galleryImages.nodes} />
-      </FullWidthSection>
+      {width < jsBreakpoints.phoneLarge ? (
+        <div>TEST</div>
+      ) : (
+        <FullWidthSection>
+          <ImageGallery data={imageGallery} images={galleryImages.nodes} />
+        </FullWidthSection>
+      )}
 
       <div css={remoteWorkStyleCustom}>
         <p>
