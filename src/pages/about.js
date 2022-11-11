@@ -47,7 +47,8 @@ const About = ({ data }) => {
         position: relative;
         font-weight: ${weights.regular};
         font-family: ${fonts.serif};
-        font-size: 1rem;
+        font-size: 36px;
+        line-height: 1.3;
         right: 0;
         margin: 0 20px;
         ${mediaQueriesMax.xs} {
@@ -67,6 +68,7 @@ const About = ({ data }) => {
     align-items: flex-start;
     justify-content: flex-start;
     margin-bottom: 50px;
+
     ${mediaQueriesMax.phoneLarge} {
       min-height: 350px;
     }
@@ -75,10 +77,12 @@ const About = ({ data }) => {
       position: absolute;
       right: 0;
       width: 100%;
+      max-height: 330px;
 
       ${mediaQueries.phoneLarge} {
         top: 120px;
         width: 70%;
+        max-height: 900px;
       }
     }
 
@@ -88,6 +92,7 @@ const About = ({ data }) => {
       margin-top: 25px;
       margin-bottom: 0;
       font-size: 32px;
+      line-height: 1.5;
       font-weight: ${weights.regular};
       font-family: ${fonts.serif};
       ${mediaQueriesMax.phoneLarge} {
@@ -96,18 +101,22 @@ const About = ({ data }) => {
     }
 
     h2 {
-      position: relative;
       color: ${colors.reallydarkgray};
       font-weight: ${weights.bold};
-      margin-left: 40px;
-
+      font-size: xxx-large;
+      margin-left: 0;
+      position: absolute;
+      bottom: 50px;
+      ${mediaQueries.desktop} {
+        font-size: 120px;
+        position: relative;
+        bottom: 0;
+      }
       ${mediaQueries.phoneLarge} {
         font-size: 120px;
         margin-left: 40px;
-      }
-      font-size: xxx-large;
-      ${mediaQueries.desktop} {
-        font-size: 120px;
+        position: relative;
+        bottom: 0;
       }
       ${mediaQueriesMax.xs} {
         margin-left: 0;
@@ -117,15 +126,15 @@ const About = ({ data }) => {
 
     button {
       position: relative;
-      margin-left: 50px;
+      margin-left: 0;
       ${mediaQueries.phoneLarge} {
         margin-left: 40px;
       }
       ${mediaQueriesMax.phoneLarge} {
-        margin-top: 200px;
+        margin-top: 450px;
       }
       ${mediaQueriesMax.xs} {
-        margin-top: 0;
+        display: none;
       }
     }
   `;

@@ -101,7 +101,7 @@ const ImageGallery = ({ backgroundColor, minHeight, images, data }) => {
           return (
             // eslint-disable-next-line react/no-array-index-key
             <div className={`image-${key}`} key={key}>
-              <h3 css={imageTitle}>“{dataItem.title}”</h3>
+              <h3 css={imageTitle}>{dataItem.title}</h3>
               <GatsbyImage
                 image={imageToDisplay.childImageSharp.gatsbyImageData}
                 alt='Grandma standing with a plate'
