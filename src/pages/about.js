@@ -73,6 +73,10 @@ const About = ({ data }) => {
       min-height: 350px;
     }
 
+    ${mediaQueriesMax.tablet} {
+      min-height: 400px;
+    }
+
     div.gatsby-image-wrapper {
       position: absolute;
       right: 0;
@@ -106,11 +110,16 @@ const About = ({ data }) => {
       font-size: xxx-large;
       margin-left: 0;
       position: absolute;
-      bottom: 50px;
-      ${mediaQueries.desktop} {
-        font-size: 120px;
-        position: relative;
+      bottom: -30px;
+      ${mediaQueries.phoneMini} {
         bottom: 0;
+      }
+      ${mediaQueriesMax.xs} {
+        margin-left: 0;
+        margin-top: 220px;
+      }
+      ${mediaQueries.tablet} {
+        bottom: 50px;
       }
       ${mediaQueries.phoneLarge} {
         font-size: 120px;
@@ -118,9 +127,10 @@ const About = ({ data }) => {
         position: relative;
         bottom: 0;
       }
-      ${mediaQueriesMax.xs} {
-        margin-left: 0;
-        margin-top: 220px;
+      ${mediaQueries.desktop} {
+        font-size: 120px;
+        position: relative;
+        bottom: 0;
       }
     }
 
