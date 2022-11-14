@@ -112,7 +112,7 @@ const About = ({ data }) => {
       position: absolute;
       bottom: -30px;
       ${mediaQueries.phoneMini} {
-        bottom: 0;
+        bottom: 50px;
       }
       ${mediaQueriesMax.xs} {
         margin-left: 0;
