@@ -243,6 +243,10 @@ const About = ({ data }) => {
       align-content: space-between;
       justify-content: space-between;
       align-items: center;
+
+      h4 {
+        font-size: 60px;
+      }
     }
   `;
   const statItem = css`
@@ -269,6 +273,7 @@ const About = ({ data }) => {
     ${mediaQueriesMax.xs} {
       min-height: fit-content;
       max-height: fit-content;
+      width: 75%;
     }
   `;
 
@@ -327,7 +332,19 @@ const About = ({ data }) => {
     }
 
     ${mediaQueriesMax.xs} {
-      bottom: 30px;
+      bottom: 130px;
+    }
+  `;
+
+  const coreValues = css`
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: flex-end;
+    padding-top: 130px;
+
+    ${mediaQueriesMax.xs} {
+      display: block;
     }
   `;
 
@@ -345,22 +362,33 @@ const About = ({ data }) => {
         font-size: 6rem;
       }
       ${mediaQueriesMax.xs} {
-        font-size: 5rem;
+        font-size: 8rem;
         font-weight: 100;
-        line-height: normal;
+        line-height: 0.75;
       }
     }
 
     ${mediaQueriesMax.xs} {
-      right: 175px;
-      top: 150px;
+      right: inherit;
+      top: 30px;
+      text-align: center;
+      padding: auto;
+      width: 100%;
     }
 
     h3:nth-of-type(1) {
       text-align: left;
+
+      ${mediaQueriesMax.xs} {
+        text-align: center;
+      }
     }
     h3:nth-of-type(2) {
       text-align: right;
+
+      ${mediaQueriesMax.xs} {
+        text-align: center;
+      }
     }
   `;
 
@@ -371,7 +399,8 @@ const About = ({ data }) => {
     object-fit: cover;
     ${mediaQueriesMax.xs} {
       position: relative;
-      left: 90px;
+      display: block;
+      margin: auto;
     }
   `;
 
@@ -417,15 +446,7 @@ const About = ({ data }) => {
         </div>
       </FullWidthSection>
 
-      <div
-        css={css`
-          display: flex;
-          flex-direction: row;
-          align-content: center;
-          align-items: flex-end;
-          padding-top: 130px;
-        `}
-      >
+      <div css={coreValues}>
         <img src={AppleImage} alt='Core Values' css={styleImageMainSlider} />
         <div css={coreValuesTitle}>
           <h3>Core</h3>
@@ -444,6 +465,10 @@ const About = ({ data }) => {
           ${mediaQueries.desktop} {
             line-height: 130px;
             font-size: 95px;
+          }
+          ${mediaQueriesMax.xs} {
+            width: 75%;
+            margin: auto;
           }
         `}
       >
