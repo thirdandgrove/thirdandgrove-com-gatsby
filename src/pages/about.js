@@ -19,6 +19,10 @@ import { mediaQueriesMax } from '../styles/css-utils';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import useWindowSize from '../hooks/useWindowSize';
 
+import logoSets from '../components/LogoGrid/logosets';
+
+const aboutCoreValues = logoSets('corevalues', 'TRUE');
+
 const About = ({ data }) => {
   const {
     allAboutJson,
@@ -362,8 +366,8 @@ const About = ({ data }) => {
         font-size: 6rem;
       }
       ${mediaQueriesMax.xs} {
-        font-size: 8rem;
-        font-weight: 100;
+        font-size: 6rem;
+        font-weight: 500;
         line-height: 0.75;
       }
     }
@@ -389,6 +393,26 @@ const About = ({ data }) => {
       ${mediaQueriesMax.xs} {
         text-align: center;
       }
+    }
+  `;
+
+  const coreValueMobileContainer = css`
+    padding: 40px 0 140px;
+  `;
+
+  const coreValueLogoMobile = css`
+    display: inline-block;
+    padding: 50px 0;
+
+    .corevalue-body {
+      width: 75%;
+      margin: auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
   `;
 
@@ -454,9 +478,21 @@ const About = ({ data }) => {
         </div>
       </div>
 
-      <FullWidthSection css={coreValuesStyle}>
-        <AboutSlider />
-      </FullWidthSection>
+      {width < jsBreakpoints.phoneLarge ? (
+        <div css={coreValueMobileContainer}>
+          {aboutCoreValues.map((logo, i) => (
+            // eslint-disable-next-line
+            <div class='full list' key={i} css={coreValueLogoMobile}>
+              {logo}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <FullWidthSection css={coreValuesStyle}>
+          <AboutSlider />
+        </FullWidthSection>
+      )}
+
       <h3
         css={css`
           font-family: ${fonts.serif};

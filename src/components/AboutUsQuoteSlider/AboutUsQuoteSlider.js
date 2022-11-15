@@ -46,8 +46,6 @@ const AboutUsQuoteSlider = ({ minHeight, backgroundColor, data }) => {
   const totalSlides =
     projects.length < 10 ? '0' + projects.length : projects.length;
 
-  console.log(totalSlides);
-
   const countStyles = css`
     position: absolute;
     bottom: 45px;
