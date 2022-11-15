@@ -36,15 +36,6 @@ const About = ({ data }) => {
   const nodeRef = React.useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 
-  const awardSliderSettings = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-  };
-
   const remoteWorkStyleCustom = css`
     ${mediaQueriesMax.phoneLarge} {
       p {
@@ -294,7 +285,34 @@ const About = ({ data }) => {
     background: #747474;
     mix-blend-mode: multiply;
   `;
+
+  const awardSliderSettings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    responsive: [
+      {
+        breakpoint: 20000,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+    draggable: false,
+  };
+
   const awardStyle = css`
+    justify-content: start;
     position: relative;
     padding: 0;
     .gatsby-image-wrapper {
@@ -314,6 +332,7 @@ const About = ({ data }) => {
       display: none;
       ${mediaQueriesMax.phoneLarge} {
         display: initial;
+        max-height: 700px;
       }
     }
   `;
@@ -321,8 +340,29 @@ const About = ({ data }) => {
   const awardsLogo = css`
     position: absolute;
     top: 0;
+
     > div {
       flex-wrap: nowrap;
+      min-width: 400px;
+
+      > div {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    .slick-slider {
+      width: 100%;
+      margin: auto;
+
+      .slick-slide > div > div {
+        margin-bottom: 0;
+      }
+    }
+
+    img {
+      margin: auto;
+      padding: 0 25px;
     }
   `;
 
@@ -529,18 +569,6 @@ const About = ({ data }) => {
           sliderSettings={awardSliderSettings}
         />
       </FullWidthSection>
-
-      {width < jsBreakpoints.phoneLarge ? (
-        <AboutUsQuoteSlider
-          data={{
-            nodes: { images: galleryImages.nodes, text: imageGallery },
-          }}
-        />
-      ) : (
-        <FullWidthSection>
-          <ImageGallery data={imageGallery} images={galleryImages.nodes} />
-        </FullWidthSection>
-      )}
 
       <div css={remoteWorkStyleCustom}>
         <p>
