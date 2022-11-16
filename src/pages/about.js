@@ -499,6 +499,7 @@ const About = ({ data }) => {
         ),
       }}
     >
+      {/* Stats Section. */}
       <FullWidthSection css={statsSection}>
         <GatsbyImage
           css={gradientStyleImage}
@@ -524,6 +525,7 @@ const About = ({ data }) => {
         </div>
       </FullWidthSection>
 
+      {/* Core Values Section. */}
       <div css={coreValues}>
         <img src={AppleImage} alt='Core Values' css={styleImageMainSlider} />
         <div css={coreValuesTitle}>
@@ -532,7 +534,7 @@ const About = ({ data }) => {
         </div>
       </div>
 
-      {width < jsBreakpoints.phoneLarge ? (
+      {width < 1100 ? (
         <div css={coreValueMobileContainer}>
           {aboutCoreValues.map((logo, i) => (
             // eslint-disable-next-line
@@ -547,6 +549,7 @@ const About = ({ data }) => {
         </FullWidthSection>
       )}
 
+      {/* Awards Section. */}
       <h3
         css={css`
           font-family: ${fonts.serif};
@@ -584,6 +587,20 @@ const About = ({ data }) => {
         />
       </FullWidthSection>
 
+      {/* Testimonials Section. */}
+      {width < jsBreakpoints.phoneLarge ? (
+        <AboutUsQuoteSlider
+          data={{
+            nodes: { images: galleryImages.nodes, text: imageGallery },
+          }}
+        />
+      ) : (
+        <FullWidthSection>
+          <ImageGallery data={imageGallery} images={galleryImages.nodes} />
+        </FullWidthSection>
+      )}
+
+      {/* Remote Organization Section. */}
       <div css={remoteWorkStyleCustom}>
         <p>
           Our CEO is in Boston, <br />
@@ -606,6 +623,8 @@ const About = ({ data }) => {
         </h2>
         <Button>Contact Us</Button>
       </FullWidthSection>
+
+      {/* Footer Blocks Section. */}
       <ColoredBlocks
         blocks={[
           {
