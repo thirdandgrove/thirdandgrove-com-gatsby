@@ -20,7 +20,7 @@ const Shopify = query => {
   const sectionPadding = css`
     padding: 50px 20px 0;
     ${mediaQueries.phoneLarge} {
-      padding: 120px 0 0;
+      padding: 0;
     }
   `;
 
@@ -30,9 +30,10 @@ const Shopify = query => {
         title: hero[0]?.title,
         subTitle: hero[0]?.subtitle,
         color: colors.yellow,
-        mobileMinHeight: '707px',
+        mobileMinHeight: '450px',
         width: '480px',
-        titlePadding: '0 100px',
+        titlePadding: '75px 100px 0',
+        height: '450px',
       }}
     >
       <FullWidthSection
@@ -68,7 +69,7 @@ const Shopify = query => {
           padding: 106px 20px 121px;
 
           ${mediaQueries.phoneLarge} {
-            padding: 76px 0 80px;
+            padding: 0 0 80px;
           }
         `}
       >
