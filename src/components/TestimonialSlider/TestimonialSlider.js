@@ -19,7 +19,7 @@ const TestimonialSlider = ({
   arrows,
 }) => {
   const settings = {
-    arrows: arrows,
+    arrows,
     autoplay: false,
     autoplaySpeed: 7500,
     cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
@@ -135,11 +135,11 @@ const TestimonialSlider = ({
         }
       `}
     >
-      <div class='slider-header' css={sliderHeader}>
-        <div class='header-left'>
+      <div className='slider-header' css={sliderHeader}>
+        <div className='header-left'>
           {showTitle && <h2 css={headerStyling}>{title}</h2>}
         </div>
-        <div class='header-right'>
+        <div className='header-right'>
           {showButton && (
             <Button
               onClick={() => navigate(`https://thirdandgrove.breezy.hr/`)}
@@ -151,7 +151,7 @@ const TestimonialSlider = ({
         </div>
       </div>
 
-      <div class='heart-icon' css={heartIcon}>
+      <div className='heart-icon' css={heartIcon}>
         <img src={HeartIcon} alt='heart icon in a speech bubble' />
       </div>
 

@@ -609,7 +609,7 @@ const About = ({ data }) => {
       {/* Testimonials Section. */}
       <TestimonialSlider
         data={{ nodes: [...testimonials] }}
-        showButton={true}
+        showButton
         backgroundColor={colors.white}
         title='We speak highly of ourselves, but so do our people.'
         arrows
