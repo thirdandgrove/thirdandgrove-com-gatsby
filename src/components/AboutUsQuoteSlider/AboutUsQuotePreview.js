@@ -1,12 +1,8 @@
 import React from 'react';
-import { navigate } from 'gatsby';
-import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-
-import Button from '../Button';
 import { smSectionHead, container, mediaQueries, weights } from '../../styles';
-import { ensureTrailingSlash } from '../../util';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Button from '../Button';
 
 const slideTitleWrapper = css`
   display: flex;

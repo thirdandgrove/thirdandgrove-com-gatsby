@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 import LogoGridSlider from '../LogoGrid/LogoGridSlider';
 import { mediaQueriesMax } from '../../styles/css-utils';
-import { weights, mediaQueries, container, fonts } from '../../styles';
+import { fonts } from '../../styles';
 
 class AboutSlider extends Component {
   constructor(props) {

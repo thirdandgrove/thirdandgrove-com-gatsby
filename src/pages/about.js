@@ -10,7 +10,7 @@ import { colors, weights, mediaQueries, fonts, jsBreakpoints } from '../styles';
 import Button from '../components/Button';
 import ColoredBlocks from '../components/ColoredBlocks';
 import LogoGridSlider from '../components/LogoGrid/LogoGridSlider';
-import AboutUsQuoteSlider from '../components/AboutUsQuoteSlider/AboutUsQuoteSlider';
+import TestimonialSlider from '../components/TestimonialSlider';
 import ImageGallery from '../components/ImageGallery';
 import AppleImage from '../images/about/apple-animation.gif';
 import Counter from '../components/Counter';
@@ -23,6 +23,12 @@ import logoSets from '../components/LogoGrid/logosets';
 
 const aboutCoreValues = logoSets('corevalues', 'TRUE');
 
+const mergeById = (a1, a2) =>
+  a1.map(itm => ({
+    ...a2.find(item => item.name === itm.imageName && item),
+    ...itm,
+  }));
+
 const About = ({ data }) => {
   const {
     allAboutJson,
@@ -31,6 +37,7 @@ const About = ({ data }) => {
     grandma,
     grandmaMobile,
     galleryImages,
+    testimonialGallery,
   } = data;
   const { stats, header, imageGallery } = allAboutJson.nodes[0];
   const nodeRef = React.useRef();
@@ -107,7 +114,7 @@ const About = ({ data }) => {
       position: absolute;
       bottom: -30px;
       ${mediaQueries.phoneMini} {
-        bottom: 50px;
+        bottom: 20px;
       }
       ${mediaQueriesMax.xs} {
         margin-left: 0;
@@ -329,6 +336,7 @@ const About = ({ data }) => {
     justify-content: start;
     position: relative;
     padding: 0;
+
     .gatsby-image-wrapper {
       width: 100%;
     }
@@ -470,11 +478,20 @@ const About = ({ data }) => {
     }
   `;
 
+  const remoteWorkButton = css`
+    display: block;
+
+    ${mediaQueriesMax.tablet} {
+      display: none;
+    }
+  `;
+
   const styleImageMainSlider = css`
     max-width: 300px;
     width: 100%;
     height: 100%;
     object-fit: cover;
+
     ${mediaQueriesMax.xs} {
       position: relative;
       display: block;
@@ -483,6 +500,8 @@ const About = ({ data }) => {
   `;
 
   const { width } = useWindowSize();
+
+  const testimonials = mergeById(imageGallery, galleryImages.nodes);
 
   return (
     <Layout
@@ -588,17 +607,13 @@ const About = ({ data }) => {
       </FullWidthSection>
 
       {/* Testimonials Section. */}
-      {width < jsBreakpoints.phoneLarge ? (
-        <AboutUsQuoteSlider
-          data={{
-            nodes: { images: galleryImages.nodes, text: imageGallery },
-          }}
-        />
-      ) : (
-        <FullWidthSection>
-          <ImageGallery data={imageGallery} images={galleryImages.nodes} />
-        </FullWidthSection>
-      )}
+      <TestimonialSlider
+        data={{ nodes: [...testimonials] }}
+        showButton={true}
+        backgroundColor={colors.white}
+        title='We speak highly of ourselves, but so do our people.'
+        arrows
+      />
 
       {/* Remote Organization Section. */}
       <div css={remoteWorkStyleCustom}>
@@ -621,7 +636,7 @@ const About = ({ data }) => {
           <br />
           Organization
         </h2>
-        <Button>Contact Us</Button>
+        <Button css={remoteWorkButton}>Contact Us</Button>
       </FullWidthSection>
 
       {/* Footer Blocks Section. */}
@@ -728,6 +743,12 @@ export const query = graphql`
           fullWidth: gatsbyImageData(
             transformOptions: { cropFocus: CENTER }
             layout: FULL_WIDTH
+          )
+          squareImage: gatsbyImageData(
+            width: 700
+            height: 700
+            transformOptions: { cropFocus: CENTER }
+            layout: CONSTRAINED
           )
         }
       }

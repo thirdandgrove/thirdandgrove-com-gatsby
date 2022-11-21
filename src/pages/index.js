@@ -134,6 +134,12 @@ export const query = graphql`
             fluid(maxWidth: 530, maxHeight: 400) {
               ...GatsbyImageSharpFluid_withWebp
             }
+            gatsbyImageData(
+              height: 400
+              width: 530
+              transformOptions: { cropFocus: CENTER }
+              layout: FULL_WIDTH
+            )
           }
           childImageSlideMobile: childImageSharp {
             fluid(maxWidth: 325, maxHeight: 250) {
