@@ -1,8 +1,11 @@
 import React from 'react';
 
-import addyAward from './logos/addy-award.svg';
-import museLogo from './logos/muse-logo.png';
-import awwwLogo from './logos/awwwards-logo.png';
+import coreValuesOne from '../../images/about/corevalues-1.png';
+import coreValuesTwo from '../../images/about/corevalues-2.png';
+import coreValuesThree from '../../images/about/corevalues-3.png';
+import coreValuesFour from '../../images/about/corevalues-4.png';
+import coreValuesFive from '../../images/about/corevalues-5.png';
+
 import harvardLogo from './logos/harvard.svg';
 import googleLogo from './logos/google.svg';
 import foxLogo from './logos/fox.svg';
@@ -49,10 +52,6 @@ import hawaiianHost from './logos/hawiian-host-logo-gray.svg';
 import wcBradley from './logos/wc-bradley.svg';
 import gLogo from './logos/g-logo.svg';
 import rubios from './logos/rubios-logo.svg';
-import w3Awards from './logos/w3-awards.png';
-import cssAwards from './logos/css-awards.png';
-import dadiAwards from './logos/dadi-awards.png';
-import daveyAwards from './logos/davey-awards.png';
 import farmacyLogo from './logos/farmacy-logo.svg';
 import amorepacifioLogo from './logos/amorepacifio-logo.svg';
 import laneige from './logos/laneige.svg';
@@ -63,6 +62,14 @@ import klaviyoLogo from './logos/klaviyo.png';
 import eaLogo from './logos/essential-accessibility.png';
 import rechargeLogo from './logos/recharge.png';
 import shopifyLogo from './logos/shopify-plus-logo.svg';
+import addyAward from './logos/awards/addy-award.svg';
+import museLogo from './logos/awards/muse-logo.png';
+import awwwLogo from './logos/awards/awwwards-logo.png';
+import w3Awards from './logos/awards/w3-awards.png';
+import cssAwards from './logos/awards/css-awards.png';
+import dadiAwards from './logos/awards/dadi-awards.png';
+import daveyAwards from './logos/awards/davey-awards.png';
+
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -500,45 +507,109 @@ export default (logoset, isSmScreen) => {
       <img
         src={addyAward}
         alt='Addy Awards'
-        width={isSmScreen ? '80' : '90'}
-        height={isSmScreen ? '42' : '62'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={museLogo}
         alt='Muse Awards'
-        width={isSmScreen ? '140' : '200'}
-        height={isSmScreen ? '64' : '84'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={awwwLogo}
         alt='Awww Awards'
-        width={isSmScreen ? '109' : '135'}
-        height={isSmScreen ? '42' : '62'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={w3Awards}
         alt='W3 Awards'
-        width={isSmScreen ? '128' : '142'}
-        height={isSmScreen ? '60' : '70'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={cssAwards}
         alt='CSS awards'
-        width={isSmScreen ? '168' : '210'}
-        height={isSmScreen ? '40' : '60'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={dadiAwards}
         alt='Dadi awards'
-        width={isSmScreen ? '140' : '180'}
-        height={isSmScreen ? '90' : '110'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={daveyAwards}
         alt='Davey awards'
-        width={isSmScreen ? '135' : '165'}
-        height={isSmScreen ? '90' : '110'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
+    ],
+    corevalues: [
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesOne}
+          alt='Own it'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          We take pride in what we put forth and hold ourselves accountable for
+          outcomes both good and bad. We are each responsible for our words,
+          actions, and results.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesTwo}
+          alt='Stay Curious'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Our team knows we don’t know everything. We let our egos take a
+          backseat to our desire for learning and advancing each day.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesThree}
+          alt='Defy mediocrity'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Complacency kills. We aim for excellence and build upon each challenge
+          with increased dedication to improving our craft.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesFour}
+          alt='Do the right thing'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          What we do when nobody is watching matters. While the right path may
+          not be the easiest, we must act with integrity in all situations.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesFive}
+          alt='Start whit heart'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Our people are at the center of everything we do. Give the support,
+          empathy, and energy to your teammates and clients that you expect in
+          return.
+        </p>
+      </div>,
     ],
     drupalSupport: [
       <img

@@ -1,0 +1,87 @@
+[
+  {
+    "header": [
+      {
+        "title": "An award-winning, industry-defining team that builds digital experiences that aren't just beautiful.",
+        "subtitle": "We are an award-winning, industry-defining team of strategists, creatives, designers, and technologists committed to solving challenges for brands we love. Our team builds digital experiences that aren’t just beautiful; they perform.  (add a little more cheekiness to this include something about fully remote but we do have a headquarters as well"
+      }
+    ],
+    "stats": [
+      {
+        "title": "140+",
+        "subtitle": "Happy clients"
+      },
+      {
+        "title": "14+",
+        "subtitle": "Awards won"
+      },
+      {
+        "title": "314%",
+        "subtitle": "Recent increase in conversion rate for one of our merchants"
+      },
+      {
+        "title": "1",
+        "subtitle": "Sicilian Nona who taught us to cook gnocchi"
+      }
+    ],
+    "coreValue": [
+      {
+        "title": "Own it",
+        "image": {
+          "src": "../images/about/group41"
+        },
+        "description": "We take pride in what we put forth and hold ourselves accountable for outcomes both good and bad. We are each responsible for our words, actions, and results."
+      },
+      {
+        "title": "Stay Curious",
+        "image": {
+          "src": "../images/about/group42"
+        },
+        "description": "Our team knows we don't know everything. We let our egos take a backseat to our desire for learning and advancing each day."
+      },
+      {
+        "title": "Do the Right Thing",
+        "image": {
+          "src": "../images/about/group43"
+        },
+        "description": "Complacency kills. We aim for excellence and build upon each challenge with increased dedication to improving our craft."
+      },
+      {
+        "title": "Do the Right Thing",
+        "image": {
+          "src": "../images/about/group44"
+        },
+        "description": "What we do when nobody is watching matters. While the right path may not be the easiest, we must act with integrity in all situations."
+      },
+      {
+        "title": "Start with Heart",
+        "image": {
+          "src": "../images/about/group46"
+        },
+        "description": "Our people are at the center of everything we do. Give the support, empathy, and energy to your teammates and clients that you expect in return."
+      }
+    ],
+    "imageGallery": [
+      {
+        "title": "“It is a culture that makes me want to stay.”",
+        "imageName": "manDog"
+      },
+      {
+        "title": "“Working with this team is a highlight of my career.”",
+        "imageName": "man"
+      },
+      {
+        "title": "“Ask anyone at TAG to sum up our culture, they'd say supportive.”",
+        "imageName": "girl2"
+      },
+      {
+        "title": "“TAG gives me that work/life balance I was looking for.”",
+        "imageName": "girl1"
+      },
+      {
+        "title": "“TAG is a very beautiful little bubble in the agency world.”",
+        "imageName": "girl3"
+      }
+    ]
+  }
+]
