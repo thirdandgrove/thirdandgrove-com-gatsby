@@ -54,11 +54,14 @@ import gLogo from './logos/g-logo.svg';
 import rubios from './logos/rubios-logo.svg';
 import farmacyLogo from './logos/farmacy-logo.svg';
 import amorepacifioLogo from './logos/amorepacifio-logo.svg';
+import laneige from './logos/laneige.svg';
+import dansko from './logos/dansko.svg';
 import boostLogo from './logos/boost.png';
 import yotpoLogo from './logos/yotpo.png';
 import klaviyoLogo from './logos/klaviyo.png';
 import eaLogo from './logos/essential-accessibility.png';
 import rechargeLogo from './logos/recharge.png';
+import shopifyLogo from './logos/shopify-plus-logo.svg';
 import addyAward from './logos/awards/addy-award.svg';
 import museLogo from './logos/awards/muse-logo.png';
 import awwwLogo from './logos/awards/awwwards-logo.png';
@@ -66,6 +69,7 @@ import w3Awards from './logos/awards/w3-awards.png';
 import cssAwards from './logos/awards/css-awards.png';
 import dadiAwards from './logos/awards/dadi-awards.png';
 import daveyAwards from './logos/awards/davey-awards.png';
+
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -141,10 +145,16 @@ export default (logoset, isSmScreen) => {
     ],
     shopifyApps: [
       <img
-        src={rechargeLogo}
-        alt='Recharge'
-        width={isSmScreen ? '100' : '176'}
-        height={isSmScreen ? '26' : '46'}
+        src={shopifyLogo}
+        alt='Yotpo'
+        width={isSmScreen ? '120' : '202'}
+        height={isSmScreen ? '66' : '112'}
+      />,
+      <img
+        src={yotpoLogo}
+        alt='Yotpo'
+        width={isSmScreen ? '40' : '71'}
+        height={isSmScreen ? '43' : '76'}
       />,
       <img
         src={klaviyoLogo}
@@ -159,16 +169,10 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '31' : '54'}
       />,
       <img
-        src={boostLogo}
-        alt='Boost'
-        width={isSmScreen ? '80' : '143'}
-        height={isSmScreen ? '44' : '77'}
-      />,
-      <img
-        src={yotpoLogo}
-        alt='Yotpo'
-        width={isSmScreen ? '40' : '71'}
-        height={isSmScreen ? '43' : '76'}
+        src={rechargeLogo}
+        alt='Recharge'
+        width={isSmScreen ? '100' : '176'}
+        height={isSmScreen ? '26' : '46'}
       />,
     ],
     acquia: [
@@ -659,52 +663,46 @@ export default (logoset, isSmScreen) => {
     ],
     shopifyPlus: [
       <img
+        src={amorepacifioLogo}
+        alt='AMOREPACIFIO'
+        width={isSmScreen ? '120' : '173'}
+        height={isSmScreen ? '16' : '32'}
+      />,
+      <img
+        src={laneige}
+        alt='Laneige'
+        width={isSmScreen ? '120' : '173'}
+        height={isSmScreen ? '16' : '32'}
+      />,
+      <img
         src={hawaiianHost}
         alt='Hawaiian Host'
-        width={isSmScreen ? '126' : '121'}
+        width={isSmScreen ? '120' : '121'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img
-        src={benefitLogo}
-        alt='benefit'
-        width={isSmScreen ? '150' : '180'}
-        height={isSmScreen ? '37' : '50'}
+        src={farmacyLogo}
+        alt='Farmacy'
+        width={isSmScreen ? '120' : '193'}
+        height={isSmScreen ? '39' : '64'}
       />,
       <img
-        src={boissance}
-        alt='BOISSANCE'
-        width={isSmScreen ? '126' : '150'}
-        height={isSmScreen ? '61' : '80'}
+        src={dansko}
+        alt='Dansko'
+        width={isSmScreen ? '120' : '173'}
+        height={isSmScreen ? '16' : '32'}
       />,
       <img
         src={goldwin}
         alt='Goldwin'
-        width={isSmScreen ? '125' : '180'}
+        width={isSmScreen ? '120' : '180'}
         height={isSmScreen ? '36' : '52'}
       />,
       <img
         src={pernodLogo}
         alt='Pernod Ricard'
-        width={isSmScreen ? '125' : '171'}
+        width={isSmScreen ? '140' : '171'}
         height={isSmScreen ? '49' : '63'}
-      />,
-      <img
-        src={farmacyLogo}
-        alt='Farmacy'
-        width={isSmScreen ? '146' : '193'}
-        height={isSmScreen ? '39' : '64'}
-      />,
-      <img
-        src={amorepacifioLogo}
-        alt='AMOREPACIFIO'
-        width={isSmScreen ? '159' : '173'}
-        height={isSmScreen ? '16' : '32'}
-      />,
-      <img
-        src={kingArthur}
-        alt='King Arthur'
-        width={isSmScreen ? '62' : '94'}
-        height={isSmScreen ? '62' : '94'}
       />,
     ],
     shopifyPlusFoodAndBeverage: [

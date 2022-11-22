@@ -182,7 +182,7 @@ const Header = ({
     font-family: ${fonts.sans};
     font-size: 15px;
     line-height: 2.4;
-    text-transform: capitalize;
+    text-transform: inherit;
     color: ${fontColor};
     text-align: center;
     padding-left: 20px;
