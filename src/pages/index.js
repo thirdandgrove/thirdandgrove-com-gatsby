@@ -21,6 +21,14 @@ const Index = ({ data }) => {
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
 
+  // Silly holiday treat.
+  const today = new Date();
+  const isThanksgiving = today.getMonth() === 10 && today.getDate() === 24;
+  const isDayBeforeThanksgiving =
+    today.getMonth() === 10 && today.getDate() === 23;
+  const isDayAfterThanksgiving =
+    today.getMonth() === 10 && today.getDate() === 25;
+
   return (
     <Layout
       headerData={{
@@ -30,7 +38,21 @@ const Index = ({ data }) => {
             {' '}
             Building delightful,
             <br />
-            award-winning experiences.
+            award-winning&nbsp;{' '}
+            {isDayBeforeThanksgiving ||
+            isThanksgiving ||
+            isDayAfterThanksgiving ? (
+              <>
+                <span role='img' aria-label='turkey'>
+                  🦃&nbsp;
+                </span>
+                <span role='img' aria-label='fork and knife with plate'>
+                  🍽
+                </span>
+              </>
+            ) : (
+              `experiences`
+            )}
           </>
         ),
         mobileMinHeight: '93vh',

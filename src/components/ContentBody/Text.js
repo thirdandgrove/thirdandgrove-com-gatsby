@@ -45,6 +45,7 @@ const replaceCode = node => {
       )
     );
   }
+  return null;
 };
 
 const Text = ({ data }) => {
