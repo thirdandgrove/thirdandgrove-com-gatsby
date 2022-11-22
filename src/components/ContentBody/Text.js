@@ -30,11 +30,11 @@ const getLanguage = node => {
 const getCode = node => {
   if (node.children.length > 0 && node.children[0].name === 'code') {
     return node.children[0].children;
-  } else {
-    return node.children;
   }
+  return node.children;
 };
 
+// eslint-disable-next-line consistent-return
 const replaceCode = node => {
   if (node.name === 'pre') {
     return (
