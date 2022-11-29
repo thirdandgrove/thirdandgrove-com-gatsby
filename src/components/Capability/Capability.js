@@ -103,9 +103,10 @@ const Capability = ({
                     <GatsbyImage
                       image={imageSrc}
                       alt={imageAlt}
-                      imgStyle={{ transform, opacity }}
                       css={css`
                         display: ${context.easterEgg ? 'none' : 'block'};
+                        transform: ${transform};
+                        opacity: ${opacity};
                       `}
                     />
                     <img
