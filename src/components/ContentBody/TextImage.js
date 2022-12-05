@@ -43,7 +43,7 @@ const TextImage = ({ data }) => {
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
-        {data.relationships.field_image.localFile.childImageSharp.fluid ? (
+        {data.relationships.field_image.localFile.childImageSharp ? (
           <Img
             fluid={
               data.relationships.field_image.localFile.childImageSharp.fluid
@@ -91,7 +91,7 @@ const TextImage = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       />
       <section>
-        {data.relationships.field_image.localFile.childImageSharp.fluid ? (
+        {data.relationships.field_image.localFile.childImageSharp ? (
           <Img
             fluid={
               data.relationships.field_image.localFile.childImageSharp.fluid
