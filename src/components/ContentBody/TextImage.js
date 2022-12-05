@@ -43,14 +43,43 @@ const TextImage = ({ data }) => {
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
-        <Img
-          fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
-          alt={data.field_image.alt}
-          css={css`
-            margin-bottom: 40px;
-            padding: 0;
-          `}
-        />
+        {data.relationships.field_image.localFile.childImageSharp.fluid ? (
+          <Img
+            fluid={
+              data.relationships.field_image.localFile.childImageSharp.fluid
+            }
+            alt={data.field_image.alt}
+            css={css`
+              margin-bottom: 40px;
+              padding: 0;
+            `}
+          />
+        ) : (
+          <div
+            css={css`
+              width: 680px;
+              max-width: 100%;
+              margin: 0 auto 40px;
+              padding: 0;
+            `}
+          >
+            <img
+              src={data.relationships.field_image.localFile.publicURL}
+              alt={data.field_image.alt}
+              css={css`
+                margin: 0 20px 70px;
+
+                ${mediaQueries.phoneLarge} {
+                  ${container.min};
+                  padding-left: 0;
+                  padding-right: 0;
+                  margin: 0 auto 70px;
+                }
+              `}
+            />
+          </div>
+        )}
+        ;
       </section>
       <section
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
@@ -62,14 +91,43 @@ const TextImage = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       />
       <section>
-        <Img
-          fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
-          alt={data.field_image.alt}
-          css={css`
-            margin-bottom: 40px;
-            padding: 0;
-          `}
-        />
+        {data.relationships.field_image.localFile.childImageSharp.fluid ? (
+          <Img
+            fluid={
+              data.relationships.field_image.localFile.childImageSharp.fluid
+            }
+            alt={data.field_image.alt}
+            css={css`
+              margin-bottom: 40px;
+              padding: 0;
+            `}
+          />
+        ) : (
+          <div
+            css={css`
+              width: 680px;
+              max-width: 100%;
+              margin: 0 auto 40px;
+              padding: 0;
+            `}
+          >
+            <img
+              src={data.relationships.field_image.localFile.publicURL}
+              alt={data.field_image.alt}
+              css={css`
+                margin: 0 20px 70px;
+
+                ${mediaQueries.phoneLarge} {
+                  ${container.min};
+                  padding-left: 0;
+                  padding-right: 0;
+                  margin: 0 auto 70px;
+                }
+              `}
+            />
+          </div>
+        )}
+        ;
       </section>
     </SplitSection>
   );

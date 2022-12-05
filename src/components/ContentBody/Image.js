@@ -6,7 +6,6 @@ import { css } from '@emotion/react';
 import { container, mediaQueries } from '../../styles';
 
 const Image = ({ data }) => {
-  console.log(data);
   return data.relationships.field_image.localFile.childImageSharp ? (
     <Img
       fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
@@ -27,9 +26,6 @@ const Image = ({ data }) => {
       css={css`
         width: 680px;
         max-width: 100%;
-        margin: 0 auto;
-        padding-left: 20px;
-        padding-right: 20px;
         padding-left: 0;
         padding-right: 0;
         margin: 0 auto 70px;
