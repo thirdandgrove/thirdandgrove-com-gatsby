@@ -202,7 +202,7 @@ class AboutSlider extends Component {
       }
     `;
 
-    // 0 Own it, 1 Stay Curious, 2 Defy mediocrity, 3 Do the right thing, 4 Start with heart
+    // 0 Own it, 1 Stay Curious, 2 Defy mediocrity, 3 Do the right thing, 4 Start with heart.
     return (
       <div css={sectionMain}>
         <div css={sectionLeft}>
