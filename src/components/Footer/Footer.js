@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/react';
 
+import EasterEggContext from '../../context/EasterEggContext';
 import googlePartnerLogo from '../../../static/images/Partner-RGB.png';
 import acquiaBadge from '../../../static/images/acquia-practice-certification.png';
 import drupalBadge from '../../../static/images/drupal-certified-diamond-partner.svg';
@@ -27,17 +28,16 @@ const Footer = () => {
     }
   `;
   const wrapperStyle = css`
-    padding: 20px 0;
+    padding: 0;
     text-align: center;
     background-color: ${colors.darkgray};
-    min-height: 100vh;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     ${mediaQueries.phoneLarge} {
       display: block;
-      padding: 80px 0;
       min-height: 0;
     }
   `;
@@ -52,6 +52,12 @@ const Footer = () => {
       justify-content: center;
       min-height: 0;
     }
+  `;
+  const easterEggButtonStyle = css`
+    border: 0;
+    background: transparent;
+    width: 100%;
+    height: 80px;
   `;
 
   const partnerContainer = css`
@@ -87,48 +93,68 @@ const Footer = () => {
   `;
 
   return (
-    <>
-      <div css={wrapperStyle}>
-        <div css={[innerWrapperStyle, container.max]}>
-          <Link css={linkStyle} to='/work/'>
-            Work
-          </Link>
-          <Link css={linkStyle} to='/capabilities/'>
-            Capabilities
-          </Link>
-          <Link css={linkStyle} to='/insights/'>
-            Insights
-          </Link>
-          <Link css={linkStyle} to='/about/'>
-            About
-          </Link>
-          <a
-            css={linkStyle}
-            href='https://thirdandgrove.breezy.hr/'
-            target='_blank'
-            rel='noreferrer'
+    <EasterEggContext.Consumer>
+      {context => (
+        <div css={wrapperStyle}>
+          <button
+            onClick={context.toggleEasterEgg}
+            css={easterEggButtonStyle}
+            type='button'
           >
-            Careers
-          </a>
-          <Link css={linkStyle} to='/contact/'>
-            Contact
-          </Link>
-          <Link css={linkStyle} to='/legal/'>
-            Legal
-          </Link>
-          <Link css={linkStyle} to='/partners/'>
-            Partners
-          </Link>
-        </div>
-        <div css={[partnerContainer]}>
-          <div css={[innerPartnerContainer]}>
-            <img src={drupalBadge} width={75} />
-            <img src={googlePartnerLogo} width={75} />
-            <img src={acquiaBadge} width={75} />
+            &nbsp;
+          </button>
+          <div css={[innerWrapperStyle, container.max]}>
+            <Link css={linkStyle} to='/work/'>
+              Work
+            </Link>
+            <Link css={linkStyle} to='/capabilities/'>
+              Capabilities
+            </Link>
+            <Link css={linkStyle} to='/insights/'>
+              Insights
+            </Link>
+            <Link css={linkStyle} to='/about/'>
+              About
+            </Link>
+            <a
+              css={linkStyle}
+              href='https://thirdandgrove.breezy.hr/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Careers
+            </a>
+            <Link css={linkStyle} to='/contact/'>
+              Contact
+            </Link>
+            <Link css={linkStyle} to='/legal/'>
+              Legal
+            </Link>
+            <Link css={linkStyle} to='/partners/'>
+              Partners
+            </Link>
           </div>
+          <div css={[partnerContainer]}>
+            <div css={[innerPartnerContainer]}>
+              <img src={drupalBadge} alt='Drupal Badge' width={75} />
+              <img
+                src={googlePartnerLogo}
+                alt='Google Partner Logo'
+                width={75}
+              />
+              <img src={acquiaBadge} alt='Acquia Badge' width={75} />
+            </div>
+          </div>
+          <button
+            onClick={context.toggleEasterEgg}
+            css={easterEggButtonStyle}
+            type='button'
+          >
+            &nbsp;
+          </button>
         </div>
-      </div>
-    </>
+      )}
+    </EasterEggContext.Consumer>
   );
 };
 

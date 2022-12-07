@@ -15,13 +15,14 @@ const InsightsSlider = ({
   backgroundColor,
   title,
   data,
+  arrows,
 }) => {
   const settings = {
-    arrows: false,
+    arrows,
     autoplay: false,
     autoplaySpeed: 7500,
     cssEase: 'cubic-bezier(0.86, 0, 0.07, 1)',
-    centerPadding: 90,
+    centerPadding: 0,
     infinite: true,
     speed: 1000,
     centerMode: true,
@@ -34,6 +35,7 @@ const InsightsSlider = ({
       },
     ],
   };
+
   return (
     <FullWidthSection
       height='0'
@@ -63,6 +65,60 @@ const InsightsSlider = ({
               padding: 0 90px;
             }
           }
+
+          .slick-arrow {
+            top: auto;
+            bottom: 50px;
+            width: 20px;
+            height: 16px;
+            z-index: 999;
+            opacity: 0.7;
+            transition: 0.3s ease opacity;
+
+            ${mediaQueries.phoneLarge} {
+              bottom: 80px;
+            }
+
+            &:hover,
+            &:focus {
+              opacity: 1;
+            }
+
+            &::before {
+              display: none;
+            }
+          }
+
+          .slick-prev {
+            left: auto;
+            right: calc(50% + 65px);
+            background: url('/images/arrow-l.svg');
+
+            ${mediaQueries.phoneLarge} {
+              left: 20px;
+              right: auto;
+            }
+
+            ${mediaQueries.desktop} {
+              left: 50%;
+              margin-left: -590px;
+            }
+          }
+
+          .slick-next {
+            left: calc(50% + 65px);
+            right: auto;
+            background: url('/images/arrow-r.svg');
+
+            ${mediaQueries.phoneLarge} {
+              left: 50px;
+            }
+
+            ${mediaQueries.desktop} {
+              left: 50%;
+              margin-left: -555px;
+            }
+          }
         `}
       >
         {data &&
@@ -70,6 +126,7 @@ const InsightsSlider = ({
             return <ArticlePreviewSlide key={node.title} article={node} />;
           })}
       </Slider>
+
       {showButton && (
         <Button onClick={() => navigate(`/insights/`)}>Our Insights</Button>
       )}
@@ -83,6 +140,7 @@ InsightsSlider.propTypes = {
   title: PropTypes.string,
   data: PropTypes.object.isRequired,
   showTitle: PropTypes.bool,
+  arrows: PropTypes.bool,
 };
 
 InsightsSlider.defaultProps = {
@@ -90,6 +148,7 @@ InsightsSlider.defaultProps = {
   showTitle: true,
   backgroundColor: colors.white,
   title: `Insights`,
+  arrows: false,
 };
 
 export default InsightsSlider;

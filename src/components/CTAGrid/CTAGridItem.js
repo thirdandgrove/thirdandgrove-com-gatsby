@@ -109,14 +109,22 @@ const CTAGridItem = ({
                 className='cta-grid-item--image-wrapper'
               >
                 {icon[0] && icon[0].node && icon[0].node.publicURL && (
-                  <img src={icon[0].node.publicURL} alt={description} />
+                  <img src={icon[0].node.publicURL} alt={title} />
                 )}
               </div>
             )}
           </Spring>
 
           <h4>{title}</h4>
-          <p>{description}</p>
+          {Array.isArray(description) ? (
+            <ul>
+              {description.map(descriptionItem => (
+                <li>{descriptionItem}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>{description}</p>
+          )}
         </div>
       ) : (
         <Spring
@@ -134,11 +142,19 @@ const CTAGridItem = ({
             >
               <div className='cta-grid-item--inner-wrapper'>
                 {icon[0] && icon[0].node && icon[0].node.publicURL && (
-                  <img src={icon[0].node.publicURL} alt={description} />
+                  <img src={icon[0].node.publicURL} alt={title} />
                 )}
 
                 {title && <h4>{title}</h4>}
-                {description && <p>{description}</p>}
+                {Array.isArray(description) ? (
+                  <ul>
+                    {description.map(descriptionItem => (
+                      <li>{descriptionItem}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{description}</p>
+                )}
               </div>
             </div>
           )}

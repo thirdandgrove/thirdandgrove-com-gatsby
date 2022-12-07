@@ -42,7 +42,7 @@ const Insights = ({ data }) => {
     }
 
     padding: 0 20px;
-    margin: 30px 0 60px;
+    margin: 30px 17% 60px;
     text-align: center;
     transform: translateY(50%);
     animation-name: headerSlide;

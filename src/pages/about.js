@@ -1,393 +1,667 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
-import LogoGrid from '../components/LogoGrid';
-import {
-  colors,
-  fonts,
-  weights,
-  smSectionHead,
-  h1L,
-  container,
-  mediaQueries,
-  contValues,
-  pLight,
-} from '../styles';
+import { colors, weights, mediaQueries, fonts, jsBreakpoints } from '../styles';
 import Button from '../components/Button';
+import ColoredBlocks from '../components/ColoredBlocks';
+import LogoGridSlider from '../components/LogoGrid/LogoGridSlider';
+import TestimonialSlider from '../components/TestimonialSlider';
+import ImageGallery from '../components/ImageGallery';
+import AppleImage from '../images/about/apple-animation.gif';
+import Counter from '../components/Counter';
+import AboutSlider from '../components/AboutSlider/AboutSlider';
+import { mediaQueriesMax } from '../styles/css-utils';
+import { useHasBeenVisible } from '../hooks/useVisibility';
+import useWindowSize from '../hooks/useWindowSize';
+
+import logoSets from '../components/LogoGrid/logosets';
+
+const aboutCoreValues = logoSets('corevalues', 'TRUE');
+
+const mergeById = (a1, a2) =>
+  a1.map(itm => ({
+    ...a2.find(item => item.name === itm.imageName && item),
+    ...itm,
+  }));
 
 const About = ({ data }) => {
-  const leadersCss = css`
-    padding-top: 20px;
+  const {
+    allAboutJson,
+    partyPhoto,
+    remotePhoto,
+    grandma,
+    grandmaMobile,
+    galleryImages,
+    testimonialGallery,
+  } = data;
+  const { stats, header, imageGallery } = allAboutJson.nodes[0];
+  const nodeRef = React.useRef();
+  const isVisible = useHasBeenVisible(nodeRef);
 
-    ${mediaQueries.phoneLarge} {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding-left: 40px;
-      padding-right: 40px;
-    }
-
-    div {
-      ${mediaQueries.phoneLarge} {
-        flex: 0 0 calc(50% - 86px);
-        padding-top: 20px;
-
-        &:nth-child(odd):last-child {
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-    }
-
-    h2 {
-      font-size: 21px;
-      font-weight: ${weights.bold};
-      text-align: center;
-      margin-bottom: 6px;
-      padding-top: 40px;
-
-      ${mediaQueries.phoneLarge} {
-        font-size: 27px;
-      }
-    }
-
-    p {
-      ${pLight};
-      margin-bottom: 64px;
-      text-align: center;
-      ${mediaQueries.phoneLarge} {
-        margin-bottom: 90px;
-      }
-    }
-  `;
-
-  const Row = styled.section`
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    padding-top: 48px;
-    margin-bottom: 12px;
-
-    ${mediaQueries.phoneLarge} {
-      width: ${contValues.medium};
-      justify-content: space-around; // for Edge
-    }
-
-    div {
-      width: 50%;
-      margin-bottom: 40px;
-
-      ${mediaQueries.phoneLarge} {
-        width: auto;
-        padding: 0 36px;
-      }
-
-      h2 {
-        font-weight: ${weights.medium};
-        font-size: 48px;
-        color: ${colors.darkgray};
-        letter-spacing: -1.38px;
-        text-align: center;
-        margin-bottom: 12px;
-
-        ${mediaQueries.phoneLarge} {
-          margin-bottom: 36px;
-        }
-      }
-      h3 {
-        font-family: ${fonts.sans};
-        font-weight: ${weights.light};
-        font-size: 15px;
-        color: ${colors.darkgray};
-        letter-spacing: 0.2px;
-        text-align: center;
-      }
-    }
-  `;
-  const Location = styled.section`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50px;
-    width: 100%;
-    max-width: 750px;
-    h2,
-    h3,
-    p {
-      transition: opacity 0.3s ease;
-      opacity: 0.7;
-    }
-    &:hover {
-      cursor: pointer;
-      h2,
-      h3,
+  const remoteWorkStyleCustom = css`
+    ${mediaQueriesMax.phoneLarge} {
       p {
-        opacity: 1;
+        position: relative;
+        font-weight: ${weights.regular};
+        font-family: ${fonts.serif};
+        font-size: 36px;
+        line-height: 1.3;
+        right: 0;
+        margin: 0 20px;
+        ${mediaQueriesMax.xs} {
+          font-weight: 350;
+          font-size: 2rem;
+        }
       }
     }
+    ${mediaQueries.phoneLarge} {
+      display: none;
+    }
+  `;
+
+  const remoteWorkStyle = css`
+    min-height: 450px;
+    position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 50px;
+
+    ${mediaQueriesMax.phoneLarge} {
+      min-height: 350px;
+    }
+
+    ${mediaQueriesMax.tablet} {
+      min-height: 400px;
+    }
+
+    div.gatsby-image-wrapper {
+      position: absolute;
+      right: 0;
+      width: 100%;
+      max-height: 330px;
+
+      ${mediaQueries.phoneLarge} {
+        top: 120px;
+        width: 70%;
+        max-height: 900px;
+      }
+    }
+
+    p {
+      position: relative;
+      margin-left: 50px;
+      margin-top: 25px;
+      margin-bottom: 0;
+      font-size: 32px;
+      line-height: 1.5;
+      font-weight: ${weights.regular};
+      font-family: ${fonts.serif};
+      ${mediaQueriesMax.phoneLarge} {
+        display: none;
+      }
+    }
+
     h2 {
-      ${h1L};
-      padding-top: 10px;
-      margin-bottom: 8px;
-      text-align: center;
-
-      ${mediaQueries.phoneLarge} {
-        text-align: center;
-      }
-    }
-    h3 {
       color: ${colors.reallydarkgray};
-      font-family: ${fonts.sans};
-      font-size: 21px;
       font-weight: ${weights.bold};
-      letter-spacing: -0.5px;
-      padding-top: 20px;
-      margin-bottom: 12px;
-      text-align: center;
-
+      font-size: xxx-large;
+      margin-left: 0;
+      position: absolute;
+      bottom: -30px;
+      ${mediaQueries.phoneMini} {
+        bottom: 20px;
+      }
+      ${mediaQueriesMax.xs} {
+        margin-left: 0;
+        margin-top: 220px;
+      }
+      ${mediaQueries.tablet} {
+        bottom: 50px;
+      }
       ${mediaQueries.phoneLarge} {
-        text-align: center;
+        font-size: 120px;
+        margin-left: 40px;
+        position: relative;
+        bottom: 0;
+      }
+      ${mediaQueries.desktop} {
+        font-size: 120px;
+        position: relative;
+        bottom: 0;
       }
     }
-    & > div {
+
+    button {
+      position: relative;
+      margin-left: 0;
+      ${mediaQueries.phoneLarge} {
+        margin-left: 40px;
+      }
+      ${mediaQueriesMax.phoneLarge} {
+        margin-top: 450px;
+      }
+      ${mediaQueriesMax.xs} {
+        display: none;
+      }
+    }
+  `;
+
+  const headerStyle = css`
+    max-width: 1440px;
+    padding-top: 200px;
+    h1 {
+      text-align: left;
+    }
+    ${mediaQueriesMax.phoneLarge} {
+      .balance-text {
+        width: 100%;
+      }
+      .balance-text > br {
+        display: none;
+      }
+      padding-bottom: 0px;
+      min-height: 66vh;
+    }
+  `;
+
+  const subHeaderStyle = css`
+    padding: 20px;
+    ${mediaQueries.phoneLarge} {
+      max-width: 600px;
+      position: relative;
+      left: 200px;
+      padding-left: 0px;
+    }
+  `;
+
+  const statsSection = css`
+    position: relative;
+    padding: 0;
+    .gatsby-image-wrapper {
+      width: 100%;
+    }
+    ${mediaQueriesMax.phoneMini} {
+      display: none;
+    }
+    ${mediaQueriesMax.phoneLarge} {
+      min-height: 345px;
+    }
+    ${mediaQueriesMax.xs} {
+      min-height: 600px;
+    }
+  `;
+
+  const statWrapper = css`
+    display: flex;
+    align-items: center;
+    position: absolute;
+    color: ${colors.white};
+    font-family: ${fonts.serif};
+    margin-left: 80px;
+    h4 {
+      font-size: 130px;
+    }
+    p {
+      max-width: 400px;
+      font-size: 36px;
+      line-height: 50px;
+      text-align: center;
+      letter-spacing: 0.4px;
+    }
+    ${mediaQueriesMax.desktop} {
+      align-content: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 0 10%;
+
+      h4 {
+        font-size: xxx-large;
+        padding: 0;
+        margin: 0;
+      }
+      p {
+        line-height: normal;
+      }
+    }
+
+    ${mediaQueriesMax.phoneLarge} {
+      h4 {
+        font-size: xx-large;
+      }
+      p {
+        font-size: large;
+        line-height: normal;
+      }
+    }
+    ${mediaQueriesMax.xs} {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      ${mediaQueries.phoneLarge} {
-        align-items: center;
-      }
-      p {
-        ${pLight};
-        padding: 0;
-        margin: 0 0 1px 0;
+      flex-wrap: nowrap;
+      align-content: space-between;
+      justify-content: space-between;
+      align-items: center;
+
+      h4 {
+        font-size: 60px;
       }
     }
   `;
-  const images = data.allFile.nodes;
+  const statItem = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 30px;
+    p {
+      min-height: 150px;
+      ${mediaQueriesMax.xs} {
+        min-height: fit-content;
+      }
+    }
+    ${mediaQueriesMax.desktop} {
+      width: 50%;
+      max-height: 110px;
+      padding: 0;
+    }
+    ${mediaQueriesMax.phoneLarge} {
+      width: 35%;
+      max-height: 110px;
+      padding: 0;
+    }
+    ${mediaQueriesMax.xs} {
+      min-height: fit-content;
+      max-height: fit-content;
+      width: 75%;
+    }
+  `;
 
-  // returns the correct image source needed to render
-  const getSrc = (name, type) => {
-    if (name === 'team_2') {
-      return data.teamPhoto.nodes.find(img => img.name === name).childImageSharp
-        .gatsbyImageData;
+  const gradientStyleImage = css`
+    display: contents;
+    ${mediaQueriesMax.desktop} {
+      display: contents;
     }
-    if (type === 'location') {
-      return images.find(img => img.name === name).largeSquare.gatsbyImageData;
-    }
-    return images.find(img => img.name === name).childImageSharp
-      .gatsbyImageData;
+  `;
+
+  const gradientStyle = css`
+    position: absolute;
+    inset: 0 0 0 0;
+    background: #747474;
+    mix-blend-mode: multiply;
+  `;
+
+  const awardSliderSettings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    responsive: [
+      {
+        breakpoint: 20000,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+    draggable: false,
   };
+
+  const awardStyle = css`
+    justify-content: start;
+    position: relative;
+    padding: 0;
+
+    .gatsby-image-wrapper {
+      width: 100%;
+    }
+    ${mediaQueriesMax.phoneLarge} {
+      margin: 20px auto;
+    }
+
+    .award-image {
+      display: initial;
+      ${mediaQueriesMax.phoneLarge} {
+        display: none;
+      }
+    }
+    .award-image-mobile {
+      display: none;
+      ${mediaQueriesMax.phoneLarge} {
+        display: initial;
+        max-height: 700px;
+      }
+    }
+  `;
+
+  const awardsLogo = css`
+    position: absolute;
+    top: 0;
+
+    > div {
+      flex-wrap: nowrap;
+      min-width: 400px;
+
+      > div {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    .slick-slider {
+      width: 100%;
+      margin: auto;
+
+      .slick-slide > div > div {
+        margin-bottom: 0;
+      }
+    }
+
+    img {
+      margin: auto;
+      padding: 0 25px;
+    }
+  `;
+
+  const coreValuesStyle = css`
+    position: relative;
+    padding: 0;
+    bottom: 170px;
+
+    .gatsby-image-wrapper {
+      width: 100%;
+    }
+
+    ${mediaQueriesMax.xs} {
+      bottom: 130px;
+    }
+  `;
+
+  const coreValues = css`
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: flex-end;
+    padding-top: 130px;
+
+    ${mediaQueriesMax.xs} {
+      display: block;
+    }
+  `;
+
+  const coreValuesTitle = css`
+    width: 800px;
+    position: relative;
+    right: 90px;
+    top: 0;
+
+    h3 {
+      font-size: 8.5rem;
+      font-family: ${fonts.serif};
+      line-height: 90px;
+      ${mediaQueriesMax.phoneLarge} {
+        font-size: 6rem;
+      }
+      ${mediaQueriesMax.xs} {
+        font-size: 6rem;
+        font-weight: 500;
+        line-height: 0.75;
+      }
+    }
+
+    ${mediaQueriesMax.xs} {
+      right: inherit;
+      top: 30px;
+      text-align: center;
+      padding: auto;
+      width: 100%;
+    }
+
+    h3:nth-of-type(1) {
+      text-align: left;
+
+      ${mediaQueriesMax.xs} {
+        text-align: center;
+      }
+    }
+    h3:nth-of-type(2) {
+      text-align: right;
+
+      ${mediaQueriesMax.xs} {
+        text-align: center;
+      }
+    }
+  `;
+
+  const coreValueMobileContainer = css`
+    padding: 40px 0 140px;
+  `;
+
+  const coreValueLogoMobile = css`
+    display: inline-block;
+    padding: 50px 0;
+
+    .corevalue-body {
+      width: 75%;
+      margin: auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  `;
+
+  const remoteWorkButton = css`
+    display: block;
+
+    ${mediaQueriesMax.tablet} {
+      display: none;
+    }
+  `;
+
+  const styleImageMainSlider = css`
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    ${mediaQueriesMax.xs} {
+      position: relative;
+      display: block;
+      margin: auto;
+    }
+  `;
+
+  const { width } = useWindowSize();
+
+  const testimonials = mergeById(imageGallery, galleryImages.nodes);
 
   return (
     <Layout
       headerData={{
-        title: 'A relentless pursuit of perfection.',
+        title: header[0].title,
         mobileMinHeight: '93vh',
         height: '400px',
+        color: colors.white,
+        styles: headerStyle,
+        children: (
+          <div css={subHeaderStyle}>
+            <p>{header[0].subtitle}</p>
+          </div>
+        ),
       }}
     >
-      <FullWidthSection
-        textAlign='center'
-        height='100%'
-        css={css`
-          ${container.medium};
-          padding-top: 20px;
-
-          ${mediaQueries.phoneLarge} {
-            padding-top: 150px;
-            margin-bottom: 58px;
-          }
-        `}
-      >
+      {/* Stats Section. */}
+      <FullWidthSection css={statsSection}>
         <GatsbyImage
-          image={getSrc('team_2')}
-          alt='TAG Team'
-          css={css`
-            width: 100%;
-          `}
+          css={gradientStyleImage}
+          image={partyPhoto.childImageSharp.gatsbyImageData}
+          alt='Get together party'
         />
-        <Row>
-          <div>
-            <h2>2013</h2>
-            <h3>Founded</h3>
-          </div>
-          <div>
-            <h2>17</h2>
-            <h3>States</h3>
-          </div>
-          <div>
-            <h2>140+</h2>
-            <h3>Clients</h3>
-          </div>
-          <div>
-            <h2>14+</h2>
-            <h3>Awards</h3>
-          </div>
-        </Row>
-      </FullWidthSection>
-      <FullWidthSection
-        height='550px'
-        css={css`
-          background-color: ${colors.lightblue};
-          z-index: 1;
-          height: 600px;
-          text-align: center;
-        `}
-      >
-        <h3 css={smSectionHead}>Radically Honest</h3>
-        <h2 css={[h1L, container.medium]}>
-          If you had a bit of food stuck in your teeth, we’d let you know.
-        </h2>
-        <p
-          css={[
-            pLight,
-            css`
-              padding-top: 10px;
-
-              ${mediaQueries.phoneLarge} {
-                width: ${contValues.min};
-              }
-            `,
-          ]}
-        >
-          We work with brands we love and can’t wait to help grow. That means we
-          might not always tell you what you want to hear, but we’ll definitely
-          tell you what you need to hear.
-        </p>
-      </FullWidthSection>
-      <FullWidthSection
-        css={css`
-          padding: 44px 0 0;
-
-          ${mediaQueries.desktop} {
-            padding: 120px 0;
-          }
-        `}
-      >
-        <h3 css={smSectionHead}>Who We Are</h3>
-
-        <div css={[leadersCss, container.medium]}>
-          <div>
-            <GatsbyImage alt='Justin Emond' image={getSrc('emond', 'leader')} />
-            <h2>Justin Emond</h2>
-            <p>Founder, Chief Executive Officer</p>
-          </div>
-          <div>
-            <GatsbyImage alt='Jen Slemp' image={getSrc('slemp', 'leader')} />
-            <h2>Jen Slemp</h2>
-            <p>Chief Operating Officer</p>
-          </div>
-          <div>
-            <GatsbyImage
-              alt='Christina Andrade'
-              image={getSrc('andrade', 'leader')}
-            />
-            <h2>Christina Andrade</h2>
-            <p>Chief People Officer</p>
-          </div>
-          <div>
-            <GatsbyImage
-              alt='Joneric Amundson'
-              image={getSrc('joneric', 'leader')}
-            />
-            <h2>Joneric Amundson</h2>
-            <p>Creative Director</p>
-          </div>
-          <div>
-            <GatsbyImage
-              alt='Nina Collier'
-              image={getSrc('collier', 'leader')}
-            />
-            <h2>Nina Collier</h2>
-            <p>Director of Ecommerce</p>
-          </div>
-          <div>
-            <GatsbyImage
-              alt='Brent Schultz'
-              image={getSrc('schultz', 'leader')}
-            />
-            <h2>Brent Schultz</h2>
-            <p>Director of Engineering</p>
-          </div>
-          <div>
-            <GatsbyImage
-              alt='Monica Thompson'
-              image={getSrc('thompson', 'leader')}
-            />
-            <h2>Monica Thompson</h2>
-            <p>Director of Strategy</p>
-          </div>
+        <div css={gradientStyle} />
+        <div css={statWrapper} ref={nodeRef}>
+          {isVisible && (
+            <>
+              {stats.map(stat => {
+                const numberData = stat.title.replace(/\D/g, '');
+                const symbol = stat.title.replace(/\d/g, '');
+                return (
+                  <div css={statItem}>
+                    <Counter mainCount={numberData} symbol={symbol} />
+                    <p>{stat.subtitle}</p>
+                  </div>
+                );
+              })}
+            </>
+          )}
         </div>
       </FullWidthSection>
-      <LogoGrid
-        logoset='awards'
-        title='Trophy Case'
-        subtitle='We’ve won a few awards'
-        backgroundColor={colors.yellow}
-        minHeight='0'
-        defaultItemWidth='33%'
-      />
-      <FullWidthSection
-        css={css`
-          padding: 44px 0 0;
 
+      {/* Core Values Section. */}
+      <div css={coreValues}>
+        <img src={AppleImage} alt='Core Values' css={styleImageMainSlider} />
+        <div css={coreValuesTitle}>
+          <h3>Core</h3>
+          <h3>Values</h3>
+        </div>
+      </div>
+
+      {width < 1100 ? (
+        <div css={coreValueMobileContainer}>
+          {aboutCoreValues.map((logo, i) => (
+            // eslint-disable-next-line
+            <div class='full list' key={i} css={coreValueLogoMobile}>
+              {logo}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <FullWidthSection css={coreValuesStyle}>
+          <AboutSlider />
+        </FullWidthSection>
+      )}
+
+      {/* Awards Section. */}
+      <h3
+        css={css`
+          font-family: ${fonts.serif};
+          text-align: center;
+          font-size: xxx-large;
           ${mediaQueries.desktop} {
-            padding: 70px 0;
+            line-height: 130px;
+            font-size: 95px;
+          }
+          ${mediaQueriesMax.xs} {
+            width: 75%;
+            margin: auto;
           }
         `}
       >
-        <h3 css={smSectionHead}>Where We Are</h3>
-        <FullWidthSection>
-          <Location onClick={() => navigate(`/boston/`)}>
-            <h2 css={h1L}>Boston</h2>
-            <GatsbyImage image={getSrc('boston', 'location')} alt='Boston' />
-            <h3>Howdya Like Them Apples?</h3>
-          </Location>
-        </FullWidthSection>
+        We are sort of a big deal.
+      </h3>
+      <FullWidthSection css={awardStyle}>
+        <GatsbyImage
+          className='award-image'
+          image={grandma.childImageSharp.gatsbyImageData}
+          alt='Grandma standing with a plate'
+        />
+        <GatsbyImage
+          className='award-image-mobile'
+          image={grandmaMobile.childImageSharp.gatsbyImageData}
+          alt='Grandma standing with a plate'
+        />
+        <LogoGridSlider
+          minHeight='0'
+          styles={awardsLogo}
+          logoset='awards'
+          backgroundColor='none'
+          sliderSettings={awardSliderSettings}
+        />
       </FullWidthSection>
-      <FullWidthSection
-        minHeight='500px'
-        height='400px'
-        backgroundColor={colors.lightblue}
-        padding='0 0 30px'
-        css={css`
-          z-index: 1;
-        `}
-      >
-        <h3 css={smSectionHead}>Making Moves?</h3>
-        <h2
-          css={css`
-            color: ${colors.reallydarkgray};
-            font-size: 39px;
-            font-weight: ${weights.bold};
-            letter-spacing: -0.45px;
-            line-height: 1.23;
-            text-align: center;
-            margin-bottom: 30px;
 
-            ${mediaQueries.phoneLarge} {
-              font-size: 48px;
-              letter-spacing: -0.2px;
-            }
-          `}
-        >
-          Show us what you&apos;re made of.
+      {/* Testimonials Section. */}
+      <TestimonialSlider
+        data={{ nodes: [...testimonials] }}
+        showButton
+        backgroundColor={colors.white}
+        title='We speak highly of ourselves, but so do our people.'
+        arrows
+      />
+
+      {/* Remote Organization Section. */}
+      <div css={remoteWorkStyleCustom}>
+        <p>
+          Our CEO is in Boston, <br />
+          but we are a fully...
+        </p>
+      </div>
+      <FullWidthSection css={remoteWorkStyle}>
+        <GatsbyImage
+          image={remotePhoto.childImageSharp.gatsbyImageData}
+          alt='Man working remotely at computer with dress shirt and no pants'
+        />
+        <p>
+          Our CEO is in Boston, <br />
+          but we are a fully...
+        </p>
+        <h2>
+          Remote
+          <br />
+          Organization
         </h2>
-        <Button>
-          <a
-            href='https://thirdandgrove.breezy.hr/'
-            target='_blank'
-            rel='noreferrer'
-          >
-            view open positions
-          </a>
-        </Button>
+        <Button css={remoteWorkButton}>Contact Us</Button>
       </FullWidthSection>
+
+      {/* Footer Blocks Section. */}
+      <ColoredBlocks
+        blocks={[
+          {
+            headline: 'Are you a brand that defies mediocrity?',
+            linkTitle: 'Contact Us',
+            path: '/contact',
+            backgroundColor: colors.yellow,
+          },
+          {
+            headline: 'Check out some of our beautiful work.',
+            linkTitle: 'View Work',
+            path: '/work',
+            backgroundColor: colors.lightblue,
+          },
+          {
+            headline: "Show us what you're made of.",
+            linkTitle: 'Join The Team',
+            path: 'https://thirdandgrove.breezy.hr',
+            backgroundColor: colors.yellow,
+          },
+        ]}
+      />
     </Layout>
   );
 };
@@ -400,39 +674,80 @@ export default About;
 
 export const query = graphql`
   {
-    teamPhoto: allFile(filter: { name: { in: "team_2" } }) {
+    remotePhoto: file(relativePath: { eq: "about/remote-working.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          height: 627
+          width: 935
+          transformOptions: { cropFocus: CENTER }
+          layout: FULL_WIDTH
+        )
+      }
+    }
+    partyPhoto: file(relativePath: { eq: "about/party-image.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          width: 1400
+          height: 700
+          transformOptions: { cropFocus: CENTER }
+          layout: CONSTRAINED
+        )
+      }
+    }
+    grandma: file(relativePath: { eq: "about/grandma.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          width: 1400
+          height: 700
+          transformOptions: { cropFocus: CENTER }
+          layout: CONSTRAINED
+        )
+      }
+    }
+    grandmaMobile: file(relativePath: { eq: "about/grandmaMobile.png" }) {
+      childImageSharp {
+        gatsbyImageData(
+          width: 700
+          height: 1400
+          transformOptions: { cropFocus: CENTER }
+          layout: CONSTRAINED
+        )
+      }
+    }
+    allAboutJson {
       nodes {
-        name
-        childImageSharp {
-          gatsbyImageData(
-            height: 480
-            width: 980
-            transformOptions: { cropFocus: CENTER }
-            layout: CONSTRAINED
-          )
+        stats {
+          title
+          subtitle
+        }
+        header {
+          title
+          subtitle
+        }
+        imageGallery {
+          title
+          imageName
         }
       }
     }
-    allFile(
-      filter: {
-        absolutePath: {
-          regex: "/boston|emond|slemp|andrade|may|topp|joneric|collier|schultz|thompson/"
-        }
-      }
+    galleryImages: allFile(
+      filter: { relativePath: { regex: "/about/imageGallery/g" } }
     ) {
       nodes {
         name
         childImageSharp {
           gatsbyImageData(
-            transformOptions: { cropFocus: NORTH }
-            layout: FULL_WIDTH
-            aspectRatio: 1.275
+            transformOptions: { cropFocus: CENTER }
+            layout: CONSTRAINED
           )
-        }
-        largeSquare: childImageSharp {
-          gatsbyImageData(
-            aspectRatio: 1.5
-            transformOptions: { cropFocus: NORTH }
+          fullWidth: gatsbyImageData(
+            transformOptions: { cropFocus: CENTER }
+            layout: FULL_WIDTH
+          )
+          squareImage: gatsbyImageData(
+            width: 700
+            height: 700
+            transformOptions: { cropFocus: CENTER }
             layout: CONSTRAINED
           )
         }

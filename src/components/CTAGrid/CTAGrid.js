@@ -120,17 +120,20 @@ const CTAGrid = ({
     <FullWidthSection css={sectionStyles} backgroundColor={backgroundColor}>
       {header !== '' && <h3>{header}</h3>}
       <div css={!altStyle ? ctaGridContainer : ctaGridContainerAlt}>
-        {items.map(({ node }) => (
-          <CTAGridItem
-            key={node.title}
-            icon={getImageSrc(node.icon)}
-            title={node.title}
-            description={node.description}
-            altStyle={altStyle}
-            extraCssItem={extraCssItem}
-            noPaddingImg={noPaddingImg}
-          />
-        ))}
+        {items.map(item => {
+          const node = item?.node || item;
+          return (
+            <CTAGridItem
+              key={node.title}
+              icon={getImageSrc(node.icon)}
+              title={node.title}
+              description={node.description}
+              altStyle={altStyle}
+              extraCssItem={extraCssItem}
+              noPaddingImg={noPaddingImg}
+            />
+          );
+        })}
       </div>
       {!altStyle && !invisibleCta && (
         <div css={buttonStyle}>

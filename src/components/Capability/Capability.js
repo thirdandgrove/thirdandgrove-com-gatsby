@@ -4,11 +4,21 @@ import { Spring } from 'react-spring/renderprops';
 import { css } from '@emotion/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
+import EasterEggContext from '../../context/EasterEggContext';
 import FullWidthSection from '../FullWidthSection';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { fonts, mediaQueries, container, weights } from '../../styles';
 
-const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
+const Capability = ({
+  imageSrc,
+  imageAlt,
+  imageGif,
+  imageGifAlt,
+  content,
+  index,
+  id,
+  maxWidth,
+}) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 
@@ -67,31 +77,51 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
             }
           `}
         >
-          <Spring
-            delay={0}
-            to={{
-              transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-              opacity: isVisible ? '1' : '0',
-            }}
-          >
-            {({ transform, opacity }) => (
-              <GatsbyImage
-                image={imageSrc}
-                alt={imageAlt}
-                imgStyle={{ transform, opacity }}
-                css={css`
-                  width: 100%;
-                  margin-bottom: 20px;
+          <EasterEggContext.Consumer>
+            {context => (
+              <Spring
+                delay={0}
+                to={{
+                  transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
+                  opacity: isVisible ? '1' : '0',
+                }}
+              >
+                {({ transform, opacity }) => (
+                  <div
+                    css={css`
+                      width: 100%;
+                      margin-bottom: 20px;
+                      position: relative;
 
-                  ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '51%' : '49%'};
-                    width: ${index % 2 ? '51%' : '49%'};
-                    margin-bottom: 0;
-                  }
-                `}
-              />
+                      ${mediaQueries.phoneLarge} {
+                        flex: 0 0 ${index % 2 ? '51%' : '49%'};
+                        width: ${index % 2 ? '51%' : '49%'};
+                        margin-bottom: 0;
+                      }
+                    `}
+                  >
+                    <GatsbyImage
+                      image={imageSrc}
+                      alt={imageAlt}
+                      css={css`
+                        display: ${context.easterEgg ? 'none' : 'block'};
+                        transform: ${transform};
+                        opacity: ${opacity};
+                      `}
+                    />
+                    <img
+                      src={imageGif}
+                      alt={imageGifAlt}
+                      css={css`
+                        display: ${context.easterEgg ? 'block' : 'none'};
+                        width: 100%;
+                      `}
+                    />
+                  </div>
+                )}
+              </Spring>
             )}
-          </Spring>
+          </EasterEggContext.Consumer>
 
           <div
             css={css`
@@ -114,6 +144,8 @@ const Capability = ({ imageSrc, imageAlt, content, index, id, maxWidth }) => {
 Capability.propTypes = {
   imageSrc: PropTypes.object.isRequired,
   imageAlt: PropTypes.string.isRequired,
+  imageGif: PropTypes.string.isRequired,
+  imageGifAlt: PropTypes.string.isRequired,
   content: PropTypes.node.isRequired,
   index: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,

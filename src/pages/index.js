@@ -22,6 +22,14 @@ const Index = ({ data }) => {
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
 
+  // Silly holiday treat.
+  const today = new Date();
+  const isThanksgiving = today.getMonth() === 10 && today.getDate() === 24;
+  const isDayBeforeThanksgiving =
+    today.getMonth() === 10 && today.getDate() === 23;
+  const isDayAfterThanksgiving =
+    today.getMonth() === 10 && today.getDate() === 25;
+
   return (
     <Layout
       headerData={{
@@ -31,7 +39,21 @@ const Index = ({ data }) => {
             {' '}
             Building delightful,
             <br />
-            award-winning experiences.
+            award-winning&nbsp;{' '}
+            {isDayBeforeThanksgiving ||
+            isThanksgiving ||
+            isDayAfterThanksgiving ? (
+              <>
+                <span role='img' aria-label='turkey'>
+                  🦃&nbsp;
+                </span>
+                <span role='img' aria-label='fork and knife with plate'>
+                  🍽
+                </span>
+              </>
+            ) : (
+              `experiences`
+            )}
           </>
         ),
         mobileMinHeight: '93vh',
@@ -79,7 +101,7 @@ const Index = ({ data }) => {
           <LogoGrid
             backgroundColor={colors.lightblue}
             logoset='partnersCertified'
-            title={`Our Expertise`}
+            title='Our Expertise'
             minHeight='100px !important'
             defaultItemWidth='20%'
             styles={css`
@@ -182,6 +204,12 @@ export const query = graphql`
             fluid(maxWidth: 530, maxHeight: 400) {
               ...GatsbyImageSharpFluid_withWebp
             }
+            gatsbyImageData(
+              height: 400
+              width: 530
+              transformOptions: { cropFocus: CENTER }
+              layout: FULL_WIDTH
+            )
           }
           childImageSlideMobile: childImageSharp {
             fluid(maxWidth: 325, maxHeight: 250) {

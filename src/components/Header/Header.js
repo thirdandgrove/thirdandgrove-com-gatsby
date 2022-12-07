@@ -122,7 +122,6 @@ const Header = ({
     }
 
     position: relative;
-    margin-bottom: ${titleMarginBottom};
     padding: 0 20px;
     line-height: 1.23;
     font-size: 39px;
@@ -136,6 +135,7 @@ const Header = ({
     animation-timing-function: ease-out;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    margin: 0 17% ${titleMarginBottom} 17%;
 
     &::after {
       content: '';
@@ -182,7 +182,7 @@ const Header = ({
     font-family: ${fonts.sans};
     font-size: 15px;
     line-height: 2.4;
-    text-transform: capitalize;
+    text-transform: inherit;
     color: ${fontColor};
     text-align: center;
     padding-left: 20px;
@@ -331,7 +331,7 @@ const Header = ({
           </span>
         )}
         {title && (
-          <h1 data-cy='titleText' css={headerTitle}>
+          <h1 data-cy='titleText' className='balance-text' css={headerTitle}>
             {title}
           </h1>
         )}
