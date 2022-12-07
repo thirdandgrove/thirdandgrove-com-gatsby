@@ -57,7 +57,7 @@ const Gatsby = query => {
         `}
       >
         <div css={badgeStyle}>
-          <img src={GatsbyBadge} alt='Drupal Badge' width='180' />
+          <img src={GatsbyBadge} alt='Gatsby Badge' width='180' />
         </div>
         <h4>
           Build a digital experience that your competitors can’t compete with
