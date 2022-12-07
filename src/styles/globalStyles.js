@@ -519,7 +519,11 @@ export const globalStyles = css`
     line-height: 1.42;
   }
 
-  code:before,
+  code:before {
+    letter-spacing: -0.2em;
+    content: '';
+  }
+
   code:after,
   tt:before,
   tt:after {
