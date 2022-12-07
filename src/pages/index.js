@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
@@ -20,10 +21,13 @@ const Index = ({ data }) => {
   const hasScrolled = useHasBeenVisible(halfPage);
   const isScrolling = useHasBeenVisible(preload);
 
-  // silly holiday treats
-  // const today = new Date();
-  // const isHalloween = today.getMonth() === 9 && today.getDate() === 31;
-  // const isChristmas = today.getMonth() === 11 && today.getDate() === 25;
+  // Silly holiday treat.
+  const today = new Date();
+  const isThanksgiving = today.getMonth() === 10 && today.getDate() === 24;
+  const isDayBeforeThanksgiving =
+    today.getMonth() === 10 && today.getDate() === 23;
+  const isDayAfterThanksgiving =
+    today.getMonth() === 10 && today.getDate() === 25;
 
   return (
     <Layout
@@ -31,30 +35,37 @@ const Index = ({ data }) => {
         metaTitle: `We are an obsessive digital innovation company`,
         title: (
           <>
-            {/* This is going to re-implemented after a couple weeks */}
-            {/* A digital agency{' '} */}
-            slaying the mundane,
-            <br /> pixel by pixel.
-            {/* Holy S%#*! that was fast.
+            {' '}
+            Building delightful,
             <br />
-            (With{' '}
-            <Link
-              css={css`
-                color: ${colors.darkgray};
-                text-decoration: underline;
-              `}
-              to='/partners/gatsby/'
-            >
-              Gatsby
-            </Link>{' '}
-            it&apos;s all fire, no waiting) */}
+            award-winning&nbsp;{' '}
+            {isDayBeforeThanksgiving ||
+            isThanksgiving ||
+            isDayAfterThanksgiving ? (
+              <>
+                <span role='img' aria-label='turkey'>
+                  🦃&nbsp;
+                </span>
+                <span role='img' aria-label='fork and knife with plate'>
+                  🍽
+                </span>
+              </>
+            ) : (
+              `experiences`
+            )}
           </>
         ),
         mobileMinHeight: '93vh',
       }}
     >
       {' '}
-      <ProjectsSlider data={data.allCaseStudy} />
+      <ProjectsSlider
+        data={{
+          nodes:
+            data.allEntitySubqueueCaseStudySliderHomepage.nodes[0].relationships
+              .items,
+        }}
+      />
       <CapabilitiesSlider
         title='What We Do'
         backgroundColor={colors.lightblue}
@@ -84,9 +95,18 @@ export default Index;
 
 export const query = graphql`
   {
+    allEntitySubqueueCaseStudySliderHomepage {
+      nodes {
+        relationships {
+          items {
+            ...CaseStudyFragment
+          }
+        }
+      }
+    }
     allCaseStudy(
       sort: { fields: created, order: DESC }
-      limit: 7
+      limit: 8
       filter: { field_hidden: { eq: false } }
     ) {
       nodes {
@@ -121,6 +141,13 @@ export const query = graphql`
       uid {
         name: display_name
       }
+      field_e_book_file {
+        filename
+        id
+        localFile {
+          publicURL
+        }
+      }
       field_image {
         id
         localFile {
@@ -129,6 +156,12 @@ export const query = graphql`
             fluid(maxWidth: 530, maxHeight: 400) {
               ...GatsbyImageSharpFluid_withWebp
             }
+            gatsbyImageData(
+              height: 400
+              width: 530
+              transformOptions: { cropFocus: CENTER }
+              layout: FULL_WIDTH
+            )
           }
           childImageSlideMobile: childImageSharp {
             fluid(maxWidth: 325, maxHeight: 250) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import { mediaQueries } from '../../styles';
@@ -36,12 +36,12 @@ const ImageSlider = ({ data }) => {
       height='0'
       css={css`
         padding-top: 25px;
-        padding-bottom: 60px;
+        padding-bottom: 0;
         padding-left: 0;
         padding-right: 0;
 
         ${mediaQueries.phoneLarge} {
-          padding-bottom: 115px;
+          padding-bottom: 0;
           padding-top: 90px;
         }
       `}
@@ -51,7 +51,7 @@ const ImageSlider = ({ data }) => {
         css={css`
           max-width: 100%;
           max-height: 100%;
-          margin-bottom: 65px;
+          margin-bottom: 0;
           overflow: hidden;
 
           .slick-list {
@@ -70,8 +70,8 @@ const ImageSlider = ({ data }) => {
         {data &&
           data.nodes.map(node => {
             return (
-              <Img
-                fluid={node.childImageSharp.fluid}
+              <GatsbyImage
+                image={node.childImageSharp.gatsbyImageData}
                 key={node.publicURL}
                 alt='Boston'
               />

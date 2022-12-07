@@ -7,7 +7,6 @@ import styled from '@emotion/styled';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
-import WhatWeDo from '../components/WhatWeDo';
 import ImageSlider from '../components/ImageSlider';
 import { TextWrapper } from '../components/Prefooter';
 import {
@@ -51,21 +50,42 @@ const Boston = ({ data }) => {
         color: ${colors.darkgray};
         letter-spacing: -1.38px;
         text-align: center;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
 
         ${mediaQueries.phoneLarge} {
-          margin-bottom: 36px;
           font-size: 48px;
         }
       }
       h3 {
         font-family: ${fonts.sans};
-        font-weight: ${weights.light};
-        font-size: 15px;
+        font-weight: ${weights.bold};
+        font-size: 16px;
+        line-height: 23px;
         color: ${colors.darkgray};
         letter-spacing: 0.2px;
         text-align: center;
       }
+    }
+  `;
+
+  const introText = css`
+    font-size: 21px;
+    font-weight: weights.bold;
+    line-height: 1.48;
+    text-align: center;
+    color: ${colors.darkgray};
+    padding: 70px 0;
+
+    ${mediaQueries.phoneLarge} {
+      font-weight: ${weights.bold};
+      text-align: center;
+      letter-spacing: -0.09px;
+      line-height: 1.48;
+      width: ${contValues.min};
+    }
+
+    a {
+      text-decoration: underline;
     }
   `;
 
@@ -86,17 +106,7 @@ const Boston = ({ data }) => {
       }}
     >
       <FullWidthSection textAlign='center' height='750px' minHeight='730px'>
-        <h4
-          css={[
-            pLight,
-            css`
-              padding: 70px 0;
-              ${mediaQueries.phoneLarge} {
-                width: ${contValues.min};
-              }
-            `,
-          ]}
-        >
+        <h4 css={introText}>
           We’re a full service Boston-based agency with the best engingeers in
           the city – any city really. We are the only Drupal development agency
           to employ a Drupal 8 core maintainer and consistently rank in
@@ -138,8 +148,6 @@ const Boston = ({ data }) => {
         </Row>
       </FullWidthSection>
       <ImageSlider data={data.slider} />
-      <WhatWeDo />
-
       <FullWidthSection
         height='750px'
         css={css`
@@ -180,7 +188,15 @@ const Boston = ({ data }) => {
         </TextWrapper>
         <TextWrapper backgroundColor={colors.lightblue}>
           <h3>Join the best in Boston.</h3>
-          <Button onClick={() => navigate(`/careers/`)}>Work at TAG</Button>
+          <Button>
+            <a
+              href='https://thirdandgrove.breezy.hr/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Work at TAG
+            </a>
+          </Button>
         </TextWrapper>
       </SplitSection>
     </Layout>
@@ -203,9 +219,7 @@ export const query = graphql`
     slider: allFile(filter: { absolutePath: { regex: "/boston-page/" } }) {
       nodes {
         childImageSharp {
-          fluid(maxWidth: 363, maxHeight: 363) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(width: 363, height: 363, layout: CONSTRAINED)
         }
       }
     }

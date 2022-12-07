@@ -43,8 +43,22 @@ export default () => {
       `}
     >
       <fieldset css={fieldsetStyles}>
+        <legend
+          css={css`
+            display: none;
+          `}
+        >
+          Newsletter Form
+        </legend>
         {/* eslint-disable-next-line */}
-        <label htmlFor='nws-email' />
+        <label
+          htmlFor='nws-email'
+          css={css`
+            display: none;
+          `}
+        >
+          Email Address
+        </label>
         {!submitted && (
           <Input
             type='email'

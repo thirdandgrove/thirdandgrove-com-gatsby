@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const SEO = ({ description, lang, meta, keywords, title, image }) => {
+const SEO = ({ description, lang, meta, keywords, title, image, noIndex }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,6 +26,24 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
 
   const imageWithFullpath = `https://www.thirdandgrove.com${metaImage}`;
 
+  const balanceTextURL =
+    'https://cdnjs.cloudflare.com/ajax/libs/balance-text/3.3.0/balancetext.min.js';
+
+  const handleChangeClientState = (newState, addedTags) => {
+    if (addedTags && addedTags.scriptTags) {
+      const script = addedTags.scriptTags.find(
+        ({ src }) => src === balanceTextURL
+      );
+      if (script) {
+        script.addEventListener('load', () => window.balanceText(), {
+          once: true,
+        });
+      }
+    }
+  };
+
+  const metaRobots = noIndex ? 'noindex,nofollow' : 'index,follow';
+
   return (
     <Helmet
       htmlAttributes={{
@@ -34,6 +52,14 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
+        {
+          name: `googlebot`,
+          content: metaRobots,
+        },
+        {
+          name: `robots`,
+          content: metaRobots,
+        },
         {
           name: `description`,
           content: metaDescription,
@@ -84,6 +110,7 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
             : []
         )
         .concat(meta)}
+      onChangeClientState={handleChangeClientState}
     >
       <link
         rel='preload'
@@ -156,6 +183,14 @@ const SEO = ({ description, lang, meta, keywords, title, image }) => {
         {'GTM-MKBKRBC':true});
     `}
       </script>
+      <script src={balanceTextURL} />
+      <style type='text/css'>
+        {`/* Apply (proposed) CSS style. Plugin looks for elements with class named "balance-text" */
+          .balance-text {
+            text-wrap: balance;
+          }
+        `}
+      </style>
     </Helmet>
   );
 };
@@ -167,6 +202,7 @@ SEO.defaultProps = {
   description: ``,
   title: null,
   image: null,
+  noIndex: false,
 };
 
 SEO.propTypes = {
@@ -176,6 +212,7 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string,
   image: PropTypes.string,
+  noIndex: PropTypes.bool,
 };
 
 export default SEO;

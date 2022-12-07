@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
@@ -12,10 +12,10 @@ import {
   NewsletterFullWidthSection,
   NewsletterOverlay,
 } from '../components/NewsletterForm';
+import { updateExternalLinks } from '../util';
 
 const Insights = ({ data }) => {
   const post = data.insight;
-
   const imageAlt = post.field_image && post.field_image.alt;
 
   const backgroundColor = post.field_color && post.field_color.color;
@@ -27,17 +27,54 @@ const Insights = ({ data }) => {
     }
   `;
 
+  const headerData = {
+    title: post.title,
+    label: post.relationships.field_e_book_file
+      ? `Special Report`
+      : `${post.created} - ${post.relationships.uid.name}`,
+    invert: post.field_inverse_header,
+    defaultBackground: false,
+    color: backgroundColor || colors.yellow,
+    mobileMinHeight: '470px',
+    titleMarginBottom: '70px',
+  };
+
+  const splitHeaderData = {
+    title: post.title,
+    label: post.relationships.field_e_book_file
+      ? `Special Report`
+      : `${post.created} - ${post.relationships.uid.name}`,
+    invert: post.field_inverse_header,
+    splitHeroImage: post.relationships.field_image,
+    file: post.relationships.field_e_book_file,
+    defaultBackground: false,
+    color: backgroundColor || colors.yellow,
+    mobileMinHeight: '470px',
+    titleMarginBottom: '40px',
+    imageAlt,
+    summary: post.field_summary ? post?.field_summary.processed : '',
+    ebook: post.relationships.field_e_book_file
+      ? post.relationships.field_e_book_file
+      : '',
+  };
+
+  if (post.relationships.field_image) {
+    headerData.image = post.relationships.field_image.localFile.publicURL;
+    splitHeaderData.image = post.relationships.field_image.localFile.publicURL;
+  }
+
+  useEffect(
+    () => updateExternalLinks(document.querySelectorAll('main > div a')),
+    []
+  );
+
   return (
     <Layout
-      headerData={{
-        title: post.title,
-        label: `${post.created} - ${post.relationships.uid.name}`,
-        invert: post.field_inverse_header,
-        defaultBackground: false,
-        color: backgroundColor || colors.yellow,
-        mobileMinHeight: '470px',
-        titleMarginBottom: '70px',
-      }}
+      headerData={headerData}
+      split={post.relationships.field_e_book_file && true}
+      splitHeaderData={
+        post.relationships.field_e_book_file ? splitHeaderData : {}
+      }
     >
       <div
         css={[
@@ -49,35 +86,42 @@ const Insights = ({ data }) => {
           wrapperStyle,
         ]}
       >
-        {post.relationships.field_image && (
-          <Img
-            fluid={
-              post.relationships.field_image.localFile.childImageSharp.fluid
-            }
-            alt={imageAlt}
-            css={css`
-              margin-left: 20px;
-              margin-right: 20px;
-              margin-top: -100px;
-              margin-bottom: 60px;
-              max-width: 980px;
-
-              ${mediaQueries.phoneLarge} {
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: -165px;
-                margin-bottom: 80px;
+        {!post.relationships.field_e_book_file &&
+          post.relationships.field_image && (
+            <Img
+              fluid={
+                post.relationships.field_image.localFile.childImageSharp.fluid
               }
-            `}
-          />
-        )}
+              alt={imageAlt}
+              css={css`
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: -100px;
+                margin-bottom: 60px;
+                max-width: 980px;
+
+                ${mediaQueries.phoneLarge} {
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-top: -165px;
+                  margin-bottom: 80px;
+                }
+              `}
+            />
+          )}
+
         <ContentBody
           comps={post.relationships.field_components}
           type='insight'
+          trim
         />
       </div>
-      <NewsletterOverlay />
-      <NewsletterFullWidthSection />
+      {!post.relationships.field_e_book_file && (
+        <>
+          <NewsletterOverlay />
+          <NewsletterFullWidthSection />
+        </>
+      )}
       <InsightsSlider
         data={data.allInsight}
         showButton={false}
@@ -119,6 +163,9 @@ export const query = graphql`
       field_image {
         alt
       }
+      field_summary {
+        processed
+      }
       created(formatString: "MMM D, YYYY")
       relationships {
         node_type {
@@ -127,12 +174,29 @@ export const query = graphql`
         uid {
           name: display_name
         }
+        field_e_book_file {
+          filename
+          id
+          localFile {
+            publicURL
+          }
+        }
         field_image {
           id
           localFile {
             publicURL
             childImageSharp {
               fluid(maxWidth: 980, maxHeight: 500) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+            childImageSquare: childImageSharp {
+              fluid(maxWidth: 1280, maxHeight: 1280) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+            childImageLandscape: childImageSharp {
+              fluid(maxWidth: 1280, maxHeight: 780) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -246,6 +310,18 @@ export const query = graphql`
                   }
                 }
               }
+            }
+          }
+          ... on component__video {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_video_controls
+            field_vimeo_video_link {
+              uri
             }
           }
         }

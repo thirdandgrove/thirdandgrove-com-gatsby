@@ -16,9 +16,18 @@ const CTAGrid = ({
   backgroundColor,
   link,
   cta,
+  maxWidth,
   gridColumns,
+  invisibleCta,
+  noPaddingImg,
   altStyle,
+  extraCssItem,
+  extraCssGrid,
+  extraCSSSection,
+  width,
 }) => {
+  const containerWidth = maxWidth ? container.max : container.textOnly;
+
   const ctaGridContainer = css`
     display: grid;
     -ms-grid-columns: 1fr 1fr;
@@ -29,7 +38,8 @@ const CTAGrid = ({
     padding-bottom: 0;
 
     ${mediaQueries.phoneLarge} {
-      ${container.textOnly}
+      ${width !== '' ? `width: ${width};` : containerWidth}
+      max-width: 100%;
       display: grid;
       -ms-grid-columns: ${gridColumns};
       grid-template-columns: ${gridColumns};
@@ -37,6 +47,8 @@ const CTAGrid = ({
       grid-row-gap: 70px;
       padding-bottom: 72px;
     }
+
+    ${extraCssGrid}
   `;
 
   const ctaGridContainerAlt = css`
@@ -49,6 +61,8 @@ const CTAGrid = ({
       grid-template-columns: 1fr 1fr;
       grid-column-gap: 100px;
     }
+
+    ${extraCssGrid}
   `;
 
   const sectionPadding = css`
@@ -57,6 +71,8 @@ const CTAGrid = ({
     ${mediaQueries.phoneLarge} {
       padding: 100px 0;
     }
+
+    ${extraCSSSection}
   `;
 
   const sectionPaddingAlt = css`
@@ -65,6 +81,8 @@ const CTAGrid = ({
     ${mediaQueries.phoneLarge} {
       padding: 100px 0;
     }
+
+    ${extraCSSSection}
   `;
 
   const sectionStyles = css`
@@ -79,7 +97,7 @@ const CTAGrid = ({
       line-height: 39px;
 
       ${mediaQueries.phoneLarge} {
-        width: 820px;
+        width: ${maxWidth}px;
         max-width: 100%;
         margin: 0 auto;
         font-size: 39px;
@@ -102,17 +120,22 @@ const CTAGrid = ({
     <FullWidthSection css={sectionStyles} backgroundColor={backgroundColor}>
       {header !== '' && <h3>{header}</h3>}
       <div css={!altStyle ? ctaGridContainer : ctaGridContainerAlt}>
-        {items.map(({ node }) => (
-          <CTAGridItem
-            key={node.title}
-            icon={getImageSrc(node.icon)}
-            title={node.title}
-            description={node.description}
-            altStyle={altStyle}
-          />
-        ))}
+        {items.map(item => {
+          const node = item?.node || item;
+          return (
+            <CTAGridItem
+              key={node.title}
+              icon={getImageSrc(node.icon)}
+              title={node.title}
+              description={node.description}
+              altStyle={altStyle}
+              extraCssItem={extraCssItem}
+              noPaddingImg={noPaddingImg}
+            />
+          );
+        })}
       </div>
-      {!altStyle && (
+      {!altStyle && !invisibleCta && (
         <div css={buttonStyle}>
           {link.indexOf('#') !== -1 ? (
             <a href={link} className='anchor'>
@@ -138,7 +161,14 @@ CTAGrid.propTypes = {
   backgroundColor: PropTypes.string,
   link: PropTypes.string,
   cta: PropTypes.string,
+  maxWidth: PropTypes.bool,
   gridColumns: PropTypes.string,
+  invisibleCta: PropTypes.bool,
+  noPaddingImg: PropTypes.bool,
+  extraCssItem: PropTypes.object,
+  extraCssGrid: PropTypes.object,
+  extraCSSSection: PropTypes.object,
+  width: PropTypes.string,
 };
 
 CTAGrid.defaultProps = {
@@ -149,7 +179,14 @@ CTAGrid.defaultProps = {
   backgroundColor: '#FFF',
   link: '/',
   cta: 'Get Support Now',
+  maxWidth: false,
   gridColumns: '1fr 1fr 1fr',
+  invisibleCta: false,
+  noPaddingImg: false,
+  extraCssItem: null,
+  extraCssGrid: null,
+  extraCSSSection: null,
+  width: '',
 };
 
 export default CTAGrid;

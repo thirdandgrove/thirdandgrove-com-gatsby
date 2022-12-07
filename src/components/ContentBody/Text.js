@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import parse, { domToReact } from 'html-react-parser';
+import PostCode from './PostCode';
 
 import FullWidthSection from '../FullWidthSection';
 import {
@@ -11,6 +13,40 @@ import {
   mediaQueries,
   dropCap,
 } from '../../styles';
+
+const getLanguage = node => {
+  if (node.children.length > 0 && node.children[0].name === 'code') {
+    if (node.children[0].attribs.class != null) {
+      return node.children[0].attribs.class
+        .replace('language-', '')
+        .replace('has-normal-font-size', '')
+        .trim()
+        .toString();
+    }
+  }
+  return null;
+};
+
+const getCode = node => {
+  if (node.children.length > 0 && node.children[0].name === 'code') {
+    return node.children[0].children;
+  }
+  return node.children;
+};
+
+// eslint-disable-next-line consistent-return
+const replaceCode = node => {
+  if (node.name === 'pre') {
+    return (
+      node.children.length > 0 && (
+        <PostCode language={getLanguage(node)}>
+          {domToReact(getCode(node))}
+        </PostCode>
+      )
+    );
+  }
+  return null;
+};
 
 const Text = ({ data }) => {
   const renderDropCap = data.type === 'insight' && data.isFirstText;
@@ -23,7 +59,6 @@ const Text = ({ data }) => {
       align='start'
       justify='start'
       height='auto'
-      dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
       css={css`
         .stats-container,
         .stat-container {
@@ -32,20 +67,16 @@ const Text = ({ data }) => {
           align-items: center;
           width: 100%;
         }
-
         .stats-container {
           flex-direction: column;
         }
-
         .stat-container {
           flex: auto;
           flex-direction: column;
           margin-bottom: 24px;
-
           :last-of-type {
             margin-bottom: 0;
           }
-
           h4 {
             font-size: 48px;
             font-weight: bold;
@@ -53,7 +84,6 @@ const Text = ({ data }) => {
             line-height: 54px;
             margin-bottom: 0;
           }
-
           p {
             font-size: 16px;
             font-weight: bold;
@@ -61,7 +91,6 @@ const Text = ({ data }) => {
             line-height: 27px;
           }
         }
-
         ${container.min} ${mediaQueries.phoneLarge} {
           .stats-container {
             flex-direction: row;
@@ -71,22 +100,26 @@ const Text = ({ data }) => {
           }
           padding: 0;
         }
-
         ${renderDropCap && dropCap}
-
         a {
           text-decoration: underline;
         }
-
         h2 {
           ${contentH2}
         }
-
         h3 {
           ${contentHeadings}
         }
+        pre {
+          overflow: auto;
+          width: 100%;
+        }
       `}
-    />
+    >
+      {parse(data.field_body.processed, {
+        replace: replaceCode,
+      })}
+    </FullWidthSection>
   );
 };
 

@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import { container, mediaQueries, weights, contentHeadings } from '../styles';
 
 const Legal = () => {
-  const date = 'Effective: Apr 1, 2019';
+  const date = 'Effective: Apr 1, 2021';
   const mailto = 'hello@thirdandgrove.com';
 
   return (

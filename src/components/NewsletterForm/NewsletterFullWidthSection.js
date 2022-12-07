@@ -8,7 +8,7 @@ import NewsletterForm from './NewsletterForm';
 
 export default () => (
   <FullWidthSection padding='60px 20px'>
-    <h1
+    <h2
       css={css`
         ${mediaQueries.phoneLarge} {
           height: 84px;
@@ -33,10 +33,10 @@ export default () => (
       `}
     >
       Don&apos;t be a stranger.
-    </h1>
+    </h2>
     <div
       css={css`
-        max-with: '335px';
+        max-width: '335px';
         display: flex;
         flex-direction: column;
         justify-content: center;

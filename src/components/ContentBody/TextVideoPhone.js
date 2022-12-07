@@ -46,12 +46,19 @@ const TextVideoPhone = ({ data }) => {
     align-items: center;
   `;
 
+  // eslint-disable-next-line
+  let videoSrc = require(`../../../static/${data.field_video_file_name}`);
+
+  if (videoSrc.default) {
+    videoSrc = videoSrc.default;
+  }
+
   return data.field_reversed ? (
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
         <PhoneVideo
           // eslint-disable-next-line
-          src={require(`../../../static/${data.field_video_file_name}`)}
+          src={videoSrc}
           title='CloudHealth'
         />
       </section>
@@ -69,7 +76,7 @@ const TextVideoPhone = ({ data }) => {
       <section>
         <PhoneVideo
           // eslint-disable-next-line
-          src={require(`../../../static/${data.field_video_file_name}`)}
+          src={videoSrc}
           title='CloudHealth'
         />
       </section>

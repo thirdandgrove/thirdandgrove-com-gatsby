@@ -19,7 +19,7 @@ import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
-import DrupalBadge from '../../../static/images/drupal-badge.svg';
+import DrupalBadge from '../../../static/images/drupal-certified-diamond-partner.svg';
 
 const Drupal = query => {
   const { insights, caseStudies } = query.data;
@@ -115,39 +115,72 @@ const Drupal = query => {
           }
 
           ${mediaQueries.phoneLarge} {
-            ${container.min};
+            ${container.medium}
           }
         `}
       >
-        <div css={badgeStyle}>
-          <img src={DrupalBadge} alt='Drupal Badge' width='180' height='180' />
-        </div>
-        <h3>Go from bottlenecked to bottoms up</h3>
-        <p>
-          We partner with brands that give a damn about their Drupal
-          implementation. Your team can’t win if you constantly struggle with
-          slow developer velocity and a hamstrung marketing team. And your
-          content surely won’t shine if you’re missing a backend that empowers
-          your team to do your best work.
-        </p>
-        <p>
-          We’re confident that we’re the best team out there to solve your
-          problems because we can dream big with you and have the experience to
-          back it up. We’re also the only agency on Earth with a Drupal 8 core
-          maintainer that allows us to stay on the cutting-edge of all things
-          Drupal.
-        </p>
-        <div>
-          <ul>
-            <li>Drupal migration</li>
-            <li>Replatform/redesign</li>
-            <li>Content Migration</li>
-          </ul>
-          <ul>
-            <li>Ongoing support</li>
-            <li>Training and resource augmentation</li>
-          </ul>
-        </div>
+        <SplitSection
+          gridTemplateColumns='45% 49%'
+          css={css`
+            direction: rtl;
+          `}
+        >
+          <section
+            css={css`
+              margin: 20px;
+              text-align: center;
+              ${mediaQueries.phoneLarge} {
+                margin: 0 20px 0 80px;
+              }
+            `}
+          >
+            <img
+              alt='Drupal Diamond Certified Partner'
+              src={DrupalBadge}
+              width='200'
+              css={css`
+                max-width: none;
+              `}
+            />
+          </section>
+          <section
+            css={css`
+              direction: ltr;
+            `}
+          >
+            <h3>Go from bottlenecked to bottoms up</h3>
+            <p>
+              We are one of only two Diamond Certified Drupal Partners globally,
+              the highest certification tier offered by the Drupal Association.
+              This means you can be confident that we’re the best team out there
+              to solve your problems.
+            </p>
+            <p>
+              Your team can’t win if you constantly struggle with slow developer
+              velocity and a hamstrung marketing team. And your content surely
+              won’t shine if you’re missing a backend that empowers your team to
+              do their best work.
+            </p>
+            <p>
+              We’re also the only agency with a Drupal 9 core maintainer. This
+              allows us to stay on the cutting-edge of all things Drupal and
+              provides us the ability to contribute a substantial number of
+              hours giving back to the open-source community.
+            </p>
+            <p>We’re here to dream big with you.</p>
+            <div>
+              <ul>
+                <li>Drupal migration</li>
+                <li>Replatform/redesign</li>
+                <li>Content Migration</li>
+              </ul>
+              <ul>
+                <li>Ongoing support</li>
+                <li>Training and resource augmentation</li>
+              </ul>
+            </div>
+          </section>
+        </SplitSection>
       </FullWidthSection>
       <ProjectsSlider
         data={caseStudies}
@@ -221,15 +254,12 @@ const Drupal = query => {
           </p>
         </article>
         <article>
-          <h2>Drupal 8</h2>
+          <h2>Drupal Migrations</h2>
           <p>
-            We know D8 inside and out and we work collaboratively with our
-            clients to fully map out their brand vision before we migrate from
-            Drupal 7 (or any other platform.) The end result is a beautiful
-            experience on the outside and a powerful backend that maximizes the
-            capabilities of what D8 has to offer. We go fast too — we migrated
-            one of the highest-trafficked sites in the world to Drupal in six
-            weeks.
+            We’ve migrated clients from every CMS under the sun, including
+            WordPress, Craft, Sitecore, Adobe, and even custom CMS. We use an
+            established process and custom tooling to create fast, strategic
+            content migrations.
           </p>
         </article>
         <article>

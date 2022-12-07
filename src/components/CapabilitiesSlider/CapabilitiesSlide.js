@@ -60,7 +60,12 @@ function CapabilitiesSlide({ title, description, icon, link }) {
   }, []);
 
   // eslint-disable-next-line
-  const imageSrc = require(`${icon}`);
+  let imageSrc = require(`${icon}`);
+
+  if (imageSrc.default) {
+    imageSrc = imageSrc.default;
+  }
+
   const Card = styled.div`
     opacity: 1 !important;
 

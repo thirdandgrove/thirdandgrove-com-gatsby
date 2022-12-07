@@ -77,7 +77,7 @@ const CapabilitiesSlider = ({ backgroundColor, title }) => {
       position: relative;
 
       ${mediaQueries.phoneLarge} {
-        max-width: 450px;
+        max-width: 750px;
         margin-bottom: 136px;
       }
     }

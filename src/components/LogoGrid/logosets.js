@@ -1,9 +1,11 @@
 import React from 'react';
 
-import addyAward from './logos/addy-award.svg';
-import museLogo from './logos/muse-logo.png';
-import acquiaEngageLogo from './logos/acquia-engage-logo.svg';
-import awwwLogo from './logos/awwwards-logo.png';
+import coreValuesOne from '../../images/about/corevalues-1.png';
+import coreValuesTwo from '../../images/about/corevalues-2.png';
+import coreValuesThree from '../../images/about/corevalues-3.png';
+import coreValuesFour from '../../images/about/corevalues-4.png';
+import coreValuesFive from '../../images/about/corevalues-5.png';
+
 import harvardLogo from './logos/harvard.svg';
 import googleLogo from './logos/google.svg';
 import foxLogo from './logos/fox.svg';
@@ -20,7 +22,7 @@ import pernodLogo from './logos/pernodricard.svg';
 import mintLogo from './logos/intuit-mint.svg';
 import glanbia from './logos/glanbia.svg';
 import wvi from './logos/world-vision.svg';
-import kingArthur from './logos/KAB-logo-K.png';
+import kingArthur from './logos/KAB-logo-K.svg';
 import cloudHealth from './logos/cloudhealth.svg';
 import cooperVision from './logos/cooper-vision.svg';
 import memebox from './logos/memebox-logo.svg';
@@ -45,11 +47,28 @@ import isgm from './logos/isgm_logo.svg';
 import prudential from './logos/prudential_logo.svg';
 import universal from './logos/universal_music_logo.png';
 import carlyle from './logos/carlyle.png';
-import hawaiianHost from './logos/hawaiian-host.svg';
+import boissance from './logos/boissance.svg';
+import hawaiianHost from './logos/hawiian-host-logo-gray.svg';
+import wcBradley from './logos/wc-bradley.svg';
+import gLogo from './logos/g-logo.svg';
 import rubios from './logos/rubios-logo.svg';
-import w3Awards from './logos/w3-awards.png';
-import cssAwards from './logos/css-awards.png';
-import dadiAwards from './logos/dadi-awards.png';
+import farmacyLogo from './logos/farmacy-logo.svg';
+import amorepacifioLogo from './logos/amorepacifio-logo.svg';
+import laneige from './logos/laneige.svg';
+import dansko from './logos/dansko.svg';
+import boostLogo from './logos/boost.png';
+import yotpoLogo from './logos/yotpo.png';
+import klaviyoLogo from './logos/klaviyo.png';
+import eaLogo from './logos/essential-accessibility.png';
+import rechargeLogo from './logos/recharge.png';
+import shopifyLogo from './logos/shopify-plus-logo.svg';
+import addyAward from './logos/awards/addy-award.svg';
+import museLogo from './logos/awards/muse-logo.png';
+import awwwLogo from './logos/awards/awwwards-logo.png';
+import w3Awards from './logos/awards/w3-awards.png';
+import cssAwards from './logos/awards/css-awards.png';
+import dadiAwards from './logos/awards/dadi-awards.png';
+import daveyAwards from './logos/awards/davey-awards.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -121,6 +140,38 @@ export default (logoset, isSmScreen) => {
         alt='jameson'
         width={isSmScreen ? '95' : '150'}
         height={isSmScreen ? '48' : '76'}
+      />,
+    ],
+    shopifyApps: [
+      <img
+        src={shopifyLogo}
+        alt='Yotpo'
+        width={isSmScreen ? '120' : '202'}
+        height={isSmScreen ? '66' : '112'}
+      />,
+      <img
+        src={yotpoLogo}
+        alt='Yotpo'
+        width={isSmScreen ? '40' : '71'}
+        height={isSmScreen ? '43' : '76'}
+      />,
+      <img
+        src={klaviyoLogo}
+        alt='Klaviyo'
+        width={isSmScreen ? '120' : '202'}
+        height={isSmScreen ? '66' : '112'}
+      />,
+      <img
+        src={eaLogo}
+        alt='Essential Accessibility'
+        width={isSmScreen ? '140' : '238'}
+        height={isSmScreen ? '31' : '54'}
+      />,
+      <img
+        src={rechargeLogo}
+        alt='Recharge'
+        width={isSmScreen ? '100' : '176'}
+        height={isSmScreen ? '26' : '46'}
       />,
     ],
     acquia: [
@@ -455,39 +506,109 @@ export default (logoset, isSmScreen) => {
       <img
         src={addyAward}
         alt='Addy Awards'
-        width={isSmScreen ? '80' : '90'}
-        height={isSmScreen ? '42' : '62'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={museLogo}
         alt='Muse Awards'
-        width={isSmScreen ? '140' : '200'}
-        height={isSmScreen ? '64' : '84'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={awwwLogo}
         alt='Awww Awards'
-        width={isSmScreen ? '109' : '135'}
-        height={isSmScreen ? '42' : '62'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={w3Awards}
         alt='W3 Awards'
-        width={isSmScreen ? '128' : '142'}
-        height={isSmScreen ? '60' : '70'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={cssAwards}
         alt='CSS awards'
-        width={isSmScreen ? '168' : '210'}
-        height={isSmScreen ? '40' : '60'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
       <img
         src={dadiAwards}
         alt='Dadi awards'
-        width={isSmScreen ? '140' : '180'}
-        height={isSmScreen ? '90' : '110'}
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
       />,
+      <img
+        src={daveyAwards}
+        alt='Davey awards'
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
+      />,
+    ],
+    corevalues: [
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesOne}
+          alt='Own it'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          We take pride in what we put forth and hold ourselves accountable for
+          outcomes both good and bad. We are each responsible for our words,
+          actions, and results.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesTwo}
+          alt='Stay Curious'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Our team knows we don’t know everything. We let our egos take a
+          backseat to our desire for learning and advancing each day.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesThree}
+          alt='Defy mediocrity'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Complacency kills. We aim for excellence and build upon each challenge
+          with increased dedication to improving our craft.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesFour}
+          alt='Do the right thing'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          What we do when nobody is watching matters. While the right path may
+          not be the easiest, we must act with integrity in all situations.
+        </p>
+      </div>,
+      <div className='corevalue-body'>
+        <img
+          src={coreValuesFive}
+          alt='Start whit heart'
+          width={isSmScreen ? '500' : '650'}
+          height={isSmScreen ? '300' : '450'}
+        />
+        <p>
+          Our people are at the center of everything we do. Give the support,
+          empathy, and energy to your teammates and clients that you expect in
+          return.
+        </p>
+      </div>,
     ],
     drupalSupport: [
       <img
@@ -539,6 +660,50 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '32' : '43'}
       />,
     ],
+    shopifyPlus: [
+      <img
+        src={amorepacifioLogo}
+        alt='AMOREPACIFIO'
+        width={isSmScreen ? '120' : '173'}
+        height={isSmScreen ? '16' : '32'}
+      />,
+      <img
+        src={laneige}
+        alt='Laneige'
+        width={isSmScreen ? '120' : '173'}
+        height={isSmScreen ? '16' : '32'}
+      />,
+      <img
+        src={hawaiianHost}
+        alt='Hawaiian Host'
+        width={isSmScreen ? '120' : '121'}
+        height={isSmScreen ? '62' : '93'}
+      />,
+      <img
+        src={farmacyLogo}
+        alt='Farmacy'
+        width={isSmScreen ? '120' : '193'}
+        height={isSmScreen ? '39' : '64'}
+      />,
+      <img
+        src={dansko}
+        alt='Dansko'
+        width={isSmScreen ? '120' : '173'}
+        height={isSmScreen ? '16' : '32'}
+      />,
+      <img
+        src={goldwin}
+        alt='Goldwin'
+        width={isSmScreen ? '120' : '180'}
+        height={isSmScreen ? '36' : '52'}
+      />,
+      <img
+        src={pernodLogo}
+        alt='Pernod Ricard'
+        width={isSmScreen ? '140' : '171'}
+        height={isSmScreen ? '49' : '63'}
+      />,
+    ],
     shopifyPlusFoodAndBeverage: [
       <img
         src={brainiac}
@@ -559,6 +724,18 @@ export default (logoset, isSmScreen) => {
         height={isSmScreen ? '49' : '63'}
       />,
       <img
+        src={gLogo}
+        alt='G'
+        width={isSmScreen ? '55' : '66'}
+        height={isSmScreen ? '55' : '66'}
+      />,
+      <img
+        src={wcBradley}
+        alt='WC | BRADLEY'
+        width={isSmScreen ? '150' : '180'}
+        height={isSmScreen ? '37' : '50'}
+      />,
+      <img
         src={kingArthur}
         alt='King Arthur'
         width={isSmScreen ? '62' : '94'}
@@ -567,7 +744,7 @@ export default (logoset, isSmScreen) => {
       <img
         src={hawaiianHost}
         alt='Hawaiian Host'
-        width={isSmScreen ? '126' : '182'}
+        width={isSmScreen ? '126' : '121'}
         height={isSmScreen ? '62' : '93'}
       />,
       <img

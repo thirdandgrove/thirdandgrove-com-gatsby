@@ -1,10 +1,8 @@
 require('dotenv').config();
 
 const isProduction =
-  process.env.BRANCH !== undefined
-    ? process.env.BRANCH !== 'master'
-      ? 'development'
-      : 'production'
+  process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
+    ? 'production'
     : 'development';
 
 module.exports = {
@@ -16,17 +14,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sitemap`,
-    {
-      resolve: `gatsby-plugin-fixhash`,
-      options: { offsetY: 20 },
-    },
-    {
-      resolve: 'gatsby-plugin-react-axe',
-      options: {
-        // Options to pass to axe-core.
-        // See: https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure
-      },
-    },
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
@@ -54,7 +41,13 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        checkSupportedExtensions: false,
+      },
+    },
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
@@ -83,12 +76,6 @@ module.exports = {
           username: process.env.BASIC_AUTH_USERNAME,
           password: process.env.BASIC_AUTH_PASSWORD,
         },
-      },
-    },
-    {
-      resolve: `gatsby-source-resumator`,
-      options: {
-        apiKey: process.env.RESUMATOR_API_KEY,
       },
     },
     `gatsby-plugin-remove-serviceworker`,
@@ -195,10 +182,14 @@ module.exports = {
           },
           development: {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: null,
-            host: null,
           },
         },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        devMode: true,
       },
     },
   ],

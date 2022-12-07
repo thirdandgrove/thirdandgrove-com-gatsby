@@ -276,7 +276,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
           >
             About
           </Link>
-          <Link
+          <a
             css={[
               linkPrimaryStyle,
               textFadeIn,
@@ -285,10 +285,12 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               desktopDelay2,
             ]}
             onClick={() => toggleOpen()}
-            to='/careers/'
+            href='https://thirdandgrove.breezy.hr/'
+            target='_blank'
+            rel='noreferrer'
           >
             Careers
-          </Link>
+          </a>
           <Link
             css={[
               linkPrimaryStyle,
@@ -361,21 +363,6 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               to='/partners/gatsby/'
             >
               Gatsby
-            </Link>
-          </div>
-          <div>
-            <Link
-              css={[
-                linkSecondaryStyle,
-                textFadeIn,
-                linkBaseStyles,
-                mobileDelay8,
-                desktopDelay5,
-              ]}
-              onClick={() => toggleOpen()}
-              to='/partners/big-commerce/'
-            >
-              BigCommerce
             </Link>
           </div>
         </section>

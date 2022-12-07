@@ -1,21 +1,28 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/react';
 
 import Layout from '../../components/layout';
+import Button from '../../components/Button';
 import FullWidthSection from '../../components/FullWidthSection';
-import ProjectsSlider from '../../components/ProjectsSlider';
 import LogoGrid from '../../components/LogoGrid';
-import { colors } from '../../styles';
-import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
+import CTAGrid from '../../components/CTAGrid';
+import Capability from '../../components/Capability';
+import Improvement from '../../components/Improvement';
+import ContactForm from '../../components/ContactForm';
 import Quote from '../../components/ContentBody/Quote';
-import CTA from '../../components/CTA';
-import ShopifyBadge from '../../../static/images/shopify-badge.svg';
-import { partnersProjects, partnersSub } from '../../styles/custom-css';
+import { colors, mediaQueries, container, fonts, weights } from '../../styles';
 
 const Shopify = query => {
-  const { insights, caseStudies } = query.data;
+  const { allShopifyJson } = query.data;
+  const { hero, testimonials, services, belowHero } = allShopifyJson?.nodes[0];
+  const sectionPadding = css`
+    padding: 50px 20px 0;
+    ${mediaQueries.phoneLarge} {
+      padding: 0;
+    }
+  `;
 
   const badgeStyle = css`
     width: 100%;
@@ -27,294 +34,333 @@ const Shopify = query => {
   return (
     <Layout
       headerData={{
-        invert: true,
-        label: 'End-to-End Agency — Deep Commerce Experience — Growth Focused',
-        title: 'Get Shopify Plus without the limits.',
-        color: colors.shopifyGreen,
-        mobileMinHeight: '620px',
+        title: hero[0]?.title,
+        subTitle: hero[0]?.subtitle,
+        color: colors.yellow,
+        mobileMinHeight: '450px',
         width: '480px',
-        titlePadding: '0 100px',
+        titlePadding: '75px 100px 0',
+        height: '450px',
       }}
     >
-      <FullWidthSection height='400px' align='left' css={partnersSub}>
-        <div css={badgeStyle}>
-          <img
-            src={ShopifyBadge}
-            alt='Shopify Badge'
-            width='180'
-            height='180'
-          />
-        </div>
-        <h4>Scalable, commerce-first experiences</h4>
-        <p>
-          Commerce is increasingly less about selling and more about inspiring
-          customers. We take the throttle off Shopify Plus to build experiences
-          that you didn’t think were possible.
-        </p>
-        <div>
-          <ul>
-            <li>Bespoke Shopify store</li>
-            <li>Migration</li>
-            <li>Ongoing support &amp; optimization</li>
-          </ul>
-          <ul>
-            <li>Custom apps &amp; integrations</li>
-            <li>CRO</li>
-            <li>Custom subscriptions/checkout</li>
-          </ul>
-        </div>
+      <FullWidthSection
+        align='left'
+        minHeight='300px'
+        css={css`
+          ${sectionPadding}
+          ${container.min}
+          h4 {
+            color: ${colors.reallydarkgray};
+            font-family: ${fonts.sans};
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 14px;
+          }
+          p {
+            font-weight: ${weights.light};
+            margin-bottom: 50px;
+            letter-spacing: -0.1px;
+          }
+        `}
+      >
+        <h4>{belowHero[0].title}</h4>
+        <p>{belowHero[0].description}</p>
       </FullWidthSection>
-      <ProjectsSlider
-        data={caseStudies}
-        backgroundColor={colors.lightgray}
-        tech='Shopify'
+
+      <FullWidthSection
+        align='left'
+        css={css`
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 106px 20px 121px;
+
+          ${mediaQueries.phoneLarge} {
+            padding: 0 0 80px;
+          }
+        `}
+      >
+        <Improvement
+          id='hawaiian-host'
+          brand='hawaiian-host'
+          brandWidth='200px'
+          content='At a time when a Pacific getaway was out of reach, we helped Hawaiian Host send the taste of the islands to your front door.'
+          imageSrc={query.data.hawaiianHostMac.childImageSharp.fluid}
+          imageAlt='Hawaiian Host'
+          stats={[
+            { description: 'Increase in traffic', percent: '61%' },
+            { description: 'Increase in Order Value', percent: '37%' },
+          ]}
+          index={0}
+          link='/work/hawaiian-host'
+          showButton
+        />
+        <Improvement
+          id='badlands'
+          brand='badlands'
+          brandWidth='250px'
+          content='We helped Badlands pivot their D2C strategy to bring the best outdoor gear in the world directly to diehards all across America.'
+          imageSrc={query.data.badlandsMac.childImageSharp.fluid}
+          imageAlt='Badlands'
+          stats={[
+            { description: 'Increase in Conversion Rate', percent: '364%' },
+          ]}
+          index={1}
+          link='/work/badlands/'
+          showButton
+        />
+      </FullWidthSection>
+      <CTAGrid
+        items={services}
+        gridColumns='1fr 1fr 1fr 1fr'
+        altStyle={false}
+        maxWidth
+        invisibleCta
+        noPaddingImg
+        extraCSSSection={css`
+          padding-bottom: 0 !important;
+          > div {
+            padding-bottom: 40px;
+          }
+        `}
+      />
+      <Capability
+        id='migration'
+        imageSrc={
+          query.data.platformMigrationImageDesktop.childImageSharp
+            .gatsbyImageData
+        }
+        imageAlt='White shoe'
+        content={
+          <>
+            <h2>Platform Migrations</h2>
+            <ul>
+              <li>Woo Commerce</li>
+              <li>SAP Hybris</li>
+              <li>Magento 1&2</li>
+              <li>Oracle Commerce Cloud</li>
+              <li>Salesforce Commerce Cloud</li>
+            </ul>
+          </>
+        }
+        index={1}
+        maxWidth
       />
       <LogoGrid
-        logoset='shopify'
-        title='Some of Our Shopify Clients'
+        logoset='shopifyApps'
+        title='Our Favorite Partners'
+        subtitle='These are our top apps that we use with merchants on Shopify'
         backgroundColor={colors.white}
+        styles={css`
+          padding-top: 25px !important;
+          padding-bottom: 80px !important;
+
+          > h2 {
+            font-size: 33px;
+            font-weight: 700;
+            letter-spacing: normal;
+            line-height: 1.2;
+          }
+          > h3 {
+            font-size: 16px;
+            font-weight: 100;
+            font-family: 'NB International Pro', sans-serif;
+            margin-bottom: 0;
+          }
+          > div {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 0;
+            }
+          }
+          > div > div {
+            width: auto;
+            flex: unset;
+            padding: 0 10px;
+            margin-bottom: 0;
+
+            ${mediaQueries.phoneLarge} {
+              margin-bottom: 30px;
+            }
+          }
+          > div > div > img {
+            margin-bottom: 0;
+          }
+        `}
+        minHeight='100px !important'
+        defaultItemWidth='20%'
+      />
+
+      <Capability
+        id='weknow'
+        imageSrc={query.data.weKnowImageDesktop.childImageSharp.gatsbyImageData}
+        imageAlt='We know that app'
+        content={
+          <>
+            <h2>See our full list of Partners</h2>
+            <div
+              css={css`
+                display: flex;
+                gap: 40px;
+              `}
+            >
+              <ul>
+                <li>Algolia</li>
+                <li>Afterpay</li>
+                <li>Attentive</li>
+                <li>Boost Search</li>
+                <li>Findify</li>
+                <li>Foursixty</li>
+                <li>Dynamic Yield</li>
+                <li>Listrak</li>
+                <li>Gorgias</li>
+                <li>Klevu</li>
+                <li>Nosto</li>
+              </ul>
+              <ul>
+                <li>Omnisend</li>
+                <li>OneTrust</li>
+                <li>Rise.ai</li>
+                <li>Yottaa</li>
+                <li>Zendesk</li>
+              </ul>
+            </div>
+          </>
+        }
+        index={0}
+        maxWidth
+      />
+
+      <FullWidthSection
+        css={css`
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-gap: 2rem;
+          align-items: baseline;
+
+          ${mediaQueries.phoneLarge} {
+            grid-template-columns: 1fr 1fr;
+          }
+        `}
+      >
+        {testimonials &&
+          testimonials.map(testimonial => {
+            return (
+              <Quote
+                size='small'
+                data={{
+                  field_quote: testimonial.field_quote,
+                  field_footer_text: testimonial.field_footer_text,
+                }}
+              />
+            );
+          })}
+      </FullWidthSection>
+
+      <LogoGrid
+        logoset='shopifyPlus'
+        title='Taking Names'
+        backgroundColor={colors.lightgray}
         minHeight='0'
       />
-      <SplitSection gridColumnGap='16px' css={partnersProjects}>
-        <article>
-          <h2>Conquer complexity</h2>
-          <p>
-            Shopify is not complex, but your integration may be. We’ve pioneered
-            robust integrations for both back and front-end experiences.
-          </p>
-        </article>
-        <article>
-          <h2>Maximize your budget</h2>
-          <p>
-            Minimize your build investment and reinvest into initiatives that
-            move the needle. (We can help with that too).
-          </p>
-        </article>
-        <article>
-          <h2>Global first</h2>
-          <p>
-            Companies need to think globally to compete. We’ll help you lay the
-            foundation from day one.
-          </p>
-        </article>
-        <article>
-          <h2>Automate with flow</h2>
-          <p>
-            Automation is about more than just saving time. We leverage Shopify
-            Flow to create automated processes that create raving fans and big
-            spenders.
-          </p>
-        </article>
-      </SplitSection>
-      <Quote
-        size='small'
-        data={{
-          field_quote: `Working with Third and Grove has been nothing short of phenomenal. They've successfully built solutions and delivered experiences that help merchants win.`,
-          field_footer_text: 'Rob Barr, Agency Partnerships, ReCharge Payments',
-        }}
-      />
-      <InsightsSlider
-        data={insights}
-        showButton={false}
-        backgroundColor={colors.lightgray}
-      />
-      <CTA />
+      <FullWidthSection
+        backgroundColor={colors.lightblue}
+        padding='110px 0'
+        minHeight='100%'
+      >
+        <h3
+          id='contact'
+          css={css`
+            font-size: 36px;
+            margin-bottom: 20px;
+            ${mediaQueries.phoneLarge} {
+              font-size: 48px;
+              margin: 0 0 1.45rem;
+            }
+          `}
+        >
+          The premier Shopify
+          <br />
+          Plus-Certified Agency
+        </h3>
+        <p
+          css={css`
+            font-size: 16px;
+            line-height: 27px;
+            font-weight: lighter;
+            text-align: center;
+          `}
+        >
+          We build brands through goal-busting experiences.
+          <br />
+          Ready to get started?
+        </p>
+        <ContactForm formName='shopify-support' />
+      </FullWidthSection>
     </Layout>
   );
 };
 
 export const query = graphql`
   {
-    insights: allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 5
-      filter: { field_hidden: { eq: false } }
-    ) {
-      nodes {
-        id
-        title
-        field_inverse_header
-        field_image {
-          alt
-        }
-        created(formatString: "MMM D, YYYY")
-        path {
-          alias
-        }
-        relationships {
-          node_type {
-            name
-          }
-          uid {
-            name: display_name
-          }
-          field_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 450, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-          field_components {
-            ... on component__text {
-              relationships {
-                component_type {
-                  name
-                }
-              }
-              field_body {
-                processed
-              }
-            }
-            ... on component__image {
-              id
-              field_image {
-                alt
-              }
-              relationships {
-                component_type {
-                  name
-                }
-                field_image {
-                  id
-                  localFile {
-                    publicURL
-                    childImageSharp {
-                      fluid(maxWidth: 630, maxHeight: 630) {
-                        ...GatsbyImageSharpFluid_withWebp
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+    allShopifyPlusCtaGridFourJson {
+      edges {
+        node {
+          icon
+          title
+          description
         }
       }
     }
-    caseStudies: allCaseStudy(
-      limit: 10
-      filter: { field_hidden: { eq: false } }
+    hawaiianHostMac: file(
+      relativePath: { eq: "hawaiian-host-macbook@2x.png" }
     ) {
+      childImageSharp {
+        fluid(maxWidth: 1440, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    badlandsMac: file(relativePath: { eq: "badlands-macbook@2x.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1440, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    weKnowImageDesktop: file(relativePath: { eq: "we-know.png" }) {
+      childImageSharp {
+        gatsbyImageData(layout: CONSTRAINED)
+      }
+    }
+    platformMigrationImageDesktop: file(
+      relativePath: { eq: "platform-migration.png" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(layout: CONSTRAINED)
+      }
+    }
+    allShopifyJson {
       nodes {
-        id
-        title
-        field_subtitle
-        field_inverse_header
-        field_image_arrangement
-        field_image {
-          alt
+        testimonials {
+          field_quote
+          field_footer_text
         }
-        field_secondary_image {
-          alt
+        hero {
+          title
+          subtitle
         }
-        field_tertiary_image {
-          alt
+        services {
+          title
+          description
         }
-        path {
-          alias
-        }
-        relationships {
-          field_tags {
-            name
-          }
-          field_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 335, height: 260, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 450, height: 320, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 380, height: 420, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 420, height: 340, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-            }
-          }
-          field_secondary_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 1, height: 1) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 180, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 340, height: 260, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 270, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-            }
-          }
-          field_tertiary_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 1, height: 1) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 495, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 230, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 320, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-            }
-          }
+        belowHero {
+          title
+          description
         }
       }
     }

@@ -1,133 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Spring } from 'react-spring/renderprops';
-import { css } from '@emotion/react';
-import Img from 'gatsby-image';
 
-import { fonts, mediaQueries, container, weights } from '../styles';
 import Layout from '../components/layout';
-import FullWidthSection from '../components/FullWidthSection';
-import { useHasBeenVisible } from '../hooks/useVisibility';
 import CTA from '../components/CTA';
-
-const Capability = ({ imageSrc, imageAlt, content, index, id }) => {
-  const nodeRef = useRef();
-  const isVisible = useHasBeenVisible(nodeRef);
-
-  return (
-    <FullWidthSection
-      ref={nodeRef}
-      height='0'
-      padding='0'
-      textAlign='left'
-      css={css`
-        &:first-of-type {
-          margin-top: 20px;
-
-          ${mediaQueries.phoneLarge} {
-            margin-top: 175px;
-          }
-        }
-      `}
-    >
-      <div id={id} css={container.medium}>
-        <div
-          css={css`
-            margin-bottom: 90px;
-
-            ${mediaQueries.phoneLarge} {
-              display: flex;
-              justify-content: space-between;
-              flex-direction: ${index % 2 ? 'row-reverse' : 'row'};
-              align-items: center;
-              margin-bottom: 170px;
-            }
-
-            h2 {
-              font-size: 33px;
-              font-weight: ${weights.bold};
-            }
-
-            p {
-              font-weight: ${weights.light};
-            }
-
-            ul {
-              margin: 0;
-
-              li {
-                font-family: ${fonts.sans};
-                font-weight: ${weights.bold};
-                font-variant-caps: all-small-caps;
-                letter-spacing: 1px;
-                list-style: none;
-              }
-            }
-          `}
-        >
-          <Spring
-            delay={0}
-            to={{
-              transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-              opacity: isVisible ? '1' : '0',
-            }}
-          >
-            {({ transform, opacity }) => (
-              <Img
-                fluid={imageSrc}
-                alt={imageAlt}
-                style={{ transform, opacity }}
-                css={css`
-                  width: 100%;
-                  margin-bottom: 20px;
-
-                  > div {
-                    padding-bottom: 100% !important;
-                  }
-
-                  ${mediaQueries.phoneLarge} {
-                    flex: 0 0 ${index % 2 ? '64%' : '49%'};
-                    width: ${index % 2 ? '64%' : '49%'};
-                    margin-bottom: 0;
-
-                    > div {
-                      padding-bottom: ${index % 2 ? '76% !important' : '100%'};
-                      padding-bottom: ${index % 4 === 2
-                        ? '131% !important'
-                        : '100%'};
-                    }
-                  }
-                `}
-              />
-            )}
-          </Spring>
-
-          <div
-            css={css`
-              position: relative;
-
-              ${mediaQueries.phoneLarge} {
-                flex: 0 0 ${index % 2 ? '30%' : '40%'};
-                width: ${index % 2 ? '30%' : '40%'};
-              }
-            `}
-          >
-            {content}
-          </div>
-        </div>
-      </div>
-    </FullWidthSection>
-  );
-};
-
-Capability.propTypes = {
-  imageSrc: PropTypes.object.isRequired,
-  imageAlt: PropTypes.string.isRequired,
-  content: PropTypes.node.isRequired,
-  index: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-};
+import Capability from '../components/Capability';
+import adaGif from '../images/capabilities/ADA.gif';
+import createGif from '../images/capabilities/create.gif';
+import dataGif from '../images/capabilities/data.gif';
+import marketingGif from '../images/capabilities/marketing.gif';
+import strategyGif from '../images/capabilities/strategy.gif';
+import techGif from '../images/capabilities/tech.gif';
 
 const CapabilitiesPage = ({ data }) => {
   return (
@@ -140,8 +23,10 @@ const CapabilitiesPage = ({ data }) => {
     >
       <Capability
         id='technology'
-        imageSrc={data.technologyImageDesktop.childImageSharp.fluid}
+        imageSrc={data.technologyImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='Laptop on desk with drink'
+        imageGif={techGif}
+        imageGifAlt='Dog typing on computer'
         content={
           <>
             <h2>Technology</h2>
@@ -173,8 +58,10 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='strategy'
-        imageSrc={data.strategyImageDesktop.childImageSharp.fluid}
-        imageAlt='Two office workers looking at a chart on a laptop'
+        imageSrc={data.strategyImageDesktop.childImageSharp.gatsbyImageData}
+        imageAlt='Person painting red room backed into a corner'
+        imageGif={strategyGif}
+        imageGifAlt='Dog cutting food like a chef'
         content={
           <>
             <h2>Strategy</h2>
@@ -196,8 +83,10 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='creative'
-        imageSrc={data.creativeImageDesktop.childImageSharp.fluid}
-        imageAlt='Man drawing logos in a notebook'
+        imageSrc={data.creativeImageDesktop.childImageSharp.gatsbyImageData}
+        imageAlt='Person holding a balloon against a wall to make it look like an egg'
+        imageGif={createGif}
+        imageGifAlt='Dog dancing on two legs'
         content={
           <>
             <h2>Creative</h2>
@@ -220,8 +109,10 @@ const CapabilitiesPage = ({ data }) => {
       />
       <Capability
         id='data'
-        imageSrc={data.dataImageDesktop.childImageSharp.fluid}
-        imageAlt='Black and Red'
+        imageSrc={data.dataImageDesktop.childImageSharp.gatsbyImageData}
+        imageAlt='Hand with tiny multi-colored dots all over'
+        imageGif={dataGif}
+        imageGifAlt='Dog helping man measure a piece of wood'
         content={
           <>
             <h2>Data</h2>
@@ -240,6 +131,57 @@ const CapabilitiesPage = ({ data }) => {
         }
         index={3}
       />
+      <Capability
+        id='marketing'
+        imageSrc={data.marketingImageDesktop.childImageSharp.gatsbyImageData}
+        imageAlt='Rotary Telephone'
+        imageGif={marketingGif}
+        imageGifAlt='Dog getting head scratched and smiling'
+        content={
+          <>
+            <h2>Marketing</h2>
+            <p>
+              Like every therapist always says, communication is key. The same
+              applies to your brand.
+            </p>
+            <ul>
+              <li>Marketing Strategy</li>
+              <li>Social Media Marketing</li>
+              <li>Advertising</li>
+              <li>Creative Concepts and Content</li>
+              <li>Analytics and Reporting</li>
+            </ul>
+          </>
+        }
+        index={4}
+      />
+      <Capability
+        id='ada'
+        imageSrc={data.adaImageDesktop.childImageSharp.gatsbyImageData}
+        imageAlt='Child hugging elephant'
+        imageGif={adaGif}
+        imageGifAlt='Dog with hotdog in mouth wagging tail'
+        content={
+          <>
+            <h2>ADA</h2>
+            <p>
+              From{' '}
+              <Link to='/insights/accessibility-for-everyone/'>
+                writing about it
+              </Link>{' '}
+              to working with clients, we ensure every brand we work with
+              empowers all users to experience their brand to the fullest.
+            </p>
+            <ul>
+              <li>ADA Audits & Testing</li>
+              <li>ADA Remediation</li>
+              <li>ADA Compliant Design</li>
+              <li>Compliance Implementation</li>
+            </ul>
+          </>
+        }
+        index={5}
+      />
       <CTA />
     </Layout>
   );
@@ -249,30 +191,32 @@ export const query = graphql`
   query CapabilitiesQuery {
     technologyImageDesktop: file(relativePath: { eq: "technology.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    strategyImageDesktop: file(relativePath: { eq: "strategy.png" }) {
+    strategyImageDesktop: file(relativePath: { eq: "strategy.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    creativeImageDesktop: file(relativePath: { eq: "creative.png" }) {
+    creativeImageDesktop: file(relativePath: { eq: "creative.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
-    dataImageDesktop: file(relativePath: { eq: "data.png" }) {
+    dataImageDesktop: file(relativePath: { eq: "data.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
+      }
+    }
+    marketingImageDesktop: file(relativePath: { eq: "marketing.png" }) {
+      childImageSharp {
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
+      }
+    }
+    adaImageDesktop: file(relativePath: { eq: "ada.png" }) {
+      childImageSharp {
+        gatsbyImageData(layout: CONSTRAINED, width: 800, height: 800)
       }
     }
   }

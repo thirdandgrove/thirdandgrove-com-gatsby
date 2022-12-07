@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -20,6 +21,7 @@ import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
 import AcquiaBadge from '../../../static/images/acquia-badge.svg';
+import CTAGrid from '../../components/CTAGrid';
 
 const Acquia = query => {
   const { insights, caseStudies } = query.data;
@@ -118,33 +120,61 @@ const Acquia = query => {
           }
 
           ${mediaQueries.phoneLarge} {
-            ${container.min}
+            ${container.medium}
           }
         `}
       >
-        <div css={badgeStyle}>
-          <img src={AcquiaBadge} alt='Acquia Badge' width='180' height='180' />
-        </div>
-        <h3>Team up with a partner who is tight with Acquia</h3>
-        <p>
-          We’ve invested over 130,000 hours on the Acquia platform (we’re good
-          friends with the team by now but feel free to ask around). This means
-          fewer conversations about development and more about how to improve
-          visitor engagement.
-        </p>
-        <div>
-          <ul>
-            <li>Migration</li>
-            <li>Replatform/redesign</li>
-            <li>Personalization</li>
-            <li>Performance optimization</li>
-          </ul>
-          <ul>
-            <li>Ongoing support</li>
-            <li>Infrastructure Audit</li>
-            <li>Training and resource augmentation</li>
-          </ul>
-        </div>
+        <SplitSection
+          gridTemplateColumns='45% 49%'
+          css={css`
+            direction: rtl;
+          `}
+        >
+          <section
+            css={css`
+              margin: 20px;
+              text-align: center;
+              ${mediaQueries.phoneLarge} {
+                margin: 0 20px 0 80px;
+              }
+            `}
+          >
+            <Img
+              alt='Acquia Practice Certification'
+              fixed={query.data.practiceCertification.childImageSharp.fixed}
+            />
+          </section>
+          <section
+            css={css`
+              direction: ltr;
+            `}
+          >
+            <h3>Team up with a partner who is tight with Acquia</h3>
+            <p>
+              TAG is only one of nine agencies in the world that have achieved
+              Acquia’s highest certification rating for Drupal Cloud Expertise.
+            </p>
+            <p>
+              We’ve invested over 130,000 hours on the Acquia platform (we’re
+              good friends with the team by now but feel free to ask around).
+              This means fewer conversations about development and more about
+              how to improve visitor engagement.
+            </p>
+            <div>
+              <ul>
+                <li>Migration</li>
+                <li>Replatform/redesign</li>
+                <li>Personalization</li>
+                <li>Performance optimization</li>
+              </ul>
+              <ul>
+                <li>Ongoing support</li>
+                <li>Infrastructure Audit</li>
+                <li>Training and resource augmentation</li>
+              </ul>
+            </div>
+          </section>
+        </SplitSection>
       </FullWidthSection>
       <ProjectsSlider
         data={caseStudies}
@@ -179,69 +209,70 @@ const Acquia = query => {
           <p>Acquia MVP</p>
         </Tripple>
       </SplitSection>
-      <SplitSection
-        gridTemplateColumns='repeat(2, 350px)'
-        css={css`
-          ${container.min}
+      <CTAGrid
+        header='Drupal Cloud'
+        items={query.data.allAcquiaProductsJson.edges}
+        images={query.data.allFile.edges}
+        backgroundColor={colors.white}
+        width='680px'
+        gridColumns='1fr 1fr'
+        extraCSSSection={css`
+          padding: 70px 20px 70px 20px;
+
           ${mediaQueries.phoneLarge} {
-            padding: 70px 0 0;
+            padding: 100px 0 0;
           }
-          article {
-            ${mediaQueries.phoneLarge} {
-              &:first-child {
-                padding-right: 20px;
-              }
-              &:last-of-type {
-                width: 460px;
-              }
-            }
-          }
+        `}
+        extraCssGrid={css`
+          margin-top: 35px;
+        `}
+        extraCssItem={css`
           img {
-            width: 100px;
-            margin-bottom: 35px;
+            max-width: 85px;
           }
-          h2 {
-            color: ${colors.reallydarkgray};
-            font-family: ${fonts.sans};
+
+          h4 {
+            color: #282829;
+            font-family: 'NB International Pro', sans-serif;
             font-size: 21px;
             font-weight: bold;
             margin-bottom: 14px;
           }
-          p {
-            font-weight: ${weights.light};
-            margin-bottom: 50px;
+        `}
+        invisibleCta
+      />
+      <CTAGrid
+        header='Marketing Cloud'
+        items={query.data.allAcquiaMarketingJson.edges}
+        images={query.data.allFile.edges}
+        backgroundColor={colors.white}
+        width='680px'
+        extraCSSSection={css`
+          padding: 70px 20px 70px 20px;
 
-            ${mediaQueries.phoneLarge} {
-              margin-bottom: 83px;
-            }
+          ${mediaQueries.phoneLarge} {
+            padding: 100px 0 0;
           }
         `}
-      >
-        <article>
-          <img src='/images/acquia-cloud.png' alt='cloud' />
-          <h2>Acquia Cloud</h2>
-          <p>
-            Expertise with Cloud Hooks and APIs for faster, less error-prone
-            development.
-          </p>
-        </article>
-        <article>
-          <img src='/images/acquia-lift.png' alt='lift' />
-          <h2>Acquia Lift</h2>
-          <p>
-            Improve visitor engagement with an achievable &amp; data-driven
-            personalization plan.
-          </p>
-        </article>
-        <article>
-          <img src='/images/mautic.png' alt='mautic' />
-          <h2>Mautic (Marketing Automation)</h2>
-          <p>
-            Own your entire digital experience across every channel and
-            interaction—whether at your desk, on the go, or sound asleep.
-          </p>
-        </article>
-      </SplitSection>
+        gridColumns='1fr 1fr'
+        extraCssGrid={css`
+          margin-top: 35px;
+        `}
+        extraCssItem={css`
+          img {
+            max-width: 85px;
+          }
+
+          h4 {
+            color: #282829;
+            font-family: 'NB International Pro', sans-serif;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 14px;
+          }
+        `}
+        invisibleCta
+      />
       <Quote
         size='small'
         data={{
@@ -263,6 +294,42 @@ const Acquia = query => {
 
 export const query = graphql`
   {
+    allAcquiaProductsJson {
+      edges {
+        node {
+          title
+          icon
+          description
+        }
+      }
+    }
+    allAcquiaMarketingJson {
+      edges {
+        node {
+          title
+          icon
+          description
+        }
+      }
+    }
+    allFile(filter: { absolutePath: { regex: "/acquia/" } }) {
+      edges {
+        node {
+          name
+          publicURL
+          absolutePath
+        }
+      }
+    }
+    practiceCertification: file(
+      relativePath: { eq: "acquia-practice-certification.png" }
+    ) {
+      childImageSharp {
+        fixed(width: 200) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
+        }
+      }
+    }
     insights: allInsight(
       sort: { fields: created, order: DESC }
       limit: 5

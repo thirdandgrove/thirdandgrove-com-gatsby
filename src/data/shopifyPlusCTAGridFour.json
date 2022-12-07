@@ -1,0 +1,62 @@
+[
+  {
+    "icon": "",
+    "title": "Shopify Plus",
+    "description": "We are certified Shopify Plus partners. Our obsession is best practices and maintainability."
+  },
+  {
+    "icon": "design",
+    "title": "Design",
+    "description": "Data-driven commerce experiences that make rival brands jealous."
+  },
+  {
+    "icon": "migration",
+    "title": "Migration",
+    "description": "Migrating brands from platforms like Magento 1 and Salesforce Commerce Cloud to Shopify Plus."
+  },
+  {
+    "icon": "optimization",
+    "title": "Optimization",
+    "description": "Increasing average order value and conversion rate optimization to name a few. Bleeding-edge trends gleaned from research-backed teams."
+  },
+  {
+    "icon": "marketing",
+    "title": "Marketing",
+    "description": "Focusing on acquisition and paid channels (and no, we don’t take a cut of your ad spend)."
+  },
+  {
+    "icon": "seo",
+    "title": "SEO",
+    "description": "Your search ranking is going to get better."
+  },
+  {
+    "icon": "payment",
+    "title": "Payments",
+    "description": "From standard to wicked specific."
+  },
+  {
+    "icon": "subscriptions",
+    "title": "Subscriptions",
+    "description": "ReCharge, Bold, native Shopify, and other third-party tools."
+  },
+  {
+    "icon": "custom-apps",
+    "title": "Custom Apps",
+    "description": "Plan. Architect. Build. Deploy. Maintain. Custom Shopify private apps for functionality, middleware, and integration with backend systems."
+  },
+  {
+    "icon": "global",
+    "title": "Global",
+    "description": "Multinational, multilingual, and multiple currencies strategy, and execution consulting."
+  },
+  {
+    "icon": "fulfillment",
+    "title": "Fulfillment",
+    "description": "Each phase is an opportunity to delight your customer."
+  },
+  {
+    "icon": "content-strategy",
+    "title": "Content Strategy",
+    "description": "Helping merchants build long-term search engine brand equity."
+  }
+]
