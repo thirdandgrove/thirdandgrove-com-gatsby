@@ -63,6 +63,7 @@ const Drupal = query => {
         color: colors.drupalBlue,
         mobileMinHeight: '620px',
       }}
+      color={colors.drupalBlue}
     >
       <FullWidthSection
         height='400px'
