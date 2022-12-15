@@ -12,6 +12,7 @@ import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
 import ContactForm from '../../components/ContactForm';
 import Quote from '../../components/ContentBody/Quote';
+import ShopifyBadge from '../../../static/images/shopify-badge.svg';
 import { colors, mediaQueries, container, fonts, weights } from '../../styles';
 
 const Shopify = query => {
@@ -63,6 +64,7 @@ const Shopify = query => {
           }
         `}
       >
+        <img src={ShopifyBadge} alt='Shopify Badge' width='180' height='180' />
         <h4>{belowHero[0].title}</h4>
         <p>{belowHero[0].description}</p>
       </FullWidthSection>
