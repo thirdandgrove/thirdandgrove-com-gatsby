@@ -46,8 +46,8 @@ const Shopify = query => {
       }}
     >
       <FullWidthSection
+        height='400px'
         align='left'
-        minHeight='300px'
         css={css`
           ${sectionPadding}
           ${container.min}
