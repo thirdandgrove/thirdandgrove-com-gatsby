@@ -13,6 +13,7 @@ import Improvement from '../../components/Improvement';
 import ContactForm from '../../components/ContactForm';
 import Quote from '../../components/ContentBody/Quote';
 import ShopifyBadge from '../../../static/images/shopify-badge.svg';
+import SplitSection from '../../components/SplitSection';
 import { colors, mediaQueries, container, fonts, weights } from '../../styles';
 
 const Shopify = query => {
@@ -64,9 +65,37 @@ const Shopify = query => {
           }
         `}
       >
-        <img src={ShopifyBadge} alt='Shopify Badge' width='180' height='180' />
-        <h4>{belowHero[0].title}</h4>
-        <p>{belowHero[0].description}</p>
+        <SplitSection
+          gridTemplateColumns='45% 49%'
+          css={css`
+            direction: rtl;
+          `}
+        >
+          <section
+            css={css`
+              margin: 20px;
+              text-align: center;
+              ${mediaQueries.phoneLarge} {
+                margin: 0 20px 0 80px;
+              }
+            `}
+          >
+            <img
+              src={ShopifyBadge}
+              alt='Shopify Badge'
+              width='180'
+              height='180'
+            />
+          </section>
+          <section
+            css={css`
+              direction: ltr;
+            `}
+          >
+            <h4>{belowHero[0].title}</h4>
+            <p>{belowHero[0].description}</p>
+          </section>
+        </SplitSection>
       </FullWidthSection>
 
       <FullWidthSection
