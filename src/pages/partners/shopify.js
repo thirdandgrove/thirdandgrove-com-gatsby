@@ -63,6 +63,10 @@ const Shopify = query => {
             margin-bottom: 50px;
             letter-spacing: -0.1px;
           }
+
+          ${mediaQueries.phoneLarge} {
+            ${container.medium}
+          }
         `}
       >
         <SplitSection
