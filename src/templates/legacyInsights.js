@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
-import { fonts, mediaQueries } from '../styles';
+import { colors, fonts, mediaQueries } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import { updateExternalLinks } from '../util';
@@ -62,6 +62,7 @@ const LegacyInsights = ({ pageContext }) => {
           </>
         ),
       }}
+      color={colors.yellow}
     >
       <FullWidthSection css={SectionStyle} height='100%'>
         <div dangerouslySetInnerHTML={{ __html: bodyWithImages }} />

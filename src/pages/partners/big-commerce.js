@@ -28,6 +28,7 @@ const BigCommerce = query => {
         width: '480px',
         titlePadding: '0 100px',
       }}
+      color={colors.yellow}
     >
       <FullWidthSection height='400px' align='left' css={list}>
         <h4>Scale your sales potential with BigCommerce</h4>

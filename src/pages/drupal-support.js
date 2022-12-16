@@ -106,6 +106,7 @@ const DrupalSupport = ({ data }) => {
         color: colors.drupal9Blue,
         invert: true,
       }}
+      color={colors.yellow}
     >
       <CTA
         backgroundColor={colors.lightgray}

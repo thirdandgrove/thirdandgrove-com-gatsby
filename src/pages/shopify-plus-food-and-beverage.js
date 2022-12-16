@@ -66,6 +66,7 @@ const ShopifyPlusFoodAndBeverage = ({ data }) => {
         color: colors.shopifyGreen,
         invert: true,
       }}
+      color={colors.yellow}
     >
       <CTA
         backgroundColor={colors.lightgray}

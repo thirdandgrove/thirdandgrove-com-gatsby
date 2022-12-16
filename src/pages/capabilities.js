@@ -11,6 +11,7 @@ import dataGif from '../images/capabilities/data.gif';
 import marketingGif from '../images/capabilities/marketing.gif';
 import strategyGif from '../images/capabilities/strategy.gif';
 import techGif from '../images/capabilities/tech.gif';
+import { colors } from '../styles';
 
 const CapabilitiesPage = ({ data }) => {
   return (
@@ -20,6 +21,7 @@ const CapabilitiesPage = ({ data }) => {
         mobileMinHeight: '93vh',
         height: '400px',
       }}
+      color={colors.yellow}
     >
       <Capability
         id='technology'

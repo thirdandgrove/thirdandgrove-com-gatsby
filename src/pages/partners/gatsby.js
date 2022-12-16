@@ -28,6 +28,7 @@ const Gatsby = query => {
         color: colors.gatsbyPurple,
         mobileMinHeight: '620px',
       }}
+      color={colors.yellow}
     >
       <FullWidthSection
         align='left'

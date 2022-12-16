@@ -517,6 +517,7 @@ const About = ({ data }) => {
           </div>
         ),
       }}
+      color={colors.yellow}
     >
       {/* Stats Section. */}
       <FullWidthSection css={statsSection}>

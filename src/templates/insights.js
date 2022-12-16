@@ -75,6 +75,7 @@ const Insights = ({ data }) => {
       splitHeaderData={
         post.relationships.field_e_book_file ? splitHeaderData : {}
       }
+      color={colors.yellow}
     >
       <div
         css={[

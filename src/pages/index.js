@@ -57,6 +57,7 @@ const Index = ({ data }) => {
         ),
         mobileMinHeight: '93vh',
       }}
+      color={colors.yellow}
     >
       {' '}
       <ProjectsSlider
