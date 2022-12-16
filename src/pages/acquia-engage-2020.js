@@ -277,7 +277,6 @@ const AcquiaEngage = ({ data }) => {
         styles: layoutStyles,
         navLink: joinLink,
       }}
-      color={colors.yellow}
     >
       <FullWidthSection
         height='200px'

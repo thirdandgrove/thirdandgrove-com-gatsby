@@ -62,7 +62,6 @@ const LegacyInsights = ({ pageContext }) => {
           </>
         ),
       }}
-      color={colors.yellow}
     >
       <FullWidthSection css={SectionStyle} height='100%'>
         <div dangerouslySetInnerHTML={{ __html: bodyWithImages }} />

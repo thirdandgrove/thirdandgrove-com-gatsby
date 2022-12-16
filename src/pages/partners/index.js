@@ -88,7 +88,6 @@ const Partners = () => {
         mobileMinHeight: '93vh',
         height: '400px',
       }}
-      color={colors.yellow}
     >
       <FullWidthSection
         textAlign='center'

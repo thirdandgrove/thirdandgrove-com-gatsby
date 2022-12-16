@@ -1,7 +1,6 @@
 import React from 'react';
 import { Global } from '@emotion/react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 
 import { colors, globalStyles } from '../styles';
 
@@ -12,11 +11,8 @@ import Footer from './Footer';
 
 import '../styles/layout.css';
 
-const Layout = ({ children, headerData, split, splitHeaderData, color }) => (
+const Layout = ({ children, headerData, split, splitHeaderData }) => (
   <>
-    <Helmet>
-      <meta name='theme-color' content={color} data-react-helmet='true' />
-    </Helmet>
     <Global styles={globalStyles} />
     {split ? <SplitHeader {...splitHeaderData} /> : <Header {...headerData} />}
     <main>{children}</main>
@@ -29,14 +25,12 @@ Layout.propTypes = {
   headerData: PropTypes.shape(headerPropTypes),
   split: PropTypes.bool,
   splitHeaderData: PropTypes.object,
-  color: PropTypes.string,
 };
 
 Layout.defaultProps = {
   headerData: {},
   splitHeaderData: {},
   split: false,
-  color: colors.yellow,
 };
 
 export default Layout;

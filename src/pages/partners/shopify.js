@@ -35,7 +35,6 @@ const Shopify = query => {
         titlePadding: '75px 100px 0',
         height: '450px',
       }}
-      color={colors.yellow}
     >
       <FullWidthSection
         align='left'

@@ -21,7 +21,6 @@ const CapabilitiesPage = ({ data }) => {
         mobileMinHeight: '93vh',
         height: '400px',
       }}
-      color={colors.yellow}
     >
       <Capability
         id='technology'

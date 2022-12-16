@@ -64,7 +64,6 @@ const Acquia = query => {
         color: colors.acquiaBlue,
         mobileMinHeight: '620px',
       }}
-      color={colors.yellow}
     >
       <FullWidthSection
         height='400px'

@@ -36,7 +36,6 @@ const Studies = ({ data }) => {
         label: post.relationships.field_tags.map(tag => tag.name).join(', '),
         labelMobileOnly: true,
       }}
-      color={colors.yellow}
     >
       {imageSrc && (
         <Img

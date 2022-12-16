@@ -104,7 +104,6 @@ const Boston = ({ data }) => {
         heroImage,
         heroImageMobile,
       }}
-      color={colors.yellow}
     >
       <FullWidthSection textAlign='center' height='750px' minHeight='730px'>
         <h4 css={introText}>

@@ -125,7 +125,6 @@ const Drupalcon2021Event = ({ data }) => {
         heroLogo: null,
         heroLogoAlt: null,
       }}
-      color={colors.yellow}
     >
       <SplitSection
         css={css`

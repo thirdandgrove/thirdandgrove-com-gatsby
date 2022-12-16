@@ -29,7 +29,6 @@ const NotFoundPage = () => (
         </div>
       ),
     }}
-    color={colors.yellow}
   >
     <SEO title='404: Not found' />
   </Layout>

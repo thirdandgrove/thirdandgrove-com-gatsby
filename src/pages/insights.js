@@ -105,7 +105,6 @@ const Insights = ({ data }) => {
           </>
         ),
       }}
-      color={colors.yellow}
     >
       <FullWidthSection padding='0'>
         <div

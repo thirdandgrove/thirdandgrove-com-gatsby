@@ -227,7 +227,6 @@ const Work = () => {
         mobileMinHeight: '93vh',
         height: '400px',
       }}
-      color={colors.yellow}
     >
       <VideoSection url={allNodeHomePage.edges[0].node.field_video} mp4={mp4} />
       {studies.map((study, index) => (

@@ -23,7 +23,6 @@ const Legal = () => {
         label: date,
         labelMobileOnly: true,
       }}
-      color={colors.yellow}
     >
       <div
         css={css`

@@ -68,7 +68,6 @@ const Job = ({ pageContext: { title, boardCode, description } }) => {
           </>
         ),
       }}
-      color={colors.yellow}
     >
       <FullWidthSection height='100%' padding='0'>
         <div css={[container.min, wrapperStyles]}>

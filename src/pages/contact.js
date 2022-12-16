@@ -87,7 +87,6 @@ const Contact = () => {
         height: '850px',
         children: <ContactForm />,
       }}
-      color={colors.yellow}
     >
       <div css={[container.textOnly, wrapperCss]}>
         <div css={contactItem}>
