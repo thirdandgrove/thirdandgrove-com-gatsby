@@ -116,6 +116,20 @@ const Insights = ({ data }) => {
           trim
         />
       </div>
+      <div
+        css={[
+          css`
+            width: 200px;
+            margin: auto;
+            padding-top: 0;
+            border-bottom: 1px solid #000;
+
+            ${mediaQueries.phoneLarge} {
+              width: 335px;
+            }
+          `,
+        ]}
+      />
       {!post.relationships.field_e_book_file && (
         <>
           <NewsletterOverlay />
