@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 import { navigate } from 'gatsby';
 
-import { weights, h1L } from '../styles';
+import { weights, h1L, colors } from '../styles';
 import Layout from '../components/layout';
 import Button from '../components/Button';
 import SEO from '../components/seo';

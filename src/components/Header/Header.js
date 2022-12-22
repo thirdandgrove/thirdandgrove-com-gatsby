@@ -286,6 +286,7 @@ const Header = ({
         description={description}
         image={image}
         noIndex={noIndex}
+        color={color}
       />
       <TopNav
         fill={fontColor}

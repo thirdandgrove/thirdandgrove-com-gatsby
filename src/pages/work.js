@@ -8,7 +8,7 @@ import { css } from '@emotion/react';
 import mp4 from '../../static/thirdgrove-work.mp4';
 import Layout from '../components/layout';
 import { FakeButton } from '../components/Button';
-import { weights, mediaQueries, container, fonts } from '../styles';
+import { weights, mediaQueries, container, fonts, colors } from '../styles';
 import FullWidthSection from '../components/FullWidthSection';
 import { useHasBeenVisible } from '../hooks/useVisibility';
 import VideoSection from '../components/VideoSection';
