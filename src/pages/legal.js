@@ -2,7 +2,13 @@ import React from 'react';
 import { css } from '@emotion/react';
 
 import Layout from '../components/layout';
-import { container, mediaQueries, weights, contentHeadings } from '../styles';
+import {
+  container,
+  mediaQueries,
+  weights,
+  contentHeadings,
+  colors,
+} from '../styles';
 
 const Legal = () => {
   const date = 'Effective: Apr 1, 2021';

@@ -35,13 +35,13 @@ const Image = ({ data }) => {
         src={data.relationships.field_image.localFile.publicURL}
         alt={data.field_image.alt}
         css={css`
-          margin: 0 20px 70px;
+          margin: 0;
 
           ${mediaQueries.phoneLarge} {
             ${container.min};
             padding-left: 0;
             padding-right: 0;
-            margin: 0 auto 70px;
+            margin: 0 auto 0;
           }
         `}
       />
