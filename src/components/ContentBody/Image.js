@@ -11,13 +11,13 @@ const Image = ({ data }) => {
       fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
       alt={data.field_image.alt}
       css={css`
-        margin: 0 20px 70px;
+        margin: 0 20px 25px;
 
         ${mediaQueries.phoneLarge} {
           ${container.min};
           padding-left: 0;
           padding-right: 0;
-          margin: 0 auto 70px;
+          margin: 0 auto 25px;
         }
       `}
     />
@@ -28,7 +28,7 @@ const Image = ({ data }) => {
         max-width: 100%;
         padding-left: 0;
         padding-right: 0;
-        margin: 0 auto 70px;
+        margin: 0 auto 25px;
       `}
     >
       <img
