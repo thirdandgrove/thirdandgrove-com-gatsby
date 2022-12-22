@@ -12,7 +12,7 @@ import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
 import ContactForm from '../../components/ContactForm';
 import Quote from '../../components/ContentBody/Quote';
-import ShopifyBadge from '../../../static/images/ShopifyExpert_horizontal.png';
+import ShopifyBadge from '../../../static/images/ShopifyExpert_Primary_Vertical.png';
 import SplitSection from '../../components/SplitSection';
 import { colors, mediaQueries, container, fonts, weights } from '../../styles';
 
@@ -87,8 +87,8 @@ const Shopify = query => {
             <img
               src={ShopifyBadge}
               alt='Shopify Badge'
-              width='258'
-              height='48'
+              width='150'
+              height='240'
             />
           </section>
           <section
