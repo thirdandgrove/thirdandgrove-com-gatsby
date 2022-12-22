@@ -19,7 +19,7 @@ import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
-import DrupalBadge from '../../../static/images/drupal-certified-diamond-partner.svg';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Drupal = query => {
   const { insights, caseStudies } = query.data;
@@ -134,12 +134,13 @@ const Drupal = query => {
               }
             `}
           >
-            <img
+            <StaticImage
+              src='../../../static/images/drupal-certified-diamond-partner.svg'
               alt='Drupal Diamond Certified Partner'
-              src={DrupalBadge}
-              width='200'
+              width={200}
               css={css`
                 max-width: none;
+                min-width: 200px;
               `}
             />
           </section>

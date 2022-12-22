@@ -9,7 +9,7 @@ import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
 import SplitSection from '../../components/SplitSection';
-import GatsbyBadge from '../../../static/images/gatsby-badge.png';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Gatsby = query => {
   const { insights } = query.data;
@@ -72,7 +72,13 @@ const Gatsby = query => {
               }
             `}
           >
-            <img src={GatsbyBadge} alt='Gatsby Badge' width='180' />
+            <StaticImage
+              src='../../../static/images/gatsby-badge.png'
+              alt='Gatsby Badge'
+              placeholder='blurred'
+              layout='fixed'
+              width={180}
+            />
           </section>
           <section
             css={css`

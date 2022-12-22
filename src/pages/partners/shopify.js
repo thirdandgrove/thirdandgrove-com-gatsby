@@ -3,18 +3,16 @@ import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/react';
 
 import Layout from '../../components/layout';
-import Button from '../../components/Button';
 import FullWidthSection from '../../components/FullWidthSection';
 import LogoGrid from '../../components/LogoGrid';
-import InsightsSlider from '../../components/InsightsSlider';
 import CTAGrid from '../../components/CTAGrid';
 import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
 import ContactForm from '../../components/ContactForm';
 import Quote from '../../components/ContentBody/Quote';
-import ShopifyBadge from '../../../static/images/ShopifyExpert_Primary_Vertical.png';
 import SplitSection from '../../components/SplitSection';
 import { colors, mediaQueries, container, fonts, weights } from '../../styles';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Shopify = query => {
   const { allShopifyJson } = query.data;
@@ -84,11 +82,13 @@ const Shopify = query => {
               }
             `}
           >
-            <img
-              src={ShopifyBadge}
+            <StaticImage
+              src='../../../static/images/ShopifyExpert_Primary_Vertical.png'
               alt='Shopify Badge'
-              width='150'
-              height='240'
+              placeholder='blurred'
+              layout='fixed'
+              width={150}
+              height={240}
             />
           </section>
           <section
