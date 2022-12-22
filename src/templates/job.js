@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
-import { mediaQueries, container, fonts, weights } from '../styles';
+import { mediaQueries, container, fonts, weights, colors } from '../styles';
 import Layout from '../components/layout';
 import FullWidthSection from '../components/FullWidthSection';
 import Button from '../components/Button';

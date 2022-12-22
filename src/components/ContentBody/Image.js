@@ -35,7 +35,7 @@ const Image = ({ data }) => {
         src={data.relationships.field_image.localFile.publicURL}
         alt={data.field_image.alt}
         css={css`
-          margin: 0 20px 0;
+          margin: 0;
 
           ${mediaQueries.phoneLarge} {
             ${container.min};

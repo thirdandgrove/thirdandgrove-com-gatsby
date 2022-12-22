@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 import Layout from '../components/layout';
 import ContactForm from '../components/ContactForm';
-import { mediaQueries, fonts, weights, container } from '../styles';
+import { mediaQueries, fonts, weights, container, colors } from '../styles';
 
 const Contact = () => {
   const wrapperCss = css`
