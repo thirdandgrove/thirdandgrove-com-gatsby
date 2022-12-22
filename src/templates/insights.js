@@ -94,17 +94,11 @@ const Insights = ({ data }) => {
               }
               alt={imageAlt}
               css={css`
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-top: -100px;
-                margin-bottom: 60px;
+                margin: -100px 0 60px 0;
                 max-width: 980px;
 
                 ${mediaQueries.phoneLarge} {
-                  margin-left: auto;
-                  margin-right: auto;
-                  margin-top: -165px;
-                  margin-bottom: 80px;
+                  margin: -165px auto 80px;
                 }
               `}
             />
