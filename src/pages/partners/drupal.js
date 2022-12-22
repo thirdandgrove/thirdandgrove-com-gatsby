@@ -139,8 +139,31 @@ const Drupal = query => {
               alt='Drupal Diamond Certified Partner'
               width={200}
               css={css`
-                max-width: none;
-                min-width: 200px;
+                width: 150px;
+
+                ${mediaQueries.tablet} {
+                  max-width: none;
+                  min-width: 200px;
+                  width: 200px;
+                }
+              `}
+            />
+            <StaticImage
+              src='../../../static/images/association_enterprise_supporting_partner_badge.png'
+              alt='Drupal Enterprise Supporting Partner Badge'
+              width={200}
+              css={css`
+                width: 150px;
+                margin: 0 20px 0 0;
+
+                ${mediaQueries.tablet} {
+                  width: 200px;
+                  margin: 0 20px;
+                }
+
+                ${mediaQueries.phoneLarge} {
+                  margin: 50px 0 0;
+                }
               `}
             />
           </section>
