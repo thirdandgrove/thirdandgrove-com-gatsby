@@ -18,7 +18,7 @@ const Gatsby = query => {
     padding: 50px 20px;
 
     ${mediaQueries.phoneLarge} {
-      padding: 200px 0 90px;
+      ${container.medium}
     }
   `;
   const badgeStyle = css`
