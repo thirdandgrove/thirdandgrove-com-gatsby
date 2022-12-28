@@ -21,20 +21,34 @@ module.exports = {
   updatePaths: json => {
     return new Promise((resolve, reject) => {
       return [json.data].map(
-        ({ caseStudies, insights, legacyInsights, redirects }) => {
-          if (!caseStudies || !insights || !legacyInsights || !redirects) {
+        ({
+          caseStudies,
+          landingPages,
+          insights,
+          legacyInsights,
+          redirects,
+        }) => {
+          if (
+            !caseStudies ||
+            !landingPages ||
+            !insights ||
+            !legacyInsights ||
+            !redirects
+          ) {
             const error = new Error('missing dependency');
             reject(error);
             throw error;
           }
 
           const caseStudyNodes = caseStudies.nodes;
+          const landingPageNodes = landingPages.nodes;
           const insightsNodes = insights.nodes;
           const legacyInsightsNodes = legacyInsights.nodes;
           const updatedRedirects = [];
           const nodeArray = caseStudyNodes.concat(
             insightsNodes,
-            legacyInsightsNodes
+            legacyInsightsNodes,
+            landingPageNodes
           );
 
           redirects.edges.forEach(({ node }) => {
