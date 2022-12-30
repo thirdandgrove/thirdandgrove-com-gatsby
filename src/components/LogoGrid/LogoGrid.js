@@ -23,11 +23,11 @@ const LogoGrid = ({
   minHeight,
   styles,
   defaultItemWidth,
+  images,
 }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
-
-  const renderSet = logoSets(logoset, isSmScreen);
+  const renderSet = logoSets(logoset, isSmScreen, images);
 
   const logoCount = renderSet.length;
 
