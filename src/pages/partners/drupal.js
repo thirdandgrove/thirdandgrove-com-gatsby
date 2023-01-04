@@ -122,12 +122,15 @@ const Drupal = query => {
         <SplitSection
           gridTemplateColumns='45% 49%'
           css={css`
-            direction: rtl;
+            direction: ltr;
+            ${mediaQueries.phoneLarge} {
+              direction: rtl;
+            }
           `}
         >
           <section
             css={css`
-              margin: 20px;
+              margin: 0 20px 40px 0;
               text-align: center;
               ${mediaQueries.phoneLarge} {
                 margin: 0 20px 0 80px;
