@@ -12,9 +12,17 @@ import Quote from '../../components/ContentBody/Quote';
 import { partnersProjects, list } from '../../styles/custom-css';
 import CTA from '../../components/CTA';
 import EliteSRC from '../../../static/images/Partner_Wordmark-Elite_1col.svg';
+import BigcommerceBadge from '../../../static/images/bigcommerce-badge.png';
 
 const BigCommerce = query => {
   const { insights, caseStudies } = query.data;
+
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
+  `;
 
   return (
     <Layout
@@ -30,6 +38,9 @@ const BigCommerce = query => {
       }}
     >
       <FullWidthSection height='400px' align='left' css={list}>
+        <div css={badgeStyle}>
+          <img src={BigcommerceBadge} alt='Drupal Badge' width='180' />
+        </div>
         <h4>Scale your sales potential with BigCommerce</h4>
         <p>
           We work directly with incredible organizations to build complex

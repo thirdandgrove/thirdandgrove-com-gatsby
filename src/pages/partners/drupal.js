@@ -19,7 +19,7 @@ import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
-import DrupalBadge from '../../../static/images/drupal-certified-diamond-partner.svg';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Drupal = query => {
   const { insights, caseStudies } = query.data;
@@ -53,6 +53,13 @@ const Drupal = query => {
       padding: 110px 0;
     }
   `;
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
+  `;
+
   return (
     <Layout
       headerData={{
@@ -127,12 +134,36 @@ const Drupal = query => {
               }
             `}
           >
-            <img
+            <StaticImage
+              src='../../../static/images/drupal-certified-diamond-partner.svg'
               alt='Drupal Diamond Certified Partner'
-              src={DrupalBadge}
-              width='200'
+              width={200}
               css={css`
-                max-width: none;
+                width: 150px;
+
+                ${mediaQueries.tablet} {
+                  max-width: none;
+                  min-width: 200px;
+                  width: 200px;
+                }
+              `}
+            />
+            <StaticImage
+              src='../../../static/images/association_enterprise_supporting_partner_badge.png'
+              alt='Drupal Enterprise Supporting Partner Badge'
+              width={200}
+              css={css`
+                width: 150px;
+                margin: 0 20px 0 0;
+
+                ${mediaQueries.tablet} {
+                  width: 200px;
+                  margin: 0 20px;
+                }
+
+                ${mediaQueries.phoneLarge} {
+                  margin: 50px 0 0;
+                }
               `}
             />
           </section>

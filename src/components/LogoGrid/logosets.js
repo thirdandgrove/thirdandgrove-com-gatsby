@@ -70,7 +70,6 @@ import cssAwards from './logos/awards/css-awards.png';
 import dadiAwards from './logos/awards/dadi-awards.png';
 import daveyAwards from './logos/awards/davey-awards.png';
 
-
 export default (logoset, isSmScreen) => {
   const sets = {
     acquiaEngage: [

@@ -3,16 +3,16 @@ import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/react';
 
 import Layout from '../../components/layout';
-import Button from '../../components/Button';
 import FullWidthSection from '../../components/FullWidthSection';
 import LogoGrid from '../../components/LogoGrid';
-import InsightsSlider from '../../components/InsightsSlider';
 import CTAGrid from '../../components/CTAGrid';
 import Capability from '../../components/Capability';
 import Improvement from '../../components/Improvement';
 import ContactForm from '../../components/ContactForm';
 import Quote from '../../components/ContentBody/Quote';
+import SplitSection from '../../components/SplitSection';
 import { colors, mediaQueries, container, fonts, weights } from '../../styles';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Shopify = query => {
   const { allShopifyJson } = query.data;
@@ -22,6 +22,13 @@ const Shopify = query => {
     ${mediaQueries.phoneLarge} {
       padding: 0;
     }
+  `;
+
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
   `;
 
   return (
@@ -37,8 +44,8 @@ const Shopify = query => {
       }}
     >
       <FullWidthSection
+        height='400px'
         align='left'
-        minHeight='300px'
         css={css`
           ${sectionPadding}
           ${container.min}
@@ -54,10 +61,45 @@ const Shopify = query => {
             margin-bottom: 50px;
             letter-spacing: -0.1px;
           }
+
+          ${mediaQueries.phoneLarge} {
+            ${container.medium}
+          }
         `}
       >
-        <h4>{belowHero[0].title}</h4>
-        <p>{belowHero[0].description}</p>
+        <SplitSection
+          gridTemplateColumns='45% 49%'
+          css={css`
+            direction: rtl;
+          `}
+        >
+          <section
+            css={css`
+              margin: 20px;
+              text-align: center;
+              ${mediaQueries.phoneLarge} {
+                margin: 0 20px 0 80px;
+              }
+            `}
+          >
+            <StaticImage
+              src='../../../static/images/ShopifyExpert_Primary_Vertical.png'
+              alt='Shopify Badge'
+              placeholder='blurred'
+              layout='fixed'
+              width={150}
+              height={240}
+            />
+          </section>
+          <section
+            css={css`
+              direction: ltr;
+            `}
+          >
+            <h4>{belowHero[0].title}</h4>
+            <p>{belowHero[0].description}</p>
+          </section>
+        </SplitSection>
       </FullWidthSection>
 
       <FullWidthSection
