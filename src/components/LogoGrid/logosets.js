@@ -69,6 +69,7 @@ import w3Awards from './logos/awards/w3-awards.png';
 import cssAwards from './logos/awards/css-awards.png';
 import dadiAwards from './logos/awards/dadi-awards.png';
 import daveyAwards from './logos/awards/davey-awards.png';
+import c2aAwards from './logos/awards/C2A-awards.png';
 
 export default (logoset, isSmScreen) => {
   const sets = {
@@ -542,6 +543,12 @@ export default (logoset, isSmScreen) => {
       <img
         src={daveyAwards}
         alt='Davey awards'
+        width={isSmScreen ? '140' : '175'}
+        height={isSmScreen ? '100' : '125'}
+      />,
+      <img
+        src={c2aAwards}
+        alt='c2a awards'
         width={isSmScreen ? '140' : '175'}
         height={isSmScreen ? '100' : '125'}
       />,
