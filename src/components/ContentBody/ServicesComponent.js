@@ -9,7 +9,7 @@ import { container, fonts, mediaQueries, weights } from '../../styles';
 import EasterEggContext from '../../context/EasterEggContext';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 
-const Stats = ({ data }) => {
+const ServiceComponent = ({ data }) => {
   const {
     field_header_text: header,
     field_body: body,
@@ -137,8 +137,8 @@ const Stats = ({ data }) => {
   );
 };
 
-Stats.propTypes = {
+ServiceComponent.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default Stats;
+export default ServiceComponent;
