@@ -69,6 +69,7 @@ import w3Awards from './logos/awards/w3-awards.png';
 import cssAwards from './logos/awards/css-awards.png';
 import dadiAwards from './logos/awards/dadi-awards.png';
 import daveyAwards from './logos/awards/davey-awards.png';
+import c2aAwards from './logos/awards/C2A-awards.png';
 
 export default (logoset, isSmScreen, images) => {
   let sets;
