@@ -11,6 +11,7 @@ import Video from './Video';
 import ServicesComponent from './ServicesComponent';
 import LogoWall from './LogoWall';
 import Stats from './Stats';
+import FeaturedContent from './FeaturedContent';
 
 const Components = {
   Image,
@@ -23,6 +24,7 @@ const Components = {
   ServicesComponent,
   LogoWall,
   Stats,
+  FeaturedContent,
 };
 
 /**
