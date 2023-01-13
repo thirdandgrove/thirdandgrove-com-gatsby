@@ -120,11 +120,11 @@ const CTAGrid = ({
     <FullWidthSection css={sectionStyles} backgroundColor={backgroundColor}>
       {header !== '' && <h3>{header}</h3>}
       <div css={!altStyle ? ctaGridContainer : ctaGridContainerAlt}>
-        {items.map(item => {
+        {items.map((item, index) => {
           const node = item?.node || item;
           return (
             <CTAGridItem
-              key={node.title}
+              key={`${node.title + index}`}
               icon={getImageSrc(node.icon)}
               title={node.title}
               description={node.description}

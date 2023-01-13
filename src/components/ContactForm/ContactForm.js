@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import Input from '../Input';
 import Button from '../Button';
@@ -19,6 +20,8 @@ const ContactForm = ({ formName, altStyle }) => {
     website: '',
     botField: '',
   });
+
+  const recaptchaRef = React.useRef();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const updateInput = event => {
@@ -26,8 +29,9 @@ const ContactForm = ({ formName, altStyle }) => {
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
 
-  const submitContact = event => {
+  const submitContact = async event => {
     event.preventDefault();
+    const token = await recaptchaRef.current.executeAsync();
     const { name, email, website, comments } = formState;
     if (hasSubmitted) {
       // Deter multiple submissions.
@@ -35,7 +39,7 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
     // Validate inputs.
-    if (!name || !email || !website || !comments) {
+    if (!name || !email || !website || !comments || !token) {
       // Notify user of required fields.
       const currentErrs = {};
       if (!name) {
@@ -291,6 +295,7 @@ const ContactForm = ({ formName, altStyle }) => {
           data-netlify='true'
           data-cy='contactForm'
           netlify-honeypot='botField'
+          data-netlify-recaptcha='true'
           onSubmit={submitContact}
         >
           <input type='hidden' name='form-name' value={formName} />
@@ -424,6 +429,11 @@ const ContactForm = ({ formName, altStyle }) => {
               }
             `}
           >
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              size='invisible'
+              sitekey='6Ldyy_UjAAAAAPkfTBnm4MOnh4cMztt00e5vpsHE'
+            />
             <Button data-cy='contactSubmit' type='submit'>
               send
             </Button>
