@@ -24,14 +24,18 @@ const ContactForm = ({ formName, altStyle }) => {
   const recaptchaRef = React.useRef();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null);
+
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
 
-  const submitContact = async event => {
+  const handleChange = value => setCaptchaValue(value);
+
+  const submitContact = event => {
     event.preventDefault();
-    const token = await recaptchaRef.current.executeAsync();
+    recaptchaRef.current.execute();
     const { name, email, website, comments } = formState;
     if (hasSubmitted) {
       // Deter multiple submissions.
@@ -39,7 +43,7 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
     // Validate inputs.
-    if (!name || !email || !website || !comments || !token) {
+    if (!name || !email || !website || !comments || !captchaValue) {
       // Notify user of required fields.
       const currentErrs = {};
       if (!name) {
@@ -295,7 +299,6 @@ const ContactForm = ({ formName, altStyle }) => {
           data-netlify='true'
           data-cy='contactForm'
           netlify-honeypot='botField'
-          data-netlify-recaptcha='true'
           onSubmit={submitContact}
         >
           <input type='hidden' name='form-name' value={formName} />
@@ -430,10 +433,13 @@ const ContactForm = ({ formName, altStyle }) => {
             `}
           >
             <ReCAPTCHA
+              style={{ display: 'inline-block' }}
               ref={recaptchaRef}
               size='invisible'
               sitekey='6Ldyy_UjAAAAAPkfTBnm4MOnh4cMztt00e5vpsHE'
+              onChange={handleChange}
             />
+
             <Button data-cy='contactSubmit' type='submit'>
               send
             </Button>
