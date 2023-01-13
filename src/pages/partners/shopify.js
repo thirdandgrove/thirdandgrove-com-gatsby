@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { css } from '@emotion/react';
@@ -164,6 +166,8 @@ const Shopify = query => {
       />
       <Capability
         id='migration'
+        imageGif=''
+        imageGifAlt=''
         imageSrc={
           query.data.platformMigrationImageDesktop.childImageSharp
             .gatsbyImageData
@@ -235,6 +239,8 @@ const Shopify = query => {
 
       <Capability
         id='weknow'
+        imageGif=''
+        imageGifAlt=''
         imageSrc={query.data.weKnowImageDesktop.childImageSharp.gatsbyImageData}
         imageAlt='We know that app'
         content={
@@ -286,9 +292,10 @@ const Shopify = query => {
         `}
       >
         {testimonials &&
-          testimonials.map(testimonial => {
+          testimonials.map((testimonial, index) => {
             return (
               <Quote
+                key={index}
                 size='small'
                 data={{
                   field_quote: testimonial.field_quote,
