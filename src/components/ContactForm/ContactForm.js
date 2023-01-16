@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import Input from '../Input';
 import Button from '../Button';
@@ -19,15 +20,22 @@ const ContactForm = ({ formName, altStyle }) => {
     website: '',
     botField: '',
   });
+
+  const recaptchaRef = React.useRef();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null);
+
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
 
+  const handleChange = value => setCaptchaValue(value);
+
   const submitContact = event => {
     event.preventDefault();
+    recaptchaRef.current.execute();
     const { name, email, website, comments } = formState;
     if (hasSubmitted) {
       // Deter multiple submissions.
@@ -35,7 +43,7 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
     // Validate inputs.
-    if (!name || !email || !website || !comments) {
+    if (!name || !email || !website || !comments || !captchaValue) {
       // Notify user of required fields.
       const currentErrs = {};
       if (!name) {
@@ -424,6 +432,14 @@ const ContactForm = ({ formName, altStyle }) => {
               }
             `}
           >
+            <ReCAPTCHA
+              style={{ display: 'inline-block' }}
+              ref={recaptchaRef}
+              size='invisible'
+              sitekey='6Ldyy_UjAAAAAPkfTBnm4MOnh4cMztt00e5vpsHE'
+              onChange={handleChange}
+            />
+
             <Button data-cy='contactSubmit' type='submit'>
               send
             </Button>
