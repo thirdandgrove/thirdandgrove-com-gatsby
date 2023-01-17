@@ -15,6 +15,11 @@
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
 
+[[redirects]]
+  from = "/api/verify"
+  to = "/.netlify/functions/verify"
+  status = 200
+
 [context.production]
   environment = { PROCESS_FORM = "true" }
 
