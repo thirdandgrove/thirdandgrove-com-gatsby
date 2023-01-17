@@ -35,7 +35,7 @@ const ContactForm = ({ formName, altStyle }) => {
     event.preventDefault();
     let ssRval = false;
     const rToken = await recaptchaRef.current.executeAsync();
-    const rval = await fetch('/api/verify', {
+    const rval = await fetch('/.netlify/functions/verify', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
