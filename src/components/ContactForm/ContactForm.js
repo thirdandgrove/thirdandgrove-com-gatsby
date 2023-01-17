@@ -24,26 +24,36 @@ const ContactForm = ({ formName, altStyle }) => {
   const recaptchaRef = React.useRef();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [captchaValue, setCaptchaValue] = useState(null);
+  const [captchaValue, setCaptchaValue] = useState(false);
 
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
 
-  const handleChange = value => setCaptchaValue(value);
-
-  const submitContact = event => {
+  const submitContact = async event => {
     event.preventDefault();
-    recaptchaRef.current.execute();
+    let ssRval = false;
+    const rToken = await recaptchaRef.current.executeAsync();
+    const rval = await fetch('/verify/', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token: rToken }),
+    });
+    const rValJson = await rval.json();
+    ssRval = rValJson.success === 'true';
     const { name, email, website, comments } = formState;
     if (hasSubmitted) {
       // Deter multiple submissions.
       updateErrors({ error: 'The form has already been submitted.' });
       return;
     }
+
     // Validate inputs.
-    if (!name || !email || !website || !comments || !captchaValue) {
+    if (!name || !email || !website || !comments || !ssRval) {
       // Notify user of required fields.
       const currentErrs = {};
       if (!name) {
@@ -67,6 +77,7 @@ const ContactForm = ({ formName, altStyle }) => {
       updateErrors({ website: 'Website must be valid' });
       return;
     }
+
     // The form has not been submitted.
     fetch('/', {
       method: 'POST',
@@ -437,7 +448,6 @@ const ContactForm = ({ formName, altStyle }) => {
               ref={recaptchaRef}
               size='invisible'
               sitekey='6Ldyy_UjAAAAAPkfTBnm4MOnh4cMztt00e5vpsHE'
-              onChange={handleChange}
             />
 
             <Button data-cy='contactSubmit' type='submit'>
