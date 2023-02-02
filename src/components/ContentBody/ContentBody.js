@@ -12,6 +12,7 @@ import ServicesComponent from './ServicesComponent';
 import LogoWall from './LogoWall';
 import Stats from './Stats';
 import FeaturedContent from './FeaturedContent';
+import Testimonial from './Testimonial';
 
 const Components = {
   Image,
@@ -25,6 +26,7 @@ const Components = {
   LogoWall,
   Stats,
   FeaturedContent,
+  Testimonial,
 };
 
 /**
