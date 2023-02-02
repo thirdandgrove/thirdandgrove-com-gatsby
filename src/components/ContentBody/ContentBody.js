@@ -13,6 +13,7 @@ import LogoWall from './LogoWall';
 import Stats from './Stats';
 import FeaturedContent from './FeaturedContent';
 import Testimonial from './Testimonial';
+import ContactFormComponent from './ContactFormComponent';
 
 const Components = {
   Image,
@@ -27,6 +28,7 @@ const Components = {
   Stats,
   FeaturedContent,
   Testimonial,
+  ContactFormComponent,
 };
 
 /**
