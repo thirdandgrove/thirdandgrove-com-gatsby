@@ -10,6 +10,7 @@ export {
   contValues,
   container,
   btnStyles,
+  btnLightStyles,
   h1Xl,
   h1L,
   smSectionHead,
