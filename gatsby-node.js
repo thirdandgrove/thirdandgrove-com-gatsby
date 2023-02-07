@@ -10,7 +10,7 @@ const { ensureTrailingSlash, updatePaths } = require('./src/util');
 
 const exec = util.promisify(childProcess.exec);
 
-const typeDefs = require('./typeDefs.txt');
+const typeDefs = require('./typeDefs.js');
 
 const runQueries = async graphql => {
   const isProduction =
@@ -149,7 +149,7 @@ const runQueries = async graphql => {
 };
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
-  createTypes(`${typeDefs}`);
+  createTypes(`${typeDefs.typeDefs}`);
 };
 
 exports.onCreateDevServer = ({ app }) => {
