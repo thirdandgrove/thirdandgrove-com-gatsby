@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
@@ -118,8 +120,8 @@ const CTAGridItem = ({
           <h4>{title}</h4>
           {Array.isArray(description) ? (
             <ul>
-              {description.map(descriptionItem => (
-                <li>{descriptionItem}</li>
+              {description.map((descriptionItem, index) => (
+                <li key={index}>{descriptionItem}</li>
               ))}
             </ul>
           ) : (
@@ -167,7 +169,7 @@ const CTAGridItem = ({
 CTAGridItem.propTypes = {
   icon: PropTypes.array,
   title: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   altStyle: PropTypes.bool,
   noPaddingImg: PropTypes.bool,
   extraCssItem: PropTypes.object,
