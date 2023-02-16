@@ -3,14 +3,13 @@
 const path = require('path');
 const util = require('util');
 const childProcess = require('child_process');
+const fs = require('fs');
 
 const express = require('express');
 
 const { ensureTrailingSlash, updatePaths } = require('./src/util');
 
 const exec = util.promisify(childProcess.exec);
-
-const typeDefs = require('./typeDefs.js');
 
 const runQueries = async graphql => {
   const isProduction =
@@ -149,7 +148,7 @@ const runQueries = async graphql => {
 };
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
-  createTypes(`${typeDefs.typeDefs}`);
+  createTypes(fs.readFileSync(`schema.gql`, { encoding: `utf-8` }));
 };
 
 exports.onCreateDevServer = ({ app }) => {
