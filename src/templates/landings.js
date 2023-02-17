@@ -178,6 +178,103 @@ export const query = graphql`
               }
             }
           }
+          ... on component__featured_content {
+            id
+            field_header_text
+            relationships {
+              component_type {
+                name
+              }
+              field_content {
+                id
+                title
+                field_inverse_header
+                field_image {
+                  alt
+                }
+                created(formatString: "MMM D, YYYY")
+                path {
+                  alias
+                }
+                relationships {
+                  node_type {
+                    name
+                  }
+                  uid {
+                    name: display_name
+                  }
+                  field_e_book_file {
+                    filename
+                    id
+                    localFile {
+                      publicURL
+                    }
+                  }
+                  field_image {
+                    id
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 530, maxHeight: 400) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                        gatsbyImageData(
+                          height: 400
+                          width: 530
+                          transformOptions: { cropFocus: CENTER }
+                          layout: FULL_WIDTH
+                        )
+                      }
+                      childImageSlideMobile: childImageSharp {
+                        fluid(maxWidth: 325, maxHeight: 250) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                      childImageSlideDesktop: childImageSharp {
+                        fluid(maxWidth: 450, maxHeight: 400) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                    }
+                  }
+                  field_components {
+                    ... on component__text {
+                      relationships {
+                        component_type {
+                          name
+                        }
+                      }
+                      field_body {
+                        processed
+                      }
+                    }
+                    ... on component__image {
+                      id
+                      field_image {
+                        alt
+                      }
+                      relationships {
+                        component_type {
+                          name
+                        }
+                        field_image {
+                          id
+                          localFile {
+                            publicURL
+                            childImageSharp {
+                              fluid(maxWidth: 630, maxHeight: 630) {
+                                ...GatsbyImageSharpFluid_withWebp
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
         field_tags {
           name
