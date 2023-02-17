@@ -8,6 +8,8 @@ import { colors, mediaQueries, fonts, weights, container } from '../../styles';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
+import SplitSection from '../../components/SplitSection';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Gatsby = query => {
   const { insights } = query.data;
@@ -16,9 +18,16 @@ const Gatsby = query => {
     padding: 50px 20px;
 
     ${mediaQueries.phoneLarge} {
-      padding: 200px 0 90px;
+      ${container.medium}
     }
   `;
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
+  `;
+
   return (
     <Layout
       headerData={{
@@ -48,14 +57,49 @@ const Gatsby = query => {
           }
         `}
       >
-        <h4>
-          Build a digital experience that your competitors can’t compete with
-        </h4>
-        <p>
-          Cutting-edge doesn’t have to mean risky. We were the first to build a
-          headless commerce experience using Drupal, and have pioneered a number
-          of custom integrations to make breakthrough impossible.
-        </p>
+        <SplitSection
+          gridTemplateColumns='45% 49%'
+          css={css`
+            direction: ltr;
+            ${mediaQueries.phoneLarge} {
+              direction: rtl;
+            }
+          `}
+        >
+          <section
+            css={css`
+              margin: 0 20px 40px 0;
+              text-align: center;
+              ${mediaQueries.phoneLarge} {
+                margin: 0 20px 0 80px;
+              }
+            `}
+          >
+            <StaticImage
+              src='../../../static/images/gatsby-badge.png'
+              alt='Gatsby Badge'
+              placeholder='blurred'
+              layout='fixed'
+              width={180}
+            />
+          </section>
+          <section
+            css={css`
+              direction: ltr;
+            `}
+          >
+            <h4>
+              Build a digital experience that your competitors can’t compete
+              with
+            </h4>
+            <p>
+              Cutting-edge doesn’t have to mean risky. We were the first to
+              build a headless commerce experience using Drupal, and have
+              pioneered a number of custom integrations to make breakthrough
+              impossible.
+            </p>
+          </section>
+        </SplitSection>
         <h4>Our Site</h4>
         <p>
           How’s our site running? Fast, right? Our site leverages Drupal for its

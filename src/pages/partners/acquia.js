@@ -20,6 +20,7 @@ import SplitSection from '../../components/SplitSection';
 import InsightsSlider from '../../components/InsightsSlider';
 import Quote from '../../components/ContentBody/Quote';
 import CTA from '../../components/CTA';
+import { StaticImage } from 'gatsby-plugin-image';
 import CTAGrid from '../../components/CTAGrid';
 
 const Acquia = query => {
@@ -54,6 +55,13 @@ const Acquia = query => {
       padding: 110px 0;
     }
   `;
+  const badgeStyle = css`
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    margin-bottom: 50px;
+  `;
+
   return (
     <Layout
       headerData={{
@@ -119,21 +127,28 @@ const Acquia = query => {
         <SplitSection
           gridTemplateColumns='45% 49%'
           css={css`
-            direction: rtl;
+            direction: ltr;
+            ${mediaQueries.phoneLarge} {
+              direction: rtl;
+            }
           `}
         >
           <section
             css={css`
-              margin: 20px;
+              margin: 0 20px 40px 0;
               text-align: center;
               ${mediaQueries.phoneLarge} {
                 margin: 0 20px 0 80px;
               }
             `}
           >
-            <Img
+            <StaticImage
+              src='../../../src/images/acquia-practice-certification.png'
               alt='Acquia Practice Certification'
-              fixed={query.data.practiceCertification.childImageSharp.fixed}
+              placeholder='blurred'
+              layout='fixed'
+              width={200}
+              height={200}
             />
           </section>
           <section

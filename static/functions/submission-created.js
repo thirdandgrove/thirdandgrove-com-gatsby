@@ -112,7 +112,18 @@ exports.handler = async (event, _context, callback) => {
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [{ first_name, last_name, email, phone, website, comments, url: referrer, form: form_name }],
+        profiles: [
+          {
+            first_name,
+            last_name,
+            email,
+            phone,
+            website,
+            comments,
+            url: referrer,
+            form: form_name,
+          },
+        ],
       }),
     }).catch(console.error);
   }
@@ -211,7 +222,18 @@ exports.handler = async (event, _context, callback) => {
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [{ first_name, last_name, email, phone, website, comments, url: referrer, form: form_name }],
+        profiles: [
+          {
+            first_name,
+            last_name,
+            email,
+            phone,
+            website,
+            comments,
+            url: referrer,
+            form: form_name,
+          },
+        ],
       }),
     }).catch(console.error);
   }
@@ -310,7 +332,18 @@ exports.handler = async (event, _context, callback) => {
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [{ first_name, last_name, email, phone, website, comments, url: referrer, form: form_name }],
+        profiles: [
+          {
+            first_name,
+            last_name,
+            email,
+            phone,
+            website,
+            comments,
+            url: referrer,
+            form: form_name,
+          },
+        ],
       }),
     }).catch(console.error);
   }
@@ -409,7 +442,18 @@ exports.handler = async (event, _context, callback) => {
       headers: { 'Content-Type': 'application/json' },
       data: JSON.stringify({
         api_key: KLAVIYO_API_KEY,
-        profiles: [{ first_name, last_name, email, phone, website, comments, url: referrer, form: form_name }],
+        profiles: [
+          {
+            first_name,
+            last_name,
+            email,
+            phone,
+            website,
+            comments,
+            url: referrer,
+            form: form_name,
+          },
+        ],
       }),
     }).catch(console.error);
   }
@@ -418,7 +462,11 @@ exports.handler = async (event, _context, callback) => {
   /** Newsletter Form */
   if (form_name === 'newsletter') {
     const { email } = data;
-    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID, KLAVIYO_MAIN_LIST_ID } = process.env;
+    const {
+      KLAVIYO_API_KEY,
+      KLAVIYO_LIST_ID,
+      KLAVIYO_MAIN_LIST_ID,
+    } = process.env;
 
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
@@ -463,7 +511,16 @@ exports.handler = async (event, _context, callback) => {
   /** drupalcon Form */
   if (form_name === 'drupalcon-swag-form') {
     // handle form drupalcon
-    const { email, name, addressOne, addressTwo, city, state, country, zipcode } = data.data;
+    const {
+      email,
+      name,
+      addressOne,
+      addressTwo,
+      city,
+      state,
+      country,
+      zipcode,
+    } = data.data;
 
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON } = process.env;
 
