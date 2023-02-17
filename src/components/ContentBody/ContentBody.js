@@ -8,6 +8,7 @@ import TextSplitwithImage from './TextImage';
 import TextSplitwithVideoPhone from './TextVideoPhone';
 import Prefooter from './Prefooter';
 import Video from './Video';
+import ServicesComponent from './ServicesComponent';
 import LogoWall from './LogoWall';
 import Stats from './Stats';
 
@@ -19,6 +20,7 @@ const Components = {
   TextSplitwithVideoPhone,
   Prefooter,
   Video,
+  ServicesComponent,
   LogoWall,
   Stats,
 };

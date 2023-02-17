@@ -134,6 +134,7 @@ export const query = graphql`
                     fluid(maxWidth: 800, cropFocus: CENTER) {
                       ...GatsbyImageSharpFluid_withWebp
                     }
+                    gatsbyImageData
                   }
                 }
               }
@@ -146,6 +147,34 @@ export const query = graphql`
             relationships {
               component_type {
                 name
+              }
+            }
+          }
+          ... on component__services_component {
+            id
+            field_header_text
+            field_image {
+              alt
+              title
+            }
+            field_body {
+              processed
+            }
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                    gatsbyImageData
+                  }
+                }
               }
             }
           }
