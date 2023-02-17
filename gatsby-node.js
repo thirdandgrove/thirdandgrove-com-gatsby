@@ -10,6 +10,8 @@ const { ensureTrailingSlash, updatePaths } = require('./src/util');
 
 const exec = util.promisify(childProcess.exec);
 
+const typeDefs = require('./typeDefs.js');
+
 const runQueries = async graphql => {
   const isProduction =
     process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
@@ -164,6 +166,10 @@ const runQueries = async graphql => {
   }
 
   return queries.data;
+};
+
+exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
+  createTypes(`${typeDefs.typeDefs}`);
 };
 
 exports.onCreateDevServer = ({ app }) => {
