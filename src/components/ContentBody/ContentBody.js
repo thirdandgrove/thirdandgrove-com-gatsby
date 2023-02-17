@@ -8,6 +8,8 @@ import TextSplitwithImage from './TextImage';
 import TextSplitwithVideoPhone from './TextVideoPhone';
 import Prefooter from './Prefooter';
 import Video from './Video';
+import LogoWall from './LogoWall';
+import Stats from './Stats';
 
 const Components = {
   Image,
@@ -17,6 +19,8 @@ const Components = {
   TextSplitwithVideoPhone,
   Prefooter,
   Video,
+  LogoWall,
+  Stats,
 };
 
 /**
@@ -44,7 +48,7 @@ const ContentBody = ({ comps, type }) => {
         const Component = Components[componentName];
         return (
           <Component
-            data={{ ...comp, type, isFirstText: firstText.id === comp.id }}
+            data={{ ...comp, type, isFirstText: firstText?.id === comp.id }}
             key={comp.id}
           />
         );

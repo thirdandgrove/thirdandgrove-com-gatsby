@@ -32,6 +32,16 @@ const runQueries = async graphql => {
             }
           }
         }
+        landingPages: allLandingPage(filter: { field_hidden: { eq: false } }) {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            path {
+              alias
+            }
+          }
+        }
         insights: allInsight(filter: { field_hidden: { eq: false } }) {
           nodes {
             id
@@ -85,6 +95,16 @@ const runQueries = async graphql => {
     queries = await graphql(`
       query {
         caseStudies: allCaseStudy(filter: { field_hidden: { eq: false } }) {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            path {
+              alias
+            }
+          }
+        }
+        landingPages: allLandingPage(filter: { field_hidden: { eq: false } }) {
           nodes {
             id
             title
@@ -159,10 +179,16 @@ exports.onCreateDevServer = ({ app }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
 
-  const { caseStudies, insights, legacyInsights, redirects } = await runQueries(
-    graphql
-  );
-  const data = { data: { caseStudies, insights, legacyInsights, redirects } };
+  const {
+    caseStudies,
+    landingPages,
+    insights,
+    legacyInsights,
+    redirects,
+  } = await runQueries(graphql);
+  const data = {
+    data: { caseStudies, landingPages, insights, legacyInsights, redirects },
+  };
 
   const updatedRedirects = await updatePaths(data);
 
@@ -172,6 +198,16 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`src/templates/studies.js`),
       context: {
         StudyId: studyData.id,
+      },
+    })
+  );
+
+  landingPages.nodes.map(landingData =>
+    createPage({
+      path: ensureTrailingSlash(landingData.path.alias),
+      component: path.resolve(`src/templates/landings.js`),
+      context: {
+        landingId: landingData.id,
       },
     })
   );
