@@ -306,6 +306,16 @@ export const query = graphql`
               }
             }
           }
+          ... on component__contact_form {
+            id
+            field_header_text
+            field_subhead_text
+            relationships {
+              component_type {
+                name
+              }
+            }
+          }
         }
         field_tags {
           name
