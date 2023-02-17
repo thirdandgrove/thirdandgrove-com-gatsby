@@ -316,6 +316,43 @@ export const query = graphql`
               }
             }
           }
+          ... on component__hero {
+            id
+            field_header_text
+            field_body {
+              processed
+            }
+            field_primary_cta {
+              url: uri
+              text: title
+            }
+            field_primary_color {
+              color
+            }
+            field_text_color
+            relationships {
+              component_type {
+                name
+              }
+              field_media_background {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                    squareImage: gatsbyImageData(
+                      width: 700
+                      height: 700
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
+                  }
+                }
+              }
+            }
+          }
         }
         field_tags {
           name
