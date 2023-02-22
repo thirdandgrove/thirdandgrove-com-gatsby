@@ -12,7 +12,11 @@ exports.handler = async (event, context) => {
     );
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: `${response.data.success}` }),
+      body: JSON.stringify({
+        success: true,
+        message: 'Token successfully verified',
+        data: response.data,
+      }),
     };
   } catch (error) {
     return {
