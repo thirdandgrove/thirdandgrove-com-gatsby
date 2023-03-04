@@ -45,7 +45,9 @@ type RemoteFileResize {
   src: String
 }
 
-"""Remote Interface"""
+"""
+Remote Interface
+"""
 interface RemoteFile {
   id: ID!
   mimeType: String!
@@ -61,7 +63,6 @@ interface RemoteFile {
     fit: RemoteFileFit = COVER
 
     """
-    
     The image formats to generate. Valid values are AUTO (meaning the same
     format as the source image), JPG, PNG, WEBP and AVIF.
     The default value is [AUTO, WEBP, AVIF], and you should rarely need to
@@ -80,35 +81,29 @@ interface RemoteFile {
   """
   gatsbyImage(
     """
-    
     The layout for the image.
     FIXED: A static image sized, that does not resize according to the screen width
     FULL_WIDTH: The image resizes to fit its container. Pass a "sizes" option if
     it isn't going to be the full width of the screen.
     CONSTRAINED: Resizes to fit its container, up to a maximum width, at which point it will remain fixed in size.
-    
     """
     layout: RemoteFileLayout = CONSTRAINED
 
     """
-    
     The display width of the generated image for layout = FIXED, and the display
     width of the largest image for layout = CONSTRAINED.
     The actual largest image resolution will be this value multiplied by the largest value in outputPixelDensities
     Ignored if layout = FLUID.
-    
     """
     width: Int
 
     """
-    
     If set, the height of the generated image. If omitted, it is calculated from
     the supplied width, matching the aspect ratio of the source image.
     """
     height: Int
 
     """
-    
     Format of generated placeholder image, displayed while the main image loads.
     BLURRED: a blurred, low resolution image, encoded as a base64 data URI
     DOMINANT_COLOR: a solid color, calculated from the dominant color of the image (default).
@@ -118,16 +113,13 @@ interface RemoteFile {
     placeholder: RemoteFilePlaceholder = DOMINANT_COLOR
 
     """
-    
     If set along with width or height, this will set the value of the other
     dimension to match the provided aspect ratio, cropping the image if needed.
     If neither width or height is provided, height will be set based on the intrinsic width of the source image.
-    
     """
     aspectRatio: Float
 
     """
-    
     The image formats to generate. Valid values are AUTO (meaning the same
     format as the source image), JPG, PNG, WEBP and AVIF.
     The default value is [AUTO, WEBP, AVIF], and you should rarely need to
@@ -135,42 +127,35 @@ interface RemoteFile {
     not know the formats of the source images, as this could lead to unwanted
     results such as converting JPEGs to PNGs. Specifying
     both PNG and JPG is not supported and will be ignored.
-    
     """
     formats: [RemoteFileFormat!] = [AUTO, WEBP, AVIF]
 
     """
-    
     A list of image pixel densities to generate for FIXED and CONSTRAINED
     images. You should rarely need to change this. It will never generate images
     larger than the source, and will always include a 1x image.
     Default is [ 1, 2 ] for fixed images, meaning 1x, 2x, and [0.25, 0.5, 1, 2]
     for fluid. In this case, an image with a fluid layout and width = 400 would
     generate images at 100, 200, 400 and 800px wide.
-    
     """
     outputPixelDensities: [Float] = [0.25, 0.5, 1, 2]
 
     """
-    
     Specifies the image widths to generate. You should rarely need to change
     this. For FIXED and CONSTRAINED images it is better to allow these to be
     determined automatically,
     based on the image size. For FULL_WIDTH images this can be used to override
     the default, which is [750, 1080, 1366, 1920].
     It will never generate any images larger than the source.
-    
     """
     breakpoints: [Int] = [750, 1080, 1366, 1920]
 
     """
-    
     The "sizes" property, passed to the img tag. This describes the display size of the image.
     This does not affect the generated images, but is used by the browser to
     decide which images to download. You can leave this blank for fixed images,
     or if the responsive image
     container will be the full width of the screen. In these cases we will generate an appropriate value.
-    
     """
     sizes: String
 
@@ -430,7 +415,9 @@ enum ImagePlaceholder {
 }
 
 input BlurredOptions {
-  """Width of the generated low-res preview. Default is 20px"""
+  """
+  Width of the generated low-res preview. Default is 20px
+  """
   width: Int
 
   """
@@ -485,7 +472,27 @@ type ImageSharpResize {
 }
 
 type ImageSharp implements Node @childOf(types: ["File"]) @dontInfer {
-  fixed(width: Int, height: Int, base64Width: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, grayscale: Boolean, duotone: DuotoneGradient, traceSVG: Potrace, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, toFormat: ImageFormat, toFormatBase64: ImageFormat, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int, trim: Float): ImageSharpFixed
+  fixed(
+    width: Int
+    height: Int
+    base64Width: Int
+    jpegProgressive: Boolean = true
+    pngCompressionSpeed: Int = 4
+    grayscale: Boolean
+    duotone: DuotoneGradient
+    traceSVG: Potrace
+    quality: Int
+    jpegQuality: Int
+    pngQuality: Int
+    webpQuality: Int
+    toFormat: ImageFormat
+    toFormatBase64: ImageFormat
+    cropFocus: ImageCropFocus = ATTENTION
+    fit: ImageFit = COVER
+    background: String = "rgba(0,0,0,1)"
+    rotate: Int
+    trim: Float
+  ): ImageSharpFixed
   fluid(
     maxWidth: Int
     maxHeight: Int
@@ -603,19 +610,29 @@ type ImageSharp implements Node @childOf(types: ["File"]) @dontInfer {
     """
     sizes: String
 
-    """The default quality. This is overridden by any format-specific options"""
+    """
+    The default quality. This is overridden by any format-specific options
+    """
     quality: Int
 
-    """Options to pass to sharp when generating JPG images."""
+    """
+    Options to pass to sharp when generating JPG images.
+    """
     jpgOptions: JPGOptions
 
-    """Options to pass to sharp when generating PNG images."""
+    """
+    Options to pass to sharp when generating PNG images.
+    """
     pngOptions: PNGOptions
 
-    """Options to pass to sharp when generating WebP images."""
+    """
+    Options to pass to sharp when generating WebP images.
+    """
     webpOptions: WebPOptions
 
-    """Options to pass to sharp when generating AVIF images."""
+    """
+    Options to pass to sharp when generating AVIF images.
+    """
     avifOptions: AVIFOptions
 
     """
@@ -630,7 +647,27 @@ type ImageSharp implements Node @childOf(types: ["File"]) @dontInfer {
     backgroundColor: String
   ): GatsbyImageData!
   original: ImageSharpOriginal
-  resize(width: Int, height: Int, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, jpegProgressive: Boolean = true, pngCompressionLevel: Int = 9, pngCompressionSpeed: Int = 4, grayscale: Boolean, duotone: DuotoneGradient, base64: Boolean, traceSVG: Potrace, toFormat: ImageFormat, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int, trim: Float): ImageSharpResize
+  resize(
+    width: Int
+    height: Int
+    quality: Int
+    jpegQuality: Int
+    pngQuality: Int
+    webpQuality: Int
+    jpegProgressive: Boolean = true
+    pngCompressionLevel: Int = 9
+    pngCompressionSpeed: Int = 4
+    grayscale: Boolean
+    duotone: DuotoneGradient
+    base64: Boolean
+    traceSVG: Potrace
+    toFormat: ImageFormat
+    cropFocus: ImageCropFocus = ATTENTION
+    fit: ImageFit = COVER
+    background: String = "rgba(0,0,0,1)"
+    rotate: Int
+    trim: Float
+  ): ImageSharpResize
 }
 
 type user__user implements Node @derivedTypes @dontInfer {
@@ -657,16 +694,22 @@ type user__userPath {
 }
 
 type user__userRelationships {
-  node__legacy_insight: [node__legacy_insight] @link(by: "id", from: "node__legacy_insight___NODE")
+  node__legacy_insight: [node__legacy_insight]
+    @link(by: "id", from: "node__legacy_insight___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
   file__file: [file__file] @link(by: "id", from: "file__file___NODE")
-  redirect__redirect: [redirect__redirect] @link(by: "id", from: "redirect__redirect___NODE")
-  node__home_page: [node__home_page] @link(by: "id", from: "node__home_page___NODE")
-  entity_subqueue__case_studies: [entity_subqueue__case_studies] @link(by: "id", from: "entity_subqueue__case_studies___NODE")
-  entity_subqueue__case_study_slider_homepage: [entity_subqueue__case_study_slider_homepage] @link(by: "id", from: "entity_subqueue__case_study_slider_homepage___NODE")
+  redirect__redirect: [redirect__redirect]
+    @link(by: "id", from: "redirect__redirect___NODE")
+  node__home_page: [node__home_page]
+    @link(by: "id", from: "node__home_page___NODE")
+  entity_subqueue__case_studies: [entity_subqueue__case_studies]
+    @link(by: "id", from: "entity_subqueue__case_studies___NODE")
+  entity_subqueue__case_study_slider_homepage: [entity_subqueue__case_study_slider_homepage]
+    @link(by: "id", from: "entity_subqueue__case_study_slider_homepage___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
-  node__non_drupal_page: [node__non_drupal_page] @link(by: "id", from: "node__non_drupal_page___NODE")
+  node__non_drupal_page: [node__non_drupal_page]
+    @link(by: "id", from: "node__non_drupal_page___NODE")
 }
 
 type node__legacy_insight implements Node @derivedTypes @dontInfer {
@@ -705,9 +748,12 @@ type node__legacy_insightRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_legacy_categories: [taxonomy_term__legacy_insight_category] @link(by: "id", from: "field_legacy_categories___NODE")
-  field_legacy_tags: [taxonomy_term__legacy_insight_tags] @link(by: "id", from: "field_legacy_tags___NODE")
-  component__featured_content: [component__featured_content] @link(by: "id", from: "component__featured_content___NODE")
+  field_legacy_categories: [taxonomy_term__legacy_insight_category]
+    @link(by: "id", from: "field_legacy_categories___NODE")
+  field_legacy_tags: [taxonomy_term__legacy_insight_tags]
+    @link(by: "id", from: "field_legacy_tags___NODE")
+  component__featured_content: [component__featured_content]
+    @link(by: "id", from: "component__featured_content___NODE")
 }
 
 type node_type__node_type implements Node @derivedTypes @dontInfer {
@@ -743,9 +789,12 @@ type node_type__node_typeRelationships {
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
-  node__legacy_insight: [node__legacy_insight] @link(by: "id", from: "node__legacy_insight___NODE")
-  node__non_drupal_page: [node__non_drupal_page] @link(by: "id", from: "node__non_drupal_page___NODE")
-  node__home_page: [node__home_page] @link(by: "id", from: "node__home_page___NODE")
+  node__legacy_insight: [node__legacy_insight]
+    @link(by: "id", from: "node__legacy_insight___NODE")
+  node__non_drupal_page: [node__non_drupal_page]
+    @link(by: "id", from: "node__non_drupal_page___NODE")
+  node__home_page: [node__home_page]
+    @link(by: "id", from: "node__home_page___NODE")
 }
 
 type case_study implements Node @derivedTypes @dontInfer {
@@ -791,17 +840,31 @@ type case_studyRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_components: [component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnion] @link(by: "id", from: "field_components___NODE")
+  field_components: [component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnion]
+    @link(by: "id", from: "field_components___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
-  field_secondary_image: file__file @link(by: "id", from: "field_secondary_image___NODE")
-  field_tags: [taxonomy_term__case_study_tags] @link(by: "id", from: "field_tags___NODE")
-  field_tertiary_image: file__file @link(by: "id", from: "field_tertiary_image___NODE")
-  component__case_study_showcase: [component__case_study_showcase] @link(by: "id", from: "component__case_study_showcase___NODE")
-  entity_subqueue__case_studies: [entity_subqueue__case_studies] @link(by: "id", from: "entity_subqueue__case_studies___NODE")
-  entity_subqueue__case_study_slider_homepage: [entity_subqueue__case_study_slider_homepage] @link(by: "id", from: "entity_subqueue__case_study_slider_homepage___NODE")
+  field_secondary_image: file__file
+    @link(by: "id", from: "field_secondary_image___NODE")
+  field_tags: [taxonomy_term__case_study_tags]
+    @link(by: "id", from: "field_tags___NODE")
+  field_tertiary_image: file__file
+    @link(by: "id", from: "field_tertiary_image___NODE")
+  component__case_study_showcase: [component__case_study_showcase]
+    @link(by: "id", from: "component__case_study_showcase___NODE")
+  entity_subqueue__case_studies: [entity_subqueue__case_studies]
+    @link(by: "id", from: "entity_subqueue__case_studies___NODE")
+  entity_subqueue__case_study_slider_homepage: [entity_subqueue__case_study_slider_homepage]
+    @link(by: "id", from: "entity_subqueue__case_study_slider_homepage___NODE")
 }
 
-union component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnion = component__image | component__prefooter | component__quote | component__text | component__text_image_split | component__text_split_with_video_phone | component__video
+union component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnion =
+    component__image
+  | component__prefooter
+  | component__quote
+  | component__text
+  | component__text_image_split
+  | component__text_split_with_video_phone
+  | component__video
 
 type file__file implements Node @derivedTypes @dontInfer {
   drupal_id: String
@@ -827,14 +890,21 @@ type file__fileRelationships {
   uid: user__user @link(by: "id", from: "uid___NODE")
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
-  component__image: [component__image] @link(by: "id", from: "component__image___NODE")
+  component__image: [component__image]
+    @link(by: "id", from: "component__image___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
-  component__text_image_split: [component__text_image_split] @link(by: "id", from: "component__text_image_split___NODE")
-  component__logo_wall: [component__logo_wall] @link(by: "id", from: "component__logo_wall___NODE")
-  component__prefooter: [component__prefooter] @link(by: "id", from: "component__prefooter___NODE")
-  component__services_component: [component__services_component] @link(by: "id", from: "component__services_component___NODE")
-  component__hero: [component__hero] @link(by: "id", from: "component__hero___NODE")
-  component__testimonial: [component__testimonial] @link(by: "id", from: "component__testimonial___NODE")
+  component__text_image_split: [component__text_image_split]
+    @link(by: "id", from: "component__text_image_split___NODE")
+  component__logo_wall: [component__logo_wall]
+    @link(by: "id", from: "component__logo_wall___NODE")
+  component__prefooter: [component__prefooter]
+    @link(by: "id", from: "component__prefooter___NODE")
+  component__services_component: [component__services_component]
+    @link(by: "id", from: "component__services_component___NODE")
+  component__hero: [component__hero]
+    @link(by: "id", from: "component__hero___NODE")
+  component__testimonial: [component__testimonial]
+    @link(by: "id", from: "component__testimonial___NODE")
 }
 
 type insight implements Node @derivedTypes @dontInfer {
@@ -897,13 +967,23 @@ type insightRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_components: [component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_quote_splitcomponent__videoUnion] @link(by: "id", from: "field_components___NODE")
+  field_components: [component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_quote_splitcomponent__videoUnion]
+    @link(by: "id", from: "field_components___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
-  field_tags: [taxonomy_term__insight_tags] @link(by: "id", from: "field_tags___NODE")
-  field_e_book_file: file__file @link(by: "id", from: "field_e_book_file___NODE")
+  field_tags: [taxonomy_term__insight_tags]
+    @link(by: "id", from: "field_tags___NODE")
+  field_e_book_file: file__file
+    @link(by: "id", from: "field_e_book_file___NODE")
 }
 
-union component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_quote_splitcomponent__videoUnion = component__image | component__prefooter | component__quote | component__text | component__text_image_split | component__text_quote_split | component__video
+union component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_quote_splitcomponent__videoUnion =
+    component__image
+  | component__prefooter
+  | component__quote
+  | component__text
+  | component__text_image_split
+  | component__text_quote_split
+  | component__video
 
 type taxonomy_term__insight_tags implements Node @derivedTypes @dontInfer {
   drupal_id: String
@@ -955,7 +1035,8 @@ type component__image implements Node @derivedTypes @dontInfer {
 }
 
 type component__imageRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
@@ -969,25 +1050,44 @@ type component_type__component_type implements Node @derivedTypes @dontInfer {
 }
 
 type component_type__component_typeRelationships {
-  component__text: [component__text] @link(by: "id", from: "component__text___NODE")
-  component__featured_content: [component__featured_content] @link(by: "id", from: "component__featured_content___NODE")
-  component__big_links: [component__big_links] @link(by: "id", from: "component__big_links___NODE")
-  component__case_study_showcase: [component__case_study_showcase] @link(by: "id", from: "component__case_study_showcase___NODE")
-  component__contact_form: [component__contact_form] @link(by: "id", from: "component__contact_form___NODE")
-  component__services_component: [component__services_component] @link(by: "id", from: "component__services_component___NODE")
-  component__testimonial: [component__testimonial] @link(by: "id", from: "component__testimonial___NODE")
-  component__video: [component__video] @link(by: "id", from: "component__video___NODE")
-  component__quote_hero: [component__quote_hero] @link(by: "id", from: "component__quote_hero___NODE")
-  component__text_quote_split: [component__text_quote_split] @link(by: "id", from: "component__text_quote_split___NODE")
-  component__text_split_with_video_phone: [component__text_split_with_video_phone] @link(by: "id", from: "component__text_split_with_video_phone___NODE")
-  component__insights: [component__insights] @link(by: "id", from: "component__insights___NODE")
-  component__image: [component__image] @link(by: "id", from: "component__image___NODE")
-  component__stats: [component__stats] @link(by: "id", from: "component__stats___NODE")
-  component__logo_wall: [component__logo_wall] @link(by: "id", from: "component__logo_wall___NODE")
-  component__quote: [component__quote] @link(by: "id", from: "component__quote___NODE")
-  component__prefooter: [component__prefooter] @link(by: "id", from: "component__prefooter___NODE")
-  component__text_image_split: [component__text_image_split] @link(by: "id", from: "component__text_image_split___NODE")
-  component__hero: [component__hero] @link(by: "id", from: "component__hero___NODE")
+  component__text: [component__text]
+    @link(by: "id", from: "component__text___NODE")
+  component__featured_content: [component__featured_content]
+    @link(by: "id", from: "component__featured_content___NODE")
+  component__big_links: [component__big_links]
+    @link(by: "id", from: "component__big_links___NODE")
+  component__case_study_showcase: [component__case_study_showcase]
+    @link(by: "id", from: "component__case_study_showcase___NODE")
+  component__contact_form: [component__contact_form]
+    @link(by: "id", from: "component__contact_form___NODE")
+  component__services_component: [component__services_component]
+    @link(by: "id", from: "component__services_component___NODE")
+  component__testimonial: [component__testimonial]
+    @link(by: "id", from: "component__testimonial___NODE")
+  component__video: [component__video]
+    @link(by: "id", from: "component__video___NODE")
+  component__quote_hero: [component__quote_hero]
+    @link(by: "id", from: "component__quote_hero___NODE")
+  component__text_quote_split: [component__text_quote_split]
+    @link(by: "id", from: "component__text_quote_split___NODE")
+  component__text_split_with_video_phone: [component__text_split_with_video_phone]
+    @link(by: "id", from: "component__text_split_with_video_phone___NODE")
+  component__insights: [component__insights]
+    @link(by: "id", from: "component__insights___NODE")
+  component__image: [component__image]
+    @link(by: "id", from: "component__image___NODE")
+  component__stats: [component__stats]
+    @link(by: "id", from: "component__stats___NODE")
+  component__logo_wall: [component__logo_wall]
+    @link(by: "id", from: "component__logo_wall___NODE")
+  component__quote: [component__quote]
+    @link(by: "id", from: "component__quote___NODE")
+  component__prefooter: [component__prefooter]
+    @link(by: "id", from: "component__prefooter___NODE")
+  component__text_image_split: [component__text_image_split]
+    @link(by: "id", from: "component__text_image_split___NODE")
+  component__hero: [component__hero]
+    @link(by: "id", from: "component__hero___NODE")
 }
 
 type component__text implements Node @derivedTypes @dontInfer {
@@ -1008,7 +1108,8 @@ type component__textField_body {
 }
 
 type component__textRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
@@ -1054,14 +1155,35 @@ type landing_pageRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_components: [component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion] @link(by: "id", from: "field_components___NODE")
+  field_components: [component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion]
+    @link(by: "id", from: "field_components___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
-  field_secondary_image: file__file @link(by: "id", from: "field_secondary_image___NODE")
-  field_tags: [taxonomy_term__case_study_tags] @link(by: "id", from: "field_tags___NODE")
-  field_tertiary_image: file__file @link(by: "id", from: "field_tertiary_image___NODE")
+  field_secondary_image: file__file
+    @link(by: "id", from: "field_secondary_image___NODE")
+  field_tags: [taxonomy_term__case_study_tags]
+    @link(by: "id", from: "field_tags___NODE")
+  field_tertiary_image: file__file
+    @link(by: "id", from: "field_tertiary_image___NODE")
 }
 
-union component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion = component__big_links | component__case_study_showcase | component__contact_form | component__featured_content | component__hero | component__image | component__insights | component__logo_wall | component__prefooter | component__quote | component__quote_hero | component__services_component | component__stats | component__testimonial | component__text | component__text_image_split | component__text_quote_split
+union component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion =
+    component__big_links
+  | component__case_study_showcase
+  | component__contact_form
+  | component__featured_content
+  | component__hero
+  | component__image
+  | component__insights
+  | component__logo_wall
+  | component__prefooter
+  | component__quote
+  | component__quote_hero
+  | component__services_component
+  | component__stats
+  | component__testimonial
+  | component__text
+  | component__text_image_split
+  | component__text_quote_split
 
 type taxonomy_term__case_study_tags implements Node @derivedTypes @dontInfer {
   drupal_id: String
@@ -1122,8 +1244,9 @@ type component__featured_content implements Node @derivedTypes @dontInfer {
 }
 
 type component__featured_contentRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
-  field_content: node__legacy_insight @link(by: "id", from: "field_content___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_content: insight @link(by: "id", from: "field_content___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1156,7 +1279,8 @@ type component__big_linksField_links {
 }
 
 type component__big_linksRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1171,8 +1295,10 @@ type component__case_study_showcase implements Node @derivedTypes @dontInfer {
 }
 
 type component__case_study_showcaseRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
-  field_case_studies: [case_study] @link(by: "id", from: "field_case_studies___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_case_studies: [case_study]
+    @link(by: "id", from: "field_case_studies___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1189,7 +1315,8 @@ type component__contact_form implements Node @derivedTypes @dontInfer {
 }
 
 type component__contact_formRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1213,7 +1340,8 @@ type component__services_componentField_body {
 }
 
 type component__services_componentRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
@@ -1233,18 +1361,36 @@ type component__testimonial implements Node @derivedTypes @dontInfer {
   changed: Date @dateformat
   default_langcode: Boolean
   field_header_text: String
-  field_quotes: [String]
   relationships: component__testimonialRelationships
-  field_images: [component__testimonialField_images]
+}
+
+type component__testimonial_slide implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_quote: String
+  relationships: component__testimonial_slideRelationships
+  field_image: component__testimonialField_image
 }
 
 type component__testimonialRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
-  field_images: [file__file] @link(by: "id", from: "field_images___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_testimonial_slide: [component__testimonial_slide]
+    @link(by: "id", from: "field_testimonial_slide___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
-type component__testimonialField_images {
+type component__testimonial_slideRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_image: file__file @link(by: "id", from: "field_image___NODE")
+}
+
+type component__testimonialField_image {
   alt: String
   title: String
   width: Int
@@ -1270,7 +1416,8 @@ type component__videoField_vimeo_video_link {
 
 type component__videoRelationships {
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
 }
 
@@ -1286,7 +1433,8 @@ type component__quote_hero implements Node @derivedTypes @dontInfer {
 }
 
 type component__quote_heroRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1310,12 +1458,15 @@ type component__text_quote_splitField_body {
 }
 
 type component__text_quote_splitRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
-type component__text_split_with_video_phone implements Node @derivedTypes @dontInfer {
+type component__text_split_with_video_phone implements Node
+  @derivedTypes
+  @dontInfer {
   drupal_id: String
   drupal_internal__id: Int
   langcode: String
@@ -1336,7 +1487,8 @@ type component__text_split_with_video_phoneField_body {
 
 type component__text_split_with_video_phoneRelationships {
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
 }
 
 type component__insights implements Node @derivedTypes @dontInfer {
@@ -1351,7 +1503,8 @@ type component__insights implements Node @derivedTypes @dontInfer {
 }
 
 type component__insightsRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1362,13 +1515,24 @@ type component__stats implements Node @derivedTypes @dontInfer {
   created: Date @dateformat
   changed: Date @dateformat
   default_langcode: Boolean
-  field_description: [String]
-  field_stat: Int
   relationships: component__statsRelationships
 }
 
+type component__stat implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_description: String
+  field_stat: Int
+}
+
 type component__statsRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_stats: [component__stat] @link(by: "id", from: "field_stats___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1386,7 +1550,8 @@ type component__logo_wall implements Node @derivedTypes @dontInfer {
 }
 
 type component__logo_wallRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   field_images: [file__file] @link(by: "id", from: "field_images___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
@@ -1411,7 +1576,8 @@ type component__quote implements Node @derivedTypes @dontInfer {
 }
 
 type component__quoteRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
@@ -1457,9 +1623,11 @@ type component__prefooterField_secondary_cta {
 
 type component__prefooterRelationships {
   case_study: [case_study] @link(by: "id", from: "case_study___NODE")
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
-  field_secondary_image: file__file @link(by: "id", from: "field_secondary_image___NODE")
+  field_secondary_image: file__file
+    @link(by: "id", from: "field_secondary_image___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
@@ -1498,7 +1666,8 @@ type component__text_image_splitField_body {
 }
 
 type component__text_image_splitRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
   insight: [insight] @link(by: "id", from: "insight___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
@@ -1545,8 +1714,10 @@ type component__heroField_primary_cta {
 }
 
 type component__heroRelationships {
-  component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
-  field_media_background: file__file @link(by: "id", from: "field_media_background___NODE")
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_media_background: file__file
+    @link(by: "id", from: "field_media_background___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1583,7 +1754,9 @@ type entity_subqueue__case_studiesRelationships {
   items: [case_study] @link(by: "id", from: "items___NODE")
 }
 
-type entity_subqueue__case_study_slider_homepage implements Node @derivedTypes @dontInfer {
+type entity_subqueue__case_study_slider_homepage implements Node
+  @derivedTypes
+  @dontInfer {
   drupal_id: String
   drupal_internal__name: String
   drupal_internal__revision_id: Int
@@ -1696,7 +1869,9 @@ type node__home_pageRelationships {
   uid: user__user @link(by: "id", from: "uid___NODE")
 }
 
-type taxonomy_term__legacy_insight_category implements Node @derivedTypes @dontInfer {
+type taxonomy_term__legacy_insight_category implements Node
+  @derivedTypes
+  @dontInfer {
   drupal_id: String
   drupal_internal__tid: Int
   drupal_internal__revision_id: Int
@@ -1716,10 +1891,13 @@ type taxonomy_term__legacy_insight_categoryPath {
 }
 
 type taxonomy_term__legacy_insight_categoryRelationships {
-  node__legacy_insight: [node__legacy_insight] @link(by: "id", from: "node__legacy_insight___NODE")
+  node__legacy_insight: [node__legacy_insight]
+    @link(by: "id", from: "node__legacy_insight___NODE")
 }
 
-type taxonomy_term__legacy_insight_tags implements Node @derivedTypes @dontInfer {
+type taxonomy_term__legacy_insight_tags implements Node
+  @derivedTypes
+  @dontInfer {
   drupal_id: String
   drupal_internal__tid: Int
   drupal_internal__revision_id: Int
@@ -1739,7 +1917,8 @@ type taxonomy_term__legacy_insight_tagsPath {
 }
 
 type taxonomy_term__legacy_insight_tagsRelationships {
-  node__legacy_insight: [node__legacy_insight] @link(by: "id", from: "node__legacy_insight___NODE")
+  node__legacy_insight: [node__legacy_insight]
+    @link(by: "id", from: "node__legacy_insight___NODE")
 }
 
 type redirect__redirect implements Node @derivedTypes @dontInfer {
@@ -1768,19 +1947,26 @@ type redirect__redirectRelationships {
   uid: user__user @link(by: "id", from: "uid___NODE")
 }
 
-type ShopifyPlusFoodAndBeverageSupportCtaGridTwoJson implements Node @childOf(types: ["File"]) @dontInfer {
+type ShopifyPlusFoodAndBeverageSupportCtaGridTwoJson implements Node
+  @childOf(types: ["File"])
+  @dontInfer {
   icon: String
   title: String
   description: String
 }
 
-type ShopifyPlusCtaGridFourJson implements Node @childOf(types: ["File"]) @dontInfer {
+type ShopifyPlusCtaGridFourJson implements Node
+  @childOf(types: ["File"])
+  @dontInfer {
   icon: String
   title: String
   description: String
 }
 
-type ShopifyJson implements Node @derivedTypes @childOf(types: ["File"]) @dontInfer {
+type ShopifyJson implements Node
+  @derivedTypes
+  @childOf(types: ["File"])
+  @dontInfer {
   hero: [ShopifyJsonHero]
   belowHero: [ShopifyJsonBelowHero]
   testimonials: [ShopifyJsonTestimonials]
@@ -1807,7 +1993,10 @@ type ShopifyJsonServices {
   description: [String]
 }
 
-type DrupalconJson implements Node @derivedTypes @childOf(types: ["File"]) @dontInfer {
+type DrupalconJson implements Node
+  @derivedTypes
+  @childOf(types: ["File"])
+  @dontInfer {
   header: DrupalconJsonHeader
   booth: DrupalconJsonBooth
   swag: DrupalconJsonSwag
@@ -1895,13 +2084,17 @@ type DrupalconJsonLiveQasQas {
   time: String
 }
 
-type DrupalSupportCtaGridTwoJson implements Node @childOf(types: ["File"]) @dontInfer {
+type DrupalSupportCtaGridTwoJson implements Node
+  @childOf(types: ["File"])
+  @dontInfer {
   icon: String
   title: String
   description: String
 }
 
-type DrupalSupportCtaGridOneJson implements Node @childOf(types: ["File"]) @dontInfer {
+type DrupalSupportCtaGridOneJson implements Node
+  @childOf(types: ["File"])
+  @dontInfer {
   icon: String
   title: String
   description: String
@@ -1919,7 +2112,10 @@ type AcquiaMarketingJson implements Node @childOf(types: ["File"]) @dontInfer {
   description: String
 }
 
-type AcquiaEngageJson implements Node @derivedTypes @childOf(types: ["File"]) @dontInfer {
+type AcquiaEngageJson implements Node
+  @derivedTypes
+  @childOf(types: ["File"])
+  @dontInfer {
   header: [AcquiaEngageJsonHeader]
   cta: [AcquiaEngageJsonCta]
   who: [AcquiaEngageJsonWho]
@@ -1999,7 +2195,10 @@ type AcquiaEngageJsonTalkTalks {
   description: String
 }
 
-type AboutJson implements Node @derivedTypes @childOf(types: ["File"]) @dontInfer {
+type AboutJson implements Node
+  @derivedTypes
+  @childOf(types: ["File"])
+  @dontInfer {
   header: [AboutJsonHeader]
   stats: [AboutJsonStats]
   coreValue: [AboutJsonCoreValue]

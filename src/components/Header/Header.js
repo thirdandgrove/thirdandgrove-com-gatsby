@@ -42,7 +42,7 @@ import Button from '../Button';
  * @param {string} heroLogo - optional logo in hero area
  * @param {string} heroLogoAlt - optional logo alt text in hero area
  * @param {string} body - optional body text in hero area
- * @param {string} cta - optional cta in hero area
+ * @param {array} cta - optional cta in hero area
  * @param {string} textColor - optional textColor in hero area dark/light
  */
 const Header = ({
@@ -240,7 +240,6 @@ const Header = ({
       line-height: 2.4;
       color: ${fontColor};
       padding: 0 10px;
-      position: relative;
 
       &::after {
         content: '|';
@@ -421,7 +420,7 @@ export const headerPropTypes = {
   heroLogo: PropTypes.string,
   heroLogoAlt: PropTypes.string,
   body: PropTypes.string,
-  cta: PropTypes.string,
+  cta: PropTypes.array,
   textColor: PropTypes.string,
 };
 
@@ -456,7 +455,7 @@ Header.defaultProps = {
   heroLogo: null,
   heroLogoAlt: null,
   body: null,
-  cta: null,
+  cta: [],
   textColor: null,
 };
 

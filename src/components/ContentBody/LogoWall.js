@@ -34,13 +34,12 @@ const LogoWall = ({ data }) => {
             font-size: 16px;
             font-weight: 100;
             font-family: 'NB International Pro', sans-serif;
-            margin-bottom: 0;
           }
           > div {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 10px;
+            margin-bottom: 10px !important;
 
             ${mediaQueries.phoneLarge} {
               margin-bottom: 0;
@@ -53,7 +52,7 @@ const LogoWall = ({ data }) => {
             margin-bottom: 0;
 
             ${mediaQueries.phoneLarge} {
-              margin-bottom: 30px;
+              margin-bottom: 30px !important;
             }
           }
           > div > div > img {

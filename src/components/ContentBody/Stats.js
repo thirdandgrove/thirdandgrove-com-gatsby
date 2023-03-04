@@ -9,11 +9,7 @@ import { useHasBeenVisible } from '../../hooks/useVisibility';
 import Counter from '../Counter';
 
 const Stats = ({ data }) => {
-  const { field_stat: statsField, field_description: descriptions } = data;
-  const stats = [];
-  for (let index = 0; index < descriptions.length; index += 1) {
-    stats.push({ title: descriptions[index], number: statsField[index] });
-  }
+  const fieldStats = data?.relationships?.field_stats;
   const nodeRef = React.useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 
@@ -105,11 +101,11 @@ const Stats = ({ data }) => {
       <div css={statWrapper} ref={nodeRef}>
         {isVisible && (
           <>
-            {stats.map(stat => {
+            {fieldStats.map(stat => {
               return (
                 <div css={statItem}>
-                  <Counter mainCount={stat.number} />
-                  <p>{stat.title}</p>
+                  <Counter mainCount={stat.field_stat} />
+                  <p>{stat.field_description}</p>
                 </div>
               );
             })}

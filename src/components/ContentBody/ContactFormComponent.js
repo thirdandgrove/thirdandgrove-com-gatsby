@@ -88,8 +88,11 @@ const ContactFormComponent = ({ data }) => {
       margin-bottom: 42px;
     }
   `;
+  const section = css`
+    margin-top: 25px;
+  `;
   return (
-    <FullWidthSection height='0' minHeight='0'>
+    <FullWidthSection height='0' minHeight='0' css={section}>
       {header && (
         <h1 data-cy='titleText' className='balance-text' css={headerTitle}>
           {header}
