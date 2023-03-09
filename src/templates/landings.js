@@ -293,11 +293,23 @@ export const query = graphql`
                         fluid(maxWidth: 325, maxHeight: 250) {
                           ...GatsbyImageSharpFluid_withWebp
                         }
+                        gatsbyImageData(
+                          height: 250
+                          width: 325
+                          transformOptions: { cropFocus: CENTER }
+                          layout: FULL_WIDTH
+                        )
                       }
                       childImageSlideDesktop: childImageSharp {
                         fluid(maxWidth: 450, maxHeight: 400) {
                           ...GatsbyImageSharpFluid_withWebp
                         }
+                        gatsbyImageData(
+                          height: 400
+                          width: 450
+                          transformOptions: { cropFocus: CENTER }
+                          layout: FULL_WIDTH
+                        )
                       }
                     }
                   }
