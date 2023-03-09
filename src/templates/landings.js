@@ -10,7 +10,7 @@ import ContentBody from '../components/ContentBody';
 import { updateExternalLinks } from '../util';
 
 const Landings = ({ data }) => {
-  const post = data.landingPage;
+  let post = data.landingPage;
   const imageSrc =
     post.relationships.field_image &&
     post.relationships.field_image.localFile &&
@@ -18,25 +18,49 @@ const Landings = ({ data }) => {
     post.relationships.field_image.localFile.childImageSharp.fluid;
 
   const backgroundColor = post.field_color && post.field_color.color;
+  let headerData = {
+    metaTitle: post.field_meta_title || post.title,
+    description: post.field_meta_description,
+    title: post.title,
+    invert: post.field_inverse_header,
+    defaultBackground: false,
+    color: backgroundColor || colors.yellow,
+    height: '500px',
+    mobileMinHeight: '470px',
+    titleMarginBottom: '70px',
+    label: post.relationships.field_tags.map(tag => tag.name).join(', '),
+    labelMobileOnly: true,
+  };
+  const hero = post.relationships.field_components[0];
+  post = post.relationships.field_components;
+  if (hero.relationships.component_type.name === 'Hero') {
+    const {
+      field_header_text: title,
+      field_primary_cta: cta,
+      field_body: body,
+      field_primary_color: { color },
+      field_text_color: textColor,
+    } = hero;
+    const backgroundImage =
+      hero.relationships.field_media_background.localFile.publicURL;
+
+    headerData = {
+      title,
+      body: body.processed,
+      cta: [cta],
+      color,
+      textColor,
+      heroImage: backgroundImage,
+      heroImageMobile: backgroundImage,
+      mobileMinHeight: '93vh',
+    };
+    post = post.filter(x => x !== hero);
+  }
 
   useEffect(() => updateExternalLinks(document.querySelectorAll('main a')), []);
 
   return (
-    <Layout
-      headerData={{
-        metaTitle: post.field_meta_title || post.title,
-        description: post.field_meta_description,
-        title: post.title,
-        invert: post.field_inverse_header,
-        defaultBackground: false,
-        color: backgroundColor || colors.yellow,
-        height: '500px',
-        mobileMinHeight: '470px',
-        titleMarginBottom: '70px',
-        label: post.relationships.field_tags.map(tag => tag.name).join(', '),
-        labelMobileOnly: true,
-      }}
-    >
+    <Layout headerData={headerData}>
       {imageSrc && (
         <Img
           fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
@@ -77,7 +101,7 @@ const Landings = ({ data }) => {
       >
         {post.field_subtitle}
       </p>
-      <ContentBody comps={post.relationships.field_components} type='landing' />
+      <ContentBody comps={post} type='landing' />
     </Layout>
   );
 };
@@ -145,11 +169,13 @@ export const query = graphql`
           }
           ... on component__stats {
             id
-            field_stat
-            field_description
             relationships {
               component_type {
                 name
+              }
+              field_stats {
+                field_description
+                field_stat
               }
             }
           }
@@ -184,29 +210,142 @@ export const query = graphql`
           ... on component__testimonial {
             id
             field_header_text
-            field_images {
-              alt
-              title
-            }
-            field_quotes
             relationships {
               component_type {
                 name
               }
-              field_images {
-                id
-                localFile {
-                  publicURL
-                  childImageSharp {
-                    fluid(maxWidth: 800, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
+              field_testimonial_slide {
+                field_image {
+                  alt
+                  title
+                }
+                field_quote
+                relationships {
+                  field_image {
+                    id
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 800, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                        squareImage: gatsbyImageData(
+                          width: 700
+                          height: 700
+                          transformOptions: { cropFocus: CENTER }
+                          layout: CONSTRAINED
+                        )
+                      }
                     }
-                    squareImage: gatsbyImageData(
-                      width: 700
-                      height: 700
-                      transformOptions: { cropFocus: CENTER }
-                      layout: CONSTRAINED
-                    )
+                  }
+                }
+              }
+            }
+          }
+          ... on component__featured_content {
+            id
+            field_header_text
+            relationships {
+              component_type {
+                name
+              }
+              field_content {
+                id
+                title
+                field_inverse_header
+                field_image {
+                  alt
+                }
+                created(formatString: "MMM D, YYYY")
+                path {
+                  alias
+                }
+                relationships {
+                  node_type {
+                    name
+                  }
+                  uid {
+                    name: display_name
+                  }
+                  field_e_book_file {
+                    filename
+                    id
+                    localFile {
+                      publicURL
+                    }
+                  }
+                  field_image {
+                    id
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 530, maxHeight: 400) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                        gatsbyImageData(
+                          height: 400
+                          width: 530
+                          transformOptions: { cropFocus: CENTER }
+                          layout: FULL_WIDTH
+                        )
+                      }
+                      childImageSlideMobile: childImageSharp {
+                        fluid(maxWidth: 325, maxHeight: 250) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                        gatsbyImageData(
+                          height: 250
+                          width: 325
+                          transformOptions: { cropFocus: CENTER }
+                          layout: FULL_WIDTH
+                        )
+                      }
+                      childImageSlideDesktop: childImageSharp {
+                        fluid(maxWidth: 450, maxHeight: 400) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                        gatsbyImageData(
+                          height: 400
+                          width: 450
+                          transformOptions: { cropFocus: CENTER }
+                          layout: FULL_WIDTH
+                        )
+                      }
+                    }
+                  }
+                  field_components {
+                    ... on component__text {
+                      relationships {
+                        component_type {
+                          name
+                        }
+                      }
+                      field_body {
+                        processed
+                      }
+                    }
+                    ... on component__image {
+                      id
+                      field_image {
+                        alt
+                      }
+                      relationships {
+                        component_type {
+                          name
+                        }
+                        field_image {
+                          id
+                          localFile {
+                            publicURL
+                            childImageSharp {
+                              fluid(maxWidth: 630, maxHeight: 630) {
+                                ...GatsbyImageSharpFluid_withWebp
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }

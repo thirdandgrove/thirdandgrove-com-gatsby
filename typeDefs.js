@@ -1239,13 +1239,12 @@ type component__stats implements Node @derivedTypes @dontInfer {
   created: Date @dateformat
   changed: Date @dateformat
   default_langcode: Boolean
-  field_description: [String]
-  field_stat: Int
   relationships: component__statsRelationships
 }
 
 type component__statsRelationships {
   component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
+  field_stats: [component__stat] @link(by: "id", from: "field_stats___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 

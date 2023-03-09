@@ -6,15 +6,15 @@ import { colors } from '../../styles';
 
 const Testimonial = ({ data }) => {
   const { field_header_text: header } = data;
-  const { field_quotes: quotes } = data;
-  const images = data.relationships.field_images;
+  const quotes = data.relationships.field_testimonial_slide;
   const testimonials = [];
-  for (let index = 0; index < quotes.length; index += 1) {
-    testimonials.push({
-      title: quotes[index],
-      ...images[index].localFile,
+
+  quotes.map(quote => {
+    return testimonials.push({
+      title: quote.field_quote,
+      ...quote.relationships.field_image.localFile,
     });
-  }
+  });
 
   return (
     <TestimonialSlider
