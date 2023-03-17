@@ -44,6 +44,7 @@ const ContactForm = ({ formName, altStyle }) => {
     } catch (error) {
       console.log('error ', error);
     }
+    return null;
   };
 
   const submitContact = async event => {
