@@ -42,7 +42,7 @@ const Landings = ({ data }) => {
       field_text_color: textColor,
     } = hero;
     const backgroundImage =
-      hero.relationships.field_media_background.localFile.publicURL;
+      hero?.relationships?.field_media_background?.localFile?.publicURL;
 
     headerData = {
       title,
@@ -393,6 +393,114 @@ export const query = graphql`
                       transformOptions: { cropFocus: CENTER }
                       layout: CONSTRAINED
                     )
+                  }
+                }
+              }
+            }
+          }
+          ... on component__quote {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_quote
+            field_footer_text
+          }
+          ... on component__image {
+            id
+            field_image {
+              alt
+            }
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 630, maxHeight: 630) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
+          }
+          ... on component__text {
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_body {
+              processed
+            }
+          }
+          ... on component__text_image_split {
+            id
+            field_body {
+              processed
+            }
+            field_image {
+              alt
+            }
+            field_reversed
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
+          }
+          ... on component__prefooter {
+            id
+            field_primary_lead_in_text
+            field_primary_body
+            field_primary_cta {
+              uri
+              title
+            }
+            field_primary_color {
+              color
+            }
+            field_secondary_lead_in_text
+            field_secondary_body
+            field_secondary_cta {
+              uri
+              title
+            }
+            field_secondary_color {
+              color
+            }
+            field_image {
+              alt
+            }
+            relationships {
+              component_type {
+                name
+              }
+              field_image {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 600, maxHeight: 600) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
                   }
                 }
               }
