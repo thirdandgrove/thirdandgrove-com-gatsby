@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
@@ -370,7 +371,7 @@ const Header = ({
           <div css={linkStylesA}>
             {cta.map(l => (
               <Button type='button' fontColor={textColor}>
-                <a href={l.url}>{l.text}</a>
+                <Link to={l.url.replace('entity:', '')}>{l.text}</Link>
               </Button>
             ))}
           </div>
