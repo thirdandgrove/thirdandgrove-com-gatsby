@@ -49,7 +49,7 @@ const LogoWall = ({ data }) => {
             width: auto;
             flex: unset;
             padding: 0 10px;
-            margin-bottom: 0;
+            margin-bottom: 10px;
 
             ${mediaQueries.phoneLarge} {
               margin-bottom: 30px !important;
