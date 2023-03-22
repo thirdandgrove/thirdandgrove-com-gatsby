@@ -122,11 +122,11 @@ const ContactForm = ({ formName, altStyle }) => {
   const labelCss = css`
     @keyframes fadein {
       from {
-        opacity: 0;
+        ${!altStyle ? 'opacity : 0' : ''};
       }
 
       to {
-        opacity: 0.7;
+        ${!altStyle ? 'opacity : 0.7' : ''};
       }
     }
 
@@ -160,6 +160,8 @@ const ContactForm = ({ formName, altStyle }) => {
     span {
       top: 16px;
       font-size: ${!altStyle ? '16px' : '15px'};
+      font-weight: bold;
+      color: ${colors.black};
     }
   `;
 
@@ -185,11 +187,11 @@ const ContactForm = ({ formName, altStyle }) => {
   const fieldSetStyles = css`
     @keyframes fadein {
       from {
-        opacity: 0;
+        ${!altStyle ? 'opacity : 0' : ''};
       }
 
       to {
-        opacity: 0.7;
+        ${!altStyle ? 'opacity : 0.7' : ''};
       }
     }
 
@@ -207,11 +209,11 @@ const ContactForm = ({ formName, altStyle }) => {
   const fieldSetTextAreaStyles = css`
     @keyframes fadein {
       from {
-        opacity: 0;
+        ${!altStyle ? 'opacity : 0' : ''};
       }
 
       to {
-        opacity: 0.7;
+        ${!altStyle ? 'opacity : 0.7' : ''};
       }
     }
 
@@ -239,11 +241,10 @@ const ContactForm = ({ formName, altStyle }) => {
     return errs ? (
       <div
         css={css`
-          margin-top: 64px;
+          padding-top: 40px;
 
           ${mediaQueries.xs} {
             position: relative;
-            margin-top: 72px;
           }
         `}
       >

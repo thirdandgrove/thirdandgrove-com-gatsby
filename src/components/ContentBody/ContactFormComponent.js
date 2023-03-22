@@ -66,7 +66,7 @@ const ContactFormComponent = ({ data }) => {
     }
   `;
   const headerSubTitle = css`
-    margin-top: 32px;
+    margin-top: 30px;
     font-family: ${fonts.sans};
     font-size: 15px;
     line-height: 2.4;
@@ -85,7 +85,7 @@ const ContactFormComponent = ({ data }) => {
     animation-fill-mode: forwards;
 
     ${mediaQueries.desktop} {
-      margin-bottom: 42px;
+      margin-bottom: 30px;
     }
   `;
   const section = css`
@@ -103,7 +103,7 @@ const ContactFormComponent = ({ data }) => {
           {subtitle}
         </span>
       )}
-      <ContactForm />
+      <ContactForm altStyle />
     </FullWidthSection>
   );
 };
