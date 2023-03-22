@@ -60,15 +60,27 @@ const ServiceComponent = ({ data }) => {
 
             section {
               margin: 0;
-              padding: 0 0 0 1rem;
 
               p {
                 font-family: ${fonts.sans};
-                font-weight: ${weights.bold};
-                font-variant-caps: all-small-caps;
+                font-weight: ${weights.light};
+                font-size: 16px;
                 letter-spacing: 1px;
                 list-style: none;
                 margin-bottom: 10px;
+              }
+              ul {
+                list-style: none;
+                margin: 0;
+                font-weight: ${weights.medium};
+                text-align: left;
+                li {
+                  font-family: ${fonts.sans};
+                  font-weight: ${weights.bold};
+                  font-variant-caps: all-small-caps;
+                  letter-spacing: 1px;
+                  list-style: none;
+                }
               }
             }
 
