@@ -476,6 +476,7 @@ export const query = graphql`
             id
             field_header_text
             field_subhead_text
+            field_header_style
             relationships {
               component_type {
                 name

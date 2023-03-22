@@ -1314,6 +1314,7 @@ type component__contact_form implements Node @derivedTypes @dontInfer {
   default_langcode: Boolean
   field_header_text: String
   field_subhead_text: String
+  field_header_style: String
   relationships: component__contact_formRelationships
 }
 
