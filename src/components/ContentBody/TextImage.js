@@ -79,7 +79,6 @@ const TextImage = ({ data }) => {
             />
           </div>
         )}
-        ;
       </section>
       <section
         dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
@@ -127,7 +126,6 @@ const TextImage = ({ data }) => {
             />
           </div>
         )}
-        ;
       </section>
     </SplitSection>
   );

@@ -490,8 +490,9 @@ export const query = graphql`
               processed
             }
             field_primary_cta {
-              url: uri
+              url
               text: title
+              uri
             }
             field_primary_color {
               color
