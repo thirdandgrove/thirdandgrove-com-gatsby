@@ -27,14 +27,6 @@ const TestimonialSlider = ({
     infinite: true,
     speed: 1000,
     centerMode: true,
-    responsive: [
-      {
-        breakpoint: 1220,
-        settings: {
-          centerPadding: 10,
-        },
-      },
-    ],
   };
 
   const headerStyling = css`

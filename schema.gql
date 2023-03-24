@@ -1715,6 +1715,7 @@ type component__heroField_primary_color {
 type component__heroField_primary_cta {
   uri: String
   title: String
+  url: String
 }
 
 type component__heroRelationships {
