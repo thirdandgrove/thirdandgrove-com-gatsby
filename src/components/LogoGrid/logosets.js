@@ -78,8 +78,8 @@ export default (logoset, isSmScreen, images) => {
       <img
         src={image.localFile.publicURL}
         alt=''
-        width={isSmScreen ? '126' : '170'}
-        height={isSmScreen ? '122' : '50'}
+        width={isSmScreen ? '120' : '202'}
+        height={isSmScreen ? '66' : '112'}
       />
     ));
     return sets;

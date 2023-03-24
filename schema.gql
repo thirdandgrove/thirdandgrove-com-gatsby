@@ -1246,9 +1246,12 @@ type component__featured_content implements Node @derivedTypes @dontInfer {
 type component__featured_contentRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
-  field_content: insight @link(by: "id", from: "field_content___NODE")
+  field_content: [case_studyinsightUnion]
+    @link(by: "id", from: "field_content___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
+
+union case_studyinsightUnion = case_study | insight
 
 type component__featured_contentField_content @derivedTypes {
   depth: Int
@@ -1311,6 +1314,7 @@ type component__contact_form implements Node @derivedTypes @dontInfer {
   default_langcode: Boolean
   field_header_text: String
   field_subhead_text: String
+  field_header_style: String
   relationships: component__contact_formRelationships
 }
 

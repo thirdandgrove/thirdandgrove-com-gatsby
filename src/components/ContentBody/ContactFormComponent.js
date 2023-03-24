@@ -9,6 +9,7 @@ import { colors, fonts, mediaQueries, weights } from '../../styles';
 const ContactFormComponent = ({ data }) => {
   const { field_header_text: header } = data;
   const { field_subhead_text: subtitle } = data;
+  const { field_header_style: headerStyle } = data;
 
   const headerTitle = css`
     @keyframes headerSlide {
@@ -32,7 +33,6 @@ const ContactFormComponent = ({ data }) => {
     position: relative;
     padding: 0 20px;
     line-height: 1.23;
-    font-size: 39px;
     font-weight: ${weights.medium};
     letter-spacing: -0.45px;
     text-align: center;
@@ -60,13 +60,12 @@ const ContactFormComponent = ({ data }) => {
     }
 
     ${mediaQueries.phoneLarge} {
-      font-size: 72px;
       line-height: 1.17;
       letter-spacing: -1px;
     }
   `;
   const headerSubTitle = css`
-    margin-top: 32px;
+    margin-top: 30px;
     font-family: ${fonts.sans};
     font-size: 15px;
     line-height: 2.4;
@@ -85,7 +84,7 @@ const ContactFormComponent = ({ data }) => {
     animation-fill-mode: forwards;
 
     ${mediaQueries.desktop} {
-      margin-bottom: 42px;
+      margin-bottom: 30px;
     }
   `;
   const section = css`
@@ -93,17 +92,22 @@ const ContactFormComponent = ({ data }) => {
   `;
   return (
     <FullWidthSection height='0' minHeight='0' css={section}>
-      {header && (
+      {header && headerStyle === 'h1' && (
         <h1 data-cy='titleText' className='balance-text' css={headerTitle}>
           {header}
         </h1>
+      )}
+      {header && headerStyle === 'h2' && (
+        <h2 data-cy='titleText' className='balance-text' css={headerTitle}>
+          {header}
+        </h2>
       )}
       {subtitle && (
         <span data-cy='labelText' css={headerSubTitle}>
           {subtitle}
         </span>
       )}
-      <ContactForm />
+      <ContactForm altStyle />
     </FullWidthSection>
   );
 };

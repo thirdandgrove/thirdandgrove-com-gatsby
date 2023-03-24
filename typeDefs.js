@@ -1043,9 +1043,11 @@ type component__featured_content implements Node @derivedTypes @dontInfer {
   field_content: component__featured_contentField_content
 }
 
+union case_studyinsightUnion = case_study | insight
+
 type component__featured_contentRelationships {
   component_type: component_type__component_type @link(by: "id", from: "component_type___NODE")
-  field_content: node__legacy_insight @link(by: "id", from: "field_content___NODE")
+  field_content: [case_studyinsightUnion] @link(by: "id", from: "field_content___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 

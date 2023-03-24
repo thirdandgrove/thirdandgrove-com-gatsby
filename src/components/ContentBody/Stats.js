@@ -85,7 +85,7 @@ const Stats = ({ data }) => {
       padding: 0;
     }
     ${mediaQueriesMax.phoneLarge} {
-      width: 35%;
+      width: 33%;
       max-height: 110px;
       padding: 0;
     }
