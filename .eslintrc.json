@@ -27,6 +27,9 @@
     "react/jsx-one-expression-per-line": 1,
     "no-nested-ternary": 0,
     "lines-between-class-members": 0,
+    "react/no-this-in-sfc": 0,
+    "new-cap": 0,
+    "import/no-unresolved": 0,
     "react/jsx-filename-extension": [
       1,
       {
