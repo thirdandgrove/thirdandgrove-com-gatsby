@@ -26,6 +26,7 @@
     "react/require-default-props": 1,
     "react/jsx-one-expression-per-line": 1,
     "no-nested-ternary": 0,
+    "lines-between-class-members": 0,
     "react/jsx-filename-extension": [
       1,
       {

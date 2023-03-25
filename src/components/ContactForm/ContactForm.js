@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -8,6 +8,7 @@ import Button from '../Button';
 import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
 import { encode } from '../../util';
+import reCAPTCHA from './reCAPTCHA';
 
 import Thanks from './Thanks';
 
@@ -24,6 +25,10 @@ const ContactForm = ({ formName, altStyle }) => {
   const recaptchaRef = React.useRef();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const recaptcha = new reCAPTCHA(
+    process.env.REACT_APP_RECAPTCHA_SITE_KEY,
+    'form'
+  );
 
   const updateInput = event => {
     updateErrors(null);
@@ -83,8 +88,7 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    const token = await recaptchaRef.current.executeAsync();
-    recaptchaRef.current.reset();
+    const token = await this.recaptcha.getToken();
 
     if (token) {
       const validToken = await verifyToken(token);
