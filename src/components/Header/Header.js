@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
@@ -17,6 +18,7 @@ import FullWidthSection from '../FullWidthSection';
 import TagLogo from '../TopNav/svg/TagLogo';
 import ThirdAndGrove from '../TopNav/svg/ThirdAndGrove';
 import useWindow from '../../hooks/useWindow';
+import Button from '../Button';
 /**
  * Header used on every page.
  *
@@ -40,6 +42,9 @@ import useWindow from '../../hooks/useWindow';
  * @param {bool} hasHeroLogo - optional logo state in hero area
  * @param {string} heroLogo - optional logo in hero area
  * @param {string} heroLogoAlt - optional logo alt text in hero area
+ * @param {string} body - optional body text in hero area
+ * @param {array} cta - optional cta in hero area
+ * @param {string} textColor - optional textColor in hero area dark/light
  */
 const Header = ({
   title,
@@ -69,6 +74,9 @@ const Header = ({
   hasHeroLogo,
   heroLogo,
   heroLogoAlt,
+  body,
+  cta,
+  textColor,
 }) => {
   const { width } = useWindow();
   const [isMobile, setIsMobile] = useState(false);
@@ -99,8 +107,13 @@ const Header = ({
     );
   };
 
-  const fontColor =
-    isLightBackground(color) && !invert ? colors.darkgray : colors.lightgray;
+  const fontColor = textColor
+    ? textColor === 'dark'
+      ? colors.darkgray
+      : colors.lightgray
+    : isLightBackground(color) && !invert
+    ? colors.darkgray
+    : colors.lightgray;
 
   const headerTitle = css`
     @keyframes headerSlide {
@@ -228,7 +241,6 @@ const Header = ({
       line-height: 2.4;
       color: ${fontColor};
       padding: 0 10px;
-      position: relative;
 
       &::after {
         content: '|';
@@ -341,10 +353,26 @@ const Header = ({
             {subTitle}
           </span>
         )}
+        {body && (
+          <span
+            data-cy='labelText'
+            css={headerSubTitle}
+            dangerouslySetInnerHTML={{ __html: body }}
+          />
+        )}
         {linksA && (
           <div css={linkStylesA}>
             {linksA.map(l => (
               <a href={l.url}>{l.text}</a>
+            ))}
+          </div>
+        )}
+        {cta && (
+          <div css={linkStylesA}>
+            {cta.map(l => (
+              <Button type='button' fontColor={textColor}>
+                <Link to={l.url.replace('entity:', '')}>{l.text}</Link>
+              </Button>
             ))}
           </div>
         )}
@@ -392,6 +420,9 @@ export const headerPropTypes = {
   hasHeroLogo: PropTypes.bool,
   heroLogo: PropTypes.string,
   heroLogoAlt: PropTypes.string,
+  body: PropTypes.string,
+  cta: PropTypes.array,
+  textColor: PropTypes.string,
 };
 
 Header.propTypes = headerPropTypes;
@@ -424,6 +455,9 @@ Header.defaultProps = {
   hasHeroLogo: false,
   heroLogo: null,
   heroLogoAlt: null,
+  body: null,
+  cta: [],
+  textColor: null,
 };
 
 export default Header;

@@ -56,7 +56,7 @@ const InsightsSlider = ({
       <Slider
         {...settings}
         css={css`
-          max-width: 100%;
+          width: 100%;
           max-height: 100%;
           margin-bottom: 65px;
 

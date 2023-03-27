@@ -114,7 +114,9 @@ const ArticlePreviewSlide = ({ article }) => {
             <footer>
               {article.relationships.field_e_book_file
                 ? `Special Report`
-                : `${article.created} - ${article.relationships.uid.name}`}
+                : `${article.created} - ${
+                    article?.relationships?.uid?.name || ''
+                  }`}
             </footer>
           </Link>
         </div>

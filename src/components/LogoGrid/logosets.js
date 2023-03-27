@@ -71,8 +71,20 @@ import dadiAwards from './logos/awards/dadi-awards.png';
 import daveyAwards from './logos/awards/davey-awards.png';
 import c2aAwards from './logos/awards/C2A-awards.png';
 
-export default (logoset, isSmScreen) => {
-  const sets = {
+export default (logoset, isSmScreen, images) => {
+  let sets;
+  if (images) {
+    sets = images.map(image => (
+      <img
+        src={image.localFile.publicURL}
+        alt=''
+        width={isSmScreen ? '120' : '202'}
+        height={isSmScreen ? '66' : '112'}
+      />
+    ));
+    return sets;
+  }
+  sets = {
     acquiaEngage: [
       <img
         src={cloudHealth}

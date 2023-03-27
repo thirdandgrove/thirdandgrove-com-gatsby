@@ -3,6 +3,7 @@
 const path = require('path');
 const util = require('util');
 const childProcess = require('child_process');
+const fs = require('fs');
 
 const express = require('express');
 
@@ -21,6 +22,16 @@ const runQueries = async graphql => {
     queries = await graphql(`
       query {
         caseStudies: allCaseStudy(filter: { field_hidden: { eq: false } }) {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            path {
+              alias
+            }
+          }
+        }
+        landingPages: allLandingPage(filter: { field_hidden: { eq: false } }) {
           nodes {
             id
             title
@@ -92,6 +103,16 @@ const runQueries = async graphql => {
             }
           }
         }
+        landingPages: allLandingPage(filter: { field_hidden: { eq: false } }) {
+          nodes {
+            id
+            title
+            drupal_internal__nid
+            path {
+              alias
+            }
+          }
+        }
         insights: allInsight {
           nodes {
             id
@@ -146,6 +167,10 @@ const runQueries = async graphql => {
   return queries.data;
 };
 
+exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
+  createTypes(fs.readFileSync(`schema.gql`, { encoding: `utf-8` }));
+};
+
 exports.onCreateDevServer = ({ app }) => {
   app.use(express.static('static'));
 };
@@ -153,10 +178,16 @@ exports.onCreateDevServer = ({ app }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
 
-  const { caseStudies, insights, legacyInsights, redirects } = await runQueries(
-    graphql
-  );
-  const data = { data: { caseStudies, insights, legacyInsights, redirects } };
+  const {
+    caseStudies,
+    landingPages,
+    insights,
+    legacyInsights,
+    redirects,
+  } = await runQueries(graphql);
+  const data = {
+    data: { caseStudies, landingPages, insights, legacyInsights, redirects },
+  };
 
   const updatedRedirects = await updatePaths(data);
 
@@ -166,6 +197,16 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`src/templates/studies.js`),
       context: {
         StudyId: studyData.id,
+      },
+    })
+  );
+
+  landingPages.nodes.map(landingData =>
+    createPage({
+      path: ensureTrailingSlash(landingData.path.alias),
+      component: path.resolve(`src/templates/landings.js`),
+      context: {
+        landingId: landingData.id,
       },
     })
   );
