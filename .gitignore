@@ -4,3 +4,5 @@ node_modules
 .cache
 .env
 public
+# Local Netlify folder
+.netlify

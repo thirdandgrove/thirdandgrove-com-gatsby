@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import Input from '../Input';
 import Button from '../Button';
@@ -21,7 +21,7 @@ const ContactForm = ({ formName, altStyle }) => {
     botField: '',
   });
 
-  const recaptchaRef = React.useRef();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -40,7 +40,8 @@ const ContactForm = ({ formName, altStyle }) => {
         },
         body: JSON.stringify({ token }),
       });
-      return await response.json();
+      const json = await response.json();
+      return json;
     } catch (error) {
       console.log('error ', error);
     }
@@ -49,6 +50,13 @@ const ContactForm = ({ formName, altStyle }) => {
 
   const submitContact = async event => {
     event.preventDefault();
+
+    if (!executeRecaptcha) {
+      console.log('Execute recaptcha not yet available');
+      return;
+    }
+
+    const token = await executeRecaptcha('form');
 
     const { name, email, website, comments } = formState;
     if (hasSubmitted) {
@@ -83,8 +91,7 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    const token = await recaptchaRef.current.executeAsync();
-    recaptchaRef.current.reset();
+    // const token = await executeRecaptcha('form');
 
     if (token) {
       const validToken = await verifyToken(token);
@@ -467,13 +474,6 @@ const ContactForm = ({ formName, altStyle }) => {
               }
             `}
           >
-            <ReCAPTCHA
-              style={{ display: 'inline-block' }}
-              ref={recaptchaRef}
-              size='invisible'
-              sitekey='6Ldyy_UjAAAAAPkfTBnm4MOnh4cMztt00e5vpsHE'
-            />
-
             <Button data-cy='contactSubmit' type='submit'>
               send
             </Button>
