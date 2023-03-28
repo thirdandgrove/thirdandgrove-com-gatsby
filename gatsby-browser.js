@@ -6,7 +6,7 @@ import { EasterEggProvider } from './src/context/EasterEggContext';
 const wrapRootElement = ({ element }) => {
   return (
     <GoogleReCaptchaProvider
-      reCaptchaKey='6LfrmTglAAAAANfITm1-nQpk34JveJGJKIxNKtrr'
+      reCaptchaKey='6LdPoTclAAAAAJb_x_AYAwTdnPRxdQqlz-YfM8UA'
       scriptProps={{
         async: false,
         defer: false,
