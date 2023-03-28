@@ -19,7 +19,7 @@ const Testimonial = ({ data }) => {
   return (
     <TestimonialSlider
       data={{ nodes: [...testimonials] }}
-      showButton
+      showButton={false}
       backgroundColor={colors.white}
       title={header}
       arrows
