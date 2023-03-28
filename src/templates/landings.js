@@ -173,6 +173,7 @@ export const query = graphql`
               field_stats {
                 field_description
                 field_stat
+                field_character
               }
             }
           }
@@ -623,6 +624,131 @@ export const query = graphql`
                   childImageSharp {
                     fluid(maxWidth: 600, maxHeight: 600) {
                       ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+              }
+            }
+          }
+          ... on component__case_study_showcase {
+            id
+            relationships {
+              component_type {
+                name
+              }
+              field_case_studies {
+                id
+                title
+                field_subtitle
+                field_inverse_header
+                field_image_arrangement
+                field_image {
+                  alt
+                }
+                field_secondary_image {
+                  alt
+                }
+                field_tertiary_image {
+                  alt
+                }
+                path {
+                  alias
+                }
+                relationships {
+                  field_tags {
+                    name
+                  }
+                  field_image {
+                    id
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                      childImageMobile: childImageSharp {
+                        fixed(width: 335, height: 260, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeA: childImageSharp {
+                        fixed(width: 450, height: 320, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeB: childImageSharp {
+                        fixed(width: 380, height: 420, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeC: childImageSharp {
+                        fixed(width: 420, height: 340, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                    }
+                  }
+                  field_secondary_image {
+                    id
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 850, maxHeight: 850) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                      childImageMobile: childImageSharp {
+                        fixed(width: 1, height: 1) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeA: childImageSharp {
+                        fixed(width: 250, height: 180, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeB: childImageSharp {
+                        fixed(width: 340, height: 260, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeC: childImageSharp {
+                        fixed(width: 270, height: 210, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                    }
+                  }
+                  field_tertiary_image {
+                    id
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 850, maxHeight: 850) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                      childImageMobile: childImageSharp {
+                        fixed(width: 1, height: 1) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeA: childImageSharp {
+                        fixed(width: 250, height: 495, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeB: childImageSharp {
+                        fixed(width: 230, height: 210, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeC: childImageSharp {
+                        fixed(width: 320, height: 210, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
                     }
                   }
                 }
