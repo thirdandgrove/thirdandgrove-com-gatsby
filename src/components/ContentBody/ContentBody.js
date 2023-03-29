@@ -15,6 +15,7 @@ import FeaturedContent from './FeaturedContent';
 import Testimonial from './Testimonial';
 import ContactFormComponent from './ContactFormComponent';
 import Hero from './Hero';
+import CaseStudyShowcase from './CaseStudyShowcase';
 
 const Components = {
   Image,
@@ -31,6 +32,7 @@ const Components = {
   Testimonial,
   ContactFormComponent,
   Hero,
+  CaseStudyShowcase,
 };
 
 /**

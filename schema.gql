@@ -1531,6 +1531,7 @@ type component__stat implements Node @derivedTypes @dontInfer {
   default_langcode: Boolean
   field_description: String
   field_stat: Int
+  field_character: String
 }
 
 type component__statsRelationships {

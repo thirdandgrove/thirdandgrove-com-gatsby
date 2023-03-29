@@ -104,7 +104,10 @@ const Stats = ({ data }) => {
             {fieldStats.map(stat => {
               return (
                 <div css={statItem}>
-                  <Counter mainCount={stat.field_stat} />
+                  <Counter
+                    mainCount={stat.field_stat}
+                    symbol={stat.field_character}
+                  />
                   <p>{stat.field_description}</p>
                 </div>
               );
