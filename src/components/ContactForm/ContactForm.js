@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import Input from '../Input';
 import Button from '../Button';
@@ -21,29 +21,52 @@ const ContactForm = ({ formName, altStyle }) => {
     botField: '',
   });
 
-  const recaptchaRef = React.useRef();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [captchaValue, setCaptchaValue] = useState(null);
 
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
   };
 
-  const handleChange = value => setCaptchaValue(value);
+  const verifyToken = async token => {
+    try {
+      const response = await fetch('/.netlify/functions/verify', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+      });
+      const json = await response.json();
+      return json;
+    } catch (error) {
+      console.log('error ', error);
+    }
+    return null;
+  };
 
-  const submitContact = event => {
+  const submitContact = async event => {
     event.preventDefault();
-    recaptchaRef.current.execute();
+
+    if (!executeRecaptcha) {
+      console.log('Execute recaptcha not yet available');
+      return;
+    }
+
+    const token = await executeRecaptcha('form');
+
     const { name, email, website, comments } = formState;
     if (hasSubmitted) {
       // Deter multiple submissions.
       updateErrors({ error: 'The form has already been submitted.' });
       return;
     }
+
     // Validate inputs.
-    if (!name || !email || !website || !comments || !captchaValue) {
+    if (!name || !email || !website || !comments) {
       // Notify user of required fields.
       const currentErrs = {};
       if (!name) {
@@ -67,21 +90,39 @@ const ContactForm = ({ formName, altStyle }) => {
       updateErrors({ website: 'Website must be valid' });
       return;
     }
-    // The form has not been submitted.
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': formName, ...formState }),
-    }).then(() => {
-      updateForm({
-        comments: 'Thank you for your inquiry.',
-        email: '',
-        name: '',
-        phone: '',
-        website: '',
-      });
-      setHasSubmitted(true);
-    });
+
+    // const token = await executeRecaptcha('form');
+
+    if (token) {
+      const validToken = await verifyToken(token);
+
+      if (validToken.success) {
+        const formResponse = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode({ 'form-name': formName, ...formState }),
+        });
+
+        if (!formResponse.ok) {
+          const message = `An error has occured: ${formResponse.status}`;
+          throw new Error(message);
+        }
+
+        if (formResponse.ok) {
+          updateForm({
+            comments: 'Thank you for your inquiry.',
+            email: '',
+            name: '',
+            phone: '',
+            website: '',
+          });
+          setHasSubmitted(true);
+        }
+        console.log('Hurray!! you have submitted the form');
+      } else {
+        console.log('Sorry!! Token invalid');
+      }
+    }
   };
 
   const inputStyles = css`
@@ -433,14 +474,6 @@ const ContactForm = ({ formName, altStyle }) => {
               }
             `}
           >
-            <ReCAPTCHA
-              style={{ display: 'inline-block' }}
-              ref={recaptchaRef}
-              size='invisible'
-              sitekey='6Ldyy_UjAAAAAPkfTBnm4MOnh4cMztt00e5vpsHE'
-              onChange={handleChange}
-            />
-
             <Button data-cy='contactSubmit' type='submit'>
               send
             </Button>
