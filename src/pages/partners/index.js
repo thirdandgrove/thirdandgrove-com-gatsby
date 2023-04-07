@@ -38,12 +38,6 @@ const Partners = () => {
       label: 'Gatsby',
       link: '/partners/gatsby',
     },
-    {
-      src: BigcommerceBadge,
-      alt: 'bigcommerce',
-      label: 'Big Commerce',
-      link: '/partners/big-commerce',
-    },
   ];
 
   const handleGoTo = link => () => navigate(link);
@@ -70,9 +64,9 @@ const Partners = () => {
     cursor: pointer;
 
     ${mediaQueries.tablet} {
-      flex: 0 0 33%;
-      width: 33%;
-      max-width: 33%;
+      flex: 0 0 50%;
+      width: 50%;
+      max-width: 50%;
     }
 
     img {

@@ -360,9 +360,9 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                 desktopDelay4,
               ]}
               onClick={() => toggleOpen()}
-              to='/partners/gatsby/'
+              to='/partners/wordpress/'
             >
-              Gatsby
+              Wordpress
             </Link>
           </div>
         </section>
