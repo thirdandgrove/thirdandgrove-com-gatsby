@@ -270,6 +270,13 @@ exports.createPages = async ({ actions, graphql }) => {
     statusCode: '301',
     force: true,
   });
+
+  createRedirect({
+    fromPath: 'https://www.thirdandgrove.com/partners/big-commerce',
+    toPath: 'https://www.thirdandgrove.com/partners/shopify',
+    statusCode: '301',
+    force: true,
+  });
 };
 
 exports.onCreateWebpackConfig = ({ actions }) => {
