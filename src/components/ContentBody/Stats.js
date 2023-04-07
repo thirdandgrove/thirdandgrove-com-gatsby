@@ -19,13 +19,14 @@ const Stats = ({ data }) => {
     color: ${colors.black};
     font-family: ${fonts.serif};
     margin-left: 80px;
+    padding: 8rem 0;
     h4 {
-      font-size: 130px;
+      font-size: 110px;
     }
     p {
       max-width: 400px;
-      font-size: 36px;
-      line-height: 50px;
+      font-size: 28px;
+      line-height: 40px;
       text-align: center;
       letter-spacing: 0.4px;
     }
@@ -36,22 +37,26 @@ const Stats = ({ data }) => {
       margin: 0 10%;
 
       h4 {
-        font-size: xxx-large;
+        font-size: 100px;
         padding: 0;
         margin: 0;
       }
       p {
+        font-size: x-large;
+        padding: 0 3rem;
         line-height: normal;
       }
     }
 
     ${mediaQueriesMax.phoneLarge} {
+      padding: 4rem 0;
       h4 {
-        font-size: xx-large;
+        font-size: xxx-large;
       }
       p {
         font-size: large;
         line-height: normal;
+        padding-top: 1rem;
       }
     }
     ${mediaQueriesMax.xs} {
@@ -63,7 +68,7 @@ const Stats = ({ data }) => {
       align-items: center;
 
       h4 {
-        font-size: 60px;
+        font-size: 80px;
       }
     }
   `;
@@ -81,12 +86,10 @@ const Stats = ({ data }) => {
     }
     ${mediaQueriesMax.desktop} {
       width: 50%;
-      max-height: 110px;
       padding: 0;
     }
     ${mediaQueriesMax.phoneLarge} {
-      width: 33%;
-      max-height: 110px;
+      width: 80%;
       padding: 0;
     }
     ${mediaQueriesMax.xs} {
