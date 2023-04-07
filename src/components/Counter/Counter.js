@@ -32,10 +32,12 @@ class Counter extends React.Component {
   }
 
   render() {
+    // eslint-disable-next-line react/destructuring-assignment
+    const formattedNumber = this.state.count.toLocaleString('en-US');
     return (
       <h4>
         {/* eslint-disable-next-line react/destructuring-assignment */}
-        {this.state.count}
+        {formattedNumber}
         {/* eslint-disable-next-line react/destructuring-assignment */}
         {this.state.symbol}
       </h4>
