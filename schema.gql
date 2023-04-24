@@ -2211,6 +2211,24 @@ type AboutJson implements Node
   imageGallery: [AboutJsonImageGallery]
 }
 
+type menu_link_content__menu_link_content implements Node {
+  title: String
+  menu_name: String
+  link: Link
+  weight: Int
+  enabled: Boolean
+  langcode: String
+  drupal_id: String
+  drupal_parent_menu_item: String
+}
+
+type Link {
+  title: String
+  uri: String
+  uri_alias: String
+  url: String
+}
+
 type AboutJsonHeader {
   title: String
   subtitle: String

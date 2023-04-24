@@ -13,6 +13,14 @@ module.exports = {
     siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-drupal-menu-links`,
+      options: {
+        baseUrl: process.env.DRUPAL_URL,
+        apiBase: `api`, // optional, defaults to `jsonapi`
+        menus: ['footer'], // Which menus to fetch, there are the menu IDs.
+      },
+    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-netlify`,
