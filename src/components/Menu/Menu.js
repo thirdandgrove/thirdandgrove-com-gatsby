@@ -349,7 +349,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               onClick={() => toggleOpen()}
               to='/partners/shopify/'
             >
-              Shopify
+              Shopify Plus
             </Link>
             <Link
               css={[
@@ -362,7 +362,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               onClick={() => toggleOpen()}
               to='/partners/wordpress/'
             >
-              Wordpress
+              WordPress
             </Link>
           </div>
         </section>
