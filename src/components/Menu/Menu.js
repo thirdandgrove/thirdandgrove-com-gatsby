@@ -167,7 +167,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
     display: grid;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    max-width: 195px;
+    max-width: 240px;
     margin: 0 auto;
 
     ${mediaQueries.phoneLarge} {
