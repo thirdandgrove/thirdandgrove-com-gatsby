@@ -16,25 +16,25 @@ const Partners = () => {
   const badges = [
     {
       src: ShopifyBadge,
-      alt: 'shopify',
-      label: 'Shopify',
+      alt: 'Shopify Plus',
+      label: 'Shopify Plus',
       link: '/partners/shopify',
     },
     {
       src: AcquiaBadge,
-      alt: 'acquia',
+      alt: 'Acquia',
       label: 'Acquia',
       link: '/partners/acquia',
     },
     {
       src: DrupalBadge,
-      alt: 'drupal',
+      alt: 'Drupal',
       label: 'Drupal',
       link: '/partners/drupal',
     },
     {
       src: GatsbyBadge,
-      alt: 'gatsby',
+      alt: 'Gatsby',
       label: 'Gatsby',
       link: '/partners/gatsby',
     },
