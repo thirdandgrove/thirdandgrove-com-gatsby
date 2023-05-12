@@ -234,6 +234,11 @@ const Header = ({
 
   const linkStylesA = css`
     display: flex;
+    &:hover {
+      background-color: ${color};
+      color: ${fontColor};
+      filter: invert(100%);
+    }
     a {
       font-family: ${fonts.sans};
       font-size: 15px;
@@ -368,9 +373,9 @@ const Header = ({
           </div>
         )}
         {cta && (
-          <div css={linkStylesA}>
+          <div>
             {cta.map(l => (
-              <Button type='button' fontColor={textColor}>
+              <Button type='button' fontColor={textColor} css={linkStylesA}>
                 <Link to={l.url.replace('entity:', '')}>{l.text}</Link>
               </Button>
             ))}
