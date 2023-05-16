@@ -16,6 +16,7 @@
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "@szhsin/react-accordion": "^1.2.1",
     "axios": "^0.21.1",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0",

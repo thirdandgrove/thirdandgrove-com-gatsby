@@ -1078,6 +1078,8 @@ type component_type__component_typeRelationships {
     @link(by: "id", from: "component__image___NODE")
   component__stats: [component__stats]
     @link(by: "id", from: "component__stats___NODE")
+  component__faq: [component__faq]
+    @link(by: "id", from: "component__faq___NODE")
   component__logo_wall: [component__logo_wall]
     @link(by: "id", from: "component__logo_wall___NODE")
   component__quote: [component__quote]
@@ -1522,6 +1524,16 @@ type component__stats implements Node @derivedTypes @dontInfer {
   relationships: component__statsRelationships
 }
 
+type component__faq implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  relationships: component__faqRelationships
+}
+
 type component__stat implements Node @derivedTypes @dontInfer {
   drupal_id: String
   drupal_internal__id: Int
@@ -1534,10 +1546,29 @@ type component__stat implements Node @derivedTypes @dontInfer {
   field_character: String
 }
 
+type component__faq_item implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_faq_answer: String
+  field_faq_question: String
+}
+
 type component__statsRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
   field_stats: [component__stat] @link(by: "id", from: "field_stats___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__faqRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_faq_item: [component__faq_item]
+    @link(by: "id", from: "field_faq_item___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 

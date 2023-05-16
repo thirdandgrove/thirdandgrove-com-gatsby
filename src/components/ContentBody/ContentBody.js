@@ -16,6 +16,7 @@ import Testimonial from './Testimonial';
 import ContactFormComponent from './ContactFormComponent';
 import Hero from './Hero';
 import CaseStudyShowcase from './CaseStudyShowcase';
+import Faq from './Faq';
 
 const Components = {
   Image,
@@ -33,6 +34,7 @@ const Components = {
   ContactFormComponent,
   Hero,
   CaseStudyShowcase,
+  Faq,
 };
 
 /**
@@ -65,6 +67,7 @@ const ContentBody = ({ comps, type }) => {
           />
         );
       })}
+      <Faq />
     </>
   );
 };
