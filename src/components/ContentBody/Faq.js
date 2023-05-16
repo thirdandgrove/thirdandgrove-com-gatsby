@@ -4,17 +4,14 @@ import { css } from '@emotion/react';
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 
 import FullWidthSection from '../FullWidthSection';
-import { colors, fonts } from '../../styles';
+import { colors } from '../../styles';
 import { mediaQueriesMax } from '../../styles/css-utils';
-import { useHasBeenVisible } from '../../hooks/useVisibility';
-import Counter from '../Counter';
 
-const Faq = ({ data }) => {
+const FAQ = ({ data }) => {
   const fieldFaqItem = data?.relationships?.field_faq_item;
-  const nodeRef = React.useRef();
-  const isVisible = useHasBeenVisible(nodeRef);
 
   const faqItem = css`
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     padding-top: 80px;
@@ -38,6 +35,11 @@ const Faq = ({ data }) => {
     }
   `;
   const faqTitle = css`
+    .szh-accordion__item-btn {
+      cursor: pointer;
+      font-size: 22px;
+      color: ${colors.green};
+    }
     ${mediaQueriesMax.tablet} {
       flex: 0.38;
     }
@@ -51,6 +53,8 @@ const Faq = ({ data }) => {
       margin-bottom: 30px;
       padding-right: 30px;
     }
+    padding-bottom: 20px;
+    border-bottom: 1px solid ${colors.borderFaq};
   `;
   const faqBody = css`
     margin-top: 60px;
@@ -70,7 +74,6 @@ const Faq = ({ data }) => {
     align-items: center;
     justify-content: space-between;
     padding-bottom: 30px;
-    border-bottom: 1px solid ${colors.borderFaq};
     cursor: pointer;
 
     ${mediaQueriesMax.tablet} {
@@ -78,49 +81,33 @@ const Faq = ({ data }) => {
     }
     border-bottom: 0;
     color: ${colors.darkForest};
+    font-size: 18px;
   `;
 
   return (
     <FullWidthSection height='0' minHeight='0'>
       <>
-        {/* {fieldFaqItem.map(stat => {
-            return (
-              <div css={faqItem}>
-                <div css={faqTitle}>{stat.field_faq_question}</div>
-                <div css={faqBody}>{stat.field_faq_answer}</div>
-              </div>
-            );
-          })} */}
         <Accordion css={faqItem}>
-          <AccordionItem header='What is Lorem Ipsum?' css={faqTitle}>
-            <div css={faqBody}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
-          </AccordionItem>
-
-          <AccordionItem header='Where does it come from?' css={faqTitle}>
-            <div css={faqBody}>
-              Quisque eget luctus mi, vehicula mollis lorem. Proin fringilla vel
-              erat quis sodales. Nam ex enim, eleifend venenatis lectus vitae,
-              accumsan auctor mi.
-            </div>
-          </AccordionItem>
-
-          <AccordionItem header='Why do we use it?' css={faqTitle}>
-            <div css={faqBody}>
-              Suspendisse massa risus, pretium id interdum in, dictum sit amet
-              ante. Fusce vulputate purus sed tempus feugiat.
-            </div>
-          </AccordionItem>
+          {fieldFaqItem.map(stat => {
+            return (
+              <AccordionItem header={stat.field_faq_question} css={faqTitle}>
+                <section
+                  css={faqBody}
+                  dangerouslySetInnerHTML={{
+                    __html: stat.field_faq_answer.processed,
+                  }}
+                />
+              </AccordionItem>
+            );
+          })}
         </Accordion>
       </>
     </FullWidthSection>
   );
 };
 
-Faq.propTypes = {
+FAQ.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default Faq;
+export default FAQ;

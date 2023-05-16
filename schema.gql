@@ -1157,7 +1157,7 @@ type landing_pageRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_components: [component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion]
+  field_components: [component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion]
     @link(by: "id", from: "field_components___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
   field_secondary_image: file__file
@@ -1168,7 +1168,7 @@ type landing_pageRelationships {
     @link(by: "id", from: "field_tertiary_image___NODE")
 }
 
-union component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion =
+union component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion =
     component__big_links
   | component__case_study_showcase
   | component__contact_form
@@ -1182,6 +1182,7 @@ union component__big_linkscomponent__case_study_showcasecomponent__contact_formc
   | component__quote_hero
   | component__services_component
   | component__stats
+  | component__faq
   | component__testimonial
   | component__text
   | component__text_image_split
@@ -1553,8 +1554,14 @@ type component__faq_item implements Node @derivedTypes @dontInfer {
   created: Date @dateformat
   changed: Date @dateformat
   default_langcode: Boolean
-  field_faq_answer: String
+  field_faq_answer: component__faqField_body
   field_faq_question: String
+}
+
+type component__faqField_body {
+  value: String
+  format: String
+  processed: String
 }
 
 type component__statsRelationships {

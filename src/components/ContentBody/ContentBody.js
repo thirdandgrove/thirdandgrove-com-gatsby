@@ -16,7 +16,7 @@ import Testimonial from './Testimonial';
 import ContactFormComponent from './ContactFormComponent';
 import Hero from './Hero';
 import CaseStudyShowcase from './CaseStudyShowcase';
-import Faq from './Faq';
+import FAQ from './Faq';
 
 const Components = {
   Image,
@@ -34,7 +34,7 @@ const Components = {
   ContactFormComponent,
   Hero,
   CaseStudyShowcase,
-  Faq,
+  FAQ,
 };
 
 /**
@@ -59,6 +59,7 @@ const ContentBody = ({ comps, type }) => {
         const componentName = comp.relationships.component_type.name
           .split(' ')
           .join('');
+
         const Component = Components[componentName];
         return (
           <Component
@@ -67,7 +68,6 @@ const ContentBody = ({ comps, type }) => {
           />
         );
       })}
-      <Faq />
     </>
   );
 };

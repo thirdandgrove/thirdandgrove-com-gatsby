@@ -177,6 +177,20 @@ export const query = graphql`
               }
             }
           }
+          ... on component__faq {
+            id
+            relationships {
+              component_type {
+                name
+              }
+              field_faq_item {
+                field_faq_answer {
+                  processed
+                }
+                field_faq_question
+              }
+            }
+          }
           ... on component__services_component {
             id
             field_header_text
