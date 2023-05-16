@@ -174,18 +174,25 @@ export const query = graphql`
                 field_description
                 field_stat
                 field_character
+                field_header_text
               }
             }
           }
           ... on component__services_component {
             id
             field_header_text
+            field_image_align
             field_image {
               alt
               title
             }
             field_body {
               processed
+            }
+            field_primary_cta {
+              url
+              title
+              uri
             }
             relationships {
               component_type {
@@ -571,6 +578,11 @@ export const query = graphql`
             }
             field_image {
               alt
+            }
+            field_primary_cta {
+              url
+              title
+              uri
             }
             field_reversed
             relationships {

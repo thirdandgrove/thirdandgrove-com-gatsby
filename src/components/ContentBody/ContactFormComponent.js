@@ -89,6 +89,7 @@ const ContactFormComponent = ({ data }) => {
   `;
   const section = css`
     margin-top: 25px;
+    padding-top: 20px !important;
   `;
   return (
     <FullWidthSection height='0' minHeight='0' css={section}>

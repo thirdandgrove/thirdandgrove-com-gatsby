@@ -133,7 +133,7 @@ const Header = ({
         height: 0;
       }
     }
-
+    padding-top: 20px !important;
     position: relative;
     padding: 0 20px;
     line-height: 1.23;
