@@ -63,14 +63,14 @@ const FAQ = ({ data }) => {
   const faqTitle = css`
     .szh-accordion__item-btn {
       cursor: pointer;
-      font-size: 22px;
-      color: ${colors.green};
+      font-size: 26px;
+      color: ${colors.black};
     }
     ${mediaQueriesMax.tablet} {
       flex: 0.38;
     }
     margin-bottom: 40px;
-    color: ${colors.green};
+    color: ${colors.black};
     ${mediaQueriesMax.tablet} {
       margin-bottom: 30px;
       padding-right: 65px;
@@ -121,7 +121,7 @@ const FAQ = ({ data }) => {
     position: relative;
     width: 1.125rem;
     &::before {
-      background: #015b42;
+      background: ${colors.yellow};
       content: '';
       display: block;
       height: 100%;
@@ -139,7 +139,7 @@ const FAQ = ({ data }) => {
     }
     &::after {
       transform: rotate(90deg);
-      background: #015b42;
+      background: ${colors.yellow};
       content: '';
       display: block;
       height: 100%;
