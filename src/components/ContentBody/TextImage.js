@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { css } from '@emotion/react';
+import { navigate } from 'gatsby';
 
 import {
   weights,
@@ -12,8 +13,12 @@ import {
   dropCap,
 } from '../../styles';
 import SplitSection from '../SplitSection';
+import Button from '../Button/Button';
+import { ensureTrailingSlash } from '../../util';
 
 const TextImage = ({ data }) => {
+  console.log('shego');
+  const { field_primary_cta: cta } = data;
   const renderDropCap = data.type === 'insight' && data.isFirstText;
   const sectionStyle = css`
     ${container.min}
@@ -80,15 +85,37 @@ const TextImage = ({ data }) => {
           </div>
         )}
       </section>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section>
+        <section
+          dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+        />
+        {cta && (
+          <Button
+            onClick={() =>
+              navigate(ensureTrailingSlash(cta.uri.replace('internal:', '')))
+            }
+          >
+            {cta.title}
+          </Button>
+        )}
+      </section>
     </SplitSection>
   ) : (
     <SplitSection css={sectionStyle} gridTemplateColumns='54% 40%'>
-      <section
-        dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
-      />
+      <section>
+        <section
+          dangerouslySetInnerHTML={{ __html: data.field_body.processed }}
+        />
+        {cta && (
+          <Button
+            onClick={() =>
+              navigate(ensureTrailingSlash(cta.uri.replace('internal:', '')))
+            }
+          >
+            {cta.title}
+          </Button>
+        )}
+      </section>
       <section>
         {data.relationships.field_image.localFile.childImageSharp ? (
           <Img

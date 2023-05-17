@@ -1335,6 +1335,14 @@ type component__services_component implements Node @derivedTypes @dontInfer {
   field_header_text: String
   relationships: component__services_componentRelationships
   field_image: component__services_componentField_image
+  field_primary_cta: component__servicesField_primary_cta
+  field_image_align: String
+}
+
+type component__servicesField_primary_cta {
+  uri: String
+  title: String
+  url: String
 }
 
 type component__services_componentField_body {
@@ -1532,6 +1540,7 @@ type component__stat implements Node @derivedTypes @dontInfer {
   field_description: String
   field_stat: Int
   field_character: String
+  field_header_text: String
 }
 
 type component__statsRelationships {
@@ -1662,6 +1671,13 @@ type component__text_image_split implements Node @derivedTypes @dontInfer {
   field_reversed: Boolean
   relationships: component__text_image_splitRelationships
   field_image: component__text_image_splitField_image
+  field_primary_cta: component__textImageSplitField_primary_cta
+}
+
+type component__textImageSplitField_primary_cta {
+  uri: String
+  title: String
+  url: String
 }
 
 type component__text_image_splitField_body {
