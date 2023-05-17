@@ -57,4 +57,7 @@ export const colors = {
   shopifyGreen: '#80AB42',
   bigCommerceBlue: '#0D52FF',
   red: 'red',
+  green: '#015b42',
+  borderFaq: '#c4c4c4',
+  darkForest: '#54565b',
 };
