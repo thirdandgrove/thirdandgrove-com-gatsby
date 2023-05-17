@@ -17,7 +17,6 @@ import Button from '../Button/Button';
 import { ensureTrailingSlash } from '../../util';
 
 const TextImage = ({ data }) => {
-  console.log('shego');
   const { field_primary_cta: cta } = data;
   const renderDropCap = data.type === 'insight' && data.isFirstText;
   const sectionStyle = css`
