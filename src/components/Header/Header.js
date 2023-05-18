@@ -234,11 +234,6 @@ const Header = ({
 
   const linkStylesA = css`
     display: flex;
-    &:hover {
-      background-color: ${color};
-      color: ${fontColor};
-      filter: invert(100%);
-    }
     a {
       font-family: ${fonts.sans};
       font-size: 15px;
@@ -264,6 +259,66 @@ const Header = ({
         position: absolute;
         bottom: 0;
         right: 0;
+        height: 100%;
+      }
+    }
+  `;
+
+  const btnStyles = css`
+    position: relative;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: ${fonts.sans};
+    font-weight: ${weights.bold};
+    font-size: 15px;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: transparent;
+    color: ${fontColor};
+    cursor: pointer;
+
+    span {
+      display: block;
+      position: relative;
+      padding: 17px 28px;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(
+        to bottom,
+        ${fontColor},
+        ${fontColor} 50%,
+        ${fontColor} 50%
+      );
+      background-size: 100% 200%;
+      background-position: top;
+      transition: all 0.3s ease;
+    }
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      transition: 0.3s ease height;
+      background: ${color};
+      color: ${fontColor};
+      filter: invert(100%);
+    }
+    &:hover,
+    &:focus {
+      transition: all 0.3s ease;
+
+      span {
+        background-position: bottom;
+        color: ${fontColor};
+        filter: invert(100%);
+      }
+
+      &::before {
         height: 100%;
       }
     }
@@ -375,7 +430,7 @@ const Header = ({
         {cta && (
           <div>
             {cta.map(l => (
-              <Button type='button' fontColor={textColor} css={linkStylesA}>
+              <Button type='button' fontColor={textColor} css={btnStyles}>
                 <Link to={l.url.replace('entity:', '')}>{l.text}</Link>
               </Button>
             ))}

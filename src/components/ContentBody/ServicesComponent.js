@@ -158,17 +158,25 @@ const ServiceComponent = ({ data }) => {
             <>
               <h2>{header}</h2>
               <section dangerouslySetInnerHTML={{ __html: body.processed }} />
-              {cta && (
-                <Button
-                  onClick={() =>
-                    navigate(
-                      ensureTrailingSlash(cta.uri.replace('internal:', ''))
-                    )
-                  }
-                >
-                  {cta.title}
-                </Button>
-              )}
+              <section
+                css={css`
+                  padding-top: 20px;
+                `}
+              >
+                <ul>
+                  {cta && (
+                    <Button
+                      onClick={() =>
+                        navigate(
+                          ensureTrailingSlash(cta.uri.replace('internal:', ''))
+                        )
+                      }
+                    >
+                      {cta.title}
+                    </Button>
+                  )}
+                </ul>
+              </section>
             </>
           </div>
         </div>

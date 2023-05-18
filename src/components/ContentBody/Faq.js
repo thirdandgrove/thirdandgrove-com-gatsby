@@ -35,18 +35,42 @@ const FAQ = ({ data }) => {
       border: 0;
       text-align: left;
     }
+    .szh-accordion__item-content {
+      font-size: 1.125rem;
+      line-height: 1.77;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.25, 1, 0.3, 1);
+      visibility: visible;
+      will-change: max-height;
+      max-height: 0;
+      opacity: 0;
+    }
+    .szh-accordion__item--expanded {
+      .szh-accordion__item-content {
+        opacity: 1;
+        max-height: 171px;
+      }
+      .szh-accordion__item-btn {
+        div {
+          &::before {
+            content: '';
+            display: none;
+          }
+        }
+      }
+    }
   `;
   const faqTitle = css`
     .szh-accordion__item-btn {
       cursor: pointer;
-      font-size: 22px;
-      color: ${colors.green};
+      font-size: 26px;
+      color: ${colors.black};
     }
     ${mediaQueriesMax.tablet} {
       flex: 0.38;
     }
     margin-bottom: 40px;
-    color: ${colors.green};
+    color: ${colors.black};
     ${mediaQueriesMax.tablet} {
       margin-bottom: 30px;
       padding-right: 65px;
@@ -83,7 +107,6 @@ const FAQ = ({ data }) => {
     }
     border-bottom: 0;
     color: ${colors.darkForest};
-    font-size: 18px;
   `;
   const icon = css`
     margin-left: auto;
@@ -98,7 +121,7 @@ const FAQ = ({ data }) => {
     position: relative;
     width: 1.125rem;
     &::before {
-      background: #015b42;
+      background: ${colors.yellow};
       content: '';
       display: block;
       height: 100%;
@@ -116,7 +139,7 @@ const FAQ = ({ data }) => {
     }
     &::after {
       transform: rotate(90deg);
-      background: #015b42;
+      background: ${colors.yellow};
       content: '';
       display: block;
       height: 100%;
@@ -131,11 +154,6 @@ const FAQ = ({ data }) => {
       width: 0.125rem;
       border-radius: 0.25rem;
       width: 0.1875rem;
-    }
-    .szh-accordion__item--expanded {
-      &::before {
-        content: '';
-      }
     }
   `;
   const AccordionItem = ({ header, ...rest }) => (
