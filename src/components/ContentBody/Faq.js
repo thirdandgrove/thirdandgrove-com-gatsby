@@ -36,6 +36,9 @@ const FAQ = ({ data }) => {
       text-align: left;
     }
     .szh-accordion__item-content {
+      display: block !important;
+    }
+    .szh-accordion__item-panel {
       font-size: 1.125rem;
       line-height: 1.77;
       overflow: hidden;
@@ -46,7 +49,7 @@ const FAQ = ({ data }) => {
       opacity: 0;
     }
     .szh-accordion__item--expanded {
-      .szh-accordion__item-content {
+      .szh-accordion__item-panel {
         opacity: 1;
         max-height: 171px;
       }
