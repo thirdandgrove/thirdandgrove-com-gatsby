@@ -163,19 +163,17 @@ const ServiceComponent = ({ data }) => {
                   padding-top: 20px;
                 `}
               >
-                <ul>
-                  {cta && (
-                    <Button
-                      onClick={() =>
-                        navigate(
-                          ensureTrailingSlash(cta.uri.replace('internal:', ''))
-                        )
-                      }
-                    >
-                      {cta.title}
-                    </Button>
-                  )}
-                </ul>
+                {cta && (
+                  <Button
+                    onClick={() =>
+                      navigate(
+                        ensureTrailingSlash(cta.uri.replace('internal:', ''))
+                      )
+                    }
+                  >
+                    {cta.title}
+                  </Button>
+                )}
               </section>
             </>
           </div>
