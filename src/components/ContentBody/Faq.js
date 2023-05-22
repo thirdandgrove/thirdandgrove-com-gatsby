@@ -18,15 +18,11 @@ const FAQ = ({ data }) => {
     padding-bottom: 80px;
     width: 64%;
     ${mediaQueriesMax.phoneLarge} {
+      width: 89%;
+    }
+    flex-wrap: wrap;
+    ${mediaQueriesMax.phoneLarge} {
       flex-direction: row;
-    }
-    ${mediaQueriesMax.tablet} {
-      padding-right: 125px;
-      padding-left: 125px;
-    }
-    ${mediaQueriesMax.desktop} {
-      padding-right: 240px;
-      padding-left: 240px;
     }
     .szh-accordion__item-btn {
       display: flex;
@@ -69,9 +65,6 @@ const FAQ = ({ data }) => {
       font-size: 26px;
       color: ${colors.black};
     }
-    ${mediaQueriesMax.tablet} {
-      flex: 0.38;
-    }
     margin-bottom: 40px;
     color: ${colors.black};
     ${mediaQueriesMax.tablet} {
@@ -87,11 +80,6 @@ const FAQ = ({ data }) => {
   `;
   const faqBody = css`
     margin-top: 60px;
-    ${mediaQueriesMax.phoneLarge} {
-      flex: 0.62;
-      margin-top: 0;
-      padding-left: 40px;
-    }
     & div:not(:first-child) {
       padding-top: 40px;
 
