@@ -166,6 +166,7 @@ export const query = graphql`
           }
           ... on component__stats {
             id
+            field_header_text
             relationships {
               component_type {
                 name
@@ -174,7 +175,6 @@ export const query = graphql`
                 field_description
                 field_stat
                 field_character
-                field_header_text
               }
             }
           }
