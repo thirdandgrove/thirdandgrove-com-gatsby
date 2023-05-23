@@ -79,6 +79,7 @@
   "scripts": {
     "build": "cross-env GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "develop": "gatsby develop",
+    "clean": "gatsby clean",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "yarn run develop",
     "serve": "gatsby serve",
