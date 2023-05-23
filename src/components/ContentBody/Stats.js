@@ -4,12 +4,13 @@ import { css } from '@emotion/react';
 
 import FullWidthSection from '../FullWidthSection';
 import { colors, fonts } from '../../styles';
-import { mediaQueriesMax } from '../../styles/css-utils';
+import { mediaQueries, mediaQueriesMax, weights } from '../../styles/css-utils';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import Counter from '../Counter';
 
 const Stats = ({ data }) => {
   const fieldStats = data?.relationships?.field_stats;
+  const header = data?.field_header_text;
   const nodeRef = React.useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 
@@ -19,7 +20,7 @@ const Stats = ({ data }) => {
     color: ${colors.black};
     font-family: ${fonts.serif};
     margin-left: 80px;
-    padding: 8rem 0;
+    padding: 4rem 0;
     h4 {
       font-size: 110px;
     }
@@ -99,8 +100,23 @@ const Stats = ({ data }) => {
     }
   `;
 
+  const h3Styles = css`
+    margin: 15px 20px 20px;
+    font-weight: ${weights.bold};
+    font-size: 21px;
+    line-height: 1.57;
+
+    ${mediaQueries.phoneLarge} {
+      margin: 0 0 30px;
+      font-size: 48px;
+      line-height: 1.375;
+      letter-spacing: -0.2px;
+    }
+  `;
+
   return (
     <FullWidthSection height='0' minHeight='0'>
+      <h3 css={h3Styles}>{header}</h3>
       <div css={statWrapper} ref={nodeRef}>
         {isVisible && (
           <>

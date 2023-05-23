@@ -46,6 +46,13 @@ const Contact = () => {
     }
   `;
 
+  const contactItemWideNoTopPadding = css`
+    ${mediaQueries.phoneLarge} {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+  `;
+
   const contactItemWide = css`
     ${mediaQueries.phoneLarge} {
       flex: 0 0 100%;
@@ -101,18 +108,11 @@ const Contact = () => {
           </a>
         </div>
 
-        <div css={contactItem}>
+        <div css={[contactItem, contactItemWideNoTopPadding]}>
           <h3 css={headingCss}>Boston</h3>
           333 Washington St Suite 326
           <br />
           Boston, MA 02108
-        </div>
-
-        <div css={contactItem}>
-          <h3 css={headingCss}>San Francisco</h3>
-          981 Mission St @ 6th Street
-          <br />
-          San Francisco, CA 94103
         </div>
 
         <div css={[contactItem, contactItemWide]}>
