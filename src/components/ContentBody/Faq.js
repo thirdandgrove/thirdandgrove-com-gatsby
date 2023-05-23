@@ -74,6 +74,7 @@ const FAQ = ({ data }) => {
     ${mediaQueriesMax.desktop} {
       margin-bottom: 30px;
       padding-right: 30px;
+      width: 100%;
     }
     padding-bottom: 20px;
     border-bottom: 1px solid ${colors.borderFaq};
