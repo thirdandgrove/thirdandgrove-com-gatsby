@@ -1530,6 +1530,7 @@ type component__stats implements Node @derivedTypes @dontInfer {
   created: Date @dateformat
   changed: Date @dateformat
   default_langcode: Boolean
+  field_header_text: String
   relationships: component__statsRelationships
 }
 
@@ -1553,7 +1554,6 @@ type component__stat implements Node @derivedTypes @dontInfer {
   field_description: String
   field_stat: Int
   field_character: String
-  field_header_text: String
 }
 
 type component__faq_item implements Node @derivedTypes @dontInfer {
