@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { Spring } from 'react-spring/renderprops-universal';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
 
 import FullWidthSection from '../FullWidthSection';
 import { container, fonts, mediaQueries, weights } from '../../styles';
@@ -164,14 +165,11 @@ const ServiceComponent = ({ data }) => {
                 `}
               >
                 {cta && (
-                  <Button
-                    onClick={() =>
-                      navigate(
-                        ensureTrailingSlash(cta.uri.replace('internal:', ''))
-                      )
-                    }
-                  >
-                    {cta.title}
+                  <Button>
+                    <Link to={`/${cta.uri.replace('entity:', '')}`}>
+                      {cta.title}
+                    </Link>{' '}
+                    >
                   </Button>
                 )}
               </section>
