@@ -47,7 +47,7 @@ const FAQ = ({ data }) => {
     .szh-accordion__item--expanded {
       .szh-accordion__item-panel {
         opacity: 1;
-        max-height: 171px;
+        max-height: 2900px;
       }
       .szh-accordion__item-btn {
         div {
@@ -88,9 +88,6 @@ const FAQ = ({ data }) => {
         padding-top: 60px;
       }
     }
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding-bottom: 30px;
     cursor: pointer;
 
