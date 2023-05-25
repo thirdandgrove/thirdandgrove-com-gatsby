@@ -166,10 +166,9 @@ const ServiceComponent = ({ data }) => {
               >
                 {cta && (
                   <Button>
-                    <Link to={`/${cta.uri.replace('entity:', '')}`}>
+                    <Link to={cta.url && cta.url.replace('entity:', '')}>
                       {cta.title}
-                    </Link>{' '}
-                    >
+                    </Link>
                   </Button>
                 )}
               </section>
