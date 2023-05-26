@@ -26,6 +26,10 @@ const FAQ = ({ data }) => {
     ${mediaQueriesMax.phoneLarge} {
       flex-direction: row;
     }
+    h2 {
+      text-align: center;
+      padding-bottom: 2rem;
+    }
     .szh-accordion__item-btn {
       display: flex;
       width: 100%;
@@ -162,7 +166,7 @@ const FAQ = ({ data }) => {
     <FullWidthSection height='0' minHeight='0'>
       <>
         <Accordion css={faqItem}>
-          <h3>{header}</h3>
+          <h2>{header}</h2>
           {fieldFaqItem.map(stat => {
             return (
               <AccordionItem header={stat.field_faq_question} css={faqTitle}>
