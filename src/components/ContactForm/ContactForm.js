@@ -324,7 +324,7 @@ const ContactForm = ({ formName, altStyle }) => {
     <div
       css={css`
         margin: 32px auto 0;
-        padding: 0 20px;
+        padding: 0 20px 32px;
         width: 100%;
         max-width: 920px;
         min-height: 450px;

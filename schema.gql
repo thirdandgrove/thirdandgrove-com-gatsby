@@ -1541,6 +1541,7 @@ type component__faq implements Node @derivedTypes @dontInfer {
   created: Date @dateformat
   changed: Date @dateformat
   default_langcode: Boolean
+  field_heading: String
   relationships: component__faqRelationships
 }
 

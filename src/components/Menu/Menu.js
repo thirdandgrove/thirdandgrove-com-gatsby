@@ -4,9 +4,6 @@ import { Link } from 'gatsby';
 import { css } from '@emotion/react';
 
 import { colors, mediaQueries, weights, container } from '../../styles';
-import buildMenu from '../../helpers/menu';
-
-import allDataHeader from './default-query';
 
 const Menu = ({ menuOpen, toggleOpen }) => {
   const textFadeIn = css`
@@ -179,24 +176,6 @@ const Menu = ({ menuOpen, toggleOpen }) => {
       margin: 0 auto;
     }
   `;
-  const data = allDataHeader();
-  const mainMenu = buildMenu(data?.mainMenu?.nodes) || [];
-  const renderItems = list =>
-    list?.map(item => (
-      <Link
-        css={[
-          linkPrimaryStyle,
-          textFadeIn,
-          linkBaseStyles,
-          mobileDelay3,
-          desktopDelay3,
-        ]}
-        onClick={() => toggleOpen()}
-        to={item.link.uri.replace('internal:', '')}
-      >
-        {item.title}
-      </Link>
-    ));
 
   return (
     <nav
@@ -237,15 +216,156 @@ const Menu = ({ menuOpen, toggleOpen }) => {
           `,
         ]}
       >
-        {mainMenu &&
-          mainMenu.map(menu => (
-            <section css={[sectionStyle, sectionPrimaryStyle]}>
-              <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                {menu.title}
-              </h5>
-              {renderItems(menu.children)}
-            </section>
-          ))}
+        <section css={[sectionStyle, sectionPrimaryStyle]}>
+          <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+            Contents
+          </h5>
+          <Link
+            onClick={() => toggleOpen()}
+            css={[
+              linkPrimaryStyle,
+              textFadeIn,
+              linkBaseStyles,
+              mobileDelay1,
+              desktopDelay1,
+            ]}
+            to='/work/'
+          >
+            Work
+          </Link>
+          <Link
+            css={[
+              linkPrimaryStyle,
+              textFadeIn,
+              linkBaseStyles,
+              mobileDelay2,
+              desktopDelay2,
+            ]}
+            onClick={() => toggleOpen()}
+            to='/capabilities/'
+          >
+            Capabilities
+          </Link>
+          <Link
+            css={[
+              linkPrimaryStyle,
+              textFadeIn,
+              linkBaseStyles,
+              mobileDelay3,
+              desktopDelay3,
+            ]}
+            onClick={() => toggleOpen()}
+            to='/insights/'
+          >
+            Insights
+          </Link>
+        </section>
+
+        <section css={[sectionStyle, sectionPrimaryStyle]}>
+          <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>Company</h5>
+          <Link
+            css={[
+              linkPrimaryStyle,
+              textFadeIn,
+              linkBaseStyles,
+              mobileDelay4,
+              desktopDelay1,
+            ]}
+            onClick={() => toggleOpen()}
+            to='/about/'
+          >
+            About
+          </Link>
+          <a
+            css={[
+              linkPrimaryStyle,
+              textFadeIn,
+              linkBaseStyles,
+              mobileDelay5,
+              desktopDelay2,
+            ]}
+            onClick={() => toggleOpen()}
+            href='https://thirdandgrove.breezy.hr/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Careers
+          </a>
+          <Link
+            css={[
+              linkPrimaryStyle,
+              textFadeIn,
+              linkBaseStyles,
+              mobileDelay6,
+              desktopDelay3,
+            ]}
+            onClick={() => toggleOpen()}
+            to='/contact/'
+          >
+            Contact
+          </Link>
+        </section>
+        <section css={[sectionStyle, sectionSecondaryStyle]}>
+          <h5
+            css={[sectionHeaderStyle, textFadeIn, mobileDelay7, desktopDelay1]}
+          >
+            Partners
+          </h5>
+          <div css={linksWrapper}>
+            <Link
+              css={[
+                linkSecondaryStyle,
+                textFadeIn,
+                linkBaseStyles,
+                mobileDelay8,
+                desktopDelay1,
+              ]}
+              onClick={() => toggleOpen()}
+              to='/partners/drupal/'
+            >
+              Drupal
+            </Link>
+            <Link
+              css={[
+                linkSecondaryStyle,
+                textFadeIn,
+                linkBaseStyles,
+                mobileDelay8,
+                desktopDelay2,
+              ]}
+              onClick={() => toggleOpen()}
+              to='/partners/acquia/'
+            >
+              Acquia
+            </Link>
+            <Link
+              css={[
+                linkSecondaryStyle,
+                textFadeIn,
+                linkBaseStyles,
+                mobileDelay8,
+                desktopDelay3,
+              ]}
+              onClick={() => toggleOpen()}
+              to='/partners/shopify/'
+            >
+              Shopify Plus
+            </Link>
+            <Link
+              css={[
+                linkSecondaryStyle,
+                textFadeIn,
+                linkBaseStyles,
+                mobileDelay9,
+                desktopDelay4,
+              ]}
+              onClick={() => toggleOpen()}
+              to='/partners/wordpress/'
+            >
+              WordPress
+            </Link>
+          </div>
+        </section>
       </div>
     </nav>
   );
