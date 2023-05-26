@@ -5,8 +5,6 @@ import { css } from '@emotion/react';
 import EasterEggContext from '../../context/EasterEggContext';
 import { colors, fonts, weights, mediaQueries, container } from '../../styles';
 
-import allDataFooter from './default-query';
-
 const Footer = () => {
   const linkStyle = css`
     display: block;
@@ -56,7 +54,6 @@ const Footer = () => {
     width: 100%;
     height: 80px;
   `;
-  const data = allDataFooter();
 
   return (
     <EasterEggContext.Consumer>
@@ -70,15 +67,35 @@ const Footer = () => {
             &nbsp;
           </button>
           <div css={[innerWrapperStyle, container.max]}>
-            {data &&
-              data?.mainMenu?.nodes.map(menu => (
-                <Link
-                  css={linkStyle}
-                  to={menu.link.uri.replace('internal:', '')}
-                >
-                  {menu.title}
-                </Link>
-              ))}
+            <Link css={linkStyle} to='/work/'>
+              Work
+            </Link>
+            <Link css={linkStyle} to='/capabilities/'>
+              Capabilities
+            </Link>
+            <Link css={linkStyle} to='/insights/'>
+              Insights
+            </Link>
+            <Link css={linkStyle} to='/about/'>
+              About
+            </Link>
+            <a
+              css={linkStyle}
+              href='https://thirdandgrove.breezy.hr/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Careers
+            </a>
+            <Link css={linkStyle} to='/contact/'>
+              Contact
+            </Link>
+            <Link css={linkStyle} to='/legal/'>
+              Legal
+            </Link>
+            <Link css={linkStyle} to='/partners/'>
+              Partners
+            </Link>
           </div>
           <button
             onClick={context.toggleEasterEgg}
