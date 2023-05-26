@@ -8,6 +8,8 @@ import { colors } from '../../styles';
 import { mediaQueriesMax } from '../../styles/css-utils';
 
 const FAQ = ({ data }) => {
+  const header = data?.field_heading;
+
   const fieldFaqItem = data?.relationships?.field_faq_item;
 
   const faqItem = css`
@@ -160,6 +162,7 @@ const FAQ = ({ data }) => {
     <FullWidthSection height='0' minHeight='0'>
       <>
         <Accordion css={faqItem}>
+          <h3>{header}</h3>
           {fieldFaqItem.map(stat => {
             return (
               <AccordionItem header={stat.field_faq_question} css={faqTitle}>

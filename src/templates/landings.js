@@ -180,6 +180,7 @@ export const query = graphql`
           }
           ... on component__faq {
             id
+            field_heading
             relationships {
               component_type {
                 name
