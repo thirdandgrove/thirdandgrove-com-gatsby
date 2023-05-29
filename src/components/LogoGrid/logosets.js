@@ -76,7 +76,7 @@ export default (logoset, isSmScreen, images) => {
   if (images) {
     sets = images.map(image => (
       <img
-        src={image.localFile.publicURL}
+        src={image.relationships.field_image.localFile.publicURL}
         alt=''
         width={isSmScreen ? '120' : '202'}
         height={isSmScreen ? '66' : '112'}
