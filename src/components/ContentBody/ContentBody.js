@@ -17,6 +17,7 @@ import ContactFormComponent from './ContactFormComponent';
 import Hero from './Hero';
 import CaseStudyShowcase from './CaseStudyShowcase';
 import FAQ from './Faq';
+import IconListComponent from './IconListComponent';
 
 const Components = {
   Image,
@@ -35,6 +36,7 @@ const Components = {
   Hero,
   CaseStudyShowcase,
   FAQ,
+  IconListComponent,
 };
 
 /**
