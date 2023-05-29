@@ -142,23 +142,52 @@ export const query = graphql`
             id
             field_header_text
             field_subhead_text
-            field_images {
-              alt
+            field_primary_cta {
+              url
               title
+              uri
             }
             relationships {
               component_type {
                 name
               }
-              field_images {
-                id
-                localFile {
-                  publicURL
-                  childImageSharp {
-                    fluid(maxWidth: 800, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
+              field_images_list {
+                field_header_text
+                field_description
+                field_image {
+                  alt
+                }
+                relationships {
+                  field_image {
+                    id
+                    localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                      childImageMobile: childImageSharp {
+                        fixed(width: 335, height: 260, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeA: childImageSharp {
+                        fixed(width: 450, height: 320, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeB: childImageSharp {
+                        fixed(width: 380, height: 420, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeC: childImageSharp {
+                        fixed(width: 420, height: 340, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
                     }
-                    gatsbyImageData
                   }
                 }
               }

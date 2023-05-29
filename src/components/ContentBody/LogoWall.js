@@ -11,7 +11,20 @@ const LogoWall = ({ data }) => {
     field_header_text: headerText,
     field_subhead_text: subheadText,
   } = data;
-  const images = data.relationships.field_images;
+  const images = data.relationships.field_images_list;
+  const isLogoWall = images.some(
+    x => x.field_header_text && x.field_description
+  );
+  const imageList = [];
+
+  if (isLogoWall) {
+    images.map(image => {
+      return imageList.push({
+        title: image.field_header_text,
+        description: image.field_description,
+      });
+    });
+  }
 
   return (
     <FullWidthSection height='0' minHeight='0'>
@@ -61,6 +74,9 @@ const LogoWall = ({ data }) => {
         `}
         minHeight='100px !important'
         defaultItemWidth='20%'
+        isLogoWall={isLogoWall}
+        link={data.field_primary_cta.uri}
+        cta={data.field_primary_cta.title}
       />
     </FullWidthSection>
   );

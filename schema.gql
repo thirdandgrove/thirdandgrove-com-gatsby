@@ -1598,14 +1598,42 @@ type component__logo_wall implements Node @derivedTypes @dontInfer {
   default_langcode: Boolean
   field_header_text: String
   field_subhead_text: String
+  field_primary_cta: component__logoWall_primary_cta
   relationships: component__logo_wallRelationships
   field_images: [component__logo_wallField_images]
+}
+
+type component__logoWall_primary_cta {
+  uri: String
+  title: String
+  url: String
 }
 
 type component__logo_wallRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
-  field_images: [file__file] @link(by: "id", from: "field_images___NODE")
+  field_images_list: [component__images_list]
+    @link(by: "id", from: "field_images_list___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__images_list implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_description: String
+  field_header_text: String
+  relationships: component__images_list_componentRelationships
+  field_image: component__logo_wallField_images
+}
+
+type component__images_list_componentRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_image: file__file @link(by: "id", from: "field_image___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
