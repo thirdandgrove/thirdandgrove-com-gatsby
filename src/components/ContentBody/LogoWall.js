@@ -22,6 +22,7 @@ const LogoWall = ({ data }) => {
       return imageList.push({
         title: image.field_header_text,
         description: image.field_description,
+        icon: [image.relationships.field_image],
       });
     });
   }
@@ -29,7 +30,7 @@ const LogoWall = ({ data }) => {
   return (
     <FullWidthSection height='0' minHeight='0'>
       <LogoGrid
-        images={images}
+        images={isLogoWall ? imageList : images}
         title={headerText}
         subtitle={subheadText}
         backgroundColor={colors.white}
@@ -77,6 +78,7 @@ const LogoWall = ({ data }) => {
         isLogoWall={isLogoWall}
         link={data.field_primary_cta.uri}
         cta={data.field_primary_cta.title}
+        drupalData
       />
     </FullWidthSection>
   );

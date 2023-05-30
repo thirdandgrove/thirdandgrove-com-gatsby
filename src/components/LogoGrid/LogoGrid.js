@@ -28,12 +28,16 @@ const LogoGrid = ({
   isLogoWall,
   link,
   cta,
+  drupalData,
 }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
-  const renderSet = logoSets(logoset, isSmScreen, images);
-
-  const logoCount = renderSet.length;
+  let logoCount = 0;
+  let renderSet = null;
+  if (!isLogoWall) {
+    renderSet = logoSets(logoset, isSmScreen, images);
+    logoCount = renderSet.length;
+  }
 
   const Logos = styled.div`
     display: flex;
@@ -133,7 +137,13 @@ const LogoGrid = ({
               </div>
             ))}
           {isLogoWall && (
-            <CTAGrid items={images} link={link} cta={cta} altStyle={false} />
+            <CTAGrid
+              items={images}
+              link={link}
+              cta={cta}
+              altStyle={false}
+              drupalData={drupalData}
+            />
           )}
         </Logos>
       </div>
@@ -152,6 +162,7 @@ LogoGrid.propTypes = {
   isLogoWall: PropTypes.bool,
   link: PropTypes.string,
   cta: PropTypes.string,
+  drupalData: PropTypes.bool,
 };
 
 LogoGrid.defaultProps = {
@@ -164,6 +175,7 @@ LogoGrid.defaultProps = {
   isLogoWall: false,
   link: '',
   cta: '',
+  drupalData: false,
 };
 
 export default LogoGrid;

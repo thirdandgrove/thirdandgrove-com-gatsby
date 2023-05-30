@@ -160,7 +160,7 @@ export const query = graphql`
                 relationships {
                   field_image {
                     id
-                    localFile {
+                    node: localFile {
                       publicURL
                       childImageSharp {
                         fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
