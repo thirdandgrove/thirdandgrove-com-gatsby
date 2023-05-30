@@ -120,7 +120,7 @@ const FAQ = ({ data }) => {
       content: '';
       display: block;
       height: 100%;
-      left: 0;
+      left: 10px;
       position: absolute;
       transition: background 0.3s,
         -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
@@ -138,7 +138,7 @@ const FAQ = ({ data }) => {
       content: '';
       display: block;
       height: 100%;
-      left: 0;
+      left: 10px;
       position: absolute;
       transition: background 0.3s,
         -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
