@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "gatsby": "^4.0",
     "gatsby-image": "^3.0",
+    "gatsby-plugin-csp": "^1.1.4",
     "gatsby-plugin-emotion": "^7.1.0",
     "gatsby-plugin-feed": "^4.0",
     "gatsby-plugin-fixhash": "^0.0.4",

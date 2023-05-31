@@ -13,7 +13,32 @@ module.exports = {
     siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
-    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-csp`,
+    {
+      resolve: `gatsby-plugin-csp`,
+      options: {
+        disableOnDev: true, // Disable CSP header during development
+        reportOnly: false, // Set to true to enable report-only mode
+
+        // Specify your Content Security Policy rules
+        mergeStyleHashes: false, // Set to true to hash inline styles
+        directives: {
+          // Specify the directives
+          defaultSrc: "'self'",
+          scriptSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            "'unsafe-eval'",
+            'thirdandgrove.com',
+          ],
+          styleSrc: ["'self'", "'unsafe-inline'", 'thirdandgrove.com'],
+          imgSrc: ["'self'", 'data:', 'thirdandgrove.com'],
+          fontSrc: ["'self'", 'fonts.gstatic.com'],
+          connectSrc: ["'self'", 'thirdandgrove.com'],
+          frameSrc: ["'none'"],
+        },
+      },
+    }`gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
