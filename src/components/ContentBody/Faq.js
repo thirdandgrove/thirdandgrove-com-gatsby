@@ -123,8 +123,6 @@ const FAQ = ({ data }) => {
       left: 10px;
       position: absolute;
       transition: background 0.3s,
-        -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
-      transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1), background 0.3s;
       transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1), background 0.3s,
         -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
       width: 100%;
@@ -141,8 +139,6 @@ const FAQ = ({ data }) => {
       left: 10px;
       position: absolute;
       transition: background 0.3s,
-        -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
-      transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1), background 0.3s;
       transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1), background 0.3s,
         -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
       width: 100%;
