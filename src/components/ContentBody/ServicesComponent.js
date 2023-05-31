@@ -3,17 +3,23 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Spring } from 'react-spring/renderprops-universal';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
 
 import FullWidthSection from '../FullWidthSection';
 import { container, fonts, mediaQueries, weights } from '../../styles';
 import EasterEggContext from '../../context/EasterEggContext';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
+import Button from '../Button/Button';
+import { ensureTrailingSlash } from '../../util';
 
 const ServiceComponent = ({ data }) => {
   const {
     field_header_text: header,
     field_body: body,
     field_image: imageData,
+    field_primary_cta: cta,
+    field_image_align: order,
   } = data;
   const image = data.relationships.field_image;
 
@@ -104,7 +110,7 @@ const ServiceComponent = ({ data }) => {
                       width: 100%;
                       margin-bottom: 20px;
                       position: relative;
-
+                      order: 1;
                       ${mediaQueries.phoneLarge} {
                         flex: 0 0 ${'49%'};
                         width: ${'49%'};
@@ -129,18 +135,43 @@ const ServiceComponent = ({ data }) => {
           </EasterEggContext.Consumer>
 
           <div
-            css={css`
-              position: relative;
+            css={
+              order === 'left'
+                ? css`
+                    order: 0;
+                    position: relative;
+                    ${mediaQueries.phoneLarge} {
+                      flex: 0 0 ${'40%'};
+                      width: ${'40%'};
+                    }
+                  `
+                : css`
+                    order: 1;
+                    position: relative;
 
-              ${mediaQueries.phoneLarge} {
-                flex: 0 0 ${'40%'};
-                width: ${'40%'};
-              }
-            `}
+                    ${mediaQueries.phoneLarge} {
+                      flex: 0 0 ${'40%'};
+                      width: ${'40%'};
+                    }
+                  `
+            }
           >
             <>
               <h2>{header}</h2>
               <section dangerouslySetInnerHTML={{ __html: body.processed }} />
+              <section
+                css={css`
+                  padding-top: 20px;
+                `}
+              >
+                {cta && (
+                  <Button>
+                    <Link to={cta.url && cta.url.replace('entity:', '')}>
+                      {cta.title}
+                    </Link>
+                  </Button>
+                )}
+              </section>
             </>
           </div>
         </div>

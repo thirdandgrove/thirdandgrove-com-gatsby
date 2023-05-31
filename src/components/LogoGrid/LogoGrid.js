@@ -87,6 +87,7 @@ const LogoGrid = ({
   const subTitleStyles = css`
     text-align: center;
     margin-bottom: 36px;
+    margin-top: 36px;
     line-height: 1;
     font-size: 24px;
     font-weight: 700;
