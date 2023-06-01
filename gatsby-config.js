@@ -17,25 +17,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-csp`,
       options: {
-        disableOnDev: true, // Disable CSP header during development
-        reportOnly: false, // Set to true to enable report-only mode
-
-        // Specify your Content Security Policy rules
-        mergeStyleHashes: false, // Set to true to hash inline styles
+        mergeScriptHashes: false,
+        mergeStyleHashes: false,
         directives: {
-          // Specify the directives
-          defaultSrc: "'self'",
-          scriptSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "'unsafe-eval'",
-            'thirdandgrove.com',
-          ],
-          styleSrc: ["'self'", "'unsafe-inline'", 'thirdandgrove.com'],
-          imgSrc: ["'self'", 'data:', 'thirdandgrove.com'],
-          fontSrc: ["'self'", 'fonts.gstatic.com'],
-          connectSrc: ["'self'", 'thirdandgrove.com'],
-          frameSrc: ["'none'"],
+          'script-src': `'self' 'unsafe-inline' data: www.google-analytics.com`,
+          'style-src': `'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
+          'img-src': `'self' data: www.google-analytics.com`,
+          'font-src': `'self' data: fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
+          'connect-src': `'self' https://www.thirdandgrove.com`,
         },
       },
     },
