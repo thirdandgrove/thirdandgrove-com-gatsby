@@ -179,6 +179,24 @@ const Menu = ({ menuOpen, toggleOpen }) => {
       margin: 0 auto;
     }
   `;
+  const data = allDataHeader();
+  const mainMenu = buildMenu(data?.mainMenu?.nodes) || [];
+  const renderItems = list =>
+    list?.map(item => (
+      <Link
+        css={[
+          linkPrimaryStyle,
+          textFadeIn,
+          linkBaseStyles,
+          mobileDelay3,
+          desktopDelay3,
+        ]}
+        onClick={() => toggleOpen()}
+        to={item.link.uri.replace('internal:', '')}
+      >
+        {item.title}
+      </Link>
+    ));
 
   return (
     <nav
