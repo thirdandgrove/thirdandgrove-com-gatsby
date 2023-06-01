@@ -38,7 +38,8 @@ module.exports = {
           frameSrc: ["'none'"],
         },
       },
-    }`gatsby-plugin-sitemap`,
+    },
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
