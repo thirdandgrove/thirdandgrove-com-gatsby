@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import { Spring } from 'react-spring/renderprops';
 
 import { useHasBeenVisible } from '../../hooks/useVisibility';
-import { mediaQueries, weights, fonts } from '../../styles';
+import { mediaQueries, weights, fonts, colors } from '../../styles';
 
 const CTAGridItem = ({
   icon,
@@ -15,9 +15,13 @@ const CTAGridItem = ({
   altStyle,
   noPaddingImg,
   extraCssItem,
+  textColor,
 }) => {
   const nodeRef = useRef();
   const isVisible = useHasBeenVisible(nodeRef);
+
+  const fontColor = textColor === 'dark' ? colors.darkgray : colors.lightgray;
+
   const ctaContainer = css`
     display: flex;
     flex-direction: column;
@@ -95,6 +99,10 @@ const CTAGridItem = ({
 
     ${extraCssItem}
   `;
+
+  const textCStyle = css`
+    color: ${fontColor};
+  `;
   return (
     <>
       {!altStyle ? (
@@ -117,15 +125,17 @@ const CTAGridItem = ({
             )}
           </Spring>
 
-          <h4>{title}</h4>
+          <h4 css={textCStyle}>{title}</h4>
           {Array.isArray(description) ? (
             <ul>
               {description.map((descriptionItem, index) => (
-                <li key={index}>{descriptionItem}</li>
+                <li key={index} css={textCStyle}>
+                  {descriptionItem}
+                </li>
               ))}
             </ul>
           ) : (
-            <p>{description}</p>
+            <p css={textCStyle}>{description}</p>
           )}
         </div>
       ) : (
@@ -147,15 +157,15 @@ const CTAGridItem = ({
                   <img src={icon[0].node.publicURL} alt={title} />
                 )}
 
-                {title && <h4>{title}</h4>}
+                {title && <h4 css={textCStyle}>{title}</h4>}
                 {Array.isArray(description) ? (
                   <ul>
                     {description.map(descriptionItem => (
-                      <li>{descriptionItem}</li>
+                      <li css={textCStyle}>{descriptionItem}</li>
                     ))}
                   </ul>
                 ) : (
-                  <p>{description}</p>
+                  <p css={textCStyle}>{description}</p>
                 )}
               </div>
             </div>
@@ -173,6 +183,7 @@ CTAGridItem.propTypes = {
   altStyle: PropTypes.bool,
   noPaddingImg: PropTypes.bool,
   extraCssItem: PropTypes.object,
+  textColor: PropTypes.string,
 };
 
 CTAGridItem.defaultProps = {
@@ -182,6 +193,7 @@ CTAGridItem.defaultProps = {
   altStyle: false,
   noPaddingImg: false,
   extraCssItem: null,
+  textColor: 'dark',
 };
 
 export default CTAGridItem;
