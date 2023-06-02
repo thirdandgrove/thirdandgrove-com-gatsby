@@ -76,8 +76,8 @@ const LogoWall = ({ data }) => {
         minHeight='100px !important'
         defaultItemWidth='20%'
         isLogoWall={isLogoWall}
-        link={data.field_primary_cta.uri?.replace('entity:', '') || ''}
-        cta={data.field_primary_cta.title}
+        link={data.field_primary_cta?.uri?.replace('entity:', '') || ''}
+        cta={data.field_primary_cta?.title}
         drupalData
       />
     </FullWidthSection>
