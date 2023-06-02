@@ -21,7 +21,7 @@ module.exports = {
         mergeStyleHashes: false,
         directives: {
           'default-src': `'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com`,
-          'script-src': `'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com`,
+          'script-src': `'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com`,
           'style-src': `'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
           'img-src': `'self' data: www.google-analytics.com www.google.com.ec`,
           'font-src': `'self' data: fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
