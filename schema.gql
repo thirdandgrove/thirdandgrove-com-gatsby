@@ -1343,6 +1343,7 @@ type component__services_component implements Node @derivedTypes @dontInfer {
   field_image: component__services_componentField_image
   field_primary_cta: component__servicesField_primary_cta
   field_image_align: String
+  field_link_id: String
 }
 
 type component__servicesField_primary_cta {

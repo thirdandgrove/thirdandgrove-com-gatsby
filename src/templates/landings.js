@@ -403,6 +403,7 @@ export const query = graphql`
             id
             field_header_text
             field_image_align
+            field_link_id
             field_image {
               alt
               title
