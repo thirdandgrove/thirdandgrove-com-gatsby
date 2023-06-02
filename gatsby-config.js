@@ -13,7 +13,6 @@ module.exports = {
     siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
-    `gatsby-plugin-csp`,
     {
       resolve: `gatsby-plugin-csp`,
       options: {
@@ -30,7 +29,6 @@ module.exports = {
         },
       },
     },
-
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-netlify`,
