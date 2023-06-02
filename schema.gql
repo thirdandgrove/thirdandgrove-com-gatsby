@@ -1102,6 +1102,7 @@ type component__text implements Node @derivedTypes @dontInfer {
   changed: Date @dateformat
   default_langcode: Boolean
   field_body: component__textField_body
+  field_capital_letter: Boolean
   relationships: component__textRelationships
 }
 

@@ -213,6 +213,7 @@ export const query = graphql`
         field_components {
           ... on component__text {
             id
+            field_capital_letter
             relationships {
               component_type {
                 name

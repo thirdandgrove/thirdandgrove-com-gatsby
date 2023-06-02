@@ -49,7 +49,6 @@ const replaceCode = node => {
 };
 
 const Text = ({ data }) => {
-  const renderDropCap = data.type === 'insight' && data.isFirstText;
   return (
     <FullWidthSection
       fontWeight={weights.thin}
@@ -100,7 +99,7 @@ const Text = ({ data }) => {
           }
           padding: 0;
         }
-        ${renderDropCap && dropCap}
+        ${data.field_capital_letter && dropCap}
         a {
           text-decoration: underline;
         }
