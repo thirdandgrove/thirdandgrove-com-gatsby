@@ -11,12 +11,26 @@ const LogoWall = ({ data }) => {
     field_header_text: headerText,
     field_subhead_text: subheadText,
   } = data;
-  const images = data.relationships.field_images;
+  const images = data.relationships.field_images_list;
+  const isLogoWall = images.some(
+    x => x.field_header_text && x.field_description
+  );
+  const imageList = [];
+
+  if (isLogoWall) {
+    images.map(image => {
+      return imageList.push({
+        title: image.field_header_text,
+        description: image.field_description,
+        icon: [image.relationships.field_image],
+      });
+    });
+  }
 
   return (
     <FullWidthSection height='0' minHeight='0'>
       <LogoGrid
-        images={images}
+        images={isLogoWall ? imageList : images}
         title={headerText}
         subtitle={subheadText}
         backgroundColor={colors.white}
@@ -61,6 +75,10 @@ const LogoWall = ({ data }) => {
         `}
         minHeight='100px !important'
         defaultItemWidth='20%'
+        isLogoWall={isLogoWall}
+        link={data.field_primary_cta?.uri?.replace('entity:', '') || ''}
+        cta={data.field_primary_cta?.title}
+        drupalData
       />
     </FullWidthSection>
   );
