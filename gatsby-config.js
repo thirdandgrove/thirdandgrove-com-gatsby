@@ -25,7 +25,7 @@ module.exports = {
           'style-src': `'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
           'img-src': `'self' data: www.google-analytics.com www.google.com.ec`,
           'font-src': `'self' data: fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
-          'connect-src': `'self' https://www.thirdandgrove.com analytics.google.com`,
+          'connect-src': `'self' https://www.thirdandgrove.com analytics.google.com extreme-ip-lookup.com`,
         },
       },
     },
