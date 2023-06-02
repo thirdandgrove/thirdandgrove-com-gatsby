@@ -57,13 +57,6 @@ module.exports = {
         mergeLinkHeaders: true,
         mergeCachingHeaders: true,
         generateMatchPathRewrites: true,
-        headers: {
-          '/*.woff': ['Cache-Control:  max-age=31536000'],
-          '/*.woff2': ['Cache-Control:  max-age=31536000'],
-          '/*.png': ['Cache-Control:  max-age=31536000'],
-          '/*.svg': ['Cache-Control:  max-age=31536000'],
-        },
-        mergeCachingHeaders: true,
       },
     },
     `gatsby-plugin-react-helmet`,
