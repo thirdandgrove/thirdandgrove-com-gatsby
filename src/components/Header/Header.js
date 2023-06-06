@@ -115,6 +115,14 @@ const Header = ({
     ? colors.darkgray
     : colors.lightgray;
 
+  const ctaColor = textColor
+    ? textColor === 'dark'
+      ? colors.lightgray
+      : colors.darkgray
+    : isLightBackground(color) && !invert
+    ? colors.lightgray
+    : colors.darkgray;
+
   const headerTitle = css`
     @keyframes headerSlide {
       0% {
@@ -304,9 +312,8 @@ const Header = ({
       width: 100%;
       height: 1px;
       transition: 0.3s ease height;
-      background: ${color};
+      background: ${ctaColor};
       color: ${fontColor};
-      filter: invert(100%);
     }
     &:hover,
     &:focus {
@@ -315,7 +322,6 @@ const Header = ({
       span {
         background-position: bottom;
         color: ${fontColor};
-        filter: invert(100%);
       }
 
       &::before {
