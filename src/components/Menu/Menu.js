@@ -201,24 +201,23 @@ const Menu = ({ menuOpen, toggleOpen }) => {
   return (
     <nav
       css={css`
+        // Updated styles for the mobile menu
         position: fixed;
         width: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         background-color: ${colors.darkgray};
         transition: 0.3s ease all;
-        overflow: hidden;
         z-index: 3;
         top: ${menuOpen ? '0' : '100vh'};
         flex-direction: column;
-        justify-content: center;
-        height: ${menuOpen ? 'auto' : '0'};
-        min-height: ${menuOpen ? '100vh' : '0'};
+        justify-content: flex-start;
+        min-height: 100vh;
         padding: 0;
-
         ${mediaQueries.phoneLarge} {
           flex-direction: row;
           height: ${menuOpen ? '100vh' : '0'};
+          align-items: center;
         }
       `}
     >
@@ -226,6 +225,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
         css={[
           container.max,
           css`
+            // Container for the menu content
             padding-top: 80px;
             padding-bottom: 60px;
             ${mediaQueries.phoneLarge} {
@@ -233,6 +233,11 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               justify-content: space-between;
               padding-top: 0;
               padding-bottom: 0;
+            }
+
+            @media (max-width: 767px) {
+              // Only apply the following styles on mobile
+              display: none;
             }
           `,
         ]}
@@ -246,6 +251,40 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               {renderItems(menu.children)}
             </section>
           ))}
+      </div>
+
+      <div
+        css={[
+          container.max,
+          css`
+            // Container for the menu content (on desktop)
+            padding-top: 80px;
+            padding-bottom: 60px;
+
+            @media (min-width: 768px) {
+              // Only apply the following styles on mobile
+              display: none;
+            }
+          `,
+        ]}
+      >
+        <div
+          css={css`
+            // Container for the scrollable content
+            max-height: 75vh; /* Set a max height to limit the scrollable area */
+            overflow-y: auto; /* Enable scrolling if content exceeds the height */
+          `}
+        >
+          {mainMenu &&
+            mainMenu.map(menu => (
+              <section css={[sectionStyle, sectionPrimaryStyle]}>
+                <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                  {menu.title}
+                </h5>
+                {renderItems(menu.children)}
+              </section>
+            ))}
+        </div>
       </div>
     </nav>
   );
