@@ -19,27 +19,8 @@ const Footer = () => {
     font-weight: ${weights.bold};
 
     ${mediaQueries.phoneLarge} {
-      margin-right: 40px;
       padding: 11px 0;
     }
-    &:hover {
-      color: ${colors.white};
-    }
-  `;
-
-  const parentLinkStyle = css`
-    font-size: 18px;
-    line-height: 1;
-    font-weight: ${weights.bold};
-    padding: 13px;
-    display: block;
-    color: ${colors.whiteFaded};
-
-    ${mediaQueries.phoneLarge} {
-      margin-right: 40px;
-      padding: 11px 0;
-    }
-
     &:hover {
       color: ${colors.white};
     }
@@ -92,7 +73,7 @@ const Footer = () => {
     ${mediaQueries.phoneLarge} {
       margin-bottom: 26px;
       line-height: 81px;
-      font-size: 21px;
+      font-size: 25px;
     }
   `;
 
