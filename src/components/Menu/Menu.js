@@ -235,7 +235,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               padding-bottom: 0;
             }
 
-            @media (max-width: 767px) {
+            @media (max-width: 850px) {
               // Only apply the following styles on mobile
               display: none;
             }
@@ -261,7 +261,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
             padding-top: 80px;
             padding-bottom: 60px;
 
-            @media (min-width: 768px) {
+            @media (min-width: 850px) {
               // Only apply the following styles on mobile
               display: none;
             }
