@@ -76,10 +76,6 @@ const LogoGrid = ({
   const titleStyles = css`
     text-align: center;
     margin-bottom: 60px;
-
-    ${mediaQueries.phoneLarge} {
-      margin-bottom: 70px;
-    }
   `;
 
   const multiLineStyles = css`

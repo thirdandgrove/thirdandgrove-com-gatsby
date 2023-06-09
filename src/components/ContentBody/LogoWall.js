@@ -35,7 +35,7 @@ const LogoWall = ({ data }) => {
         subtitle={subheadText}
         backgroundColor={colors.white}
         styles={css`
-          padding-top: 25px !important;
+          padding-top: 80px !important;
           padding-bottom: 80px !important;
 
           > h2 {
