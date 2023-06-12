@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export default function allDataHeader() {
+export default function AllDataHeader() {
   const nodes = useStaticQuery(graphql`
     query allDataHeader {
       mainMenu: allMenuLinkContentMenuLinkContent(

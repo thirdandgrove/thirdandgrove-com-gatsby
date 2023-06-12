@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export default function allDataFooter() {
+export default function AllDataFooter() {
   const nodes = useStaticQuery(graphql`
     query allDataFooter {
       mainMenu: allMenuLinkContentMenuLinkContent(
