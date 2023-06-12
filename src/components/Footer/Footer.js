@@ -13,14 +13,15 @@ const Footer = () => {
     display: block;
     color: ${colors.whiteFaded};
     font-family: ${fonts.sans};
-    padding: 13px;
-    font-size: 18px;
-    line-height: 1;
+    padding: 0;
+    font-size: 16px;
+    line-height: 22px;
     font-weight: ${weights.bold};
 
     ${mediaQueries.phoneLarge} {
-      padding: 11px 0;
+      padding: 0;
     }
+
     &:hover {
       color: ${colors.white};
     }
@@ -41,19 +42,6 @@ const Footer = () => {
     }
   `;
 
-  const innerWrapperStyle = css`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 50vh;
-
-    ${mediaQueries.phoneLarge} {
-      flex-direction: row;
-      justify-content: center;
-      min-height: 0;
-    }
-  `;
-
   const easterEggButtonStyle = css`
     border: 0;
     background: transparent;
@@ -66,15 +54,9 @@ const Footer = () => {
     color: ${colors.white};
     letter-spacing: -0.1px;
     text-align: center;
-    line-height: 15px;
-    font-size: 15px;
-    margin-bottom: 10px;
-
-    ${mediaQueries.phoneLarge} {
-      margin-bottom: 26px;
-      line-height: 81px;
-      font-size: 25px;
-    }
+    line-height: 35px;
+    font-size: 25px;
+    margin-bottom: 0;
   `;
 
   const desktopDelay1 = css`
@@ -85,17 +67,19 @@ const Footer = () => {
 
   const sectionStyle = css`
     ${mediaQueries.phoneLarge} {
-      padding: 0 40px;
+      padding: 0;
     }
   `;
 
   const sectionPrimaryStyle = css`
-    h5 {
-      display: none;
+    flex: 100%;
 
-      ${mediaQueries.phoneLarge} {
-        display: block;
-      }
+    > * + * {
+      margin-top: 16px;
+    }
+
+    a:last-child {
+      margin-bottom: 16px;
     }
   `;
 
@@ -121,16 +105,25 @@ const Footer = () => {
           </button>
           <div
             css={[
-              container.max,
               css`
                 // Container for the menu content
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                gap: 24px;
                 padding-top: 80px;
                 padding-bottom: 60px;
+                max-width: 1220px;
+                width: 100%;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin: 0 auto;
+
                 ${mediaQueries.phoneLarge} {
-                  display: flex;
-                  justify-content: space-between;
+                  flex-direction: row;
                   padding-top: 0;
                   padding-bottom: 0;
+                  gap: 16px;
                 }
               `,
             ]}
