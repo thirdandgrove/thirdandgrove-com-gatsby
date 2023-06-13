@@ -1,9 +1,10 @@
+/* eslint-disable no-bitwise */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Link } from 'gatsby';
 
-import { container, mediaQueries } from '../../styles';
+import { colors, container, mediaQueries } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 import { FakeButton } from '../Button';
 
@@ -25,8 +26,43 @@ const CTAGrid = ({
   extraCssGrid,
   extraCSSSection,
   width,
+  drupalData,
+  textColor,
 }) => {
   const containerWidth = maxWidth ? container.max : container.textOnly;
+
+  const isLightBackground = value => {
+    let r;
+    let g;
+    let b;
+
+    if (value.match(/^rgb/)) {
+      // If HEX, store the red, green, blue values in separate variables.
+      [r, g, b] = value.match(
+        /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
+      );
+    } else {
+      // If RGB, convert it to HEX
+      // @see: http://gist.github.com/983661
+      const rgbVal = +`0x${value
+        .slice(1)
+        .replace(value.length < 5 && /./g, '$&$&')}`;
+
+      r = rgbVal >> 16;
+      g = rgbVal & 255;
+      b = (rgbVal >> 8) & 255;
+    }
+    return (
+      Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b)) > 127.5
+    );
+  };
+  const fontColor = textColor
+    ? textColor === 'dark'
+      ? colors.darkgray
+      : colors.lightgray
+    : isLightBackground(backgroundColor)
+    ? colors.darkgray
+    : colors.lightgray;
 
   const ctaGridContainer = css`
     display: grid;
@@ -114,23 +150,28 @@ const CTAGrid = ({
     }
   `;
 
+  const headerStyles = css`
+    color: ${fontColor};
+  `;
+
   const getImageSrc = name => images.filter(({ node }) => name === node.name);
 
   return (
     <FullWidthSection css={sectionStyles} backgroundColor={backgroundColor}>
-      {header !== '' && <h3>{header}</h3>}
+      {header !== '' && <h3 css={headerStyles}>{header}</h3>}
       <div css={!altStyle ? ctaGridContainer : ctaGridContainerAlt}>
         {items.map((item, index) => {
           const node = item?.node || item;
           return (
             <CTAGridItem
               key={`${node.title + index}`}
-              icon={getImageSrc(node.icon)}
+              icon={drupalData ? node.icon : getImageSrc(node.icon)}
               title={node.title}
               description={node.description}
               altStyle={altStyle}
               extraCssItem={extraCssItem}
               noPaddingImg={noPaddingImg}
+              textColor={textColor}
             />
           );
         })}
@@ -169,6 +210,8 @@ CTAGrid.propTypes = {
   extraCssGrid: PropTypes.object,
   extraCSSSection: PropTypes.object,
   width: PropTypes.string,
+  drupalData: PropTypes.bool,
+  textColor: PropTypes.string,
 };
 
 CTAGrid.defaultProps = {
@@ -187,6 +230,8 @@ CTAGrid.defaultProps = {
   extraCssGrid: null,
   extraCSSSection: null,
   width: '',
+  drupalData: false,
+  textColor: 'dark',
 };
 
 export default CTAGrid;

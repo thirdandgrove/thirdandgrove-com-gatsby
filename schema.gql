@@ -1078,6 +1078,8 @@ type component_type__component_typeRelationships {
     @link(by: "id", from: "component__image___NODE")
   component__stats: [component__stats]
     @link(by: "id", from: "component__stats___NODE")
+  component__icon_list_component: [component__icon_list_component]
+    @link(by: "id", from: "component__icon_list_component___NODE")
   component__faq: [component__faq]
     @link(by: "id", from: "component__faq___NODE")
   component__logo_wall: [component__logo_wall]
@@ -1100,6 +1102,7 @@ type component__text implements Node @derivedTypes @dontInfer {
   changed: Date @dateformat
   default_langcode: Boolean
   field_body: component__textField_body
+  field_capital_letter: Boolean
   relationships: component__textRelationships
 }
 
@@ -1157,7 +1160,7 @@ type landing_pageRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_components: [component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion]
+  field_components: [component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__icon_list_componentcomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion]
     @link(by: "id", from: "field_components___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
   field_secondary_image: file__file
@@ -1168,7 +1171,7 @@ type landing_pageRelationships {
     @link(by: "id", from: "field_tertiary_image___NODE")
 }
 
-union component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion =
+union component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__icon_list_componentcomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion =
     component__big_links
   | component__case_study_showcase
   | component__contact_form
@@ -1182,6 +1185,7 @@ union component__big_linkscomponent__case_study_showcasecomponent__contact_formc
   | component__quote_hero
   | component__services_component
   | component__stats
+  | component__icon_list_component
   | component__faq
   | component__testimonial
   | component__text
@@ -1340,6 +1344,7 @@ type component__services_component implements Node @derivedTypes @dontInfer {
   field_image: component__services_componentField_image
   field_primary_cta: component__servicesField_primary_cta
   field_image_align: String
+  field_link_id: String
 }
 
 type component__servicesField_primary_cta {
@@ -1534,6 +1539,23 @@ type component__stats implements Node @derivedTypes @dontInfer {
   relationships: component__statsRelationships
 }
 
+type component__icon_list_component implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_header_text: String
+  field_primary_color: component__iconListField_primary_color
+  field_text_color: String
+  relationships: component__iconListRelationships
+}
+
+type component__iconListField_primary_color {
+  color: String
+}
+
 type component__faq implements Node @derivedTypes @dontInfer {
   drupal_id: String
   drupal_internal__id: Int
@@ -1555,6 +1577,32 @@ type component__stat implements Node @derivedTypes @dontInfer {
   field_description: String
   field_stat: Int
   field_character: String
+}
+
+type component__icon_component implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_icon_text: String
+  relationships: component__icon_componentRelationships
+  field_icon: component__iconField_image
+}
+
+type component__icon_componentRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_icon: file__file @link(by: "id", from: "field_icon___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__iconField_image {
+  alt: String
+  title: String
+  width: Int
+  height: Int
 }
 
 type component__faq_item implements Node @derivedTypes @dontInfer {
@@ -1581,6 +1629,14 @@ type component__statsRelationships {
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
+type component__iconListRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_icon_item: [component__icon_component]
+    @link(by: "id", from: "field_icon_item___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
 type component__faqRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
@@ -1598,14 +1654,42 @@ type component__logo_wall implements Node @derivedTypes @dontInfer {
   default_langcode: Boolean
   field_header_text: String
   field_subhead_text: String
+  field_primary_cta: component__logoWall_primary_cta
   relationships: component__logo_wallRelationships
   field_images: [component__logo_wallField_images]
+}
+
+type component__logoWall_primary_cta {
+  uri: String
+  title: String
+  url: String
 }
 
 type component__logo_wallRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
-  field_images: [file__file] @link(by: "id", from: "field_images___NODE")
+  field_images_list: [component__images_list]
+    @link(by: "id", from: "field_images_list___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__images_list implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_description: String
+  field_header_text: String
+  relationships: component__images_list_componentRelationships
+  field_image: component__logo_wallField_images
+}
+
+type component__images_list_componentRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_image: file__file @link(by: "id", from: "field_image___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 

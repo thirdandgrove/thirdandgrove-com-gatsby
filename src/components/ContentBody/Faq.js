@@ -8,8 +8,6 @@ import { colors } from '../../styles';
 import { mediaQueriesMax } from '../../styles/css-utils';
 
 const FAQ = ({ data }) => {
-  const header = data?.field_heading;
-
   const fieldFaqItem = data?.relationships?.field_faq_item;
 
   const faqItem = css`
@@ -147,6 +145,7 @@ const FAQ = ({ data }) => {
       width: 0.1875rem;
     }
   `;
+
   const AccordionItem = ({ header, ...rest }) => (
     <Item
       {...rest}
@@ -158,23 +157,31 @@ const FAQ = ({ data }) => {
       }
     />
   );
+
   return (
     <FullWidthSection height='0' minHeight='0'>
       <>
         <Accordion css={faqItem}>
-          <h2>{header}</h2>
-          {fieldFaqItem.map(stat => {
-            return (
-              <AccordionItem header={stat.field_faq_question} css={faqTitle}>
-                <section
-                  css={faqBody}
-                  dangerouslySetInnerHTML={{
-                    __html: stat.field_faq_answer.processed,
-                  }}
-                />
-              </AccordionItem>
-            );
-          })}
+          {data?.field_heading && <h2>{data?.field_heading}</h2>}
+          {fieldFaqItem &&
+            fieldFaqItem.map(stat => {
+              return (
+                <AccordionItem
+                  key={stat.field_faq_question}
+                  header={stat.field_faq_question}
+                  css={faqTitle}
+                >
+                  {stat.field_faq_answer.processed && (
+                    <section
+                      css={faqBody}
+                      dangerouslySetInnerHTML={{
+                        __html: stat.field_faq_answer.processed,
+                      }}
+                    />
+                  )}
+                </AccordionItem>
+              );
+            })}
         </Accordion>
       </>
     </FullWidthSection>

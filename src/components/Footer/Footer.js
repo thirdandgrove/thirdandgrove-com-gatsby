@@ -3,26 +3,30 @@ import { Link } from 'gatsby';
 import { css } from '@emotion/react';
 
 import EasterEggContext from '../../context/EasterEggContext';
-import { colors, fonts, weights, mediaQueries, container } from '../../styles';
+import { colors, fonts, weights, mediaQueries } from '../../styles';
+import buildMenu from '../../helpers/menu';
+
+import allDataFooter from './default-query';
 
 const Footer = () => {
   const linkStyle = css`
     display: block;
     color: ${colors.whiteFaded};
     font-family: ${fonts.sans};
-    padding: 13px;
-    font-size: 18px;
-    line-height: 1;
+    padding: 0;
+    font-size: 16px;
+    line-height: 22px;
     font-weight: ${weights.bold};
 
     ${mediaQueries.phoneLarge} {
-      margin-right: 40px;
-      padding: 11px 0;
+      padding: 0;
     }
+
     &:hover {
       color: ${colors.white};
     }
   `;
+
   const wrapperStyle = css`
     padding: 0;
     text-align: center;
@@ -37,17 +41,7 @@ const Footer = () => {
       min-height: 0;
     }
   `;
-  const innerWrapperStyle = css`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 50vh;
-    ${mediaQueries.phoneLarge} {
-      flex-direction: row;
-      justify-content: center;
-      min-height: 0;
-    }
-  `;
+
   const easterEggButtonStyle = css`
     border: 0;
     background: transparent;
@@ -55,6 +49,53 @@ const Footer = () => {
     height: 80px;
   `;
 
+  const sectionHeaderStyle = css`
+    font-weight: ${weights.thin};
+    color: ${colors.white};
+    letter-spacing: -0.1px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 25px;
+    margin-bottom: 0;
+  `;
+
+  const desktopDelay1 = css`
+    ${mediaQueries.phoneLarge} {
+      transition-delay: 0s, 0.2s, 0.2s;
+    }
+  `;
+
+  const sectionStyle = css`
+    ${mediaQueries.phoneLarge} {
+      padding: 0;
+    }
+  `;
+
+  const sectionPrimaryStyle = css`
+    flex: 100%;
+
+    > * + * {
+      margin-top: 16px;
+    }
+
+    a:last-child {
+      margin-bottom: 16px;
+    }
+  `;
+
+  const data = allDataFooter();
+  const mainMenu = buildMenu(data?.mainMenu?.nodes) || [];
+
+  const renderItems = list =>
+    list?.map(item => (
+      <Link
+        key={item.title}
+        css={[linkStyle]}
+        to={item.link.uri.replace('internal:', '')}
+      >
+        {item.title}
+      </Link>
+    ));
   return (
     <EasterEggContext.Consumer>
       {context => (
@@ -66,36 +107,51 @@ const Footer = () => {
           >
             &nbsp;
           </button>
-          <div css={[innerWrapperStyle, container.max]}>
-            <Link css={linkStyle} to='/work/'>
-              Work
-            </Link>
-            <Link css={linkStyle} to='/capabilities/'>
-              Capabilities
-            </Link>
-            <Link css={linkStyle} to='/insights/'>
-              Insights
-            </Link>
-            <Link css={linkStyle} to='/about/'>
-              About
-            </Link>
-            <a
-              css={linkStyle}
-              href='https://thirdandgrove.breezy.hr/'
-              target='_blank'
-              rel='noreferrer'
-            >
-              Careers
-            </a>
-            <Link css={linkStyle} to='/contact/'>
-              Contact
-            </Link>
-            <Link css={linkStyle} to='/legal/'>
-              Legal
-            </Link>
-            <Link css={linkStyle} to='/partners/'>
-              Partners
-            </Link>
+          <div
+            css={[
+              css`
+                // Container for the menu content
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                gap: 24px;
+                padding-top: 80px;
+                padding-bottom: 60px;
+                max-width: 1220px;
+                width: 100%;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin: 0 auto;
+
+                ${mediaQueries.phoneLarge} {
+                  flex-direction: row;
+                  padding-top: 0;
+                  padding-bottom: 0;
+                  gap: 16px;
+                }
+              `,
+            ]}
+          >
+            {mainMenu &&
+              mainMenu.map(menu => (
+                <section
+                  key={menu.title}
+                  css={[sectionStyle, sectionPrimaryStyle]}
+                >
+                  {menu.link ? (
+                    <Link to={menu.link.uri.replace('internal:', '')}>
+                      <h5 css={[sectionHeaderStyle, desktopDelay1]}>
+                        {menu.title}
+                      </h5>
+                    </Link>
+                  ) : (
+                    <h5 css={[sectionHeaderStyle, desktopDelay1]}>
+                      {menu.title}
+                    </h5>
+                  )}
+                  {renderItems(menu.children)}
+                </section>
+              ))}
           </div>
           <button
             onClick={context.toggleEasterEgg}

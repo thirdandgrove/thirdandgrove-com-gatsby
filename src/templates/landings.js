@@ -142,23 +142,52 @@ export const query = graphql`
             id
             field_header_text
             field_subhead_text
-            field_images {
-              alt
+            field_primary_cta {
+              url
               title
+              uri
             }
             relationships {
               component_type {
                 name
               }
-              field_images {
-                id
-                localFile {
-                  publicURL
-                  childImageSharp {
-                    fluid(maxWidth: 800, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
+              field_images_list {
+                field_header_text
+                field_description
+                field_image {
+                  alt
+                }
+                relationships {
+                  field_image {
+                    id
+                    node: localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                      childImageMobile: childImageSharp {
+                        fixed(width: 335, height: 260, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeA: childImageSharp {
+                        fixed(width: 450, height: 320, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeB: childImageSharp {
+                        fixed(width: 380, height: 420, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeC: childImageSharp {
+                        fixed(width: 420, height: 340, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
                     }
-                    gatsbyImageData
                   }
                 }
               }
@@ -175,6 +204,58 @@ export const query = graphql`
                 field_description
                 field_stat
                 field_character
+              }
+            }
+          }
+          ... on component__icon_list_component {
+            id
+            field_header_text
+            field_primary_color {
+              color
+            }
+            field_text_color
+            relationships {
+              component_type {
+                name
+              }
+              field_icon_item {
+                title: field_icon_text
+                icon: field_icon {
+                  alt
+                }
+                relationships {
+                  field_icon {
+                    id
+                    node: localFile {
+                      publicURL
+                      childImageSharp {
+                        fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
+                          ...GatsbyImageSharpFluid_withWebp
+                        }
+                      }
+                      childImageMobile: childImageSharp {
+                        fixed(width: 335, height: 260, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeA: childImageSharp {
+                        fixed(width: 450, height: 320, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeB: childImageSharp {
+                        fixed(width: 380, height: 420, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                      childImageTypeC: childImageSharp {
+                        fixed(width: 420, height: 340, cropFocus: CENTER) {
+                          ...GatsbyImageSharpFixed_withWebp_noBase64
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -322,6 +403,7 @@ export const query = graphql`
             id
             field_header_text
             field_image_align
+            field_link_id
             field_image {
               alt
               title
