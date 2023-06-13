@@ -132,10 +132,7 @@ const Footer = () => {
               mainMenu.map(menu => (
                 <section css={[sectionStyle, sectionPrimaryStyle]}>
                   {menu.link ? (
-                    <Link
-                      css={[linkStyle]}
-                      to={menu.link.uri.replace('internal:', '')}
-                    >
+                    <Link to={menu.link.uri.replace('internal:', '')}>
                       <h5 css={[sectionHeaderStyle, desktopDelay1]}>
                         {menu.title}
                       </h5>
