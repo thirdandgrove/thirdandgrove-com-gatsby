@@ -184,6 +184,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
   const renderItems = list =>
     list?.map(item => (
       <Link
+        key={item.title}
         css={[
           linkPrimaryStyle,
           textFadeIn,
@@ -244,7 +245,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
       >
         {mainMenu &&
           mainMenu.map(menu => (
-            <section css={[sectionStyle, sectionPrimaryStyle]}>
+            <section key={menu.title} css={[sectionStyle, sectionPrimaryStyle]}>
               <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
                 {menu.title}
               </h5>
@@ -277,7 +278,10 @@ const Menu = ({ menuOpen, toggleOpen }) => {
         >
           {mainMenu &&
             mainMenu.map(menu => (
-              <section css={[sectionStyle, sectionPrimaryStyle]}>
+              <section
+                key={menu.title}
+                css={[sectionStyle, sectionPrimaryStyle]}
+              >
                 <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
                   {menu.title}
                 </h5>

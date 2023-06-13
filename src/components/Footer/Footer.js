@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { css } from '@emotion/react';
 
 import EasterEggContext from '../../context/EasterEggContext';
-import { colors, fonts, weights, mediaQueries, container } from '../../styles';
+import { colors, fonts, weights, mediaQueries } from '../../styles';
 import buildMenu from '../../helpers/menu';
 
 import allDataFooter from './default-query';
@@ -88,7 +88,11 @@ const Footer = () => {
 
   const renderItems = list =>
     list?.map(item => (
-      <Link css={[linkStyle]} to={item.link.uri.replace('internal:', '')}>
+      <Link
+        key={item.title}
+        css={[linkStyle]}
+        to={item.link.uri.replace('internal:', '')}
+      >
         {item.title}
       </Link>
     ));
@@ -130,10 +134,21 @@ const Footer = () => {
           >
             {mainMenu &&
               mainMenu.map(menu => (
-                <section css={[sectionStyle, sectionPrimaryStyle]}>
-                  <h5 css={[sectionHeaderStyle, desktopDelay1]}>
-                    {menu.title}
-                  </h5>
+                <section
+                  key={menu.title}
+                  css={[sectionStyle, sectionPrimaryStyle]}
+                >
+                  {menu.link ? (
+                    <Link to={menu.link.uri.replace('internal:', '')}>
+                      <h5 css={[sectionHeaderStyle, desktopDelay1]}>
+                        {menu.title}
+                      </h5>
+                    </Link>
+                  ) : (
+                    <h5 css={[sectionHeaderStyle, desktopDelay1]}>
+                      {menu.title}
+                    </h5>
+                  )}
                   {renderItems(menu.children)}
                 </section>
               ))}
