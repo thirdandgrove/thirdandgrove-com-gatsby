@@ -170,7 +170,11 @@ const FAQ = ({ data }) => {
           {fieldFaqItem &&
             fieldFaqItem.map(stat => {
               return (
-                <AccordionItem header={stat.field_faq_question} css={faqTitle}>
+                <AccordionItem
+                  key={stat.field_faq_question}
+                  header={stat.field_faq_question}
+                  css={faqTitle}
+                >
                   {stat.field_faq_answer.processed && (
                     <section
                       css={faqBody}

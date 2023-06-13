@@ -429,14 +429,21 @@ const Header = ({
         {linksA && (
           <div css={linkStylesA}>
             {linksA.map(l => (
-              <a href={l.url}>{l.text}</a>
+              <a key={l.text} href={l.url}>
+                {l.text}
+              </a>
             ))}
           </div>
         )}
         {cta && (
           <div>
             {cta.map(l => (
-              <Button type='button' fontColor={textColor} css={btnStyles}>
+              <Button
+                key={l.text}
+                type='button'
+                fontColor={textColor}
+                css={btnStyles}
+              >
                 <Link to={l.url.replace('entity:', '')}>{l.text}</Link>
               </Button>
             ))}
@@ -445,7 +452,7 @@ const Header = ({
         {linksB && (
           <div css={linkStylesB}>
             {linksB.map(l => (
-              <a href={l.url}>
+              <a key={l.text} href={l.url}>
                 <img src={getImageSrc(l.text.toLowerCase())} alt={l.text} />
               </a>
             ))}
