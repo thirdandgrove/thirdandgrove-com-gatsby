@@ -88,7 +88,11 @@ const Footer = () => {
 
   const renderItems = list =>
     list?.map(item => (
-      <Link css={[linkStyle]} to={item.link.uri.replace('internal:', '')}>
+      <Link
+        key={item.title}
+        css={[linkStyle]}
+        to={item.link.uri.replace('internal:', '')}
+      >
         {item.title}
       </Link>
     ));
@@ -130,7 +134,10 @@ const Footer = () => {
           >
             {mainMenu &&
               mainMenu.map(menu => (
-                <section css={[sectionStyle, sectionPrimaryStyle]}>
+                <section
+                  key={menu.title}
+                  css={[sectionStyle, sectionPrimaryStyle]}
+                >
                   {menu.link ? (
                     <Link to={menu.link.uri.replace('internal:', '')}>
                       <h5 css={[sectionHeaderStyle, desktopDelay1]}>
