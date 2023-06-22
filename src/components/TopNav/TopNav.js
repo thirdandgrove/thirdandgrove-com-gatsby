@@ -23,6 +23,10 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
     setDate(new Date() > new Date('2021-04-12'));
   }, []);
 
+  useEffect(() => {
+    document.body.parentNode.style.overflow = isOpen ? 'hidden' : '';
+  }, [isOpen]);
+
   return (
     <>
       {hideNav && !banner && (

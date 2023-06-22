@@ -146,7 +146,7 @@ const AcquiaEngage = ({ data }) => {
         flex: 0 0 calc(50% - 86px);
         padding-top: 20px;
 
-        &:nth-child(odd):last-child {
+        &:nth-of-type(odd):last-child {
           margin-left: auto;
           margin-right: auto;
         }
@@ -209,7 +209,7 @@ const AcquiaEngage = ({ data }) => {
         flex: 0 0 calc(50% - 86px);
         padding-top: 20px;
 
-        &:nth-child(odd):last-child {
+        &:nth-of-type(odd):last-child {
           margin-left: auto;
           margin-right: auto;
         }

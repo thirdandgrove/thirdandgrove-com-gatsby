@@ -114,7 +114,7 @@ const ContactFormComponent = ({ data }) => {
 };
 
 ContactForm.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object,
 };
 
 export default ContactFormComponent;
