@@ -16,8 +16,8 @@ export const contValues = contWidths.reduce((acc, value, i) => {
 
 export const container = contWidths.reduce((acc, w, i) => {
   acc[contLabels[i]] = css`
-    width: ${w}px;
-    max-width: 100%;
+    max-width: ${w}px;
+    width: 100%;
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;

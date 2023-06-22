@@ -138,11 +138,6 @@ const Menu = ({ menuOpen, toggleOpen }) => {
 
   const sectionPrimaryStyle = css`
     h5 {
-      display: none;
-
-      ${mediaQueries.phoneLarge} {
-        display: block;
-      }
     }
   `;
 
@@ -173,14 +168,38 @@ const Menu = ({ menuOpen, toggleOpen }) => {
     max-width: 240px;
     margin: 0 auto;
 
+    > a:last-of-type:nth-of-type(odd) {
+      grid-column: span 2;
+    }
+
     ${mediaQueries.phoneLarge} {
       display: block;
       max-width: none;
       margin: 0 auto;
     }
   `;
+
+  const linksWrapperLargeWidth = css`
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    max-width: 270px;
+    margin: 0 auto;
+
+    > a:last-of-type:nth-of-type(odd) {
+      grid-column: span 2;
+    }
+
+    ${mediaQueries.phoneLarge} {
+      display: block;
+      max-width: none;
+      margin: 0 auto;
+    }
+  `;
+
   const data = allDataHeader();
   const mainMenu = buildMenu(data?.mainMenu?.nodes) || [];
+
   const renderItems = list =>
     list?.map(item => (
       <Link
@@ -191,6 +210,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
           linkBaseStyles,
           mobileDelay3,
           desktopDelay3,
+          linkSecondaryStyle,
         ]}
         onClick={() => toggleOpen()}
         to={item.link.uri.replace('internal:', '')}
@@ -198,6 +218,9 @@ const Menu = ({ menuOpen, toggleOpen }) => {
         {item.title}
       </Link>
     ));
+
+  const checkClass = list =>
+    list.filter(item => item.title.trim().length >= 9).length > 1;
 
   return (
     <nav
@@ -215,6 +238,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
         justify-content: flex-start;
         min-height: 100vh;
         padding: 0;
+
         ${mediaQueries.phoneLarge} {
           flex-direction: row;
           height: ${menuOpen ? '100vh' : '0'};
@@ -229,6 +253,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
             // Container for the menu content
             padding-top: 80px;
             padding-bottom: 60px;
+
             ${mediaQueries.phoneLarge} {
               display: flex;
               justify-content: space-between;
@@ -236,9 +261,13 @@ const Menu = ({ menuOpen, toggleOpen }) => {
               padding-bottom: 0;
             }
 
-            @media (max-width: 850px) {
+            @media (max-width: 900px) {
               // Only apply the following styles on mobile
               display: none;
+
+              > * + * {
+                margin-top: 64px;
+              }
             }
           `,
         ]}
@@ -246,10 +275,29 @@ const Menu = ({ menuOpen, toggleOpen }) => {
         {mainMenu &&
           mainMenu.map(menu => (
             <section key={menu.title} css={[sectionStyle, sectionPrimaryStyle]}>
-              <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                {menu.title}
-              </h5>
-              {renderItems(menu.children)}
+              {menu.link ? (
+                <Link
+                  onClick={() => toggleOpen()}
+                  to={menu.link.uri.replace('internal:', '')}
+                >
+                  <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                    {menu.title}
+                  </h5>
+                </Link>
+              ) : (
+                <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                  {menu.title}
+                </h5>
+              )}
+              <div
+                css={[
+                  checkClass(menu.children)
+                    ? linksWrapperLargeWidth
+                    : linksWrapper,
+                ]}
+              >
+                {renderItems(menu.children)}
+              </div>
             </section>
           ))}
       </div>
@@ -262,7 +310,7 @@ const Menu = ({ menuOpen, toggleOpen }) => {
             padding-top: 80px;
             padding-bottom: 60px;
 
-            @media (min-width: 850px) {
+            @media (min-width: 900px) {
               // Only apply the following styles on mobile
               display: none;
             }
@@ -271,9 +319,9 @@ const Menu = ({ menuOpen, toggleOpen }) => {
       >
         <div
           css={css`
-            // Container for the scrollable content
-            max-height: 75vh; /* Set a max height to limit the scrollable area */
-            overflow-y: auto; /* Enable scrolling if content exceeds the height */
+            > * + * {
+              margin-top: 64px;
+            }
           `}
         >
           {mainMenu &&
@@ -282,10 +330,29 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                 key={menu.title}
                 css={[sectionStyle, sectionPrimaryStyle]}
               >
-                <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                  {menu.title}
-                </h5>
-                {renderItems(menu.children)}
+                {menu.link ? (
+                  <Link
+                    onClick={() => toggleOpen()}
+                    to={menu.link.uri.replace('internal:', '')}
+                  >
+                    <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                      {menu.title}
+                    </h5>
+                  </Link>
+                ) : (
+                  <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                    {menu.title}
+                  </h5>
+                )}
+                <div
+                  css={[
+                    checkClass(menu.children)
+                      ? linksWrapperLargeWidth
+                      : linksWrapper,
+                  ]}
+                >
+                  {renderItems(menu.children)}
+                </div>
               </section>
             ))}
         </div>
