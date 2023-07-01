@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 require('dotenv').config();
 
 const isProduction =
@@ -76,7 +77,7 @@ module.exports = {
             return acc;
           }, {});
           return allPages.map(page => {
-            return { ...page, ...drupalNodeMap };
+            return { ...page, ...drupalNodeMap[page.path] };
           });
         },
         serialize: ({ path, modifiedGmt }) => {
