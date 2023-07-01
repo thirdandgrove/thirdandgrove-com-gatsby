@@ -13,7 +13,80 @@ module.exports = {
     siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allCaseStudy(filter: { field_hidden: { eq: false } }) {
+            nodes {
+              modifiedGmt: changed
+              path {
+                alias
+              }
+            }
+          }
+          allLandingPage(filter: { field_hidden: { eq: false } }) {
+            nodes {
+              modifiedGmt: changed
+              path {
+                alias
+              }
+            }
+          }
+          allInsight(filter: { field_hidden: { eq: false } }) {
+            nodes {
+              modifiedGmt: changed
+              path {
+                alias
+              }
+            }
+          }
+          allNodeLegacyInsight {
+            nodes {
+              modifiedGmt: changed
+              path {
+                alias
+              }
+            }
+          }
+        }
+      `,
+        resolveSiteUrl: () => siteUrl,
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allCaseStudy: { nodes: allCaseStudyNodes },
+          allLandingPage: { nodes: allLandingPageNodes },
+          allInsight: { nodes: allInsightNodes },
+          allNodeLegacyInsight: { nodes: allNodeLegacyInsightNodes },
+        }) => {
+          const drupalNodeMap = [
+            ...allCaseStudyNodes,
+            ...allLandingPageNodes,
+            ...allInsightNodes,
+            ...allNodeLegacyInsightNodes,
+          ].reduce((acc, node) => {
+            const { alias } = node.path;
+            acc[alias] = node;
+            return acc;
+          }, {});
+          return allPages.map(page => {
+            return { ...page, ...drupalNodeMap };
+          });
+        },
+        serialize: ({ path, modifiedGmt }) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+          };
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
