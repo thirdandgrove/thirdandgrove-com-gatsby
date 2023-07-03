@@ -21,11 +21,6 @@ module.exports = {
       options: {
         query: `
         {
-          allSitePage {
-            nodes {
-              path
-            }
-          }
           allCaseStudy(filter: { field_hidden: { eq: false } }) {
             nodes {
               modifiedGmt: changed
@@ -62,7 +57,6 @@ module.exports = {
       `,
         resolveSiteUrl: () => siteUrl,
         resolvePages: ({
-          allSitePage: { nodes: allPages },
           allCaseStudy: { nodes: allCaseStudyNodes },
           allLandingPage: { nodes: allLandingPageNodes },
           allInsight: { nodes: allInsightNodes },
@@ -73,21 +67,20 @@ module.exports = {
             ...allLandingPageNodes,
             ...allInsightNodes,
             ...allNodeLegacyInsightNodes,
-          ].reduce((acc, node) => {
-            const { alias } = node.uri;
-            acc[alias] = node;
-            return acc;
-          }, {});
-          console.log(drupalNodeMap);
-          return allPages.map(page => {
-            return { ...page, ...drupalNodeMap[page.path] };
+          ].map(node => {
+            return {
+              path: node.uri.alias,
+              lastmod: node.modifiedGmt,
+            };
           });
+          return drupalNodeMap;
         },
-        serialize: ({ path, modifiedGmt }) => {
-          console.log(path, modifiedGmt);
+        serialize: ({ path, lastmod, changefreq, priority }) => {
           return {
             url: path,
-            lastmod: modifiedGmt,
+            lastmod,
+            changefreq,
+            priority,
           };
         },
       },
@@ -253,7 +246,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://www.thirdandgrove.com/',
-        sitemap: 'https://www.thirdandgrove.com/sitemap.xml',
+        sitemap: 'https://www.thirdandgrove.com/sitemap/sitemap-index.xml',
         resolveEnv: () => isProduction,
         env: {
           production: {
