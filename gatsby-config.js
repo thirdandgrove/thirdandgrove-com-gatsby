@@ -6,6 +6,8 @@ const isProduction =
     ? 'production'
     : 'development';
 
+const siteUrl = process.env.URL || `https://www.thirdandgrove.com`;
+
 module.exports = {
   siteMetadata: {
     title: `Third and Grove`,
@@ -27,7 +29,7 @@ module.exports = {
           allCaseStudy(filter: { field_hidden: { eq: false } }) {
             nodes {
               modifiedGmt: changed
-              path {
+              uri: path {
                 alias
               }
             }
@@ -35,7 +37,7 @@ module.exports = {
           allLandingPage(filter: { field_hidden: { eq: false } }) {
             nodes {
               modifiedGmt: changed
-              path {
+              uri: path {
                 alias
               }
             }
@@ -43,7 +45,7 @@ module.exports = {
           allInsight(filter: { field_hidden: { eq: false } }) {
             nodes {
               modifiedGmt: changed
-              path {
+              uri: path {
                 alias
               }
             }
@@ -51,7 +53,7 @@ module.exports = {
           allNodeLegacyInsight {
             nodes {
               modifiedGmt: changed
-              path {
+              uri: path {
                 alias
               }
             }
@@ -72,15 +74,17 @@ module.exports = {
             ...allInsightNodes,
             ...allNodeLegacyInsightNodes,
           ].reduce((acc, node) => {
-            const { alias } = node.path;
+            const { alias } = node.uri;
             acc[alias] = node;
             return acc;
           }, {});
+          console.log(drupalNodeMap);
           return allPages.map(page => {
             return { ...page, ...drupalNodeMap[page.path] };
           });
         },
         serialize: ({ path, modifiedGmt }) => {
+          console.log(path, modifiedGmt);
           return {
             url: path,
             lastmod: modifiedGmt,
