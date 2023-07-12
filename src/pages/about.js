@@ -680,7 +680,7 @@ export const query = graphql`
           height: 627
           width: 935
           transformOptions: { cropFocus: CENTER }
-          layout: FULL_WIDTH
+          layout: CONSTRAINED
         )
       }
     }
@@ -742,7 +742,7 @@ export const query = graphql`
           )
           fullWidth: gatsbyImageData(
             transformOptions: { cropFocus: CENTER }
-            layout: FULL_WIDTH
+            layout: CONSTRAINED
           )
           squareImage: gatsbyImageData(
             width: 700

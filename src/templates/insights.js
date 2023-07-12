@@ -202,7 +202,7 @@ export const query = graphql`
                 height: 1280
                 width: 1280
                 transformOptions: { cropFocus: CENTER }
-                layout: FULL_WIDTH
+                layout: CONSTRAINED
               )
             }
             childImageLandscape: childImageSharp {
@@ -210,7 +210,7 @@ export const query = graphql`
                 height: 780
                 width: 1280
                 transformOptions: { cropFocus: CENTER }
-                layout: FULL_WIDTH
+                layout: CONSTRAINED
               )
             }
           }
