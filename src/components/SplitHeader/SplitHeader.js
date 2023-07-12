@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
@@ -254,128 +254,135 @@ const SplitHeader = ({
     setLoaded('block');
   }, []);
 
-  return <>
-    <SEO
-      title={metaTitle || title}
-      description={description}
-      image={image}
-      noIndex={noIndex}
-    />
+  return (
+    <>
+      <SEO
+        title={metaTitle || title}
+        description={description}
+        image={image}
+        noIndex={noIndex}
+      />
 
-    <TopNav
-      fill={fontColor}
-      hideNav={hideNav}
-      banner={banner}
-      navLink={navLink}
-    />
+      <TopNav
+        fill={fontColor}
+        hideNav={hideNav}
+        banner={banner}
+        navLink={navLink}
+      />
 
-    <FullWidthSection
-      css={[sectionCSS, styles]}
-      height='100vh'
-      minHeight='100vh'
-    >
-      <div css={innerSectionCSS}>
-        <div className='column-one'>
-          {title && (
-            <h1 data-cy='titleText' css={headerTitle}>
-              {title}
-            </h1>
-          )}
-          {subTitle && (
-            <span data-cy='labelText' css={headerSubTitle}>
-              {subTitle}
-            </span>
-          )}
+      <FullWidthSection
+        css={[sectionCSS, styles]}
+        height='100vh'
+        minHeight='100vh'
+      >
+        <div css={innerSectionCSS}>
+          <div className='column-one'>
+            {title && (
+              <h1 data-cy='titleText' css={headerTitle}>
+                {title}
+              </h1>
+            )}
+            {subTitle && (
+              <span data-cy='labelText' css={headerSubTitle}>
+                {subTitle}
+              </span>
+            )}
 
-          <FullWidthSection
-            fontWeight={weights.thin}
-            margin='0 auto'
-            padding={formSubmitted ? '0' : '0'}
-            textAlign={formSubmitted ? `left` : `left`}
-            align={formSubmitted ? `start` : `start`}
-            justify={formSubmitted ? `center` : `start`}
-            height='auto'
-            minHeight={formSubmitted ? `0` : `0`}
-            css={css`
-              a {
-                text-decoration: underline;
-              }
+            <FullWidthSection
+              fontWeight={weights.thin}
+              margin='0 auto'
+              padding={formSubmitted ? '0' : '0'}
+              textAlign={formSubmitted ? `left` : `left`}
+              align={formSubmitted ? `start` : `start`}
+              justify={formSubmitted ? `center` : `start`}
+              height='auto'
+              minHeight={formSubmitted ? `0` : `0`}
+              css={css`
+                a {
+                  text-decoration: underline;
+                }
 
-              .thanks {
-                margin: 0;
-                justify-self: center;
-                padding: 0;
-              }
+                .thanks {
+                  margin: 0;
+                  justify-self: center;
+                  padding: 0;
+                }
 
-              .thanks--container {
-                margin: 20px 0 25px;
-              }
+                .thanks--container {
+                  margin: 20px 0 25px;
+                }
 
-              a,
-              p,
-              li,
-              h2,
-              h3,
-              .thanks {
-                color: ${fontColor};
-              }
-            `}
-          >
-            {formSubmitted ? (
-              <div className='thanks--container'>
-                <p className='thanks'>Thank you for submitting your email.</p>
+                a,
+                p,
+                li,
+                h2,
+                h3,
+                .thanks {
+                  color: ${fontColor};
+                }
+              `}
+            >
+              {formSubmitted ? (
+                <div className='thanks--container'>
+                  <p className='thanks'>Thank you for submitting your email.</p>
 
-                <p className='thanks'>
-                  Use the button below to download our ebook.
-                </p>
-              </div>
-            ) : (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: summary,
-                }}
+                  <p className='thanks'>
+                    Use the button below to download our ebook.
+                  </p>
+                </div>
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: summary,
+                  }}
+                />
+              )}
+            </FullWidthSection>
+            <ButtonFormDownload
+              filepath={ebook.localFile.publicURL}
+              text='Download E-book'
+              header='Submit your email to access our free ebook'
+              confirmMessage='Thanks for you submission!'
+              subheader=''
+              formName='ebook-form'
+              formSubmitted={formSubmitted}
+              setFormSubmitted={setFormSubmitted}
+              styles={css`
+                display: block;
+                ${formSubmitted ? `margin-bottom: 50px;` : `margin-bottom: 0;`}
+              `}
+            />
+          </div>
+
+          <div className='column-two'>
+            {splitHeroImage && (
+              <GatsbyImage
+                image={
+                  !isMobile
+                    ? splitHeroImage.localFile.childImageLandscape
+                        .childImageSharp.gatsbyImageData
+                    : splitHeroImage.localFile.childImageSquare.childImageSharp
+                        .gatsbyImageData
+                }
+                alt={imageAlt}
+                css={css`
+                  margin-top: 25px;
+
+                  ${mediaQueries.phoneLarge} {
+                    margin-top: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                  }
+                `}
               />
             )}
-          </FullWidthSection>
-          <ButtonFormDownload
-            filepath={ebook.localFile.publicURL}
-            text='Download E-book'
-            header='Submit your email to access our free ebook'
-            confirmMessage='Thanks for you submission!'
-            subheader=''
-            formName='ebook-form'
-            formSubmitted={formSubmitted}
-            setFormSubmitted={setFormSubmitted}
-            styles={css`
-              display: block;
-              ${formSubmitted ? `margin-bottom: 50px;` : `margin-bottom: 0;`}
-            `}
-          />
+          </div>
         </div>
 
-        <div className='column-two'>
-          {splitHeroImage && (
-            <GatsbyImage
-              image={!isMobile
-                ? splitHeroImage.localFile.childImageLandscape.fluid
-                : splitHeroImage.localFile.childImageSquare.fluid}
-              alt={imageAlt}
-              css={css`
-                margin-top: 25px;
-
-                ${mediaQueries.phoneLarge} {
-                  margin-top: 0;
-                  margin-left: auto;
-                  margin-right: auto;
-                }
-              `} />
-          )}
-        </div>
-      </div>
-
-      {children && children}
-    </FullWidthSection>
-  </>;
+        {children && children}
+      </FullWidthSection>
+    </>
+  );
 };
 
 // This is exported for use in layout.js.
