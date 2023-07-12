@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { NewsletterSimpleOverlay } from '../components/NewsletterForm';
 import LogoGrid from '../components/LogoGrid';
@@ -28,7 +28,7 @@ const AcquiaEngage = ({ data }) => {
   const images = data.allFile.nodes;
 
   const getSrc = name => {
-    return images.find(img => img.name === name).childImageSharp.fluid;
+    return images.find(img => img.name === name).childImageSharp.gatsbyImageData;
   };
 
   const getImageSrc = imgName =>
@@ -298,11 +298,10 @@ const AcquiaEngage = ({ data }) => {
         `}
       >
         <div css={[splitWithButtonsCss, container.medium]}>
-          <Img
+          <GatsbyImage
+            image={getSrc('cc-transparent')}
             alt='Third and Grove Card Caddy'
-            fluid={getSrc('cc-transparent')}
-            className='cc-image'
-          />
+            className='cc-image' />
           <h3>{node.header[0].subtitle}</h3>
 
           <div>
@@ -364,7 +363,7 @@ const AcquiaEngage = ({ data }) => {
         <div css={[splitWithImageCss, container.medium]}>
           {node.who[0].people.map(({ img, name, email, title }) => (
             <div key={name}>
-              <Img alt={name} fluid={getSrc(img, 'leader')} />
+              <GatsbyImage image={getSrc(img, 'leader')} alt={name} />
               <h4>{name}</h4>
               <p>
                 <a href={`mailto:${email}`}>Say Hi</a>
@@ -470,79 +469,78 @@ AcquiaEngage.propTypes = {
 
 export default AcquiaEngage;
 
-export const query = graphql`
-  {
-    allFile(
-      filter: { absolutePath: { regex: "/acquia-engage/|/headshots/" } }
-    ) {
-      nodes {
-        name
-        publicURL
-        childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
+export const query = graphql`{
+  allFile(filter: {absolutePath: {regex: "/acquia-engage/|/headshots/"}}) {
+    nodes {
+      name
+      publicURL
+      childImageSharp {
+        gatsbyImageData(
+          height: 335
+          width: 335
+          transformOptions: {cropFocus: NORTH}
+          layout: CONSTRAINED
+        )
       }
     }
-    allAcquiaEngageJson {
-      edges {
-        node {
-          header {
+  }
+  allAcquiaEngageJson {
+    edges {
+      node {
+        header {
+          date
+          subtitle
+          title
+          links {
+            text
+            url
+          }
+        }
+        talk {
+          header
+          subhead
+          tagTalks {
             date
-            subtitle
+            description
+            time
             title
-            links {
-              text
-              url
-            }
           }
-          talk {
-            header
-            subhead
-            tagTalks {
-              date
-              description
-              time
-              title
-            }
-            talks {
-              date
-              description
-              time
-              title
-            }
+          talks {
+            date
+            description
+            time
+            title
           }
-          who {
-            header
-            people {
-              email
-              img
-              name
-              title
-            }
+        }
+        who {
+          header
+          people {
+            email
+            img
+            name
+            title
           }
-          drumroll {
-            header
-            sites {
-              category
-              name
-            }
-            subhead
+        }
+        drumroll {
+          header
+          sites {
+            category
+            name
           }
-          cta {
-            one {
-              before
-              during
-              url
-            }
-            two {
-              text
-              url
-            }
+          subhead
+        }
+        cta {
+          one {
+            before
+            during
+            url
+          }
+          two {
+            text
+            url
           }
         }
       }
     }
   }
-`;
+}`;

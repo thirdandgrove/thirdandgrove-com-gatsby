@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
@@ -15,7 +15,7 @@ const Studies = ({ data }) => {
     post.relationships.field_image &&
     post.relationships.field_image.localFile &&
     post.relationships.field_image.localFile.childImageSharp &&
-    post.relationships.field_image.localFile.childImageSharp.fluid;
+    post.relationships.field_image.localFile.childImageSharp.gatsbyImageData;
 
   const backgroundColor = post.field_color && post.field_color.color;
 
@@ -38,8 +38,8 @@ const Studies = ({ data }) => {
       }}
     >
       {imageSrc && (
-        <Img
-          fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+        <GatsbyImage
+          image={post.relationships.field_image.localFile.childImageSharp.gatsbyImageData}
           alt={post.field_image.alt}
           css={css`
             margin-left: 20px;
@@ -55,8 +55,7 @@ const Studies = ({ data }) => {
               margin-left: auto;
               margin-right: auto;
             }
-          `}
-        />
+          `} />
       )}
       <p
         css={css`
@@ -86,212 +85,210 @@ Studies.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export const query = graphql`
-  query($StudyId: String!) {
-    caseStudy(id: { eq: $StudyId }) {
-      id
-      title
-      field_subtitle
-      field_meta_title
-      field_meta_description
-      field_image_arrangement
-      field_inverse_header
-      field_color {
-        color
+export const query = graphql`query ($StudyId: String!) {
+  caseStudy(id: {eq: $StudyId}) {
+    id
+    title
+    field_subtitle
+    field_meta_title
+    field_meta_description
+    field_image_arrangement
+    field_inverse_header
+    field_color {
+      color
+    }
+    field_image {
+      alt
+    }
+    field_secondary_image {
+      alt
+    }
+    field_tertiary_image {
+      alt
+    }
+    relationships {
+      node_type {
+        name
+      }
+      uid {
+        name: display_name
+      }
+      field_components {
+        ... on component__text_split_with_video_phone {
+          id
+          field_video_file_name
+          field_reversed
+          field_body {
+            processed
+          }
+          relationships {
+            component_type {
+              name
+            }
+          }
+        }
+        ... on component__video {
+          id
+          relationships {
+            component_type {
+              name
+            }
+          }
+          field_video_controls
+          field_vimeo_video_link {
+            uri
+          }
+        }
+        ... on component__text {
+          id
+          relationships {
+            component_type {
+              name
+            }
+          }
+          field_body {
+            processed
+          }
+        }
+        ... on component__image {
+          id
+          field_image {
+            alt
+          }
+          relationships {
+            component_type {
+              name
+            }
+            field_image {
+              id
+              localFile {
+                publicURL
+                childImageSharp {
+                  gatsbyImageData(width: 800, layout: CONSTRAINED)
+                }
+              }
+            }
+          }
+        }
+        ... on component__quote {
+          id
+          relationships {
+            component_type {
+              name
+            }
+          }
+          field_quote
+          field_footer_text
+        }
+        ... on component__prefooter {
+          id
+          field_primary_lead_in_text
+          field_primary_body
+          field_primary_cta {
+            uri
+            title
+          }
+          field_primary_color {
+            color
+          }
+          field_secondary_lead_in_text
+          field_secondary_body
+          field_secondary_cta {
+            uri
+            title
+          }
+          field_secondary_color {
+            color
+          }
+          field_image {
+            alt
+          }
+          relationships {
+            component_type {
+              name
+            }
+            field_image {
+              id
+              localFile {
+                publicURL
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 600
+                    height: 600
+                    transformOptions: {cropFocus: CENTER}
+                    layout: CONSTRAINED
+                  )
+                }
+              }
+            }
+          }
+        }
+        ... on component__text_image_split {
+          id
+          field_body {
+            processed
+          }
+          field_image {
+            alt
+          }
+          field_reversed
+          relationships {
+            component_type {
+              name
+            }
+            field_image {
+              id
+              localFile {
+                publicURL
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 800
+                    transformOptions: {cropFocus: CENTER}
+                    layout: CONSTRAINED
+                  )
+                }
+              }
+            }
+          }
+        }
+      }
+      field_tags {
+        name
       }
       field_image {
-        alt
+        id
+        localFile {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(
+              width: 980
+              height: 500
+              transformOptions: {cropFocus: CENTER}
+              layout: CONSTRAINED
+            )
+          }
+        }
       }
       field_secondary_image {
-        alt
+        id
+        localFile {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(width: 800, height: 600, layout: CONSTRAINED)
+          }
+        }
       }
       field_tertiary_image {
-        alt
-      }
-      relationships {
-        node_type {
-          name
-        }
-        uid {
-          name: display_name
-        }
-        field_components {
-          ... on component__text_split_with_video_phone {
-            id
-            field_video_file_name
-            field_reversed
-            field_body {
-              processed
-            }
-            relationships {
-              component_type {
-                name
-              }
-            }
-          }
-          ... on component__video {
-            id
-            relationships {
-              component_type {
-                name
-              }
-            }
-            field_video_controls
-            field_vimeo_video_link {
-              uri
-            }
-          }
-          ... on component__text {
-            id
-            relationships {
-              component_type {
-                name
-              }
-            }
-            field_body {
-              processed
-            }
-          }
-          ... on component__image {
-            id
-            field_image {
-              alt
-            }
-            relationships {
-              component_type {
-                name
-              }
-              field_image {
-                id
-                localFile {
-                  publicURL
-                  childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
-              }
-            }
-          }
-          ... on component__quote {
-            id
-            relationships {
-              component_type {
-                name
-              }
-            }
-            field_quote
-            field_footer_text
-          }
-
-          ... on component__prefooter {
-            id
-            field_primary_lead_in_text
-            field_primary_body
-            field_primary_cta {
-              uri
-              title
-            }
-            field_primary_color {
-              color
-            }
-            field_secondary_lead_in_text
-            field_secondary_body
-            field_secondary_cta {
-              uri
-              title
-            }
-            field_secondary_color {
-              color
-            }
-            field_image {
-              alt
-            }
-            relationships {
-              component_type {
-                name
-              }
-              field_image {
-                id
-                localFile {
-                  publicURL
-                  childImageSharp {
-                    fluid(maxWidth: 600, maxHeight: 600, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
-              }
-            }
-          }
-
-          ... on component__text_image_split {
-            id
-            field_body {
-              processed
-            }
-            field_image {
-              alt
-            }
-            field_reversed
-            relationships {
-              component_type {
-                name
-              }
-              field_image {
-                id
-                localFile {
-                  publicURL
-                  childImageSharp {
-                    fluid(maxWidth: 800, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        field_tags {
-          name
-        }
-        field_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 980, maxHeight: 500, cropFocus: CENTER) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-        field_secondary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-        field_tertiary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
+        id
+        localFile {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(width: 800, height: 600, layout: CONSTRAINED)
           }
         }
       }
     }
   }
-`;
+}`;
 
 export default Studies;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage, withArtDirection } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
 
 import { mediaQueries, jsBreakpoints } from '../../styles';
@@ -190,47 +190,50 @@ const ImageCollage = ({ images, type }) => {
   `;
 
   // Pass array of fixed images with media query for art direction.
-  // @see https://www.gatsbyjs.org/packages/gatsby-image/#art-directing-multiple-images
+  // @see https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/#withartdirection
+  const primaryImages = withArtDirection(getImage(images.primary.mobile), [
+    {
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+      image: getImage(images.primary.phoneLarge),
+    },
+  ]);
+
+  const secondaryImages = withArtDirection(getImage(images.secondary.mobile), [
+    {
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+      image: getImage(images.secondary.phoneLarge),
+    },
+  ]);
+
+  const tertiaryImages = withArtDirection(getImage(images.tertiary.mobile), [
+    {
+      media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
+      image: getImage(images.tertiary.phoneLarge),
+    },
+  ]);
+
   return (
     <div className={type} css={collageWrapper}>
       <div className='collage-board' css={collageBoardBase}>
         <div css={primaryWrapperBase} className='primary-wrapper'>
-          <Img
-            fixed={[
-              images.primary.mobile.fixed,
-              {
-                ...images.primary.phoneLarge.fixed,
-                media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-              },
-            ]}
+          <GatsbyImage
+            image={primaryImages}
             alt={images.primary.alt}
             className={`primary${selectedClass()}`}
             css={imageStyles}
           />
         </div>
         <div css={secTertWrapperBase} className='secondary-wrapper'>
-          <Img
-            fixed={[
-              images.secondary.mobile.fixed,
-              {
-                ...images.secondary.phoneLarge.fixed,
-                media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-              },
-            ]}
+          <GatsbyImage
+            image={secondaryImages}
             alt={images.secondary.alt}
             className={`secondary${selectedClass()}`}
             css={imageStyles}
           />
         </div>
         <div css={secTertWrapperBase} className='tertiary-wrapper'>
-          <Img
-            fixed={[
-              images.tertiary.mobile.fixed,
-              {
-                ...images.tertiary.phoneLarge.fixed,
-                media: `(min-width: ${jsBreakpoints.phoneLarge}px)`,
-              },
-            ]}
+          <GatsbyImage
+            image={tertiaryImages}
             alt={images.tertiary.alt}
             className={`tertiary${selectedClass()}`}
             css={imageStyles}

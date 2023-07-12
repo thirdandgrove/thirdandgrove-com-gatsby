@@ -1,14 +1,13 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { Spring } from 'react-spring/renderprops-universal';
+import FadeInDirection from '../FadeInDirection';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 
 import FullWidthSection from '../FullWidthSection';
 import { container, fonts, mediaQueries, weights } from '../../styles';
 import EasterEggContext from '../../context/EasterEggContext';
-import { useHasBeenVisible } from '../../hooks/useVisibility';
 import Button from '../Button/Button';
 
 const ServiceComponent = ({ data }) => {
@@ -21,13 +20,8 @@ const ServiceComponent = ({ data }) => {
     field_link_id: id,
   } = data;
   const image = data.relationships.field_image;
-
-  const nodeRef = useRef();
-  const isVisible = useHasBeenVisible(nodeRef);
-
   return (
     <FullWidthSection
-      ref={nodeRef}
       height='0'
       padding='0'
       textAlign='left'
@@ -96,40 +90,32 @@ const ServiceComponent = ({ data }) => {
         >
           <EasterEggContext.Consumer>
             {context => (
-              <Spring
-                delay={0}
-                to={{
-                  transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-                  opacity: isVisible ? '1' : '0',
-                }}
+              <FadeInDirection
+                distance={'200px'}
+                css={css`
+                  width: 100%;
+                  margin-bottom: 20px;
+                  position: relative;
+                  order: 1;
+
+                  ${mediaQueries.phoneLarge} {
+                    flex: 0 0 ${'49%'};
+                    width: ${'49%'};
+                    margin-bottom: 0;
+                  }
+                `}
               >
-                {({ transform, opacity }) => (
-                  <div
+                <div>
+                  <GatsbyImage
+                    image={image.localFile.childImageSharp.gatsbyImageData}
+                    alt={imageData.alt}
+                    title={imageData.title}
                     css={css`
-                      width: 100%;
-                      margin-bottom: 20px;
-                      position: relative;
-                      order: 1;
-                      ${mediaQueries.phoneLarge} {
-                        flex: 0 0 ${'49%'};
-                        width: ${'49%'};
-                        margin-bottom: 0;
-                      }
+                      display: ${context.easterEgg ? 'none' : 'block'};
                     `}
-                  >
-                    <GatsbyImage
-                      image={image.localFile.childImageSharp.gatsbyImageData}
-                      alt={imageData.alt}
-                      title={imageData.title}
-                      css={css`
-                        display: ${context.easterEgg ? 'none' : 'block'};
-                        transform: ${transform};
-                        opacity: ${opacity};
-                      `}
-                    />
-                  </div>
-                )}
-              </Spring>
+                  />
+                </div>
+              </FadeInDirection>
             )}
           </EasterEggContext.Consumer>
 

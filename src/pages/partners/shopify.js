@@ -125,7 +125,7 @@ const Shopify = query => {
           brand='hawaiian-host'
           brandWidth='200px'
           content='At a time when a Pacific getaway was out of reach, we helped Hawaiian Host send the taste of the islands to your front door.'
-          imageSrc={query.data.hawaiianHostMac.childImageSharp.fluid}
+          imageSrc={query.data.hawaiianHostMac.childImageSharp.gatsbyImageData}
           imageAlt='Hawaiian Host'
           stats={[
             { description: 'Increase in traffic', percent: '61%' },
@@ -140,7 +140,7 @@ const Shopify = query => {
           brand='badlands'
           brandWidth='250px'
           content='We helped Badlands pivot their D2C strategy to bring the best outdoor gear in the world directly to diehards all across America.'
-          imageSrc={query.data.badlandsMac.childImageSharp.fluid}
+          imageSrc={query.data.badlandsMac.childImageSharp.gatsbyImageData}
           imageAlt='Badlands'
           stats={[
             { description: 'Increase in Conversion Rate', percent: '364%' },
@@ -350,66 +350,58 @@ const Shopify = query => {
   );
 };
 
-export const query = graphql`
-  {
-    allShopifyPlusCtaGridFourJson {
-      edges {
-        node {
-          icon
-          title
-          description
-        }
-      }
-    }
-    hawaiianHostMac: file(
-      relativePath: { eq: "hawaiian-host-macbook@2x.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 1440, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
-    badlandsMac: file(relativePath: { eq: "badlands-macbook@2x.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1440, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
-    weKnowImageDesktop: file(relativePath: { eq: "we-know.png" }) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED)
-      }
-    }
-    platformMigrationImageDesktop: file(
-      relativePath: { eq: "platform-migration.png" }
-    ) {
-      childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED)
-      }
-    }
-    allShopifyJson {
-      nodes {
-        testimonials {
-          field_quote
-          field_footer_text
-        }
-        hero {
-          title
-          subtitle
-        }
-        services {
-          title
-          description
-        }
-        belowHero {
-          title
-          description
-        }
+export const query = graphql`{
+  allShopifyPlusCtaGridFourJson {
+    edges {
+      node {
+        icon
+        title
+        description
       }
     }
   }
-`;
+  hawaiianHostMac: file(relativePath: {eq: "hawaiian-host-macbook@2x.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  badlandsMac: file(relativePath: {eq: "badlands-macbook@2x.png"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  weKnowImageDesktop: file(relativePath: {eq: "we-know.png"}) {
+    childImageSharp {
+      gatsbyImageData(layout: CONSTRAINED)
+    }
+  }
+  platformMigrationImageDesktop: file(
+    relativePath: {eq: "platform-migration.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(layout: CONSTRAINED)
+    }
+  }
+  allShopifyJson {
+    nodes {
+      testimonials {
+        field_quote
+        field_footer_text
+      }
+      hero {
+        title
+        subtitle
+      }
+      services {
+        title
+        description
+      }
+      belowHero {
+        title
+        description
+      }
+    }
+  }
+}`;
 
 export default Shopify;

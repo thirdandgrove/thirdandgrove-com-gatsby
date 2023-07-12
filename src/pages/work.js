@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Spring } from 'react-spring/renderprops';
+import FadeInDirection from '../components/FadeInDirection';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { css } from '@emotion/react';
@@ -50,34 +50,26 @@ const Project = ({ study, index }) => {
             }
           `}
         >
-          <Spring
-            delay={0}
-            to={{
-              transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-              opacity: isVisible ? '1' : '0',
-            }}
-          >
-            {({ transform, opacity }) => (
-              <GatsbyImage
-                image={
-                  study.relationships.field_image.localFile.childImageSharp
-                    .gatsbyImageData
-                }
-                alt={study.field_image.alt}
-                imagestyle={{ transform, opacity }}
-                css={css`
-                  width: 100%;
-                  margin-bottom: 20px;
+          <FadeInDirection
+            css={css`
+              width: 100%;
+              margin-bottom: 20px;
 
-                  ${mediaQueries.phoneLarge} {
-                    flex: 0 0 64%;
-                    width: 64%;
-                    margin-bottom: 0;
-                  }
-                `}
-              />
-            )}
-          </Spring>
+              ${mediaQueries.phoneLarge} {
+                flex: 0 0 64%;
+                width: 64%;
+                margin-bottom: 0;
+              }
+            `}
+          >
+            <GatsbyImage
+              image={
+                study.relationships.field_image.localFile.childImageSharp
+                  .gatsbyImageData
+              }
+              alt={study.field_image.alt}
+            />
+          </FadeInDirection>
 
           <div
             css={css`
@@ -160,64 +152,63 @@ Project.propTypes = {
 };
 
 const Work = () => {
-  const {
-    allEntitySubqueueCaseStudies,
-    allNodeHomePage,
-  } = useStaticQuery(graphql`
-    {
-      allEntitySubqueueCaseStudies {
-        nodes {
-          relationships {
-            items {
-              ...CaseStudyFragmentHere
+  const { allEntitySubqueueCaseStudies, allNodeHomePage } = useStaticQuery(
+    graphql`
+      {
+        allEntitySubqueueCaseStudies {
+          nodes {
+            relationships {
+              items {
+                ...CaseStudyFragmentWork
+              }
+            }
+          }
+        }
+        allNodeHomePage(limit: 1) {
+          edges {
+            node {
+              field_video
+              field_video_short
             }
           }
         }
       }
-      allNodeHomePage(limit: 1) {
-        edges {
-          node {
-            field_video
-            field_video_short
-          }
-        }
-      }
-    }
-    fragment CaseStudyFragmentHere on case_study {
-      id
-      title
-      field_subtitle
-      field_inverse_header
-      field_image_arrangement
-      field_image {
-        alt
-        width
-        height
-      }
-      path {
-        alias
-      }
-      relationships {
-        field_tags {
-          name
-        }
+      fragment CaseStudyFragmentWork on case_study {
+        id
+        title
+        field_subtitle
+        field_inverse_header
+        field_image_arrangement
         field_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(
-                transformOptions: { cropFocus: CENTER }
-                layout: CONSTRAINED
-                width: 1250
-                height: 850
-              )
+          alt
+          width
+          height
+        }
+        path {
+          alias
+        }
+        relationships {
+          field_tags {
+            name
+          }
+          field_image {
+            id
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData(
+                  transformOptions: { cropFocus: CENTER }
+                  layout: CONSTRAINED
+                  width: 1250
+                  height: 850
+                )
+              }
             }
           }
         }
       }
-    }
-  `);
+    `
+  );
   const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
 
   return (

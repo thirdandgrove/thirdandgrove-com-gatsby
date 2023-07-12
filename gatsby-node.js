@@ -178,13 +178,8 @@ exports.onCreateDevServer = ({ app }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
 
-  const {
-    caseStudies,
-    landingPages,
-    insights,
-    legacyInsights,
-    redirects,
-  } = await runQueries(graphql);
+  const { caseStudies, landingPages, insights, legacyInsights, redirects } =
+    await runQueries(graphql);
   const data = {
     data: { caseStudies, landingPages, insights, legacyInsights, redirects },
   };
@@ -288,6 +283,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       fallback: {
         os: require.resolve('os-browserify/browser'),
         path: require.resolve('path-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
         fs: false,
       },
     },

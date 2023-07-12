@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { Spring } from 'react-spring/renderprops';
+import FadeInDirection from '../FadeInDirection';
 
 import { smSectionHead } from '../../styles';
 
@@ -27,21 +27,9 @@ const Thanks = ({ message }) => {
 
   return (
     <div css={thanksStyles}>
-      <Spring
-        delay={0}
-        to={{
-          transform: loaded ? 'translateY(0)' : 'translateY(100px)',
-          opacity: loaded ? '1' : '0',
-        }}
-      >
-        {({ transform, opacity }) => (
-          <h5
-            style={{ transform, opacity }}
-            css={smSectionHead}
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
-        )}
-      </Spring>
+      <FadeInDirection>
+        <h5 css={smSectionHead} dangerouslySetInnerHTML={{ __html: message }} />
+      </FadeInDirection>
     </div>
   );
 };

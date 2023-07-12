@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -299,107 +299,99 @@ const Acquia = query => {
   );
 };
 
-export const query = graphql`
-  {
-    allAcquiaProductsJson {
-      edges {
-        node {
-          title
-          icon
-          description
-        }
-      }
-    }
-    allAcquiaMarketingJson {
-      edges {
-        node {
-          title
-          icon
-          description
-        }
-      }
-    }
-    allFile(filter: { absolutePath: { regex: "/acquia/" } }) {
-      edges {
-        node {
-          name
-          publicURL
-          absolutePath
-        }
-      }
-    }
-    practiceCertification: file(
-      relativePath: { eq: "acquia-practice-certification.png" }
-    ) {
-      childImageSharp {
-        fixed(width: 200) {
-          ...GatsbyImageSharpFixed_withWebp_noBase64
-        }
-      }
-    }
-    insights: allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 5
-      filter: { field_hidden: { eq: false } }
-    ) {
-      nodes {
-        id
+export const query = graphql`{
+  allAcquiaProductsJson {
+    edges {
+      node {
         title
-        field_inverse_header
+        icon
+        description
+      }
+    }
+  }
+  allAcquiaMarketingJson {
+    edges {
+      node {
+        title
+        icon
+        description
+      }
+    }
+  }
+  allFile(filter: {absolutePath: {regex: "/acquia/"}}) {
+    edges {
+      node {
+        name
+        publicURL
+        absolutePath
+      }
+    }
+  }
+  practiceCertification: file(
+    relativePath: {eq: "acquia-practice-certification.png"}
+  ) {
+    childImageSharp {
+      gatsbyImageData(width: 200, placeholder: NONE, layout: FIXED)
+    }
+  }
+  insights: allInsight(
+    sort: {fields: created, order: DESC}
+    limit: 5
+    filter: {field_hidden: {eq: false}}
+  ) {
+    nodes {
+      id
+      title
+      field_inverse_header
+      field_image {
+        alt
+      }
+      created(formatString: "MMM D, YYYY")
+      path {
+        alias
+      }
+      relationships {
+        node_type {
+          name
+        }
+        uid {
+          name: display_name
+        }
         field_image {
-          alt
-        }
-        created(formatString: "MMM D, YYYY")
-        path {
-          alias
-        }
-        relationships {
-          node_type {
-            name
+          id
+          localFile {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(width: 450, height: 400, layout: CONSTRAINED)
+            }
           }
-          uid {
-            name: display_name
+        }
+        field_components {
+          ... on component__text {
+            relationships {
+              component_type {
+                name
+              }
+            }
+            field_body {
+              processed
+            }
           }
-          field_image {
+          ... on component__image {
             id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 450, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
+            field_image {
+              alt
             }
-          }
-          field_components {
-            ... on component__text {
-              relationships {
-                component_type {
-                  name
-                }
+            relationships {
+              component_type {
+                name
               }
-              field_body {
-                processed
-              }
-            }
-            ... on component__image {
-              id
               field_image {
-                alt
-              }
-              relationships {
-                component_type {
-                  name
-                }
-                field_image {
-                  id
-                  localFile {
-                    publicURL
-                    childImageSharp {
-                      fluid(maxWidth: 630, maxHeight: 630) {
-                        ...GatsbyImageSharpFluid_withWebp
-                      }
-                    }
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    gatsbyImageData(width: 630, height: 630, layout: CONSTRAINED)
                   }
                 }
               }
@@ -408,123 +400,118 @@ export const query = graphql`
         }
       }
     }
-    caseStudies: allCaseStudy(
-      limit: 10
-      filter: { field_hidden: { eq: false } }
-    ) {
-      nodes {
-        id
-        title
-        field_subtitle
-        field_inverse_header
-        field_image_arrangement
+  }
+  caseStudies: allCaseStudy(limit: 10, filter: {field_hidden: {eq: false}}) {
+    nodes {
+      id
+      title
+      field_subtitle
+      field_inverse_header
+      field_image_arrangement
+      field_image {
+        alt
+      }
+      field_secondary_image {
+        alt
+      }
+      field_tertiary_image {
+        alt
+      }
+      path {
+        alias
+      }
+      relationships {
+        field_tags {
+          name
+        }
         field_image {
-          alt
+          id
+          localFile {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(
+                width: 850
+                height: 850
+                transformOptions: {cropFocus: NORTH}
+                layout: CONSTRAINED
+              )
+            }
+            childImageMobile: childImageSharp {
+              fixed(width: 335, height: 260, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeA: childImageSharp {
+              fixed(width: 450, height: 320, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeB: childImageSharp {
+              fixed(width: 380, height: 420, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeC: childImageSharp {
+              fixed(width: 420, height: 340, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+          }
         }
         field_secondary_image {
-          alt
+          id
+          localFile {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
+            }
+            childImageMobile: childImageSharp {
+              fixed(width: 1, height: 1) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeA: childImageSharp {
+              fixed(width: 250, height: 180, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeB: childImageSharp {
+              fixed(width: 340, height: 260, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+            childImageTypeC: childImageSharp {
+              fixed(width: 270, height: 210, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
+              }
+            }
+          }
         }
         field_tertiary_image {
-          alt
-        }
-        path {
-          alias
-        }
-
-        relationships {
-          field_tags {
-            name
-          }
-          field_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 335, height: 260, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 450, height: 320, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 380, height: 420, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 420, height: 340, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
+          id
+          localFile {
+            publicURL
+            childImageSharp {
+              gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
+            }
+            childImageMobile: childImageSharp {
+              fixed(width: 1, height: 1) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
               }
             }
-          }
-          field_secondary_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-              childImageMobile: childImageSharp {
-                fixed(width: 1, height: 1) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 180, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 340, height: 260, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 270, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
+            childImageTypeA: childImageSharp {
+              fixed(width: 250, height: 495, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
               }
             }
-          }
-          field_tertiary_image {
-            id
-            localFile {
-              publicURL
-              childImageSharp {
-                fluid(maxWidth: 850, maxHeight: 850) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+            childImageTypeB: childImageSharp {
+              fixed(width: 230, height: 210, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
               }
-              childImageMobile: childImageSharp {
-                fixed(width: 1, height: 1) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeA: childImageSharp {
-                fixed(width: 250, height: 495, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeB: childImageSharp {
-                fixed(width: 230, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
-              }
-              childImageTypeC: childImageSharp {
-                fixed(width: 320, height: 210, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp_noBase64
-                }
+            }
+            childImageTypeC: childImageSharp {
+              fixed(width: 320, height: 210, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp_noBase64
               }
             }
           }
@@ -532,6 +519,6 @@ export const query = graphql`
       }
     }
   }
-`;
+}`;
 
 export default Acquia;

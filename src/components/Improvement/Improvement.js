@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Spring } from 'react-spring/renderprops';
+import FadeInDirection from '../FadeInDirection';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import Button from '../Button';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
@@ -106,31 +106,22 @@ const Improvement = ({
         }
       `}
     >
-      <Spring
-        delay={0}
-        to={{
-          transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-          opacity: isVisible ? '1' : '0',
-        }}
-      >
-        {({ transform, opacity }) => (
-          <Img
-            fluid={imageSrc}
-            alt={imageAlt}
-            style={{ transform, opacity }}
-            css={css`
-              width: 100%;
-              margin-bottom: 50px;
+      <FadeInDirection distance={'200px'}>
+        <GatsbyImage
+          image={imageSrc}
+          alt={imageAlt}
+          css={css`
+            width: 100%;
+            margin-bottom: 50px;
 
-              ${mediaQueries.phoneLarge} {
-                flex: 0 0 80%;
-                margin-left: ${index % 2 === 1 ? '-200px' : '10px'};
-                margin-right: ${index % 2 === 0 ? '-200px' : '10px'};
-              }
-            `}
-          />
-        )}
-      </Spring>
+            ${mediaQueries.phoneLarge} {
+              flex: 0 0 80%;
+              margin-left: ${index % 2 === 1 ? '-200px' : '10px'};
+              margin-right: ${index % 2 === 0 ? '-200px' : '10px'};
+            }
+          `}
+        />
+      </FadeInDirection>
       <div className='stats-wrapper'>
         <img
           src={logos[brand]}

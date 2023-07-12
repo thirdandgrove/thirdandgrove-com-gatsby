@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
@@ -39,7 +39,7 @@ const Drupalcon2021Event = ({ data }) => {
     let src = '';
     switch (true) {
       case type === 'leader':
-        src = image.childImageSharp.fluid;
+        src = image.childImageSharp.gatsbyImageData;
         break;
 
       case type === 'childImageTypeA':
@@ -55,7 +55,7 @@ const Drupalcon2021Event = ({ data }) => {
         break;
 
       default:
-        src = image.childImageSharp.fluid;
+        src = image.childImageSharp.gatsbyImageData;
         break;
     }
     return src;
@@ -250,11 +250,10 @@ const Drupalcon2021Event = ({ data }) => {
           </div>
         )}
         <div>
-          <Img
+          <GatsbyImage
+            image={getSrc('TAG-Webcam-Cover-NEW', 'childImageTypeB')}
             alt='Third and Grove Web Camera Cover'
-            fluid={getSrc('TAG-Webcam-Cover-NEW', 'childImageTypeB')}
-            className='cc-image'
-          />
+            className='cc-image' />
           <h3
             css={css`
               text-align: center;
@@ -312,16 +311,15 @@ const Drupalcon2021Event = ({ data }) => {
           `}
         >
           <div style={{ width: '150px', margin: '0 auto 2rem' }}>
-            <Img
+            <GatsbyImage
+              image={getSrc('Silver_sponsor_0', 'childImageTypeA')}
               alt='DrupalCon Silver Sponsor'
-              fluid={getSrc('Silver_sponsor_0', 'childImageTypeA')}
               objectFit='contain'
               imgStyle={{
                 objectFit: 'contain',
                 backgroundColor: 'transparent',
               }}
-              className='image'
-            />
+              className='image' />
           </div>
           <h3>{tag.header}</h3>
           <p>
@@ -480,100 +478,101 @@ Drupalcon2021Event.propTypes = {
 
 export default Drupalcon2021Event;
 
-export const query = graphql`
-  {
-    allFile(filter: { absolutePath: { regex: "/drupalcon/|/headshots/" } }) {
-      nodes {
-        name
-        publicURL
-        childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+export const query = graphql`{
+  allFile(filter: {absolutePath: {regex: "/drupalcon/|/headshots/"}}) {
+    nodes {
+      name
+      publicURL
+      childImageSharp {
+        gatsbyImageData(
+          height: 335
+          width: 335
+          transformOptions: {cropFocus: NORTH}
+          layout: CONSTRAINED
+        )
+      }
+      childImageTypeA: childImageSharp {
+        fluid(maxWidth: 335) {
+          ...GatsbyImageSharpFluid_withWebp
         }
-        childImageTypeA: childImageSharp {
-          fluid(maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-        childImageTypeB: childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+      }
+      childImageTypeB: childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
-    allInsight(
-      sort: { fields: created, order: DESC }
-      limit: 4
-      filter: { field_hidden: { eq: false } }
-    ) {
-      nodes {
-        ...InsightFragment
-      }
+  }
+  allInsight(
+    sort: {fields: created, order: DESC}
+    limit: 4
+    filter: {field_hidden: {eq: false}}
+  ) {
+    nodes {
+      ...InsightFragment
     }
-    allDrupalconJson {
-      edges {
-        node {
-          header {
-            date
-            subtitle
-            title
-            links {
-              text
-              url
-            }
-          }
-          booth {
-            ctas {
-              text
-              url
-            }
-            header
-          }
-          swag {
-            ctas {
-              text
-              url
-            }
-            header
-            subheader
-            body
-          }
-          tag {
-            body
-            ctas {
-              text
-              url
-            }
-            header
-          }
-          speakers {
-            header
-            people {
-              email
-              img
-              name
-              title
-            }
-          }
-          insights {
-            header
-          }
-          quote {
-            author
+  }
+  allDrupalconJson {
+    edges {
+      node {
+        header {
+          date
+          subtitle
+          title
+          links {
             text
+            url
           }
-          liveQas {
-            header
-            qas {
-              date
-              title
-              time
-            }
+        }
+        booth {
+          ctas {
+            text
+            url
+          }
+          header
+        }
+        swag {
+          ctas {
+            text
+            url
+          }
+          header
+          subheader
+          body
+        }
+        tag {
+          body
+          ctas {
+            text
+            url
+          }
+          header
+        }
+        speakers {
+          header
+          people {
+            email
+            img
+            name
+            title
+          }
+        }
+        insights {
+          header
+        }
+        quote {
+          author
+          text
+        }
+        liveQas {
+          header
+          qas {
+            date
+            title
+            time
           }
         }
       }
     }
   }
-`;
+}`;

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import { css } from '@emotion/react';
 
 import { container, mediaQueries } from '../../styles';
 
 const Image = ({ data }) => {
   return data.relationships.field_image.localFile.childImageSharp ? (
-    <Img
-      fluid={data.relationships.field_image.localFile.childImageSharp.fluid}
+    <GatsbyImage
+      image={data.relationships.field_image.localFile.childImageSharp.gatsbyImageData}
       alt={data.field_image.alt}
       css={css`
         margin: 0 20px 25px;
@@ -19,8 +19,7 @@ const Image = ({ data }) => {
           padding-right: 0;
           margin: 0 auto 25px;
         }
-      `}
-    />
+      `} />
   ) : (
     <div
       css={css`

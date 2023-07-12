@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Spring } from 'react-spring/renderprops';
+import FadeInDirection from '../FadeInDirection';
 import { css } from '@emotion/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
