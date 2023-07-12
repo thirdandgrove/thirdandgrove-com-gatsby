@@ -107,7 +107,7 @@ const CTAGridItem = ({
     <>
       {!altStyle ? (
         <div css={ctaContainer} ref={nodeRef}>
-          <FadeInDirection>
+          <FadeInDirection overflow={false}>
             <div className='cta-grid-item--image-wrapper'>
               {icon[0] && icon[0].node && icon[0].node.publicURL && (
                 <img src={icon[0].node.publicURL} alt={title} />
