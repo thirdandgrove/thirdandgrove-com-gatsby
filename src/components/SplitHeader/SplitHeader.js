@@ -360,9 +360,8 @@ const SplitHeader = ({
                 image={
                   !isMobile
                     ? splitHeroImage.localFile.childImageLandscape
-                        .childImageSharp.gatsbyImageData
-                    : splitHeroImage.localFile.childImageSquare.childImageSharp
                         .gatsbyImageData
+                    : splitHeroImage.localFile.childImageSquare.gatsbyImageData
                 }
                 alt={imageAlt}
                 css={css`

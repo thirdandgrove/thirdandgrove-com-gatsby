@@ -79,47 +79,39 @@ const Capability = ({
         >
           <EasterEggContext.Consumer>
             {context => (
-              <Spring
+              <FadeInDirection
                 delay={0}
-                to={{
-                  transform: isVisible ? 'translateY(0)' : 'translateY(200px)',
-                  opacity: isVisible ? '1' : '0',
-                }}
-              >
-                {({ transform, opacity }) => (
-                  <div
-                    css={css`
-                      width: 100%;
-                      margin-bottom: 20px;
-                      position: relative;
+                distance={'200px'}
+                css={css`
+                  width: 100%;
+                  margin-bottom: 20px;
+                  position: relative;
 
-                      ${mediaQueries.phoneLarge} {
-                        flex: 0 0 ${index % 2 ? '51%' : '49%'};
-                        width: ${index % 2 ? '51%' : '49%'};
-                        margin-bottom: 0;
-                      }
+                  ${mediaQueries.phoneLarge} {
+                    flex: 0 0 ${index % 2 ? '51%' : '49%'};
+                    width: ${index % 2 ? '51%' : '49%'};
+                    margin-bottom: 0;
+                  }
+                `}
+              >
+                <div>
+                  <GatsbyImage
+                    image={imageSrc}
+                    alt={imageAlt}
+                    css={css`
+                      display: ${context.easterEgg ? 'none' : 'block'};
                     `}
-                  >
-                    <GatsbyImage
-                      image={imageSrc}
-                      alt={imageAlt}
-                      css={css`
-                        display: ${context.easterEgg ? 'none' : 'block'};
-                        transform: ${transform};
-                        opacity: ${opacity};
-                      `}
-                    />
-                    <img
-                      src={imageGif}
-                      alt={imageGifAlt}
-                      css={css`
-                        display: ${context.easterEgg ? 'block' : 'none'};
-                        width: 100%;
-                      `}
-                    />
-                  </div>
-                )}
-              </Spring>
+                  />
+                  <img
+                    src={imageGif}
+                    alt={imageGifAlt}
+                    css={css`
+                      display: ${context.easterEgg ? 'block' : 'none'};
+                      width: 100%;
+                    `}
+                  />
+                </div>
+              </FadeInDirection>
             )}
           </EasterEggContext.Consumer>
 

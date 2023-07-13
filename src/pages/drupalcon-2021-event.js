@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
@@ -23,34 +23,28 @@ const Drupalcon2021Event = ({ data }) => {
     'https://events.drupal.org/drupalcon2021'
   );
 
-  const {
-    header,
-    booth,
-    tag,
-    liveQas,
-    quote,
-    swag,
-  } = data.allDrupalconJson.edges[0].node;
+  const { header, booth, tag, liveQas, quote, swag } =
+    data.allDrupalconJson.edges[0].node;
 
   const images = data.allFile.nodes;
 
   const getSrc = (name, type) => {
     const image = images.find(img => img.name === name);
     let src = '';
-    switch (true) {
-      case type === 'leader':
+    switch (type) {
+      case 'leader':
         src = image.childImageSharp.gatsbyImageData;
         break;
 
-      case type === 'childImageTypeA':
-        src = image.childImageTypeA.fluid;
+      case 'childImageTypeA':
+        src = image.childImageTypeA.gatsbyImageData;
         break;
 
-      case type === 'childImageTypeB':
-        src = image.childImageTypeB.fluid;
+      case 'childImageTypeB':
+        src = image.childImageTypeB.gatsbyImageData;
         break;
 
-      case type === 'svg':
+      case 'svg':
         src = image.publicURL;
         break;
 
@@ -92,7 +86,6 @@ const Drupalcon2021Event = ({ data }) => {
         setExploreLink('https://events.drupal.org/drupalcon2021');
       }
     }
-    getLinks();
   }, []);
 
   return (
@@ -253,7 +246,8 @@ const Drupalcon2021Event = ({ data }) => {
           <GatsbyImage
             image={getSrc('TAG-Webcam-Cover-NEW', 'childImageTypeB')}
             alt='Third and Grove Web Camera Cover'
-            className='cc-image' />
+            className='cc-image'
+          />
           <h3
             css={css`
               text-align: center;
@@ -319,7 +313,8 @@ const Drupalcon2021Event = ({ data }) => {
                 objectFit: 'contain',
                 backgroundColor: 'transparent',
               }}
-              className='image' />
+              className='image'
+            />
           </div>
           <h3>{tag.header}</h3>
           <p>
@@ -449,7 +444,6 @@ const Drupalcon2021Event = ({ data }) => {
                 <strong>
                   {title}
                   <br />
-                  <hr />
                   <span>{time}</span>
                 </strong>
               </p>
@@ -478,101 +472,103 @@ Drupalcon2021Event.propTypes = {
 
 export default Drupalcon2021Event;
 
-export const query = graphql`{
-  allFile(filter: {absolutePath: {regex: "/drupalcon/|/headshots/"}}) {
-    nodes {
-      name
-      publicURL
-      childImageSharp {
-        gatsbyImageData(
-          height: 335
-          width: 335
-          transformOptions: {cropFocus: NORTH}
-          layout: CONSTRAINED
-        )
-      }
-      childImageTypeA: childImageSharp {
-        fluid(maxWidth: 335) {
-          ...GatsbyImageSharpFluid_withWebp
+export const query = graphql`
+  {
+    allFile(filter: { absolutePath: { regex: "/drupalcon/|/headshots/" } }) {
+      nodes {
+        name
+        publicURL
+        childImageSharp {
+          gatsbyImageData(
+            height: 335
+            width: 335
+            transformOptions: { cropFocus: NORTH }
+            layout: CONSTRAINED
+          )
         }
-      }
-      childImageTypeB: childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
+        childImageTypeA: childImageSharp {
+          gatsbyImageData(
+            width: 335
+            transformOptions: { cropFocus: CENTER }
+            layout: CONSTRAINED
+          )
+        }
+        childImageTypeB: childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
-  }
-  allInsight(
-    sort: {fields: created, order: DESC}
-    limit: 4
-    filter: {field_hidden: {eq: false}}
-  ) {
-    nodes {
-      ...InsightFragment
+    allInsight(
+      sort: { fields: created, order: DESC }
+      limit: 4
+      filter: { field_hidden: { eq: false } }
+    ) {
+      nodes {
+        ...InsightFragment
+      }
     }
-  }
-  allDrupalconJson {
-    edges {
-      node {
-        header {
-          date
-          subtitle
-          title
-          links {
-            text
-            url
-          }
-        }
-        booth {
-          ctas {
-            text
-            url
-          }
-          header
-        }
-        swag {
-          ctas {
-            text
-            url
-          }
-          header
-          subheader
-          body
-        }
-        tag {
-          body
-          ctas {
-            text
-            url
-          }
-          header
-        }
-        speakers {
-          header
-          people {
-            email
-            img
-            name
-            title
-          }
-        }
-        insights {
-          header
-        }
-        quote {
-          author
-          text
-        }
-        liveQas {
-          header
-          qas {
+    allDrupalconJson {
+      edges {
+        node {
+          header {
             date
+            subtitle
             title
-            time
+            links {
+              text
+              url
+            }
+          }
+          booth {
+            ctas {
+              text
+              url
+            }
+            header
+          }
+          swag {
+            ctas {
+              text
+              url
+            }
+            header
+            subheader
+            body
+          }
+          tag {
+            body
+            ctas {
+              text
+              url
+            }
+            header
+          }
+          speakers {
+            header
+            people {
+              email
+              img
+              name
+              title
+            }
+          }
+          insights {
+            header
+          }
+          quote {
+            author
+            text
+          }
+          liveQas {
+            header
+            qas {
+              date
+              title
+              time
+            }
           }
         }
       }
     }
   }
-}`;
+`;
