@@ -331,65 +331,76 @@ const Drupal = query => {
   );
 };
 
-export const query = graphql`{
-  insights: allInsight(
-    sort: {fields: created, order: DESC}
-    limit: 5
-    filter: {field_hidden: {eq: false}, relationships: {field_tags: {elemMatch: {name: {regex: "/drupal/i"}}}}}
-  ) {
-    nodes {
-      id
-      title
-      field_inverse_header
-      field_image {
-        alt
-      }
-      created(formatString: "MMM D, YYYY")
-      path {
-        alias
-      }
-      relationships {
-        node_type {
-          name
+export const query = graphql`
+  {
+    insights: allInsight(
+      sort: { fields: created, order: DESC }
+      limit: 5
+      filter: {
+        field_hidden: { eq: false }
+        relationships: {
+          field_tags: { elemMatch: { name: { regex: "/drupal/i" } } }
         }
-        uid {
-          name: display_name
-        }
+      }
+    ) {
+      nodes {
+        id
+        title
+        field_inverse_header
         field_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(width: 450, height: 400, layout: CONSTRAINED)
-            }
-          }
+          alt
         }
-        field_components {
-          ... on component__text {
-            relationships {
-              component_type {
-                name
+        created(formatString: "MMM D, YYYY")
+        path {
+          alias
+        }
+        relationships {
+          node_type {
+            name
+          }
+          uid {
+            name: display_name
+          }
+          field_image {
+            id
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData(width: 450, height: 400, layout: CONSTRAINED)
               }
-            }
-            field_body {
-              processed
             }
           }
-          ... on component__image {
-            id
-            field_image {
-              alt
-            }
-            relationships {
-              component_type {
-                name
+          field_components {
+            ... on component__text {
+              relationships {
+                component_type {
+                  name
+                }
               }
+              field_body {
+                processed
+              }
+            }
+            ... on component__image {
+              id
               field_image {
-                id
-                localFile {
-                  publicURL
-                  childImageSharp {
-                    gatsbyImageData(width: 630, height: 630, layout: CONSTRAINED)
+                alt
+              }
+              relationships {
+                component_type {
+                  name
+                }
+                field_image {
+                  id
+                  localFile {
+                    publicURL
+                    childImageSharp {
+                      gatsbyImageData(
+                        width: 630
+                        height: 630
+                        layout: CONSTRAINED
+                      )
+                    }
                   }
                 }
               }
@@ -398,118 +409,147 @@ export const query = graphql`{
         }
       }
     }
-  }
-  caseStudies: allCaseStudy(limit: 10, filter: {field_hidden: {eq: false}}) {
-    nodes {
-      id
-      title
-      field_subtitle
-      field_inverse_header
-      field_image_arrangement
-      field_image {
-        alt
-      }
-      field_secondary_image {
-        alt
-      }
-      field_tertiary_image {
-        alt
-      }
-      path {
-        alias
-      }
-      relationships {
-        field_tags {
-          name
-        }
+    caseStudies: allCaseStudy(
+      limit: 10
+      filter: { field_hidden: { eq: false } }
+    ) {
+      nodes {
+        id
+        title
+        field_subtitle
+        field_inverse_header
+        field_image_arrangement
         field_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(
-                width: 850
-                height: 850
-                transformOptions: {cropFocus: NORTH}
-                layout: CONSTRAINED
-              )
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 335, height: 260, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeA: childImageSharp {
-              fixed(width: 450, height: 320, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 380, height: 420, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 420, height: 340, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
-              }
-            }
-          }
+          alt
         }
         field_secondary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 1, height: 1) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
+          alt
+        }
+        field_tertiary_image {
+          alt
+        }
+        path {
+          alias
+        }
+        relationships {
+          field_tags {
+            name
+          }
+          field_image {
+            id
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData(
+                  width: 850
+                  height: 850
+                  transformOptions: { cropFocus: NORTH }
+                  layout: FIXED
+                )
               }
-            }
-            childImageTypeA: childImageSharp {
-              fixed(width: 250, height: 180, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
+              childImageMobile: childImageSharp {
+                gatsbyImageData(
+                  height: 260
+                  width: 335
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
               }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 340, height: 260, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
+              childImageTypeA: childImageSharp {
+                gatsbyImageData(
+                  height: 320
+                  width: 450
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
               }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 270, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
+              childImageTypeB: childImageSharp {
+                gatsbyImageData(
+                  height: 420
+                  width: 380
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
+              }
+              childImageTypeC: childImageSharp {
+                gatsbyImageData(
+                  height: 340
+                  width: 420
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
               }
             }
           }
-        }
-        field_tertiary_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(width: 850, height: 850, layout: CONSTRAINED)
-            }
-            childImageMobile: childImageSharp {
-              fixed(width: 1, height: 1) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
+          field_secondary_image {
+            id
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData(width: 850, height: 850, layout: FIXED)
+              }
+              childImageMobile: childImageSharp {
+                gatsbyImageData(width: 1, height: 1, layout: FIXED)
+              }
+              childImageTypeA: childImageSharp {
+                gatsbyImageData(
+                  height: 180
+                  width: 250
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
+              }
+              childImageTypeB: childImageSharp {
+                gatsbyImageData(
+                  height: 260
+                  width: 340
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
+              }
+              childImageTypeC: childImageSharp {
+                gatsbyImageData(
+                  height: 210
+                  width: 270
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
               }
             }
-            childImageTypeA: childImageSharp {
-              fixed(width: 250, height: 495, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+          field_tertiary_image {
+            id
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData(width: 850, height: 850, layout: FIXED)
               }
-            }
-            childImageTypeB: childImageSharp {
-              fixed(width: 230, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
+              childImageMobile: childImageSharp {
+                gatsbyImageData(width: 1, height: 1, layout: FIXED)
               }
-            }
-            childImageTypeC: childImageSharp {
-              fixed(width: 320, height: 210, cropFocus: CENTER) {
-                ...GatsbyImageSharpFixed_withWebp_noBase64
+              childImageTypeA: childImageSharp {
+                gatsbyImageData(
+                  height: 495
+                  width: 250
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
+              }
+              childImageTypeB: childImageSharp {
+                gatsbyImageData(
+                  height: 210
+                  width: 230
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
+              }
+              childImageTypeC: childImageSharp {
+                gatsbyImageData(
+                  height: 210
+                  width: 320
+                  transformOptions: { cropFocus: CENTER }
+                  layout: FIXED
+                )
               }
             }
           }
@@ -517,6 +557,6 @@ export const query = graphql`{
       }
     }
   }
-}`;
+`;
 
 export default Drupal;
