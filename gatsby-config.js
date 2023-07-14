@@ -1,9 +1,12 @@
+/* eslint-disable no-undef */
 require('dotenv').config();
 
 const isProduction =
   process.env.BRANCH !== undefined && process.env.BRANCH === 'master'
     ? 'production'
     : 'development';
+
+const siteUrl = process.env.URL || `https://www.thirdandgrove.com`;
 
 module.exports = {
   siteMetadata: {
@@ -13,7 +16,75 @@ module.exports = {
     siteUrl: `https://www.thirdandgrove.com`,
   },
   plugins: [
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+        {
+          allCaseStudy(filter: { field_hidden: { eq: false } }) {
+            nodes {
+              modifiedGmt: changed
+              uri: path {
+                alias
+              }
+            }
+          }
+          allLandingPage(filter: { field_hidden: { eq: false } }) {
+            nodes {
+              modifiedGmt: changed
+              uri: path {
+                alias
+              }
+            }
+          }
+          allInsight(filter: { field_hidden: { eq: false } }) {
+            nodes {
+              modifiedGmt: changed
+              uri: path {
+                alias
+              }
+            }
+          }
+          allNodeLegacyInsight {
+            nodes {
+              modifiedGmt: changed
+              uri: path {
+                alias
+              }
+            }
+          }
+        }
+      `,
+        resolveSiteUrl: () => siteUrl,
+        resolvePages: ({
+          allCaseStudy: { nodes: allCaseStudyNodes },
+          allLandingPage: { nodes: allLandingPageNodes },
+          allInsight: { nodes: allInsightNodes },
+          allNodeLegacyInsight: { nodes: allNodeLegacyInsightNodes },
+        }) => {
+          const drupalNodeMap = [
+            ...allCaseStudyNodes,
+            ...allLandingPageNodes,
+            ...allInsightNodes,
+            ...allNodeLegacyInsightNodes,
+          ].map(node => {
+            return {
+              path: node.uri.alias,
+              lastmod: node.modifiedGmt,
+            };
+          });
+          return drupalNodeMap;
+        },
+        serialize: ({ path, lastmod, changefreq, priority }) => {
+          return {
+            url: path,
+            lastmod,
+            changefreq,
+            priority,
+          };
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
@@ -175,7 +246,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://www.thirdandgrove.com/',
-        sitemap: 'https://www.thirdandgrove.com/sitemap.xml',
+        sitemap: 'https://www.thirdandgrove.com/sitemap/sitemap-index.xml',
         resolveEnv: () => isProduction,
         env: {
           production: {

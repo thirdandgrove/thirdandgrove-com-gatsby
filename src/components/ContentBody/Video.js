@@ -65,8 +65,8 @@ const Video = ({ data }) => {
             playerOptions: {
               controls: showControls,
               responsive: true,
-              autoplay: false,
-              loop: false,
+              autoplay: true,
+              loop: true,
             },
           },
         }}
