@@ -18,6 +18,7 @@ import Hero from './Hero';
 import CaseStudyShowcase from './CaseStudyShowcase';
 import FAQ from './Faq';
 import IconListComponent from './IconListComponent';
+import ScrollingLogos from './ScrollingLogos';
 
 const Components = {
   Image,
@@ -37,6 +38,7 @@ const Components = {
   CaseStudyShowcase,
   FAQ,
   IconListComponent,
+  ScrollingLogos,
 };
 
 /**
