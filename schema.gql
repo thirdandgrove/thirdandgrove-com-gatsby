@@ -840,7 +840,7 @@ type case_studyRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_components: [component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnion]
+  field_components: [component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnioncomponent__stats]
     @link(by: "id", from: "field_components___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
   field_secondary_image: file__file
@@ -857,7 +857,7 @@ type case_studyRelationships {
     @link(by: "id", from: "entity_subqueue__case_study_slider_homepage___NODE")
 }
 
-union component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnion =
+union component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnioncomponent__stats =
     component__image
   | component__prefooter
   | component__quote
@@ -865,6 +865,7 @@ union component__imagecomponent__prefootercomponent__quotecomponent__textcompone
   | component__text_image_split
   | component__text_split_with_video_phone
   | component__video
+  | component__stats
 
 type file__file implements Node @derivedTypes @dontInfer {
   drupal_id: String
