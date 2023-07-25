@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable prefer-template */
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -14,7 +15,7 @@ import {
 } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
-const VideoSection = ({ url, mp4 }) => {
+const VideoSection = ({ url, mp4, isFile = false }) => {
   const { width } = useWindow();
   const refMovie = useRef();
   const refVimeo = useRef();
@@ -189,28 +190,49 @@ const VideoSection = ({ url, mp4 }) => {
 
       {isLgScreen && (
         <>
-          <ReactPlayer
-            css={playerStyles}
-            url={url}
-            playing={playing}
-            ref={refVimeo}
-            volume={hasInteracted ? 1 : 0}
-            width='100%'
-            style={{
-              display: `${hasInteracted && playing ? 'block' : 'none'}`,
-              opacity: `${hasInteracted && playing ? '1' : '0.65'}`,
-            }}
-            config={{
-              vimeo: {
-                playerOptions: {
-                  controls: false,
-                  responsive: true,
-                  autoplay: false,
-                  loop: isLgScreen,
+          {!isFile && (
+            <ReactPlayer
+              css={playerStyles}
+              url={url}
+              playing={playing}
+              ref={refVimeo}
+              volume={hasInteracted ? 1 : 0}
+              width='100%'
+              style={{
+                display: `${hasInteracted && playing ? 'block' : 'none'}`,
+                opacity: `${hasInteracted && playing ? '1' : '0.65'}`,
+              }}
+              config={{
+                vimeo: {
+                  playerOptions: {
+                    controls: false,
+                    responsive: true,
+                    autoplay: false,
+                    loop: isLgScreen,
+                  },
                 },
-              },
-            }}
-          />
+              }}
+            />
+          )}
+
+          {isFile && (
+            <video
+              alt=''
+              playsInline
+              muted={!hasInteracted && !playing}
+              loop={isLgScreen}
+              preload='metadata'
+              autoPlay={isLgScreen}
+              ref={refMovie}
+              css={videoPlayer}
+              style={{
+                display: `${hasInteracted && playing ? 'block' : 'none'}`,
+                opacity: `${hasInteracted && playing ? '1' : '0.65'}`,
+              }}
+            >
+              <source src={url} type='video/mp4' />
+            </video>
+          )}
 
           <video
             alt=''
@@ -233,6 +255,7 @@ const VideoSection = ({ url, mp4 }) => {
 VideoSection.propTypes = {
   mp4: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  isFile: PropTypes.bool.isRequired,
 };
 
 export default VideoSection;

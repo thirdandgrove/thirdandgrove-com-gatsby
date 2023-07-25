@@ -19,6 +19,7 @@ import CaseStudyShowcase from './CaseStudyShowcase';
 import FAQ from './Faq';
 import IconListComponent from './IconListComponent';
 import ScrollingLogos from './ScrollingLogos';
+import FullWidthVideo from './FullWidthVideo';
 
 const Components = {
   Image,
@@ -39,6 +40,7 @@ const Components = {
   FAQ,
   IconListComponent,
   ScrollingLogos,
+  FullWidthVideo,
 };
 
 /**
