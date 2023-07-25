@@ -220,10 +220,10 @@ const VideoSection = ({ url, mp4, isFile = false }) => {
               alt=''
               playsInline
               muted={!hasInteracted && !playing}
-              loop={isLgScreen}
+              loop={isLgScreen && playing}
               preload='metadata'
-              autoPlay={isLgScreen}
-              ref={refMovie}
+              autoPlay={isLgScreen && playing}
+              ref={refVimeo}
               css={videoPlayer}
               style={{
                 display: `${hasInteracted && playing ? 'block' : 'none'}`,
