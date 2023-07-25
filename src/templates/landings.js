@@ -207,6 +207,99 @@ export const query = graphql`
               }
             }
           }
+          ... on component__scrolling_logos {
+            id
+            field_header_text
+            relationships {
+              component_type {
+                name
+              }
+              field_media_background {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                    squareImage: gatsbyImageData(
+                      width: 700
+                      height: 700
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
+                  }
+                }
+              }
+              field_logos {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                    squareImage: gatsbyImageData(
+                      width: 700
+                      height: 700
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
+                  }
+                }
+              }
+            }
+          }
+          ... on component__full_width_video {
+            id
+            relationships {
+              component_type {
+                name
+              }
+              field_main_video {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                    squareImage: gatsbyImageData(
+                      width: 700
+                      height: 700
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
+                  }
+                }
+              }
+              field_autoplay_video {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                    squareImage: gatsbyImageData(
+                      width: 700
+                      height: 700
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
+                  }
+                }
+              }
+            }
+          }
+          ... on component__core_values {
+            id
+            relationships {
+              component_type {
+                name
+              }
+            }
+          }
           ... on component__icon_list_component {
             id
             field_header_text
