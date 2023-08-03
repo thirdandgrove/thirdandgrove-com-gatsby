@@ -218,8 +218,9 @@ const Work = () => {
       }
     }
   `);
+
   const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
-  console.log(allNodeHomePage.edges[0].node.field_video);
+
   return (
     <Layout
       headerData={{
