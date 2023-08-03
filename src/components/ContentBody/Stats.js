@@ -120,9 +120,9 @@ const Stats = ({ data }) => {
       <div css={statWrapper} ref={nodeRef}>
         {isVisible && (
           <>
-            {fieldStats.map(stat => {
+            {fieldStats.map((stat, index) => {
               return (
-                <div css={statItem}>
+                <div key={index} css={statItem}>
                   <Counter
                     mainCount={stat.field_stat}
                     symbol={stat.field_character}

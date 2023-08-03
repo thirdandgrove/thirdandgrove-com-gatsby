@@ -8,7 +8,7 @@ const FullWidthVideo = ({ data }) => {
   const autoPlayVideo =
     data.relationships.field_autoplay_video.localFile.publicURL;
 
-  return <VideoSection url={mainVideo} mp4={autoPlayVideo} isFile />;
+  return <VideoSection url={mainVideo} mp4={autoPlayVideo} isFile isContent />;
 };
 
 FullWidthVideo.propTypes = {

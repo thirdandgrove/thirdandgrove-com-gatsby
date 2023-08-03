@@ -15,7 +15,7 @@ import {
 } from '../../styles';
 import FullWidthSection from '../FullWidthSection';
 
-const VideoSection = ({ url, mp4, isFile = false }) => {
+const VideoSection = ({ url, mp4, isFile = false, isContent = false }) => {
   const { width } = useWindow();
   const refMovie = useRef();
   const refVimeo = useRef();
@@ -87,6 +87,13 @@ const VideoSection = ({ url, mp4, isFile = false }) => {
   const videoPlayer = css`
     width: 100% !important;
     height: auto !important;
+    ${isContent
+      ? `
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    max-height: 700px;
+    `
+      : ``}
     display: ${hasInteracted && playing ? 'none' : 'block'};
     opacity: ${hasInteracted && playing ? '1' : '0.65'};
   `;
@@ -182,6 +189,14 @@ const VideoSection = ({ url, mp4, isFile = false }) => {
           } else {
             setHasInteracted(true);
             setPlaying(true);
+          }
+
+          if (isContent) {
+            if (!playing) {
+              refVimeo.current.play();
+            } else {
+              refVimeo.current.pause();
+            }
           }
         }}
       >
