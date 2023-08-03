@@ -205,6 +205,23 @@ export const query = graphql`
                 field_stat
                 field_character
               }
+              field_media_background {
+                id
+                localFile {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 800, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                    squareImage: gatsbyImageData(
+                      width: 700
+                      height: 700
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
+                  }
+                }
+              }
             }
           }
           ... on component__scrolling_logos {
