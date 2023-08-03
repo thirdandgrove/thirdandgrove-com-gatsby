@@ -191,10 +191,12 @@ const VideoSection = ({ url, mp4, isFile = false, isContent = false }) => {
             setPlaying(true);
           }
 
-          if (!playing) {
-            refVimeo.current.play();
-          } else {
-            refVimeo.current.pause();
+          if (isContent) {
+            if (!playing) {
+              refVimeo.current.play();
+            } else {
+              refVimeo.current.pause();
+            }
           }
         }}
       >
