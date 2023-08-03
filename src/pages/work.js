@@ -218,6 +218,7 @@ const Work = () => {
       }
     }
   `);
+
   const studies = allEntitySubqueueCaseStudies.nodes[0].relationships.items;
 
   return (

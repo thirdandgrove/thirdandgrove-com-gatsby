@@ -25,13 +25,17 @@ const LogoGridSlider = ({
   styles,
   defaultItemWidth,
   sliderSettings,
+  images,
+  isScrollingLogos,
 }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
 
-  const renderSet = logoSets(logoset, isSmScreen);
+  let logoCount = 0;
+  let renderSet = null;
 
-  const logoCount = renderSet.length;
+  renderSet = logoSets(logoset, isSmScreen, images, isScrollingLogos);
+  logoCount = renderSet.length;
 
   const Logos = styled.div`
     display: flex;
@@ -148,6 +152,7 @@ LogoGridSlider.propTypes = {
   styles: PropTypes.object,
   defaultItemWidth: PropTypes.string,
   sliderSettings: PropTypes.object,
+  isScrollingLogos: PropTypes.bool,
 };
 
 LogoGridSlider.defaultProps = {
@@ -158,6 +163,7 @@ LogoGridSlider.defaultProps = {
   styles: {},
   defaultItemWidth: '25%',
   sliderSettings: {},
+  isScrollingLogos: false,
 };
 
 export default LogoGridSlider;
