@@ -157,16 +157,16 @@ export const h1L = css`
 export const smSectionHead = css`
   margin-bottom: 0;
   font-size: 21px;
-  font-weight: ${weights.thin};
-  letter-spacing: 0.23px;
+  font-weight: ${weights.bold};
+  letter-spacing: normal;
   line-height: 3.62;
-  color: ${colors.reallydarkgray};
+  color: ${colors.black};
 
   ${mediaQueries.phoneLarge} {
     margin-bottom: 30px;
-    font-size: 36px;
-    line-height: 2;
-    letter-spacing: 0.4px;
+    font-size: 33px;
+    line-height: 1.2;
+    letter-spacing: normal;
   }
 `;
 
