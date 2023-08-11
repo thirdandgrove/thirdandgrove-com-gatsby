@@ -6,8 +6,8 @@ import { css } from '@emotion/react';
 import { fonts, colors, weights, mediaQueries } from './css-utils';
 
 // Containers
-const contWidths = [680, 820, 1020, 1120, 1220];
-const contLabels = [`min`, `textOnly`, `medium`, `large`, `max`];
+const contWidths = [680, 820, 1020, 1120, 1220, 1275];
+const contLabels = [`min`, `textOnly`, `medium`, `large`, `max`, `xtraMax`];
 
 export const contValues = contWidths.reduce((acc, value, i) => {
   acc[contLabels[i]] = `${value}px`;
