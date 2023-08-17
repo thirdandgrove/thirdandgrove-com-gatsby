@@ -294,13 +294,14 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 };
 
 exports.onPostBuild = async gatsbyNodeHelpers => {
-  const { reporter } = gatsbyNodeHelpers;
+  console.log('onPostBuild()');
+  // const { reporter } = gatsbyNodeHelpers;
 
-  const reportOut = report => {
-    const { stderr, stdout } = report;
-    if (stderr) reporter.error(stderr);
-    if (stdout) reporter.info(stdout);
-  };
+  // const reportOut = report => {
+  //   const { stderr, stdout } = report;
+  //   if (stderr) reporter.error(stderr);
+  //   if (stdout) reporter.info(stdout);
+  // };
 
-  reportOut(await exec('npm run lambda'));
+  // reportOut(await exec('npm run lambda'));
 };
