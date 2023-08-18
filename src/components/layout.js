@@ -2,7 +2,7 @@ import React from 'react';
 import { Global } from '@emotion/react';
 import PropTypes from 'prop-types';
 
-import { globalStyles } from '../styles';
+import { colors, globalStyles } from '../styles';
 
 import { headerPropTypes } from './Header/Header';
 import Header from './Header';

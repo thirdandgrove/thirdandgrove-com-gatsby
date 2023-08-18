@@ -146,46 +146,18 @@ const Menu = ({ menuOpen, toggleOpen }) => {
   `;
 
   const sectionHeaderStyle = css`
+    font-weight: ${weights.thin};
+    color: ${colors.white};
+    letter-spacing: -0.1px;
     text-align: center;
+    line-height: 15px;
+    font-size: 15px;
     margin-bottom: 10px;
 
     ${mediaQueries.phoneLarge} {
       margin-bottom: 26px;
-    }
-
-    span {
-      font-weight: ${weights.thin};
-      color: ${colors.white};
-      letter-spacing: -0.1px;
-      line-height: 15px;
-      font-size: 15px;
-
-      &:hover {
-        font-size: 19px;
-      }
-
-      padding-bottom: 0px;
-      text-decoration: none;
-      background-image: linear-gradient(currentColor, currentColor);
-      background-repeat: no-repeat;
-      background-position: 100% 100%;
-      background-size: 0% 2px;
-      transition: background-size 0.5s, font-size 0.5s;
-
-      &:hover,
-      &:focus-visible {
-        background-position: 0 100%;
-        background-size: 100% 2px;
-      }
-
-      ${mediaQueries.phoneLarge} {
-        line-height: 81px;
-        font-size: 21px;
-
-        &:hover {
-          font-size: 25px;
-        }
-      }
+      line-height: 81px;
+      font-size: 21px;
     }
   `;
 
@@ -309,12 +281,12 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                   to={menu.link.uri.replace('internal:', '')}
                 >
                   <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                    <span>{menu.title.trim()}</span>
+                    {menu.title}
                   </h5>
                 </Link>
               ) : (
                 <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                  <span>{menu.title.trim()}</span>
+                  {menu.title}
                 </h5>
               )}
               <div
@@ -364,12 +336,12 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                     to={menu.link.uri.replace('internal:', '')}
                   >
                     <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                      <span>{menu.title.trim()}</span>
+                      {menu.title}
                     </h5>
                   </Link>
                 ) : (
                   <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                    <span>{menu.title.trim()}</span>
+                    {menu.title}
                   </h5>
                 )}
                 <div
