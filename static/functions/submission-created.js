@@ -3,7 +3,7 @@
 require('dotenv').config();
 const axios = require('axios');
 
-const handler = async (event, _context, callback) => {
+exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
   const { form_name } = data;
   const { referrer } = data.data;
@@ -567,5 +567,3 @@ const handler = async (event, _context, callback) => {
 
   callback(null, { statusCode: 200 });
 };
-
-export { handler };

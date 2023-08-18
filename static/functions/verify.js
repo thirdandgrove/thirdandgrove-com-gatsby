@@ -3,7 +3,7 @@
 require('dotenv').config();
 const axios = require('axios');
 
-const handler = async (event, context) => {
+exports.handler = async (event, context) => {
   try {
     const data = JSON.parse(event.body);
     const { token } = data;
@@ -26,4 +26,3 @@ const handler = async (event, context) => {
   }
 };
 
-export { handler };
