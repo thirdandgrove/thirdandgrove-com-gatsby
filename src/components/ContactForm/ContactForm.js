@@ -91,7 +91,7 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    const formResponse = await fetch('/.netlify/functions/submission-created', {
+    const formResponse = await fetch('/.netlify/functions/submission', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': formName, ...formState }),

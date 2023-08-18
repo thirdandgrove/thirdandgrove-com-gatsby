@@ -6,10 +6,8 @@
   # root directory if a base has not been set. This sample publishes the
   # directory located at the absolute path "root/project/build-output"
   publish = "public"
-
   # Default build command.
   command = "gatsby build"
-
   functions = "public/functions"
 
 [[plugins]]
@@ -18,6 +16,16 @@
 [[redirects]]
   from = "/api/verify"
   to = "/.netlify/functions/verify"
+  status = 200
+
+[[redirects]]
+  from = "/api/submission-created"
+  to = "/.netlify/functions/submission-created"
+  status = 200
+
+[[redirects]]
+  from = "/api/submission"
+  to = "/.netlify/functions/submission"
   status = 200
 
 [context.production]

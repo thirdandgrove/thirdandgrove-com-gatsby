@@ -2,7 +2,6 @@
 /* eslint-disable camelcase */
 require('dotenv').config();
 const axios = require('axios');
-
 const handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
   const { form_name } = data;
