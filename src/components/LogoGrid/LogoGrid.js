@@ -119,7 +119,7 @@ const LogoGrid = ({
       minHeight={minHeight}
       height='600px'
     >
-      <div css={[container.max, containerStyles, styles]}>
+      <div css={[container.xtraMax, containerStyles, styles]}>
         <h2 css={[smSectionHead, subtitle ? multiLineStyles : titleStyles]}>
           {title}
         </h2>
