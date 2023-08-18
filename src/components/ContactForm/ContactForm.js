@@ -18,16 +18,16 @@ const ContactForm = ({ formName, altStyle }) => {
     name: '',
     phone: '',
     website: '',
-    botField: '',
   });
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
+  let formData = new FormData();
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
+    formData.append(event.target.name, event.target.value);
   };
 
   const verifyToken = async token => {
@@ -91,7 +91,7 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    const formResponse = await fetch('/.netlify/functions/submission', {
+    const formResponse = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': formName, ...formState }),
@@ -112,7 +112,6 @@ const ContactForm = ({ formName, altStyle }) => {
       });
       setHasSubmitted(true);
     }
-
 
     // if (token) {
     //   const validToken = await verifyToken(token);
