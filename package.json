@@ -16,6 +16,7 @@
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "@netlify/plugin-gatsby": "^3.7.1",
     "@szhsin/react-accordion": "^1.2.2",
     "axios": "^1.4.0",
     "cross-env": "^7.0.3",

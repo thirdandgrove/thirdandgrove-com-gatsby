@@ -13,21 +13,6 @@
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
 
-[[redirects]]
-  from = "/api/verify"
-  to = "/.netlify/functions/verify"
-  status = 200
-
-[[redirects]]
-  from = "/api/submission-created"
-  to = "/.netlify/functions/submission-created"
-  status = 200
-
-[[redirects]]
-  from = "/api/submission"
-  to = "/.netlify/functions/submission"
-  status = 200
-
 [context.production]
   environment = { PROCESS_FORM = "true" }
 
@@ -35,3 +20,7 @@
 # inherit these settings.
 [context.deploy-preview]
   environment = { PROCESS_FORM = "false" }
+
+
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
