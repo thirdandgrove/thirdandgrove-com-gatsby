@@ -8,8 +8,6 @@ import { colors } from '../../styles';
 import { mediaQueriesMax } from '../../styles/css-utils';
 
 const FAQ = ({ data }) => {
-  const header = data?.field_heading;
-
   const fieldFaqItem = data?.relationships?.field_faq_item;
 
   const faqItem = css`
@@ -19,17 +17,22 @@ const FAQ = ({ data }) => {
     padding-top: 80px;
     padding-bottom: 80px;
     width: 64%;
+    flex-wrap: wrap;
+
     ${mediaQueriesMax.phoneLarge} {
       width: 89%;
-    }
-    flex-wrap: wrap;
-    ${mediaQueriesMax.phoneLarge} {
       flex-direction: row;
     }
+
     h2 {
       text-align: center;
       padding-bottom: 2rem;
+      font-size: 33px;
+      line-height: 1.2;
+      letter-spacing: normal;
+      font-weight: 700;
     }
+
     .szh-accordion__item-btn {
       display: flex;
       width: 100%;
@@ -37,9 +40,11 @@ const FAQ = ({ data }) => {
       border: 0;
       text-align: left;
     }
+
     .szh-accordion__item-content {
       display: block !important;
     }
+
     .szh-accordion__item-panel {
       font-size: 1.125rem;
       line-height: 1.77;
@@ -50,6 +55,7 @@ const FAQ = ({ data }) => {
       max-height: 0;
       opacity: 0;
     }
+
     .szh-accordion__item--expanded {
       .szh-accordion__item-panel {
         opacity: 1;
@@ -65,6 +71,7 @@ const FAQ = ({ data }) => {
       }
     }
   `;
+
   const faqTitle = css`
     .szh-accordion__item-btn {
       cursor: pointer;
@@ -123,8 +130,6 @@ const FAQ = ({ data }) => {
       left: 10px;
       position: absolute;
       transition: background 0.3s,
-        -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
-      transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1), background 0.3s;
       transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1), background 0.3s,
         -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
       width: 100%;
@@ -141,8 +146,6 @@ const FAQ = ({ data }) => {
       left: 10px;
       position: absolute;
       transition: background 0.3s,
-        -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
-      transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1), background 0.3s;
       transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1), background 0.3s,
         -webkit-transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
       width: 100%;
@@ -151,6 +154,7 @@ const FAQ = ({ data }) => {
       width: 0.1875rem;
     }
   `;
+
   const AccordionItem = ({ header, ...rest }) => (
     <Item
       {...rest}
@@ -162,23 +166,31 @@ const FAQ = ({ data }) => {
       }
     />
   );
+
   return (
     <FullWidthSection height='0' minHeight='0'>
       <>
         <Accordion css={faqItem}>
-          <h2>{header}</h2>
-          {fieldFaqItem.map(stat => {
-            return (
-              <AccordionItem header={stat.field_faq_question} css={faqTitle}>
-                <section
-                  css={faqBody}
-                  dangerouslySetInnerHTML={{
-                    __html: stat.field_faq_answer.processed,
-                  }}
-                />
-              </AccordionItem>
-            );
-          })}
+          {data?.field_heading && <h2>{data?.field_heading}</h2>}
+          {fieldFaqItem &&
+            fieldFaqItem.map(stat => {
+              return (
+                <AccordionItem
+                  key={stat.field_faq_question}
+                  header={stat.field_faq_question}
+                  css={faqTitle}
+                >
+                  {stat.field_faq_answer.processed && (
+                    <section
+                      css={faqBody}
+                      dangerouslySetInnerHTML={{
+                        __html: stat.field_faq_answer.processed,
+                      }}
+                    />
+                  )}
+                </AccordionItem>
+              );
+            })}
         </Accordion>
       </>
     </FullWidthSection>

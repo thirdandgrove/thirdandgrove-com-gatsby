@@ -10,35 +10,35 @@
     "title": "Creative",
     "description": "Where data, culture, and good looks come together. Create the strongest connection to the brand experience, and look good doing it.",
     "icon": "./icons/creative.png",
-    "link": "/capabilities#creative",
+    "link": "/services/design",
     "index": "2"
   },
   {
     "title": "Technology",
     "description": "Work with the best engineers in the room—no matter what room you’re in. Our engineers are writing and discovering the future of digital excellence.",
     "icon": "./icons/technology.png",
-    "link": "/capabilities#technology",
+    "link": "/services/development",
     "index": "0"
   },
   {
-    "title": "Data",
-    "description": "More than points on a graph. Data tells us how to connect and how we can make those connections more meaningful.",
+    "title": "Composable",
+    "description": "Embrace the era of reusability for your content management and commerce. Jumpstart your journey to Composable.",
     "icon": "./icons/data.png",
-    "link": "/capabilities#data",
+    "link": "/partners/composable",
     "index": "3"
   },
   {
     "title": "Marketing",
     "description": "Like every therapist always says, communication is key. The same applies to your brand.",
     "icon": "./icons/marketing.png",
-    "link": "/capabilities#marketing",
+    "link": "/services/marketing",
     "index": "4"
   },
   {
-    "title": "ADA",
-    "description": "From writing about it to working with clients, we ensure every brand we work with empowers all users to experience their brand to the fullest.",
+    "title": "Support",
+    "description": "Websites aren’t born great. They grow great. Our dedicated team provides monthly support and optimization for development and creative needs in an ongoing capacity.",
     "icon": "./icons/ada.png",
-    "link": "/capabilities#ada",
+    "link": "/services/drupal-support",
     "index": "5"
   }
 ]

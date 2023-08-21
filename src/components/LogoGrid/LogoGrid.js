@@ -12,6 +12,7 @@ import {
   smSectionHead,
   container,
 } from '../../styles';
+import CTAGrid from '../CTAGrid/CTAGrid';
 
 import logoSets from './logosets';
 
@@ -24,12 +25,19 @@ const LogoGrid = ({
   styles,
   defaultItemWidth,
   images,
+  isLogoWall,
+  link,
+  cta,
+  drupalData,
 }) => {
   const { width } = useWindow();
   const isSmScreen = width < jsBreakpoints.phoneLarge;
-  const renderSet = logoSets(logoset, isSmScreen, images);
-
-  const logoCount = renderSet.length;
+  let logoCount = 0;
+  let renderSet = null;
+  if (!isLogoWall) {
+    renderSet = logoSets(logoset, isSmScreen, images);
+    logoCount = renderSet.length;
+  }
 
   const Logos = styled.div`
     display: flex;
@@ -68,10 +76,6 @@ const LogoGrid = ({
   const titleStyles = css`
     text-align: center;
     margin-bottom: 60px;
-
-    ${mediaQueries.phoneLarge} {
-      margin-bottom: 70px;
-    }
   `;
 
   const multiLineStyles = css`
@@ -115,18 +119,28 @@ const LogoGrid = ({
       minHeight={minHeight}
       height='600px'
     >
-      <div css={[container.max, containerStyles, styles]}>
+      <div css={[container.xtraMax, containerStyles, styles]}>
         <h2 css={[smSectionHead, subtitle ? multiLineStyles : titleStyles]}>
           {title}
         </h2>
         {subtitle && <h3 css={[smSectionHead, subTitleStyles]}>{subtitle}</h3>}
         <Logos>
-          {renderSet.map((logo, i) => (
-            // eslint-disable-next-line
-            <div key={i} css={logoItem}>
-              {logo}
-            </div>
-          ))}
+          {!isLogoWall &&
+            renderSet.map((logo, i) => (
+              // eslint-disable-next-line
+              <div key={i} css={logoItem}>
+                {logo}
+              </div>
+            ))}
+          {isLogoWall && (
+            <CTAGrid
+              items={images}
+              link={link}
+              cta={cta}
+              altStyle={false}
+              drupalData={drupalData}
+            />
+          )}
         </Logos>
       </div>
     </FullWidthSection>
@@ -141,6 +155,10 @@ LogoGrid.propTypes = {
   minHeight: PropTypes.string,
   styles: PropTypes.object,
   defaultItemWidth: PropTypes.string,
+  isLogoWall: PropTypes.bool,
+  link: PropTypes.string,
+  cta: PropTypes.string,
+  drupalData: PropTypes.bool,
 };
 
 LogoGrid.defaultProps = {
@@ -150,6 +168,10 @@ LogoGrid.defaultProps = {
   subtitle: '',
   styles: {},
   defaultItemWidth: '25%',
+  isLogoWall: false,
+  link: '',
+  cta: '',
+  drupalData: false,
 };
 
 export default LogoGrid;

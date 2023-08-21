@@ -115,6 +115,14 @@ const Header = ({
     ? colors.darkgray
     : colors.lightgray;
 
+  const ctaColor = textColor
+    ? textColor === 'dark'
+      ? colors.lightgray
+      : colors.darkgray
+    : isLightBackground(color) && !invert
+    ? colors.lightgray
+    : colors.darkgray;
+
   const headerTitle = css`
     @keyframes headerSlide {
       0% {
@@ -304,9 +312,8 @@ const Header = ({
       width: 100%;
       height: 1px;
       transition: 0.3s ease height;
-      background: ${color};
+      background: ${ctaColor};
       color: ${fontColor};
-      filter: invert(100%);
     }
     &:hover,
     &:focus {
@@ -315,7 +322,6 @@ const Header = ({
       span {
         background-position: bottom;
         color: ${fontColor};
-        filter: invert(100%);
       }
 
       &::before {
@@ -423,14 +429,21 @@ const Header = ({
         {linksA && (
           <div css={linkStylesA}>
             {linksA.map(l => (
-              <a href={l.url}>{l.text}</a>
+              <a key={l.text} href={l.url}>
+                {l.text}
+              </a>
             ))}
           </div>
         )}
         {cta && (
           <div>
             {cta.map(l => (
-              <Button type='button' fontColor={textColor} css={btnStyles}>
+              <Button
+                key={l.text}
+                type='button'
+                fontColor={textColor}
+                css={btnStyles}
+              >
                 <Link to={l.url.replace('entity:', '')}>{l.text}</Link>
               </Button>
             ))}
@@ -439,7 +452,7 @@ const Header = ({
         {linksB && (
           <div css={linkStylesB}>
             {linksB.map(l => (
-              <a href={l.url}>
+              <a key={l.text} href={l.url}>
                 <img src={getImageSrc(l.text.toLowerCase())} alt={l.text} />
               </a>
             ))}

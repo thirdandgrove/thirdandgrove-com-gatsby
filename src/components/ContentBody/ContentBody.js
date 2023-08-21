@@ -17,6 +17,10 @@ import ContactFormComponent from './ContactFormComponent';
 import Hero from './Hero';
 import CaseStudyShowcase from './CaseStudyShowcase';
 import FAQ from './Faq';
+import IconListComponent from './IconListComponent';
+import FullWidthVideo from './FullWidthVideo';
+import ScrollingLogos from './ScrollingLogos';
+import CoreValues from './CoreValues';
 
 const Components = {
   Image,
@@ -35,6 +39,10 @@ const Components = {
   Hero,
   CaseStudyShowcase,
   FAQ,
+  IconListComponent,
+  FullWidthVideo,
+  ScrollingLogos,
+  CoreValues,
 };
 
 /**

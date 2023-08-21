@@ -840,7 +840,7 @@ type case_studyRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_components: [component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnion]
+  field_components: [component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnioncomponent__stats]
     @link(by: "id", from: "field_components___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
   field_secondary_image: file__file
@@ -857,7 +857,7 @@ type case_studyRelationships {
     @link(by: "id", from: "entity_subqueue__case_study_slider_homepage___NODE")
 }
 
-union component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnion =
+union component__imagecomponent__prefootercomponent__quotecomponent__textcomponent__text_image_splitcomponent__text_split_with_video_phonecomponent__videoUnioncomponent__stats =
     component__image
   | component__prefooter
   | component__quote
@@ -865,6 +865,7 @@ union component__imagecomponent__prefootercomponent__quotecomponent__textcompone
   | component__text_image_split
   | component__text_split_with_video_phone
   | component__video
+  | component__stats
 
 type file__file implements Node @derivedTypes @dontInfer {
   drupal_id: String
@@ -1078,6 +1079,14 @@ type component_type__component_typeRelationships {
     @link(by: "id", from: "component__image___NODE")
   component__stats: [component__stats]
     @link(by: "id", from: "component__stats___NODE")
+  component__scrolling_logos: [component__scrolling_logos]
+    @link(by: "id", from: "component__scrolling_logos___NODE")
+  component__full_width_video: [component__full_width_video]
+    @link(by: "id", from: "component__full_width_video___NODE")
+  component__core_values: [component__core_values]
+    @link(by: "id", from: "component__core_values___NODE")
+  component__icon_list_component: [component__icon_list_component]
+    @link(by: "id", from: "component__icon_list_component___NODE")
   component__faq: [component__faq]
     @link(by: "id", from: "component__faq___NODE")
   component__logo_wall: [component__logo_wall]
@@ -1100,6 +1109,7 @@ type component__text implements Node @derivedTypes @dontInfer {
   changed: Date @dateformat
   default_langcode: Boolean
   field_body: component__textField_body
+  field_capital_letter: Boolean
   relationships: component__textRelationships
 }
 
@@ -1157,7 +1167,7 @@ type landing_pageRelationships {
   node_type: node_type__node_type @link(by: "id", from: "node_type___NODE")
   revision_uid: user__user @link(by: "id", from: "revision_uid___NODE")
   uid: user__user @link(by: "id", from: "uid___NODE")
-  field_components: [component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion]
+  field_components: [component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__scrolling_logoscomponent__full_width_videocomponent__core_valuescomponent__icon_list_componentcomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion]
     @link(by: "id", from: "field_components___NODE")
   field_image: file__file @link(by: "id", from: "field_image___NODE")
   field_secondary_image: file__file
@@ -1168,7 +1178,7 @@ type landing_pageRelationships {
     @link(by: "id", from: "field_tertiary_image___NODE")
 }
 
-union component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion =
+union component__big_linkscomponent__case_study_showcasecomponent__contact_formcomponent__featured_contentcomponent__herocomponent__imagecomponent__insightscomponent__logo_wallcomponent__prefootercomponent__quotecomponent__quote_herocomponent__services_componentcomponent__statscomponent__scrolling_logoscomponent__full_width_videocomponent__core_valuescomponent__icon_list_componentcomponent__faqcomponent__testimonialcomponent__textcomponent__text_image_splitcomponent__text_quote_splitUnion =
     component__big_links
   | component__case_study_showcase
   | component__contact_form
@@ -1182,6 +1192,10 @@ union component__big_linkscomponent__case_study_showcasecomponent__contact_formc
   | component__quote_hero
   | component__services_component
   | component__stats
+  | component__scrolling_logos
+  | component__full_width_video
+  | component__core_values
+  | component__icon_list_component
   | component__faq
   | component__testimonial
   | component__text
@@ -1340,6 +1354,7 @@ type component__services_component implements Node @derivedTypes @dontInfer {
   field_image: component__services_componentField_image
   field_primary_cta: component__servicesField_primary_cta
   field_image_align: String
+  field_link_id: String
 }
 
 type component__servicesField_primary_cta {
@@ -1532,6 +1547,74 @@ type component__stats implements Node @derivedTypes @dontInfer {
   default_langcode: Boolean
   field_header_text: String
   relationships: component__statsRelationships
+  field_media_background: component__statsField_media_background
+}
+
+type component__statsField_media_background {
+  display: Boolean
+  description: String
+}
+
+type component__scrolling_logos implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_header_text: String
+  relationships: component__scrolling_logosRelationships
+  field_media_background: component__scrolling_logosField_media_background
+  field_logos: [component__scrolling_logos_wallField_logos]
+}
+
+type component__full_width_video implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  relationships: component__full_width_videoRelationships
+}
+
+type component__core_values implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  relationships: component__core_valuesRelationships
+}
+
+type component__scrolling_logos_wallField_logos {
+  alt: String
+  title: String
+  width: Int
+  height: Int
+}
+
+type component__scrolling_logosField_media_background {
+  display: Boolean
+  description: String
+}
+
+type component__icon_list_component implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_header_text: String
+  field_primary_color: component__iconListField_primary_color
+  field_text_color: String
+  relationships: component__iconListRelationships
+}
+
+type component__iconListField_primary_color {
+  color: String
 }
 
 type component__faq implements Node @derivedTypes @dontInfer {
@@ -1557,6 +1640,32 @@ type component__stat implements Node @derivedTypes @dontInfer {
   field_character: String
 }
 
+type component__icon_component implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_icon_text: String
+  relationships: component__icon_componentRelationships
+  field_icon: component__iconField_image
+}
+
+type component__icon_componentRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_icon: file__file @link(by: "id", from: "field_icon___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__iconField_image {
+  alt: String
+  title: String
+  width: Int
+  height: Int
+}
+
 type component__faq_item implements Node @derivedTypes @dontInfer {
   drupal_id: String
   drupal_internal__id: Int
@@ -1577,7 +1686,43 @@ type component__faqField_body {
 type component__statsRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
+  field_media_background: file__file
+    @link(by: "id", from: "field_media_background___NODE")
   field_stats: [component__stat] @link(by: "id", from: "field_stats___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__scrolling_logosRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_media_background: file__file
+    @link(by: "id", from: "field_media_background___NODE")
+  field_logos: [file__file]
+    @link(by: "id", from: "field_logos___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__full_width_videoRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_main_video: file__file
+    @link(by: "id", from: "field_main_video___NODE")
+  field_autoplay_video: file__file
+    @link(by: "id", from: "field_autoplay_video___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__core_valuesRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__iconListRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_icon_item: [component__icon_component]
+    @link(by: "id", from: "field_icon_item___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
@@ -1598,14 +1743,42 @@ type component__logo_wall implements Node @derivedTypes @dontInfer {
   default_langcode: Boolean
   field_header_text: String
   field_subhead_text: String
+  field_primary_cta: component__logoWall_primary_cta
   relationships: component__logo_wallRelationships
   field_images: [component__logo_wallField_images]
+}
+
+type component__logoWall_primary_cta {
+  uri: String
+  title: String
+  url: String
 }
 
 type component__logo_wallRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
-  field_images: [file__file] @link(by: "id", from: "field_images___NODE")
+  field_images_list: [component__images_list]
+    @link(by: "id", from: "field_images_list___NODE")
+  landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
+}
+
+type component__images_list implements Node @derivedTypes @dontInfer {
+  drupal_id: String
+  drupal_internal__id: Int
+  langcode: String
+  created: Date @dateformat
+  changed: Date @dateformat
+  default_langcode: Boolean
+  field_description: String
+  field_header_text: String
+  relationships: component__images_list_componentRelationships
+  field_image: component__logo_wallField_images
+}
+
+type component__images_list_componentRelationships {
+  component_type: component_type__component_type
+    @link(by: "id", from: "component_type___NODE")
+  field_image: file__file @link(by: "id", from: "field_image___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 

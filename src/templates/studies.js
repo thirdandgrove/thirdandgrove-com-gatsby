@@ -116,6 +116,20 @@ export const query = graphql`
           name: display_name
         }
         field_components {
+          ... on component__stats {
+            id
+            field_header_text
+            relationships {
+              component_type {
+                name
+              }
+              field_stats {
+                field_description
+                field_stat
+                field_character
+              }
+            }
+          }
           ... on component__text_split_with_video_phone {
             id
             field_video_file_name

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { Spring } from 'react-spring/renderprops-universal';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { navigate } from 'gatsby';
 import { Link } from 'gatsby';
 
 import FullWidthSection from '../FullWidthSection';
@@ -11,7 +10,6 @@ import { container, fonts, mediaQueries, weights } from '../../styles';
 import EasterEggContext from '../../context/EasterEggContext';
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import Button from '../Button/Button';
-import { ensureTrailingSlash } from '../../util';
 
 const ServiceComponent = ({ data }) => {
   const {
@@ -20,6 +18,7 @@ const ServiceComponent = ({ data }) => {
     field_image: imageData,
     field_primary_cta: cta,
     field_image_align: order,
+    field_link_id: id,
   } = data;
   const image = data.relationships.field_image;
 
@@ -42,7 +41,7 @@ const ServiceComponent = ({ data }) => {
         }
       `}
     >
-      <div id={header} css={container.medium}>
+      <div id={id} css={container.medium}>
         <div
           css={css`
             margin-bottom: 90px;
