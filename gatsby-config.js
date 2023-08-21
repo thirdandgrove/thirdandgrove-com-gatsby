@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+const { readFileSync, writeFileSync } = require('fs');
 require('dotenv').config();
 
 const isProduction =
@@ -123,10 +124,6 @@ module.exports = {
           return headers;
         },
         headers: {
-          '/*.woff': ['Cache-Control:  max-age=31536000'],
-          '/*.woff2': ['Cache-Control:  max-age=31536000'],
-          '/*.png': ['Cache-Control:  max-age=31536000'],
-          '/*.svg': ['Cache-Control:  max-age=31536000'],
           '/*': [
             "Content-Security-Policy: default-src 'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com",
             "Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com",
