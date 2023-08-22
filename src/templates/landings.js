@@ -82,7 +82,7 @@ const Landings = ({ data }) => {
           `}
         />
       )}
-      <p
+      {post.field_subtitle && <p
         css={css`
           ${container.min};
           font-family: ${fonts.sans};
@@ -100,8 +100,8 @@ const Landings = ({ data }) => {
         `}
       >
         {post.field_subtitle}
-      </p>
-      <ContentBody comps={post} type='landing' />
+      </p>}
+      {post && <ContentBody comps={post} type='landing' />}
     </Layout>
   );
 };

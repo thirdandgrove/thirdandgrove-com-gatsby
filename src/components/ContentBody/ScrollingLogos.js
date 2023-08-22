@@ -62,17 +62,19 @@ const ScrollingLogos = ({ data }) => {
       width: 100%;
     }
     ${mediaQueriesMax.phoneLarge} {
-      margin: 20px auto;
+      margin: 20px auto 0px;
     }
 
     .award-image {
       display: initial;
+
       ${mediaQueriesMax.phoneLarge} {
         display: none;
       }
     }
     .award-image-mobile {
       display: none;
+
       ${mediaQueriesMax.phoneLarge} {
         display: initial;
         max-height: 700px;
@@ -121,12 +123,23 @@ const ScrollingLogos = ({ data }) => {
   `;
 
   return (
-    <>
+    <FullWidthSection
+      css={css`
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 1em;
+        ${mediaQueries.desktop} {
+        }
+        ${mediaQueriesMax.xs} {
+        }
+      `}
+    >
       <h3
         css={css`
           font-family: ${fonts.serif};
           text-align: center;
           font-size: xxx-large;
+          margin-bottom: 0;
           ${mediaQueries.desktop} {
             line-height: 130px;
             font-size: 95px;
@@ -150,7 +163,7 @@ const ScrollingLogos = ({ data }) => {
           isScrollingLogos
         />
       </FullWidthSection>
-    </>
+    </FullWidthSection>
   );
 };
 
