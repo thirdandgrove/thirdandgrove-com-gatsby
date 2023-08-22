@@ -287,6 +287,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         stream: require.resolve('stream-browserify'),
         https: require.resolve("https-browserify"),
         http: require.resolve("stream-http"),
+        querystring: require.resolve("querystring-es3"),
         fs: false,
       },
     },

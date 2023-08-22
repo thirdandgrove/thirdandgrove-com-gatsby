@@ -2,26 +2,23 @@
 /* eslint-disable camelcase */
 require('dotenv').config();
 const axios = require('axios');
-
-// exports.handler = async (event, context) => {
-//   console.log(event);
-//   console.log(JSON.parse(event.body));
-//   const data = JSON.parse(event.body).payload;
-//   console.log(data);
-//   return {
-//     statusCode: 200,
-//     body: event.body,
-//   };
-// };
+const { parse } = require('querystring');
 
 exports.handler = async (event, _context, callback) => {
-  const data = JSON.parse(event.body).payload;
-  const { form_name } = data;
-  const { referrer } = data.data;
+  let data = {};
+  try {
+    data = JSON.parse(event.body).payload;
+  } catch (e) {
+    data = parse(event.body);
+  }
+
+  const form_name = data['form-name'];
+  const referrer = event.headers.referer;
   console.log(data);
   console.log(event, _context, callback);
   console.log(process.env);
   console.log(form_name);
+  console.log(referrer);
 
   if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
     console.log(event, _context, callback);
@@ -473,8 +470,11 @@ exports.handler = async (event, _context, callback) => {
   /** Newsletter Form */
   if (form_name === 'newsletter') {
     const { email } = data;
-    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID, KLAVIYO_MAIN_LIST_ID } =
-      process.env;
+    const {
+      KLAVIYO_API_KEY,
+      KLAVIYO_LIST_ID,
+      KLAVIYO_MAIN_LIST_ID,
+    } = process.env;
 
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,

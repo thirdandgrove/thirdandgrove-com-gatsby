@@ -32,7 +32,7 @@ const ContactForm = ({ formName, altStyle }) => {
 
   const verifyToken = async token => {
     try {
-      const response = await fetch('/api/verify', {
+      const response = await fetch('/.netlify/functions/verify', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -91,7 +91,7 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    const formResponse = await fetch('/api/submission', {
+    const formResponse = await fetch('/.netlify/functions/submission-created', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': formName, ...formState }),
@@ -111,16 +111,13 @@ const ContactForm = ({ formName, altStyle }) => {
         website: '',
       });
       setHasSubmitted(true);
-      console.log('Hurray!! you have submitted the form');
     }
-
-
 
     // if (token) {
     //   try {
     //     const validToken = await verifyToken(token);
     //     if (validToken.success) {
-    //       const formResponse = await fetch('/api/submission', {
+    //       const formResponse = await fetch( '/.netlify/functions/submission-created', {
     //         method: 'POST',
     //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     //         body: encode({ 'form-name': formName, ...formState }),

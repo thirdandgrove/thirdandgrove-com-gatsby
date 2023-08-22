@@ -76,7 +76,8 @@
     "jest": "^29.6.1",
     "netlify-cli": "^15.9.0",
     "prettier": "~3.0.0",
-    "pretty-quick": "~3.1.0"
+    "pretty-quick": "~3.1.0",
+    "querystring-es3": "^0.2.1"
   },
   "keywords": [
     "gatsby"
