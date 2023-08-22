@@ -99,6 +99,23 @@ const CoreValues = ({ data }) => {
     }
   `;
 
+    const coreValueLogoMobile = css`
+      display: inline-block;
+      padding: 50px 0;
+
+      .corevalue-body {
+        width: 75%;
+        margin: auto;
+        text-align: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    `;
+
+
   const { width } = useWindowSize();
 
   return (
@@ -113,8 +130,7 @@ const CoreValues = ({ data }) => {
       {width < 1100 ? (
         <div css={coreValueMobileContainer}>
           {aboutCoreValues.map((logo, i) => (
-            // eslint-disable-next-line
-            <div class='full list' key={i} css={coreValueLogoMobile}>
+            <div className='full list' key={i} css={coreValueLogoMobile}>
               {logo}
             </div>
           ))}
