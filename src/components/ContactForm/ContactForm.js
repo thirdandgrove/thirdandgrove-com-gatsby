@@ -91,37 +91,62 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    if (token) {
-      try {
-        const validToken = await verifyToken(token);
-        if (validToken.success) {
-          const formResponse = await fetch('/api/submission', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encode({ 'form-name': formName, ...formState }),
-          });
+    const formResponse = await fetch('/api/submission', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': formName, ...formState }),
+    });
 
-          if (!formResponse.ok) {
-            const message = `An error has occured: ${formResponse.status}`;
-            throw new Error(message);
-          }
-
-          if (formResponse.ok) {
-            updateForm({
-              comments: 'Thank you for your inquiry.',
-              email: '',
-              name: '',
-              phone: '',
-              website: '',
-            });
-            setHasSubmitted(true);
-          }
-          console.log('Hurray!! you have submitted the form');
-        }
-      } catch (error) {
-        console.log('Sorry!! Token invalid');
-      }
+    if (!formResponse.ok) {
+      const message = `An error has occured: ${formResponse.status}`;
+      throw new Error(message);
     }
+
+    if (formResponse.ok) {
+      updateForm({
+        comments: 'Thank you for your inquiry.',
+        email: '',
+        name: '',
+        phone: '',
+        website: '',
+      });
+      setHasSubmitted(true);
+      console.log('Hurray!! you have submitted the form');
+    }
+
+
+
+    // if (token) {
+    //   try {
+    //     const validToken = await verifyToken(token);
+    //     if (validToken.success) {
+    //       const formResponse = await fetch('/api/submission', {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //         body: encode({ 'form-name': formName, ...formState }),
+    //       });
+
+    //       if (!formResponse.ok) {
+    //         const message = `An error has occured: ${formResponse.status}`;
+    //         throw new Error(message);
+    //       }
+
+    //       if (formResponse.ok) {
+    //         updateForm({
+    //           comments: 'Thank you for your inquiry.',
+    //           email: '',
+    //           name: '',
+    //           phone: '',
+    //           website: '',
+    //         });
+    //         setHasSubmitted(true);
+    //       }
+    //       console.log('Hurray!! you have submitted the form');
+    //     }
+    //   } catch (error) {
+    //     console.log('Sorry!! Token invalid');
+    //   }
+    // }
   };
 
   const inputStyles = css`
