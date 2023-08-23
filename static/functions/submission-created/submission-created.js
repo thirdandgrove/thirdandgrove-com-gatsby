@@ -5,7 +5,9 @@ const axios = require('axios');
 const handler = async event => {
   console.log(event);
   const data = JSON.parse(event.body).payload;
-  const form_name = data.data['form-name'];
+  const form_name = data.data['form-name']
+    ? data.data['form-name']
+    : data['form_name'];
   const referrer = event.headers.referer;
   console.log(`Received a submission: ${form_name}`);
 
