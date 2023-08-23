@@ -71,12 +71,23 @@ import dadiAwards from './logos/awards/dadi-awards.png';
 import daveyAwards from './logos/awards/davey-awards.png';
 import c2aAwards from './logos/awards/C2A-awards.png';
 
-export default (logoset, isSmScreen, images) => {
+export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
   let sets;
-  if (images) {
+  if (images && !isScrollingLogos) {
     sets = images.map(image => (
       <img
         src={image.relationships.field_image.node.publicURL}
+        alt=''
+        width={isSmScreen ? '120' : '202'}
+        height={isSmScreen ? '66' : '112'}
+      />
+    ));
+    return sets;
+  }
+  if (images && isScrollingLogos) {
+    sets = images.map(image => (
+      <img
+        src={image.localFile.publicURL}
         alt=''
         width={isSmScreen ? '120' : '202'}
         height={isSmScreen ? '66' : '112'}

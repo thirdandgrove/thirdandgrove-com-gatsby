@@ -11,13 +11,15 @@ import Counter from '../Counter';
 const Stats = ({ data }) => {
   const fieldStats = data?.relationships?.field_stats;
   const header = data?.field_header_text;
+  const backgroundImage =
+    data.relationships.field_media_background?.localFile.publicURL;
   const nodeRef = React.useRef();
   const isVisible = useHasBeenVisible(nodeRef);
 
   const statWrapper = css`
     display: flex;
     align-items: center;
-    color: ${colors.black};
+    color: ${backgroundImage ? colors.white : colors.black};
     font-family: ${fonts.serif};
     margin-left: 80px;
     padding: 4rem 0;
@@ -114,15 +116,26 @@ const Stats = ({ data }) => {
     }
   `;
 
+  const sectionBackgroundCSS = backgroundImage
+    ? css`
+        background-image: url(${backgroundImage});
+      `
+    : css``;
+
+  const sectionCSS = css`
+    padding: 88px 0;
+    ${sectionBackgroundCSS}
+  `;
+
   return (
-    <FullWidthSection height='0' minHeight='0'>
+    <FullWidthSection height='0' minHeight='0' css={[sectionCSS]}>
       <h3 css={h3Styles}>{header}</h3>
       <div css={statWrapper} ref={nodeRef}>
         {isVisible && (
           <>
-            {fieldStats.map(stat => {
+            {fieldStats.map((stat, index) => {
               return (
-                <div css={statItem}>
+                <div key={index} css={statItem}>
                   <Counter
                     mainCount={stat.field_stat}
                     symbol={stat.field_character}

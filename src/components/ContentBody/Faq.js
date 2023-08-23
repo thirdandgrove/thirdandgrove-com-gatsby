@@ -17,17 +17,22 @@ const FAQ = ({ data }) => {
     padding-top: 80px;
     padding-bottom: 80px;
     width: 64%;
+    flex-wrap: wrap;
+
     ${mediaQueriesMax.phoneLarge} {
       width: 89%;
-    }
-    flex-wrap: wrap;
-    ${mediaQueriesMax.phoneLarge} {
       flex-direction: row;
     }
+
     h2 {
       text-align: center;
       padding-bottom: 2rem;
+      font-size: 33px;
+      line-height: 1.2;
+      letter-spacing: normal;
+      font-weight: 700;
     }
+
     .szh-accordion__item-btn {
       display: flex;
       width: 100%;
@@ -35,9 +40,11 @@ const FAQ = ({ data }) => {
       border: 0;
       text-align: left;
     }
+
     .szh-accordion__item-content {
       display: block !important;
     }
+
     .szh-accordion__item-panel {
       font-size: 1.125rem;
       line-height: 1.77;
@@ -48,6 +55,7 @@ const FAQ = ({ data }) => {
       max-height: 0;
       opacity: 0;
     }
+
     .szh-accordion__item--expanded {
       .szh-accordion__item-panel {
         opacity: 1;
@@ -63,6 +71,7 @@ const FAQ = ({ data }) => {
       }
     }
   `;
+
   const faqTitle = css`
     .szh-accordion__item-btn {
       cursor: pointer;
