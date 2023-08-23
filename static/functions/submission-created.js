@@ -4,8 +4,9 @@ require('dotenv').config();
 const axios = require('axios');
 const { parse } = require('querystring');
 
-exports.handler = async (event, _context, callback) => {
+exports.handler = async (event, context) => {
   let data = {};
+
   try {
     data = JSON.parse(event.body).payload;
   } catch (e) {
@@ -24,7 +25,12 @@ exports.handler = async (event, _context, callback) => {
     console.log(event, _context, callback);
     console.log(process.env);
     callback(null, { statusCode: 200 });
-    return;
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Not at thirdandgrove.com ',
+      }),
+    };
   }
 
   /** Contact Form */
@@ -54,7 +60,12 @@ exports.handler = async (event, _context, callback) => {
         email,
         website,
       });
-      return;
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          error: 'error, no name, email or website sent.',
+        }),
+      };
     }
 
     try {
@@ -74,7 +85,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.log('error creating person', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const person_id = person.data && person.data.data.id;
@@ -93,7 +107,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.error('error creating deal', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const deal_id = deal.data && deal.data.data.id;
@@ -109,7 +126,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.error('error creating note', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
@@ -164,7 +184,12 @@ exports.handler = async (event, _context, callback) => {
         email,
         website,
       });
-      return;
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          error: 'error, no name, email or website sent.',
+        }),
+      };
     }
 
     try {
@@ -184,7 +209,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.log('error creating person', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const person_id = person.data && person.data.data.id;
@@ -203,7 +231,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.error('error creating deal', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const deal_id = deal.data && deal.data.data.id;
@@ -274,7 +305,10 @@ exports.handler = async (event, _context, callback) => {
         email,
         website,
       });
-      return;
+      return {
+        statusCode: 200,
+        body: JSON.stringify({}),
+      };
     }
 
     try {
@@ -294,7 +328,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.log('error creating person', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const person_id = person.data && person.data.data.id;
@@ -313,7 +350,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.error('error creating deal', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const deal_id = deal.data && deal.data.data.id;
@@ -329,7 +369,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.error('error creating note', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
@@ -384,7 +427,10 @@ exports.handler = async (event, _context, callback) => {
         email,
         website,
       });
-      return;
+      return {
+        statusCode: 200,
+        body: JSON.stringify({}),
+      };
     }
 
     try {
@@ -404,7 +450,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.log('error creating person', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const person_id = person.data && person.data.data.id;
@@ -423,7 +472,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.error('error creating deal', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const deal_id = deal.data && deal.data.data.id;
@@ -439,7 +491,10 @@ exports.handler = async (event, _context, callback) => {
       });
     } catch (err) {
       console.error('error creating note', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ err }),
+      };
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
@@ -573,5 +628,8 @@ exports.handler = async (event, _context, callback) => {
   }
   /** e-book Form */
 
-  callback(null, { statusCode: 200 });
+  return {
+    statusCode: 200,
+    body: JSON.stringify({}),
+  };
 };
