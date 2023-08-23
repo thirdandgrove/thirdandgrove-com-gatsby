@@ -91,11 +91,13 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    const formResponse = await fetch('/.netlify/functions/submission-created', {
+    const formResponse = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': formName, ...formState }),
     });
+
+    console.log(formResponse);
 
     if (!formResponse.ok) {
       const message = `An error has occured: ${formResponse.status}`;

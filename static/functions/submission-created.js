@@ -5,26 +5,15 @@ const axios = require('axios');
 const { parse } = require('querystring');
 
 exports.handler = async (event, context) => {
-  let data = {};
-
-  try {
-    data = JSON.parse(event.body).payload;
-  } catch (e) {
-    data = parse(event.body);
-  }
-
-  const form_name = data['form-name'];
+  const data = JSON.parse(event.body).payload;
+  const form_name = data.data['form-name'];
   const referrer = event.headers.referer;
   console.log(data);
-  console.log(event, _context, callback);
-  console.log(process.env);
+  console.log(event, context);
   console.log(form_name);
   console.log(referrer);
 
   if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
-    console.log(event, _context, callback);
-    console.log(process.env);
-    callback(null, { statusCode: 200 });
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -114,6 +103,7 @@ exports.handler = async (event, context) => {
     }
 
     const deal_id = deal.data && deal.data.data.id;
+
     try {
       await axios({
         url: `https://api.pipedrive.com/v1/notes?api_token=${PIPEDRIVE_KEY}`,
@@ -133,27 +123,34 @@ exports.handler = async (event, context) => {
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
-            url: referrer,
-            form: form_name,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              first_name,
+              last_name,
+              email,
+              phone,
+              website,
+              comments,
+              url: referrer,
+              form: form_name,
+            },
+          ],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating note', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
   }
   /** Contact Form */
 
@@ -250,31 +247,41 @@ exports.handler = async (event, context) => {
       });
     } catch (err) {
       console.error('error creating note', err);
-      callback(null, { statusCode: 200 });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
-            url: referrer,
-            form: form_name,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              first_name,
+              last_name,
+              email,
+              phone,
+              website,
+              comments,
+              url: referrer,
+              form: form_name,
+            },
+          ],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating deal', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
   }
   /** Drupal Support Form */
 
@@ -307,7 +314,9 @@ exports.handler = async (event, context) => {
       });
       return {
         statusCode: 200,
-        body: JSON.stringify({}),
+        body: JSON.stringify({
+          error: 'error, no name, email or website sent.',
+        }),
       };
     }
 
@@ -376,27 +385,34 @@ exports.handler = async (event, context) => {
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
-            url: referrer,
-            form: form_name,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              first_name,
+              last_name,
+              email,
+              phone,
+              website,
+              comments,
+              url: referrer,
+              form: form_name,
+            },
+          ],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating note', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
   }
   /** Shopify Plus Form */
 
@@ -499,26 +515,34 @@ exports.handler = async (event, context) => {
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
 
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
-            url: referrer,
-            form: form_name,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              first_name,
+              last_name,
+              email,
+              phone,
+              website,
+              comments,
+              url: referrer,
+              form: form_name,
+            },
+          ],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating note', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
   }
   /** DrupalCon Contact Form */
 
@@ -531,26 +555,42 @@ exports.handler = async (event, context) => {
       KLAVIYO_MAIN_LIST_ID,
     } = process.env;
 
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [{ email, url: referrer }],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating note', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
 
     /** SEND Newsletter TO MAIN LIST */
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [{ email, url: referrer }],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating note', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
   }
   /** Newsletter Form */
 
@@ -558,16 +598,23 @@ exports.handler = async (event, context) => {
   if (form_name === 'acquia-engage') {
     const { email } = data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_ACQUIA_ENGAGE } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [{ email, url: referrer }],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating note', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
   }
   /** acquia-engage Form */
 
@@ -587,27 +634,35 @@ exports.handler = async (event, context) => {
 
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON } = process.env;
 
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_DRUPALCON}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            email,
-            name,
-            addressOne,
-            addressTwo,
-            city,
-            state,
-            country,
-            zipcode,
-            url: referrer,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_DRUPALCON}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              email,
+              name,
+              addressOne,
+              addressTwo,
+              city,
+              state,
+              country,
+              zipcode,
+              url: referrer,
+            },
+          ],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating note', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
   }
   /** drupalcon Form */
 
@@ -615,16 +670,23 @@ exports.handler = async (event, context) => {
   if (form_name === 'ebook-form') {
     const { email, company } = data.data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_EBOOK } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_EBOOK}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, company, url: referrer }],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_EBOOK}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [{ email, company, url: referrer }],
+        }),
+      });
+    } catch (error) {
+      console.error('error creating note', error);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ error }),
+      };
+    }
   }
   /** e-book Form */
 
