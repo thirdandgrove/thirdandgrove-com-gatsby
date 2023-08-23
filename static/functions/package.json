@@ -6,7 +6,8 @@
   "main": "submission-created.js",
   "dependencies": {
     "axios": "^0.21.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.7.0"
   },
   "repository": {
     "type": "git",
