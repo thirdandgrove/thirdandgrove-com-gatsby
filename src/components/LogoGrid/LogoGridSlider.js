@@ -144,7 +144,7 @@ const LogoGridSlider = ({
 };
 
 LogoGridSlider.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   subtitle: PropTypes.string,
   logoset: PropTypes.string,
   backgroundColor: PropTypes.string,
