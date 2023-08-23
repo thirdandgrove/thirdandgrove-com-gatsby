@@ -3,6 +3,7 @@ require('dotenv').config();
 const axios = require('axios');
 
 const handler = async event => {
+  console.log(event);
   const data = JSON.parse(event.body).payload;
   const form_name = data.data['form-name'];
   const referrer = event.headers.referer;

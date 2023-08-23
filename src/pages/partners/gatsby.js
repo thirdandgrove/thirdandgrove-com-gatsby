@@ -133,65 +133,71 @@ const Gatsby = query => {
   );
 };
 
-export const query = graphql`{
-  insights: allInsight(
-    sort: {fields: created, order: DESC}
-    limit: 5
-    filter: {field_hidden: {eq: false}}
-  ) {
-    nodes {
-      id
-      title
-      field_inverse_header
-      field_image {
-        alt
-      }
-      created(formatString: "MMM D, YYYY")
-      path {
-        alias
-      }
-      relationships {
-        node_type {
-          name
-        }
-        uid {
-          name: display_name
-        }
+export const query = graphql`
+  {
+    insights: allInsight(
+      sort: { created: DESC }
+      limit: 5
+      filter: { field_hidden: { eq: false } }
+    ) {
+      nodes {
+        id
+        title
+        field_inverse_header
         field_image {
-          id
-          localFile {
-            publicURL
-            childImageSharp {
-              gatsbyImageData(width: 450, height: 400, layout: CONSTRAINED)
-            }
-          }
+          alt
         }
-        field_components {
-          ... on component__text {
-            relationships {
-              component_type {
-                name
+        created(formatString: "MMM D, YYYY")
+        path {
+          alias
+        }
+        relationships {
+          node_type {
+            name
+          }
+          uid {
+            name: display_name
+          }
+          field_image {
+            id
+            localFile {
+              publicURL
+              childImageSharp {
+                gatsbyImageData(width: 450, height: 400, layout: CONSTRAINED)
               }
-            }
-            field_body {
-              processed
             }
           }
-          ... on component__image {
-            id
-            field_image {
-              alt
-            }
-            relationships {
-              component_type {
-                name
+          field_components {
+            ... on component__text {
+              relationships {
+                component_type {
+                  name
+                }
               }
+              field_body {
+                processed
+              }
+            }
+            ... on component__image {
+              id
               field_image {
-                id
-                localFile {
-                  publicURL
-                  childImageSharp {
-                    gatsbyImageData(width: 630, height: 630, layout: CONSTRAINED)
+                alt
+              }
+              relationships {
+                component_type {
+                  name
+                }
+                field_image {
+                  id
+                  localFile {
+                    publicURL
+                    childImageSharp {
+                      gatsbyImageData(
+                        width: 630
+                        height: 630
+                        layout: CONSTRAINED
+                      )
+                    }
                   }
                 }
               }
@@ -201,6 +207,6 @@ export const query = graphql`{
       }
     }
   }
-}`;
+`;
 
 export default Gatsby;

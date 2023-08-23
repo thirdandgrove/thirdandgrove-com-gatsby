@@ -105,7 +105,7 @@ export const query = graphql`
       }
     }
     allCaseStudy(
-      sort: { fields: created, order: DESC }
+      sort: { created: DESC }
       limit: 8
       filter: { field_hidden: { eq: false } }
     ) {
@@ -114,7 +114,7 @@ export const query = graphql`
       }
     }
     allInsight(
-      sort: { fields: created, order: DESC }
+      sort: { created: DESC }
       limit: 4
       filter: { field_hidden: { eq: false } }
     ) {

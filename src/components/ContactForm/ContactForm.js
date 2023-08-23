@@ -100,7 +100,8 @@ const ContactForm = ({ formName, altStyle }) => {
     console.log(formResponse);
 
     if (!formResponse.ok) {
-      const message = `An error has occured: ${formResponse.status}`;
+      const body = await formResponse.text();
+      const message = `An error has occured: ${body}`;
       throw new Error(message);
     }
 

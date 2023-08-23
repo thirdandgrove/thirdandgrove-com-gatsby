@@ -242,7 +242,7 @@ export const query = graphql`
       }
     }
     allCaseStudy(
-      sort: { fields: created, order: DESC }
+      sort: { created: DESC }
       limit: 1
       filter: { field_hidden: { eq: false }, title: { eq: "VMware" } }
     ) {

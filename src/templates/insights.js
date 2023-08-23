@@ -156,7 +156,7 @@ export const query = graphql`
         }
         id: { ne: $PostId }
       }
-      sort: { fields: created, order: DESC }
+      sort: { created: DESC }
     ) {
       nodes {
         ...InsightFragment
