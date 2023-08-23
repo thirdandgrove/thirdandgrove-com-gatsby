@@ -8,7 +8,9 @@ const handler = async event => {
   const form_name = data.data['form-name']
     ? data.data['form-name']
     : data['form_name'];
-  const referrer = event.headers.referer;
+  const referrer = event.headers.referer
+    ? event.headers.referer
+    : data.data.referrer;
   console.log(`Received a submission: ${form_name}`);
 
   if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
