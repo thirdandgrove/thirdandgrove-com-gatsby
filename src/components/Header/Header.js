@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from 'gatsby';
 
 import TopNav from '../TopNav';
@@ -357,111 +357,109 @@ const Header = ({
     setLoaded('block');
   }, []);
 
-  return (
-    <>
-      <SEO
-        title={metaTitle || title}
-        description={description}
-        image={image}
-        noIndex={noIndex}
-        color={color}
-      />
-      <TopNav
-        fill={fontColor}
-        hideNav={hideNav}
-        banner={banner}
-        navLink={navLink}
-      />
-      <FullWidthSection
-        css={[sectionCSS, styles]}
-        height={height}
-        minHeight={mobileMinHeight}
-      >
-        {hasHeroLogo && (
-          <div
-            css={css`
-              margin-bottom: 12px;
-              display: ${loaded};
-            `}
-          >
-            {heroLogo ? (
-              <Img fluid={heroLogo} alt={heroLogoAlt} />
-            ) : loaded === 'block' && isMobile ? (
-              <ThirdAndGrove
-                css={css`
-                  height: 22px;
-                  fill: ${fontColor};
-                `}
-              />
-            ) : (
-              <TagLogo
-                css={css`
-                  fill: ${fontColor};
-                  height: 50px;
-                `}
-              />
-            )}
-          </div>
-        )}
+  return <>
+    <SEO
+      title={metaTitle || title}
+      description={description}
+      image={image}
+      noIndex={noIndex}
+      color={color}
+    />
+    <TopNav
+      fill={fontColor}
+      hideNav={hideNav}
+      banner={banner}
+      navLink={navLink}
+    />
+    <FullWidthSection
+      css={[sectionCSS, styles]}
+      height={height}
+      minHeight={mobileMinHeight}
+    >
+      {hasHeroLogo && (
+        <div
+          css={css`
+            margin-bottom: 12px;
+            display: ${loaded};
+          `}
+        >
+          {heroLogo ? (
+            <GatsbyImage image={heroLogo} alt={heroLogoAlt} />
+          ) : loaded === 'block' && isMobile ? (
+            <ThirdAndGrove
+              css={css`
+                height: 22px;
+                fill: ${fontColor};
+              `}
+            />
+          ) : (
+            <TagLogo
+              css={css`
+                fill: ${fontColor};
+                height: 50px;
+              `}
+            />
+          )}
+        </div>
+      )}
 
-        {label && (
-          <span data-cy='labelText' css={headerlabel}>
-            {label}
-          </span>
-        )}
-        {title && (
-          <h1 data-cy='titleText' className='balance-text' css={headerTitle}>
-            {title}
-          </h1>
-        )}
-        {subTitle && (
-          <span data-cy='labelText' css={headerSubTitle}>
-            {subTitle}
-          </span>
-        )}
-        {body && (
-          <span
-            data-cy='labelText'
-            css={headerSubTitle}
-            dangerouslySetInnerHTML={{ __html: body }}
-          />
-        )}
-        {linksA && (
-          <div css={linkStylesA}>
-            {linksA.map(l => (
-              <a key={l.text} href={l.url}>
-                {l.text}
-              </a>
-            ))}
-          </div>
-        )}
-        {cta && (
-          <div>
-            {cta.map(l => (
-              <Button
-                key={l.text}
-                type='button'
-                fontColor={textColor}
-                css={btnStyles}
-              >
-                <Link to={l.url.replace('entity:', '')}>{l.text}</Link>
-              </Button>
-            ))}
-          </div>
-        )}
-        {linksB && (
-          <div css={linkStylesB}>
-            {linksB.map(l => (
-              <a key={l.text} href={l.url}>
-                <img src={getImageSrc(l.text.toLowerCase())} alt={l.text} />
-              </a>
-            ))}
-          </div>
-        )}
-        {children && children}
-      </FullWidthSection>
-    </>
-  );
+      {label && (
+        <span data-cy='labelText' css={headerlabel}>
+          {label}
+        </span>
+      )}
+      {title && (
+        <h1 data-cy='titleText' className='balance-text' css={headerTitle}>
+          {title}
+        </h1>
+      )}
+      {subTitle && (
+        <span data-cy='labelText' css={headerSubTitle}>
+          {subTitle}
+        </span>
+      )}
+      {body && (
+        <span
+          data-cy='labelText'
+          css={headerSubTitle}
+          dangerouslySetInnerHTML={{ __html: body }}
+        />
+      )}
+      {linksA && (
+        <div css={linkStylesA}>
+          {linksA.map(l => (
+            <a key={l.text} href={l.url}>
+              {l.text}
+            </a>
+          ))}
+        </div>
+      )}
+      {cta && (
+        <div>
+          {cta.map(l => (
+            <Button
+              key={l.text}
+              type='button'
+              fontColor={textColor}
+              css={btnStyles}
+            >
+              <Link to={l.url.replace('entity:', '')}>{l.text}</Link>
+            </Button>
+          ))}
+        </div>
+      )}
+      {linksB && (
+        <div css={linkStylesB}>
+          {linksB.map(l => (
+            <a key={l.text} href={l.url}>
+              <img src={getImageSrc(l.text.toLowerCase())} alt={l.text} />
+            </a>
+          ))}
+        </div>
+      )}
+      {children && children}
+    </FullWidthSection>
+  </>;
 };
 
 // This is exported for use in layout.js.

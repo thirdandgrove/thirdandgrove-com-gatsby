@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import { css } from '@emotion/react';
 import { navigate } from 'gatsby';
 
@@ -48,16 +48,13 @@ const TextImage = ({ data }) => {
     <SplitSection css={sectionStyle} gridTemplateColumns='45% 49%'>
       <section>
         {data.relationships.field_image.localFile.childImageSharp ? (
-          <Img
-            fluid={
-              data.relationships.field_image.localFile.childImageSharp.fluid
-            }
+          <GatsbyImage
+            image={data.relationships.field_image.localFile.childImageSharp.gatsbyImageData}
             alt={data.field_image.alt}
             css={css`
               margin-bottom: 40px;
               padding: 0;
-            `}
-          />
+            `} />
         ) : (
           <div
             css={css`
@@ -117,16 +114,13 @@ const TextImage = ({ data }) => {
       </section>
       <section>
         {data.relationships.field_image.localFile.childImageSharp ? (
-          <Img
-            fluid={
-              data.relationships.field_image.localFile.childImageSharp.fluid
-            }
+          <GatsbyImage
+            image={data.relationships.field_image.localFile.childImageSharp.gatsbyImageData}
             alt={data.field_image.alt}
             css={css`
               margin-bottom: 40px;
               padding: 0;
-            `}
-          />
+            `} />
         ) : (
           <div
             css={css`

@@ -1,14 +1,10 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import Img from 'gatsby-image';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-import HeartIcon from '../../images/about/heart_icon.png';
 
 import { fonts, weights, mediaQueries, container } from '../../styles';
-import { ensureTrailingSlash } from '../../util';
 
 const TestimonialPreviewSlide = ({ article }) => {
   const Card = styled.div`

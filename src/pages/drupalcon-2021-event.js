@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import FullWidthSection from '../components/FullWidthSection';
 import SplitSection from '../components/SplitSection';
@@ -23,39 +23,33 @@ const Drupalcon2021Event = ({ data }) => {
     'https://events.drupal.org/drupalcon2021'
   );
 
-  const {
-    header,
-    booth,
-    tag,
-    liveQas,
-    quote,
-    swag,
-  } = data.allDrupalconJson.edges[0].node;
+  const { header, booth, tag, liveQas, quote, swag } =
+    data.allDrupalconJson.edges[0].node;
 
   const images = data.allFile.nodes;
 
   const getSrc = (name, type) => {
     const image = images.find(img => img.name === name);
     let src = '';
-    switch (true) {
-      case type === 'leader':
-        src = image.childImageSharp.fluid;
+    switch (type) {
+      case 'leader':
+        src = image.childImageSharp.gatsbyImageData;
         break;
 
-      case type === 'childImageTypeA':
-        src = image.childImageTypeA.fluid;
+      case 'childImageTypeA':
+        src = image.childImageTypeA.gatsbyImageData;
         break;
 
-      case type === 'childImageTypeB':
-        src = image.childImageTypeB.fluid;
+      case 'childImageTypeB':
+        src = image.childImageTypeB.gatsbyImageData;
         break;
 
-      case type === 'svg':
+      case 'svg':
         src = image.publicURL;
         break;
 
       default:
-        src = image.childImageSharp.fluid;
+        src = image.childImageSharp.gatsbyImageData;
         break;
     }
     return src;
@@ -92,7 +86,6 @@ const Drupalcon2021Event = ({ data }) => {
         setExploreLink('https://events.drupal.org/drupalcon2021');
       }
     }
-    getLinks();
   }, []);
 
   return (
@@ -250,9 +243,9 @@ const Drupalcon2021Event = ({ data }) => {
           </div>
         )}
         <div>
-          <Img
+          <GatsbyImage
+            image={getSrc('TAG-Webcam-Cover-NEW', 'childImageTypeB')}
             alt='Third and Grove Web Camera Cover'
-            fluid={getSrc('TAG-Webcam-Cover-NEW', 'childImageTypeB')}
             className='cc-image'
           />
           <h3
@@ -312,9 +305,9 @@ const Drupalcon2021Event = ({ data }) => {
           `}
         >
           <div style={{ width: '150px', margin: '0 auto 2rem' }}>
-            <Img
+            <GatsbyImage
+              image={getSrc('Silver_sponsor_0', 'childImageTypeA')}
               alt='DrupalCon Silver Sponsor'
-              fluid={getSrc('Silver_sponsor_0', 'childImageTypeA')}
               objectFit='contain'
               imgStyle={{
                 objectFit: 'contain',
@@ -451,7 +444,6 @@ const Drupalcon2021Event = ({ data }) => {
                 <strong>
                   {title}
                   <br />
-                  <hr />
                   <span>{time}</span>
                 </strong>
               </p>
@@ -487,24 +479,27 @@ export const query = graphql`
         name
         publicURL
         childImageSharp {
-          fluid(cropFocus: NORTH, maxHeight: 335, maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            height: 335
+            width: 335
+            transformOptions: { cropFocus: NORTH }
+            layout: CONSTRAINED
+          )
         }
         childImageTypeA: childImageSharp {
-          fluid(maxWidth: 335) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(
+            width: 335
+            transformOptions: { cropFocus: CENTER }
+            layout: CONSTRAINED
+          )
         }
         childImageTypeB: childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
     allInsight(
-      sort: { fields: created, order: DESC }
+      sort: { created: DESC }
       limit: 4
       filter: { field_hidden: { eq: false } }
     ) {

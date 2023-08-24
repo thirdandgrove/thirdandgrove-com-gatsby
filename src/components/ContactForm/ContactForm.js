@@ -18,16 +18,16 @@ const ContactForm = ({ formName, altStyle }) => {
     name: '',
     phone: '',
     website: '',
-    botField: '',
   });
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
+  let formData = new FormData();
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
+    formData.append(event.target.name, event.target.value);
   };
 
   const verifyToken = async token => {
@@ -91,38 +91,62 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    // const token = await executeRecaptcha('form');
+    const formResponse = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': formName, ...formState }),
+    });
 
-    if (token) {
-      const validToken = await verifyToken(token);
+    console.log(formResponse);
 
-      if (validToken.success) {
-        const formResponse = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({ 'form-name': formName, ...formState }),
-        });
-
-        if (!formResponse.ok) {
-          const message = `An error has occured: ${formResponse.status}`;
-          throw new Error(message);
-        }
-
-        if (formResponse.ok) {
-          updateForm({
-            comments: 'Thank you for your inquiry.',
-            email: '',
-            name: '',
-            phone: '',
-            website: '',
-          });
-          setHasSubmitted(true);
-        }
-        console.log('Hurray!! you have submitted the form');
-      } else {
-        console.log('Sorry!! Token invalid');
-      }
+    if (!formResponse.ok) {
+      const body = await formResponse.text();
+      const message = `An error has occured: ${body}`;
+      throw new Error(message);
     }
+
+    if (formResponse.ok) {
+      updateForm({
+        comments: 'Thank you for your inquiry.',
+        email: '',
+        name: '',
+        phone: '',
+        website: '',
+      });
+      setHasSubmitted(true);
+    }
+
+    // if (token) {
+    //   try {
+    //     const validToken = await verifyToken(token);
+    //     if (validToken.success) {
+    //       const formResponse = await fetch( '/.netlify/functions/submission-created', {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //         body: encode({ 'form-name': formName, ...formState }),
+    //       });
+
+    //       if (!formResponse.ok) {
+    //         const message = `An error has occured: ${formResponse.status}`;
+    //         throw new Error(message);
+    //       }
+
+    //       if (formResponse.ok) {
+    //         updateForm({
+    //           comments: 'Thank you for your inquiry.',
+    //           email: '',
+    //           name: '',
+    //           phone: '',
+    //           website: '',
+    //         });
+    //         setHasSubmitted(true);
+    //       }
+    //       console.log('Hurray!! you have submitted the form');
+    //     }
+    //   } catch (error) {
+    //     console.log('Sorry!! Token invalid');
+    //   }
+    // }
   };
 
   const inputStyles = css`

@@ -84,31 +84,37 @@ const ProjectPreview = ({ project, minHeight }) => {
   // Assuming type-a is the default.
   const images = {
     primary: {
-      mobile: primaryImageData.childImageMobile,
-      phoneLarge: primaryImageData.childImageTypeA,
+      mobile: primaryImageData.childImageMobile.gatsbyImageData,
+      phoneLarge: primaryImageData.childImageTypeA.gatsbyImageData,
       alt: project.field_image.alt,
     },
     secondary: {
-      mobile: secondaryImageData.childImageMobile,
-      phoneLarge: secondaryImageData.childImageTypeA,
+      mobile: secondaryImageData.childImageMobile.gatsbyImageData,
+      phoneLarge: secondaryImageData.childImageTypeA.gatsbyImageData,
       alt: project.field_secondary_image.alt,
     },
     tertiary: {
-      mobile: tertiaryImageData.childImageMobile,
-      phoneLarge: tertiaryImageData.childImageTypeA,
+      mobile: tertiaryImageData.childImageMobile.gatsbyImageData,
+      phoneLarge: tertiaryImageData.childImageTypeA.gatsbyImageData,
       alt: project.field_tertiary_image.alt,
     },
   };
   switch (project.field_image_arrangement) {
     case 'type-b':
-      images.primary.phoneLarge = primaryImageData.childImageTypeB;
-      images.secondary.phoneLarge = secondaryImageData.childImageTypeB;
-      images.tertiary.phoneLarge = tertiaryImageData.childImageTypeB;
+      images.primary.phoneLarge =
+        primaryImageData.childImageTypeB.gatsbyImageData;
+      images.secondary.phoneLarge =
+        secondaryImageData.childImageTypeB.gatsbyImageData;
+      images.tertiary.phoneLarge =
+        tertiaryImageData.childImageTypeB.gatsbyImageData;
       break;
     case 'type-c':
-      images.primary.phoneLarge = primaryImageData.childImageTypeC;
-      images.secondary.phoneLarge = secondaryImageData.childImageTypeC;
-      images.tertiary.phoneLarge = tertiaryImageData.childImageTypeC;
+      images.primary.phoneLarge =
+        primaryImageData.childImageTypeC.gatsbyImageData;
+      images.secondary.phoneLarge =
+        secondaryImageData.childImageTypeC.gatsbyImageData;
+      images.tertiary.phoneLarge =
+        tertiaryImageData.childImageTypeC.gatsbyImageData;
       break;
     default:
       break;

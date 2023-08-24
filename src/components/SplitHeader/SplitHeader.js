@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import TopNav from '../TopNav';
 import SEO from '../seo';
@@ -356,11 +356,12 @@ const SplitHeader = ({
 
           <div className='column-two'>
             {splitHeroImage && (
-              <Img
-                fluid={
+              <GatsbyImage
+                image={
                   !isMobile
-                    ? splitHeroImage.localFile.childImageLandscape.fluid
-                    : splitHeroImage.localFile.childImageSquare.fluid
+                    ? splitHeroImage.localFile.childImageLandscape
+                        .gatsbyImageData
+                    : splitHeroImage.localFile.childImageSquare.gatsbyImageData
                 }
                 alt={imageAlt}
                 css={css`

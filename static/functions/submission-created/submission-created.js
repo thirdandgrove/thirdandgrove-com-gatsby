@@ -1,22 +1,23 @@
-/* eslint-disable no-console */
-/* eslint-disable camelcase */
+// // optionally configure local env vars
 require('dotenv').config();
 const axios = require('axios');
 
-exports.handler = async (event, _context, callback) => {
+const handler = async event => {
+  console.log(event);
   const data = JSON.parse(event.body).payload;
-  const { form_name } = data;
-  const { referrer } = data.data;
-
-  console.log(event, _context, callback);
-  console.log(process.env);
-  console.log(form_name);
+  const form_name = data.data['form-name']
+    ? data.data['form-name']
+    : data['form_name'];
+  const referrer = event.headers.referer
+    ? event.headers.referer
+    : data.data.referrer;
+  console.log(`Received a submission: ${form_name}`);
 
   if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
-    console.log(event, _context, callback);
-    console.log(process.env);
-    callback(null, { statusCode: 200 });
-    return;
+    return {
+      statusCode: 422,
+      body: String('Beep, boop, you just got serverless.'),
+    };
   }
 
   /** Contact Form */
@@ -46,7 +47,10 @@ exports.handler = async (event, _context, callback) => {
         email,
         website,
       });
-      return;
+      return {
+        statusCode: 422,
+        body: String('error, no name, email or website sent.'),
+      };
     }
 
     try {
@@ -64,12 +68,14 @@ exports.handler = async (event, _context, callback) => {
           owner_id: PIPEDRIVE_USER_ID,
         }),
       });
-    } catch (err) {
-      console.log('error creating person', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const person_id = person.data && person.data.data.id;
+
     try {
       deal = await axios({
         url: `https://api.pipedrive.com/v1/deals?api_token=${PIPEDRIVE_KEY}`,
@@ -83,12 +89,14 @@ exports.handler = async (event, _context, callback) => {
           user_id: PIPEDRIVE_USER_ID,
         }),
       });
-    } catch (err) {
-      console.error('error creating deal', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const deal_id = deal.data && deal.data.data.id;
+
     try {
       await axios({
         url: `https://api.pipedrive.com/v1/notes?api_token=${PIPEDRIVE_KEY}`,
@@ -99,33 +107,39 @@ exports.handler = async (event, _context, callback) => {
           deal_id,
         }),
       });
-    } catch (err) {
-      console.error('error creating note', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
-            url: referrer,
-            form: form_name,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              first_name,
+              last_name,
+              email,
+              phone,
+              website,
+              comments,
+              url: referrer,
+              form: form_name,
+            },
+          ],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
+    }
   }
   /** Contact Form */
 
@@ -156,7 +170,12 @@ exports.handler = async (event, _context, callback) => {
         email,
         website,
       });
-      return;
+      return {
+        statusCode: 422,
+        body: JSON.stringify({
+          error: 'error, no name, email or website sent.',
+        }),
+      };
     }
 
     try {
@@ -174,9 +193,10 @@ exports.handler = async (event, _context, callback) => {
           owner_id: PIPEDRIVE_USER_ID,
         }),
       });
-    } catch (err) {
-      console.log('error creating person', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.log('error creating person', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const person_id = person.data && person.data.data.id;
@@ -193,9 +213,10 @@ exports.handler = async (event, _context, callback) => {
           user_id: PIPEDRIVE_USER_ID,
         }),
       });
-    } catch (err) {
-      console.error('error creating deal', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const deal_id = deal.data && deal.data.data.id;
@@ -209,33 +230,39 @@ exports.handler = async (event, _context, callback) => {
           deal_id,
         }),
       });
-    } catch (err) {
-      console.error('error creating note', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
-            url: referrer,
-            form: form_name,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              first_name,
+              last_name,
+              email,
+              phone,
+              website,
+              comments,
+              url: referrer,
+              form: form_name,
+            },
+          ],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
+    }
   }
   /** Drupal Support Form */
 
@@ -266,7 +293,12 @@ exports.handler = async (event, _context, callback) => {
         email,
         website,
       });
-      return;
+      return {
+        statusCode: 422,
+        body: JSON.stringify({
+          error: 'error, no name, email or website sent.',
+        }),
+      };
     }
 
     try {
@@ -284,9 +316,10 @@ exports.handler = async (event, _context, callback) => {
           owner_id: PIPEDRIVE_USER_ID,
         }),
       });
-    } catch (err) {
-      console.log('error creating person', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const person_id = person.data && person.data.data.id;
@@ -303,9 +336,10 @@ exports.handler = async (event, _context, callback) => {
           user_id: PIPEDRIVE_USER_ID,
         }),
       });
-    } catch (err) {
-      console.error('error creating deal', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const deal_id = deal.data && deal.data.data.id;
@@ -319,33 +353,39 @@ exports.handler = async (event, _context, callback) => {
           deal_id,
         }),
       });
-    } catch (err) {
-      console.error('error creating note', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
-            url: referrer,
-            form: form_name,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              first_name,
+              last_name,
+              email,
+              phone,
+              website,
+              comments,
+              url: referrer,
+              form: form_name,
+            },
+          ],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
+    }
   }
   /** Shopify Plus Form */
 
@@ -376,7 +416,12 @@ exports.handler = async (event, _context, callback) => {
         email,
         website,
       });
-      return;
+      return {
+        statusCode: 422,
+        body: JSON.stringify({
+          error: 'error, no name, email or website sent.',
+        }),
+      };
     }
 
     try {
@@ -394,9 +439,10 @@ exports.handler = async (event, _context, callback) => {
           owner_id: PIPEDRIVE_USER_ID,
         }),
       });
-    } catch (err) {
-      console.log('error creating person', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const person_id = person.data && person.data.data.id;
@@ -413,9 +459,10 @@ exports.handler = async (event, _context, callback) => {
           user_id: PIPEDRIVE_USER_ID,
         }),
       });
-    } catch (err) {
-      console.error('error creating deal', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const deal_id = deal.data && deal.data.data.id;
@@ -429,65 +476,81 @@ exports.handler = async (event, _context, callback) => {
           deal_id,
         }),
       });
-    } catch (err) {
-      console.error('error creating note', err);
-      callback(null, { statusCode: 200 });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
     }
 
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
 
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
-            url: referrer,
-            form: form_name,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              first_name,
+              last_name,
+              email,
+              phone,
+              website,
+              comments,
+              url: referrer,
+              form: form_name,
+            },
+          ],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating deal', error);
+      return { statusCode: 422, body: String(error) };
+    }
   }
   /** DrupalCon Contact Form */
 
   /** Newsletter Form */
   if (form_name === 'newsletter') {
     const { email } = data;
-    const {
-      KLAVIYO_API_KEY,
-      KLAVIYO_LIST_ID,
-      KLAVIYO_MAIN_LIST_ID,
-    } = process.env;
+    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID, KLAVIYO_MAIN_LIST_ID } =
+      process.env;
 
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [{ email, url: referrer }],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
+    }
 
     /** SEND Newsletter TO MAIN LIST */
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [{ email, url: referrer }],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
+    }
   }
   /** Newsletter Form */
 
@@ -495,16 +558,21 @@ exports.handler = async (event, _context, callback) => {
   if (form_name === 'acquia-engage') {
     const { email } = data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_ACQUIA_ENGAGE } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [{ email, url: referrer }],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
+    }
   }
   /** acquia-engage Form */
 
@@ -524,27 +592,33 @@ exports.handler = async (event, _context, callback) => {
 
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON } = process.env;
 
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_DRUPALCON}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
-          {
-            email,
-            name,
-            addressOne,
-            addressTwo,
-            city,
-            state,
-            country,
-            zipcode,
-            url: referrer,
-          },
-        ],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_DRUPALCON}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [
+            {
+              email,
+              name,
+              addressOne,
+              addressTwo,
+              city,
+              state,
+              country,
+              zipcode,
+              url: referrer,
+            },
+          ],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
+    }
   }
   /** drupalcon Form */
 
@@ -552,18 +626,46 @@ exports.handler = async (event, _context, callback) => {
   if (form_name === 'ebook-form') {
     const { email, company } = data.data;
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_EBOOK } = process.env;
-
-    await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_EBOOK}/subscribe`,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, company, url: referrer }],
-      }),
-    }).catch(console.error);
+    try {
+      await axios({
+        url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_EBOOK}/subscribe`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          api_key: KLAVIYO_API_KEY,
+          profiles: [{ email, company, url: referrer }],
+        }),
+      });
+      console.log(`Submitted:\n ${form_name}`);
+    } catch (error) {
+      console.error('error creating note', error);
+      return { statusCode: 422, body: String(error) };
+    }
   }
   /** e-book Form */
 
-  callback(null, { statusCode: 200 });
+  return {
+    statusCode: 200,
+    body: JSON.stringify({}),
+  };
+
+  // try {
+  //   const response = await fetch(
+  //     'https://api.buttondown.email/v1/subscribers',
+  //     {
+  //       method: 'POST',
+  //       headers: {
+  //         Authorization: `Token ${EMAIL_TOKEN}`,
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ email }),
+  //     }
+  //   );
+  //   const data = await response.json();
+  //   console.log(`Submitted to Buttondown:\n ${data}`);
+  // } catch (error) {
+  //   return { statusCode: 422, body: String(error) };
+  // }
 };
+
+module.exports = { handler };
