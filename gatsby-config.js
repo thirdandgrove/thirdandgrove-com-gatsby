@@ -21,8 +21,9 @@ module.exports = {
       resolve: `gatsby-plugin-csp`,
       options: {
         disableOnDev: true,
-        mergeScriptHashes: false,
-        mergeStyleHashes: false,
+        mergeScriptHashes: true,
+        mergeStyleHashes: true,
+        mergeDefaultDirectives: true,
         directives: {
           'default-src': `'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com`,
           'script-src': `'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com`,
@@ -106,7 +107,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify`,
       options: {
         transformHeaders: (headers, path) => {
-          if (path.endsWith('/')) {
+          if (path?.endsWith('/')) {
             const filePath = `./public${path}index.html`;
             const rawHtml = readFileSync(filePath).toString();
             const csp =
