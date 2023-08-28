@@ -21,9 +21,8 @@ module.exports = {
       resolve: `gatsby-plugin-csp`,
       options: {
         disableOnDev: true,
-        mergeScriptHashes: true,
-        mergeStyleHashes: true,
-        mergeDefaultDirectives: true,
+        mergeScriptHashes: false,
+        mergeStyleHashes: false,
         directives: {
           'default-src': `'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com`,
           'script-src': `'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com`,
@@ -107,7 +106,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify`,
       options: {
         transformHeaders: (headers, path) => {
-          if (path?.endsWith('/')) {
+          if (path.endsWith('/')) {
             const filePath = `./public${path}index.html`;
             const rawHtml = readFileSync(filePath).toString();
             const csp =
@@ -126,12 +125,17 @@ module.exports = {
           return headers;
         },
         headers: {
-          '/*.woff': ['Cache-Control:  max-age=31536000'],
-          '/*.woff2': ['Cache-Control:  max-age=31536000'],
-          '/*.png': ['Cache-Control:  max-age=31536000'],
-          '/*.svg': ['Cache-Control:  max-age=31536000'],
+          '/*': [
+            "Content-Security-Policy: default-src 'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com",
+            "Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com",
+            "Content-Security-Policy: style-src 'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net",
+            "Content-Security-Policy: img-src 'self' data: www.google-analytics.com www.google.com.ec https://www.google.com/ads https://www.google.com/pagead https://cdn.linkedin.oribi.io https://px.ads.linkedin.com https://www.google.com/ads/ga-audiences https://tr-rc.lfeeder.com",
+            "Content-Security-Policy: font-src 'self' data: fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net",
+            "Content-Security-Policy: connect-src 'self' https://www.thirdandgrove.com analytics.google.com extreme-ip-lookup.com stats.g.doubleclick.net www.google-analytics.com https://cdn.linkedin.oribi.io https://px.ads.linkedin.com",
+          ],
         },
         mergeSecurityHeaders: true,
+        mergeLinkHeaders: true,
         mergeCachingHeaders: true,
         generateMatchPathRewrites: true,
       },
