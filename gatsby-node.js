@@ -206,8 +206,10 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  insights.nodes.map(insightData =>
+  insights.nodes.map((insightData, index) =>
     createPage({
+      // index is zero-based index
+      defer: index + 1 > 100,
       path: ensureTrailingSlash(insightData.path.alias),
       component: path.resolve(`src/templates/insights.js`),
       context: {
@@ -219,6 +221,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   legacyInsights.nodes.map(legacyInsight =>
     createPage({
+      defer: true,
       path: ensureTrailingSlash(legacyInsight.path.alias),
       component: path.resolve(`src/templates/legacyInsights.js`),
       context: {
@@ -285,23 +288,11 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         path: require.resolve('path-browserify'),
         crypto: require.resolve('crypto-browserify'),
         stream: require.resolve('stream-browserify'),
-        https: require.resolve("https-browserify"),
-        http: require.resolve("stream-http"),
-        querystring: require.resolve("querystring-es3"),
+        https: require.resolve('https-browserify'),
+        http: require.resolve('stream-http'),
+        querystring: require.resolve('querystring-es3'),
         fs: false,
       },
     },
   });
-};
-
-exports.onPostBuild = async gatsbyNodeHelpers => {
-  const { reporter } = gatsbyNodeHelpers;
-
-  const reportOut = report => {
-    const { stderr, stdout } = report;
-    if (stderr) reporter.error(stderr);
-    if (stdout) reporter.info(stdout);
-  };
-
-  reportOut(await exec('cd ./public/functions && npm install'));
 };
