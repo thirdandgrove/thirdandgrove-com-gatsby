@@ -105,25 +105,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
-        transformHeaders: (headers, path) => {
-          if (path.endsWith('/')) {
-            const filePath = `./public${path}index.html`;
-            const rawHtml = readFileSync(filePath).toString();
-            const csp =
-              /<meta http-equiv="Content-Security-Policy" content="(.*?)"\/>/
-                .exec(rawHtml)[1]
-                .replace(/&#x27;/g, `'`);
-            headers.push(`Content-Security-Policy: ${csp}`);
-            writeFileSync(
-              filePath,
-              rawHtml.replace(
-                /<meta http-equiv="Content-Security-Policy" content=".*?"\/>/g,
-                ''
-              )
-            );
-          }
-          return headers;
-        },
         headers: {
           '/*.woff': ['Cache-Control:  max-age=31536000'],
           '/*.woff2': ['Cache-Control:  max-age=31536000'],
