@@ -10,9 +10,6 @@
   command = "gatsby build"
   functions = "functions"
 
-[[plugins]]
-  package = "@netlify/plugin-gatsby"
-
 [context.production]
   environment = { PROCESS_FORM = "true" }
 
