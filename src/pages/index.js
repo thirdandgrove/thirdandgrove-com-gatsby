@@ -204,7 +204,7 @@ export const query = graphql`
               localFile {
                 publicURL
                 childImageSharp {
-                  gatsbyImageData(width: 630, height: 630, layout: FIXED)
+                  gatsbyImageData(width: 500, height: 500, layout: FIXED)
                 }
               }
             }
@@ -287,7 +287,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            gatsbyImageData(width: 850, height: 850, layout: FIXED)
+            gatsbyImageData(width: 500, height: 500, layout: FIXED)
           }
           childImageMobile: childImageSharp {
             gatsbyImageData(width: 1, height: 1, layout: FIXED)
@@ -323,7 +323,7 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            gatsbyImageData(width: 850, height: 850, layout: FIXED)
+            gatsbyImageData(width: 500, height: 500, layout: FIXED)
           }
           childImageMobile: childImageSharp {
             gatsbyImageData(width: 1, height: 1, layout: FIXED)
