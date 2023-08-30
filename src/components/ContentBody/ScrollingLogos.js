@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { fonts, mediaQueries } from '../../styles';
 import { mediaQueriesMax } from '../../styles/css-utils';
@@ -20,14 +19,9 @@ const ScrollingLogos = ({ data }) => {
     infinite: true,
     speed: 500,
     autoplay: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     responsive: [
-      {
-        breakpoint: 20000,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1,
-        },
-      },
       {
         breakpoint: 1200,
         settings: {
@@ -127,10 +121,14 @@ const ScrollingLogos = ({ data }) => {
       css={css`
         padding-left: 0;
         padding-right: 0;
-        margin-top: 1em;
+        margin-top: 2em;
+
         ${mediaQueries.desktop} {
+          margin-top: 4em;
         }
-        ${mediaQueriesMax.xs} {
+
+        h3 {
+          line-height: 1.55;
         }
       `}
     >
