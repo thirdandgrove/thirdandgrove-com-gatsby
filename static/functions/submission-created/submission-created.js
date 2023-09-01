@@ -20,17 +20,132 @@ const handler = async event => {
     };
   }
 
-  /** Contact Form */
-  if (form_name === 'contact') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
+  // PIPEDRIVE VARS
+  const {
+    PIPEDRIVE_USER_ID,
+    PIPEDRIVE_KEY,
+    DEAL_DETAILS,
+    DEAL_LEAD_SOURCE,
+    PERSON_WEBSITE,
+  } = process.env;
 
+  /** Contact Form */
+  if (form_name === 'contact-update') {
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
+
+    const humanFields = data.ordered_human_fields.reduce((acc, item) => {
+      acc[item.name] = item.value;
+      return acc;
+    }, {});
+
+    const {
+      howDidYouHearAboutUs,
+      workEmail,
+      whatDidYouNeedHelpWith,
+    } = humanFields;
+
+    let person;
+    let deal;
+    // check for required fields
+    if (!howDidYouHearAboutUs || !workEmail || !whatDidYouNeedHelpWith) {
+      console.error('error, no inputs sent.', {
+        howDidYouHearAboutUs,
+        workEmail,
+        whatDidYouNeedHelpWith,
+      });
+      return;
+    }
+
+    try {
+      person = await axios({
+        url: `https://api.pipedrive.com/v1/persons?api_token=${PIPEDRIVE_KEY}`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          howDidYouHearAboutUs,
+          workEmail,
+          whatDidYouNeedHelpWith,
+          owner_id: PIPEDRIVE_USER_ID,
+        }),
+      });
+    } catch (err) {
+      console.log('error creating person', err);
+      callback(null, { statusCode: 200 });
+    }
+
+    const person_id = person.data && person.data.data.id;
+    try {
+      deal = await axios({
+        url: `https://api.pipedrive.com/v1/deals?api_token=${PIPEDRIVE_KEY}`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          title: `[Webform] Deal for <${workEmail}>`,
+          [fields.dealLeadSource]: '34',
+          person_id,
+          user_id: PIPEDRIVE_USER_ID,
+        }),
+      });
+    } catch (err) {
+      console.error('error creating deal', err);
+      callback(null, { statusCode: 200 });
+    }
+
+    const deal_id = deal.data && deal.data.data.id;
+    try {
+      await axios({
+        url: `https://api.pipedrive.com/v1/notes?api_token=${PIPEDRIVE_KEY}`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          content: website,
+          deal_id,
+        }),
+      });
+    } catch (err) {
+      console.error('error creating note', err);
+      callback(null, { statusCode: 200 });
+    }
+
+    const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
+
+    await axios({
+      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: JSON.stringify({
+        api_key: KLAVIYO_API_KEY,
+        profiles: [
+          {
+            first_name,
+            last_name,
+            email,
+            phone,
+            website,
+            comments,
+            url: referrer,
+            form: form_name,
+          },
+        ],
+      }),
+    }).catch(console.error);
+  }
+  /** Contact Form */
+
+  /** Contact Form */
+  if (form_name === 'contact') {
+    // pipedrive custom fields
+    const fields = {
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
+    };
+
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -145,15 +260,13 @@ const handler = async event => {
 
   /** Drupal Support Form */
   if (form_name === 'drupal-support') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
+
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -268,15 +381,13 @@ const handler = async event => {
 
   /** Shopify Plus Form */
   if (form_name === 'shopify-support') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
+
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -391,15 +502,13 @@ const handler = async event => {
 
   /** DrupalCon Contact Form */
   if (form_name === 'drupalcon') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
+
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -516,8 +625,11 @@ const handler = async event => {
   /** Newsletter Form */
   if (form_name === 'newsletter') {
     const { email } = data;
-    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID, KLAVIYO_MAIN_LIST_ID } =
-      process.env;
+    const {
+      KLAVIYO_API_KEY,
+      KLAVIYO_LIST_ID,
+      KLAVIYO_MAIN_LIST_ID,
+    } = process.env;
 
     try {
       await axios({
