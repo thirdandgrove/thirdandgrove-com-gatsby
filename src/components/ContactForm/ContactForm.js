@@ -9,7 +9,7 @@ import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
 import { encode } from '../../util';
 
-import Thanks from './Thanks';
+import Thanks from '../Thanks';
 
 const ContactForm = ({ formName, altStyle }) => {
   const [formState, updateForm] = useState({
