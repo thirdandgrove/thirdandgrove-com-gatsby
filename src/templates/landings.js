@@ -73,6 +73,7 @@ const Landings = ({ data }) => {
             margin-right: 20px;
             margin-top: calc(-25.5% + 15px);
             max-width: 980px;
+            display: block;
 
             ${mediaQueries.xs} {
               margin-top: -165px;
