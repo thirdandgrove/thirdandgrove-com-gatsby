@@ -20,16 +20,22 @@ const handler = async event => {
     };
   }
 
+  // PIPEDRIVE VARS
+  const {
+    PIPEDRIVE_USER_ID,
+    PIPEDRIVE_KEY,
+    DEAL_DETAILS,
+    DEAL_LEAD_SOURCE,
+    PERSON_WEBSITE,
+  } = process.env;
+
   /** Contact Form */
   if (form_name === 'contact-update') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
 
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
@@ -133,15 +139,13 @@ const handler = async event => {
 
   /** Contact Form */
   if (form_name === 'contact') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
+
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -256,15 +260,13 @@ const handler = async event => {
 
   /** Drupal Support Form */
   if (form_name === 'drupal-support') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
+
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -379,15 +381,13 @@ const handler = async event => {
 
   /** Shopify Plus Form */
   if (form_name === 'shopify-support') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
+
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -502,15 +502,13 @@ const handler = async event => {
 
   /** DrupalCon Contact Form */
   if (form_name === 'drupalcon') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
     // pipedrive custom fields
     const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
+      dealDetails: DEAL_DETAILS,
+      dealLeadSource: DEAL_LEAD_SOURCE,
+      personWebsite: PERSON_WEBSITE,
     };
+
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -627,8 +625,11 @@ const handler = async event => {
   /** Newsletter Form */
   if (form_name === 'newsletter') {
     const { email } = data;
-    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID, KLAVIYO_MAIN_LIST_ID } =
-      process.env;
+    const {
+      KLAVIYO_API_KEY,
+      KLAVIYO_LIST_ID,
+      KLAVIYO_MAIN_LIST_ID,
+    } = process.env;
 
     try {
       await axios({
