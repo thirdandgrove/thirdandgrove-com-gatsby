@@ -9,7 +9,7 @@ import ProjectsSlider from '../components/ProjectsSlider';
 import FullWidthSection from '../components/FullWidthSection';
 import Layout from '../components/layout';
 import { container, mediaQueries, weights, colors } from '../styles';
-import ContactForm from '../components/ContactForm';
+import Form from '../components/Form';
 import CTA from '../components/CTA';
 import CTAGrid from '../components/CTAGrid';
 import drupalLogo from '../images/drupal-support/drupal-logo.png';
@@ -200,7 +200,7 @@ const DrupalSupport = ({ data }) => {
         >
           Contact Us
         </h3>
-        <ContactForm formName='drupal-support' altStyle />
+        <Form formName='drupal-support' altStyle />
       </FullWidthSection>
     </Layout>
   );
