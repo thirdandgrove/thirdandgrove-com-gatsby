@@ -97,6 +97,8 @@ const Insights = ({ data }) => {
               css={css`
                 margin: -100px 0 60px 0;
                 max-width: 980px;
+                width: 100%;
+                display: block;
 
                 ${mediaQueries.phoneLarge} {
                   margin: -165px auto 80px;
