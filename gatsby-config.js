@@ -146,7 +146,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
-        defaultQuality: 80,
+        defaults: {
+          quality: 80,
+          placeholder: `blurred`,
+          breakpoints: [200, 480, 767, 900, 1220],
+        },
       },
     },
     `gatsby-plugin-emotion`,
