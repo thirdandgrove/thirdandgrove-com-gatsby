@@ -67,6 +67,7 @@ const Video = ({ data }) => {
               responsive: true,
               autoplay: true,
               loop: true,
+              muted: true,
             },
           },
         }}
