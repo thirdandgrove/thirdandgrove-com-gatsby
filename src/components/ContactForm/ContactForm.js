@@ -91,62 +91,35 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    const formResponse = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': formName, ...formState }),
-    });
+    if (token) {
+      const validToken = await verifyToken(token);
+      if (validToken.success) {
+        const formResponse = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode({ 'form-name': formName, ...formState }),
+        });
 
-    console.log(formResponse);
+        if (!formResponse.ok) {
+          const message = `An error has occured: ${formResponse.status}`;
+          throw new Error(message);
+        }
 
-    if (!formResponse.ok) {
-      const body = await formResponse.text();
-      const message = `An error has occured: ${body}`;
-      throw new Error(message);
+        if (formResponse.ok) {
+          updateForm({
+            comments: 'Thank you for your inquiry.',
+            email: '',
+            name: '',
+            phone: '',
+            website: '',
+          });
+          setHasSubmitted(true);
+        }
+        console.log('Hurray!! you have submitted the form');
+      } else {
+        console.log('Sorry!! Token invalid');
+      }
     }
-
-    if (formResponse.ok) {
-      updateForm({
-        comments: 'Thank you for your inquiry.',
-        email: '',
-        name: '',
-        phone: '',
-        website: '',
-      });
-      setHasSubmitted(true);
-    }
-
-    // if (token) {
-    //   try {
-    //     const validToken = await verifyToken(token);
-    //     if (validToken.success) {
-    //       const formResponse = await fetch( '/.netlify/functions/submission-created', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    //         body: encode({ 'form-name': formName, ...formState }),
-    //       });
-
-    //       if (!formResponse.ok) {
-    //         const message = `An error has occured: ${formResponse.status}`;
-    //         throw new Error(message);
-    //       }
-
-    //       if (formResponse.ok) {
-    //         updateForm({
-    //           comments: 'Thank you for your inquiry.',
-    //           email: '',
-    //           name: '',
-    //           phone: '',
-    //           website: '',
-    //         });
-    //         setHasSubmitted(true);
-    //       }
-    //       console.log('Hurray!! you have submitted the form');
-    //     }
-    //   } catch (error) {
-    //     console.log('Sorry!! Token invalid');
-    //   }
-    // }
   };
 
   const inputStyles = css`

@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 
 import Layout from '../components/layout';
-import Form from '../components/Form';
+import ContactForm from '../components/ContactForm';
 import { mediaQueries, fonts, weights, container, colors } from '../styles';
 
 const FormTest = () => {
@@ -92,7 +92,7 @@ const FormTest = () => {
       headerData={{
         title: 'Contact us:',
         height: '850px',
-        children: <Form />,
+        children: <ContactForm />,
       }}
     >
       <div css={[container.textOnly, wrapperCss]}>
