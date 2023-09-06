@@ -45,6 +45,16 @@ const replaceCode = node => {
       )
     );
   }
+
+  // if (node.name === 'h1') {
+  //   return (
+  //     node.children.length > 0 && (
+  //       <h2>
+  //         {domToReact(node.children)}
+  //       </h2>
+  //     )
+  //   );
+  // }
   return null;
 };
 
@@ -52,13 +62,16 @@ const Text = ({ data }) => {
   return (
     <FullWidthSection
       fontWeight={weights.thin}
-      margin='0 auto'
+      margin='200px auto'
       padding='0 20px'
       textAlign='left'
       align='start'
       justify='start'
       height='auto'
       css={css`
+        :first-of-type {
+          margin-top: 1.5em;
+        }
         .stats-container,
         .stat-container {
           display: flex;
@@ -90,7 +103,9 @@ const Text = ({ data }) => {
             line-height: 27px;
           }
         }
-        ${container.min} ${mediaQueries.phoneLarge} {
+        ${container.min}
+
+        ${mediaQueries.phoneLarge} {
           .stats-container {
             flex-direction: row;
           }
