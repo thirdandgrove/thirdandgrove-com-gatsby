@@ -57,6 +57,24 @@ const Footer = () => {
     line-height: 35px;
     font-size: 25px;
     margin-bottom: 0;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-size: 0% 2px;
+    transition: background-size 0.5s, font-size 0.5s;
+
+    &:hover {
+      font-size: 28px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-position: 0 100%;
+      background-size: 100% 2px;
+    }
   `;
 
   const desktopDelay1 = css`

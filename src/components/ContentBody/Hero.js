@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ContactForm from '../ContactForm';
 import Header from '../Header';
 
 const Hero = ({ data }) => {
@@ -29,7 +28,7 @@ const Hero = ({ data }) => {
   return <Header {...headerData} />;
 };
 
-ContactForm.propTypes = {
+Hero.propTypes = {
   data: PropTypes.object.isRequired,
 };
 

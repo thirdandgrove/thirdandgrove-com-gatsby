@@ -18,6 +18,9 @@ import Hero from './Hero';
 import CaseStudyShowcase from './CaseStudyShowcase';
 import FAQ from './Faq';
 import IconListComponent from './IconListComponent';
+import FullWidthVideo from './FullWidthVideo';
+import ScrollingLogos from './ScrollingLogos';
+import CoreValues from './CoreValues';
 
 const Components = {
   Image,
@@ -37,6 +40,9 @@ const Components = {
   CaseStudyShowcase,
   FAQ,
   IconListComponent,
+  FullWidthVideo,
+  ScrollingLogos,
+  CoreValues,
 };
 
 /**
@@ -45,6 +51,7 @@ const Components = {
  * @param {string!} type Content type from Drupal
  */
 const ContentBody = ({ comps, type }) => {
+  console.log(comps);
   if (!Array.isArray(comps)) {
     throw new Error(
       `Comps prop is not an array, ${typeof comps} cannot be passed to ContentBody.`
