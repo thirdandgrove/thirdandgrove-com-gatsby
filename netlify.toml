@@ -21,6 +21,12 @@
   status = 200
 
 [[redirects]]
+  from = "/partners/shopify"
+  to = "/partners/shopifyplus"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/node/537"
   to = "/partners/shopifyplus"
   status = 200
