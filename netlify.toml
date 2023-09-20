@@ -20,6 +20,12 @@
   to = "/.netlify/functions/verify"
   status = 200
 
+[[redirects]]
+  from = "/partners/shopify"
+  to = "/partners/shopifyplus"
+  status = 200
+  force = true
+
 [context.production]
   environment = { PROCESS_FORM = "true" }
 
