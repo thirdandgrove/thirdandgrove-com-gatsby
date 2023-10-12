@@ -141,7 +141,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
-        defaultQuality: 80,
+        defaults: {
+          quality: 80,
+          placeholder: `blurred`,
+          breakpoints: [200, 480, 767, 900, 1220],
+        },
       },
     },
     `gatsby-plugin-emotion`,
@@ -234,7 +238,11 @@ module.exports = {
             },
             query: `
             {
-              allInsight(sort: {order: DESC, fields: created}, filter: {field_hidden: {eq: false}, relationships: {field_tags: {elemMatch: {name: {eq: "Drupal"}}}}}, limit: 10) {
+              allInsight(
+                sort: { created: DESC },
+                filter: { field_hidden: { eq: false }, relationships: { field_tags: { elemMatch: { name: { eq: "Drupal"} } } } },
+                limit: 10
+                ) {
                 nodes {
                   title
                   field_summary {

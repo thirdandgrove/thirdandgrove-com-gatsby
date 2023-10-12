@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { fonts, weights, colors, mediaQueries, container } from '../styles';
 import Layout from '../components/layout';
@@ -15,7 +15,7 @@ const Studies = ({ data }) => {
     post.relationships.field_image &&
     post.relationships.field_image.localFile &&
     post.relationships.field_image.localFile.childImageSharp &&
-    post.relationships.field_image.localFile.childImageSharp.fluid;
+    post.relationships.field_image.localFile.childImageSharp.gatsbyImageData;
 
   const backgroundColor = post.field_color && post.field_color.color;
 
@@ -38,14 +38,18 @@ const Studies = ({ data }) => {
       }}
     >
       {imageSrc && (
-        <Img
-          fluid={post.relationships.field_image.localFile.childImageSharp.fluid}
+        <GatsbyImage
+          image={
+            post.relationships.field_image.localFile.childImageSharp
+              .gatsbyImageData
+          }
           alt={post.field_image.alt}
           css={css`
             margin-left: 20px;
             margin-right: 20px;
             margin-top: calc(-25.5% + 15px);
             max-width: 980px;
+            display: block;
 
             ${mediaQueries.xs} {
               margin-top: -165px;
@@ -87,7 +91,7 @@ Studies.propTypes = {
 };
 
 export const query = graphql`
-  query($StudyId: String!) {
+  query ($StudyId: String!) {
     caseStudy(id: { eq: $StudyId }) {
       id
       title
@@ -180,9 +184,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(width: 800, layout: CONSTRAINED)
                   }
                 }
               }
@@ -231,9 +233,12 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 600, maxHeight: 600, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(
+                      width: 600
+                      height: 600
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
                   }
                 }
               }
@@ -258,9 +263,11 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(
+                      width: 800
+                      transformOptions: { cropFocus: CENTER }
+                      layout: CONSTRAINED
+                    )
                   }
                 }
               }
@@ -275,9 +282,12 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 980, maxHeight: 500, cropFocus: CENTER) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(
+                width: 980
+                height: 500
+                transformOptions: { cropFocus: CENTER }
+                layout: CONSTRAINED
+              )
             }
           }
         }
@@ -286,9 +296,7 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(width: 800, height: 600, layout: CONSTRAINED)
             }
           }
         }
@@ -297,9 +305,7 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 800, maxHeight: 600) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(width: 800, height: 600, layout: CONSTRAINED)
             }
           }
         }

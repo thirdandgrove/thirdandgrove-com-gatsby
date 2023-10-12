@@ -82,25 +82,27 @@ const Landings = ({ data }) => {
           `}
         />
       )}
-      {post.field_subtitle && <p
-        css={css`
-          ${container.min};
-          font-family: ${fonts.sans};
-          font-size: 21px;
-          font-weight: ${weights.bold};
-          line-height: 1;
-          padding: 55px 20px 0;
-          margin-bottom: 20px;
+      {post.field_subtitle && (
+        <p
+          css={css`
+            ${container.min};
+            font-family: ${fonts.sans};
+            font-size: 21px;
+            font-weight: ${weights.bold};
+            line-height: 1;
+            padding: 55px 20px 0;
+            margin-bottom: 20px;
 
-          ${mediaQueries.phoneLarge} {
-            letter-spacing: normal;
-            padding: 75px 0 0;
-            margin-bottom: 60px;
-          }
-        `}
-      >
-        {post.field_subtitle}
-      </p>}
+            ${mediaQueries.phoneLarge} {
+              letter-spacing: normal;
+              padding: 75px 0 0;
+              margin-bottom: 60px;
+            }
+          `}
+        >
+          {post.field_subtitle}
+        </p>
+      )}
       {post && <ContentBody comps={post} type='landing' />}
     </Layout>
   );

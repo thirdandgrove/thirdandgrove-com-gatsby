@@ -9,7 +9,7 @@ import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
 import { encode } from '../../util';
 
-import Thanks from './Thanks';
+import Thanks from '../Thanks';
 
 const ContactForm = ({ formName, altStyle }) => {
   const [formState, updateForm] = useState({
@@ -18,16 +18,16 @@ const ContactForm = ({ formName, altStyle }) => {
     name: '',
     phone: '',
     website: '',
-    botField: '',
   });
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
+  let formData = new FormData();
   const updateInput = event => {
     updateErrors(null);
     updateForm({ ...formState, [event.target.name]: event.target.value });
+    formData.append(event.target.name, event.target.value);
   };
 
   const verifyToken = async token => {
@@ -91,11 +91,8 @@ const ContactForm = ({ formName, altStyle }) => {
       return;
     }
 
-    // const token = await executeRecaptcha('form');
-
     if (token) {
       const validToken = await verifyToken(token);
-
       if (validToken.success) {
         const formResponse = await fetch('/', {
           method: 'POST',

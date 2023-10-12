@@ -12,7 +12,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-Thin'),
+    src:
+      local('Canela-Thin'),
       url('/Fonts/Canela/Canela-Thin.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-Thin.woff') format('woff');
     font-weight: 100;
@@ -21,7 +22,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-ThinItalic'),
+    src:
+      local('Canela-ThinItalic'),
       url('/Fonts/Canela/Canela-ThinItalic.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-ThinItalic.woff') format('woff');
     font-weight: 100;
@@ -31,7 +33,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-Light'),
+    src:
+      local('Canela-Light'),
       url('/Fonts/Canela/Canela-Light.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-Light.woff') format('woff');
     font-weight: 300;
@@ -40,7 +43,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-LightItalic'),
+    src:
+      local('Canela-LightItalic'),
       url('/Fonts/Canela/Canela-LightItalic.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-LightItalic.woff') format('woff');
     font-weight: 300;
@@ -50,7 +54,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-Regular'),
+    src:
+      local('Canela-Regular'),
       url('/Fonts/Canela/Canela-Regular.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-Regular.woff2') format('woff2');
     font-weight: 400;
@@ -59,7 +64,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-RegularItalic'),
+    src:
+      local('Canela-RegularItalic'),
       url('/Fonts/Canela/Canela-RegularItalic.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-RegularItalic.woff') format('woff');
     font-weight: 400;
@@ -69,7 +75,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-Medium'),
+    src:
+      local('Canela-Medium'),
       url('/Fonts/Canela/Canela-Medium.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-Medium.woff') format('woff');
     font-weight: 500;
@@ -78,7 +85,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-MediumItalic'),
+    src:
+      local('Canela-MediumItalic'),
       url('/Fonts/Canela/Canela-MediumItalic.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-MediumItalic.woff') format('woff');
     font-weight: 500;
@@ -88,7 +96,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-Bold'),
+    src:
+      local('Canela-Bold'),
       url('/Fonts/Canela/Canela-Bold.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-Bold.woff') format('woff');
     font-weight: 700;
@@ -97,7 +106,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-BoldItalic'),
+    src:
+      local('Canela-BoldItalic'),
       url('/Fonts/Canela/Canela-BoldItalic.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-BoldItalic.woff') format('woff');
     font-weight: 700;
@@ -107,7 +117,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-Black'),
+    src:
+      local('Canela-Black'),
       url('/Fonts/Canela/Canela-Black.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-Black.woff') format('woff');
     font-weight: 900;
@@ -116,7 +127,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'Canela';
     font-display: fallback;
-    src: local('Canela-BlackItalic'),
+    src:
+      local('Canela-BlackItalic'),
       url('/Fonts/Canela/Canela-BlackItalic.woff2') format('woff2'),
       url('/Fonts/Canela/Canela-BlackItalic.woff') format('woff');
     font-weight: 900;
@@ -126,7 +138,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'NB International Pro';
     font-display: swap;
-    src: local('NBInternationalProLight'),
+    src:
+      local('NBInternationalProLight'),
       url('/Fonts/NBInternationalPro/NBInternationalProLight.woff2')
         /* no woff for this font */ format('woff2');
     font-weight: 100;
@@ -135,7 +148,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'NB International Pro';
     font-display: swap;
-    src: local('NBInternationalProRegular'),
+    src:
+      local('NBInternationalProRegular'),
       url('/Fonts/NBInternationalPro/NBInternationalProRegular.woff2')
         format('woff2'),
       url('/Fonts/NBInternationalPro/NBInternationalProRegular.woff')
@@ -146,7 +160,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'NB International Pro';
     font-display: swap;
-    src: local('NBInternationalProItalic'),
+    src:
+      local('NBInternationalProItalic'),
       url('/Fonts/NBInternationalPro/NBInternationalProItalic.woff2')
         format('woff2'),
       url('/Fonts/NBInternationalPro/NBInternationalProItalic.woff')
@@ -158,7 +173,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'NB International Pro';
     font-display: swap;
-    src: local('NBInternationalProBold'),
+    src:
+      local('NBInternationalProBold'),
       url('/Fonts/NBInternationalPro/NBInternationalProBold.woff2')
         format('woff2'),
       url('/Fonts/NBInternationalPro/NBInternationalProBold.woff')
@@ -169,7 +185,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'NB International Pro';
     font-display: swap;
-    src: local('NBInternationalProBoldItalic'),
+    src:
+      local('NBInternationalProBoldItalic'),
       url('/Fonts/NBInternationalPro/NBInternationalProBoldItalic.woff2')
         format('woff2'),
       url('/Fonts/NBInternationalPro/NBInternationalProBoldItalic.woff')
@@ -181,7 +198,8 @@ export const globalStyles = css`
   @font-face {
     font-family: 'NB International Pro Mono';
     font-display: swap;
-    src: local('NBInternationalProMono'),
+    src:
+      local('NBInternationalProMono'),
       url('/Fonts/NBInternationalPro/NBInternationalProMono.woff2')
         format('woff2'),
       url('/Fonts/NBInternationalPro/NBInternationalProMono.woff')
@@ -654,5 +672,9 @@ export const globalStyles = css`
   ::-webkit-file-upload-button {
     -webkit-appearance: button;
     font: inherit;
+  }
+
+  .gatsby-image-wrapper-constrained {
+    display: block;
   }
 `;

@@ -178,13 +178,8 @@ exports.onCreateDevServer = ({ app }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
 
-  const {
-    caseStudies,
-    landingPages,
-    insights,
-    legacyInsights,
-    redirects,
-  } = await runQueries(graphql);
+  const { caseStudies, landingPages, insights, legacyInsights, redirects } =
+    await runQueries(graphql);
   const data = {
     data: { caseStudies, landingPages, insights, legacyInsights, redirects },
   };
@@ -288,6 +283,11 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       fallback: {
         os: require.resolve('os-browserify/browser'),
         path: require.resolve('path-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+        https: require.resolve("https-browserify"),
+        http: require.resolve("stream-http"),
+        querystring: require.resolve("querystring-es3"),
         fs: false,
       },
     },
@@ -303,5 +303,5 @@ exports.onPostBuild = async gatsbyNodeHelpers => {
     if (stdout) reporter.info(stdout);
   };
 
-  reportOut(await exec('npm run lambda'));
+  reportOut(await exec('cd ./public/functions && npm install'));
 };

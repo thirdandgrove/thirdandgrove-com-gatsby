@@ -113,7 +113,7 @@ const ContactFormComponent = ({ data }) => {
   );
 };
 
-ContactForm.propTypes = {
+ContactFormComponent.propTypes = {
   data: PropTypes.object,
 };
 

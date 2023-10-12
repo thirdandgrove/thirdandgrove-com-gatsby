@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { colors, mediaQueries } from '../styles';
 import Layout from '../components/layout';
@@ -88,14 +88,17 @@ const Insights = ({ data }) => {
       >
         {!post.relationships.field_e_book_file &&
           post.relationships.field_image && (
-            <Img
-              fluid={
-                post.relationships.field_image.localFile.childImageSharp.fluid
+            <GatsbyImage
+              image={
+                post.relationships.field_image.localFile.childImageSharp
+                  .gatsbyImageData
               }
               alt={imageAlt}
               css={css`
                 margin: -100px 0 60px 0;
                 max-width: 980px;
+                width: 100%;
+                display: block;
 
                 ${mediaQueries.phoneLarge} {
                   margin: -165px auto 80px;
@@ -145,7 +148,7 @@ Insights.propTypes = {
 };
 
 export const query = graphql`
-  query($PostId: String!, $PostTags: [String]) {
+  query ($PostId: String!, $PostTags: [String]) {
     allInsight(
       limit: 5
       filter: {
@@ -155,7 +158,7 @@ export const query = graphql`
         }
         id: { ne: $PostId }
       }
-      sort: { fields: created, order: DESC }
+      sort: { created: DESC }
     ) {
       nodes {
         ...InsightFragment
@@ -194,19 +197,23 @@ export const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 980, maxHeight: 500) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(width: 980, height: 500, layout: CONSTRAINED)
             }
             childImageSquare: childImageSharp {
-              fluid(maxWidth: 1280, maxHeight: 1280) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(
+                height: 1280
+                width: 1280
+                transformOptions: { cropFocus: CENTER }
+                layout: CONSTRAINED
+              )
             }
             childImageLandscape: childImageSharp {
-              fluid(maxWidth: 1280, maxHeight: 780) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(
+                height: 780
+                width: 1280
+                transformOptions: { cropFocus: CENTER }
+                layout: CONSTRAINED
+              )
             }
           }
         }
@@ -237,9 +244,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(width: 800, layout: CONSTRAINED)
                   }
                 }
               }
@@ -287,9 +292,11 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 600, maxHeight: 600) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(
+                      width: 600
+                      height: 600
+                      layout: CONSTRAINED
+                    )
                   }
                 }
               }
@@ -313,9 +320,7 @@ export const query = graphql`
                 localFile {
                   publicURL
                   childImageSharp {
-                    fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
+                    gatsbyImageData(width: 800, layout: CONSTRAINED)
                   }
                 }
               }

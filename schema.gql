@@ -1568,66 +1568,6 @@ type component__scrolling_logos implements Node @derivedTypes @dontInfer {
   field_logos: [component__scrolling_logos_wallField_logos]
 }
 
-type component__scrolling_logos_wallField_logos {
-  alt: String
-  title: String
-  width: Int
-  height: Int
-}
-
-type component__scrolling_logosField_media_background {
-  display: Boolean
-  description: String
-}
-
-type component__scrolling_logos implements Node @derivedTypes @dontInfer {
-  drupal_id: String
-  drupal_internal__id: Int
-  langcode: String
-  created: Date @dateformat
-  changed: Date @dateformat
-  default_langcode: Boolean
-  field_header_text: String
-  relationships: component__scrolling_logosRelationships
-  field_media_background: component__scrolling_logosField_media_background
-  field_logos: [component__scrolling_logos_wallField_logos]
-}
-
-type component__full_width_video implements Node @derivedTypes @dontInfer {
-  drupal_id: String
-  drupal_internal__id: Int
-  langcode: String
-  created: Date @dateformat
-  changed: Date @dateformat
-  default_langcode: Boolean
-  relationships: component__full_width_videoRelationships
-}
-
-type component__scrolling_logos_wallField_logos {
-  alt: String
-  title: String
-  width: Int
-  height: Int
-}
-
-type component__scrolling_logosField_media_background {
-  display: Boolean
-  description: String
-}
-
-type component__scrolling_logos implements Node @derivedTypes @dontInfer {
-  drupal_id: String
-  drupal_internal__id: Int
-  langcode: String
-  created: Date @dateformat
-  changed: Date @dateformat
-  default_langcode: Boolean
-  field_header_text: String
-  relationships: component__scrolling_logosRelationships
-  field_media_background: component__scrolling_logosField_media_background
-  field_logos: [component__scrolling_logos_wallField_logos]
-}
-
 type component__full_width_video implements Node @derivedTypes @dontInfer {
   drupal_id: String
   drupal_internal__id: Int

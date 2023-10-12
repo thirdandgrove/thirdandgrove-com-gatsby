@@ -242,16 +242,17 @@ export const query = graphql`
       }
     }
     allCaseStudy(
-      sort: { fields: created, order: DESC }
+      sort: { created: DESC }
       limit: 1
       filter: { field_hidden: { eq: false }, title: { eq: "VMware" } }
     ) {
       nodes {
-        ...CaseStudyFragment
+        ...CaseStudyFragmentSupport
       }
     }
   }
-  fragment CaseStudyFragment on case_study {
+
+  fragment CaseStudyFragmentSupport on case_study {
     id
     title
     field_subtitle
@@ -278,29 +279,44 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850, cropFocus: NORTH) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(
+              width: 850
+              height: 850
+              transformOptions: { cropFocus: NORTH }
+              layout: FIXED
+            )
           }
           childImageMobile: childImageSharp {
-            fixed(width: 335, height: 260, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 260
+              width: 335
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 450, height: 320, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 320
+              width: 450
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 380, height: 420, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 420
+              width: 380
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 420, height: 340, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 340
+              width: 420
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
         }
       }
@@ -309,29 +325,34 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 850, height: 850, layout: FIXED)
           }
           childImageMobile: childImageSharp {
-            fixed(width: 1, height: 1) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(width: 1, height: 1, layout: FIXED)
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 250, height: 180, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 180
+              width: 250
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 340, height: 260, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 260
+              width: 340
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 270, height: 210, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 210
+              width: 270
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
         }
       }
@@ -340,29 +361,34 @@ export const query = graphql`
         localFile {
           publicURL
           childImageSharp {
-            fluid(maxWidth: 850, maxHeight: 850) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
+            gatsbyImageData(width: 850, height: 850, layout: FIXED)
           }
           childImageMobile: childImageSharp {
-            fixed(width: 1, height: 1) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(width: 1, height: 1, layout: FIXED)
           }
           childImageTypeA: childImageSharp {
-            fixed(width: 250, height: 495, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 495
+              width: 250
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeB: childImageSharp {
-            fixed(width: 230, height: 210, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 210
+              width: 230
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
           childImageTypeC: childImageSharp {
-            fixed(width: 320, height: 210, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_noBase64
-            }
+            gatsbyImageData(
+              height: 210
+              width: 320
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
           }
         }
       }
