@@ -168,7 +168,9 @@ const runQueries = async graphql => {
 };
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
-  createTypes(fs.readFileSync(`schema.gql`, { encoding: `utf-8` }));
+  if (fs.existsSync(`schema.gql`)) {
+    createTypes(fs.readFileSync(`schema.gql`, { encoding: `utf-8` }));
+  }
 };
 
 exports.onCreateDevServer = ({ app }) => {
