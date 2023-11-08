@@ -70,6 +70,11 @@ import cssAwards from './logos/awards/css-awards.png';
 import dadiAwards from './logos/awards/dadi-awards.png';
 import daveyAwards from './logos/awards/davey-awards.png';
 import c2aAwards from './logos/awards/C2A-awards.png';
+import cooperVisionNew from './logos/Coopervision.png';
+import aM from './logos/A&M.png';
+import pG from './logos/P&G.png';
+import cummins from './logos/Cummins.png';
+import seventhGen from './logos/SeventhGen.png';
 
 export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
   let sets;
@@ -360,14 +365,14 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
         height={isSmScreen ? '53' : '72'}
       />,
       <img
-        src={wsiLogo}
-        alt='Williams-Sonoma Inc.'
+        src={cooperVisionNew}
+        alt='CooperVision'
         width={isSmScreen ? '98' : '134'}
         height={isSmScreen ? '32' : '43'}
       />,
       <img
-        src={draper}
-        alt='Draper'
+        src={aM}
+        alt='A&M'
         width={isSmScreen ? '140' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
@@ -378,14 +383,14 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
         height={isSmScreen ? '62' : '94'}
       />,
       <img
-        src={pernodLogo}
-        alt='Pernod Ricard'
+        src={pG}
+        alt='P&G'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
       <img
-        src={alvinAiley}
-        alt='King Arthur'
+        src={cummins}
+        alt='Cummins'
         width={isSmScreen ? '125' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
@@ -396,8 +401,8 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
         height={isSmScreen ? '37' : '50'}
       />,
       <img
-        src={stubhub}
-        alt='StubHub'
+        src={seventhGen}
+        alt='Seventh Generation'
         width={isSmScreen ? '166' : '240'}
         height={isSmScreen ? '142' : '100'}
       />,
