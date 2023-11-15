@@ -20,6 +20,8 @@ const ScrollingLogos = ({ data }) => {
     infinite: true,
     speed: 500,
     autoplay: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
     responsive: [
       {
         breakpoint: 20000,

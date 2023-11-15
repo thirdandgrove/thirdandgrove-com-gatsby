@@ -51,6 +51,7 @@ const Components = {
  * @param {string!} type Content type from Drupal
  */
 const ContentBody = ({ comps, type }) => {
+  console.log(comps);
   if (!Array.isArray(comps)) {
     throw new Error(
       `Comps prop is not an array, ${typeof comps} cannot be passed to ContentBody.`

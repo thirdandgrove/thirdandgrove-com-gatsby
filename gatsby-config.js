@@ -24,12 +24,12 @@ module.exports = {
         mergeScriptHashes: false,
         mergeStyleHashes: false,
         directives: {
-          'default-src': `'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com`,
-          'script-src': `'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com`,
+          'default-src': `'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com player.vimeo.com vimeo.com`,
+          'script-src': `'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com player.vimeo.com vimeo.com`,
           'style-src': `'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
-          'img-src': `'self' data: www.google-analytics.com www.google.com.ec https://www.google.com/ads https://www.google.com/pagead https://cdn.linkedin.oribi.io https://px.ads.linkedin.com https://www.google.com/ads/ga-audiences https://tr-rc.lfeeder.com`,
+          'img-src': `'self' data: www.google-analytics.com www.google.com.ec https://www.google.com/ads https://www.google.com/pagead https://cdn.linkedin.oribi.io https://px.ads.linkedin.com https://www.google.com/ads/ga-audiences https://tr-rc.lfeeder.com t.co google.com twitter.com`,
           'font-src': `'self' data: fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
-          'connect-src': `'self' https://www.thirdandgrove.com analytics.google.com extreme-ip-lookup.com stats.g.doubleclick.net www.google-analytics.com https://cdn.linkedin.oribi.io https://px.ads.linkedin.com`,
+          'connect-src': `'self' https://www.thirdandgrove.com analytics.google.com extreme-ip-lookup.com stats.g.doubleclick.net www.google-analytics.com https://cdn.linkedin.oribi.io https://px.ads.linkedin.com vimeo.com`,
         },
       },
     },
@@ -105,36 +105,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
-        transformHeaders: (headers, path) => {
-          if (path) {
-            if (path.endsWith('/')) {
-              const filePath = `./public${path}index.html`;
-              const rawHtml = readFileSync(filePath).toString();
-              const csp =
-                /<meta http-equiv="Content-Security-Policy" content="(.*?)"\/>/
-                  .exec(rawHtml)[1]
-                  .replace(/&#x27;/g, `'`);
-              headers.push(`Content-Security-Policy: ${csp}`);
-              writeFileSync(
-                filePath,
-                rawHtml.replace(
-                  /<meta http-equiv="Content-Security-Policy" content=".*?"\/>/g,
-                  ''
-                )
-              );
-            }
-          }
-          return headers;
-        },
         headers: {
-          '/*': [
-            "Content-Security-Policy: default-src 'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com",
-            "Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com",
-            "Content-Security-Policy: style-src 'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net",
-            "Content-Security-Policy: img-src 'self' data: www.google-analytics.com www.google.com.ec https://www.google.com/ads https://www.google.com/pagead https://cdn.linkedin.oribi.io https://px.ads.linkedin.com https://www.google.com/ads/ga-audiences https://tr-rc.lfeeder.com",
-            "Content-Security-Policy: font-src 'self' data: fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net",
-            "Content-Security-Policy: connect-src 'self' https://www.thirdandgrove.com analytics.google.com extreme-ip-lookup.com stats.g.doubleclick.net www.google-analytics.com https://cdn.linkedin.oribi.io https://px.ads.linkedin.com",
-          ],
+          '/*.woff': ['Cache-Control:  max-age=31536000'],
+          '/*.woff2': ['Cache-Control:  max-age=31536000'],
+          '/*.png': ['Cache-Control:  max-age=31536000'],
+          '/*.svg': ['Cache-Control:  max-age=31536000'],
         },
         mergeSecurityHeaders: true,
         mergeCachingHeaders: true,

@@ -1697,16 +1697,14 @@ type component__scrolling_logosRelationships {
     @link(by: "id", from: "component_type___NODE")
   field_media_background: file__file
     @link(by: "id", from: "field_media_background___NODE")
-  field_logos: [file__file]
-    @link(by: "id", from: "field_logos___NODE")
+  field_logos: [file__file] @link(by: "id", from: "field_logos___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
 type component__full_width_videoRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
-  field_main_video: file__file
-    @link(by: "id", from: "field_main_video___NODE")
+  field_main_video: file__file @link(by: "id", from: "field_main_video___NODE")
   field_autoplay_video: file__file
     @link(by: "id", from: "field_autoplay_video___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
