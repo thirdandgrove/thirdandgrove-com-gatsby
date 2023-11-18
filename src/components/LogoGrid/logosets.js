@@ -75,6 +75,8 @@ import aM from './logos/A&M.png';
 import pG from './logos/P&G.png';
 import cummins from './logos/Cummins.png';
 import seventhGen from './logos/SeventhGen.png';
+import unilver from './logos/unilver.png';
+import WAB from './logos/WAB.png';
 
 export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
   let sets;
@@ -341,8 +343,8 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
         height={isSmScreen ? '40' : '34'}
       />,
       <img
-        src={googleLogo}
-        alt='Google'
+        src={WAB}
+        alt='Western New England Bank'
         width={isSmScreen ? '99' : '134'}
         height={isSmScreen ? '33' : '44'}
       />,
@@ -359,16 +361,16 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
         height={isSmScreen ? '37' : '50'}
       />,
       <img
-        src={geLogo}
-        alt='GE'
-        width={isSmScreen ? '53' : '72'}
-        height={isSmScreen ? '53' : '72'}
+        src={unilver}
+        alt='Unilver'
+        width={isSmScreen ? '140' : '171'}
+        height={isSmScreen ? '49' : '63'}
       />,
       <img
         src={cooperVisionNew}
         alt='CooperVision'
-        width={isSmScreen ? '98' : '134'}
-        height={isSmScreen ? '32' : '43'}
+        width={isSmScreen ? '140' : '171'}
+        height={isSmScreen ? '49' : '63'}
       />,
       <img
         src={aM}

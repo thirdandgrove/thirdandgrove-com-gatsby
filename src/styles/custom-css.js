@@ -163,7 +163,7 @@ export const smSectionHead = css`
   color: ${colors.black};
 
   ${mediaQueries.phoneLarge} {
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     font-size: 33px;
     line-height: 1.2;
     letter-spacing: normal;
