@@ -268,7 +268,7 @@ function Form({ formName, altStyle }) {
               htmlFor='cf-whatDidYouNeedHelpWith'
               css={[
                 labelCss,
-                formState.name ? activeLabel : inactiveLabel,
+                formState.whatDidYouNeedHelpWith ? activeLabel : inactiveLabel,
                 errors?.whatDidYouNeedHelpWith ? errorLabel : '',
               ]}
             >
@@ -287,7 +287,7 @@ function Form({ formName, altStyle }) {
               htmlFor='cf-howDidYouHearAboutUs'
               css={[
                 labelCss,
-                formState.name ? activeLabel : inactiveLabel,
+                formState.howDidYouHearAboutUs ? activeLabel : inactiveLabel,
                 errors?.howDidYouHearAboutUs ? errorLabel : '',
               ]}
             >
