@@ -12,12 +12,12 @@ exports.handler = async (event, _context, callback) => {
   console.log(process.env);
   console.log(form_name);
 
-  if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
-    console.log(event, _context, callback);
-    console.log(process.env);
-    callback(null, { statusCode: 200 });
-    return;
-  }
+  // if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
+  //   console.log(event, _context, callback);
+  //   console.log(process.env);
+  //   callback(null, { statusCode: 200 });
+  //   return;
+  // }
 
   // pipedrive custom fields
   const fields = {
