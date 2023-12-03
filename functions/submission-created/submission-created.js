@@ -31,7 +31,7 @@ exports.handler = async (event, _context, callback) => {
   const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
 
   /** Contact Form */
-  if (data.data['form-name'] === 'contact') {
+  if (form_name === 'contact') {
     // handle form contact
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
