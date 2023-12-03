@@ -5,11 +5,11 @@ const axios = require('axios');
 
 exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
-  const { form_name } = data;
+  const { form_name } = data ? data : data.data['form-name'];
   const { referrer } = data.data;
 
   console.log(event, _context, callback);
-  console.log(process.env);
+  console.log(data.data);
   console.log(form_name);
 
   // if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
@@ -24,13 +24,15 @@ exports.handler = async (event, _context, callback) => {
     dealDetails: process.env.DEAL_DETAILS,
     dealLeadSource: process.env.DEAL_LEAD_SOURCE,
     personWebsite: process.env.PERSON_WEBSITE,
+    whatDidYouNeedHelpWith: process.env.WHAT_DID_YOU_NEED_HELP_WITH,
+    howDidYouHearAboutUs: process.env.HOW_DID_YOU_HEAR_ABOUT_US,
   };
 
-  /** Contact Form */
-  if (form_name === 'contact') {
-    // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
+  const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
 
+  /** Contact Form */
+  if (data.data['form-name'] === 'contact') {
+    // handle form contact
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -57,10 +59,10 @@ exports.handler = async (event, _context, callback) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify({
-          name: 'Webform Deal Person',
-          howDidYouHearAboutUs,
-          workEmail,
-          whatDidYouNeedHelpWith,
+          name: `Webform Deal Person ${workEmail}`,
+          [fields.howDidYouHearAboutUs]: howDidYouHearAboutUs,
+          email: workEmail,
+          [fields.whatDidYouNeedHelpWith]: whatDidYouNeedHelpWith,
           owner_id: PIPEDRIVE_USER_ID,
         }),
       });
@@ -114,7 +116,7 @@ exports.handler = async (event, _context, callback) => {
         profiles: [
           {
             howDidYouHearAboutUs,
-            workEmail,
+            email: workEmail,
             whatDidYouNeedHelpWith,
             url: referrer,
             form: form_name,
@@ -232,7 +234,6 @@ exports.handler = async (event, _context, callback) => {
   /** Drupal Support Form */
   if (form_name === 'drupal-support') {
     // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
 
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
@@ -336,7 +337,6 @@ exports.handler = async (event, _context, callback) => {
   /** Shopify Plus Form */
   if (form_name === 'shopify-support') {
     // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -439,7 +439,6 @@ exports.handler = async (event, _context, callback) => {
   /** DrupalCon Contact Form */
   if (form_name === 'drupalcon') {
     // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
