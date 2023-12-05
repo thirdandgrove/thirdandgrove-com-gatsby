@@ -2,7 +2,6 @@ import React from 'react';
 import { css } from '@emotion/react';
 import { smSectionHead, container, mediaQueries, weights } from '../../styles';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import Button from '../Button';
 
 const slideTitleWrapper = css`
   display: flex;
@@ -89,7 +88,7 @@ const AboutUsQuotePreview = ({ node, minHeight }) => {
       </div>
       <div css={imageStyles}>
         <GatsbyImage
-          image={getImage(node.childImageSharp.fullWidth)}
+          image={getImage(node.childImageSharp)}
           aspectRatio={1}
           style={{ aspectRatio: 1 }}
         />

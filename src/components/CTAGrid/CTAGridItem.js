@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-import { Spring } from 'react-spring/renderprops';
+import FadeInDirection from '../FadeInDirection';
 
 import { useHasBeenVisible } from '../../hooks/useVisibility';
 import { mediaQueries, weights, fonts, colors } from '../../styles';
@@ -29,7 +29,7 @@ const CTAGridItem = ({
 
     .cta-grid-item--image-wrapper {
       display: flex;
-      height: 75px;
+      height: 85px;
       justify-content: center;
       align-items: center;
       margin-bottom: ${noPaddingImg ? '0' : '30px'};
@@ -107,23 +107,13 @@ const CTAGridItem = ({
     <>
       {!altStyle ? (
         <div css={ctaContainer} ref={nodeRef}>
-          <Spring
-            delay={0.2}
-            to={{
-              transform: isVisible ? 'translateY(0)' : 'translateY(-25px)',
-            }}
-          >
-            {({ transform }) => (
-              <div
-                style={{ transform }}
-                className='cta-grid-item--image-wrapper'
-              >
-                {icon[0] && icon[0].node && icon[0].node.publicURL && (
-                  <img src={icon[0].node.publicURL} alt={title} />
-                )}
-              </div>
-            )}
-          </Spring>
+          <FadeInDirection overflow={false}>
+            <div className='cta-grid-item--image-wrapper'>
+              {icon[0] && icon[0].node && icon[0].node.publicURL && (
+                <img src={icon[0].node.publicURL} alt={title} />
+              )}
+            </div>
+          </FadeInDirection>
 
           <h4 css={textCStyle}>{title}</h4>
           {Array.isArray(description) ? (
@@ -139,38 +129,26 @@ const CTAGridItem = ({
           )}
         </div>
       ) : (
-        <Spring
-          delay={0.2}
-          to={{
-            transform: isVisible ? 'translateY(0)' : 'translateY(100px)',
-            opacity: isVisible ? '1' : '0',
-          }}
-        >
-          {({ transform, opacity }) => (
-            <div
-              style={{ transform, opacity }}
-              css={ctaContainerAlt}
-              ref={nodeRef}
-            >
-              <div className='cta-grid-item--inner-wrapper'>
-                {icon[0] && icon[0].node && icon[0].node.publicURL && (
-                  <img src={icon[0].node.publicURL} alt={title} />
-                )}
+        <FadeInDirection overflow={false} css={ctaContainerAlt}>
+          <div css={ctaContainerAlt} ref={nodeRef}>
+            <div className='cta-grid-item--inner-wrapper'>
+              {icon[0] && icon[0].node && icon[0].node.publicURL && (
+                <img src={icon[0].node.publicURL} alt={title} />
+              )}
 
-                {title && <h4 css={textCStyle}>{title}</h4>}
-                {Array.isArray(description) ? (
-                  <ul>
-                    {description.map(descriptionItem => (
-                      <li css={textCStyle}>{descriptionItem}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p css={textCStyle}>{description}</p>
-                )}
-              </div>
+              {title && <h4 css={textCStyle}>{title}</h4>}
+              {Array.isArray(description) ? (
+                <ul>
+                  {description.map(descriptionItem => (
+                    <li css={textCStyle}>{descriptionItem}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p css={textCStyle}>{description}</p>
+              )}
             </div>
-          )}
-        </Spring>
+          </div>
+        </FadeInDirection>
       )}
     </>
   );

@@ -1568,66 +1568,6 @@ type component__scrolling_logos implements Node @derivedTypes @dontInfer {
   field_logos: [component__scrolling_logos_wallField_logos]
 }
 
-type component__scrolling_logos_wallField_logos {
-  alt: String
-  title: String
-  width: Int
-  height: Int
-}
-
-type component__scrolling_logosField_media_background {
-  display: Boolean
-  description: String
-}
-
-type component__scrolling_logos implements Node @derivedTypes @dontInfer {
-  drupal_id: String
-  drupal_internal__id: Int
-  langcode: String
-  created: Date @dateformat
-  changed: Date @dateformat
-  default_langcode: Boolean
-  field_header_text: String
-  relationships: component__scrolling_logosRelationships
-  field_media_background: component__scrolling_logosField_media_background
-  field_logos: [component__scrolling_logos_wallField_logos]
-}
-
-type component__full_width_video implements Node @derivedTypes @dontInfer {
-  drupal_id: String
-  drupal_internal__id: Int
-  langcode: String
-  created: Date @dateformat
-  changed: Date @dateformat
-  default_langcode: Boolean
-  relationships: component__full_width_videoRelationships
-}
-
-type component__scrolling_logos_wallField_logos {
-  alt: String
-  title: String
-  width: Int
-  height: Int
-}
-
-type component__scrolling_logosField_media_background {
-  display: Boolean
-  description: String
-}
-
-type component__scrolling_logos implements Node @derivedTypes @dontInfer {
-  drupal_id: String
-  drupal_internal__id: Int
-  langcode: String
-  created: Date @dateformat
-  changed: Date @dateformat
-  default_langcode: Boolean
-  field_header_text: String
-  relationships: component__scrolling_logosRelationships
-  field_media_background: component__scrolling_logosField_media_background
-  field_logos: [component__scrolling_logos_wallField_logos]
-}
-
 type component__full_width_video implements Node @derivedTypes @dontInfer {
   drupal_id: String
   drupal_internal__id: Int
@@ -1757,16 +1697,14 @@ type component__scrolling_logosRelationships {
     @link(by: "id", from: "component_type___NODE")
   field_media_background: file__file
     @link(by: "id", from: "field_media_background___NODE")
-  field_logos: [file__file]
-    @link(by: "id", from: "field_logos___NODE")
+  field_logos: [file__file] @link(by: "id", from: "field_logos___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")
 }
 
 type component__full_width_videoRelationships {
   component_type: component_type__component_type
     @link(by: "id", from: "component_type___NODE")
-  field_main_video: file__file
-    @link(by: "id", from: "field_main_video___NODE")
+  field_main_video: file__file @link(by: "id", from: "field_main_video___NODE")
   field_autoplay_video: file__file
     @link(by: "id", from: "field_autoplay_video___NODE")
   landing_page: [landing_page] @link(by: "id", from: "landing_page___NODE")

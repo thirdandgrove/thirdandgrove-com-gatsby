@@ -9,16 +9,11 @@ import AboutUsQuotePreview from './AboutUsQuotePreview';
 import FullWidthSection from '../FullWidthSection';
 
 const AboutUsQuoteSlider = ({ minHeight, backgroundColor, data }) => {
-  console.log(data.nodes.text);
-  console.log(data.nodes.images);
-
   const mergeById = (a1, a2) =>
     a1.map(itm => ({
       ...a2.find(item => item.name === itm.imageName && item),
       ...itm,
     }));
-
-  console.log(mergeById(data.nodes.text, data.nodes.images));
 
   const [count, setCount] = useState('01');
 
