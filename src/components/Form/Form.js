@@ -236,7 +236,6 @@ function Form({ formName, altStyle }) {
           data-cy='contactForm'
           netlify-honeypot='botField'
           onSubmit={submitform}
-          data-netlify-recaptcha='true'
         >
           <input type='hidden' name='form-name' value={formName} />
           <input
@@ -318,7 +317,6 @@ function Form({ formName, altStyle }) {
               }
             `}
           >
-            <div data-netlify-recaptcha='true'></div>
             <Button data-cy='contactSubmit' type='submit'>
               send
             </Button>
