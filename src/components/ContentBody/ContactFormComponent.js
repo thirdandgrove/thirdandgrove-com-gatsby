@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 
-import ContactForm from '../ContactForm';
+import Form from '../Form';
 import FullWidthSection from '../FullWidthSection';
 import { colors, fonts, mediaQueries, weights } from '../../styles';
 
@@ -108,12 +108,12 @@ const ContactFormComponent = ({ data }) => {
           {subtitle}
         </span>
       )}
-      <ContactForm altStyle />
+      <Form altStyle />
     </FullWidthSection>
   );
 };
 
-ContactForm.propTypes = {
+ContactFormComponent.propTypes = {
   data: PropTypes.object,
 };
 

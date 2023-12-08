@@ -345,7 +345,7 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
       <img
         src={WAB}
         alt='Western New England Bank'
-        width={isSmScreen ? '99' : '134'}
+        width={isSmScreen ? '99' : '190'}
         height={isSmScreen ? '33' : '44'}
       />,
       <img
@@ -369,7 +369,7 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
       <img
         src={cooperVisionNew}
         alt='CooperVision'
-        width={isSmScreen ? '140' : '171'}
+        width={isSmScreen ? '140' : '240'}
         height={isSmScreen ? '49' : '63'}
       />,
       <img

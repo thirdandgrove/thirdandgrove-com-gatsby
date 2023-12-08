@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { Spring } from 'react-spring/renderprops';
+import FadeInDirection from '../FadeInDirection';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
@@ -11,9 +11,6 @@ import { fonts, weights, mediaQueries } from '../../styles';
 import { ensureTrailingSlash } from '../../util';
 
 const ArticlePreview = ({ article }) => {
-  const nodeRef = useRef();
-  const isVisible = useHasBeenPartlyVisible(nodeRef, 0.4);
-
   const Card = styled.div`
     width: 100%;
     margin-bottom: 116px;
@@ -47,37 +44,25 @@ const ArticlePreview = ({ article }) => {
   `;
 
   return (
-    <Spring
-      delay={0}
-      to={{
-        transform: isVisible ? 'translateY(0)' : 'translateY(100px)',
-        opacity: isVisible ? '1' : '0',
-      }}
-    >
-      {({ transform, opacity }) => (
-        <Card ref={nodeRef} style={{ transform, opacity }}>
-          <Link
+    <FadeInDirection>
+      <Card>
+        <Link
             css={css`
               display: block;
             `}
             to={ensureTrailingSlash(article.path.alias)}
           >
             {article.relationships.field_image && (
-              <Img
-                fluid={
-                  article.relationships.field_image.localFile.childImageSharp
-                    .fluid
-                }
-                alt={article.field_image.alt}
-              />
+              <GatsbyImage
+                image={article.relationships.field_image.localFile.childImageSharp.gatsbyImageData}
+                alt={article.field_image.alt} />
             )}
 
             <h2>{article.title}</h2>
             <footer>{`${article.created}`}</footer>
-          </Link>
-        </Card>
-      )}
-    </Spring>
+        </Link>
+      </Card>
+    </FadeInDirection>
   );
 };
 

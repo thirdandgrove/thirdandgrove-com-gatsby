@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Form from '../components/Form';
 import { mediaQueries, fonts, weights, container, colors } from '../styles';
 
-const Contact = () => {
+const FormTest = () => {
   const wrapperCss = css`
     padding-top: 80px;
     padding-bottom: 80px;
@@ -161,4 +161,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default FormTest;

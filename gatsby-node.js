@@ -168,7 +168,9 @@ const runQueries = async graphql => {
 };
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
-  createTypes(fs.readFileSync(`schema.gql`, { encoding: `utf-8` }));
+  if (fs.existsSync(`schema.gql`)) {
+    createTypes(fs.readFileSync(`schema.gql`, { encoding: `utf-8` }));
+  }
 };
 
 exports.onCreateDevServer = ({ app }) => {
@@ -178,13 +180,8 @@ exports.onCreateDevServer = ({ app }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;
 
-  const {
-    caseStudies,
-    landingPages,
-    insights,
-    legacyInsights,
-    redirects,
-  } = await runQueries(graphql);
+  const { caseStudies, landingPages, insights, legacyInsights, redirects } =
+    await runQueries(graphql);
   const data = {
     data: { caseStudies, landingPages, insights, legacyInsights, redirects },
   };
@@ -211,7 +208,7 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   );
 
-  insights.nodes.map(insightData =>
+  insights.nodes.map((insightData, index) =>
     createPage({
       path: ensureTrailingSlash(insightData.path.alias),
       component: path.resolve(`src/templates/insights.js`),
@@ -288,20 +285,13 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       fallback: {
         os: require.resolve('os-browserify/browser'),
         path: require.resolve('path-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+        https: require.resolve('https-browserify'),
+        http: require.resolve('stream-http'),
+        querystring: require.resolve('querystring-es3'),
         fs: false,
       },
     },
   });
-};
-
-exports.onPostBuild = async gatsbyNodeHelpers => {
-  const { reporter } = gatsbyNodeHelpers;
-
-  const reportOut = report => {
-    const { stderr, stdout } = report;
-    if (stderr) reporter.error(stderr);
-    if (stdout) reporter.info(stdout);
-  };
-
-  reportOut(await exec('npm run lambda'));
 };

@@ -136,7 +136,7 @@ const Gatsby = query => {
 export const query = graphql`
   {
     insights: allInsight(
-      sort: { fields: created, order: DESC }
+      sort: { created: DESC }
       limit: 5
       filter: { field_hidden: { eq: false } }
     ) {
@@ -163,9 +163,7 @@ export const query = graphql`
             localFile {
               publicURL
               childImageSharp {
-                fluid(maxWidth: 450, maxHeight: 400) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
+                gatsbyImageData(width: 450, height: 400, layout: CONSTRAINED)
               }
             }
           }
@@ -194,9 +192,11 @@ export const query = graphql`
                   localFile {
                     publicURL
                     childImageSharp {
-                      fluid(maxWidth: 630, maxHeight: 630) {
-                        ...GatsbyImageSharpFluid_withWebp
-                      }
+                      gatsbyImageData(
+                        width: 630
+                        height: 630
+                        layout: CONSTRAINED
+                      )
                     }
                   }
                 }

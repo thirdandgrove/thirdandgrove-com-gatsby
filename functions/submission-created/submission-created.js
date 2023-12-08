@@ -5,11 +5,11 @@ const axios = require('axios');
 
 exports.handler = async (event, _context, callback) => {
   const data = JSON.parse(event.body).payload;
-  const { form_name } = data;
+  const { form_name } = data ? data : data.data['form-name'];
   const { referrer } = data.data;
 
   console.log(event, _context, callback);
-  console.log(process.env);
+  console.log(data.data);
   console.log(form_name);
 
   if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
@@ -19,32 +19,36 @@ exports.handler = async (event, _context, callback) => {
     return;
   }
 
+  // pipedrive custom fields
+  const fields = {
+    dealDetails: process.env.DEAL_DETAILS,
+    dealLeadSource: process.env.DEAL_LEAD_SOURCE,
+    personWebsite: process.env.PERSON_WEBSITE,
+    whatDidYouNeedHelpWith: process.env.WHAT_DID_YOU_NEED_HELP_WITH,
+    howDidYouHearAboutUs: process.env.HOW_DID_YOU_HEAR_ABOUT_US,
+  };
+
+  const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
+
   /** Contact Form */
   if (form_name === 'contact') {
     // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
-    // pipedrive custom fields
-    const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
-    };
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
     }, {});
-    const { name, email, phone, website, comments } = humanFields;
-    const { first_name, last_name } = data;
+
+    const { howDidYouHearAboutUs, workEmail, whatDidYouNeedHelpWith } =
+      humanFields;
 
     let person;
     let deal;
     // check for required fields
-    if (!name || !email || !website) {
-      console.error('error, no name, email or website sent.', {
-        name,
-        email,
-        website,
+    if (!howDidYouHearAboutUs || !workEmail || !whatDidYouNeedHelpWith) {
+      console.error('error, no inputs sent.', {
+        howDidYouHearAboutUs,
+        workEmail,
+        whatDidYouNeedHelpWith,
       });
       return;
     }
@@ -55,12 +59,10 @@ exports.handler = async (event, _context, callback) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify({
-          name,
-          first_name,
-          last_name,
-          email,
-          phone,
-          [fields.personWebsite]: website,
+          name: `Webform Deal Person ${workEmail}`,
+          [fields.howDidYouHearAboutUs]: howDidYouHearAboutUs,
+          email: workEmail,
+          [fields.whatDidYouNeedHelpWith]: whatDidYouNeedHelpWith,
           owner_id: PIPEDRIVE_USER_ID,
         }),
       });
@@ -76,10 +78,9 @@ exports.handler = async (event, _context, callback) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify({
-          title: `[Webform] Deal for ${name} <${email}>`,
+          title: `[Webform] Deal for <${workEmail}>`,
           [fields.dealLeadSource]: '34',
           person_id,
-          [fields.dealDetails]: comments,
           user_id: PIPEDRIVE_USER_ID,
         }),
       });
@@ -95,7 +96,7 @@ exports.handler = async (event, _context, callback) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify({
-          content: website,
+          content: whatDidYouNeedHelpWith,
           deal_id,
         }),
       });
@@ -114,12 +115,9 @@ exports.handler = async (event, _context, callback) => {
         api_key: KLAVIYO_API_KEY,
         profiles: [
           {
-            first_name,
-            last_name,
-            email,
-            phone,
-            website,
-            comments,
+            howDidYouHearAboutUs,
+            email: workEmail,
+            whatDidYouNeedHelpWith,
             url: referrer,
             form: form_name,
           },
@@ -129,17 +127,114 @@ exports.handler = async (event, _context, callback) => {
   }
   /** Contact Form */
 
+  /** Old Contact Form */
+  // if (form_name === 'contact') {
+  //   // handle form contact
+  //   const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
+
+  //   const humanFields = data.ordered_human_fields.reduce((acc, item) => {
+  //     acc[item.name] = item.value;
+  //     return acc;
+  //   }, {});
+  //   const { name, email, phone, website, comments } = humanFields;
+  //   const { first_name, last_name } = data;
+
+  //   let person;
+  //   let deal;
+  //   // check for required fields
+  //   if (!name || !email || !website) {
+  //     console.error('error, no name, email or website sent.', {
+  //       name,
+  //       email,
+  //       website,
+  //     });
+  //     return;
+  //   }
+
+  //   try {
+  //     person = await axios({
+  //       url: `https://api.pipedrive.com/v1/persons?api_token=${PIPEDRIVE_KEY}`,
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       data: JSON.stringify({
+  //         name,
+  //         first_name,
+  //         last_name,
+  //         email,
+  //         phone,
+  //         [fields.personWebsite]: website,
+  //         owner_id: PIPEDRIVE_USER_ID,
+  //       }),
+  //     });
+  //   } catch (err) {
+  //     console.log('error creating person', err);
+  //     callback(null, { statusCode: 200 });
+  //   }
+
+  //   const person_id = person.data && person.data.data.id;
+  //   try {
+  //     deal = await axios({
+  //       url: `https://api.pipedrive.com/v1/deals?api_token=${PIPEDRIVE_KEY}`,
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       data: JSON.stringify({
+  //         title: `[Webform] Deal for ${name} <${email}>`,
+  //         [fields.dealLeadSource]: '34',
+  //         person_id,
+  //         [fields.dealDetails]: comments,
+  //         user_id: PIPEDRIVE_USER_ID,
+  //       }),
+  //     });
+  //   } catch (err) {
+  //     console.error('error creating deal', err);
+  //     callback(null, { statusCode: 200 });
+  //   }
+
+  //   const deal_id = deal.data && deal.data.data.id;
+  //   try {
+  //     await axios({
+  //       url: `https://api.pipedrive.com/v1/notes?api_token=${PIPEDRIVE_KEY}`,
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       data: JSON.stringify({
+  //         content: website,
+  //         deal_id,
+  //       }),
+  //     });
+  //   } catch (err) {
+  //     console.error('error creating note', err);
+  //     callback(null, { statusCode: 200 });
+  //   }
+
+  //   const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
+
+  //   await axios({
+  //     url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     data: JSON.stringify({
+  //       api_key: KLAVIYO_API_KEY,
+  //       profiles: [
+  //         {
+  //           first_name,
+  //           last_name,
+  //           email,
+  //           phone,
+  //           website,
+  //           comments,
+  //           url: referrer,
+  //           form: form_name,
+  //         },
+  //       ],
+  //     }),
+  //   }).catch(console.error);
+  // }
+  /** Old Contact Form */
+
   /** Drupal Support Form */
   if (form_name === 'drupal-support') {
     // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
 
-    // pipedrive custom fields
-    const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
-    };
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -242,14 +337,6 @@ exports.handler = async (event, _context, callback) => {
   /** Shopify Plus Form */
   if (form_name === 'shopify-support') {
     // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
-    // pipedrive custom fields
-    const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
-    };
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -352,14 +439,6 @@ exports.handler = async (event, _context, callback) => {
   /** DrupalCon Contact Form */
   if (form_name === 'drupalcon') {
     // handle form contact
-    const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
-
-    // pipedrive custom fields
-    const fields = {
-      dealDetails: '48bb1f3ddac751ddcca115d1340e6a47983d3687',
-      dealLeadSource: '30c4f33c7c7030fdd3360f5681851efb5de42712',
-      personWebsite: '7ec70f1ef58548a7555a66c6677cfd8028529568',
-    };
     const humanFields = data.ordered_human_fields.reduce((acc, item) => {
       acc[item.name] = item.value;
       return acc;
@@ -462,11 +541,8 @@ exports.handler = async (event, _context, callback) => {
   /** Newsletter Form */
   if (form_name === 'newsletter') {
     const { email } = data;
-    const {
-      KLAVIYO_API_KEY,
-      KLAVIYO_LIST_ID,
-      KLAVIYO_MAIN_LIST_ID,
-    } = process.env;
+    const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID, KLAVIYO_MAIN_LIST_ID } =
+      process.env;
 
     await axios({
       url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
