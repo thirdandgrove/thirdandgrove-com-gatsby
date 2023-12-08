@@ -64,7 +64,9 @@ const Footer = () => {
     background-repeat: no-repeat;
     background-position: 100% 100%;
     background-size: 0% 2px;
-    transition: background-size 0.5s, font-size 0.5s;
+    transition:
+      background-size 0.5s,
+      font-size 0.5s;
 
     &:hover {
       font-size: 28px;
@@ -114,6 +116,7 @@ const Footer = () => {
         {item.title}
       </Link>
     ));
+
   return (
     <EasterEggContext.Consumer>
       {context => (

@@ -11,23 +11,23 @@ import { encode } from '../../util';
 import ErrorToaster from './Error';
 import Thanks from '../Thanks';
 
-// const verifyToken = async token => {
-//   try {
-//     const response = await fetch('/.netlify/functions/verify', {
-//       method: 'POST',
-//       headers: {
-//         Accept: 'application/json',
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ token }),
-//     });
-//     const json = await response.json();
-//     return json;
-//   } catch (error) {
-//     console.log('error ', error);
-//   }
-//   return null;
-// };
+const verifyToken = async token => {
+  try {
+    const response = await fetch('/.netlify/functions/verify', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token }),
+    });
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.log('error ', error);
+  }
+  return null;
+};
 
 function Form({ formName, altStyle }) {
   const [formState, updateForm] = useState({
@@ -37,7 +37,7 @@ function Form({ formName, altStyle }) {
     botField: '',
   });
 
-  // const { executeRecaptcha } = useGoogleReCaptcha();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const updateInput = event => {
     updateErrors(null);
@@ -51,12 +51,12 @@ function Form({ formName, altStyle }) {
   const submitform = async e => {
     e.preventDefault();
 
-    // if (!executeRecaptcha) {
-    //   console.log('Execute recaptcha not yet available');
-    //   return;
-    // }
+    if (!executeRecaptcha) {
+      console.log('Execute recaptcha not yet available');
+      return;
+    }
 
-    // const token = await executeRecaptcha('form');
+    const token = await executeRecaptcha('form');
 
     const { howDidYouHearAboutUs, workEmail, whatDidYouNeedHelpWith } =
       formState;
@@ -96,52 +96,37 @@ function Form({ formName, altStyle }) {
       return;
     }
 
-    const formResponse = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': formName, ...formState }),
-    });
+    if (token) {
+      try {
+        const validToken = await verifyToken(token);
+        if (validToken.success) {
+          const formResponse = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encode({ 'form-name': formName, ...formState }),
+          });
 
-    if (!formResponse.ok) {
-      const message = `An error has occured: ${formResponse.status}`;
-      throw new Error(message);
+          if (!formResponse.ok) {
+            const message = `An error has occured: ${formResponse.status}`;
+            throw new Error(message);
+          }
+
+          if (formResponse.ok) {
+            updateForm({
+              whatDidYouNeedHelpWith: '',
+              workEmail: '',
+              howDidYouHearAboutUs: '',
+            });
+            setHasSubmitted(true);
+          }
+          console.log('Hurray!! you have submitted the form');
+        }
+      } catch (error) {
+        console.log('Sorry!! Token invalid');
+      }
+    } else {
+      console.log('Sorry!! No Token');
     }
-
-    if (formResponse.ok) {
-      setHasSubmitted(true);
-    }
-
-    // if (token) {
-    //   try {
-    //     const validToken = await verifyToken(token);
-    //     if (validToken.success) {
-    //       const formResponse = await fetch('/', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    //         body: encode({ 'form-name': formName, ...formState }),
-    //       });
-
-    //       if (!formResponse.ok) {
-    //         const message = `An error has occured: ${formResponse.status}`;
-    //         throw new Error(message);
-    //       }
-
-    //       if (formResponse.ok) {
-    //         updateForm({
-    //           comments: 'Thank you for your inquiry.',
-    //           email: '',
-    //           name: '',
-    //           phone: '',
-    //           website: '',
-    //         });
-    //         setHasSubmitted(true);
-    //       }
-    //       console.log('Hurray!! you have submitted the form');
-    //     }
-    //   } catch (error) {
-    //     console.log('Sorry!! Token invalid');
-    //   }
-    // }
   };
 
   const fieldSetStyles = css`
