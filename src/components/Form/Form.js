@@ -9,6 +9,7 @@ import { mediaQueries, colors, fonts, weights } from '../../styles';
 import { encode } from '../../util';
 import ErrorToaster from './Error';
 import Thanks from '../Thanks';
+
 function Form({ formName, altStyle }) {
   const [formState, updateForm] = useState({
     whatDidYouNeedHelpWith: '',
@@ -109,6 +110,17 @@ function Form({ formName, altStyle }) {
     border: none;
     margin: 0;
     padding: 0;
+    display: grid;
+
+    textarea,
+    input {
+       margin-bottom: 16px;
+       letter-spacing: 0.5px;
+    }
+
+    label {
+      margin-top: 0;
+    }
   `;
 
   const labelCss = css`
@@ -170,6 +182,7 @@ function Form({ formName, altStyle }) {
       color: ${colors.black};
     }
   `;
+
   const inputStyles = css`
     background: transparent;
     outline-color: ${!altStyle ? colors.darkgray : colors.tagGray};
@@ -181,7 +194,6 @@ function Form({ formName, altStyle }) {
     font-family: ${fonts.sans};
     font-weight: ${weights.light};
     font-size: 16px;
-    letter-spacing: 2px;
     line-height: 1.3;
     padding: 0 20px;
     margin-bottom: 20px;
