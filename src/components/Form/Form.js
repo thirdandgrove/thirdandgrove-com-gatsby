@@ -255,17 +255,18 @@ function Form({ formName, altStyle }) {
             >
               <span>
                 Work Email <sup>*</sup>
-              </span>
-              <Input
-                css={inputStyles}
-                value={formState.workEmail}
-                onChange={updateInput}
-                type='workEmail'
-                name='workEmail'
-                id='cf-workEmail'
-                altStyle={altStyle}
-              />
+              </span>{' '}
             </label>
+            <Input
+              css={inputStyles}
+              value={formState.workEmail}
+              onChange={updateInput}
+              type='workEmail'
+              name='workEmail'
+              id='cf-workEmail'
+              altStyle={altStyle}
+            />
+
             <label
               htmlFor='cf-whatDidYouNeedHelpWith'
               css={[
@@ -277,14 +278,15 @@ function Form({ formName, altStyle }) {
               <span>
                 What do you need help with? <sup>*</sup>
               </span>
-              <TextArea
-                value={formState.whatDidYouNeedHelpWith}
-                onChange={updateInput}
-                name='whatDidYouNeedHelpWith'
-                id='cf-whatDidYouNeedHelpWith'
-                altStyle={altStyle}
-              />
             </label>
+            <TextArea
+              value={formState.whatDidYouNeedHelpWith}
+              onChange={updateInput}
+              name='whatDidYouNeedHelpWith'
+              id='cf-whatDidYouNeedHelpWith'
+              altStyle={altStyle}
+            />
+
             <label
               htmlFor='cf-howDidYouHearAboutUs'
               css={[
@@ -295,16 +297,16 @@ function Form({ formName, altStyle }) {
             >
               <span>
                 How did you hear about us? <sup>*</sup>
-              </span>
-              <TextArea
-                value={formState.howDidYouHearAboutUs}
-                onChange={updateInput}
-                data-cy='messageField'
-                name='howDidYouHearAboutUs'
-                id='cf-howDidYouHearAboutUs'
-                altStyle={altStyle}
-              />
+              </span>{' '}
             </label>
+            <TextArea
+              value={formState.howDidYouHearAboutUs}
+              onChange={updateInput}
+              data-cy='messageField'
+              name='howDidYouHearAboutUs'
+              id='cf-howDidYouHearAboutUs'
+              altStyle={altStyle}
+            />
           </fieldset>
           <div
             css={css`
