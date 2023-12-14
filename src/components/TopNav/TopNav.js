@@ -86,23 +86,22 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
           >
             <Link to='/' aria-label='return to homepage' data-cy='homeButton'>
               {/* This guard keeps the Gatsby build from breaking by ensuring this code isn't run at build time. */}
-              {typeof window !== 'undefined' &&
-                (width > jsBreakpoints.phoneLarge ? (
-                  <ThirdAndGrove
-                    css={css`
-                      height: 22px;
-                      fill: ${isOpen ? colors.lightgray : fill};
-                    `}
-                  />
-                ) : (
-                  <TagLogo
-                    css={css`
-                      fill: ${isOpen ? colors.lightgray : fill};
-                      height: 50px;
-                      margin-left: -10px;
-                    `}
-                  />
-                ))}
+              {width > jsBreakpoints.phoneLarge ? (
+                <ThirdAndGrove
+                  css={css`
+                    height: 22px;
+                    fill: ${isOpen ? colors.lightgray : fill};
+                  `}
+                />
+              ) : (
+                <TagLogo
+                  css={css`
+                    fill: ${isOpen ? colors.lightgray : fill};
+                    height: 50px;
+                    margin-left: -10px;
+                  `}
+                />
+              )}
             </Link>
 
             <button
