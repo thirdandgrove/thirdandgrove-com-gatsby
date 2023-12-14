@@ -107,15 +107,27 @@ const Footer = () => {
   const mainMenu = buildMenu(data?.mainMenu?.nodes) || [];
 
   const renderItems = list =>
-    list?.map(item => (
-      <Link
-        key={item.title}
-        css={[linkStyle]}
-        to={item.link.uri.replace('internal:', '')}
-      >
-        {item.title}
-      </Link>
-    ));
+    list?.map(item =>
+      item.link.uri.indexOf('internal:') !== -1 ? (
+        <Link
+          key={item.title}
+          css={[linkStyle]}
+          to={item.link.uri.replace('internal:', '')}
+        >
+          {item.title}
+        </Link>
+      ) : (
+        <a
+          key={item.title}
+          css={[linkStyle]}
+          href={item.link.uri}
+          title={item.title}
+          target='_blank'
+        >
+          {item.title}
+        </a>
+      )
+    );
 
   return (
     <EasterEggContext.Consumer>
@@ -160,11 +172,23 @@ const Footer = () => {
                   css={[sectionStyle, sectionPrimaryStyle]}
                 >
                   {menu.link ? (
-                    <Link to={menu.link.uri.replace('internal:', '')}>
-                      <h5 css={[sectionHeaderStyle, desktopDelay1]}>
-                        {menu.title}
-                      </h5>
-                    </Link>
+                    menu.link.uri.indexOf('internal:') !== -1 ? (
+                      <Link to={menu.link.uri.replace('internal:', '')}>
+                        <h5 css={[sectionHeaderStyle, desktopDelay1]}>
+                          {menu.title}
+                        </h5>
+                      </Link>
+                    ) : (
+                      <a
+                        href={menu.link.uri}
+                        title={menu.title}
+                        target='_blank'
+                      >
+                        <h5 css={[sectionHeaderStyle, desktopDelay1]}>
+                          {menu.title}
+                        </h5>
+                      </a>
+                    )
                   ) : (
                     <h5 css={[sectionHeaderStyle, desktopDelay1]}>
                       {menu.title}
