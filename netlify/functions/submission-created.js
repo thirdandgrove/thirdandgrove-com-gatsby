@@ -8,10 +8,6 @@ exports.handler = async (event, _context, callback) => {
   const { form_name } = data ? data : data.data['form-name'];
   const { referrer } = data.data;
 
-  console.log(form_name);
-  console.log(data);
-  console.log(event);
-
   if (referrer.split('/')[2].indexOf('thirdandgrove') === -1) {
     console.log(event, _context, callback);
     console.log(process.env);
