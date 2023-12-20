@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
-
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import Input from '../Input';
 import Button from '../Button';
 import TextArea from '../TextArea';
@@ -11,6 +11,7 @@ import ErrorToaster from './Error';
 import Thanks from '../Thanks';
 
 function Form({ formName, altStyle }) {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formState, updateForm] = useState({
     whatDidYouNeedHelpWith: '',
     workEmail: '',
@@ -27,8 +28,31 @@ function Form({ formName, altStyle }) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   let currentErrs = {};
 
+  const verifyToken = async token => {
+    try {
+      const response = await fetch('/.netlify/functions/verify', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+      });
+      const json = await response.json();
+      return json;
+    } catch (error) {
+      console.log('error ', error);
+    }
+    return null;
+  };
+
   const submitform = async e => {
     e.preventDefault();
+
+    if (!executeRecaptcha) {
+      console.log('Recaptcha has not been loaded');
+      return;
+    }
 
     const { howDidYouHearAboutUs, workEmail, whatDidYouNeedHelpWith } =
       formState;
@@ -68,26 +92,46 @@ function Form({ formName, altStyle }) {
       return;
     }
 
-    const formResponse = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': formName, ...formState }),
-    });
+    // If all verification passes, generate token.
+    const token = await executeRecaptcha('form');
 
-    if (!formResponse.ok) {
-      const message = `An error has occured: ${formResponse.status}`;
-      throw new Error(message);
-    }
+    if (token) {
+      try {
+        const validToken = await verifyToken(token);
 
-    if (formResponse.ok) {
-      updateForm({
-        whatDidYouNeedHelpWith: '',
-        workEmail: '',
-        howDidYouHearAboutUs: '',
-      });
-      setHasSubmitted(true);
+        if (validToken.success) {
+          const formResponse = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encode({ 'form-name': formName, ...formState }),
+          });
+
+          if (!formResponse.ok) {
+            const message = `An error has occured: ${formResponse.status}`;
+            throw new Error(message);
+          }
+
+          if (formResponse.ok) {
+            updateForm({
+              whatDidYouNeedHelpWith: '',
+              workEmail: '',
+              howDidYouHearAboutUs: '',
+            });
+            setHasSubmitted(true);
+          }
+        }
+      } catch (error) {
+        updateForm({
+          whatDidYouNeedHelpWith: '',
+          workEmail: '',
+          howDidYouHearAboutUs: '',
+        });
+        const message = `An error has occured: ${error}, please try again`;
+        updateErrors({
+          error: message,
+        });
+      }
     }
-    console.log('Hurray!! you have submitted the form');
   };
 
   const fieldSetStyles = css`
@@ -114,8 +158,8 @@ function Form({ formName, altStyle }) {
 
     textarea,
     input {
-       margin-bottom: 16px;
-       letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
     }
 
     label {

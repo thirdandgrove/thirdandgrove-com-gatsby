@@ -170,7 +170,9 @@ const Menu = ({ menuOpen, toggleOpen }) => {
       background-repeat: no-repeat;
       background-position: 100% 100%;
       background-size: 0% 2px;
-      transition: background-size 0.5s, font-size 0.5s;
+      transition:
+        background-size 0.5s,
+        font-size 0.5s;
 
       &:hover,
       &:focus-visible {
@@ -229,23 +231,43 @@ const Menu = ({ menuOpen, toggleOpen }) => {
   const mainMenu = buildMenu(data?.mainMenu?.nodes) || [];
 
   const renderItems = list =>
-    list?.map(item => (
-      <Link
-        key={item.title}
-        css={[
-          linkPrimaryStyle,
-          textFadeIn,
-          linkBaseStyles,
-          mobileDelay3,
-          desktopDelay3,
-          linkSecondaryStyle,
-        ]}
-        onClick={() => toggleOpen()}
-        to={item.link.uri.replace('internal:', '')}
-      >
-        {item.title}
-      </Link>
-    ));
+    list?.map(item =>
+      item.link.uri.indexOf('internal:') !== -1 ? (
+        <Link
+          key={item.title}
+          css={[
+            linkPrimaryStyle,
+            textFadeIn,
+            linkBaseStyles,
+            mobileDelay3,
+            desktopDelay3,
+            linkSecondaryStyle,
+          ]}
+          onClick={() => toggleOpen()}
+          to={item.link.uri.replace('internal:', '')}
+        >
+          {item.title}
+        </Link>
+      ) : (
+        <a
+          key={item.title}
+          css={[
+            linkPrimaryStyle,
+            textFadeIn,
+            linkBaseStyles,
+            mobileDelay3,
+            desktopDelay3,
+            linkSecondaryStyle,
+          ]}
+          onClick={() => toggleOpen()}
+          href={item.link.uri}
+          title={item.title}
+          target='_blank'
+        >
+          {item.title}
+        </a>
+      )
+    );
 
   const checkClass = list =>
     list.filter(item => item.title.trim().length >= 9).length > 1;
@@ -304,14 +326,27 @@ const Menu = ({ menuOpen, toggleOpen }) => {
           mainMenu.map(menu => (
             <section key={menu.title} css={[sectionStyle, sectionPrimaryStyle]}>
               {menu.link ? (
-                <Link
-                  onClick={() => toggleOpen()}
-                  to={menu.link.uri.replace('internal:', '')}
-                >
-                  <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                    <span>{menu.title.trim()}</span>
-                  </h5>
-                </Link>
+                menu.link.uri.indexOf('internal:') !== -1 ? (
+                  <Link
+                    onClick={() => toggleOpen()}
+                    to={menu.link.uri.replace('internal:', '')}
+                  >
+                    <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                      <span>{menu.title.trim()}</span>
+                    </h5>
+                  </Link>
+                ) : (
+                  <a
+                    onClick={() => toggleOpen()}
+                    href={menu.link.uri}
+                    title={menu.title}
+                    target='_blank'
+                  >
+                    <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                      <span>{menu.title.trim()}</span>
+                    </h5>
+                  </a>
+                )
               ) : (
                 <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
                   <span>{menu.title.trim()}</span>
@@ -359,14 +394,27 @@ const Menu = ({ menuOpen, toggleOpen }) => {
                 css={[sectionStyle, sectionPrimaryStyle]}
               >
                 {menu.link ? (
-                  <Link
-                    onClick={() => toggleOpen()}
-                    to={menu.link.uri.replace('internal:', '')}
-                  >
-                    <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
-                      <span>{menu.title.trim()}</span>
-                    </h5>
-                  </Link>
+                  menu.link.uri.indexOf('internal:') !== -1 ? (
+                    <Link
+                      onClick={() => toggleOpen()}
+                      to={menu.link.uri.replace('internal:', '')}
+                    >
+                      <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                        <span>{menu.title.trim()}</span>
+                      </h5>
+                    </Link>
+                  ) : (
+                    <a
+                      onClick={() => toggleOpen()}
+                      href={menu.link.uri}
+                      title={menu.title}
+                      target='_blank'
+                    >
+                      <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
+                        <span>{menu.title.trim()}</span>
+                      </h5>
+                    </a>
+                  )
                 ) : (
                   <h5 css={[sectionHeaderStyle, textFadeIn, desktopDelay1]}>
                     <span>{menu.title.trim()}</span>
