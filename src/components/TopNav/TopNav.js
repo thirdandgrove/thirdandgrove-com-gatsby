@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/react';
 
-import useWindow from '../../hooks/useWindow';
+import useWindowSize from '../../hooks/useWindowSize';
 import Menu from '../Menu';
 import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
 
@@ -17,7 +17,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const [acquiaOpen, setAcquiaOpen] = useState(false);
   const toggleAcquiaOpen = () => setAcquiaOpen(!acquiaOpen);
   const [isDate, setDate] = useState(false);
-  const { width } = useWindow();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     setDate(new Date() > new Date('2021-04-12'));
