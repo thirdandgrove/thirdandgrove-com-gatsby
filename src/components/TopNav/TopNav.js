@@ -89,7 +89,7 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
               `,
             ]}
           >
-            {loaded && (
+            {loaded ? (
               <Link to='/' aria-label='return to homepage' data-cy='homeButton'>
                 {/* This guard keeps the Gatsby build from breaking by ensuring this code isn't run at build time. */}
                 {width > jsBreakpoints.phoneLarge ? (
@@ -109,6 +109,8 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
                   />
                 )}
               </Link>
+            ) : (
+              <span></span>
             )}
 
             <button
