@@ -26,6 +26,7 @@ function Form({ formName, altStyle }) {
 
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   let currentErrs = {};
 
   const verifyToken = async token => {
@@ -48,6 +49,7 @@ function Form({ formName, altStyle }) {
 
   const submitform = async e => {
     e.preventDefault();
+    currentErrs = {};
 
     if (!executeRecaptcha) {
       console.log('Recaptcha has not been loaded');
@@ -64,31 +66,38 @@ function Form({ formName, altStyle }) {
     }
 
     // Validate inputs.
-    if (!howDidYouHearAboutUs || !workEmail || !whatDidYouNeedHelpWith) {
+    if (
+      !howDidYouHearAboutUs ||
+      !workEmail ||
+      !whatDidYouNeedHelpWith ||
+      ['gmail', 'aol', 'yahoo', 'comcast', 'hotmail'].some(substring =>
+        workEmail.includes(substring)
+      )
+    ) {
       // Notify user of required fields.
-      currentErrs = {};
+      if (
+        ['gmail', 'aol', 'yahoo', 'comcast', 'hotmail'].some(substring =>
+          workEmail.includes(substring)
+        )
+      ) {
+        currentErrs.workEmail = `Email must use your company's domain`;
+      }
+
+      if (!workEmail) {
+        currentErrs.workEmail = 'Email is required';
+      }
+
+      if (!whatDidYouNeedHelpWith) {
+        currentErrs.whatDidYouNeedHelpWith =
+          'What do you need help with? is required';
+      }
 
       if (!howDidYouHearAboutUs) {
         currentErrs.howDidYouHearAboutUs =
           'How did you hear about us? is required';
       }
-      if (!whatDidYouNeedHelpWith) {
-        currentErrs.whatDidYouNeedHelpWith =
-          'What do you need help with? is required';
-      }
-      if (!workEmail) {
-        currentErrs.workEmail = 'Email is required';
-      }
-      updateErrors(currentErrs);
-      return;
-    }
 
-    if (
-      ['gmail', 'aol', 'yahoo', 'comcast', 'hotmail'].some(substring =>
-        workEmail.includes(substring)
-      )
-    ) {
-      updateErrors({ workEmailDomain: `Email must use your company's domain` });
+      updateErrors(currentErrs);
       return;
     }
 
@@ -262,6 +271,8 @@ function Form({ formName, altStyle }) {
   `;
   const errorLabel = css`
     color: ${colors.red};
+    border-color: ${colors.red};
+    outline-color: ${colors.red};
 
     input,
     textarea {
@@ -300,7 +311,7 @@ function Form({ formName, altStyle }) {
             value={formState.botField}
             onChange={updateInput}
           />
-          <fieldset css={fieldSetStyles}>
+          <fieldset css={[fieldSetStyles]}>
             <label
               htmlFor='cf-workEmail'
               css={[
@@ -314,7 +325,10 @@ function Form({ formName, altStyle }) {
               </span>{' '}
             </label>
             <Input
-              css={inputStyles}
+              css={[
+                inputStyles,
+                errors?.workEmail || errors?.workEmailDomain ? errorLabel : '',
+              ]}
               value={formState.workEmail}
               onChange={updateInput}
               type='workEmail'
@@ -336,6 +350,7 @@ function Form({ formName, altStyle }) {
               </span>
             </label>
             <TextArea
+              css={[errors?.whatDidYouNeedHelpWith ? errorLabel : '']}
               value={formState.whatDidYouNeedHelpWith}
               onChange={updateInput}
               name='whatDidYouNeedHelpWith'
@@ -356,6 +371,7 @@ function Form({ formName, altStyle }) {
               </span>{' '}
             </label>
             <TextArea
+              css={[errors?.howDidYouHearAboutUs ? errorLabel : '']}
               value={formState.howDidYouHearAboutUs}
               onChange={updateInput}
               data-cy='messageField'
@@ -375,11 +391,11 @@ function Form({ formName, altStyle }) {
               }
             `}
           >
-            <Button data-cy='contactSubmit' type='submit'>
+            <Button data-cy='contactSubmit' type='submit' disabled={isDisabled}>
               send
             </Button>
           </div>
-          <ErrorToaster errs={[errors?.workEmailDomain]} />
+          <ErrorToaster errs={errors} />
         </form>
       ) : (
         <Thanks message='Thank you for your inquiry. <br/> We will be in touch soon.' />

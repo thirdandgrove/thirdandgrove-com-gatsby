@@ -16,6 +16,8 @@ const ErrorToaster = ({ errs }) => {
       <div
         css={css`
           text-align: center;
+          display: flex;
+          flex-direction: column;
 
           ${mediaQueries.phoneLarge} {
             position: absolute;
@@ -30,13 +32,7 @@ const ErrorToaster = ({ errs }) => {
           }
         `}
       >
-        {errs &&
-          Object.values(errs).map((err, i) => (
-            <p key={i}>
-              {err}{' '}
-              {i !== Object.keys(errs).length - 1 && <span>&nbsp;-&nbsp;</span>}
-            </p>
-          ))}
+        {errs && Object.values(errs).map((err, i) => <p key={i}>{err} </p>)}
       </div>
     </div>
   ) : null;
