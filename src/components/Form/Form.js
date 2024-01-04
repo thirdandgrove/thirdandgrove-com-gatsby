@@ -26,7 +26,7 @@ function Form({ formName, altStyle }) {
 
   const [errors, updateErrors] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
+
   let currentErrs = {};
 
   const verifyToken = async token => {
@@ -45,6 +45,14 @@ function Form({ formName, altStyle }) {
       console.log('error ', error);
     }
     return null;
+  };
+
+  const validateEmail = email => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
   };
 
   const submitform = async e => {
@@ -72,7 +80,8 @@ function Form({ formName, altStyle }) {
       !whatDidYouNeedHelpWith ||
       ['gmail', 'aol', 'yahoo', 'comcast', 'hotmail'].some(substring =>
         workEmail.includes(substring)
-      )
+      ) ||
+      !validateEmail(workEmail)
     ) {
       // Notify user of required fields.
       if (
@@ -85,6 +94,10 @@ function Form({ formName, altStyle }) {
 
       if (!workEmail) {
         currentErrs.workEmail = 'Email is required';
+      }
+
+      if (!validateEmail(workEmail)) {
+        currentErrs.workEmail = `Must be a valid email address.`;
       }
 
       if (!whatDidYouNeedHelpWith) {
@@ -391,7 +404,7 @@ function Form({ formName, altStyle }) {
               }
             `}
           >
-            <Button data-cy='contactSubmit' type='submit' disabled={isDisabled}>
+            <Button data-cy='contactSubmit' type='submit'>
               send
             </Button>
           </div>
