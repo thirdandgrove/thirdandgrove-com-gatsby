@@ -19,13 +19,6 @@ const ErrorToaster = ({ errs }) => {
           display: flex;
           flex-direction: column;
 
-          ${mediaQueries.phoneLarge} {
-            position: absolute;
-            width: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-          }
-
           p {
             display: inline;
             color: ${colors.red};
