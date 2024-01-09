@@ -25,15 +25,25 @@ const ServiceComponent = ({ data }) => {
       height='0'
       padding='0'
       textAlign='left'
-      css={css`
-        &:first-of-type {
-          margin-top: 20px;
-
-          ${mediaQueries.phoneLarge} {
-            margin-top: 175px;
-          }
-        }
-      `}
+      css={
+        cta === null
+          ? css`
+              &:first-of-type {
+                margin-top: 20px;
+                ${mediaQueries.phoneLarge} {
+                  margin-top: 175px;
+                }
+              }
+              `
+          : css`
+              &:first-of-type, &:nth-of-type(2) {
+                margin-top: 20px;
+                ${mediaQueries.phoneLarge} {
+                  margin-top: 175px;
+                }
+              }
+              `
+      }
     >
       <div id={id} css={container.medium}>
         <div
