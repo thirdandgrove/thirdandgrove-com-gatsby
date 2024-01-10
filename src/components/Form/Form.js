@@ -6,82 +6,10 @@ import Input from '../Input';
 import Button from '../Button';
 import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
-import { encode } from '../../util';
+import { encode, emailDomains, validateEmail, verifyToken } from '../../util';
 import ErrorToaster from './Error';
 import Thanks from '../Thanks';
 
-const emailDomains = [
-  'gmail',
-  'hotmail',
-  'aol',
-  'msn',
-  'wanadoo',
-  'orange',
-  'comcast',
-  'live',
-  'rediffmail',
-  'free',
-  'gmx',
-  'web',
-  'yahoo',
-  'yandex',
-  'ymail',
-  'libero',
-  'outlook',
-  'uol',
-  'bol',
-  'mail',
-  'cox',
-  'sbcglobal',
-  'sfr',
-  'verizon',
-  'googlemail',
-  'ig',
-  'bigpond',
-  'terra',
-  'neuf',
-  'alice',
-  'rocketmail',
-  'att',
-  'laposte',
-  'facebook',
-  'bellsouth',
-  'charter',
-  'rambler',
-  'tiscali',
-  'shaw',
-  'sky',
-  'earthlink',
-  'optonline',
-  'freenet.de',
-  't-online.de',
-  'aliceadsl',
-  'virgilio',
-  'home.nl',
-  'qq',
-  'telenet.be',
-  'me',
-  'voila',
-  'planet.nl',
-  'tin',
-  'ntlworld',
-  'arcor',
-  'frontiernet',
-  'hetnet',
-  'zonnet',
-  'club-internet',
-  'juno',
-  'optusnet',
-  'blueyonder',
-  'bluewin',
-  'skynet',
-  'sympatico',
-  'windstream',
-  'mac',
-  'centurytel',
-  'chello',
-  'aim',
-];
 function Form({ formName, altStyle }) {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [formState, updateForm] = useState({
@@ -100,32 +28,6 @@ function Form({ formName, altStyle }) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   let currentErrs = {};
-
-  const verifyToken = async token => {
-    try {
-      const response = await fetch('/lify/functions/verify', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token }),
-      });
-      const json = await response.json();
-      return json;
-    } catch (error) {
-      console.log('error ', error);
-    }
-    return null;
-  };
-
-  const validateEmail = email => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
 
   const submitform = async e => {
     e.preventDefault();
