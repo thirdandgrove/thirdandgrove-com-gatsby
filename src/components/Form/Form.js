@@ -10,6 +10,109 @@ import { encode } from '../../util';
 import ErrorToaster from './Error';
 import Thanks from '../Thanks';
 
+const emailDomains = [
+  'gmail',
+  'yahoo',
+  'hotmail',
+  'aol',
+  'hotmail',
+  'hotmail',
+  'msn',
+  'yahoo',
+  'wanadoo',
+  'orange',
+  'comcast',
+  'yahoo',
+  'yahoo',
+  'yahoo',
+  'live',
+  'rediffmail',
+  'free',
+  'gmx',
+  'web',
+  'yandex',
+  'ymail',
+  'libero',
+  'outlook',
+  'uol',
+  'bol',
+  'mail',
+  'cox',
+  'hotmail',
+  'sbcglobal',
+  'sfr',
+  'live',
+  'verizon',
+  'live',
+  'googlemail',
+  'yahoo',
+  'ig',
+  'live',
+  'bigpond',
+  'terra',
+  'yahoo',
+  'neuf',
+  'yahoo',
+  'alice',
+  'rocketmail',
+  'att',
+  'laposte',
+  'facebook',
+  'bellsouth',
+  'yahoo',
+  'hotmail',
+  'charter',
+  'yahoo',
+  'yahoo',
+  'rambler',
+  'hotmail',
+  'tiscali',
+  'shaw',
+  'yahoo',
+  'sky',
+  'earthlink',
+  'optonline',
+  'freenet.de',
+  't-online.de',
+  'aliceadsl',
+  'virgilio',
+  'home.nl',
+  'qq',
+  'telenet.be',
+  'me',
+  'yahoo.ar',
+  'tiscali',
+  'yahoo.mx',
+  'voila',
+  'gmx',
+  'mail',
+  'planet.nl',
+  'tin',
+  'live',
+  'ntlworld',
+  'arcor',
+  'yahoo',
+  'frontiernet',
+  'hetnet',
+  'live',
+  'yahoo',
+  'zonnet',
+  'club-internet',
+  'juno',
+  'optusnet',
+  'blueyonder',
+  'bluewin',
+  'skynet',
+  'sympatico',
+  'windstream',
+  'mac',
+  'centurytel',
+  'chello',
+  'live',
+  'aim',
+  'bigpond',
+];
+
 function Form({ formName, altStyle }) {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [formState, updateForm] = useState({
@@ -31,7 +134,7 @@ function Form({ formName, altStyle }) {
 
   const verifyToken = async token => {
     try {
-      const response = await fetch('/.netlify/functions/verify', {
+      const response = await fetch('/lify/functions/verify', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -78,17 +181,11 @@ function Form({ formName, altStyle }) {
       !howDidYouHearAboutUs ||
       !workEmail ||
       !whatDidYouNeedHelpWith ||
-      ['gmail', 'aol', 'yahoo', 'comcast', 'hotmail'].some(substring =>
-        workEmail.includes(substring)
-      ) ||
+      emailDomains.some(substring => workEmail.includes(substring)) ||
       !validateEmail(workEmail)
     ) {
       // Notify user of required fields.
-      if (
-        ['gmail', 'aol', 'yahoo', 'comcast', 'hotmail'].some(substring =>
-          workEmail.includes(substring)
-        )
-      ) {
+      if (emailDomains.some(substring => workEmail.includes(substring))) {
         currentErrs.workEmail = `Email must use your company's domain`;
       }
 
