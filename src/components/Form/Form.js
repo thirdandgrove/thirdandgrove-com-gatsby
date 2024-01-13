@@ -6,7 +6,7 @@ import Input from '../Input';
 import Button from '../Button';
 import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
-import { encode } from '../../util';
+import { encode, emailDomains, validateEmail, verifyToken } from '../../util';
 import ErrorToaster from './Error';
 import Thanks from '../Thanks';
 
@@ -28,32 +28,6 @@ function Form({ formName, altStyle }) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   let currentErrs = {};
-
-  const verifyToken = async token => {
-    try {
-      const response = await fetch('/.netlify/functions/verify', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token }),
-      });
-      const json = await response.json();
-      return json;
-    } catch (error) {
-      console.log('error ', error);
-    }
-    return null;
-  };
-
-  const validateEmail = email => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
 
   const submitform = async e => {
     e.preventDefault();
@@ -78,17 +52,11 @@ function Form({ formName, altStyle }) {
       !howDidYouHearAboutUs ||
       !workEmail ||
       !whatDidYouNeedHelpWith ||
-      ['gmail', 'aol', 'yahoo', 'comcast', 'hotmail'].some(substring =>
-        workEmail.includes(substring)
-      ) ||
+      emailDomains.some(substring => workEmail.includes(substring)) ||
       !validateEmail(workEmail)
     ) {
       // Notify user of required fields.
-      if (
-        ['gmail', 'aol', 'yahoo', 'comcast', 'hotmail'].some(substring =>
-          workEmail.includes(substring)
-        )
-      ) {
+      if (emailDomains.some(substring => workEmail.includes(substring))) {
         currentErrs.workEmail = `Email must use your company's domain`;
       }
 
