@@ -506,8 +506,8 @@ export const query = graphql`
                       }
                       childImageMobile: childImageSharp {
                         gatsbyImageData(
-                          width: 1
-                          height: 1
+                          height: 260
+                          width: 335
                           layout: CONSTRAINED
                         )
                       }
@@ -550,8 +550,8 @@ export const query = graphql`
                       }
                       childImageMobile: childImageSharp {
                         gatsbyImageData(
-                          width: 1
-                          height: 1
+                          height: 260
+                          width: 335
                           layout: CONSTRAINED
                         )
                       }
@@ -841,15 +841,15 @@ export const query = graphql`
                         }
                         childImageMobile: childImageSharp {
                           gatsbyImageData(
-                            width: 1
-                            height: 1
+                            height: 260
+                            width: 335
                             layout: CONSTRAINED
                           )
                         }
                         childImageTypeA: childImageSharp {
                           gatsbyImageData(
-                            height: 180
-                            width: 250
+                            height: 320
+                            width: 450
                             transformOptions: { cropFocus: CENTER }
                             layout: CONSTRAINED
                           )
@@ -885,8 +885,8 @@ export const query = graphql`
                         }
                         childImageMobile: childImageSharp {
                           gatsbyImageData(
-                            width: 1
-                            height: 1
+                            height: 260
+                            width: 335
                             layout: CONSTRAINED
                           )
                         }
