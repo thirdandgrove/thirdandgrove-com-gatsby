@@ -291,7 +291,7 @@ export const query = graphql`
               height: 260
               width: 335
               transformOptions: { cropFocus: CENTER }
-              layout: FIXED
+              layout: CONSTRAINED
             )
           }
           childImageTypeA: childImageSharp {
@@ -328,7 +328,12 @@ export const query = graphql`
             gatsbyImageData(width: 500, height: 500, layout: FIXED)
           }
           childImageMobile: childImageSharp {
-            gatsbyImageData(width: 1, height: 1, layout: FIXED)
+            gatsbyImageData(
+              height: 260
+              width: 335
+              transformOptions: { cropFocus: CENTER }
+              layout: CONSTRAINED
+            )
           }
           childImageTypeA: childImageSharp {
             gatsbyImageData(
@@ -364,7 +369,12 @@ export const query = graphql`
             gatsbyImageData(width: 500, height: 500, layout: FIXED)
           }
           childImageMobile: childImageSharp {
-            gatsbyImageData(width: 1, height: 1, layout: FIXED)
+            gatsbyImageData(
+              height: 260
+              width: 335
+              transformOptions: { cropFocus: CENTER }
+              layout: CONSTRAINED
+            )
           }
           childImageTypeA: childImageSharp {
             gatsbyImageData(
