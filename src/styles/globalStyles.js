@@ -436,6 +436,17 @@ export const globalStyles = css`
     list-style-image: none;
   }
 
+  @media screen and (min-width: 1400px) {
+    ol {
+      margin: 0 0 1.45rem;
+      padding: 0 0 0 1.3rem;
+      font-family: ${fonts.sans};
+      font-size: 16px;
+      list-style-position: outside;
+      list-style-image: none;
+    }
+  }
+
   ol li,
   ul li {
     padding-left: 0.45rem;
