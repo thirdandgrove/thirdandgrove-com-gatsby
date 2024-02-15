@@ -6,7 +6,13 @@ import Input from '../Input';
 import Button from '../Button';
 import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
-import { encode, emailDomains, validateEmail, verifyToken } from '../../util';
+import {
+  encode,
+  emailDomains,
+  validateEmail,
+  verifyToken,
+  validateEmailField,
+} from '../../util';
 import ErrorToaster from './Error';
 import Thanks from '../Thanks';
 
@@ -52,16 +58,16 @@ function Form({ formName, altStyle }) {
       !howDidYouHearAboutUs ||
       !workEmail ||
       !whatDidYouNeedHelpWith ||
-      emailDomains.some(substring => workEmail.includes(substring)) ||
+      validateEmailField(workEmail) ||
       !validateEmail(workEmail)
     ) {
       // Notify user of required fields.
-      if (emailDomains.some(substring => workEmail.includes(substring))) {
+      if (!validateEmailField(workEmail)) {
         currentErrs.workEmail = `Email must use your company's domain`;
       }
 
       if (!workEmail) {
-        currentErrs.workEmail = 'Email is required';
+        currentErrs.workEmail = `Email is required`;
       }
 
       if (!validateEmail(workEmail)) {
