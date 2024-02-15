@@ -6,13 +6,7 @@ import Input from '../Input';
 import Button from '../Button';
 import TextArea from '../TextArea';
 import { mediaQueries, colors, fonts, weights } from '../../styles';
-import {
-  encode,
-  emailDomains,
-  validateEmail,
-  verifyToken,
-  validateEmailField,
-} from '../../util';
+import { encode, validateEmail, verifyToken } from '../../util';
 import ErrorToaster from './Error';
 import Thanks from '../Thanks';
 
@@ -58,14 +52,8 @@ function Form({ formName, altStyle }) {
       !howDidYouHearAboutUs ||
       !workEmail ||
       !whatDidYouNeedHelpWith ||
-      validateEmailField(workEmail) ||
       !validateEmail(workEmail)
     ) {
-      // Notify user of required fields.
-      if (!validateEmailField(workEmail)) {
-        currentErrs.workEmail = `Email must use your company's domain`;
-      }
-
       if (!workEmail) {
         currentErrs.workEmail = `Email is required`;
       }
