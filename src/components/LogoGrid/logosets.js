@@ -74,7 +74,7 @@ import cooperVisionNew from './logos/Coopervision.png';
 import aM from './logos/A&M.png';
 import pG from './logos/P&G.png';
 import cummins from './logos/Cummins.png';
-import seventhGen from './logos/SeventhGen.png';
+import danaFarber from './logos/dana-farber.png';
 import unilver from './logos/unilver.png';
 import WAB from './logos/WAB.png';
 
@@ -403,8 +403,8 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
         height={isSmScreen ? '37' : '50'}
       />,
       <img
-        src={seventhGen}
-        alt='Seventh Generation'
+        src={danaFarber}
+        alt='Dana Farber'
         width={isSmScreen ? '166' : '240'}
         height={isSmScreen ? '142' : '100'}
       />,
