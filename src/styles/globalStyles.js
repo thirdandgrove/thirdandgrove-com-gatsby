@@ -688,4 +688,11 @@ export const globalStyles = css`
   .gatsby-image-wrapper-constrained {
     display: block;
   }
+
+  :nth-child(1 of .service-component) {
+    margin-top: 20px;
+    ${mediaQueries.phoneLarge} {
+      margin-top: 175px;
+    }
+  }
 `;
