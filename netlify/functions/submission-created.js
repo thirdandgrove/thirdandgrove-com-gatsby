@@ -21,7 +21,7 @@ exports.handler = async (event, _context, callback) => {
     dealLeadSource: process.env.DEAL_LEAD_SOURCE,
     personWebsite: process.env.PERSON_WEBSITE,
     whatDidYouNeedHelpWith: process.env.WHAT_DID_YOU_NEED_HELP_WITH,
-    howDidYouHearAboutUs: process.env.HOW_DID_YOU_HEAR_ABOUT_US,
+    howDidYouHearAboutUs: process.env.SELF_REPORTED_ATTRIBUTION,
   };
 
   const { PIPEDRIVE_USER_ID, PIPEDRIVE_KEY } = process.env;
