@@ -56,9 +56,7 @@ exports.handler = async (event, _context, callback) => {
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify({
           name: `Webform Deal Person ${workEmail}`,
-          [fields.howDidYouHearAboutUs]: howDidYouHearAboutUs,
           email: workEmail,
-          [fields.whatDidYouNeedHelpWith]: whatDidYouNeedHelpWith,
           owner_id: PIPEDRIVE_USER_ID,
         }),
       });
@@ -76,6 +74,8 @@ exports.handler = async (event, _context, callback) => {
         data: JSON.stringify({
           title: `[Webform] Deal for <${workEmail}>`,
           [fields.dealLeadSource]: '34',
+          [fields.howDidYouHearAboutUs]: howDidYouHearAboutUs,
+          [fields.whatDidYouNeedHelpWith]: whatDidYouNeedHelpWith,
           person_id,
           user_id: PIPEDRIVE_USER_ID,
         }),
