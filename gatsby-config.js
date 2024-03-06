@@ -25,7 +25,7 @@ module.exports = {
         mergeStyleHashes: false,
         directives: {
           'default-src': `'self' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com player.vimeo.com vimeo.com`,
-          'script-src': `'self' 'unsafe-inline' 'unsafe-eval' data: www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com player.vimeo.com vimeo.com netlify.app`,
+          'script-src': `'self' 'unsafe-inline' 'unsafe-eval' data: netlify.app www.google-analytics.com https://polyfill.io https://www.google.com https://cdnjs.cloudflare.com https://www.gstatic.com www.googletagmanager.com snap.licdn.com static.ads-twitter.com googleads.g.doubleclick.net https://sc.lfeeder.com player.vimeo.com vimeo.com netlify.app`,
           'style-src': `'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
           'img-src': `'self' data: google.com analytics.twitter.com px4.ads.linkedin.com www.google-analytics.com google.com www.google.com.ec https://www.google.com/ads https://www.google.com/pagead https://cdn.linkedin.oribi.io https://px.ads.linkedin.com https://www.google.com/ads/ga-audiences https://tr-rc.lfeeder.com t.co google.com twitter.com`,
           'font-src': `'self' data: fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
