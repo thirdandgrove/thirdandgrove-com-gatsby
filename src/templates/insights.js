@@ -126,6 +126,8 @@ const Insights = ({ data }) => {
         ]}
       />
 
+      <NewsletterFullWidthSection />
+
       <InsightsSlider
         data={data.allInsight}
         showButton={false}
