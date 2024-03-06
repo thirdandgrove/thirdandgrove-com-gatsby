@@ -366,6 +366,12 @@ const Header = ({
         noIndex={noIndex}
         color={color}
       />
+      <TopNav
+        fill={fontColor}
+        hideNav={hideNav}
+        banner={banner}
+        navLink={navLink}
+      />
       <FullWidthSection
         css={[sectionCSS, styles]}
         height={height}

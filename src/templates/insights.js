@@ -125,12 +125,7 @@ const Insights = ({ data }) => {
           `,
         ]}
       />
-      {!post.relationships.field_e_book_file && (
-        <>
-          <NewsletterOverlay />
-          <NewsletterFullWidthSection />
-        </>
-      )}
+
       <InsightsSlider
         data={data.allInsight}
         showButton={false}
