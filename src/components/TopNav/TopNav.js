@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/react';
 
-import useWindowSize from '../../hooks/useWindowSize';
 import Menu from '../Menu';
-import { colors, mediaQueries, jsBreakpoints, container } from '../../styles';
+import { colors, mediaQueries, container } from '../../styles';
 
 import TagLogo from './svg/TagLogo';
 import ThirdAndGrove from './svg/ThirdAndGrove';
@@ -17,8 +16,6 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
   const [acquiaOpen, setAcquiaOpen] = useState(false);
   const toggleAcquiaOpen = () => setAcquiaOpen(!acquiaOpen);
   const [isDate, setDate] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-  const { width } = useWindowSize();
 
   useEffect(() => {
     setDate(new Date() > new Date('2021-04-12'));
@@ -27,10 +24,6 @@ const TopNav = ({ fill, hideNav, banner, navLink }) => {
   useEffect(() => {
     document.body.parentNode.style.overflow = isOpen ? 'hidden' : '';
   }, [isOpen]);
-
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
 
   return (
     <>
