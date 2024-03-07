@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { graphql } from 'gatsby';
@@ -13,6 +13,8 @@ import {
   NewsletterOverlay,
 } from '../components/NewsletterForm';
 import { updateExternalLinks } from '../util';
+import { useHasBeenVisible } from '../hooks/useVisibility';
+import FullWidthSection from '../components/FullWidthSection';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -26,6 +28,11 @@ const Insights = ({ data }) => {
       padding-top: 90px;
     }
   `;
+
+  const halfPage = useRef();
+  const preload = useRef();
+  const hasScrolled = useHasBeenVisible(halfPage);
+  const isScrolling = useHasBeenVisible(preload);
 
   const headerData = {
     title: post.title,
@@ -125,18 +132,20 @@ const Insights = ({ data }) => {
           `,
         ]}
       />
-      {!post.relationships.field_e_book_file && (
+      {hasScrolled || isScrolling ? (
         <>
-          <NewsletterOverlay />
           <NewsletterFullWidthSection />
+          <NewsletterOverlay />
+          <InsightsSlider
+            data={data.allInsight}
+            showButton={false}
+            backgroundColor={colors.lightgray}
+            title='You May Also Like'
+          />
         </>
+      ) : (
+        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
       )}
-      <InsightsSlider
-        data={data.allInsight}
-        showButton={false}
-        backgroundColor={colors.lightgray}
-        title='You May Also Like'
-      />
     </Layout>
   );
 };
