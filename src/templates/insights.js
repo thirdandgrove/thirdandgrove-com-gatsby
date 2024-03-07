@@ -28,8 +28,11 @@ const Insights = ({ data }) => {
     }
   `;
 
-  const halfPage = React.useRef();
+  const halfPage = useRef();
+  const preload = useRef();
   const hasScrolled = useHasBeenVisible(halfPage);
+  const isScrolling = useHasBeenVisible(preload);
+
   const headerData = {
     title: post.title,
     label: post.relationships.field_e_book_file
@@ -128,8 +131,7 @@ const Insights = ({ data }) => {
           `,
         ]}
       />
-
-      {hasScrolled && (
+      {hasScrolled || isScrolling ? (
         <>
           <NewsletterFullWidthSection />
           <InsightsSlider
@@ -139,6 +141,8 @@ const Insights = ({ data }) => {
             title='You May Also Like'
           />
         </>
+      ) : (
+        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
       )}
     </Layout>
   );
