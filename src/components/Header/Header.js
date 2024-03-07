@@ -406,7 +406,11 @@ const Header = ({
 
         {label && (
           <span data-cy='labelText' css={headerlabel}>
-            {label}
+            {title.indexOf('We work with brands we love') !== -1 ? (
+              <br />
+            ) : (
+              label
+            )}
           </span>
         )}
         {title && (
