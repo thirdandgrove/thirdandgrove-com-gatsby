@@ -131,19 +131,14 @@ const Insights = ({ data }) => {
           `,
         ]}
       />
-      {hasScrolled || isScrolling ? (
-        <>
-          <NewsletterFullWidthSection />
-          <InsightsSlider
-            data={data.allInsight}
-            showButton={false}
-            backgroundColor={colors.lightgray}
-            title='You May Also Like'
-          />
-        </>
-      ) : (
-        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
-      )}
+
+      <NewsletterFullWidthSection />
+      <InsightsSlider
+        data={data.allInsight}
+        showButton={false}
+        backgroundColor={colors.lightgray}
+        title='You May Also Like'
+      />
     </Layout>
   );
 };
