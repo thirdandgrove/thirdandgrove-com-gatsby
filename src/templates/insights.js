@@ -13,6 +13,7 @@ import {
   NewsletterOverlay,
 } from '../components/NewsletterForm';
 import { updateExternalLinks } from '../util';
+import { useHasBeenVisible } from '../hooks/useVisibility';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -27,6 +28,8 @@ const Insights = ({ data }) => {
     }
   `;
 
+  const halfPage = React.useRef();
+  const hasScrolled = useHasBeenVisible(halfPage);
   const headerData = {
     title: post.title,
     label: post.relationships.field_e_book_file
@@ -126,14 +129,17 @@ const Insights = ({ data }) => {
         ]}
       />
 
-      <NewsletterFullWidthSection />
-
-      <InsightsSlider
-        data={data.allInsight}
-        showButton={false}
-        backgroundColor={colors.lightgray}
-        title='You May Also Like'
-      />
+      {hasScrolled && (
+        <>
+          <NewsletterFullWidthSection />
+          <InsightsSlider
+            data={data.allInsight}
+            showButton={false}
+            backgroundColor={colors.lightgray}
+            title='You May Also Like'
+          />
+        </>
+      )}
     </Layout>
   );
 };
