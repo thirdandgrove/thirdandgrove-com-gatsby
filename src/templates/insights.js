@@ -66,10 +66,10 @@ const Insights = ({ data }) => {
     splitHeaderData.image = post.relationships.field_image.localFile.publicURL;
   }
 
-  useEffect(
-    () => updateExternalLinks(document.querySelectorAll('main > div a')),
-    []
-  );
+  // useEffect(
+  //   () => updateExternalLinks(document.querySelectorAll('main > div a')),
+  //   []
+  // );
 
   return (
     <Layout
