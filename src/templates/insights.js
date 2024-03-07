@@ -14,6 +14,7 @@ import {
 } from '../components/NewsletterForm';
 import { updateExternalLinks } from '../util';
 import { useHasBeenVisible } from '../hooks/useVisibility';
+import FullWidthSection from '../components/FullWidthSection';
 
 const Insights = ({ data }) => {
   const post = data.insight;
@@ -131,14 +132,19 @@ const Insights = ({ data }) => {
           `,
         ]}
       />
-
-      <NewsletterFullWidthSection />
-      <InsightsSlider
-        data={data.allInsight}
-        showButton={false}
-        backgroundColor={colors.lightgray}
-        title='You May Also Like'
-      />
+      {hasScrolled || isScrolling ? (
+        <>
+          <NewsletterFullWidthSection />
+          <InsightsSlider
+            data={data.allInsight}
+            showButton={false}
+            backgroundColor={colors.lightgray}
+            title='You May Also Like'
+          />
+        </>
+      ) : (
+        <FullWidthSection ref={halfPage} height='2286px' minHeight='3448px' />
+      )}
     </Layout>
   );
 };
