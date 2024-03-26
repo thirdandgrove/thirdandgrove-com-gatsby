@@ -77,6 +77,7 @@ import cummins from './logos/Cummins.png';
 import danaFarber from './logos/dana-farber.png';
 import unilver from './logos/unilver.png';
 import WAB from './logos/WAB.png';
+import littler from './logos/littler.png';
 
 export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
   let sets;
@@ -373,8 +374,8 @@ export default (logoset, isSmScreen, images, isScrollingLogos = false) => {
         height={isSmScreen ? '49' : '63'}
       />,
       <img
-        src={aM}
-        alt='A&M'
+        src={littler}
+        alt='Littler'
         width={isSmScreen ? '140' : '171'}
         height={isSmScreen ? '49' : '63'}
       />,
