@@ -38,7 +38,7 @@ const Index = ({ data }) => {
             {' '}
             Building delightful,
             <br />
-            award-winning&nbsp;{' '}
+            award-winning{' '}
             {isDayBeforeThanksgiving ||
             isThanksgiving ||
             isDayAfterThanksgiving ? (
