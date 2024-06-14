@@ -104,13 +104,17 @@ exports.handler = async (event, _context, callback) => {
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_MAIN_LIST_ID}/relationships/profiles/`,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
           {
+            type: 'profile',
             howDidYouHearAboutUs,
             email: workEmail,
             whatDidYouNeedHelpWith,
@@ -201,29 +205,6 @@ exports.handler = async (event, _context, callback) => {
   //     console.error('error creating note', err);
   //     callback(null, { statusCode: 200 });
   //   }
-
-  //   const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
-
-  //   await axios({
-  //     url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     data: JSON.stringify({
-  //       api_key: KLAVIYO_API_KEY,
-  //       profiles: [
-  //         {
-  //           first_name,
-  //           last_name,
-  //           email,
-  //           phone,
-  //           website,
-  //           comments,
-  //           url: referrer,
-  //           form: form_name,
-  //         },
-  //       ],
-  //     }),
-  //   }).catch(console.error);
   // }
   /** Old Contact Form */
 
@@ -308,13 +289,17 @@ exports.handler = async (event, _context, callback) => {
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_MAIN_LIST_ID}/relationships/profiles/`,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
           {
+            type: 'profile',
             first_name,
             last_name,
             email,
@@ -410,13 +395,17 @@ exports.handler = async (event, _context, callback) => {
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_MAIN_LIST_ID}/relationships/profiles/`,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
           {
+            type: 'profile',
             first_name,
             last_name,
             email,
@@ -512,13 +501,17 @@ exports.handler = async (event, _context, callback) => {
     const { KLAVIYO_API_KEY, KLAVIYO_MAIN_LIST_ID } = process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_MAIN_LIST_ID}/relationships/profiles/`,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
           {
+            type: 'profile',
             first_name,
             last_name,
             email,
@@ -541,23 +534,42 @@ exports.handler = async (event, _context, callback) => {
       process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_LIST_ID}/relationships/profiles/`,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
+          {
+            type: 'profile',
+            email,
+            url: referrer,
+          },
+        ],
       }),
     }).catch(console.error);
 
     /** SEND Newsletter TO MAIN LIST */
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_MAIN_LIST_ID}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_MAIN_LIST_ID}/relationships/profiles/`,
+
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
+          {
+            type: 'profile',
+            email,
+            url: referrer,
+          },
+        ],
       }),
     }).catch(console.error);
   }
@@ -569,12 +581,21 @@ exports.handler = async (event, _context, callback) => {
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_ACQUIA_ENGAGE } = process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_LIST_ID_ACQUIA_ENGAGE}/relationships/profiles/`,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, url: referrer }],
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
+          {
+            type: 'profile',
+            email,
+            url: referrer,
+          },
+        ],
       }),
     }).catch(console.error);
   }
@@ -597,13 +618,17 @@ exports.handler = async (event, _context, callback) => {
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_DRUPALCON } = process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_DRUPALCON}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_LIST_ID_DRUPALCON}/relationships/profiles/`,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
           {
+            type: 'profile',
             email,
             name,
             addressOne,
@@ -626,12 +651,22 @@ exports.handler = async (event, _context, callback) => {
     const { KLAVIYO_API_KEY, KLAVIYO_LIST_ID_EBOOK } = process.env;
 
     await axios({
-      url: `https://a.klaviyo.com/api/v2/list/${KLAVIYO_LIST_ID_EBOOK}/subscribe`,
+      url: `https://a.klaviyo.com/api/lists/${KLAVIYO_LIST_ID_EBOOK}/relationships/profiles/`,
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      data: JSON.stringify({
-        api_key: KLAVIYO_API_KEY,
-        profiles: [{ email, company, url: referrer }],
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: KLAVIYO_API_KEY,
+      },
+      body: JSON.stringify({
+        data: [
+          {
+            type: 'profile',
+            email,
+            company,
+            url: referrer,
+          },
+        ],
       }),
     }).catch(console.error);
   }
