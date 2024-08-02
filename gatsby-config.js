@@ -29,7 +29,7 @@ module.exports = {
           'style-src': `'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net https://pro.ip-api.com/json`,
           'img-src': `'self' data: https://www.linkedin.com/px/li_sync google.com analytics.twitter.com px4.ads.linkedin.com www.google-analytics.com google.com www.google.com.ec https://www.google.com/ads https://www.google.com/pagead https://cdn.linkedin.oribi.io https://px.ads.linkedin.com https://www.google.com/ads/ga-audiences https://tr-rc.lfeeder.com t.co google.com twitter.com https://www.google.com/pagead/ https://pro.ip-api.com/json https://rp.liadm.com https://rp4.liadm.com/ liadm.com`,
           'font-src': `'self' data: fonts.gstatic.com https://d33wubrfki0l68.cloudfront.net`,
-          'connect-src': `'self' https://www.thirdandgrove.com analytics.google.com extreme-ip-lookup.com stats.g.doubleclick.net www.google-analytics.com https://cdn.linkedin.oribi.io https://px.ads.linkedin.com vimeo.com https://pro.ip-api.com/json https://alocdn.com/c/vn3d8u2u/a/xtarget/p.json https://alocdn.com/ https://rp.liadm.com https://rp4.liadm.com/ liadm.com`,
+          'connect-src': `'self' https://www.thirdandgrove.com analytics.google.com extreme-ip-lookup.com stats.g.doubleclick.net www.google-analytics.com https://cdn.linkedin.oribi.io https://px.ads.linkedin.com vimeo.com https://pro.ip-api.com/json https://alocdn.com/c/vn3d8u2u/a/xtarget/p.json https://alocdn.com/ https://rp.liadm.com https://rp4.liadm.com/ liadm.com https://9xgnrndqve.execute-api.us-west-2.amazonaws.com/b2b amazonaws.com 9xgnrndqve.execute-api.us-west-2.amazonaws.com https://9xgnrndqve.execute-api.us-west-2.amazonaws.com`,
         },
       },
     },
